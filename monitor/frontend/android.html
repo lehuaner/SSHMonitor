@@ -1,0 +1,333 @@
+<!DOCTYPE html><html lang=zh-CN><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Android 进程管理 - Honor10</title>
+<script src="config.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif}
+body{background:#0b1120;color:#e2e8f0;display:flex;align-items:center;justify-content:center}
+.app{width:100%;max-width:1200px;padding:20px}
+.nav{display:flex;gap:4px;margin-bottom:20px;background:#131c31;border-radius:10px;padding:4px;border:1px solid #1e293b}
+.nav a{padding:8px 20px;border-radius:6px;text-decoration:none;color:#94a3b8;font-size:.85rem;transition:.2s}
+.nav a:hover,.nav a.active{background:#2563eb;color:#fff}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.header h1{font-size:1.4rem;font-weight:600;background:linear-gradient(135deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.card{background:#131c31;border:1px solid #1e293b;border-radius:12px;padding:16px;margin-bottom:12px}
+.card-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;flex-wrap:wrap;gap:8px}
+.card-h label{font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px;font-weight:500}
+.btn{padding:6px 14px;border-radius:6px;border:none;font-size:.8rem;cursor:pointer;color:#fff;transition:opacity .2s;background:#1e293b;white-space:nowrap;display:inline-flex;align-items:center;gap:4px}
+.btn:hover{opacity:.8}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-primary{background:#2563eb}
+.btn-warn{background:#d97706}
+.btn-danger{background:#dc2626}
+.btn-success{background:#059669}
+.btn-sm{padding:4px 10px;font-size:.72rem}
+.tabs{display:flex;gap:4px;margin-bottom:12px;flex-wrap:wrap}
+.tab{padding:8px 18px;border-radius:8px;border:1px solid #1e293b;background:#131c31;color:#94a3b8;font-size:.85rem;cursor:pointer;transition:.2s}
+.tab:hover{border-color:#38bdf8;color:#e2e8f0}
+.tab.active{background:#2563eb;border-color:#2563eb;color:#fff}
+.search{background:#0b1120;border:1px solid #334155;border-radius:6px;padding:8px 12px;color:#e2e8f0;font-size:.85rem;outline:none;width:100%}
+.search:focus{border-color:#38bdf8}
+.pwrap{overflow-x:auto;margin-top:8px}
+.pwrap table{width:100%;border-collapse:collapse;font-size:.75rem}
+.pwrap th,.pwrap td{padding:6px 8px;text-align:left;border-bottom:1px solid #1e293b;white-space:nowrap}
+.pwrap th{color:#64748b;font-weight:500;text-transform:uppercase;font-size:.65rem;position:sticky;top:0;background:#131c31}
+.pwrap td{color:#e2e8f0;font-family:monospace}
+.pwrap tr:hover td{background:rgba(56,189,248,.03)}
+.proc-args{max-width:400px;overflow:hidden;text-overflow:ellipsis}
+.cpu-bar{display:inline-block;width:50px;height:4px;background:#1e293b;border-radius:2px;vertical-align:middle;margin-left:4px;overflow:hidden}
+.cpu-bar>div{height:100%;border-radius:2px;transition:width .3s}
+.badge{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:4px;font-size:.7rem;font-weight:600}
+.badge.running{background:rgba(34,197,94,.15);color:#22c55e}
+.badge.stopped{background:rgba(100,116,139,.15);color:#64748b}
+.badge.high{background:rgba(239,68,68,.15);color:#ef4444}
+.badge.mid{background:rgba(245,158,11,.15);color:#f59e0b}
+.badge.low{background:rgba(34,197,94,.15);color:#22c55e}
+.user-tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:.65rem;font-weight:600}
+.user-root{background:rgba(239,68,68,.15);color:#ef4444}
+.user-system{background:rgba(56,189,248,.15);color:#38bdf8}
+.user-app{background:rgba(34,197,94,.15);color:#22c55e}
+.user-other{background:rgba(100,116,139,.15);color:#94a3b8}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e293b;color:#e2e8f0;padding:10px 24px;border-radius:8px;font-size:.85rem;z-index:99;transition:opacity .3s;opacity:0;pointer-events:none}
+.toast.show{opacity:1}
+.empty{text-align:center;color:#64748b;padding:40px 20px;font-size:.85rem}
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:12px}
+.summary-item{background:#0b1120;border:1px solid #1e293b;border-radius:8px;padding:8px 12px;text-align:center}
+.summary-item .num{font-size:1.2rem;font-weight:600;font-family:monospace}
+.summary-item .lbl{font-size:.65rem;color:#64748b;margin-top:2px}
+.adb-status{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;color:#64748b}
+.adb-dot{width:8px;height:8px;border-radius:50%;background:#64748b}
+.adb-dot.ok{background:#22c55e;box-shadow:0 0 6px #22c55e}
+.adb-dot.err{background:#ef4444;box-shadow:0 0 6px #ef4444}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:100}
+.modal.show{display:flex}
+.modal-box{background:#131c31;border:1px solid #1e293b;border-radius:12px;padding:20px;max-width:500px;width:90%}
+.modal-box h3{font-size:1rem;margin-bottom:12px;color:#e2e8f0}
+.modal-box p{font-size:.85rem;color:#94a3b8;margin-bottom:16px;line-height:1.5}
+.modal-actions{display:flex;gap:8px;justify-content:flex-end}
+@media(max-width:600px){.summary{grid-template-columns:repeat(2,1fr)}.pwrap{font-size:.7rem}}
+</style>
+<div class=app>
+<div class=nav><a href=/>&#9660; 监控</a><a href=/sb/ui/ target=_blank>&#9881; Sing-box</a><a href=/subscription>&#128230; 订阅</a><a href=/notify>&#128276; 通知</a><a href=/files>&#128193; 文件</a><a href=/android class=active>&#128241; Android</a><a href=/checkin>&#9989; 签到</a></div>
+<div class=header>
+<h1>&#128241; Android 进程管理</h1>
+<div class=adb-status><span class=adb-dot id=adbDot></span><span id=adbText>检测中...</span></div>
+</div>
+
+<div class=tabs>
+<span class="tab active" data-tab=processes onclick=switchTab('processes')>&#9881; 进程列表</span>
+<span class=tab data-tab=apps onclick=switchTab('apps')>&#128230; 应用管理</span>
+</div>
+
+<div id=summaryBox class=summary style=display:none></div>
+
+<div id=processTab>
+<div class=card>
+<div class=card-h>
+<label>运行中进程</label>
+<div style=display:flex;gap:6px;align-items:center;flex-wrap:wrap>
+<input class=search id=procSearch placeholder="搜索进程名/PID/用户..." style=width:240px oninput=renderProcs()>
+<button class="btn btn-sm" onclick=loadProcs()>&#128259; 刷新</button>
+<label style=font-size:.72rem;color:#64748b;display:flex;align-items:center;gap:4px><input type=checkbox id=hideIdle onclick=renderProcs()> 隐藏空闲(0%)</label>
+</div>
+</div>
+<div class=pwrap style=max-height:560px;overflow-y:auto>
+<table id=procTable>
+<thead><tr><th>PID</th><th>用户</th><th>CPU%</th><th>内存%</th><th>累计时间</th><th>命令</th><th>操作</th></tr></thead>
+<tbody id=procBody><tr><td colspan=7 class=empty>加载中...</td></tr></tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id=appTab style=display:none>
+<div class=card>
+<div class=card-h>
+<label>第三方应用</label>
+<div style=display:flex;gap:6px;align-items:center;flex-wrap:wrap>
+<input class=search id=appSearch placeholder="搜索包名..." style=width:240px oninput=renderApps()>
+<button class="btn btn-sm" onclick=loadApps()>&#128259; 刷新</button>
+<label style=font-size:.72rem;color:#64748b;display:flex;align-items:center;gap:4px><input type=checkbox id=onlyRunning onclick=renderApps()> 仅显示运行中</label>
+</div>
+</div>
+<div class=pwrap style=max-height:560px;overflow-y:auto>
+<table id=appTable>
+<thead><tr><th>包名</th><th>状态</th><th>操作</th></tr></thead>
+<tbody id=appBody><tr><td colspan=3 class=empty>加载中...</td></tr></tbody>
+</table>
+</div>
+<div class=note style=font-size:.7rem;color:#64748b;margin-top:8px;line-height:1.5>
+提示：强制停止会立即结束 App 进程（可能再次启动）；禁用会阻止 App 启动（启动器图标隐藏）。系统应用不在列表中。
+</div>
+</div>
+</div>
+
+</div>
+<div id=toast class=toast></div>
+<div id=modal class=modal>
+<div class=modal-box>
+<h3 id=modalTitle>确认</h3>
+<p id=modalMsg></p>
+<div class=modal-actions>
+<button class=btn onclick=closeModal()>取消</button>
+<button class="btn btn-danger" id=modalOk>确认</button>
+</div>
+</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const show=(msg,sec=3)=>{const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),sec*1000)};
+let allProcs=[],allApps=[],currentTab='processes';
+let adbConnected=false;
+
+function userClass(u){
+  if(u==='root')return 'user-root';
+  if(u==='system'||u==='shell'||u==='wifi'||u==='nfc'||u==='bluetooth'||u==='radio'||u==='gps'||u==='media')return 'user-system';
+  if(/^u0_a\d+/.test(u))return 'user-app';
+  return 'user-other';
+}
+function cpuBadge(c){
+  if(c>=20)return '<span class=badge high>'+c.toFixed(1)+'%</span>';
+  if(c>=5)return '<span class=badge mid>'+c.toFixed(1)+'%</span>';
+  return '<span class=badge low>'+c.toFixed(1)+'%</span>';
+}
+function cpuBarColor(c){return c>=20?'#ef4444':c>=5?'#f59e0b':'#22c55e'}
+
+async function loadAdbStatus(){
+  try{
+    const r=await fetch(API_BASE+'/api/android/status');
+    const d=await r.json();
+    adbConnected=d.connected;
+    $('adbDot').className='adb-dot '+(d.connected?'ok':'err');
+    $('adbText').textContent=d.connected?'ADB 已连接':'ADB 未连接';
+  }catch(e){
+    adbConnected=false;
+    $('adbDot').className='adb-dot err';
+    $('adbText').textContent='ADB 状态未知';
+  }
+}
+
+async function loadProcs(){
+  if(!adbConnected){show('ADB 未连接',3);return}
+  $('procBody').innerHTML='<tr><td colspan=7 class=empty>加载中...</td></tr>';
+  try{
+    const r=await fetch(API_BASE+'/api/android/processes');
+    const d=await r.json();
+    if(!d.ok){$('procBody').innerHTML='<tr><td colspan=7 class=empty>'+esc(d.error||'加载失败')+'</td></tr>';return}
+    allProcs=d.processes;
+    renderSummary();
+    renderProcs();
+  }catch(e){
+    $('procBody').innerHTML='<tr><td colspan=7 class=empty>请求失败: '+esc(e.message)+'</td></tr>';
+  }
+}
+
+function renderSummary(){
+  if(currentTab!=='processes'||allProcs.length===0){$('summaryBox').style.display='none';return}
+  const total=allProcs.length;
+  const high=allProcs.filter(p=>p.cpu>=20).length;
+  const mid=allProcs.filter(p=>p.cpu>=5&&p.cpu<20).length;
+  const apps=allProcs.filter(p=>/^u0_a\d+/.test(p.user)).length;
+  const sys=allProcs.filter(p=>p.user==='system'||p.user==='root').length;
+  const cpuSum=allProcs.reduce((s,p)=>s+p.cpu,0);
+  $('summaryBox').style.display='grid';
+  $('summaryBox').innerHTML=`
+    <div class=summary-item><div class=num style=color:#38bdf8>${total}</div><div class=lbl>总进程</div></div>
+    <div class=summary-item><div class=num style=color:#ef4444>${high}</div><div class=lbl>高 CPU (≥20%)</div></div>
+    <div class=summary-item><div class=num style=color:#f59e0b>${mid}</div><div class=lbl>中 CPU (5-20%)</div></div>
+    <div class=summary-item><div class=num style=color:#22c55e>${apps}</div><div class=lbl>App 进程</div></div>
+    <div class=summary-item><div class=num style=color:#818cf8>${sys}</div><div class=lbl>系统进程</div></div>
+    <div class=summary-item><div class=num style=color:#a78bfa>${cpuSum.toFixed(1)}%</div><div class=lbl>CPU 总和</div></div>
+  `;
+}
+
+function renderProcs(){
+  const q=($('procSearch').value||'').toLowerCase().trim();
+  const hideIdle=$('hideIdle').checked;
+  let list=allProcs;
+  if(hideIdle)list=list.filter(p=>p.cpu>0.1);
+  if(q)list=list.filter(p=>p.args.toLowerCase().includes(q)||String(p.pid).includes(q)||p.user.toLowerCase().includes(q));
+  if(list.length===0){$('procBody').innerHTML='<tr><td colspan=7 class=empty>无匹配进程</td></tr>';return}
+  const html=list.slice(0,300).map(p=>{
+    const uc=userClass(p.user);
+    const cb=cpuBarColor(p.cpu);
+    return `<tr>
+      <td>${p.pid}</td>
+      <td><span class="user-tag ${uc}">${esc(p.user)}</span></td>
+      <td>${cpuBadge(p.cpu)}<div class=cpu-bar><div style="width:${Math.min(100,p.cpu)}%;background:${cb}"></div></div></td>
+      <td>${p.mem.toFixed(1)}%</td>
+      <td>${esc(p.time)}</td>
+      <td class=proc-args title="${esc(p.args)}">${esc(p.args)}</td>
+      <td>${p.user==='root'?'<span style=color:#475569>系统</span>':(`<button class="btn btn-sm btn-warn" onclick="killProc(${p.pid},'${esc(p.args).slice(0,40)}')">停止</button>`)}</td>
+    </tr>`;
+  }).join('');
+  $('procBody').innerHTML=html+(list.length>300?`<tr><td colspan=7 class=empty>仅显示前 300 条，共 ${list.length} 条</td></tr>`:'');
+}
+
+async function loadApps(){
+  if(!adbConnected){show('ADB 未连接',3);return}
+  $('appBody').innerHTML='<tr><td colspan=3 class=empty>加载中...</td></tr>';
+  try{
+    const r=await fetch(API_BASE+'/api/android/apps');
+    const d=await r.json();
+    if(!d.ok){$('appBody').innerHTML='<tr><td colspan=3 class=empty>'+esc(d.error||'加载失败')+'</td></tr>';return}
+    allApps=d.apps;
+    renderApps();
+  }catch(e){
+    $('appBody').innerHTML='<tr><td colspan=3 class=empty>请求失败: '+esc(e.message)+'</td></tr>';
+  }
+}
+
+function renderApps(){
+  const q=($('appSearch').value||'').toLowerCase().trim();
+  const only=$('onlyRunning').checked;
+  let list=allApps;
+  if(only)list=list.filter(a=>a.running);
+  if(q)list=list.filter(a=>a.package.toLowerCase().includes(q));
+  if(list.length===0){$('appBody').innerHTML='<tr><td colspan=3 class=empty>无匹配应用</td></tr>';return}
+  const html=list.slice(0,300).map(a=>{
+    const pkg=esc(a.package);
+    return `<tr>
+      <td title="${pkg}">${pkg}</td>
+      <td>${a.running?'<span class=badge running>运行中</span>':'<span class=badge stopped>已停止</span>'}</td>
+      <td>
+        <button class="btn btn-sm btn-warn" onclick="forceStop('${pkg}')">强制停止</button>
+        <button class="btn btn-sm btn-danger" onclick="disableApp('${pkg}')">禁用</button>
+        <button class="btn btn-sm btn-success" onclick="enableApp('${pkg}')">启用</button>
+      </td>
+    </tr>`;
+  }).join('');
+  $('appBody').innerHTML=html+(list.length>300?`<tr><td colspan=3 class=empty>仅显示前 300 条，共 ${list.length} 条</td></tr>`:'');
+}
+
+async function killProc(pid,name){
+  if(!await confirm2('停止进程','确定停止进程 PID '+pid+' ?\\n'+name+'\\n\\n注意:系统关键进程可能无法停止,且停止后可能被系统重启。'))return;
+  try{
+    const r=await fetch(API_BASE+'/api/android/kill',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pid:pid})});
+    const d=await r.json();
+    show(d.message||(d.ok?'已停止':'失败'),3);
+    if(d.ok)setTimeout(loadProcs,500);
+  }catch(e){show('请求失败: '+e.message,3)}
+}
+
+async function forceStop(pkg){
+  if(!await confirm2('强制停止','确定强制停止应用?\\n'+pkg+'\\n\\n应用可能被系统再次启动。'))return;
+  try{
+    const r=await fetch(API_BASE+'/api/android/force-stop',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({package:pkg})});
+    const d=await r.json();
+    show(d.message||(d.ok?'已停止':'失败'),3);
+    if(d.ok)setTimeout(loadApps,500);
+  }catch(e){show('请求失败: '+e.message,3)}
+}
+
+async function disableApp(pkg){
+  if(!await confirm2('禁用应用','确定禁用应用?\\n'+pkg+'\\n\\n禁用后启动器图标会消失，需要在此页面重新启用。'))return;
+  try{
+    const r=await fetch(API_BASE+'/api/android/disable',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({package:pkg})});
+    const d=await r.json();
+    show(d.message||(d.ok?'已禁用':'失败'),3);
+    if(d.ok)setTimeout(loadApps,500);
+  }catch(e){show('请求失败: '+e.message,3)}
+}
+
+async function enableApp(pkg){
+  try{
+    const r=await fetch(API_BASE+'/api/android/enable',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({package:pkg})});
+    const d=await r.json();
+    show(d.message||(d.ok?'已启用':'失败'),3);
+    if(d.ok)setTimeout(loadApps,500);
+  }catch(e){show('请求失败: '+e.message,3)}
+}
+
+function switchTab(t){
+  currentTab=t;
+  $('processTab').style.display=t==='processes'?'block':'none';
+  $('appTab').style.display=t==='apps'?'block':'none';
+  $$('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelector('.tab[data-tab='+t+']').classList.add('active');
+  $('summaryBox').style.display='none';
+  if(t==='processes'&&allProcs.length===0)loadProcs();
+  else if(t==='apps'&&allApps.length===0)loadApps();
+  if(t==='processes'&&allProcs.length>0)renderSummary();
+}
+function $$(s){return document.querySelectorAll(s)}
+
+let modalResolve=null;
+function confirm2(title,msg){
+  $('modalTitle').textContent=title;
+  $('modalMsg').textContent=msg;
+  $('modal').classList.add('show');
+  return new Promise(res=>{modalResolve=res});
+}
+function closeModal(ok){$('modal').classList.remove('show');if(modalResolve){modalResolve(ok);modalResolve=null}}
+$('modalOk').onclick=()=>closeModal(true);
+
+function esc(s){if(!s)return '';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+
+// 初始化
+loadAdbStatus().then(()=>{
+  setTimeout(loadProcs,300);
+});
+// 每 30 秒刷新一次 ADB 状态
+setInterval(loadAdbStatus,30000);
+</script>
+</div>
+</html>

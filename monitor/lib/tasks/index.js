@@ -1,0 +1,448 @@
+/**
+ * 任务调度中心。
+ * 遍历 checkin_tasks.json 中已启用的任务，按各自时区/签到时间定时触发，
+ * 调用对应 provider 执行签到，写日志并按规则发通知。
+ * 单个任务失败不断链，凭证无效时跳过执行（等凭证更新后自动恢复）。
+ */
+import { randomUUID } from 'node:crypto';
+import { loadJSON, saveJSON, DATA_DIR } from '../utils.js';
+import { sendMail } from '../notify.js';
+import { getProvider } from '../providers/index.js';
+import { startScheduler, nextTriggerMs } from '../checkin/scheduler.js';
+import { appendLog } from '../checkin-log.js';
+
+const TASKS_FILE = DATA_DIR + '/checkin_tasks.json';
+
+// 上游「操作太过频繁(9074)」保护：退避等待时长。保护窗口内自动签到跳过，
+// 避免连续重试刷新窗口；手动「立即签到」仍可强制尝试。
+const THROTTLE_BACKOFF_MS = 20 * 60 * 1000;
+
+const timers = new Map(); // taskId -> { stop }
+
+export function loadTasks() {
+  return loadJSON(TASKS_FILE, []);
+}
+export function saveTasks(tasks) {
+  saveJSON(TASKS_FILE, tasks);
+}
+
+export function getTasks() {
+  return loadTasks();
+}
+
+function todayStr(ts = Date.now()) {
+  const d = new Date(ts);
+  const p = (n) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`;
+}
+
+/** 判断当前是否已过某任务今天的签到点（用于"当天失败必通知"） */
+function isPastTodayTime(timeStr, timezone) {
+  try {
+    const next = nextTriggerMs(Date.now(), timeStr, timezone);
+    const fmt = (ts) =>
+      new Intl.DateTimeFormat('en-CA', { timeZone: timezone, year: 'numeric', month: '2-digit', day: '2-digit' }).format(ts);
+    return fmt(next) > fmt(Date.now());
+  } catch {
+    return false;
+  }
+}
+
+/** 执行一次签到 + 日志 + 通知（供定时与手动共用） */
+export async function executeTaskCheckin(task) {
+  const provider = getProvider(task.providerId);
+  if (!provider) return { ok: false, error: `未知 provider: ${task.providerId}` };
+  if (task.credentialInvalid) {
+    return { ok: false, skipped: true, reason: 'credentialInvalid' };
+  }
+
+  try {
+    const res = await provider.checkin(task);
+    const wasFailing = task.failCount > 0 || task.credentialInvalid;
+    task.failCount = 0;
+    task.credentialInvalid = false;
+    task.notifiedInvalid = false;
+    task.notifiedThreshold = false;
+    task.notifiedTodayFail = null;
+    task.lastResult = 'success';
+    task.lastError = null;
+    task.credits = res.credits;
+    task.lastRun = Date.now();
+    appendLog({ taskId: task.id, providerId: task.providerId, status: 'success', credits: res.credits, reward: res.reward });
+
+    if (wasFailing) {
+      await sendMail(`[恢复] ${task.name} 签到恢复`, `账号 ${task.name} 签到已恢复正常。\n积分: ${res.credits ?? '未知'}`);
+    } else if (task.config.notifyOnSuccess) {
+      await sendMail(`[签到] ${task.name} 签到成功`, `账号 ${task.name} 今日签到成功${res.alreadyCheckedIn ? '（今日此前已签到）' : ''}。\n积分: ${res.credits ?? '未知'}`);
+    }
+    res.ok = true;
+    return res;
+  } catch (err) {
+    // 上游保护(9074 操作太过频繁)：退避等待，不记为连续失败、不告警，避免硬撞刷新窗口
+    if (err.kind === 'throttle') {
+      task.lastResult = 'throttle';
+      task.lastError = err.message;
+      task.lastRun = Date.now();
+      task.throttledUntil = Date.now() + THROTTLE_BACKOFF_MS;
+      appendLog({ taskId: task.id, providerId: task.providerId, status: 'throttle', error: err.message });
+      saveTasks(getTasks().map((t) => (t.id === task.id ? task : t)));
+      return { ok: false, error: err.message, kind: 'throttle' };
+    }
+    const invalid = err.kind === 'invalid';
+    task.failCount = (task.failCount || 0) + 1;
+    task.lastResult = 'fail';
+    task.lastError = err.message;
+    task.lastRun = Date.now();
+
+    if (invalid) {
+      task.credentialInvalid = true;
+      appendLog({ taskId: task.id, providerId: task.providerId, status: 'invalid', error: err.message });
+      if (!task.notifiedInvalid) {
+        task.notifiedInvalid = true;
+        await sendMail(`[告警] ${task.name} 签到凭证无效`, `账号 ${task.name} 的凭证已失效，请更新。\n原因: ${err.message}`);
+      }
+    } else {
+      appendLog({ taskId: task.id, providerId: task.providerId, status: 'fail', error: err.message });
+      const threshold = Number(task.config.failThreshold) || 3;
+      const today = todayStr();
+      if (isPastTodayTime(task.config.time, task.config.timezone) && task.notifiedTodayFail !== today) {
+        task.notifiedTodayFail = today;
+        await sendMail(`[告警] ${task.name} 今日签到失败`, `账号 ${task.name} 今日签到失败，今天可能无法再补签。\n原因: ${err.message}`);
+      } else if (task.failCount >= threshold && !task.notifiedThreshold) {
+        task.notifiedThreshold = true;
+        await sendMail(`[告警] ${task.name} 签到失败（连续 ${task.failCount} 次）`, `账号 ${task.name} 连续 ${task.failCount} 次签到失败。\n原因: ${err.message}`);
+      }
+    }
+    saveTasks(getTasks().map((t) => (t.id === task.id ? task : t)));
+    return { ok: false, error: err.message, kind: err.kind };
+  }
+}
+
+/** 启动单个任务的定时调度 */
+export function startTask(task) {
+  stopTask(task.id);
+  if (!task.enabled || task.credentialInvalid) return;
+  const sched = startScheduler({
+    timeStr: task.config.time,
+    timezone: task.config.timezone,
+    onTick: async () => {
+      // 上游保护退避期内：跳过自动签到，等窗口过后再试
+      if (task.throttledUntil && task.throttledUntil > Date.now()) return;
+      await executeTaskCheckin(task);
+      saveTasks(getTasks().map((t) => (t.id === task.id ? task : t)));
+    },
+  });
+  timers.set(task.id, sched);
+}
+
+export function stopTask(taskId) {
+  const sched = timers.get(taskId);
+  if (sched) {
+    try { sched.stop(); } catch {}
+    timers.delete(taskId);
+  }
+}
+
+/** 启动全部启用任务 */
+export function startAllTasks() {
+  for (const task of getTasks()) startTask(task);
+}
+
+/** 停止全部 */
+export function stopAllTasks() {
+  for (const id of [...timers.keys()]) stopTask(id);
+}
+
+/** 增删改后重载调度 */
+export function resyncTask(task) {
+  startTask(task);
+}
+
+// ====== CRUD ======
+export function addTask(input) {
+  const tasks = getTasks();
+  const task = {
+    id: randomUUID(),
+    providerId: input.providerId,
+    name: input.name || '未命名',
+    config: input.config || {},
+    enabled: input.enabled !== false,
+    createdAt: Date.now(),
+    failCount: 0,
+    credentialInvalid: false,
+    lastResult: null,
+    lastError: null,
+    credits: null,
+    totalCredits: null,
+    lastRun: null,
+    todayCheckedIn: null,
+    lastStatusCheck: null,
+    cookieExpiresAt: null,
+    cookieProbedAt: 0,
+    notifiedCookieExpiry: null,
+  };
+  tasks.push(task);
+  saveTasks(tasks);
+  startTask(task);
+  return task;
+}
+
+export function updateTask(id, patch) {
+  const tasks = getTasks();
+  const task = tasks.find((t) => t.id === id);
+  if (!task) return null;
+  if (patch.name !== undefined) task.name = patch.name;
+  if (patch.config !== undefined) Object.assign(task.config, patch.config);
+  if (patch.enabled !== undefined) task.enabled = patch.enabled;
+  // 凭证更新后重置无效/失败状态，让任务自动恢复
+  if (patch.config && (patch.config.cookie !== undefined || patch.config.token !== undefined)) {
+    task.credentialInvalid = false;
+    task.failCount = 0;
+    task.notifiedInvalid = false;
+    task.notifiedThreshold = false;
+  }
+  // Cookie 换新后重置到期监控状态，触发立即重新探测并重新武装通知
+  if (patch.config && patch.config.cookie !== undefined) {
+    task.cookieExpiresAt = null;
+    task.cookieProbedAt = 0;
+    task.notifiedCookieExpiry = null;
+    // 关键修复：清除缓存的新旧 JWT 与到期时间。
+    // 否则 resolveToken 会因旧 token 仍在 8h 有效期内而直接复用，忽略新 Cookie，
+    // 导致编辑改 Cookie 后所有接口仍走旧账号凭证（表现为“测试凭证失效”）。
+    // 清空后下一次调用必走 getUserToken() 用新 Cookie 换取全新 token。
+    delete task.config.token;
+    task.tokenExpiredAt = null;
+    task.credentialInvalid = false;
+  }
+  saveTasks(tasks);
+  resyncTask(task);
+  return task;
+}
+
+export function deleteTask(id) {
+  stopTask(id);
+  const tasks = getTasks();
+  const next = tasks.filter((t) => t.id !== id);
+  saveTasks(next);
+  return next.length !== tasks.length;
+}
+
+export async function runTaskNow(id) {
+  const task = getTasks().find((t) => t.id === id);
+  if (!task) return { ok: false, error: '任务不存在' };
+  const res = await executeTaskCheckin(task);
+  saveTasks(getTasks().map((t) => (t.id === id ? task : t)));
+  return res;
+}
+
+export async function runAllNow() {
+  const results = [];
+  for (const task of getTasks()) {
+    if (!task.enabled) continue;
+    if (task.throttledUntil && task.throttledUntil > Date.now()) {
+      results.push({ id: task.id, name: task.name, skipped: true, reason: 'throttle' });
+      continue;
+    }
+    const res = await executeTaskCheckin(task);
+    saveTasks(getTasks().map((t) => (t.id === task.id ? task : t)));
+    results.push({ id: task.id, name: task.name, ...res });
+  }
+  return results;
+}
+
+export async function testCredential(id) {
+  const task = getTasks().find((t) => t.id === id);
+  if (!task) return { ok: false, error: '任务不存在' };
+  const provider = getProvider(task.providerId);
+  // 测试凭证：直接获取总积分。能取到即凭证有效，同时刷新积分缓存。
+  const testFn = (provider && provider.getTotalCredits) ? provider.getTotalCredits.bind(provider) : (provider ? provider.checkCredential.bind(provider) : null);
+  if (!testFn) return { ok: false, error: '该 provider 不支持凭证测试' };
+  try {
+    const res = await testFn(task);
+    if (res.ok !== false && typeof res.total === 'number') {
+      task.totalCredits = res.total;
+      saveTasks(getTasks().map((t) => (t.id === id ? task : t)));
+      return { ok: true, total: res.total, valid: true };
+    }
+    return { ok: res.ok !== false, ...res };
+  } catch (err) {
+    // provider 可能已用 Cookie 刷新了 token，失败也要落盘
+    saveTasks(getTasks().map((t) => (t.id === id ? task : t)));
+    return { ok: false, error: err.message, kind: err.kind };
+  }
+}
+
+export async function getCredits(id) {
+  const task = getTasks().find((t) => t.id === id);
+  if (!task) return { ok: false, error: '任务不存在' };
+  const provider = getProvider(task.providerId);
+  if (!provider || !provider.getCredits) return { ok: false, error: '该 provider 不支持查询积分' };
+  try {
+    const res = await provider.getCredits(task);
+    task.credits = res.credits;
+    saveTasks(getTasks().map((t) => (t.id === id ? task : t)));
+    return res;
+  } catch (err) {
+    saveTasks(getTasks().map((t) => (t.id === id ? task : t)));
+    return { ok: false, error: err.message, kind: err.kind };
+  }
+}
+
+/** 查询今日签到状态（不领取），更新 todayCheckedIn / credits */
+export async function checkStatusForTask(id) {
+  const task = getTasks().find((t) => t.id === id);
+  if (!task) return { ok: false, error: '任务不存在' };
+  const provider = getProvider(task.providerId);
+  if (!provider || !provider.checkStatus) return { ok: false, error: '该 provider 不支持查询状态' };
+  try {
+    const res = await provider.checkStatus(task);
+    task.todayCheckedIn = res.checked_in;
+    task.credits = res.credits;
+    task.lastStatusCheck = Date.now();
+    if (res.checked_in) task.lastResult = 'success';
+    saveTasks(getTasks().map((t) => (t.id === id ? task : t)));
+    return { ok: true, ...res };
+  } catch (err) {
+    saveTasks(getTasks().map((t) => (t.id === id ? task : t)));
+    return { ok: false, error: err.message, kind: err.kind };
+  }
+}
+
+/** 查询账户总可用积分（所有权益包剩余之和），并把返回的历史签到日期同步进签到日志 */
+export async function getTotalCreditsForTask(id) {
+  const task = getTasks().find((t) => t.id === id);
+  if (!task) return { ok: false, error: '任务不存在' };
+  const provider = getProvider(task.providerId);
+  if (!provider || !provider.getTotalCredits) return { ok: false, error: '该 provider 不支持查询总积分' };
+  try {
+    const res = await provider.getTotalCredits(task);
+    task.totalCredits = res.total;
+    saveTasks(getTasks().map((t) => (t.id === id ? task : t)));
+    // 把上游返回的历史签到日期（checkins）回填到 30 天签到日志
+    if (Array.isArray(res.checkins)) {
+      let appended = 0;
+      for (const c of res.checkins) {
+        if (!c.date) continue;
+        appendLog({ taskId: id, providerId: task.providerId, date: c.date, status: 'success', credits: c.credits ?? null, reward: null, error: null, ts: Date.parse(c.date) || Date.now() });
+        appended++;
+      }
+      if (appended) res.syncedLogs = appended;
+    }
+    return res;
+  } catch (err) {
+    saveTasks(getTasks().map((t) => (t.id === id ? task : t)));
+    return { ok: false, error: err.message, kind: err.kind };
+  }
+}
+
+/** 对所有启用账号执行"今日首次检测"：当天已检/已签则跳过，否则检测一次 */
+export async function autoCheckToday() {
+  const tasks = getTasks();
+  const today = todayStr();
+  const results = [];
+  for (const task of tasks) {
+    if (!task.enabled || task.credentialInvalid) {
+      results.push({ id: task.id, name: task.name, skipped: true, reason: 'disabled_or_invalid' });
+      continue;
+    }
+    // 当天已检测过或已签到，跳过
+    if (task.lastStatusCheck) {
+      const checkDate = todayStr(task.lastStatusCheck);
+      if (checkDate === today) {
+        results.push({ id: task.id, name: task.name, skipped: true, reason: 'already_checked_today' });
+        continue;
+      }
+    }
+    if (task.todayCheckedIn === true) {
+      results.push({ id: task.id, name: task.name, skipped: true, reason: 'already_signed_in' });
+      continue;
+    }
+    const res = await checkStatusForTask(task.id);
+    results.push({ id: task.id, name: task.name, ...res });
+  }
+  return results;
+}
+
+// ====== Cookie 到期监控 ======
+// 每小时巡检一次启用且有 Cookie 的任务：会话有效期缓存超过 24h（或无缓存）时
+// 通过 provider.probeSession 重新探测；剩余天数达到用户配置的提前量时邮件提醒（每天最多一封）。
+
+const COOKIE_CHECK_INTERVAL_MS = 60 * 60 * 1000; // 巡检间隔：1 小时
+const COOKIE_PROBE_TTL_MS = 24 * 60 * 60 * 1000; // 探测结果有效期：24 小时
+
+function fmtBeijing(ts) {
+  try {
+    return new Intl.DateTimeFormat('zh-CN', {
+      timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit',
+      hour: '2-digit', minute: '2-digit', hour12: false,
+    }).format(new Date(ts)) + '（北京时间）';
+  } catch {
+    return new Date(ts).toISOString();
+  }
+}
+
+function persistTask(task) {
+  saveTasks(getTasks().map((t) => (t.id === task.id ? task : t)));
+}
+
+async function checkCookieExpiryOnce() {
+  const today = todayStr();
+  for (const task of getTasks()) {
+    if (!task.enabled || !task.config || !task.config.cookie) continue;
+    if (task.config.cookieExpiryNotify === false) continue;
+    const provider = getProvider(task.providerId);
+    if (!provider || typeof provider.probeSession !== 'function') continue;
+
+    // 探测 Cookie 会话有效期（CheckLogin 会话 ~14 天滑动续期，取 sid_guard 静态值兜底）
+    if (!task.cookieExpiresAt || Date.now() - (task.cookieProbedAt || 0) > COOKIE_PROBE_TTL_MS) {
+      try {
+        const r = await provider.probeSession(task);
+        if (r.isLogin && r.expiresAt) {
+          task.cookieExpiresAt = r.expiresAt;
+        } else if (r.isLogin === false) {
+          task.cookieExpiresAt = Date.now(); // 会话已失效，视为立即到期
+        }
+        task.cookieProbedAt = Date.now();
+        persistTask(task);
+      } catch (err) {
+        if (err.kind === 'invalid') {
+          // Cookie 已被服务端拒绝：视为已到期（当天就会走通知分支）
+          task.cookieExpiresAt = Date.now();
+          task.cookieProbedAt = Date.now();
+          persistTask(task);
+        }
+        // 网络等临时失败：静默跳过，沿用旧缓存
+      }
+    }
+
+    if (!task.cookieExpiresAt) continue;
+    const daysLeft = Math.ceil((task.cookieExpiresAt - Date.now()) / 86400000);
+    const threshold = Number(task.config.cookieExpiryNotifyDays) || 1;
+    if (daysLeft > threshold || task.notifiedCookieExpiry === today) continue;
+
+    task.notifiedCookieExpiry = today;
+    persistTask(task);
+    const expStr = fmtBeijing(task.cookieExpiresAt);
+    if (daysLeft <= 0) {
+      await sendMail(
+        `[告警] ${task.name} Cookie 已失效`,
+        `账号 ${task.name} 的 Trae Cookie 已失效（探测时间 ${expStr}），自动刷新 JWT 将无法进行。\n` +
+        `请重新登录 www.trae.cn 抓取新 Cookie，并在签到页编辑该账号更新。`
+      );
+    } else {
+      await sendMail(
+        `[提醒] ${task.name} Cookie 将于 ${daysLeft} 天后到期`,
+        `账号 ${task.name} 的 Trae Cookie 预计到期时间：${expStr}，剩余约 ${daysLeft} 天。\n` +
+        `请在此期间重新登录 www.trae.cn 抓取新 Cookie 并更新账号配置，` +
+        `否则到期后签到将失败。\n\n如不想收到此提醒，可在账号编辑页关闭「Cookie 到期提前邮件通知」。`
+      );
+    }
+  }
+}
+
+/** 启动 Cookie 到期监控（server.js 启动时调用一次） */
+export function startCookieExpiryWatcher() {
+  const run = () => { checkCookieExpiryOnce().catch(() => {}); };
+  setTimeout(run, 30 * 1000); // 启动 30 秒后先跑一次
+  setInterval(run, COOKIE_CHECK_INTERVAL_MS);
+}

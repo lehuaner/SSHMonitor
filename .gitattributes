@@ -1,0 +1,30 @@
+# 统一换行符处理，避免 Windows/macOS 协作时整文件 diff
+* text=auto
+
+# 脚本保持 LF，确保在 Linux / Termux 上可直接执行
+*.sh   text eol=lf
+*.mjs  text eol=lf
+*.js   text eol=lf
+
+# PowerShell / 批处理保持 CRLF
+*.ps1  text eol=crlf
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+
+# 二进制视为二进制，不做换行转换
+*.saz  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.apng binary
+*.ico  binary
+*.ttf  binary
+*.woff binary
+*.woff2 binary
+*.wasm binary
+*.bin  binary
+*.zip  binary
+*.7z   binary
+*.exe  binary
