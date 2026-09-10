@@ -1,0 +1,11 @@
+HTTP/2 200
+content-type: application/json; charset=utf-8
+set-cookie: tgw_l7_route=3b5d3730189b6def79dea44bfb8f5643; Expires=Mon, 07-Sep-2026 17:39:38 GMT; Path=/; sameSite=None; Secure
+traceid: 8fd5d805098b70336ba476af897c57e0
+x-request-id: 21b73cb1-f89e-4e63-92b3-0d200d52934b
+server: APISIX/3.9.1
+vary: Origin
+content-length: 72
+date: Mon, 07 Sep 2026 16:39:38 GMT
+eo-log-uuid: 81296966702956793
+eo-cache-status: MISS

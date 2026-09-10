@@ -1,0 +1,18 @@
+HTTP/2 200
+cache-control: private
+content-length: 463
+content-type: application/json; charset=utf-8
+vary: Accept-Encoding
+p3p: CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+set-cookie: SNRHOP=I=&TS=; domain=.bing.com; path=/; secure; SameSite=None
+set-cookie: MUIDB=1813F96507B063203380EE0D061D628F; expires=Tue, 14-Sep-2027 06:22:31 GMT; path=/; HttpOnly
+set-cookie: _RwBf=r=143700797E2F9D4AD&mta=0&ispd=3&rc=23479&rb=23479&rg=0&pc=23479&mtu=0&rbb=0.0&clo=0&v=3&l=2026-08-19T07:00:00.0000000Z&lft=0001-01-01T00:00:00.0000000&aof=0&ard=0001-01-01T00:00:00.0000000&rwdbt=-62135539200&rwflt=1705246875&rwaul2=0&g=newLevel3&o=16&p=bingcopilotwaitlist&c=MY00IA&t=6686&s=2023-02-13T17:02:08.3410469+00:00&ts=2026-08-20T06:22:29.3453019+00:00&rwred=0&wls=2&wlb=0&wle=0&ccp=2&cpt=0&lka=0&lkt=0&aad=0&TH=&cid=3008&gb=2025w17_c&e=Ok086NZleXIYTlRrm4CCH2CDQgjw8q2R7ehs6O-dVL8Mc618cnm1TKp2ChW-wjteTZfLTjUeUcNmncyH3zoI0g&A=46A4CF813C6C4E5C471AA633FFFFFFFF; domain=.bing.com; expires=Sun, 20-Aug-2028 06:22:31 GMT; path=/; secure; SameSite=None
+x-eventid: 6a869d277bf54c1b963411c06f3b5ac7
+accept-ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, ECT, Sec-CH-Prefers-Color-Scheme, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA
+useragentreductionoptout: A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+permissions-policy: unload=()
+content-security-policy: script-src https: 'strict-dynamic' 'report-sample' 'wasm-unsafe-eval' 'nonce-JgYwESWbjCbRNe80Vp5UqSPDs8lZeiJOjf7NDw8ODw4='; base-uri 'self';report-to csp-endpoint
+report-to: {"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}
+x-cache: CONFIG_NOCACHE
+x-msedge-ref: Ref A: 79451F14627D4AF39B08D59357E1EFEB Ref B: BJ1EDGE1106 Ref C: 2026-08-20T06:22:31Z
+date: Thu, 20 Aug 2026 06:22:30 GMT

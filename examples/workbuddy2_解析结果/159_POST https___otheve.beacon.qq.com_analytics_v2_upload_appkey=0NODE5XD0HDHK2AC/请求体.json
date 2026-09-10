@@ -1,0 +1,33 @@
+{
+  "appVersion": "",
+  "sdkId": "js",
+  "sdkVersion": "4.5.30-web",
+  "mainAppKey": "0NODE5XD0HDHK2AC",
+  "platformId": 3,
+  "common": {
+    "A2": "NcZsaBBiS5nX4kE0CjwWTGBNh0PZi2DN",
+    "A8": "",
+    "A12": "zh-CN",
+    "A17": "1920*1080*1",
+    "A23": "",
+    "A50": "",
+    "A76": "0NODE5XD0HDHK2AC_1788853768622",
+    "A101": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "A102": "https://www.workbuddy.cn/login/?platform%3Dworkbuddy%26state%3D4f006bcb-ee21-4480-ab9e-db26b8a89b37%26version%3D5.5.3%26loginSessionId%3D77a5fd45-a89a-4601-be24-17ca2a90d742",
+    "A104": "",
+    "A119": "?platform%3Dworkbuddy%26state%3D4f006bcb-ee21-4480-ab9e-db26b8a89b37%26version%3D5.5.3%26loginSessionId%3D77a5fd45-a89a-4601-be24-17ca2a90d742",
+    "A153": ""
+  },
+  "events": [
+    {
+      "eventCode": "rqd_js_init",
+      "eventTime": "1788854781180",
+      "mapValue": {
+        "A99": "Y",
+        "A100": "9",
+        "A72": "4.5.30-web",
+        "A88": "1787201270908"
+      }
+    }
+  ]
+}

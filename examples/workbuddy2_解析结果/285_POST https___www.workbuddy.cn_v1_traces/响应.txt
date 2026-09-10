@@ -1,0 +1,8 @@
+HTTP/2 200
+content-type: application/json
+server: APISIX/3.9.1
+x-request-id: 255f70b4-3d76-499f-9576-28b91feb2d49
+content-length: 21
+date: Tue, 08 Sep 2026 08:06:47 GMT
+eo-log-uuid: 586682037838645754
+eo-cache-status: MISS

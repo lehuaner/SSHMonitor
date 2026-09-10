@@ -1,0 +1,16 @@
+HTTP/2 200
+cache-control: public, max-age=86400
+content-type: application/javascript;charset=utf-8
+last-modified: Tue, 18 Aug 2026 06:22:20 GMT
+etag: W/"0x8DEFCF10EFD3F02"
+vary: Accept-Encoding
+access-control-allow-origin: *
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+x-ms-request-id: 9e3550be-d01e-007a-41b2-2f339b000000
+x-ms-version: 2018-03-28
+x-azure-ref: 20260820T062227Z-r1cbd4579c9j2qdthC1PUSk7u000000007p000000000bpqb
+x-fd-int-roxy-purgeid: 0
+x-cache: CONFIG_NOCACHE
+accept-ch: Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+x-msedge-ref: Ref A: EE74A7D3ECDF44CBBC59CA2D46BC0A51 Ref B: TYO201151005023 Ref C: 2026-08-20T06:22:27Z
+date: Thu, 20 Aug 2026 06:22:27 GMT

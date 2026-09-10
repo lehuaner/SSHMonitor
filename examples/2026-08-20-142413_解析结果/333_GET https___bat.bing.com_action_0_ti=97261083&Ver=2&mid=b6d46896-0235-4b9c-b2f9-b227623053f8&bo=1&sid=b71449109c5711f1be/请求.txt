@@ -1,0 +1,22 @@
+GET https://bat.bing.com/action/0?ti=97261083&Ver=2&mid=b6d46896-0235-4b9c-b2f9-b227623053f8&bo=1&sid=b71449109c5711f1be2e75835fe139b4&vid=b71459309c5711f195a681961e6f964c&vids=0&msclkid=31831cf35a7e12cdae5a7675ca6584ee-0&uach=pv%3D19.0.0&pi=918639831&lg=zh-CN&sw=1199&sh=822&sc=32&tl=%E7%99%BB%E5%BD%95%20%7C%20TRAE%20-%20%E5%A4%8D%E6%9D%82%E5%B7%A5%E4%BD%9C%EF%BC%8C%E5%B0%B1%E7%94%A8%20TraeWork&p=https%3A%2F%2Fwww.trae.cn%2Flogin%3Fredirect_url%3Dhttps%3A%2F%2Fwww.trae.cn%2Fdownload&r=&lt=2594&mtp=8&evt=pageLoad&sv=2&plt=1787206938730&cdb=AQAQ&rn=799513 HTTP/2
+:method: GET
+:authority: bat.bing.com
+:scheme: https
+:path: /action/0?ti=97261083&Ver=2&mid=b6d46896-0235-4b9c-b2f9-b227623053f8&bo=1&sid=b71449109c5711f1be2e75835fe139b4&vid=b71459309c5711f195a681961e6f964c&vids=0&msclkid=31831cf35a7e12cdae5a7675ca6584ee-0&uach=pv%3D19.0.0&pi=918639831&lg=zh-CN&sw=1199&sh=822&sc=32&tl=%E7%99%BB%E5%BD%95%20%7C%20TRAE%20-%20%E5%A4%8D%E6%9D%82%E5%B7%A5%E4%BD%9C%EF%BC%8C%E5%B0%B1%E7%94%A8%20TraeWork&p=https%3A%2F%2Fwww.trae.cn%2Flogin%3Fredirect_url%3Dhttps%3A%2F%2Fwww.trae.cn%2Fdownload&r=&lt=2594&mtp=8&evt=pageLoad&sv=2&plt=1787206938730&cdb=AQAQ&rn=799513
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 Edg/148.0.0.0
+sec-ch-ua: "Chromium";v="148", "Microsoft Edge";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile: ?0
+accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+x-edge-shopping-flag: 1
+sec-ms-gec: 0883F277D7C2B0E2-53833D8D79BF4213D96878A026214DC4EB5FD9EEA9FC6F0BAAE1141B16D796AC
+sec-ms-gec-version: 2-148.0.3967.96
+sec-fetch-site: cross-site
+sec-fetch-mode: no-cors
+sec-fetch-dest: image
+sec-fetch-storage-access: active
+referer: https://www.trae.cn/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: i
+cookie: MUID=1813F96507B063203380EE0D061D628F; SRCHD=AF=NOFORM; SRCHUID=V=2&GUID=B071B2F5781A4ADB8FE90347C77D12C4&dmnchg=1; ANON=A=46A4CF813C6C4E5C471AA633FFFFFFFF; SRCHUSR=DOB=20260529&DS=1; MR=0; _RwBf=r=143700797E2F9D4AD&mta=0&ispd=2&rc=23479&rb=23479&rg=0&pc=23479&mtu=0&rbb=0.0&clo=0&v=2&l=2026-08-19T07:00:00.0000000Z&lft=0001-01-01T00:00:00.0000000&aof=0&ard=0001-01-01T00:00:00.0000000&rwdbt=-62135539200&rwflt=1705246875&rwaul2=0&g=newLevel3&o=16&p=bingcopilotwaitlist&c=MY00IA&t=6686&s=2023-02-13T17:02:08.3410469+00:00&ts=2026-08-20T05:26:53.2738780+00:00&rwred=0&wls=2&wlb=0&wle=0&ccp=2&cpt=0&lka=0&lkt=0&aad=0&TH=&cid=3008&gb=2025w17_c&e=Ok086NZleXIYTlRrm4CCH2CDQgjw8q2R7ehs6O-dVL8Mc618cnm1TKp2ChW-wjteTZfLTjUeUcNmncyH3zoI0g&A=46A4CF813C6C4E5C471AA633FFFFFFFF; SNRHOP=I=&TS=; _U=18mu4AZPGZ1KbPG2aPgAYyfWAlHe94Ygcgq6VFiUb1YdfOlMwbgmNqKU4v87t4mG7jegK7xt8oJDz8QutkoS-2wZeTvosRFa4yOr5PmCKW0qY9IARcokcgurxMhz70LZAaR9Bt7cv2AEK3CZvdCKrYAsu7wMVEJ4XdUyeneArnG1BvTx9-s3CTNDsoM2cxo022gbVnhD28FdsRxyTkaJONka6db2hUwyCvuCTjyF_LKI; _SS=SID=2DF1E2BE9BF26A7232F0F5059A946BF3&PC=U531; WLS=C=e68bb90d8118dd39&N=%e7%84%95%e7%84%b6; SRCHHPGUSR=SRCHLANG=zh-Hans&PV=19.0.0&BZA=0&PREFCOL=0&BRW=S&BRH=M&CW=1050&CH=735&SCW=1164&SCH=4258&DPR=1.0&UTC=480&B=0&EXLTT=2&AV=14&ADV=14&RB=0&MB=0&HV=1787203613&HVE=CfDJ8A8rLfEh4ZdMhJ19YNJ4FtRlgvSFzHmWg8oe22U1nAEtmjNhwopYeWhul9G2NMXtXteQ3lDZTWX_EbLiVPg9RnmyvgmJP7LZEpAlbMiMCTwiwzjuVNunDCstgkJ6lVGfEwS5scCMDBtbaz5bNBmTstA-BDrzJgrRjcXvD3knUiyE4O21XGkN4N3DExzl_mLbCQ&PRVCW=1026&PRVCH=609; USRLOC=HS=1&ELOC=LAT=32.100379943847656|LON=118.8267822265625|N=%E7%8E%84%E6%AD%A6%E5%8C%BA%EF%BC%8C%E6%B1%9F%E8%8B%8F%E7%9C%81|ELT=4|&CLOC=LAT=32.0961|LON=118.8084|A=6520|TS=260820052606|SRC=I&BID=MjYwODIwMTMyNjA1X2QwMDNhODcwZmU2ZTc3ZjQ0ODBkNWIwYjJhMTI5NTliYWVlMWMzMTc4OWIxNTZmYWM2OGQ2ODRiODc4NGUwNzQ=; GC=DksnssHZFsZv-cKd5LjU5hzjjiKfwRh6p4GIcWb5gz9Fx94bn32skc99zXQl20XFwoO_nJHH_kqPIBBb1GdCYQ

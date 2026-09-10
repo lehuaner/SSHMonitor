@@ -1,0 +1,10 @@
+HTTP/2 302
+content-type: text/html
+set-cookie: session=; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Max-Age=0; Path=/; SameSite=Lax; HttpOnly
+location: https://www.workbuddy.cn/auth/realms/copilot/protocol/openid-connect/logout
+server: APISIX/3.9.1
+x-request-id: 8943bc13-2e76-4376-badf-bad8a6e4bd9e
+content-length: 217
+date: Tue, 08 Sep 2026 08:06:24 GMT
+eo-log-uuid: 9743673578256312730
+eo-cache-status: MISS

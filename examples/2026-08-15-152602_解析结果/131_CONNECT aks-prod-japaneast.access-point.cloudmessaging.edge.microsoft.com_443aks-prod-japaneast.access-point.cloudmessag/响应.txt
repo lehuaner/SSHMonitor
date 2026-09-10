@@ -1,0 +1,134 @@
+HTTP/1.1 200 Connection established
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=access-point.cloudmessaging.edge.microsoft.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US
+  Simple Name: access-point.cloudmessaging.edge.microsoft.com
+  DNS Name: access-point.cloudmessaging.edge.microsoft.com
+
+[Issuer]
+  CN=Microsoft TLS G2 RSA CA OCSP 04, O=Microsoft Corporation, C=US
+  Simple Name: Microsoft TLS G2 RSA CA OCSP 04
+  DNS Name: Microsoft TLS G2 RSA CA OCSP 04
+
+[Serial Number]
+  43002D88DB791BB894396959220000002D88DB
+
+[Not Before]
+  2026/5/15 4:31:09
+
+[Not After]
+  2026/11/11 4:31:09
+
+[Thumbprint]
+  122DB8AE5EAD88DBD5D770F64B610B64E3EA71EC
+
+[Signature Algorithm]
+  sha384RSA(1.2.840.113549.1.1.12)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 e4 a9 1c f5 75 ed b3 a0 40 53 47 78 06 ad 39 18 88 a8 f3 b1 a6 9a 78 26 5e 5f 43 40 6c 43 c1 34 4f 0d e0 c2 a1 9e e4 e3 62 d4 32 ce 20 b7 a1 a9 28 d8 19 6d 3f 08 75 b9 3a 75 e1 90 bb 27 5a 6a 3c 70 8c b0 6a b2 00 ba bc 2b 7a 85 bc c7 8e 99 99 2d 90 37 a0 99 3a 94 a4 fe 03 7f 3d 5b b8 c8 77 f7 e8 55 90 1f 49 50 9f 2e 92 2d aa e1 a6 dd 4c 82 5a 82 7b c6 99 9e 4f 5e 46 d4 e1 c7 bb 56 fb c5 1b 68 aa f0 61 dc 93 e0 e8 08 db 8c a3 98 54 ad 32 ac 8f c7 9d 26 51 9b 37 51 53 63 97 8a 8a 95 34 ef f8 29 91 99 0f f1 32 66 23 58 26 90 38 75 ef ce 33 44 09 8e d6 10 ed eb 54 c5 6e 01 00 4c 1a a9 49 ac 8e 36 3e d1 be 52 ea 1e d3 c9 af 24 fb 4e f2 35 bb 31 88 00 bf 9d fc 62 d2 cc 1a a3 34 b4 e8 45 79 b0 38 2d f6 bc bd dd fc a5 10 be 21 9a 7b 64 2d 67 70 80 79 f0 f1 45 33 89 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+d76d7d10d1a7f577c2c7e95fd700bff982c9335a65e1d0b3017317c0c8c56977
+‎2026‎年‎5‎月‎15‎日 4:41:14
+SHA256
+ECDSA
+304402204cc2db29f83439241ff23ee33c4f1c839c49eace26b22471c1a0b9d4b895834a0220242b6261a10570ba3ba418272048d65fb98a2ab3833e0d80ee99430d1253bb8a
+
+v1
+c2317e574519a345ee7f38deb29041ebc7c2215a22bf7fd5b5ad769ad90e52cd
+‎2026‎年‎5‎月‎15‎日 4:41:14
+SHA256
+ECDSA
+3046022100ddd03512d6eaaa802606596aa285ed78505203e82ed0a43376c091a05ac8dac40221009fa4c60bc23f8ef848ef9fd9102938928a43843289eb0d9c8d08a953a1d51259
+
+v1
+c8a3c47fc7b3adb9356b013f6a7a126de33a4e43a5c646f997ad3975991dcf9a
+‎2026‎年‎5‎月‎15‎日 4:41:14
+SHA256
+ECDSA
+304402203ed0982b320bf07a0c7a121ec4c6ba42c1ee92cb56f9c843f162cf8f2a5ebdc80220686774fa26d27b493c56055ae9e135734164002656cbed9b58f05fd77727a79d
+
+* 应用程序策略(1.3.6.1.4.1.311.21.10):
+  [1]Application Certificate Policy:
+     Policy Identifier=服务器身份验证
+
+* 证书模板信息(1.3.6.1.4.1.311.21.7):
+  Template=1.3.6.1.4.1.311.21.8.15690651.3798470.4214446.239628.16526621.93.8020455.5050828
+Major Version Number=100
+Minor Version Number=32
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://www.microsoft.com/pkiops/certs/Microsoft TLS G2 RSA CA OCSP 04.crt (http://www.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2004.crt)
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://caissuers.microsoft.com/pkiops/certs/Microsoft TLS G2 RSA CA OCSP 04.crt (http://caissuers.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2004.crt)
+[3]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://oneocsp.microsoft.com/ocsp
+
+* 使用者密钥标识符(2.5.29.14):
+  71d686b3b34095a69e0e8c082fc06db9f9aa4398
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=access-point.cloudmessaging.edge.microsoft.com
+DNS Name=*.access-point.cloudmessaging.edge.microsoft.com
+DNS Name=access-point-cosmic.cloudmessaging.edge.microsoft.com
+DNS Name=access-point-preww.cloudmessaging.edge.microsoft.com
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://www.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 RSA CA OCSP 04_Partition00006.crl (http://www.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2004_Partition00006.crl)
+               URL=http://crl2.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 RSA CA OCSP 04_Partition00006.crl (http://crl2.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2004_Partition00006.crl)
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+[2]Certificate Policy:
+     Policy Identifier=1.3.6.1.4.1.311.76.509.1.1
+     [2,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.microsoft.com/pkiops/Docs/Repository.htm
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=540cbcec18f77df103e284be34644467cf751f65
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+
+[SubjectAltNames]
+DNS Name=access-point.cloudmessaging.edge.microsoft.com
+DNS Name=*.access-point.cloudmessaging.edge.microsoft.com
+DNS Name=access-point-cosmic.cloudmessaging.edge.microsoft.com
+DNS Name=access-point-preww.cloudmessaging.edge.microsoft.com
+

@@ -1,0 +1,55 @@
+CONNECT api.trae.com.cn:443 HTTP/1.1
+Host: api.trae.com.cn:443
+Connection: keep-alive
+User-Agent: Cronet/TTNetVersion:992a646e 2026-06-12 QuicVersion:40cc763c 2025-07-01
+
+A SSLv3-compatible ClientHello handshake was found. Fiddler extracted the parameters below.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+Record Layer Version: 3.3 (TLS/1.2)
+Random: 49 37 FB 50 8D 8F 10 35 A3 E2 16 29 3F 24 2D D4 CB 14 BC 89 86 45 03 B7 ED 84 92 A8 0C C6 10 B0
+"Time": 2013/1/20 8:16:09
+SessionID: ED 10 CB D3 39 9F 15 78 92 73 A0 FC B0 B4 75 75 60 53 BA 96 EB 35 81 99 F3 A9 39 A2 EE 7C 30 19
+Extensions: 
+	grease (0x2a2a)	empty
+	server_name	api.trae.com.cn
+	extended_master_secret	empty
+	renegotiation_info	00
+	supported_groups	grease [0x7a7a], x25519 [0x1d], secp256r1 [0x17], secp384r1 [0x18]
+	ec_point_formats	uncompressed [0x0]
+	SessionTicket	empty
+	ALPN		h2, http/1.1
+	status_request	OCSP - Implicit Responder
+	signature_algs	ecdsa_secp256r1_sha256, rsa_pss_rsae_sha256, rsa_pkcs1_sha256, ecdsa_secp384r1_sha384, rsa_pss_rsae_sha384, rsa_pkcs1_sha384, rsa_pss_rsae_sha512, rsa_pkcs1_sha512
+	SignedCertTimestamp (RFC6962)	empty
+	key_share	00 29 7A 7A 00 01 00 00 1D 00 20 09 56 A1 BB 61 86 06 4F A5 53 49 30 20 DC 1A F4 40 D6 D8 CB 4C E4 88 37 E2 79 67 84 75 A9 44 1B
+	psk_key_exchange_modes	01 01
+	supported_versions	grease [0xbaba], Tls1.3, Tls1.2
+	0x001b		02 00 02
+	0x4469		00 03 02 68 32
+	grease (0x1a1a)	00
+	pre_shared_key	00 E6 00 E0 61 34 30 62 31 36 32 38 34 30 34 33 31 65 32 62 0D E2 B6 9D 6F BE C7 8F 9B 6C 33 9E 1D 4C F5 E3 AC 02 27 E9 3A E9 67 FF 73 91 B0 58 13 B2 A3 66 29 3F F0 4E 58 14 4F 2A E6 49 A5 7F B7 A2 01 A3 87 BA A8 97 D7 C4 09 CC CF 6A A6 12 37 76 97 61 A1 4B 7A 12 93 DB E4 9D F9 39 CD AF 2D F1 AE F6 3F 39 66 87 68 5C 08 62 24 13 7B 6D A7 AB 3F E5 D4 E6 96 C3 74 83 7F 17 57 E1 68 57 6F CC 45 A1 DA 1B 6C ED C5 19 C5 47 C5 1C 44 54 75 46 A5 CC 9E 04 1E 3A F0 C5 B6 E1 8F F9 72 32 4F 0F DA 15 15 4C F8 11 40 52 E2 8B A6 8B 2A BE 7E 4D 66 A8 DA 57 4B CA 9E E9 29 91 56 A5 EA D7 DE 25 94 51 26 3A E4 28 4B 58 52 2B C9 D2 FD 82 39 4F 51 9F 78 6A 6A 4A FA 46 FD 9E 79 F4 E9 00 CC 5B 25 20 A0 72 11 74 00 31 30 7F A8 4A C5 A5 76 4D 8B AC EB 43 CA EE C3 64 F6 B3 95 CC AB 97 A5 FE 05 E8 5A 23 EF 0C 60 DF D8 64 AA 22 CD 63 87 70 35 E5 59 AE 77 02 1A 88 42
+Ciphers: 
+	[BABA]	Unrecognized cipher - See https://www.iana.org/assignments/tls-parameters/
+	[1301]	TLS_AES_128_GCM_SHA256
+	[1302]	TLS_AES_256_GCM_SHA384
+	[1303]	TLS_CHACHA20_POLY1305_SHA256
+	[C02B]	TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+	[C02F]	TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	[C02C]	TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+	[C030]	TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	[CCA9]	TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+	[CCA8]	TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+	[C013]	TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+	[C014]	TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+	[009C]	TLS_RSA_WITH_AES_128_GCM_SHA256
+	[009D]	TLS_RSA_WITH_AES_256_GCM_SHA384
+	[002F]	TLS_RSA_WITH_AES_128_CBC_SHA
+	[0035]	TLS_RSA_WITH_AES_256_CBC_SHA
+
+Compression: 
+	[00]	NO_COMPRESSION
+
+

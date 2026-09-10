@@ -1,0 +1,111 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "workbuddy-renderer"
+            }
+          },
+          {
+            "key": "service.version",
+            "value": {
+              "stringValue": "5.5.3"
+            }
+          },
+          {
+            "key": "target",
+            "value": {
+              "stringValue": "ElectronApp.WorkBuddy.Desktop"
+            }
+          },
+          {
+            "key": "type",
+            "value": {
+              "stringValue": "resource"
+            }
+          },
+          {
+            "key": "env_name",
+            "value": {
+              "stringValue": "production"
+            }
+          },
+          {
+            "key": "namespace",
+            "value": {
+              "stringValue": "Production"
+            }
+          },
+          {
+            "key": "container_name",
+            "value": {
+              "stringValue": "genie.workbuddy-renderer"
+            }
+          },
+          {
+            "key": "ideType",
+            "value": {
+              "stringValue": "workbuddy-renderer"
+            }
+          },
+          {
+            "key": "instance",
+            "value": {
+              "stringValue": "renderer-xwnicwb7-1788802666405"
+            }
+          },
+          {
+            "key": "os",
+            "value": {
+              "stringValue": "Windows"
+            }
+          },
+          {
+            "key": "uid",
+            "value": {
+              "stringValue": "bb1a0124-b950-4052-9904-bc45ccd68bf0"
+            }
+          }
+        ],
+        "droppedAttributesCount": 0
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "workbuddy-renderer",
+            "version": "1.0.0"
+          },
+          "spans": [
+            {
+              "traceId": "77a5fd45a89a4601be2417ca2a90d742",
+              "spanId": "2a719480925d4bdd",
+              "name": "wb.login.click",
+              "kind": 1,
+              "startTimeUnixNano": "1788854719311000000",
+              "endTimeUnixNano": "1788854719311000000",
+              "attributes": [
+                {
+                  "key": "loginSessionId",
+                  "value": {
+                    "stringValue": "77a5fd45-a89a-4601-be24-17ca2a90d742"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 1
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

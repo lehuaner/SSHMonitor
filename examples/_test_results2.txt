@@ -1,0 +1,8 @@
+[纠正] GET gray-decision(oneid_component) -> HTTP 200 0.146s  {"code":0,"msg":"OK","requestId":"4e37d4ed-a844-4b90-989a-fd9046f035c5","data":{"enabled":true,"reason":"full_rollout","
+[证据] GET /activity/growth/streak -> HTTP 200 code=0 0.264s
+[证据] GET /activity/growth/energy -> HTTP 200 code=0 0.13s
+[证据] GET /activity/growth/redeem/summary -> HTTP 200 code=0 0.185s
+[证据] GET /activity/growth/buddy/travel/status -> HTTP 200 code=0 0.181s
+[证据] GET /v2/activity/growth/profile -> HTTP 200 code=0 0.253s
+[证据] GET /activity/growth/lottery/summary -> HTTP 200 code=0 0.222s
+[参考] POST api.trae.cn/trae/api/v2/ug/checkin_credits/status (expired JWT) -> HTTP 200 0.67s  {"checked_in":false,"code":1001,"enable":false,"message":"We're sorry, but we are not able to authenticate you. If you continue to experienc

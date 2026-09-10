@@ -1,0 +1,93 @@
+{
+  "data": {
+    "__logid": "20260815152531B769D3D7634F0572E767",
+    "settings_time": 1786778731,
+    "settings": {
+      "AhaRendererPerfMetrics": {
+        "state": true,
+        "params": {}
+      },
+      "AhaEnableDelayedDestroyWebsocket": {
+        "state": true,
+        "params": {
+          "DelayedDestroyTimeSeconds": 60
+        }
+      },
+      "CrashpadIpcLimitOptimize": {
+        "state": true,
+        "params": {
+          "SizeThreshold": "8192"
+        }
+      },
+      "EstablishGpuChannelAsync": {
+        "state": true,
+        "params": {}
+      },
+      "AhaEnableBDMSSdk": {
+        "state": true,
+        "params": {}
+      },
+      "AhaEnableGpuModeFallbackForDeviceReset": {
+        "state": true,
+        "params": {}
+      },
+      "AhaFrameEvictionBugFix": {
+        "state": true,
+        "params": {}
+      },
+      "AhaCulledInlineHitTestOptimization": {
+        "state": true,
+        "params": {}
+      },
+      "AhaOverrideProcessTitle": {
+        "state": true,
+        "params": {}
+      },
+      "AhaEnableGwpAsan": {
+        "state": true,
+        "params": {
+          "ProcessEnableList": "NetworkService",
+          "MinPhysicalMemorySizeMB": "0"
+        }
+      },
+      "AhaChildProcessBlockDetect": {
+        "state": true,
+        "params": {}
+      },
+      "AhaOomV8JsStackCollect": {
+        "state": true,
+        "params": {}
+      },
+      "EarlyEstablishGpuChannel": {
+        "state": true,
+        "params": {}
+      },
+      "WindowRendererThreadCpuReport": {
+        "state": false,
+        "params": {}
+      },
+      "AhaCloseAutoDetectSystemAccessibility": {
+        "state": true,
+        "params": {}
+      },
+      "V8HeapTrackerConfig": {
+        "state": false,
+        "params": {
+          "LargeAllocEnable": "true",
+          "LargeAllocMinCaptureSizeMB": "4",
+          "ReplaceJsStack": "false",
+          "LargeAllocTopStackCount": "3",
+          "LargeAllocCaptureThresholdMB": "2048",
+          "LargeAllocUpgradeThresholdMB": "100",
+          "LargeAllocMergeOOMStack": "false"
+        }
+      }
+    },
+    "vid_info": {},
+    "downstream_status": {
+      "ab_loader_status": true
+    },
+    "ctx_infos": "eyJlIjoiZ2xpamRqYUJKV2hHKzBGNENUL2lFQT09IiwidiI6ODk5NDk1NX0="
+  },
+  "message": "success"
+}

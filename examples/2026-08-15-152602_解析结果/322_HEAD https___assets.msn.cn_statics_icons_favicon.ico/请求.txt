@@ -1,0 +1,25 @@
+HEAD https://assets.msn.cn/statics/icons/favicon.ico HTTP/2
+:method: HEAD
+:authority: assets.msn.cn
+:scheme: https
+:path: /statics/icons/favicon.ico
+pragma: no-cache
+cache-control: no-cache
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0
+sec-ch-ua: "Not=A?Brand";v="99", "Microsoft Edge";v="151", "Chromium";v="151"
+sec-ch-ua-mobile: ?0
+accept: */*
+sec-purpose: prefetch
+origin: https://ntp.msn.cn
+x-edge-shopping-flag: 1
+sec-ms-gec: EF932FAC0B1247F4-0AB80B99EC64D152285DB496A34F9F285E626BE015C85CD56AFC3EF6BA014CFA
+sec-ms-gec-version: 2-151.0.4129.86
+x-client-data: eyIxIjoiMTAiLCIyIjoiMSIsIjMiOiIwIiwiNCI6Ijc3MTU5NzU3NDkyNjI1NTc0OTMiLCI2Ijoic3RhYmxlIiwiOSI6ImRlc2t0b3AifQ==
+sec-fetch-site: same-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://ntp.msn.cn/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=4, i

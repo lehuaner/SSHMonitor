@@ -1,0 +1,25 @@
+{
+  "type": "local",
+  "sessionId": "c683ed0f-152a-4bcd-a1c2-9c180392be15",
+  "name": "查看部署该项目的必要条件",
+  "conversationOrigin": "legacy_workbuddy_local",
+  "workDir": "D:\\Code\\Project\\Python\\BackgroundMattingV2",
+  "isPlayground": 0,
+  "createdAtMs": 1787681744085,
+  "updatedAtMs": 1787684550301,
+  "lastActivityAtMs": 1787683803937,
+  "clientContext": {
+    "localStatus": "active",
+    "hostId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "sessionKind": "manual",
+    "model": "",
+    "sourceMode": "",
+    "permissionMode": "",
+    "expert": {
+      "id": "",
+      "locale": "",
+      "runtimeIdentity": "",
+      "marketplace": ""
+    }
+  }
+}

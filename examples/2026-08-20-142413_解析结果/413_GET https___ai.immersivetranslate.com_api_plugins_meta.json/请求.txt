@@ -1,0 +1,15 @@
+GET https://ai.immersivetranslate.com/api/plugins/meta.json HTTP/2
+:method: GET
+:authority: ai.immersivetranslate.com
+:scheme: https
+:path: /api/plugins/meta.json
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 Edg/148.0.0.0
+accept: */*
+sec-fetch-site: none
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+sec-fetch-storage-access: active
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=1, i
+cookie: _ga=GA1.1.99705595.1780077269; _ga_H9L9M7D41X=GS2.1.s1780077268$o1$g0$t1780077268$j60$l0$h0; _clck=1bl505s%5E2%5Eg6g%5E0%5E2340; install_utm={%22deviceId%22:%22QDFuGIFRBC0YM7vijJOXH2Zr6eHoXUVCBN4aLPq9TC0UuwAnQLQmeeXpVTUcYPo9%22%2C%22utmSource%22:%22%22%2C%22utmMedium%22:%22%22%2C%22utmCampaign%22:%22%22%2C%22reference%22:%22%22%2C%22extendData%22:%22{%5C%22abField%5C%22:%5C%22b%5C%22%2C%5C%22targetLang%5C%22:%5C%22zh-CN%5C%22%2C%5C%22interfaceLang%5C%22:%5C%22zh-CN%5C%22}%22%2C%22platform%22:%22Windows%2010%22%2C%22appVersion%22:%221.29.6%22%2C%22browser%22:%22Edge-chromium%22%2C%22browserUserAgent%22:%22Mozilla/5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit/537.36%20(KHTML%2C%20like%20Gecko)%20Chrome/148.0.0.0%20Safari/537.36%20Edg/148.0.0.0%22}

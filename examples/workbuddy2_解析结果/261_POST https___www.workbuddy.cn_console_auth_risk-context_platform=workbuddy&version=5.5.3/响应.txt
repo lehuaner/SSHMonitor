@@ -1,0 +1,10 @@
+HTTP/2 200
+content-type: application/json; charset=utf-8
+set-cookie: login_risk_state=5868c2b4-af7f-4af7-8b7c-7486de922dfc; Path=/auth; Max-Age=1800; HttpOnly; Secure; SameSite=Lax
+traceid: ebfb1028e829c4025a40ae0f5d52c4a3
+x-request-id: a0c00395-0482-4a43-b092-ec33d3ae448c
+server: APISIX/3.9.1
+content-length: 141
+date: Tue, 08 Sep 2026 08:06:42 GMT
+eo-log-uuid: 13312548804565923858
+eo-cache-status: MISS

@@ -1,0 +1,6 @@
+{
+  "error": {
+    "code": "PLUGIN_RECONCILE_FAILED",
+    "message": "Plugin management pass incomplete: install-builtin-market-plugins: Failed to install product-declared plugins: finance-data@cb_teams_marketplace: Plugin finance-data@cb_teams_marketplace is not found in its declared marketplace"
+  }
+}

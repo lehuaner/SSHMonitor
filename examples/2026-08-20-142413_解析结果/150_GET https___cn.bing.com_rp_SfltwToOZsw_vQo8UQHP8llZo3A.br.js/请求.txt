@@ -1,0 +1,30 @@
+GET https://cn.bing.com/rp/SfltwToOZsw_vQo8UQHP8llZo3A.br.js HTTP/2
+:method: GET
+:authority: cn.bing.com
+:scheme: https
+:path: /rp/SfltwToOZsw_vQo8UQHP8llZo3A.br.js
+sec-ch-ua-full-version-list: "Chromium";v="148.0.7778.217", "Microsoft Edge";v="148.0.3967.96", "Not/A)Brand";v="99.0.0.0"
+sec-ch-ua-platform: "Windows"
+ect: 4g
+sec-ch-ua: "Chromium";v="148", "Microsoft Edge";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-bitness: "64"
+sec-ch-ua-model: ""
+sec-ch-ua-mobile: ?0
+sec-ch-ua-arch: "x86"
+sec-ch-ua-full-version: "148.0.3967.96"
+sec-ch-prefers-color-scheme: light
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 Edg/148.0.0.0
+sec-ch-ua-platform-version: "19.0.0"
+accept: */*
+x-edge-shopping-flag: 1
+sec-ms-gec: 0883F277D7C2B0E2-53833D8D79BF4213D96878A026214DC4EB5FD9EEA9FC6F0BAAE1141B16D796AC
+sec-ms-gec-version: 2-148.0.3967.96
+x-client-data: eyIxIjoiMCIsIjIiOiIwIiwiMyI6IjAiLCI0IjoiLTQ2MjU5MjM2MzY3MTI5NDAwMjMiLCI2Ijoic3RhYmxlIiwiOSI6ImRlc2t0b3AifQ==
+sec-fetch-site: same-origin
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://cn.bing.com/search?q=trae+solo&cvid=dad0f5bc0ce84e5fae84a0c25efc5882&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQABhAMgYIAhAAGEAyBggDEAAYQDIGCAQQABhAMgYIBRAAGEAyBggGEEUYPDIGCAcQRRg8MgYICBBFGDzSAQgyMDU0ajBqNKgCCLACAQ&FORM=ANAB01&PC=U531&source=chrome.ob
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=1, i
+cookie: MUID=1813F96507B063203380EE0D061D628F; MUIDB=1813F96507B063203380EE0D061D628F; SRCHD=AF=NOFORM; SRCHUID=V=2&GUID=B071B2F5781A4ADB8FE90347C77D12C4&dmnchg=1; ANON=A=46A4CF813C6C4E5C471AA633FFFFFFFF; SRCHUSR=DOB=20260529&DS=1; _RwBf=r=143700797E2F9D4AD&mta=0&ispd=2&rc=23479&rb=23479&rg=0&pc=23479&mtu=0&rbb=0.0&clo=0&v=2&l=2026-08-19T07:00:00.0000000Z&lft=0001-01-01T00:00:00.0000000&aof=0&ard=0001-01-01T00:00:00.0000000&rwdbt=-62135539200&rwflt=1705246875&rwaul2=0&g=newLevel3&o=16&p=bingcopilotwaitlist&c=MY00IA&t=6686&s=2023-02-13T17:02:08.3410469+00:00&ts=2026-08-20T05:26:53.2738780+00:00&rwred=0&wls=2&wlb=0&wle=0&ccp=2&cpt=0&lka=0&lkt=0&aad=0&TH=&cid=3008&gb=2025w17_c&e=Ok086NZleXIYTlRrm4CCH2CDQgjw8q2R7ehs6O-dVL8Mc618cnm1TKp2ChW-wjteTZfLTjUeUcNmncyH3zoI0g&A=46A4CF813C6C4E5C471AA633FFFFFFFF; GC=DksnssHZFsZv-cKd5LjU5hzjjiKfwRh6p4GIcWb5gz_6muPfsW0ZDO5xZTa11t5SEEDOId0RZteq2ldbYZfY3g; _EDGE_S=SID=2DF1E2BE9BF26A7232F0F5059A946BF3; .MSA.Auth=CfDJ8A8rLfEh4ZdMhJ19YNJ4FtSMX8_a1gWhfQratO1ilk_A_NXiehzEr6kxRv0Avy3KSGX-gqjqh0xR4TZ16SN4WuV4J0NC00Wa-pkOPNVm1LZMB3N5tTFiRSho7A9s7sSS20j-LuO7ovkiwt269drtit3f6ESfjRBZZYTCi1HNysKsMdK4iwAvLTkx-96jjN8PyrZ4jS_wW07oy6ptEnA54_Kyi5tMc1zOWPQysWYYuA8iwTyNmPc256Am7dw2ZqgqlXBhIRnFZ-Smr1JuP3qLpCJX7PX4Ic6rtaAu6-cUeO7ebMrpuNledpAsLmWoiIo3xitjF6A5U5uXpJJZ5hKYTpxPTVIXPQ3mvlxGATuoqMPG2QVzk2T_oE2c9_T3gyCDnBVsHj7EtRIcPfmbHuhtDps; SNRHOP=I=&TS=; _U=18mu4AZPGZ1KbPG2aPgAYyfWAlHe94Ygcgq6VFiUb1YdfOlMwbgmNqKU4v87t4mG7jegK7xt8oJDz8QutkoS-2wZeTvosRFa4yOr5PmCKW0qY9IARcokcgurxMhz70LZAaR9Bt7cv2AEK3CZvdCKrYAsu7wMVEJ4XdUyeneArnG1BvTx9-s3CTNDsoM2cxo022gbVnhD28FdsRxyTkaJONka6db2hUwyCvuCTjyF_LKI; __Host-XY=CfDJ8A8rLfEh4ZdMhJ19YNJ4FtQoGLpoJ1AVvzEPoUFTkOHS_2-7YPkTHMtKLneQ39InKey96L7S-UaULRKq9CFwWRFzRy7A1T_qBx6cdWA2n_KbDlKU4PBu-2KcUJ1jZmwLvd8Pzo1XT7DfSl1YH2OJBjLReq9e2cbyXBYHTulCLOX4pqzlscJ_v4_K8ziQWD8YV26Tq5YbPqq8QMtQOs9xhXvXcHD2PGOd3uoXvlbxbg1OHy1jqF_nQdlAII1Xft2ZEw; _SS=SID=2DF1E2BE9BF26A7232F0F5059A946BF3&PC=U531; WLS=C=e68bb90d8118dd39&N=%e7%84%95%e7%84%b6; SRCHHPGUSR=SRCHLANG=zh-Hans&PV=19.0.0&BZA=0&PREFCOL=0&BRW=S&BRH=M&CW=1050&CH=735&SCW=1164&SCH=4258&DPR=1.0&UTC=480&B=0&EXLTT=2&AV=14&ADV=14&RB=0&MB=0&HV=1787203613&HVE=CfDJ8A8rLfEh4ZdMhJ19YNJ4FtRlgvSFzHmWg8oe22U1nAEtmjNhwopYeWhul9G2NMXtXteQ3lDZTWX_EbLiVPg9RnmyvgmJP7LZEpAlbMiMCTwiwzjuVNunDCstgkJ6lVGfEwS5scCMDBtbaz5bNBmTstA-BDrzJgrRjcXvD3knUiyE4O21XGkN4N3DExzl_mLbCQ&PRVCW=1026&PRVCH=609; USRLOC=HS=1&ELOC=LAT=32.100379943847656|LON=118.8267822265625|N=%E7%8E%84%E6%AD%A6%E5%8C%BA%EF%BC%8C%E6%B1%9F%E8%8B%8F%E7%9C%81|ELT=4|&CLOC=LAT=32.0961|LON=118.8084|A=6520|TS=260820052606|SRC=I&BID=MjYwODIwMTMyNjA1X2QwMDNhODcwZmU2ZTc3ZjQ0ODBkNWIwYjJhMTI5NTliYWVlMWMzMTc4OWIxNTZmYWM2OGQ2ODRiODc4NGUwNzQ=

@@ -1,0 +1,23 @@
+HTTP/2 200
+content-type: application/json
+x-tt-agw-login: 0
+access-control-allow-credentials: true
+access-control-expose-headers: *
+access-control-allow-origin: https://www.trae.cn
+x-tt-logid: 202608201423045F34DA09CC461C7458E6
+server-timing: inner; dur=1936,tt_agw; dur=7
+x-tt-trace-host: 01207a981426127d02143837b6aace09ad5aef830920ef5e5c544d2862ece236e8e7a587143fc95526e93f65a5d782a4a40b52bfdc8a5129e40ab1e0231c2519f0665bfad03bf7332225dd3012d91f838258a8803596d56ebae58cf216086903e4
+x-tt-trace-id: 00-2608201423045F34DA09CC461C7458E6-6D4F7E535A34BA18-00
+server: TLB
+expires: Thu, 20 Aug 2026 06:23:06 GMT
+cache-control: max-age=0, no-cache, no-store
+pragma: no-cache
+date: Thu, 20 Aug 2026 06:23:06 GMT
+content-length: 185
+x-cache: TCP_MISS from a23-58-209-44.deploy.akamaitechnologies.com (AkamaiGHost/22.6.2-039cf934921f24e45063a41240aca161) (-)
+vary: Accept-Encoding
+strict-transport-security: max-age=31536000 ; includeSubDomains
+x-tt-trace-tag: id=16;cdn-cache=miss;type=dyn
+server-timing: cdn-cache; desc=MISS, edge; dur=17, origin; dur=2027
+x-origin-response-time: 2029,23.58.209.44
+x-akamai-request-id: 42865c58

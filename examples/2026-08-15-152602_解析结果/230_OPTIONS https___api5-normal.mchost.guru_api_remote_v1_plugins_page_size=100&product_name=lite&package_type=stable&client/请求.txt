@@ -1,0 +1,26 @@
+OPTIONS https://api5-normal.mchost.guru/api/remote/v1/plugins?page_size=100&product_name=lite&package_type=stable&client_version=0.1.50&os=windows HTTP/2
+:method: OPTIONS
+:authority: api5-normal.mchost.guru
+:scheme: https
+:path: /api/remote/v1/plugins?page_size=100&product_name=lite&package_type=stable&client_version=0.1.50&os=windows
+accept: */*
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+access-control-request-headers: authorization,x-preferenced-language,x-trae-client-type,x-trae-user-timezone,x-user-region
+access-control-request-method: GET
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.50
+x-request-id: 4827b0e5-9a33-4e55-8ff8-e9bd7d9d61c8
+x-ss-dp: 787976
+x-tt-trace-id: 00-044fefe00dd7e685d584dc9ce069ffff-044fefe00dd7e685-01
+x-helios: Kw8AAOkUa3RgsrGx8ik4JV17z8E+LxYE46hCcdFT5TRRgjWm
+x-medusa: exSAao/835Cvw1xRrj5IGi/b4XL1cAMBgIxfXkBAMcY0GY9xA3Cu4ohry4d/Nd/wViu+GrWZid631ACwk2B/owTMg87R8Xe2w+YYsCxRvZOEYJKf7cim2NRYWSLSf5yZehtrIFCO39A92O+aLKSRwE/1r05KZKeD7JIqoa95z5F4pBnc1zxarAnJROmxjtq2Kgs9BKQ+rePeR1ms2l15u5RVdXjGnj76YosfeyZnm1mmJBFMEOM/nZLb2c72vuXETfk0fnxguduoshnAwbgZxW4lH9ZyJMnIo06D7ccEd1/C20c4yhIrS52LEqke85Vxm09aFfkiJ81tVeIiXgsKvQLr23s4gn0gYUdxjoqMapk0rxe0blIqBAOlrW0fuv1CDzFKf91Z/xyoWKBzECIqCzHU0bCu6MraIp6IdwuLeIrIuu9xFxgbGohG3jb+nr7eridqo/dzP+HmDTnbi+9ZolRtmkrWe3IZ2aNcZYKW5gWRudG8vM3url4pDlyXx9mEzIoKPw7hn04iWFOChzoo6dwGwuuIYjMzWKekAOOFoz0WLQaOdMsKQkzTMioXAhjRO/WGzbAQN3ojhKv67ok2Lb0rAz3n8U6dPEKcb1Ye+QfzkcL/V2CZhSh1900Y/lh1eNcSXVdUiTvzw2ZSuBk2qHToMaJ3nz6vbjxHnb+P3xceT9vl3Y8Xh+mnnJoA6zHu+TIjAJKbbxk3/5G7r4k7hWvqWT547K0/vk2Rj3YuT7RKjZoIg6fpR+YO0LpPJ2UJ5SOYarWQBygeZfv93//v//7/AAA=
+x-neptune: -11|50:51:59:00:09

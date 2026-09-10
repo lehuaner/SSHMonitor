@@ -1,0 +1,4 @@
+CONNECT lf-cdn.trae.com.cn:443 HTTP/1.1
+Host: lf-cdn.trae.com.cn:443
+Connection: keep-alive
+User-Agent: Cronet/TTNetVersion:992a646e 2026-06-12 QuicVersion:40cc763c 2025-07-01

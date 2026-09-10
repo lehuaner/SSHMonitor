@@ -1,0 +1,32 @@
+GET https://api5-normal.mchost.guru/api/remote/v1/plugins?page_size=50&product_name=lite&chat_mode=work&package_type=stable&client_version=0.1.51&os=windows HTTP/2
+:method: GET
+:authority: api5-normal.mchost.guru
+:scheme: https
+:path: /api/remote/v1/plugins?page_size=50&product_name=lite&chat_mode=work&package_type=stable&client_version=0.1.51&os=windows
+accept: */*
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+authorization: Cloud-IDE-JWT
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+x-preferenced-language: zh-cn
+x-trae-client-type: lite
+x-trae-user-timezone: Asia/Shanghai
+x-user-region: CN
+sec-ch-ua: "Not_A Brand";v="99", "Chromium";v="142"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: 8c86c78b-daea-43e8-99ae-39fe687cfc76
+x-ss-dp: 787976
+x-tt-trace-id: 00-1dd6ee140d945686928468af4280ffff-1dd6ee140d945686-01
+x-helios: NFwAABDDl7uhhRdVf8EFUKzFlJhwkNKZ+X6u/1OPuVm+fX+v
+x-medusa: aJ2Gapx12ZC8SlpRvbdOGjxS53JODQMBEwziVyBAIXo5GJrRqAx/Se0nLEGBPBEoNTGelmTxM4y34uOQNqEk9nD89ZraQU2qd3TKh6fOyzCmAcFZ7t/PqmIj1K0u5cAOUOFkt1bd8mfLTvLuFjiKEO7huh2NOw8SiCRQX0dU5hljPZOdSOFLQoOZIchEaGWTDsQm0LSlGNxe2rJe/K+ka5vSC+0eaA91fQNwC7iwa76qBmzFhulWBkZJC8WlOHRZHnc7wGlBSUco/djhULZVDZJwTdDHisMPUh47dAtoGSSU5LsDfiWW+yeRuGnLvePYWjJlnQdjvt1NbukEnGjwBOOp+MRHoEwLyq8Yd3lNW3na67oRObeymrETcKPKB5EDE+J2YiyFa0+sawKcpxBi9vyTOxycGlNZb4Y8bYrj3bbx31uauy24fMJGs98ssANmbxYDtjxGS4ebmoUkSTp8WlL4pyoaJPvqIq7urYuDR7e/guXuW9vOGVANfXe0/2SejSL1Yo+iZVwTEBM4/jhwnu7dvymZJjgi2UgjmYCtQ8bOVHabiBxkr7drhav3q8qJ9Qun8Q3MQui9j1mC1ENGUX6T1rEoGHX5AEt8Bo9E+oezvfj3KAbAVKvEdRAXVwHSd/dfePopZ49bwOyA6RF3MvxSsbJXywrBz6xHnZ+P3x8ez9vn/c8Xh+mnnJgAqyHm+bIjALKbbxE2/5G5j4krhWrqXT547K03vs2Vj1YuT7RKDZmJR8fJn2au0LpPZ3UJ5KOYapWQFyAf5fv/37//9///AAA=
+x-neptune: -11|50:51:59:00:09

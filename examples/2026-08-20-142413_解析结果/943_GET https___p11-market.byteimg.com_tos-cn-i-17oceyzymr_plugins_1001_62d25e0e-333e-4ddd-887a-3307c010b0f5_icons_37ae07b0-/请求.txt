@@ -1,0 +1,17 @@
+GET https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1001/62d25e0e-333e-4ddd-887a-3307c010b0f5/icons/37ae07b0-3cbb-48fd-bb5d-862a9c8fd055.svg HTTP/2
+:method: GET
+:authority: p11-market.byteimg.com
+:scheme: https
+:path: /tos-cn-i-17oceyzymr/plugins/1001/62d25e0e-333e-4ddd-887a-3307c010b0f5/icons/37ae07b0-3cbb-48fd-bb5d-862a9c8fd055.svg
+accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+sec-fetch-dest: image
+sec-fetch-mode: no-cors
+sec-fetch-site: cross-site
+sec-fetch-storage-access: active
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Chromium";v="142"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+priority: u=1, i

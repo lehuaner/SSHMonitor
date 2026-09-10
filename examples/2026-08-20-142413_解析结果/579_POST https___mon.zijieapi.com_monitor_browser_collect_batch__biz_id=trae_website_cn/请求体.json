@@ -1,0 +1,83 @@
+{
+  "ev_type": "batch",
+  "list": [
+    {
+      "ev_type": "http",
+      "payload": {
+        "api": "xhr",
+        "request": {
+          "url": "https://j.clarity.ms/collect",
+          "method": "post",
+          "headers": {
+            "accept": "application/x-clarity-gzip"
+          },
+          "timestamp": 1787206990966
+        },
+        "response": {
+          "status": 204,
+          "is_custom_error": false,
+          "timestamp": 1787206991594,
+          "headers": {},
+          "timing": {
+            "name": "https://j.clarity.ms/collect",
+            "entryType": "resource",
+            "startTime": 8727,
+            "duration": 626.3999999999651,
+            "initiatorType": "xmlhttprequest",
+            "deliveryType": "",
+            "nextHopProtocol": "",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "",
+            "contentEncoding": "",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 8727,
+            "domainLookupStart": 0,
+            "domainLookupEnd": 0,
+            "connectStart": 0,
+            "secureConnectionStart": 0,
+            "connectEnd": 0,
+            "requestStart": 0,
+            "responseStart": 0,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 0,
+            "responseEnd": 9353.399999999965,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0,
+            "responseStatus": 204,
+            "serverTiming": []
+          }
+        },
+        "duration": 628
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "7675972323816048182",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "e9afdc0a-6401-47a6-a1a1-246ce083b6f5",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/download",
+        "timestamp": 1787206990966,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/download",
+        "view_id": "/download_1787206983112",
+        "context": {
+          "deploy_region": "cn",
+          "biz_user_id": "1554024524166871",
+          "user_id": "7675972323816048182",
+          "user_is_login": "true"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    }
+  ]
+}

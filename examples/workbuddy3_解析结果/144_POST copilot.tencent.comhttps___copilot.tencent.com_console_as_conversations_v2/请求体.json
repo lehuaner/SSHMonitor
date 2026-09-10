@@ -1,0 +1,25 @@
+{
+  "type": "local",
+  "sessionId": "933aa2e9-5ca0-4e5f-852b-8427bb70141e",
+  "name": "开发仿PS自动选取主体功能",
+  "conversationOrigin": "legacy_workbuddy_local",
+  "workDir": "D:\\Code\\Project\\Python\\ExtractRole",
+  "isPlayground": 0,
+  "createdAtMs": 1787671993268,
+  "updatedAtMs": 1787679916050,
+  "lastActivityAtMs": 1787679916050,
+  "clientContext": {
+    "localStatus": "active",
+    "hostId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "sessionKind": "manual",
+    "model": "",
+    "sourceMode": "",
+    "permissionMode": "",
+    "expert": {
+      "id": "",
+      "locale": "",
+      "runtimeIdentity": "",
+      "marketplace": ""
+    }
+  }
+}

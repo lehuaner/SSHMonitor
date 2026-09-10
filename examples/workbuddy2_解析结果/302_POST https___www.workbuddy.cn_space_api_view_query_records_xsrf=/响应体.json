@@ -1,0 +1,78 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "f93825f5-b715-4cf2-87d1-7a2a0cf40008",
+  "data": {
+    "records": {
+      "block": {
+        "s80iYTIBTmYiHfvkt1ItnR": {
+          "role": "owner",
+          "value": {
+            "id": "s80iYTIBTmYiHfvkt1ItnR",
+            "version": 2,
+            "type": "node",
+            "props": {
+              "kind": "doc",
+              "taskInfo": {
+                "ownerType": 0
+              },
+              "title": [
+                [
+                  "😁🤖和 Agent 一起用资料库"
+                ]
+              ]
+            },
+            "children": [
+              "JQYRqAqIJMJPbNQ21pTSUi",
+              "GwsKTcfJKkACq9kvMUbfHU",
+              "nSn339oUNb2Kie707Jr4u7",
+              "xOhZkeSFuhPfzC2w0pQIKm",
+              "weuMgwgB5NNfnJLIuSdZVf",
+              "LeScr83uGs6tjCX63uEcwr",
+              "CoS23JHXSSwl1PXhJVTMvc",
+              "rhzPqpsInUHWZeDRJnHO7A",
+              "6b7q5VUgKeu5MIN8PaRGcM",
+              "JKOqxxkQNhnvaCNFNEScTq",
+              "ydzvhne1AdKUMOYbS6cC59",
+              "HqZxZfD4mFH0JqCjD2BlVw",
+              "yVNG2vT9JCtrpSczjkeIjT",
+              "hVrb6mxa6k41juQOQasiL9",
+              "hghIDiZ0onm5nEXsCNx1UF",
+              "qCMvEUNhcgTPGMl9Cjxrmh",
+              "715upFQWgTLychgmTr4aQj",
+              "lRvpVBTFOsBT6Vdme9rNGI",
+              "wn1UM3XvZ4JOaJhNdM73Eh",
+              "l4iqjHRDKefySum65ZqSt7",
+              "p1yQxLSQ0fBbhMBetW1n6T",
+              "rKj9oNKlHi2YeWmhpCCoel",
+              "BHJCqJ9WW9yAjVXnRtOkJD",
+              "6pxKPD8t872pmMpQj7HAG1",
+              "ee2VQDAFXb0Z8XiG12wQLt",
+              "2QYQ9GK6gMIuM9jmnOLqFl",
+              "XWBSPEjiy6y3MA2xWOd2LX",
+              "AIAF7LqDXGgBKCgR4iwYNc",
+              "lVgw77uYhryAG18DyfG1OW",
+              "39i9eoN1yGyJTPG3iCqKHW",
+              "IHDgAWzabkof3ocFqcqzI1",
+              "qbyZ0FIuiDdVOeUpOUVENP",
+              "w1wT6vCQYaFh0WX1CZbb0J",
+              "v3oS3uS68NnvytK6NH2fSL",
+              "GPhcYI9JgAbwUO9jVKphg9",
+              "aWaEDddcCF4MQK8BlvNGcI"
+            ],
+            "nodes": [],
+            "parentId": "5igTIra22Hz67mWlJQ8gtv",
+            "parentTable": "space",
+            "spaceId": "5igTIra22Hz67mWlJQ8gtv",
+            "enabled": true,
+            "createdBy": "8b3cb381-9ebc-4813-92d9-9e5880528465",
+            "createdAt": 1787201299376,
+            "updatedBy": "8b3cb381-9ebc-4813-92d9-9e5880528465",
+            "updatedAt": 1787201299396,
+            "table": "block"
+          }
+        }
+      }
+    }
+  }
+}

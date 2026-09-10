@@ -1,0 +1,12 @@
+HTTP/2 200
+content-type: application/json
+server: Microsoft-HTTPAPI/2.0
+strict-transport-security: max-age=31536000
+time-delta-millis: 153
+access-control-allow-headers: Strict-Transport-Security,time-delta-millis,Content-Type,Content-Length
+access-control-allow-methods: POST
+access-control-allow-credentials: true
+access-control-allow-origin: *
+access-control-expose-headers: time-delta-millis
+date: Tue, 08 Sep 2026 09:15:23 GMT
+content-length: 9

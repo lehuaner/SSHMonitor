@@ -1,0 +1,53 @@
+{
+  "data": {
+    "scenes": [
+      {
+        "id": "ppt",
+        "name": "PPT",
+        "icon": "IconShowcaseCategoryPpt"
+      },
+      {
+        "id": "document",
+        "name": "文档",
+        "icon": "IconDocument"
+      },
+      {
+        "id": "data_analysis",
+        "name": "数据分析",
+        "icon": "IconShowcaseCategoryData"
+      },
+      {
+        "id": "video",
+        "name": "视频",
+        "icon": "IconShowcaseCategoryVideo"
+      },
+      {
+        "id": "image",
+        "name": "图像",
+        "icon": "IconShowcaseCategoryImage"
+      },
+      {
+        "id": "product_development",
+        "name": "产品开发",
+        "icon": "IconShowcaseCategoryWebsite"
+      },
+      {
+        "id": "content_creation",
+        "name": "内容创作",
+        "icon": "IconShowcaseCategoryContentCreation"
+      },
+      {
+        "id": "finance_investment",
+        "name": "金融投资",
+        "icon": "IconShowcaseIconFinance"
+      },
+      {
+        "id": "business_growth",
+        "name": "商业增长",
+        "icon": "IconShowcaseIconStrategy"
+      }
+    ]
+  },
+  "success": true,
+  "logId": "20260820142353A0F3322BF6E9AB1A748F"
+}

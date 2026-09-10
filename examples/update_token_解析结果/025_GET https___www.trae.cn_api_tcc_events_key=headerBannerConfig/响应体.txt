@@ -1,0 +1,7 @@
+{
+  "id": "referral-2026-q3",
+  "text": "邀请好友体验 TraeWork，双方各得 500 积分，最高得 3500 积分 + 2 杯星巴克咖啡",
+  "ctaText": "立即参与",
+  "link": "/work-fission?utm_source=trae_homepage&utm_medium=trae_homepage_header_banner",
+  "isShow": true
+}

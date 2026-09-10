@@ -1,0 +1,57 @@
+{
+  "data": {
+    "plugin": {
+      "plugin_id": "62d25e0e-333e-4ddd-887a-3307c010b0f5",
+      "name": "trae-remote-official:seedance",
+      "origin_plugin_name": "seedance",
+      "display_name": "seedance",
+      "description": "AI video generation plugin powered by Seedance.",
+      "i18n": {
+        "description": {
+          "en": "Turn your ideas into captivating videos with Seedance. Describe the scene, style, and motion you want to create your ideal video with greater accuracy.",
+          "ja": "Seedanceで、あなたのアイデアを魅力的な動画に。作りたいシーンやスタイル、動きを伝えるだけで、イメージに合った動画をより正確に生成できます。",
+          "zh-cn": "使用 Seedance 将你的创意变成精彩视频。描述想要的画面、风格和动态效果，即可更准确地生成理想视频。"
+        },
+        "display_name": {
+          "en": "",
+          "ja": "",
+          "zh-cn": "Seedance（视频生成）"
+        }
+      },
+      "author": "TRAE",
+      "cdn_uri": "p11-market.byteimg.com",
+      "tos_uri": "tos-cn-i-17oceyzymr/plugins",
+      "version": "1.0.1",
+      "source": "INTERNAL_UPLOAD",
+      "registry": "trae-remote-official",
+      "publisher_type": "THIRD_PARTY",
+      "local_available": true,
+      "cloud_available": true,
+      "categories": [
+        "Featured",
+        "content_creation"
+      ],
+      "category_weight": 1000,
+      "created_at": 1785741132000,
+      "updated_at": 1785741132000,
+      "pinned": 0,
+      "status": "PUBLISHED",
+      "visibility": "PUBLIC",
+      "is_deleted": false,
+      "icon_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1001/62d25e0e-333e-4ddd-887a-3307c010b0f5/icons/37ae07b0-3cbb-48fd-bb5d-862a9c8fd055.svg",
+      "recommended": false,
+      "default_installed": true,
+      "user_control_policy": "{\"default_enabled\": true, \"tag_theme_color\": \"--viz-viz-series-violet\", \"plugin_toggleable\": false, \"locked_capabilities\": [], \"plugin_uninstallable\": false, \"capability_toggleable\": false, \"show_in_home_available_plugins\": true}"
+    },
+    "changelog": "",
+    "download_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1/62d25e0e-333e-4ddd-887a-3307c010b0f5/1.0.1/package.zip",
+    "manifest_json": "{\n  \"name\": \"seedance\",\n  \"version\": \"1.0.1\",\n  \"description\": \"AI video generation plugin powered by Seedance.\",\n  \"author\": {\n    \"name\": \"TRAE\"\n  },\n  \"license\": \"MIT\",\n  \"keywords\": [\n    \"video\",\n    \"generation\",\n    \"seedance\",\n    \"ai-video\"\n  ],\n  \"instructions\": \"INSTRUCTIONS.md\",\n  \"interface\": {\n    \"displayName\": \"Seedance\",\n    \"shortDescription\": \"AI video generation with Seedance\",\n    \"longDescription\": \"Generate videos from text prompts using the Seedance model. Supports various styles, durations, resolutions, and creative directions.\",\n    \"developerName\": \"Trae\",\n    \"category\": \"AI & Creative\",\n    \"capabilities\": [\n      \"GenerateVideo\"\n    ],\n    \"defaultPrompt\": [\n      \"Generate a video of a sunset over mountains.\"\n    ]\n  }\n}\n",
+    "connector_json": "",
+    "mcp_servers_json": "",
+    "skills_json": "",
+    "icon_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1001/62d25e0e-333e-4ddd-887a-3307c010b0f5/icons/37ae07b0-3cbb-48fd-bb5d-862a9c8fd055.svg",
+    "checksum": "de77a6d812d337deb4b60a5925c19cecd051dbeaa64930642b8ac0975341c03d",
+    "file_size": 964
+  },
+  "success": "true"
+}

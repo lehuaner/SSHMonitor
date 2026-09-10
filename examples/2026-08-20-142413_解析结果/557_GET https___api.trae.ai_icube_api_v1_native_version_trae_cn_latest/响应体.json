@@ -1,0 +1,177 @@
+{
+  "success": true,
+  "status": "success",
+  "message": "",
+  "data": {
+    "manifest": {
+      "win32": {
+        "download": [
+          {
+            "region": "cn",
+            "x64": "https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.72447/win32/TraeCode_CN-Setup-x64.exe"
+          },
+          {
+            "region": "sg",
+            "x64": "https://lf-cdn.trae.ai/obj/trae-ai-sg/pkg/app/releases/stable/2.3.72447/win32/TraeCode_CN-Setup-x64.exe"
+          },
+          {
+            "region": "va",
+            "x64": "https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.72447/win32/TraeCode_CN-Setup-x64.exe"
+          }
+        ],
+        "extra": {
+          "uploadDate": 1786974053908
+        },
+        "version": "2.3.72447"
+      },
+      "darwin": {
+        "download": [
+          {
+            "region": "cn"
+          },
+          {
+            "region": "sg"
+          },
+          {
+            "region": "va"
+          }
+        ],
+        "extra": {
+          "uploadDate": 1786955123933
+        },
+        "version": "2.3.72447"
+      },
+      "linux": {
+        "download": [
+          {
+            "arm64.deb": "https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.72447/linux/TraeCode_CN-linux-arm64.deb",
+            "arm64.rpm": "https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.72447/linux/TraeCode_CN-linux-arm64.rpm",
+            "arm64.tar.gz": "https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.72447/linux/TraeCode_CN-linux-arm64.tar.gz",
+            "region": "cn",
+            "x64.deb": "https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.72447/linux/TraeCode_CN-linux-x64.deb",
+            "x64.rpm": "https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.72447/linux/TraeCode_CN-linux-x64.rpm",
+            "x64.tar.gz": "https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.72447/linux/TraeCode_CN-linux-x64.tar.gz"
+          },
+          {
+            "arm64.deb": "https://lf-cdn.trae.ai/obj/trae-ai-sg/pkg/app/releases/stable/2.3.72447/linux/TraeCode_CN-linux-arm64.deb",
+            "arm64.rpm": "https://lf-cdn.trae.ai/obj/trae-ai-sg/pkg/app/releases/stable/2.3.72447/linux/TraeCode_CN-linux-arm64.rpm",
+            "arm64.tar.gz": "https://lf-cdn.trae.ai/obj/trae-ai-sg/pkg/app/releases/stable/2.3.72447/linux/TraeCode_CN-linux-arm64.tar.gz",
+            "region": "sg",
+            "x64.deb": "https://lf-cdn.trae.ai/obj/trae-ai-sg/pkg/app/releases/stable/2.3.72447/linux/TraeCode_CN-linux-x64.deb",
+            "x64.rpm": "https://lf-cdn.trae.ai/obj/trae-ai-sg/pkg/app/releases/stable/2.3.72447/linux/TraeCode_CN-linux-x64.rpm",
+            "x64.tar.gz": "https://lf-cdn.trae.ai/obj/trae-ai-sg/pkg/app/releases/stable/2.3.72447/linux/TraeCode_CN-linux-x64.tar.gz"
+          },
+          {
+            "arm64.deb": "https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.72447/linux/TraeCode_CN-linux-arm64.deb",
+            "arm64.rpm": "https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.72447/linux/TraeCode_CN-linux-arm64.rpm",
+            "arm64.tar.gz": "https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.72447/linux/TraeCode_CN-linux-arm64.tar.gz",
+            "region": "va",
+            "x64.deb": "https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.72447/linux/TraeCode_CN-linux-x64.deb",
+            "x64.rpm": "https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.72447/linux/TraeCode_CN-linux-x64.rpm",
+            "x64.tar.gz": "https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.72447/linux/TraeCode_CN-linux-x64.tar.gz"
+          }
+        ],
+        "extra": {
+          "uploadDate": 1786947821681
+        },
+        "version": "2.3.72447"
+      }
+    },
+    "solo": {
+      "darwin": {
+        "version": "2.3.73734",
+        "download": [
+          {
+            "intel": "https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.73734/darwin/TraeWork_CN-darwin-x64.dmg",
+            "region": "cn",
+            "apple": "https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.73734/darwin/TraeWork_CN-darwin-arm64.dmg"
+          },
+          {
+            "intel": "https://lf-cdn.trae.ai/obj/trae-ai-sg/pkg/app/releases/stable/2.3.73734/darwin/TraeWork_CN-darwin-x64.dmg",
+            "region": "sg",
+            "apple": "https://lf-cdn.trae.ai/obj/trae-ai-sg/pkg/app/releases/stable/2.3.73734/darwin/TraeWork_CN-darwin-arm64.dmg"
+          },
+          {
+            "intel": "https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.73734/darwin/TraeWork_CN-darwin-x64.dmg",
+            "region": "va",
+            "apple": "https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.73734/darwin/TraeWork_CN-darwin-arm64.dmg"
+          }
+        ],
+        "extra": {
+          "uploadDate": 1786715983525
+        }
+      },
+      "win32": {
+        "download": [
+          {
+            "region": "cn",
+            "x64": "https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.73734/win32/TraeWork_CN-Setup-x64.exe"
+          },
+          {
+            "region": "sg",
+            "x64": "https://lf-cdn.trae.ai/obj/trae-ai-sg/pkg/app/releases/stable/2.3.73734/win32/TraeWork_CN-Setup-x64.exe"
+          },
+          {
+            "region": "va",
+            "x64": "https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.73734/win32/TraeWork_CN-Setup-x64.exe"
+          }
+        ],
+        "extra": {
+          "uploadDate": 1787076466755
+        },
+        "version": "2.3.73734"
+      }
+    },
+    "mobile": {
+      "ios": {
+        "download": [
+          {
+            "region": "cn",
+            "url": "https://apps.apple.com/cn/app/id6761400733"
+          },
+          {
+            "region": "sg",
+            "url": "https://apps.apple.com/cn/app/id6761400733"
+          },
+          {
+            "region": "va",
+            "url": "https://apps.apple.com/cn/app/id6761400733"
+          },
+          {
+            "region": "usttp",
+            "url": "https://apps.apple.com/cn/app/id6761400733"
+          }
+        ],
+        "version": "0.0.1",
+        "extra": {
+          "uploadDate": 1777379423414
+        }
+      },
+      "android": {
+        "download": [
+          {
+            "region": "cn",
+            "url": "https://traeapp.zlinkurl.cn/LMpKq"
+          },
+          {
+            "region": "sg",
+            "url": "https://traeapp.zlinkurl.cn/LMpKq"
+          },
+          {
+            "region": "va",
+            "url": "https://traeapp.zlinkurl.cn/LMpKq"
+          },
+          {
+            "region": "usttp",
+            "url": "https://traeapp.zlinkurl.cn/LMpKq"
+          }
+        ],
+        "version": "0.0.2",
+        "extra": {
+          "uploadDate": 1779698834640
+        }
+      }
+    }
+  },
+  "logId": "202608201423043126E48231CD78888711"
+}

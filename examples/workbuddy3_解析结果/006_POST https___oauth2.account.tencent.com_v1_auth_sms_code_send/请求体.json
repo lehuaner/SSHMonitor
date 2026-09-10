@@ -1,0 +1,9 @@
+{
+  "client_code": "codebuddy",
+  "mobile": "+86 19154975875",
+  "scopes": [
+    "openid",
+    "mobile",
+    "profile"
+  ]
+}

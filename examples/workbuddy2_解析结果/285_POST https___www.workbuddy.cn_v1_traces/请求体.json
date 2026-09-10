@@ -1,0 +1,2125 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "login-frontend"
+            }
+          },
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "webjs"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.29.0"
+            }
+          },
+          {
+            "key": "service.version",
+            "value": {
+              "stringValue": "1.0.0"
+            }
+          }
+        ],
+        "droppedAttributesCount": 0
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "@opentelemetry/instrumentation-xml-http-request",
+            "version": "0.55.0"
+          },
+          "spans": [
+            {
+              "traceId": "faadecad2b0523b5bd30cd6d9f164de1",
+              "spanId": "d936da0fb6bdf178",
+              "name": "GET",
+              "kind": 3,
+              "startTimeUnixNano": "1788854801279000000",
+              "endTimeUnixNano": "1788854801792000000",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "GET"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "https://www.workbuddy.cn/v2/plugin/login/gray-decision?feature=login_v2&platform=workbuddy"
+                  }
+                },
+                {
+                  "key": "http.response_text",
+                  "value": {
+                    "stringValue": "{\"code\":0,\"msg\":\"OK\",\"requestId\":\"60b0ea97-d6b6-4e1d-a2ff-c1d97ad72070\",\"data\":{\"enabled\":false,\"reason\":\"disabled\",\"ip\":\"112.23.190.214\"}}"
+                  }
+                },
+                {
+                  "key": "http.response_content_length",
+                  "value": {
+                    "intValue": 139
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": 200
+                  }
+                },
+                {
+                  "key": "http.status_text",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "www.workbuddy.cn"
+                  }
+                },
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "https"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [
+                {
+                  "attributes": [],
+                  "name": "open",
+                  "timeUnixNano": "1788854801279000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "send",
+                  "timeUnixNano": "1788854801279100000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "fetchStart",
+                  "timeUnixNano": "1788854801279299951",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupStart",
+                  "timeUnixNano": "1788854801279299951",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupEnd",
+                  "timeUnixNano": "1788854801279299951",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectStart",
+                  "timeUnixNano": "1788854801279299951",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "secureConnectionStart",
+                  "timeUnixNano": "1788854801279299951",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectEnd",
+                  "timeUnixNano": "1788854801279299951",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "requestStart",
+                  "timeUnixNano": "1788854801283199951",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseStart",
+                  "timeUnixNano": "1788854801330099951",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseEnd",
+                  "timeUnixNano": "1788854801331699951",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "loaded",
+                  "timeUnixNano": "1788854801792000000",
+                  "droppedAttributesCount": 0
+                }
+              ],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            },
+            {
+              "traceId": "ced764f5694e3e22c9a993b4ce02982d",
+              "spanId": "5095222065a9011c",
+              "name": "GET",
+              "kind": 3,
+              "startTimeUnixNano": "1788854801278000000",
+              "endTimeUnixNano": "1788854801793000000",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "GET"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "https://www.workbuddy.cn/v2/plugin/login/gray-decision?feature=oneid_component&platform=workbuddy"
+                  }
+                },
+                {
+                  "key": "http.response_text",
+                  "value": {
+                    "stringValue": "{\"code\":0,\"msg\":\"OK\",\"requestId\":\"9f184267-6e4a-4e71-b3e9-316143abcf78\",\"data\":{\"enabled\":true,\"reason\":\"full_rollout\",\"ip\":\"112.23.190.214\"}}"
+                  }
+                },
+                {
+                  "key": "http.response_content_length",
+                  "value": {
+                    "intValue": 142
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": 200
+                  }
+                },
+                {
+                  "key": "http.status_text",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "www.workbuddy.cn"
+                  }
+                },
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "https"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [
+                {
+                  "attributes": [],
+                  "name": "open",
+                  "timeUnixNano": "1788854801278000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "send",
+                  "timeUnixNano": "1788854801278100000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "fetchStart",
+                  "timeUnixNano": "1788854801278299902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupStart",
+                  "timeUnixNano": "1788854801278299902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupEnd",
+                  "timeUnixNano": "1788854801278299902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectStart",
+                  "timeUnixNano": "1788854801278299902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "secureConnectionStart",
+                  "timeUnixNano": "1788854801278299902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectEnd",
+                  "timeUnixNano": "1788854801278299902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "requestStart",
+                  "timeUnixNano": "1788854801282299902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseStart",
+                  "timeUnixNano": "1788854801350099902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseEnd",
+                  "timeUnixNano": "1788854801351799902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "loaded",
+                  "timeUnixNano": "1788854801793000000",
+                  "droppedAttributesCount": 0
+                }
+              ],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            },
+            {
+              "traceId": "a5cde284ecee61c006f8b4ab14572d9d",
+              "spanId": "73abdcaaedae733e",
+              "name": "GET",
+              "kind": 3,
+              "startTimeUnixNano": "1788854801501000000",
+              "endTimeUnixNano": "1788854801834000000",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "GET"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "chrome-extension://mljmkmodkfigdopcpgboaalildgijkoc/assets/contentInitScript.js"
+                  }
+                },
+                {
+                  "key": "http.response_text",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": 0
+                  }
+                },
+                {
+                  "key": "http.status_text",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "mljmkmodkfigdopcpgboaalildgijkoc"
+                  }
+                },
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "chrome-extension"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [
+                {
+                  "attributes": [],
+                  "name": "open",
+                  "timeUnixNano": "1788854801501000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "send",
+                  "timeUnixNano": "1788854801501100000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "error",
+                  "timeUnixNano": "1788854801834000000",
+                  "droppedAttributesCount": 0
+                }
+              ],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            },
+            {
+              "traceId": "05614b3a0074bf7dc53472eedd1bad6f",
+              "spanId": "c398e804cf8229ae",
+              "name": "GET",
+              "kind": 3,
+              "startTimeUnixNano": "1788854801502000000",
+              "endTimeUnixNano": "1788854801835000000",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "GET"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "chrome-extension://cecngibhkljoiafhjfmcgbmikfogdiko/content.ts.js"
+                  }
+                },
+                {
+                  "key": "http.response_text",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": 0
+                  }
+                },
+                {
+                  "key": "http.status_text",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "cecngibhkljoiafhjfmcgbmikfogdiko"
+                  }
+                },
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "chrome-extension"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [
+                {
+                  "attributes": [],
+                  "name": "open",
+                  "timeUnixNano": "1788854801502000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "send",
+                  "timeUnixNano": "1788854801502000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "error",
+                  "timeUnixNano": "1788854801835000000",
+                  "droppedAttributesCount": 0
+                }
+              ],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            },
+            {
+              "traceId": "9ba8822646bbc2843be23b1e411795e7",
+              "spanId": "9d87ac77963def59",
+              "name": "POST",
+              "kind": 3,
+              "startTimeUnixNano": "1788854801272000000",
+              "endTimeUnixNano": "1788854801870000000",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "https://galileotelemetry.tencent.com/v1/logs"
+                  }
+                },
+                {
+                  "key": "http.response_text",
+                  "value": {
+                    "stringValue": "{}"
+                  }
+                },
+                {
+                  "key": "http.response_content_length",
+                  "value": {
+                    "intValue": 0
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": 200
+                  }
+                },
+                {
+                  "key": "http.status_text",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "galileotelemetry.tencent.com"
+                  }
+                },
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "https"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [
+                {
+                  "attributes": [],
+                  "name": "open",
+                  "timeUnixNano": "1788854801272000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "send",
+                  "timeUnixNano": "1788854801272300000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "fetchStart",
+                  "timeUnixNano": "1788854801272700048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseEnd",
+                  "timeUnixNano": "1788854801868300048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "loaded",
+                  "timeUnixNano": "1788854801870000000",
+                  "droppedAttributesCount": 0
+                }
+              ],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            },
+            {
+              "traceId": "92d1632582003daac7ef9779f2f9d90e",
+              "spanId": "f76886fc16451721",
+              "name": "GET",
+              "kind": 3,
+              "startTimeUnixNano": "1788854802096000000",
+              "endTimeUnixNano": "1788854802682000000",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "GET"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "https://www.workbuddy.cn/console/accounts"
+                  }
+                },
+                {
+                  "key": "http.response_text",
+                  "value": {
+                    "stringValue": "{\"code\":0,\"msg\":\"OK\",\"requestId\":\"713e9d8f-6d77-4518-be00-7b5803b95101\",\"data\":{\"accounts\":[{\"uid\":\"8b3cb381-9ebc-4813-92d9-9e5880528465\",\"nickname\":\"乐幻\",\"uin\":\"330102140407\",\"type\":\"personal\",\"lastLogin\":true,\"isCreator\":false,\"isAdmin\":false,\"pluginEnabled\":true,\"deployStatus\":{\"statusCode\":0,\"statusMsg\":\"\",\"detailMsg\":\"\"},\"accountType\":\"\",\"sso\":{\"domain\":\"\",\"domainModifiedTimes\":0},\"idp\":\"\",\"areaInfoComplete\":false,\"oneidAccountId\":\"\",\"isCurrentOneIdEnterprise\":false,\"isCurrentOneIdPersonal\":true,\"isFirstLogin\":false,\"phoneNumber\":\"17327137416\",\"mpOpenId\":\"oKK9J16f4mibhCrguJGD7IG3K5n0\"}]}}"
+                  }
+                },
+                {
+                  "key": "http.response_content_length",
+                  "value": {
+                    "intValue": 603
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": 200
+                  }
+                },
+                {
+                  "key": "http.status_text",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "www.workbuddy.cn"
+                  }
+                },
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "https"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [
+                {
+                  "attributes": [],
+                  "name": "open",
+                  "timeUnixNano": "1788854802096000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "send",
+                  "timeUnixNano": "1788854802096200000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "fetchStart",
+                  "timeUnixNano": "1788854802528299951",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupStart",
+                  "timeUnixNano": "1788854802528299951",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupEnd",
+                  "timeUnixNano": "1788854802528299951",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectStart",
+                  "timeUnixNano": "1788854802528299951",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "secureConnectionStart",
+                  "timeUnixNano": "1788854802528299951",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectEnd",
+                  "timeUnixNano": "1788854802528299951",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "requestStart",
+                  "timeUnixNano": "1788854802529499951",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseStart",
+                  "timeUnixNano": "1788854802678999951",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseEnd",
+                  "timeUnixNano": "1788854802680899951",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "loaded",
+                  "timeUnixNano": "1788854802682000000",
+                  "droppedAttributesCount": 0
+                }
+              ],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            },
+            {
+              "traceId": "72c939ba214d74ace7a53e53cf096211",
+              "spanId": "2128e943fcbf1bb9",
+              "name": "GET",
+              "kind": 3,
+              "startTimeUnixNano": "1788854802683000000",
+              "endTimeUnixNano": "1788854802730000000",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "GET"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "https://www.workbuddy.cn/console/validate/refresh-token"
+                  }
+                },
+                {
+                  "key": "http.response_text",
+                  "value": {
+                    "stringValue": "{\"code\":0,\"msg\":\"OK\",\"requestId\":\"13d81553-6f67-47c3-a983-8234d51e8d07\"}"
+                  }
+                },
+                {
+                  "key": "http.response_content_length",
+                  "value": {
+                    "intValue": 72
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": 200
+                  }
+                },
+                {
+                  "key": "http.status_text",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "www.workbuddy.cn"
+                  }
+                },
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "https"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [
+                {
+                  "attributes": [],
+                  "name": "open",
+                  "timeUnixNano": "1788854802683000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "send",
+                  "timeUnixNano": "1788854802683100000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "fetchStart",
+                  "timeUnixNano": "1788854802683200048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupStart",
+                  "timeUnixNano": "1788854802683200048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupEnd",
+                  "timeUnixNano": "1788854802683200048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectStart",
+                  "timeUnixNano": "1788854802683200048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "secureConnectionStart",
+                  "timeUnixNano": "1788854802683200048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectEnd",
+                  "timeUnixNano": "1788854802683200048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "requestStart",
+                  "timeUnixNano": "1788854802685500048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseStart",
+                  "timeUnixNano": "1788854802727100048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseEnd",
+                  "timeUnixNano": "1788854802728900048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "loaded",
+                  "timeUnixNano": "1788854802730000000",
+                  "droppedAttributesCount": 0
+                }
+              ],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            },
+            {
+              "traceId": "6dfe577465f6d27375963a458bd87cb8",
+              "spanId": "c60dad87903c2624",
+              "name": "POST",
+              "kind": 3,
+              "startTimeUnixNano": "1788854802731000000",
+              "endTimeUnixNano": "1788854802804000000",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "https://galileotelemetry.tencent.com/v1/logs"
+                  }
+                },
+                {
+                  "key": "http.response_text",
+                  "value": {
+                    "stringValue": "{}"
+                  }
+                },
+                {
+                  "key": "http.response_content_length",
+                  "value": {
+                    "intValue": 0
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": 200
+                  }
+                },
+                {
+                  "key": "http.status_text",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "galileotelemetry.tencent.com"
+                  }
+                },
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "https"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [
+                {
+                  "attributes": [],
+                  "name": "open",
+                  "timeUnixNano": "1788854802731000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "send",
+                  "timeUnixNano": "1788854802731100000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "fetchStart",
+                  "timeUnixNano": "1788854802731200097",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseEnd",
+                  "timeUnixNano": "1788854802803300097",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "loaded",
+                  "timeUnixNano": "1788854802804000000",
+                  "droppedAttributesCount": 0
+                }
+              ],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            },
+            {
+              "traceId": "b91078f50becf8bec33349165da78078",
+              "spanId": "20ada8c758bc6356",
+              "name": "POST",
+              "kind": 3,
+              "startTimeUnixNano": "1788854802732000000",
+              "endTimeUnixNano": "1788854803150000000",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "https://www.workbuddy.cn/console/login/enterprise?state=4f006bcb-ee21-4480-ab9e-db26b8a89b37"
+                  }
+                },
+                {
+                  "key": "http.response_text",
+                  "value": {
+                    "stringValue": "{\"code\":0,\"msg\":\"OK\",\"requestId\":\"711704c1-073f-4c2e-9240-c61e133c61da\",\"data\":{\"accessToken\":\"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJteWZFenA3ODNLaV9KQ3g4Vm5jM1hfaXg2alpyYjZDZjVPTWtHWk1QSTNzIn0.eyJleHAiOjE3OTQwMzg4MDMsImlhdCI6MTc4ODg1NDgwMywiYXV0aF90aW1lIjoxNzg4ODU0ODAwLCJqdGkiOiIyNTM5NTlkZi1iOGQ2LTQ1MjMtYTZmYS1lNjdjZmUzOWZiMWQiLCJpc3MiOiJodHRwczovL3d3dy53b3JrYnVkZHkuY24vYXV0aC9yZWFsbXMvY29waWxvdCIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiI4YjNjYjM4MS05ZWJjLTQ4MTMtOTJkOS05ZTU4ODA1Mjg0NjUiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJjb25zb2xlIiwic2lkIjoiZDIxNjc3NGYtMmQwMi00NTMxLThmNzktYzczYTgxN2NlMWE2IiwiYWNyIjoiMCIsImFsbG93ZWQtb3JpZ2lucyI6WyIqIl0sInJlYWxtX2FjY2VzcyI6eyJyb2xlcyI6WyJkZWZhdWx0LXJvbGVzIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoib3BlbmlkIHByb2ZpbGUgb2ZmbGluZV9hY2Nlc3MgZW1haWwiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsIm5pY2tuYW1lIjoi5LmQ5bm7IiwicHJlZmVycmVkX3VzZXJuYW1lIjoiMTczMjcxMzc0MTYifQ.FEmLcYO5UTRjC4O-nF8xStFojF_0tn84NJDysYW63YusuYmUoXUWC4YraaFygWDzvYUapPMfX0wrYGJn8BEyuKAb-YvkBSuE6C8vUtA9SVuZGPRVuS11hJDUL-4dcF3axABBxo6peSDKw3jl4Dk-fURkvED10n6VtBuYMvE-SbRMn1qYPrVyKbcm0JBbMLUDMX94FKJ7y1SW56Lp7oRQ0UAipavQoC8UktN6vSC53eJ8B-Rj2PCGEAOqFKnwhINeP6Y0QoSAaU0GL3zsdUGNhcmSG-hqj_Ye02miUXuK-IZeRrS1NScJEe_Y9pEfO00DegoM1z4aWJA7z8gaAwmJpw\",\"expiresIn\":5184000,\"refreshExpiresIn\":7776000,\"refreshToken\":\"eyJhbGciOiJIUzUxMiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI2M2I4YzRkNS1jMTJjLTRhMGQtYjk5NC01ZTBjMDY0N2QwMDIifQ.eyJleHAiOjE3OTY2MzA4MDMsImlhdCI6MTc4ODg1NDgwMywianRpIjoiNWYwY2UwMjAtZDVmYy00N2UxLWJmYTctYjgzMmFkZmM2MDAyIiwiaXNzIjoiaHR0cHM6Ly93d3cud29ya2J1ZGR5LmNuL2F1dGgvcmVhbG1zL2NvcGlsb3QiLCJhdWQiOiJodHRwczovL3d3dy53b3JrYnVkZHkuY24vYXV0aC9yZWFsbXMvY29waWxvdCIsInN1YiI6IjhiM2NiMzgxLTllYmMtNDgxMy05MmQ5LTllNTg4MDUyODQ2NSIsInR5cCI6Ik9mZmxpbmUiLCJhenAiOiJjb25zb2xlIiwic2lkIjoiZDIxNjc3NGYtMmQwMi00NTMxLThmNzktYzczYTgxN2NlMWE2Iiwic2NvcGUiOiJvcGVuaWQgYWNyIHByb2ZpbGUgYmFzaWMgd2ViLW9yaWdpbnMgcm9sZXMgb2ZmbGluZV9hY2Nlc3MgZW1haWwifQ.OotgFg0wNUe5e9nxaS9jC_u6zlAx_GXqlE4xVVnv1AxcQPTQ15Z-7Ve3IMwwt0E9o4BzLhw_dB58Pjh3RnggXw\",\"tokenType\":\"Bearer\",\"notBeforePolicy\":1724292326,\"sessionState\":\"d216774f-2d02-4531-8f79-c73a817ce1a6\",\"scope\":\"openid profile offline_access email\"}}"
+                  }
+                },
+                {
+                  "key": "http.response_content_length",
+                  "value": {
+                    "intValue": 2306
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": 200
+                  }
+                },
+                {
+                  "key": "http.status_text",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "www.workbuddy.cn"
+                  }
+                },
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "https"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [
+                {
+                  "attributes": [],
+                  "name": "open",
+                  "timeUnixNano": "1788854802732000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "send",
+                  "timeUnixNano": "1788854802732100000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "fetchStart",
+                  "timeUnixNano": "1788854802732200000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupStart",
+                  "timeUnixNano": "1788854802732200000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupEnd",
+                  "timeUnixNano": "1788854802732200000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectStart",
+                  "timeUnixNano": "1788854802732200000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "secureConnectionStart",
+                  "timeUnixNano": "1788854802732200000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectEnd",
+                  "timeUnixNano": "1788854802732200000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "requestStart",
+                  "timeUnixNano": "1788854802734400000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseStart",
+                  "timeUnixNano": "1788854803147500000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseEnd",
+                  "timeUnixNano": "1788854803149000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "loaded",
+                  "timeUnixNano": "1788854803150000000",
+                  "droppedAttributesCount": 0
+                }
+              ],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            },
+            {
+              "traceId": "3d34cd524acb7f2d0109153d7697f155",
+              "spanId": "29eb889450c14b5c",
+              "name": "POST",
+              "kind": 3,
+              "startTimeUnixNano": "1788854803151000000",
+              "endTimeUnixNano": "1788854803290000000",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "https://www.workbuddy.cn/console/account/switch"
+                  }
+                },
+                {
+                  "key": "http.response_text",
+                  "value": {
+                    "stringValue": "{\"data\":{\"switched\":true},\"code\":0,\"message\":\"success\",\"requestId\":\"624715d0-7960-46cb-9e4a-307c153b51fb\"}"
+                  }
+                },
+                {
+                  "key": "http.response_content_length",
+                  "value": {
+                    "intValue": 106
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": 200
+                  }
+                },
+                {
+                  "key": "http.status_text",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "www.workbuddy.cn"
+                  }
+                },
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "https"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [
+                {
+                  "attributes": [],
+                  "name": "open",
+                  "timeUnixNano": "1788854803151000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "send",
+                  "timeUnixNano": "1788854803151100000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "fetchStart",
+                  "timeUnixNano": "1788854803151200000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupStart",
+                  "timeUnixNano": "1788854803151200000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupEnd",
+                  "timeUnixNano": "1788854803151200000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectStart",
+                  "timeUnixNano": "1788854803151200000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "secureConnectionStart",
+                  "timeUnixNano": "1788854803151200000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectEnd",
+                  "timeUnixNano": "1788854803151200000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "requestStart",
+                  "timeUnixNano": "1788854803153000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseStart",
+                  "timeUnixNano": "1788854803286800000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseEnd",
+                  "timeUnixNano": "1788854803288800000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "loaded",
+                  "timeUnixNano": "1788854803290000000",
+                  "droppedAttributesCount": 0
+                }
+              ],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            },
+            {
+              "traceId": "39b244ac0326d05b71915fbad90522a1",
+              "spanId": "4c61cff7abfcc016",
+              "name": "POST",
+              "kind": 3,
+              "startTimeUnixNano": "1788854803292000000",
+              "endTimeUnixNano": "1788854803372000000",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "https://www.workbuddy.cn/billing/ide/trial"
+                  }
+                },
+                {
+                  "key": "http.response_text",
+                  "value": {
+                    "stringValue": "{\"code\":14051,\"msg\":\"has applied trial\",\"requestId\":\"ad723210-31eb-4a13-a50b-f31b506e53c5\"}"
+                  }
+                },
+                {
+                  "key": "http.response_content_length",
+                  "value": {
+                    "intValue": 91
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": 200
+                  }
+                },
+                {
+                  "key": "http.status_text",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "www.workbuddy.cn"
+                  }
+                },
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "https"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [
+                {
+                  "attributes": [],
+                  "name": "open",
+                  "timeUnixNano": "1788854803292000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "send",
+                  "timeUnixNano": "1788854803292000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "fetchStart",
+                  "timeUnixNano": "1788854803292100048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupStart",
+                  "timeUnixNano": "1788854803292100048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupEnd",
+                  "timeUnixNano": "1788854803292100048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectStart",
+                  "timeUnixNano": "1788854803292100048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "secureConnectionStart",
+                  "timeUnixNano": "1788854803292100048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectEnd",
+                  "timeUnixNano": "1788854803292100048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "requestStart",
+                  "timeUnixNano": "1788854803294500048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseStart",
+                  "timeUnixNano": "1788854803369500048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseEnd",
+                  "timeUnixNano": "1788854803371100048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "loaded",
+                  "timeUnixNano": "1788854803372000000",
+                  "droppedAttributesCount": 0
+                }
+              ],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            },
+            {
+              "traceId": "a4c6090b65c20b8f5104e71073342c8f",
+              "spanId": "c37e731259437549",
+              "name": "GET",
+              "kind": 3,
+              "startTimeUnixNano": "1788854803292000000",
+              "endTimeUnixNano": "1788854803392000000",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "GET"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "https://www.workbuddy.cn/console/login/type"
+                  }
+                },
+                {
+                  "key": "http.response_text",
+                  "value": {
+                    "stringValue": "{\"code\":0,\"msg\":\"OK\",\"requestId\":\"59b48d7f-1c38-40b5-ade6-a70b60572244\",\"data\":{\"loginType\":\"login\",\"userId\":\"8b3cb381-9ebc-4813-92d9-9e5880528465\",\"nickName\":\"乐幻\",\"bindTencentCloudAccount\":true}}"
+                  }
+                },
+                {
+                  "key": "http.response_content_length",
+                  "value": {
+                    "intValue": 200
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": 200
+                  }
+                },
+                {
+                  "key": "http.status_text",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "www.workbuddy.cn"
+                  }
+                },
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "https"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [
+                {
+                  "attributes": [],
+                  "name": "open",
+                  "timeUnixNano": "1788854803292000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "send",
+                  "timeUnixNano": "1788854803292000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "fetchStart",
+                  "timeUnixNano": "1788854803291999902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupStart",
+                  "timeUnixNano": "1788854803291999902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupEnd",
+                  "timeUnixNano": "1788854803291999902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectStart",
+                  "timeUnixNano": "1788854803291999902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "secureConnectionStart",
+                  "timeUnixNano": "1788854803291999902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectEnd",
+                  "timeUnixNano": "1788854803291999902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "requestStart",
+                  "timeUnixNano": "1788854803294599902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseStart",
+                  "timeUnixNano": "1788854803389899902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseEnd",
+                  "timeUnixNano": "1788854803391299902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "loaded",
+                  "timeUnixNano": "1788854803392000000",
+                  "droppedAttributesCount": 0
+                }
+              ],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            },
+            {
+              "traceId": "dab361423161b39aca31a4d9d758b48e",
+              "spanId": "8ff6a64b07c32860",
+              "name": "POST",
+              "kind": 3,
+              "startTimeUnixNano": "1788854803394000000",
+              "endTimeUnixNano": "1788854803475000000",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "https://galileotelemetry.tencent.com/v1/logs"
+                  }
+                },
+                {
+                  "key": "http.response_text",
+                  "value": {
+                    "stringValue": "{}"
+                  }
+                },
+                {
+                  "key": "http.response_content_length",
+                  "value": {
+                    "intValue": 0
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": 200
+                  }
+                },
+                {
+                  "key": "http.status_text",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "galileotelemetry.tencent.com"
+                  }
+                },
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "https"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [
+                {
+                  "attributes": [],
+                  "name": "open",
+                  "timeUnixNano": "1788854803394000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "send",
+                  "timeUnixNano": "1788854803394100000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "fetchStart",
+                  "timeUnixNano": "1788854803394199902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseEnd",
+                  "timeUnixNano": "1788854803474699902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "loaded",
+                  "timeUnixNano": "1788854803475000000",
+                  "droppedAttributesCount": 0
+                }
+              ],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            },
+            {
+              "traceId": "66dc1670791f204f035db461006de7a5",
+              "spanId": "e6a0c957ae0683a4",
+              "name": "POST",
+              "kind": 3,
+              "startTimeUnixNano": "1788854803395000000",
+              "endTimeUnixNano": "1788854803560000000",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "POST"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "https://www.workbuddy.cn/console/user/from"
+                  }
+                },
+                {
+                  "key": "http.response_text",
+                  "value": {
+                    "stringValue": "{\"code\":0,\"msg\":\"OK\",\"requestId\":\"afe2cae6-1397-4b2d-9d94-af183a1ed49f\"}"
+                  }
+                },
+                {
+                  "key": "http.response_content_length",
+                  "value": {
+                    "intValue": 72
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": 200
+                  }
+                },
+                {
+                  "key": "http.status_text",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "www.workbuddy.cn"
+                  }
+                },
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "https"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [
+                {
+                  "attributes": [],
+                  "name": "open",
+                  "timeUnixNano": "1788854803395100000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "send",
+                  "timeUnixNano": "1788854803395200000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "fetchStart",
+                  "timeUnixNano": "1788854803395400048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupStart",
+                  "timeUnixNano": "1788854803395400048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupEnd",
+                  "timeUnixNano": "1788854803395400048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectStart",
+                  "timeUnixNano": "1788854803395400048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "secureConnectionStart",
+                  "timeUnixNano": "1788854803395400048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectEnd",
+                  "timeUnixNano": "1788854803395400048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "requestStart",
+                  "timeUnixNano": "1788854803398100048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseStart",
+                  "timeUnixNano": "1788854803558200048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseEnd",
+                  "timeUnixNano": "1788854803559700048",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "loaded",
+                  "timeUnixNano": "1788854803560000000",
+                  "droppedAttributesCount": 0
+                }
+              ],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            },
+            {
+              "traceId": "2b1de0951096544df9524cd242c7b7fc",
+              "spanId": "a348888c97ad7783",
+              "name": "GET",
+              "kind": 3,
+              "startTimeUnixNano": "1788854803395000000",
+              "endTimeUnixNano": "1788854803701000000",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "GET"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "https://www.workbuddy.cn/console/auth/login?platform=workbuddy&state=4f006bcb-ee21-4480-ab9e-db26b8a89b37&domain=www.workbuddy.cn"
+                  }
+                },
+                {
+                  "key": "http.response_text",
+                  "value": {
+                    "stringValue": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n\n<head>\n  <script data-cb-injected=\"runtime-env\">window.APP_EDITION = 'standard';\nwindow.RUN_ENV = 'prod';\nwindow.DEFAULT_AGENT_SERVER_URL = '__DEFAULT_AGENT_SERVER_URL__';\nwindow.MAINTENANCE_NOTICE_TIME_RANGE = '__MAINTENANCE_NOTICE_TIME_RANGE__';\nwindow.IS_INTERNATIONAL_EDITION = 'false';\nwindow.GENIE_DOMAINS = 'www.ge.site,genie.codebuddy.cn,genie-canary.ge.site,genie-canary.codebuddy.cn,staging.ge.site,genie.tencent.com,genie-bj.tencent.com,www.workbuddy.link';\nwindow.__toCdnUrl = (url) => {\n  const BASE_URL = '//download.codebuddy.cn/web/login/621af055e58c5a331af6c922c735d2b27fb15ba4';\n  return (/__.*?__$/.test(BASE_URL) ? '' : BASE_URL) + '/' + url;\n};</script>\n\n  <meta charset=\"UTF-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <!-- title / keywords / description / <html lang> 全部由 login-inject-common-html 注入的\n         运行时 bootstrap 按 brand(hostname)×region(IS_INTERNATIONAL_EDITION) 决定；\n         不再有静态 SEO 出口（登录页对爬虫 SEO 不敏感，静态注入拿不到 hostname 会写错品牌）。\n         此处 lang=\"zh-CN\" 仅为运行时覆盖前的安全默认（intl 由 bootstrap 改为 en-US）。\n         env（RUN_ENV/APP_EDITION/IS_INTERNATIONAL_EDITION/DEFAULT_AGENT_SERVER_URL/\n         MAINTENANCE_NOTICE_TIME_RANGE/GENIE_DOMAINS/__toCdnUrl）与 gtag 也由该插件注入。\n         数据源见 src/head/tkd.ts。 -->\n  <meta name=\"theme-color\" content=\"#ffffff\" />\n  <meta name=\"msapplication-TileColor\" content=\"#FFFFFF\" />\n  <!-- 开放平台登录页：在 CSS 加载前同步覆盖 body 紫色背景 #D1CDE3，\n         避免刷新时先显示紫色再变白色的闪现。\n         仅 platform=open 时注入，不影响其他登录页。\n         用 body:not(.iframe-login) 匹配相同选择器 + !important 确保覆盖。 -->\n  <script>\n    (function () {\n      try {\n        var params = new URLSearchParams(window.location.search);\n        if ((params.get('platform') || '').toLowerCase() === 'open') {\n          var style = document.createElement('style');\n          style.textContent = 'body:not(.iframe-login) { background-color: transparent !important; }';\n          document.head.appendChild(style);\n        }\n      } catch (e) { /* ignore */ }\n    })();\n  </script>\n  <meta name=\"theme-color\" content=\"#ffffff\" />\n  <meta name=\"msapplication-TileColor\" content=\"#FFFFFF\" />\n  <!-- 开放平台登录页：在 CSS 加载前同步覆盖 body 紫色背景 #D1CDE3，\n         避免刷新时先显示紫色再变白色的闪现。\n         仅 platform=open 时注入，不影响其他登录页。\n         用 body:not(.iframe-login) 匹配相同选择器 + !important 确保覆盖。 -->\n  <script>\n    (function () {\n      try {\n        var params = new URLSearchParams(window.location.search);\n        if ((params.get('platform') || '').toLowerCase() === 'open') {\n          var style = document.createElement('style');\n          style.textContent = 'body:not(.iframe-login) { background-color: transparent !important; }';\n          document.head.appendChild(style);\n        }\n      } catch (e) { /* ignore */ }\n    })();\n  </script>\n\n  <!--\n      微信内网员工探测（新版·前置）：在 React bundle 加载前就在 HTML 内联执行，尽早决策，缩短白屏。\n      仅微信环境 + 预发启用；纯裸 fetch，不依赖项目 axios 封装。旧版探测（React 内 checkOAEnv + wechatOauth）\n      保持不变，用于非微信环境/兜底。\n\n      两态：\n        1. 首次进入：直接 location.replace 跳微信 snsapi_base 授权（redirect_uri 回本页带 wx_staff_code=1）。\n        2. 回跳态（wx_staff_code=1&code）：裸 fetch /console/wx/check-staff 判员工；命中则写 sessionStorage\n           标记（React挂载后读取并展示 iOA 入口），随后清掉 URL 上的探测参数、正常渲染登录页。\n      死循环防护：sessionStorage 记时间戳，60s 内不重复发起。\n    -->\n  <script>\n    (function () {\n      try {\n        var ua = navigator.userAgent.toLowerCase();\n        var isWeixin = ua.indexOf('micromessenger') !== -1 && ua.indexOf('wxwork') === -1;\n        if (!isWeixin) { return; }\n\n        // ⚠️【微信内网员工探测 · 总开关 · 后期统一删除入口（index.html 侧）】⚠️\n        // 已全量放开，所有环境生效。此内联脚本在 bundle 之外、无法 import，\n        // 故此处判断与 React 侧 utils/helper.ts 的 isWxStaffDetectEnabled() 等价、需保持一致；\n        // 下线时两处（本函数 + helper.ts）一并删除。\n        var isWxStaffDetectEnabled = function () {\n          return true;\n        };\n        if (!isWxStaffDetectEnabled()) { return; }\n\n        // 微信公众号 AppId 按环境区分：现网(prod) 与预发/开发各用各自后台配了网页授权域名的 AppId，\n        // 用错任一侧都会被微信判为「redirect_uri 参数错误」。此内联脚本在 bundle 之外无法 import，\n        // 用更早注入的 window.RUN_ENV（占位符替换）判断：仅 'prod' 用现网 AppId，其余一律用预发 AppId。\n        var WX_APPID_PROD = 'wxf3055eea2dff6d9c';\n        var WX_APPID_STAGING = 'wx62eea88688369ded';\n        var WX_APPID = window.RUN_ENV === 'prod' ? WX_APPID_PROD : WX_APPID_STAGING;\n        var FLAG = 'wx_staff_code';\n        var STARTED_KEY = 'wx_staff_oauth_started';\n        var IOA_HIT_KEY = 'wx_staff_ioa_hit';\n        var IOA_HIT_EVENT = 'wx-staff-ioa-hit';\n        var TTL_MS = 60 * 1000;\n\n        var params = new URLSearchParams(window.location.search);\n        // 回跳态：拿 code 判员工。\n        if (params.get(FLAG) === '1') {\n          // code 先取进闭包变量，随后【同步】清 URL —— 不能等 fetch 回来再清：\n          // 探测 fetch 与 React bundle 加载是并行的，若 URL 上还留着 code，\n          // newLogin 的 init() 会用 has('code') 把这次访问误判成 OIDC 回调\n          // （污染 aegis span 名，且 embed=iframe 嵌套场景下会去 reload 最外层 login iframe）。\n          var code = params.get('code');\n          try { sessionStorage.removeItem(STARTED_KEY); } catch (e) { }\n          // 清 URL：只删探测标记(wx_staff_code) 和微信回跳追加的 code；state 一律不动。\n          // 首次进入时 redirect_uri 完整保留了原始业务 state，且微信 authorize 未再传探测 state\n          // （见下方首次进入分支），故回跳 URL 上不会出现第二个 state，这里直接保留即可。\n          var p = new URLSearchParams(window.location.search);\n          p.delete(FLAG); p.delete('code');\n          var q = p.toString();\n          var newUrl = window.location.pathname + (q ? '?' + q : '') + window.location.hash;\n          window.history.replaceState(null, '', newUrl);\n          if (!code) { return; }\n          // 裸 fetch 判员工；同域相对路径。命中写 sessionStorage 供React 读取。\n          fetch('/console/wx/check-staff', {\n            method: 'POST',\n            headers: { 'Content-Type': 'application/json' },\n            body: JSON.stringify({ code: code }),\n            credentials: 'include',\n          })\n            .then(function (r) { return r.json(); })\n            .then(function (json) {\n              var data = (json && (json.data || json)) || {};\n              if (data.isStaff) {\n                // 先写 sessionStorage 再派事件，两条路径覆盖\"回包早于/晚于 React 挂载\"两种顺序：\n                // 挂载早于回包时组件读不到 sessionStorage，只能靠这个事件通知（组件消费后会清掉标记）。\n                try { sessionStorage.setItem(IOA_HIT_KEY, '1'); } catch (e) { }\n                try { window.dispatchEvent(new Event(IOA_HIT_EVENT)); } catch (e) { }\n              }\n            })\n            .catch(function () { /* 判定失败静默降级，走默认登录 */ });\n          return;\n        }\n\n        // OIDC 登录中（带这些参数）：不干扰，交给 React。\n        if (params.get('mp_login_code') || params.get('kc_idp_hint') || params.get('code')) { return; }\n\n        // 死循环防护：60s 内已发起过则不再跳。\n        var startedRaw = null;\n        try { startedRaw = sessionStorage.getItem(STARTED_KEY); } catch (e) { }\n        if (startedRaw) {\n          var startedAt = Number(startedRaw);\n          if (isFinite(startedAt) && Date.now() - startedAt < TTL_MS) { return; }\n        }\n\n        // 首次进入：直接跳微信授权，回跳本页。\n        // 回跳 redirect_uri = 原始 URL 的全部 query（含业务 platform / redirect_uri / state）+ 新增 wx_staff_code=1，\n        // 完整保留登录上下文 —— 否则微信授权来回 302 后 platform / redirect_uri / state 会丢失，导致登录成功后\n        // 无法跳回原 website/workbuddy 页面（一直转圈），且 platform 为空使审计日志接口报 400。\n        // 不给微信 authorize 传 state：本探测的 state 全程无人校验（后端 /wx/check-staff 只认 code，\n        // 前端也不校验回跳 state），传了反而会被微信原样回传、在回跳 URL 上叠出第二个 state 参数，\n        // 干扰原始业务 state。故这里刻意省略 state，从源头保证回跳 URL 只有原始业务 state 一个。\n        var backParams = new URLSearchParams(window.location.search);\n        backParams.set('wx_staff_code', '1');\n        var redirectUri = window.location.origin + '/login/?' + backParams.toString();\n        var authorizeUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +\n          new URLSearchParams({\n            appid: WX_APPID,\n            redirect_uri: redirectUri,\n            response_type: 'code',\n            scope: 'snsapi_base',\n          }).toString() + '#wechat_redirect';\n        try { sessionStorage.setItem(STARTED_KEY, String(Date.now())); } catch (e) { }\n        window.location.replace(authorizeUrl);\n      } catch (e) {\n        /* 任何异常都不阻断，交给 React 版探测/默认登录 */\n      }\n    })();\n  </script>\n  <link rel=\"icon\" href=\"//download.codebuddy.cn/web/login/621af055e58c5a331af6c922c735d2b27fb15ba4/assets/logo.svg\" />\n  <link rel=\"apple-touch-icon\" href=\"/apple-touch-icon.png\" sizes=\"180x180\" />\n  <!--[if IE]>\n      <style>\n        #app {\n          display: none;\n        }\n      </style>\n    <![endif]-->\n  <script data-cb-injected=\"head-bootstrap\">(function(){\n  try {\n    var DATA = {\"tkd\":{\"codebuddy\":{\"cn\":{\"title\":\"腾讯云代码助手 CodeBuddy - AI 时代的智能编程伙伴\",\"keywords\":\"CodeBuddy,腾讯云代码助手,代码助手,AI编程,智能编程,AI代码助手\",\"description\":\"腾讯云代码助手 CodeBuddy 是 AI 时代的智能编程伙伴，提供代码补全、Bug 诊断、技术问答和性能优化等全方位编程辅助服务。\"},\"intl\":{\"title\":\"Tencent Cloud CodeBuddy - AI Code Companion\",\"keywords\":\"CodeBuddy,AI coding,code assistant,Tencent Cloud,AI programming,code completion\",\"description\":\"Tencent Cloud CodeBuddy is an AI-powered coding companion that helps you code faster with intelligent code completion, bug diagnosis, and technical Q&A.\"}},\"workbuddy\":{\"cn\":{\"title\":\"WorkBuddy - AI Agent 办公新范式\",\"keywords\":\"WorkBuddy,AI办公,AI Agent,智能办公助手,腾讯云代码助手,CodeBuddy\",\"description\":\"WorkBuddy 是腾讯云代码助手推出的 AI Agent 办公工具，自主规划并交付多模态复杂任务结果，极致提效。\"},\"intl\":{\"title\":\"WorkBuddy - AI Agent for Everyday Office Work\",\"keywords\":\"WorkBuddy,AI Office,AI Agent,AI productivity assistant,CodeBuddy\",\"description\":\"Tencent WorkBuddy is an AI Agent built for office professionals. Powered by multi-agent collaboration, it delivers finished, verifiable outputs.\"}}},\"favicon\":{\"codebuddy\":{\"icon\":\"assets/logo.svg\",\"appleTouch\":\"apple-touch-icon.png\"},\"workbuddy\":{\"icon\":\"assets/logo.svg\",\"appleTouch\":\"apple-touch-icon.png\"}},\"lang\":{\"cn\":\"zh-CN\",\"intl\":\"en-US\"},\"isDev\":false,\"useToCdnUrl\":true};\n    var host = window.location.hostname;\n    var search = window.location.search;\n\n    var overrideAllowed = DATA.isDev\n      || host.indexOf('staging') !== -1\n      || host.indexOf('test') !== -1\n      || host === 'localhost'\n      || host.indexOf('127.') === 0\n      || host.indexOf('192.168.') === 0;\n\n    var brand = null;\n    if (overrideAllowed) {\n      try {\n        var q = new URLSearchParams(search).get('brand');\n        if (q === 'codebuddy' || q === 'workbuddy') {\n          brand = q;\n          try { window.localStorage.setItem('cb_brand_override', q); } catch (e) {}\n        }\n      } catch (e) {}\n      if (!brand) {\n        try {\n          var s = window.localStorage.getItem('cb_brand_override');\n          if (s === 'codebuddy' || s === 'workbuddy') { brand = s; }\n        } catch (e) {}\n      }\n    }\n    if (!brand) { brand = host.indexOf('.workbuddy.') !== -1 ? 'workbuddy' : 'codebuddy'; }\n\n    var flag = window.IS_INTERNATIONAL_EDITION;\n    var region = 'cn';\n    if (flag === true) {\n      region = 'intl';\n    } else if (typeof flag === 'string' && !/__.*?__$/.test(flag) && (flag === 'true' || flag === '1')) {\n      region = 'intl';\n    }\n\n    var brandData = DATA.tkd[brand] || DATA.tkd.codebuddy || DATA.tkd.workbuddy;\n    var tkd = brandData ? brandData[region] : null;\n    var lang = DATA.lang[region];\n\n    if (lang) { document.documentElement.lang = lang; }\n    if (tkd) {\n      if (tkd.title) { document.title = tkd.title; }\n      setMeta('name', 'keywords', tkd.keywords);\n      setMeta('name', 'description', tkd.description);\n      setMeta('property', 'og:title', tkd.title);\n      setMeta('property', 'og:description', tkd.description);\n      if (tkd.ogUrl) {\n        setMeta('property', 'og:url', tkd.ogUrl);\n        setLink('canonical', tkd.ogUrl);\n      }\n    }\n\n    var fav = DATA.favicon[brand];\n    if (fav && fav.icon) {\n      var iconHref = fav.icon;\n      if (DATA.useToCdnUrl && typeof window.__toCdnUrl === 'function') {\n        try { iconHref = window.__toCdnUrl(fav.icon); } catch (e) {}\n      } else {\n        iconHref = '/' + fav.icon;\n      }\n      setLink('icon', iconHref);\n    }\n\n    function setMeta(attr, key, content) {\n      if (!content) { return; }\n      var el = document.querySelector('meta[' + attr + '=\"' + key + '\"]');\n      if (!el) {\n        el = document.createElement('meta');\n        el.setAttribute(attr, key);\n        document.head.appendChild(el);\n      }\n      el.setAttribute('content', content);\n    }\n    function setLink(rel, href) {\n      if (!href) { return; }\n      var el = document.querySelector('link[rel=\"' + rel + '\"]');\n      if (!el) {\n        el = document.createElement('link');\n        el.setAttribute('rel', rel);\n        document.head.appendChild(el);\n      }\n      el.setAttribute('href', href);\n    }\n  } catch (e) { /* 判定失败留给 React 侧 resolveHead 兜底 */ }\n})();</script>\n  <script data-cb-injected=\"gtag-bootstrap\">(function () {\n  window.dataLayer = window.dataLayer || [];\n  window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };\n\n  var isInternational =\n    window.IS_INTERNATIONAL_EDITION === true ||\n    window.IS_INTERNATIONAL_EDITION === 'true' ||\n    /workbuddy\\.ai|tencentcloud\\.com/i.test(window.location.hostname);\n  var googleAdsId = isInternational ? 'AW-18319947891' : 'AW-17806298785';\n\n  var script = document.createElement('script');\n  script.async = true;\n  script.src = 'https://www.googletagmanager.com/gtag/js?id=' + googleAdsId;\n  document.head.appendChild(script);\n\n  window.gtag('js', new Date());\n  window.gtag('config', googleAdsId);\n})();</script>\n  <script type=\"module\" crossorigin src=\"//download.codebuddy.cn/web/login/621af055e58c5a331af6c922c735d2b27fb15ba4/assets/index-DAklHib8.js\"></script>\n  <link rel=\"modulepreload\" crossorigin href=\"//download.codebuddy.cn/web/login/621af055e58c5a331af6c922c735d2b27fb15ba4/assets/vendor-react-CniOBA0S.js\">\n  <link rel=\"modulepreload\" crossorigin href=\"//download.codebuddy.cn/web/login/621af055e58c5a331af6c922c735d2b27fb15ba4/assets/vendor-beacon-C59zGw-e.js\">\n  <link rel=\"modulepreload\" crossorigin href=\"//download.codebuddy.cn/web/login/621af055e58c5a331af6c922c735d2b27fb15ba4/assets/vendor-tdesign-C_cH4DHQ.js\">\n  <link rel=\"modulepreload\" crossorigin href=\"//download.codebuddy.cn/web/login/621af055e58c5a331af6c922c735d2b27fb15ba4/assets/vendor-axios-CwoMFvHN.js\">\n  <link rel=\"modulepreload\" crossorigin href=\"//download.codebuddy.cn/web/login/621af055e58c5a331af6c922c735d2b27fb15ba4/assets/vendor-i18n-0ygXa4nV.js\">\n  <link rel=\"modulepreload\" crossorigin href=\"//download.codebuddy.cn/web/login/621af055e58c5a331af6c922c735d2b27fb15ba4/assets/vendor-oneid-BhsiHxDu.js\">\n  <link rel=\"modulepreload\" crossorigin href=\"//download.codebuddy.cn/web/login/621af055e58c5a331af6c922c735d2b27fb15ba4/assets/vendor-corejs-BsxtHbRV.js\">\n  <link rel=\"stylesheet\" crossorigin href=\"//download.codebuddy.cn/web/login/621af055e58c5a331af6c922c735d2b27fb15ba4/assets/vendor-tdesign-DukekHzM.css\">\n  <link rel=\"stylesheet\" crossorigin href=\"//download.codebuddy.cn/web/login/621af055e58c5a331af6c922c735d2b27fb15ba4/assets/vendor-oneid-vGmFLV8R.css\">\n  <link rel=\"stylesheet\" crossorigin href=\"//download.codebuddy.cn/web/login/621af055e58c5a331af6c922c735d2b27fb15ba4/assets/index-CqLAjbdd.css\">\n</head>\n\n<body>\n  <!--[if IE]>\n      <h1 style=\"position: absolute; width: 100%; text-align: center; top: 45%\">\n        建议使用 <a href=\"https://www.google.cn/chrome/\">Chrome</a>\n      </h1>\n    <![endif]-->\n  <td-horizon></td-horizon>\n  <td-aegis></td-aegis>\n  <div id=\"app\"></div>\n  <script>\n    if (window.Cypress) {\n      window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__REACT_DEVTOOLS_GLOBAL_HOOK__;\n    }\n  </script>\n</body>\n\n</html>\n"
+                  }
+                },
+                {
+                  "key": "http.response_content_length",
+                  "value": {
+                    "intValue": 17878
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": 200
+                  }
+                },
+                {
+                  "key": "http.status_text",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "www.workbuddy.cn"
+                  }
+                },
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "https"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [
+                {
+                  "attributes": [],
+                  "name": "open",
+                  "timeUnixNano": "1788854803395000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "send",
+                  "timeUnixNano": "1788854803395000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "fetchStart",
+                  "timeUnixNano": "1788854803617800097",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupStart",
+                  "timeUnixNano": "1788854803617800097",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupEnd",
+                  "timeUnixNano": "1788854803617800097",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectStart",
+                  "timeUnixNano": "1788854803617800097",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "secureConnectionStart",
+                  "timeUnixNano": "1788854803617800097",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectEnd",
+                  "timeUnixNano": "1788854803617800097",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "requestStart",
+                  "timeUnixNano": "1788854803618900097",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseStart",
+                  "timeUnixNano": "1788854803698200097",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseEnd",
+                  "timeUnixNano": "1788854803699700097",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "loaded",
+                  "timeUnixNano": "1788854803701000000",
+                  "droppedAttributesCount": 0
+                }
+              ],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            },
+            {
+              "traceId": "c2581601d9d501e4ac5ed3fc4df59650",
+              "spanId": "c7b07ae39ce7c0d9",
+              "name": "GET",
+              "kind": 3,
+              "startTimeUnixNano": "1788854803291000000",
+              "endTimeUnixNano": "1788854803742000000",
+              "attributes": [
+                {
+                  "key": "http.method",
+                  "value": {
+                    "stringValue": "GET"
+                  }
+                },
+                {
+                  "key": "http.url",
+                  "value": {
+                    "stringValue": "https://www.workbuddy.cn/console/account"
+                  }
+                },
+                {
+                  "key": "http.response_text",
+                  "value": {
+                    "stringValue": "{\"code\":0,\"msg\":\"OK\",\"requestId\":\"9f9fce8f-ac88-4a84-8945-2f0cf38666ba\",\"data\":{\"uid\":\"8b3cb381-9ebc-4813-92d9-9e5880528465\",\"nickname\":\"乐幻\",\"uin\":\"330102140407\",\"type\":\"\",\"lastLogin\":true,\"isCreator\":false,\"isAdmin\":false,\"pluginEnabled\":true,\"deployStatus\":{\"statusCode\":0,\"statusMsg\":\"\",\"detailMsg\":\"\"},\"accountType\":\"\",\"sso\":{\"domain\":\"\",\"domainModifiedTimes\":0},\"idp\":\"\",\"areaInfoComplete\":false,\"oneidAccountId\":\"\",\"isCurrentOneIdEnterprise\":false,\"isCurrentOneIdPersonal\":false,\"isFirstLogin\":false,\"phoneNumber\":\"17327137416\",\"mpOpenId\":\"oKK9J16f4mibhCrguJGD7IG3K5n0\"}}"
+                  }
+                },
+                {
+                  "key": "http.response_content_length",
+                  "value": {
+                    "intValue": 581
+                  }
+                },
+                {
+                  "key": "http.status_code",
+                  "value": {
+                    "intValue": 200
+                  }
+                },
+                {
+                  "key": "http.status_text",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "http.host",
+                  "value": {
+                    "stringValue": "www.workbuddy.cn"
+                  }
+                },
+                {
+                  "key": "http.scheme",
+                  "value": {
+                    "stringValue": "https"
+                  }
+                },
+                {
+                  "key": "http.user_agent",
+                  "value": {
+                    "stringValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [
+                {
+                  "attributes": [],
+                  "name": "open",
+                  "timeUnixNano": "1788854803291000000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "send",
+                  "timeUnixNano": "1788854803291100000",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "fetchStart",
+                  "timeUnixNano": "1788854803291299902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupStart",
+                  "timeUnixNano": "1788854803291299902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "domainLookupEnd",
+                  "timeUnixNano": "1788854803291299902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectStart",
+                  "timeUnixNano": "1788854803291299902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "secureConnectionStart",
+                  "timeUnixNano": "1788854803291299902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "connectEnd",
+                  "timeUnixNano": "1788854803291299902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "requestStart",
+                  "timeUnixNano": "1788854803293799902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseStart",
+                  "timeUnixNano": "1788854803740099902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "responseEnd",
+                  "timeUnixNano": "1788854803741599902",
+                  "droppedAttributesCount": 0
+                },
+                {
+                  "attributes": [],
+                  "name": "loaded",
+                  "timeUnixNano": "1788854803742000000",
+                  "droppedAttributesCount": 0
+                }
+              ],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

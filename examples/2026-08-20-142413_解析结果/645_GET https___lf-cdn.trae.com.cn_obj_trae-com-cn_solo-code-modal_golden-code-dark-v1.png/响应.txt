@@ -1,0 +1,33 @@
+HTTP/2 200
+server: Tengine
+content-type: image/png
+content-length: 289555
+date: Tue, 18 Aug 2026 04:07:58 GMT
+accept-ranges: bytes
+cache-control: max-age=2592000
+x-bdcdn-cache-status: TCP_MISS
+x-kfc-cachekey: http://d-ks-origin-cache-all-lf.originalstatic.com/trae-com-cn/solo-code-modal/golden-code-dark-v1.png
+x-tos-hash-crc64ecma: 2300216302361662377
+x-tos-request-id: eb0f47af-11d8-40ea-a999-2c7b112d3b00-fdbdgdc02g0g71agg45-a2e4c4a
+x-tos-response-time: Tue, 18 Aug 2026 04:07:58 GMT
+x-tos-storage-class: STANDARD
+via: fdbd:dc02:29:b02::46, cache59.l2cn1816[0,0,304-0,H], cache2.l2cn1816[2,0], cache9.cn7729[0,0,200-0,H], cache19.cn7729[2,0]
+x-request-ip: fdbd:dc03:14:124::16
+x-tt-trace-tag: id=03;cdn-cache=hit;type=static
+x-response-cinfo: fdbd:dc03:14:124::16
+x-response-cache: miss
+server-timing: inner; dur=62
+x-tt-trace-host: 0114757084c855220870cfb0be8c9ee39a50b867eb02ebf257f69599595e6d61f29eed8da889747250ffc864fa8c320a71a44687b5ba43ee6f761f4af9bcb69073bfc2ba0d5547eb58af0e005cee1d562cd9742319ce24782630181d36b63301f1
+x-tt-trace-id: 00-130ed25a0d875657454a4ca892afffff-130ed25a0d875657-01
+x-tt-logid: 202608181207583386EF8BF83B97591FA6
+etag: "cc27d6b489ff856e8b1e735907be9047"
+last-modified: Thu, 26 Mar 2026 03:57:44 GMT
+age: 180941
+ali-swift-global-savetime: 1787026078
+x-cache: HIT TCP_MEM_HIT dirn:-2:-2
+x-swift-savetime: Tue, 18 Aug 2026 05:20:31 GMT
+x-swift-cachetime: 2587647
+x-tt-supplier-id: 0_1
+access-control-allow-origin: *
+timing-allow-origin: *
+eagleid: 2497e51817872070194356641e

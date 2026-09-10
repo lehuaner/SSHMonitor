@@ -1,0 +1,25 @@
+{
+  "type": "local",
+  "sessionId": "9dd5cd36-0ddc-40a0-9692-eebac81c947d",
+  "name": "审查图片任务下右侧菜单组件协调性",
+  "conversationOrigin": "legacy_workbuddy_local",
+  "workDir": "D:\\Code\\Project\\Python\\ExtractRole",
+  "isPlayground": 0,
+  "createdAtMs": 1787663744769,
+  "updatedAtMs": 1787663849522,
+  "lastActivityAtMs": 1787663849522,
+  "clientContext": {
+    "localStatus": "active",
+    "hostId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "sessionKind": "manual",
+    "model": "",
+    "sourceMode": "",
+    "permissionMode": "",
+    "expert": {
+      "id": "",
+      "locale": "",
+      "runtimeIdentity": "",
+      "marketplace": ""
+    }
+  }
+}

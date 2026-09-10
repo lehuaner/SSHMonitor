@@ -1,0 +1,25 @@
+{
+  "type": "local",
+  "sessionId": "ea8b1a6b-e3e4-4b87-a9e0-2ee9bad376cb",
+  "name": "评估项目部署到 termux 的可行性",
+  "conversationOrigin": "legacy_workbuddy_local",
+  "workDir": "D:\\Code\\Project\\Rust\\Tomato-Novel-Downloader",
+  "isPlayground": 0,
+  "createdAtMs": 1787649774795,
+  "updatedAtMs": 1787652233179,
+  "lastActivityAtMs": 1787652233179,
+  "clientContext": {
+    "localStatus": "active",
+    "hostId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "sessionKind": "manual",
+    "model": "",
+    "sourceMode": "",
+    "permissionMode": "",
+    "expert": {
+      "id": "",
+      "locale": "",
+      "runtimeIdentity": "",
+      "marketplace": ""
+    }
+  }
+}

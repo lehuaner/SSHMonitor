@@ -1,0 +1,23 @@
+HTTP/2 200
+content-type: application/json; charset=utf-8
+content-length: 21
+x-dynamic-status: MISS from KS-CLOUD-SQ-CM-81-05-L
+date: Thu, 20 Aug 2026 06:23:04 GMT
+upstream-caught: 1787206984375016
+x-tt-logid: 202608201423047289B6A52AD6B4C98FFB
+access-control-allow-origin: https://www.trae.cn
+access-control-max-age: 1800
+access-control-allow-credentials: true
+access-control-allow-methods: GET, OPTIONS, HEAD, PUT, POST
+cross-origin-resource-policy: cross-origin
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+expires: 0
+server-timing: inner; dur=5
+x-tt-trace-host: 01207a981426127d02143837b6aace09ade65bd47fc717eecbe95e115d463f848df9375a2ccb71291c5e320a24b747fd51f62513a4ae1b5fdb5696ca10e2a51736eb4ac8869b4b5eeba31b78780568ac824d5762e1756e76e970759bd8a003129c
+x-tt-trace-tag: id=06;cdn-cache=miss;type=dyn
+x-tt-trace-id: 00-2608201423047289B6A52AD6B4C98FFB-5F7686B4B7FCC89F-00
+server: TLB
+server-timing: cdn-cache;desc=miss,edge;dur=0,origin;dur=52
+x-cdn-request-id: 41732eabef9dfd82b3049f7fceee2f75
+x-link-via: sqcm81:443

@@ -1,0 +1,11 @@
+{
+  "knowledgebase_path": "d:\\Code\\Project\\Nodejs\\ai-unified\\ai-unified",
+  "knowledgebase_uri": "https://github.com/lehuaner/ai-unified.git",
+  "strategy": {
+    "index_type": 1,
+    "index_strategy": {
+      "embedding_model": "codekg_bge_m3",
+      "split_method": "v3"
+    }
+  }
+}

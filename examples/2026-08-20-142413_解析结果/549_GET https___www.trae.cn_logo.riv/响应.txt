@@ -1,0 +1,19 @@
+HTTP/2 200
+server: Tengine
+content-type: application/octet-stream
+date: Thu, 20 Aug 2026 06:23:04 GMT
+vary: Accept-Encoding
+cache-control: no-cache
+x-ggw-asgw-psm: goofy.deploy.ggw.asgw.2001.2505528
+x-ggw-config-version: 13488011
+x-tt-logid: 202608201423046836F2B65EE2D6DF4C7D
+strict-transport-security: max-age=31536000; includeSubDomains
+server-timing: inner; dur=17
+x-tt-trace-host: 01207a981426127d02143837b6aace09add5ecb818449daebc4f4265d1b6a9a27cea28ebc88c3e7cae3f81e0a0f43c7d1bd6bff9af4712b9c708d53ec6a782608708a3e89daefa0c1b871f5e2f2204a8cf7b7aa8c5d3487d6e11b26f73fa3654cb
+x-tt-trace-tag: id=03;cdn-cache=miss;type=dyn
+x-tt-trace-id: 00-2608201423046836F2B65EE2D6DF4C7D-54F6708A4CEFBA02-00
+x-country-geonameid: 1814991
+via: cache11.l2cm9-6[51,0], cache6.cn7995[71,0]
+server-timing: cdn-cache;desc=MISS,edge;dur=20,origin;dur=51
+timing-allow-origin: *
+eagleid: 7014551a17872069843866706e

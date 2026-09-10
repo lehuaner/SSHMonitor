@@ -1,0 +1,12 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "8e787afb-05be-4edb-bca8-ef7b5a598104",
+  "data": {
+    "claimed": true,
+    "active": false,
+    "credit_num": 1000,
+    "validity_period": 12,
+    "end_time": "2026-04-30 23:59:59"
+  }
+}

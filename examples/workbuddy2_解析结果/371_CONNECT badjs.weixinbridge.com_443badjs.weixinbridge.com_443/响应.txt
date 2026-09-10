@@ -1,0 +1,156 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 16:07:21.893
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.2
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=mp.weixinbridge.com, O=Shenzhen Tencent Computer Systems Company Limited, L=Shenzhen, S=Guangdong Province, C=CN
+  Simple Name: mp.weixinbridge.com
+  DNS Name: mp.weixinbridge.com
+
+[Issuer]
+  CN=DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1, O="DigiCert, Inc.", C=US
+  Simple Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+  DNS Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+
+[Serial Number]
+  0CCA70E8C4E489E7F37E0B06EB4120DA
+
+[Not Before]
+  2026/1/16 8:00:00
+
+[Not After]
+  2027/2/15 7:59:59
+
+[Thumbprint]
+  F7C17200B0B16C4D44EE577D95A38EAA3F364331
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 d2 a7 44 5a 1b 0c e2 ea f2 6c bf 05 c6 88 f3 ee ad 5e a2 17 b2 cd f6 c1 a9 d6 e2 56 62 ca f0 08 fb 95 f1 2c 5d f1 4d cb 3f 87 f2 96 96 61 80 e0 a1 45 40 4e e7 b0 45 55 18 ce 05 07 c7 53 41 98 a2 5b 72 80 87 01 a9 95 16 43 72 30 f7 fa 22 83 02 27 b1 e1 10 a3 eb 33 5e b7 0a ef d3 dd a4 28 dc 2b 98 91 74 c2 e4 c7 88 16 df 39 cf a4 52 3f 10 65 81 61 11 c4 7b 03 16 0b a1 95 21 49 a8 60 01 e4 18 ba a5 52 a5 7d ff e6 d6 b1 3c 41 55 d6 c2 6a 88 d3 44 a2 9a 70 15 ff 87 9b 3b ee ff 2b b1 16 17 04 d5 aa c7 cb 92 c2 e8 db e1 ab 7e a5 df 95 2b cb a6 88 40 87 92 1b ba 86 94 d9 a0 4a 3d d1 92 c5 a6 38 73 1c a3 b7 44 fe cd 58 57 03 cb ed 34 31 07 19 7d 2a e3 ff 8f 26 e1 38 dc 5e 3c c6 af c5 49 1e e0 ab 08 52 29 a5 2a 8e 78 ee da 3f 18 52 a5 a0 a6 06 ea 5c e7 28 9f 8d fa 47 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=2b2316811b47898a907aece832d46c8e72f9ce25
+
+* 使用者密钥标识符(2.5.29.14):
+  6661e427927b0c11b559abf98f4c37aef3a121e9
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=mp.weixinbridge.com
+DNS Name=api.offline.weixin.qq.com
+DNS Name=badjs.weixinbridge.com
+DNS Name=city.weixin.qq.com
+DNS Name=cube.weixinbridge.com
+DNS Name=demo.open.weixin.qq.com
+DNS Name=edu.weixin.qq.com
+DNS Name=hw.weixin.qq.com
+DNS Name=iot.weixin.qq.com
+DNS Name=mpkf.weixin.qq.com
+DNS Name=o2o.gtimg.com
+DNS Name=open.offline.weixin.qq.com
+DNS Name=prizesapp.com
+DNS Name=search.weixin.qq.com
+DNS Name=wecooper.weixin.qq.com
+DNS Name=wifi.gtimg.com
+DNS Name=wifi.weixin.qq.com
+DNS Name=wxardm.weixin.qq.com
+DNS Name=wxo2o.qq.com
+DNS Name=yao.qq.com
+DNS Name=yao.weixin.qq.com
+DNS Name=zb.weixin.qq.com
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://ocsp.digicert.cn
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+4c63dc98e59c1dab88f61e8a3ddeae8fab44a3377b5f9b94c3fba19cfcc1be26
+‎2026‎年‎1‎月‎16‎日 15:19:00
+SHA256
+ECDSA
+3045022100ad4625408c6c22fe8a5d33ffa7b3531750dfa7d748f7aa0e92b0aabd421516130220128fec0466420eda4cb0a92761e0caf707209057d91a8b4a6bd3adc8d71bc2ff
+
+v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎1‎月‎16‎日 15:19:00
+SHA256
+ECDSA
+3045022100bef8f498e1893cef2dd72b35921b1984a41ae470494063a0d6dab7307525eac10220356cfdfda801503137046ec9668dd0a63ff5eac96174ba34c69215bac1dcbe99
+
+v1
+604c9aaf7a7f775f01d406fc920dc899eb0b1c7df8c9521bfafa17773b978bc9
+‎2026‎年‎1‎月‎16‎日 15:19:00
+SHA256
+ECDSA
+3045022100b21e80bfcbed9c7ea6aee7259dcc7c423637d3827437b022695ef8ca47e44c6002206ad1214286c4a59b76b0bbe87afa91acc1e8fbda1133e2d158e35528636b632c
+
+
+[SubjectAltNames]
+DNS Name=mp.weixinbridge.com
+DNS Name=api.offline.weixin.qq.com
+DNS Name=badjs.weixinbridge.com
+DNS Name=city.weixin.qq.com
+DNS Name=cube.weixinbridge.com
+DNS Name=demo.open.weixin.qq.com
+DNS Name=edu.weixin.qq.com
+DNS Name=hw.weixin.qq.com
+DNS Name=iot.weixin.qq.com
+DNS Name=mpkf.weixin.qq.com
+DNS Name=o2o.gtimg.com
+DNS Name=open.offline.weixin.qq.com
+DNS Name=prizesapp.com
+DNS Name=search.weixin.qq.com
+DNS Name=wecooper.weixin.qq.com
+DNS Name=wifi.gtimg.com
+DNS Name=wifi.weixin.qq.com
+DNS Name=wxardm.weixin.qq.com
+DNS Name=wxo2o.qq.com
+DNS Name=yao.qq.com
+DNS Name=yao.weixin.qq.com
+DNS Name=zb.weixin.qq.com
+

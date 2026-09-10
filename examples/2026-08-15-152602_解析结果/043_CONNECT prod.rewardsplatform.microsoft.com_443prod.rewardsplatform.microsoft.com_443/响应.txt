@@ -1,0 +1,113 @@
+HTTP/1.1 200 Connection established
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=prod.rewardsplatform.microsoft.com
+  Simple Name: prod.rewardsplatform.microsoft.com
+  DNS Name: prod.rewardsplatform.microsoft.com
+
+[Issuer]
+  CN=GeoTrust TLS RSA CA G1, OU=www.digicert.com, O=DigiCert Inc, C=US
+  Simple Name: GeoTrust TLS RSA CA G1
+  DNS Name: GeoTrust TLS RSA CA G1
+
+[Serial Number]
+  0F2BFB55DBFFC2E8256002484A7EEFF7
+
+[Not Before]
+  2026/5/27 8:00:00
+
+[Not After]
+  2026/11/28 7:59:59
+
+[Thumbprint]
+  9144DD1DCDF3AF31D1CDF15669F827A5F1AC2125
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 b3 24 c5 b0 15 40 b2 26 a2 1b c1 71 e5 e8 fc 91 2d c4 fc 11 f9 15 d2 a0 c2 cf 99 48 c2 c3 03 93 8d 1f c9 c1 88 5b 83 b4 c7 4e c9 de e9 02 f8 dc a7 d6 94 f9 56 1c 9e be 87 eb eb 67 28 38 49 fd 7a 06 09 b7 76 dc 91 c0 dc be 98 44 5c 0f 12 17 7d b6 d4 53 10 ba b4 32 44 55 7c d9 14 f8 5a f0 a4 78 d6 d6 a5 cb dd d2 c4 a2 69 fe d0 c3 f7 8e 73 bb 51 5b 6b 0c d0 98 ee 7c 9b 56 7d 38 3a dc 99 3b c3 1b ea 30 aa f3 d6 4d b7 43 76 68 d5 df 9e 0f d2 fe 82 91 86 fe 72 cc 4d 00 05 87 00 75 94 f3 54 ac e0 82 f1 9e 11 d5 16 99 cc e2 be 49 7f 32 0d da 44 b4 11 c5 e6 3a 8f 77 76 a9 d3 2f 10 aa 34 d4 16 90 c7 9b b4 fe 1e 47 6e fe c7 08 b8 9f 93 4d bb e6 8f 81 c1 10 07 79 85 b0 fd 9e d2 9f 20 e0 b6 15 3a ea bb 62 8a 8a 30 4d 25 24 32 8e f9 26 18 3d 38 bb 75 7b b6 b7 15 c2 5f 19 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=944fd45d8be4a4e2a680fefdd8f900efa3be0257
+
+* 使用者密钥标识符(2.5.29.14):
+  5bab69098c7465bb57919bc43d692253ce764ac7
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=prod.rewardsplatform.microsoft.com
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+客户端身份验证 (1.3.6.1.5.5.7.3.2)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://cdp.geotrust.com/GeoTrustTLSRSACAG1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://status.geotrust.com
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.geotrust.com/GeoTrustTLSRSACAG1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+c2317e574519a345ee7f38deb29041ebc7c2215a22bf7fd5b5ad769ad90e52cd
+‎2026‎年‎5‎月‎28‎日 0:53:43
+SHA256
+ECDSA
+3045022100abab2f73f0d5ac0987b2c175bd84c6a214a3d82e15f0157185634738c95c972e022040493e00a79b2977c0ec49fc0dd975d11f478e48f5c042233d5ee80bde4ea453
+
+v1
+d76d7d10d1a7f577c2c7e95fd700bff982c9335a65e1d0b3017317c0c8c56977
+‎2026‎年‎5‎月‎28‎日 0:53:43
+SHA256
+ECDSA
+3045022100b2e26426b42204b970e01c4138a54fb137b9244f9ce164c67e82308c7a2ffcf20220499e896c2e7920c30801872e8d36c54eda3e588f7af058ae679b242146bbe7d2
+
+v1
+944e4387faecc1ef81f3192426a8186501c7d35f3802013f72677d55372e19d8
+‎2026‎年‎5‎月‎28‎日 0:53:43
+SHA256
+ECDSA
+304502205fb2555106b17b978e76cee7d6799f719a6fccfc84543db950a7e8857e1911a5022100b9064de7f20a53bd0fb6ff6834c38baaf462cf64c85f2df79b9f65bbcac022be
+
+
+[SubjectAltNames]
+DNS Name=prod.rewardsplatform.microsoft.com
+

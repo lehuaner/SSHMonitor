@@ -1,0 +1,24 @@
+POST https://api.trae.cn/trae/api/v3/oauth/ExchangeToken HTTP/2
+:method: POST
+:authority: api.trae.cn
+:scheme: https
+:path: /trae/api/v3/oauth/ExchangeToken
+content-length: 761
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+sec-fetch-dest: empty
+sec-fetch-mode: no-cors
+sec-fetch-site: none
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+content-type: application/json
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.50
+x-request-id: 21325bea-893d-4f72-a305-8a02bf6ce0af
+accept: */*
+x-tt-trace-id: 00-044fedac0dd7e685d584dc903970ffff-044fedac0dd7e685-01
+x-helios: FxYAAGmAj2W2o/mZr/v81RSqd7OTIYU2u5pAQhZodm46ck1a
+x-medusa: dRSAaoH835Chw1xRoD5IGiHb4XIVbAMBb4z7LGDAEYE1mQrracKcHR40iBlrfnQdV8KZQ7Nr/rQ15TAxKt1u46OcS0OOOGOPPOq650JmXoYumH9Tcp7x2wr1vWIau/1S3P6XyrOiUHwx756eNt0BfLrILHXqYHDKKc4SrB1a0fATGM1gtwHFNq/wYHvcpP91imO+xQRq2hASkyUndPbMBqG3yhLhghhmv258gFDcTYrikA0GBVB2yfazc/oDZhyTcMEl/Dppq07Js7DcZdpG5xVE64olSCUnJO2eiZTotgUubpCK/XQKgmTX6wVNtDXTt8hMHY8fomxX14yv6jOYBA/+EkDp+RNN1+k9yffYPGAFByyPpzPgnDtvoq4K1D3I7g5EE6YOG9atKE3gMDIW025OCr2y0LqaucoB9tsxbpJ4x3Gb14hJsWsYj8CjRwOvi1dvF8Dny/XAny5oETm+8CsljBbu29s0jXqNDjPBQOqTll8Eb/7R7ZJya6Iw9aODdVNagEM7wV6FYDa4rqiiI6Ve4T+Y4lPsh198O0Qhp8QidWmP5p3ISbtRke//6T6JHdw6XfsU06c20ZuaALMpHOQfFm8BRD2wu8AHHAbf2WviMOh5thuUof9DFkZeJkjwsi8nmm4n+ei4rylk8dcSo15rNSBnnw67TjxDn5+P3x8fz9vl/c8Xh+inNWwbERW5aC8jALLbfxk3/5G7r4k7jWtqXTxY7K03v82Rj3YuX7xLjcmqOefJx6YO1LhPZ2UJ5COYaLXQFygf5f/9/7//9///AAA=
+x-neptune: -11|50:51:59:00:09

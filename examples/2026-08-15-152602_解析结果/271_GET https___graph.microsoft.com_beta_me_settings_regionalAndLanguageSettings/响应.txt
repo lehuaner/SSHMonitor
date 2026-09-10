@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Content-Type: application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false;charset=utf-8
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000
+request-id: fe327ec8-8d00-4a8e-aa18-9218ce46cc3a
+client-request-id: fe327ec8-8d00-4a8e-aa18-9218ce46cc3a
+x-ms-ags-diagnostic: {"ServerInfo":{"DataCenter":"Japan East","Slice":"E","Ring":"5","ScaleUnit":"004","RoleInstance":"TYO1EPF0000AF9C"}}
+X-Content-Type-Options: nosniff
+OData-Version: 4.0
+Date: Sat, 15 Aug 2026 07:25:42 GMT
+Content-Length: 557

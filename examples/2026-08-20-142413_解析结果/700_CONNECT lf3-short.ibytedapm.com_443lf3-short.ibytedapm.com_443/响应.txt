@@ -1,0 +1,116 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:23:44.243
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_128_GCM_SHA256
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.ibytedapm.com
+  Simple Name: *.ibytedapm.com
+  DNS Name: *.ibytedapm.com
+
+[Issuer]
+  CN=RapidSSL TLS RSA CA G1, OU=www.digicert.com, O=DigiCert Inc, C=US
+  Simple Name: RapidSSL TLS RSA CA G1
+  DNS Name: RapidSSL TLS RSA CA G1
+
+[Serial Number]
+  0989075E42E50C8587AC1C2925210CA2
+
+[Not Before]
+  2026/1/19 8:00:00
+
+[Not After]
+  2027/1/19 7:59:59
+
+[Thumbprint]
+  0712D475DFAC38FDE7C6E1C5F7D1F27F1283FE2F
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 a6 5b 1e 6a 09 f6 54 59 93 69 0f 08 fd c9 1b b2 8a 03 e8 28 18 f9 d5 9a bb 0f 3c 0b 27 4c 57 e2 b7 74 ce 0d c6 45 04 14 3a d3 57 87 54 7f 19 f3 e0 ff 19 a1 c3 d2 d4 19 45 c2 10 66 23 dd e3 ce 9c ee e3 46 9c 92 be a6 c4 eb f5 48 3c 6b d1 0a 49 e2 e6 f3 5b 8e ff 12 7f 70 e1 c2 0c 13 9c 52 be d2 38 1f 89 c4 7a 59 45 d3 ba 5e 03 62 ee 47 55 2c c5 7c fc 78 35 16 6c 58 69 6c 34 c0 fe 7a 25 bb c6 3a ad 1d cf 51 d0 a4 af 05 3e f6 a7 dc 20 aa d3 5a 3c 3c 50 1b 04 12 01 fe de f2 1d 1e ee ef 5f a0 7f c1 56 f8 92 67 8e 24 d2 c0 38 d7 d5 d0 74 02 e0 6a fc 53 f1 4b 6c 32 be a9 57 6d 47 82 dc 22 41 a1 50 af d1 6c e8 21 94 66 e1 5e 40 0d 84 a5 06 9b 41 fa 56 ff 67 cb 05 8a 72 d5 eb 80 b7 4e 9f 04 fe 29 0a e0 b0 0a bf 87 30 bd 38 17 5d 42 5c f3 2c 0c 7c 4f 8a f7 ee 21 f6 a9 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=0cdb6c82490f4a670ab814ee7ac4485288eb5638
+
+* 使用者密钥标识符(2.5.29.14):
+  acc096d00877129d4f608e2223f213d7932622f0
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.ibytedapm.com
+DNS Name=ibytedapm.com
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://cdp.rapidssl.com/RapidSSLTLSRSACAG1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://status.rapidssl.com
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.rapidssl.com/RapidSSLTLSRSACAG1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+4c63dc98e59c1dab88f61e8a3ddeae8fab44a3377b5f9b94c3fba19cfcc1be26
+‎2026‎年‎1‎月‎20‎日 3:24:14
+SHA256
+ECDSA
+3045022059ac94059f97692f2bdfdae335d171a4ee6e51f7f8233b8eaaf9b1beb67023320221009d7633e0a2d8ebe7b2220652b169d4c040ab9c6e3189c926e4c1f61c6590acfb
+
+v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎1‎月‎20‎日 3:24:14
+SHA256
+ECDSA
+3045022002ef9baf8f903a003df5b69dd50373db14f215e82bcc1ed0da0615b07786efb0022100c93eab6aec326e6875c89777f16dbbb29406ba7b175325d87e56b320c4091f1b
+
+v1
+604c9aaf7a7f775f01d406fc920dc899eb0b1c7df8c9521bfafa17773b978bc9
+‎2026‎年‎1‎月‎20‎日 3:24:14
+SHA256
+ECDSA
+3046022100cc37d9e7dfa5c663bf1f8b7f262648dc7bd077cc99b22f50059f5c66851b9cc2022100d08e05744240669b0a04d1de78667f186fdd5e03652e5f000bd98f602cd21dea
+
+
+[SubjectAltNames]
+DNS Name=*.ibytedapm.com
+DNS Name=ibytedapm.com
+

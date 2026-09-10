@@ -1,0 +1,32 @@
+GET https://api5-normal.mchost.guru/api/remote/v1/plugins?page_size=100&product_name=lite&package_type=stable&client_version=0.1.50&os=windows HTTP/2
+:method: GET
+:authority: api5-normal.mchost.guru
+:scheme: https
+:path: /api/remote/v1/plugins?page_size=100&product_name=lite&package_type=stable&client_version=0.1.50&os=windows
+accept: */*
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+authorization: Cloud-IDE-JWT eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTAwMDk4NTI1MzM4MDUzOCIsInNvdXJjZSI6InJlZnJlc2hfdG9rZW4iLCJzb3VyY2VfaWQiOiJIbFVqbUxTUmJ1VE9OanF1bDA1d1FUdXlJUDRZcy12WXJILTNHRkRjZnA4PS4xOGNiZTljYzJmNjQ5MDIyIiwidGVuYW50X2lkIjoiN28yZDg5NHA3ZHIwbzQiLCJ0eXBlIjoidXNlciJ9LCJleHAiOjE3ODc5ODgzNDAsImlhdCI6MTc4Njc3ODc0MH0.KJkQvfHXqlJoX9EMzMLxD7ydGkyDHQNAqi4bh-x3rd0isntfMGLa67QjTgMe6hb2JWLOmhhcd2i-KL0-uZMRxBqCKdlGcAc9jYGihcNDLihRR56QiICspWRE-hZ7C0H-noTUMhDJ-EGBD4j68CLtfOBb8oPZIC_bl4Fn9O52Dqnu14_kEvFdDhNEPMdmVgFyc5EJPo-1tSR2C3lGxcLQsW1dc0pEjD6iiNW-0s5BrCbf94Tjfyh8u1hwvqaRLjQdizI-pQmQzFgBJKWRwzVeNwCX7ju5QxTvAZfEAoayuMFZ_5HoSHB_J4atsJskMFWppWEeqQkA0ktxCulBHX_YieAeH3-dhLDP5nZeAiGB3DX-BcGVz1mW33AlzAbRuOvisoyqRql5HJULF6SLoxuzFA5omj4mESPcmjQ5q88w4R_EZpOcRkuQ7Z9TUTWMZe__TXX5V0Z-lvzAKnHo16BFZGlgde2B62HA0vVb20cAJmgn_iijN_KERb8dKOFhwxiYg1yAkM36BjLrZG3UGE0WrQPG0RnMtw8MZrfmb8_JybHAiGLJB1--yPz12e_8lupLtYN6bQwfrjFeambOWKVxm4PFUddN9Mb85_LD6us_TOK-QzqiAnyEbgwedSfaEJTAY5NIkd29pV1FTLOOlTk_IUPChojuwWtDw8LAr0D_9fc
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+x-preferenced-language: zh-cn
+x-trae-client-type: lite
+x-trae-user-timezone: Asia/Shanghai
+x-user-region: CN
+sec-ch-ua: "Not_A Brand";v="99", "Chromium";v="142"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.50
+x-request-id: 01cc6c08-95d5-4395-a4f8-98b76933f3bc
+x-ss-dp: 787976
+x-tt-trace-id: 00-044ff63e0dd7e685d584dc9669cfffff-044ff63e0dd7e685-01
+x-helios: AzgAAHi1GaYvvAypLNxgnPoLx9mRkL9zwHXxGfs7MeHuSF9W
+x-medusa: ehSAao7835Cuw1xRrz5IGi7b4XIGJAMBXQ3SamCAMdQ3GQs1ktk7g3Hi+p21YOPuKy+kEYIGn3kExIOpXpq4vv4anoKHGWuCWWeXt0gjqi3qUS+m1P40RQ/iPJD4e8dqswh7dun27HrKixCgEyp7ihoYVBn7cNGje7TQmlTgOArryx6mQMAgUZbLQJitK0OdO/Vevgymt03sADXZIfl+b2ucQn3cYfGDMbrAqtlWJAMn+H0qYAeLohkWRVbPSLa1GyQzPzaS60/IpuekFBvo9eD8F9iDRQ04exgAY6HG00tPYvfo2jVlI1T5bHZoOBvmNoDz9IiAVQhMUGEI6KXcOCD+EizjSwsED5DTdA87Xt++sUtDbdiZvScLnGhdRbrSxndQxL2ZUxWCxqsx626QmvvGs5sDjGmq+zE3ApGliq+axOd5QlcLMRl6eofCjB3+pSxy9WqT0EWIuKHtmPOfh+64wnKS45gwfZeaJPtb8AZRwLr7PafIrOuBtZJ+Wqb/HVioj4IjTc0My7iDGOv2v0w+3sI67Z7jtbbR80u/iEICVVttc7AOmUhqcjv5k05x9mgiQvjQSLkCyF9586ZUTU4RthfvdxzltIQEr149kE2+ku/QsNxqR2iMWXiWzglD+POsyxymuTUfRsymdVTNZW7BtbJ3nz6tb7xDnZ/P3xcez9/l3c8Xh+gnmJogqzHu+TIjAJKbbxE2/5W5j8k7hWvqXT5YrL0/v82Rj3YuT7xLjbzSgefZR7ZO1LhvZ3UB5KOcapWQFyAf5f//37////7/AAA=
+x-neptune: -11|50:51:59:00:09

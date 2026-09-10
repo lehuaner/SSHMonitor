@@ -1,0 +1,25 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "18104fa4-791f-422e-b8f5-4c59fa30dcf8",
+  "data": {
+    "buddy": {
+      "instance_id": 6454735,
+      "name": "设计喵",
+      "personality": "于寻常处捕捉灵光，把留白、线条和每处细节都抠到极致的灵感设计师。",
+      "rarity": "R",
+      "soul_desc": "灵感设计师",
+      "base_static_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/d14862cb941b6ad2.png",
+      "base_animated_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/9ee3b54ed23cc310.webm",
+      "full_animated_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/9399962ea9a253dc.apng",
+      "thumbnail_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/5a29258b591ed23e.png",
+      "appearance": {
+        "eye": null,
+        "hat": null,
+        "body_accessory": null,
+        "effect": null
+      }
+    },
+    "poll_interval_seconds": 60
+  }
+}

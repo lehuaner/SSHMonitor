@@ -1,0 +1,26 @@
+OPTIONS https://api5-normal.mchost.guru/api/remote/v1/plugins?page_size=50&product_name=lite&chat_mode=work&package_type=stable&client_version=0.1.51&os=windows HTTP/2
+:method: OPTIONS
+:authority: api5-normal.mchost.guru
+:scheme: https
+:path: /api/remote/v1/plugins?page_size=50&product_name=lite&chat_mode=work&package_type=stable&client_version=0.1.51&os=windows
+accept: */*
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+access-control-request-headers: authorization,x-preferenced-language,x-trae-client-type,x-trae-user-timezone,x-user-region
+access-control-request-method: GET
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: 8242053c-8e74-4fbe-883a-904b97e47fd3
+x-ss-dp: 787976
+x-tt-trace-id: 00-1dd6e74f0d945686928468a7a1bdffff-1dd6e74f0d945686-01
+x-helios: AngAALe8e9AWF4KAN0CCTNypiUiUovX8JWdOaQKS+KD9u32U
+x-medusa: ap2Gap512ZC+SlpRv7dOGj5S53JRTQMBsAyfZQBAMXg6GduIdf3P3p+W/n5t0Y/iVwmi1U6KPg2AIZ2c+jRKl023PzAQC7sv+B7WJ5AEx9wlZXOjnAVo7zwZYS9rS2UXZqUMEWHoX+tvV8OAaHd/RhNbNpHpg+qg7Z1g6lIDD56GGfUl6L25McjI53rNtprTt7oFcvpuEzIRnPjZtNjwc78GN2oVIBJJzcybfZN9EbZllQAgFW255SLLsEUDaCd8ZtiqlBQTxDLGdWPBjDemL09teEi9gk6f7Dj2miZnECrVLdKusvKmBosLbwluwG/XYVT+7Wvyazf8khQ3LP11jfW3o16vxzdvAINq9q3xcqoapoySg7oYlLkdWd5Id48UAsfSv5XjgDsOrw+tijD9Vku4AcVWBroiJ98GU1LEVvnZwFtrsIFH6GYM/dy7lV+4NonrfKah/WFgFBOsvBKvO7M30wNXRU31qlRH+X/fNhpDZxjLDS4JzowJmS9wFGDAV93ubhNrqZTeWgd6C2Y4JQ9H879/yFvRQWzxlOuyDrSAs0+cbHererdHNj7SnzKIpWDTBHdvz8T48QfHwEwzjyNhOOIJKOPm9IEEOd0kGsD7DXjrZ6rGH4g3RvyqJ/934sleO1AY6uVn3RJwTDXXQLZrsbBHy5rFzyxDn7/Pzxcez9/n3c8Xj+gnw/Mmvpcbg8onAJKbbxk2f5G7j8k7hWvqWTx47K0/v02Vj3YuX7xLDY3sdYfZR2de1LpvJ3UB5COYaJWQFygeZf//37/v//7/AAA=
+x-neptune: -11|50:51:59:00:09

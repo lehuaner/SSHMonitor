@@ -1,0 +1,23 @@
+HTTP/2 200
+server: volc-dcdn
+content-type: application/json; charset=utf-8
+content-length: 21
+date: Mon, 17 Aug 2026 17:32:37 GMT
+upstream-caught: 1786987957780093
+x-tt-logid: 202608180132370ACCF3FAD6A83D9DCDB8
+access-control-allow-origin: vscode-file://vscode-app
+access-control-max-age: 1800
+access-control-allow-credentials: true
+access-control-allow-methods: GET, OPTIONS, HEAD, PUT, POST
+cross-origin-resource-policy: cross-origin
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+expires: 0
+server-timing: inner; dur=12, cdn-cache;desc=MISS, origin;dur=104, edge;dur=0
+x-tt-trace-host: 01207a981426127d02143837b6aace09ad677989402d8c651875f8c79ce76ad2107637eff7dfb63e99eb937341898d0d1d63f6a94af6b39648d4a791c95421fa920f0f3edcdea10d41ec35436f2ddf9664fd8fe10f9f3b2564d3bd2985f85eb646bab74f1bae3e6ccfae5632517a67f5a78dd12d4e9bae763a6e6ab1aaaeb2ecc88ad111ef6de1e177d9ffb82967cbc872
+x-tt-trace-tag: id=5
+x-tt-trace-id: 00-2608180132370ACCF3FAD6A83D9DCDB8-39E81D1FBD6E3205-00
+via: n223-113-138-178.tzcm2-container.Creative
+x-request-ip: 183.209.141.106
+x-dsa-trace-id: 1786987957ad81e5245aca4b06507384921dfdc314
+x-dsa-origin-status: 200

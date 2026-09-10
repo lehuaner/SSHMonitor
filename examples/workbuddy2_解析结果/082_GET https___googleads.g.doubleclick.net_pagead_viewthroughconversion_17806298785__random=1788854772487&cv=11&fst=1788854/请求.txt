@@ -1,0 +1,18 @@
+GET https://googleads.g.doubleclick.net/pagead/viewthroughconversion/17806298785/?random=1788854772487&cv=11&fst=1788854772487&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be6921v9249214373za200zd9249214373xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938468~118897920~118897930~120213116~120385423~120469145~120469153~120914214&u_w=1920&u_h=1080&url=https%3A%2F%2Fwww.workbuddy.cn%2Flogin%2F%3Fplatform%3Dworkbuddy%26state%3D9a6e2d5a-8653-4e9f-8a73-2ee839b873fd%26version%3D5.5.3%26loginSessionId%3D77a5fd45-a89a-4601-be24-17ca2a90d742&rcb=2&frm=0&tiba=WorkBuddy%20-%20AI%20Agent%20%E5%8A%9E%E5%85%AC%E6%96%B0%E8%8C%83%E5%BC%8F&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1883296624.1787201042&uaa=x86&uab=64&uafvl=Chromium%3B152.0.7977.83%7CNot%253FA_Brand%3B24.0.0.0%7CMicrosoft%2520Edge%3B152.0.4191.66&uamb=0&uam=&uap=Windows&uapv=19.0.0&uaw=0&data=event%3Dgtag.config&ept=9&rfmt=3&fmt=4 HTTP/2
+:method: GET
+:authority: googleads.g.doubleclick.net
+:scheme: https
+:path: /pagead/viewthroughconversion/17806298785/?random=1788854772487&cv=11&fst=1788854772487&bg=ffffff&guid=ON&async=1&en=gtag.config&gtm=45be6921v9249214373za200zd9249214373xec&gcd=13l3l3l3l1l1&dma=0&tag_exp=115938465~115938468~118897920~118897930~120213116~120385423~120469145~120469153~120914214&u_w=1920&u_h=1080&url=https%3A%2F%2Fwww.workbuddy.cn%2Flogin%2F%3Fplatform%3Dworkbuddy%26state%3D9a6e2d5a-8653-4e9f-8a73-2ee839b873fd%26version%3D5.5.3%26loginSessionId%3D77a5fd45-a89a-4601-be24-17ca2a90d742&rcb=2&frm=0&tiba=WorkBuddy%20-%20AI%20Agent%20%E5%8A%9E%E5%85%AC%E6%96%B0%E8%8C%83%E5%BC%8F&hn=www.googleadservices.com&npa=0&pscdl=noapi&auid=1883296624.1787201042&uaa=x86&uab=64&uafvl=Chromium%3B152.0.7977.83%7CNot%253FA_Brand%3B24.0.0.0%7CMicrosoft%2520Edge%3B152.0.4191.66&uamb=0&uam=&uap=Windows&uapv=19.0.0&uaw=0&data=event%3Dgtag.config&ept=9&rfmt=3&fmt=4
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+sec-ch-ua: "Chromium";v="152", "Not?A_Brand";v="24", "Microsoft Edge";v="152"
+sec-ch-ua-mobile: ?0
+accept: */*
+sec-fetch-site: cross-site
+sec-fetch-mode: no-cors
+sec-fetch-dest: script
+sec-fetch-storage-access: active
+referer: https://www.workbuddy.cn/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+cookie: id=22216a0d6b0c01b3||t=1783856892|et=730|cs=002213fd480348593c37fc49cc; ar_debug=1

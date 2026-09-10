@@ -1,0 +1,26 @@
+HTTP/2 200
+content-type: application/json; odata.metadata=minimal; odata.streaming=true; charset=utf-8
+server: Microsoft-HTTPAPI/2.0
+x-nanoproxy: 1,1
+request-id: 75362aa6-3c86-734d-380f-ad81809340da
+x-calculatedfetarget: OS3P286CU003.internal.outlook.com
+ms-cv: pio2dYY8TXM4D62BgJNA2g.1.1
+odata-version: 4.0
+x-besku: Unknown
+x-backendhttpstatus: 200,200
+report-to: {"group":"NelOfficeUpload1","max_age":7200,"endpoints":[{"url":"https://exo.nel.measure.office.net/api/report?TenantId=&FrontEnd=Cafe&DestinationEndpoint=HND&RemoteIP=183.209.141.0&Environment=MT&HttpStatusFrom=BE&ServiceName=Default.profileb2&MiraPartnerName="}],"include_subdomains":true}
+x-bepartition: CLAPCPRD04ITM00
+x-calculatedbetarget: OSNPR04MB9693.APCPRD04.PROD.OUTLOOK.COM
+x-content-type-options: nosniff
+x-end2endlatencyms: 108
+x-feefzinfo: ITM
+x-feserver: TYCP286CA0363
+x-microserviceversion: 3.0.1858.0
+x-ms-appid: 000000004835BC29
+x-proxy-backendserverstatus: 200
+x-proxy-routingcorrectness: 1
+x-firsthopcafeefz: HND
+alt-svc: h3=":443";ma=2592000,h3-29=":443";ma=2592000
+strict-transport-security: max-age=31536000; includeSubDomains
+nel: {"report_to":"NelOfficeUpload1","max_age":7200,"include_subdomains":true,"failure_fraction":1.0,"success_fraction":0.01}
+date: Sat, 15 Aug 2026 07:25:38 GMT

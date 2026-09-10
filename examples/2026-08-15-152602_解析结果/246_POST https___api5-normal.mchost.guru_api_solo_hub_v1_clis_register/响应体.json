@@ -1,0 +1,23 @@
+{
+  "code": 200,
+  "message": "success",
+  "data": {
+    "cli": {
+      "id": "2b1ff3fef2d3f503dc5e23491b070bc4",
+      "user_id": "1000985253380538",
+      "name": "乐幻",
+      "frontier_id": 6314809709597590163,
+      "device_id": 3798161405005257,
+      "frontier_app_id": 787976,
+      "frontier_product_id": 420,
+      "status": "online",
+      "type": "local",
+      "ide_version": "0.1.50",
+      "cli_hub_version": "1",
+      "device_model": "82JW",
+      "registered_at": "2026-08-15T15:25:42.646230357+08:00",
+      "created_at": "2026-08-15T15:25:42.648+08:00",
+      "updated_at": "2026-08-15T15:25:42.648+08:00"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+POST https://api5-normal.mchost.guru/api/solo_hub/v1/conversations/clis/messages/list HTTP/2
+:method: POST
+:authority: api5-normal.mchost.guru
+:scheme: https
+:path: /api/solo_hub/v1/conversations/clis/messages/list
+content-length: 657
+accept-encoding: gzip, deflate, br, zstd
+sec-fetch-dest: empty
+sec-fetch-mode: no-cors
+sec-fetch-site: none
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+content-type: application/json
+request-traffic-type: prod
+x-app-id: 6eefa01c-1036-4c7e-9ca5-d891f63bfcd8
+x-app-version: default
+x-app-version-code: 20260811
+x-bridge-transport: aha
+x-custom-trace-id: 141d263551cababdb0d131dfcde7bcc4
+x-device-brand: 82JW
+x-device-cpu: AMD
+x-device-id: 3798161405005257
+x-device-type: windows
+x-frontier-id: 6314809709597590163
+x-hub-version: 1
+x-ide-token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTAwMDk4NTI1MzM4MDUzOCIsInNvdXJjZSI6InJlZnJlc2hfdG9rZW4iLCJzb3VyY2VfaWQiOiJIbFVqbUxTUmJ1VE9OanF1bDA1d1FUdXlJUDRZcy12WXJILTNHRkRjZnA4PS4xOGNiZTljYzJmNjQ5MDIyIiwidGVuYW50X2lkIjoiN28yZDg5NHA3ZHIwbzQiLCJ0eXBlIjoidXNlciJ9LCJleHAiOjE3ODc5ODgzNDAsImlhdCI6MTc4Njc3ODc0MH0.KJkQvfHXqlJoX9EMzMLxD7ydGkyDHQNAqi4bh-x3rd0isntfMGLa67QjTgMe6hb2JWLOmhhcd2i-KL0-uZMRxBqCKdlGcAc9jYGihcNDLihRR56QiICspWRE-hZ7C0H-noTUMhDJ-EGBD4j68CLtfOBb8oPZIC_bl4Fn9O52Dqnu14_kEvFdDhNEPMdmVgFyc5EJPo-1tSR2C3lGxcLQsW1dc0pEjD6iiNW-0s5BrCbf94Tjfyh8u1hwvqaRLjQdizI-pQmQzFgBJKWRwzVeNwCX7ju5QxTvAZfEAoayuMFZ_5HoSHB_J4atsJskMFWppWEeqQkA0ktxCulBHX_YieAeH3-dhLDP5nZeAiGB3DX-BcGVz1mW33AlzAbRuOvisoyqRql5HJULF6SLoxuzFA5omj4mESPcmjQ5q88w4R_EZpOcRkuQ7Z9TUTWMZe__TXX5V0Z-lvzAKnHo16BFZGlgde2B62HA0vVb20cAJmgn_iijN_KERb8dKOFhwxiYg1yAkM36BjLrZG3UGE0WrQPG0RnMtw8MZrfmb8_JybHAiGLJB1--yPz12e_8lupLtYN6bQwfrjFeambOWKVxm4PFUddN9Mb85_LD6us_TOK-QzqiAnyEbgwedSfaEJTAY5NIkd29pV1FTLOOlTk_IUPChojuwWtDw8LAr0D_9fc
+x-ide-version: 0.1.50
+x-ide-version-code: 20260811
+x-ide-version-type: stable
+x-lgw-req-sdk-type: 3
+x-machine-id: 0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51
+x-os-version: Windows 11 Pro
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.50
+x-request-id: req_853aa3b6-aeda-43c4-bacd-df0e9a7b0a67
+accept: */*
+x-ss-dp: 787976
+x-tt-trace-id: 00-044ff9a00dd7e685d584dc912230ffff-044ff9a00dd7e685-01
+referer: https://trae-api-cn.mchost.guru/api/solo_hub/v1/conversations/clis/messages/list
+x-helios: 2RcAAEYTb3nqTuWi78wAthTVKQxJ77q/K3+mRNSmgVB+yF0n
+x-medusa: ehSAao7835Cuw1xRrz5IGi7b4XJWIAMBYg0vWCAAIaU0mfbjN/j614WWdPPVCSbnaT/JwpAS7ZOcCMuwpRbVW0LafkpKw1D3ZKv3glm82t0hiy16ZN2kS8fFEWQa5fp/XaeYCGgArMitpmRFYH8vSnlH4D5GKchVPisVpqXXrRTu0j0fS880B0bZza7sOIBg0Xf3LDIhuztTdOthgQf1Q/K3nxM0jXzhgcIcI3TsuVHsBPsgDO1uZaX1tKa5MOTyfgdWJ4f2c5Hl58HJvLfrYgoyzOZyoF6U/u9lAWr1cyEB4kvrCVxzWCthUYdvjRa10h9QZOrfR2/U7FgHACKyE0mg4TbK6q+xOw/aOa/32SY6q7xIgwfrciD3oXV06risEjS9OcIe7rypFJXXD2//huKEvLAqcNPFulbQff8/6/nifZwADmX1ViKukotCGKoVYVDjEjRVKtFRvKH7DEoJe6fb8RkQ3mErk2/nPwsNU0/LMC82A5/x2zzYeQyVJw6kqExPEQQ8Hx3EV23IOge5dgxVj1FLx4QgCgEn3DDHlyyzztqtPDtgQEg358CTl5cHgBnBiI2h6LjsmEdaaqn4PuwubtrOraMLAXAXdAJ0d4WROniMLf9rt9WztUnD64l5lQOolFissM9z1EV65XjDwNozsbB33y6lbzxHn7/Pzxcfz9vl/c8Hj+mnmJoAqzHu+TIjAJKbbxE2/5W5j8k7hWvqWTx47L03vk2RjVYuX7xLDbnFVcfJTzbe1LpvZ2UB5COcaLWQFygfZfv/37////7/AAA=
+x-neptune: -11|50:51:59:00:09

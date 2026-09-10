@@ -1,0 +1,29 @@
+HTTP/2 200
+content-type: application/json; charset=utf-8
+access-control-allow-credentials: true
+access-control-allow-headers: *
+access-control-allow-methods: GET, POST, OPTIONS
+access-control-allow-origin: *
+access-control-expose-headers: ETag
+access-control-max-age: 86400
+x-bytefaas-execution-duration: 6.02
+x-bytefaas-request-id: 202608201423053126E48231CD78888732
+x-gw-dst-psm: icube.native.ide
+x-powered-by: Goofy Node
+x-tt-logid: 202608201423053126E48231CD78888732
+server-timing: inner; dur=9
+x-tt-trace-host: 01207a981426127d02143837b6aace09ad5aef830920ef5e5c544d2862ece236e8e7a587143fc95526e93f65a5d782a4a49a6531b1521f5f3ccc02d03fa75b4883489be62f65bcfa05588e1d2b3f5c8fcc177004738aa1e87964ac19bcce817ce7
+x-tt-trace-id: 00-2608201423053126E48231CD78888732-3F55A6EB053AD7CA-00
+server: TLB
+expires: Thu, 20 Aug 2026 06:23:05 GMT
+cache-control: max-age=0, no-cache, no-store
+pragma: no-cache
+date: Thu, 20 Aug 2026 06:23:05 GMT
+content-length: 739
+x-cache: TCP_MISS from a23-58-209-44.deploy.akamaitechnologies.com (AkamaiGHost/22.6.2-039cf934921f24e45063a41240aca161) (-)
+vary: Accept-Encoding
+strict-transport-security: max-age=31536000 ; includeSubDomains
+x-tt-trace-tag: id=16;cdn-cache=miss;type=dyn
+server-timing: cdn-cache; desc=MISS, edge; dur=2, origin; dur=51
+x-origin-response-time: 51,23.58.209.44
+x-akamai-request-id: 428679d1

@@ -1,0 +1,27 @@
+GET https://api.trae.com.cn/extensions/api/-/plugin/list?page_size=100&page_token=100&registry=trae-remote-official&product_name=lite&chat_mode=work&package_type=stable&client_version=0.1.51&os=windows HTTP/2
+:method: GET
+:authority: api.trae.com.cn
+:scheme: https
+:path: /extensions/api/-/plugin/list?page_size=100&page_token=100&registry=trae-remote-official&product_name=lite&chat_mode=work&package_type=stable&client_version=0.1.51&os=windows
+accept: application/json
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+authorization: Cloud-IDE-JWT eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTU1NDAyNDUyNDE2Njg3MSIsInNvdXJjZSI6InJlZnJlc2hfdG9rZW4iLCJzb3VyY2VfaWQiOiJKVFZhR3k0aXR0YmlZNUpXdWJHUU9fX1JWeWo4UmdNX1kzcGdtY2k5UVUwPS4xOGNkNmY1M2JlM2I5NjhiIiwidGVuYW50X2lkIjoiN28yZDg5NHA3ZHIwbzQiLCJ0eXBlIjoidXNlciJ9LCJleHAiOjE3ODg0MTY2MzIsImlhdCI6MTc4NzIwNzAzMn0.ibWFhfXYgm7p8Ut42q6-Cv5wVdzLJL7h-SejWlJNqgOj8tPbZTIFP2sdYJqaHIl1IrtvSNpvpkjDPQWE7A5p7nQHZ3vuEjEOqdlfRqORUOuh-dmR7v2uebd-Fhv1eWAvKo30pIrV5Op5J-82UJMlH2N8AQqAGC8e_jt7375WlVGAJFWI0u164rJJqgVRNjlpudZDlgkCvCxKoXdHjfdOeUxdM7ZJNEJPoA5HSAdSsrDiY29ap8YaZpz3YyYWnrin5IgtFsgStlTewWV5n87R5RRAyEXsduiE3OxVeUpMhSoc7dbzlmi40fmffrQ_Uut5r1n4qMVTUu-NWuT4FvRW94aCy0TrC0NcZhr7h7F7eG3bPX6eURTC_UejvSAWitQI0vj4Dp6l5PJIzCpum5iAIgF05jNy0AsiZjfF3POY26tJDKnA45QnoPRDVof5073kvgMi_xw3GGIF7EkQ9qQMim_1GhKTs-_gx9KtYVyGlkSgdhbvzNC5qHR1B1uNi4a4_hWj1-Ui71xJnhVn7Hy9G5HeqYCU7PHT0hfiBGuONn1RZB8S_JFMRsWAc_sAAVZDT5di1Ms4tMZ7kR456829kLEideUzle0t1U-DnUFB7k_7QCYp46JjulTqvIReUAyRUAedDUpRs6BJttscYDrwhxNRju_L6_FLvSwEzlJ78a0
+content-type: application/json
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+x-preferenced-language: zh-cn
+sec-ch-ua: "Not_A Brand";v="99", "Chromium";v="142"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: 43fbb21f-1e88-4b4b-92e6-abda1db0b57e
+x-tt-trace-id: 00-1dd735a40d945686928468a1ff4cffff-1dd735a40d945686-01
+smbyttnet: 1

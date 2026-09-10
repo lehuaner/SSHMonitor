@@ -1,0 +1,93 @@
+{
+  "data": {
+    "__logid": "20260820142352C78FC2EEB1607EBB8CEE",
+    "settings_time": 1787207032,
+    "settings": {
+      "AhaRendererPerfMetrics": {
+        "state": true,
+        "params": {}
+      },
+      "AhaEnableDelayedDestroyWebsocket": {
+        "state": true,
+        "params": {
+          "DelayedDestroyTimeSeconds": 60
+        }
+      },
+      "CrashpadIpcLimitOptimize": {
+        "state": true,
+        "params": {
+          "SizeThreshold": "8192"
+        }
+      },
+      "EstablishGpuChannelAsync": {
+        "state": true,
+        "params": {}
+      },
+      "V8HeapTrackerConfig": {
+        "state": false,
+        "params": {
+          "LargeAllocEnable": "true",
+          "LargeAllocMinCaptureSizeMB": "4",
+          "ReplaceJsStack": "false",
+          "LargeAllocTopStackCount": "3",
+          "LargeAllocCaptureThresholdMB": "2048",
+          "LargeAllocUpgradeThresholdMB": "100",
+          "LargeAllocMergeOOMStack": "false"
+        }
+      },
+      "AhaEnableGpuModeFallbackForDeviceReset": {
+        "state": true,
+        "params": {}
+      },
+      "AhaFrameEvictionBugFix": {
+        "state": true,
+        "params": {}
+      },
+      "AhaCulledInlineHitTestOptimization": {
+        "state": true,
+        "params": {}
+      },
+      "AhaOverrideProcessTitle": {
+        "state": true,
+        "params": {}
+      },
+      "AhaEnableBDMSSdk": {
+        "state": true,
+        "params": {}
+      },
+      "AhaChildProcessBlockDetect": {
+        "state": true,
+        "params": {}
+      },
+      "AhaOomV8JsStackCollect": {
+        "state": true,
+        "params": {}
+      },
+      "EarlyEstablishGpuChannel": {
+        "state": true,
+        "params": {}
+      },
+      "WindowRendererThreadCpuReport": {
+        "state": false,
+        "params": {}
+      },
+      "AhaCloseAutoDetectSystemAccessibility": {
+        "state": true,
+        "params": {}
+      },
+      "AhaEnableGwpAsan": {
+        "state": true,
+        "params": {
+          "ProcessEnableList": "NetworkService",
+          "MinPhysicalMemorySizeMB": "0"
+        }
+      }
+    },
+    "vid_info": {},
+    "downstream_status": {
+      "ab_loader_status": true
+    },
+    "ctx_infos": "eyJlIjoianRMdkJ3NkFTbkhGWmRYOHpwUVliZz09IiwidiI6ODk5NDk1NX0="
+  },
+  "message": "success"
+}

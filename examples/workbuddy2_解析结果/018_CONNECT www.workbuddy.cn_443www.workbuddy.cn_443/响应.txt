@@ -1,0 +1,119 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 16:05:19.941
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=workbuddy.cn, O=Tencent Technology (Shenzhen) Company Limited, L=Shenzhen, S=Guangdong Province, C=CN
+  Simple Name: workbuddy.cn
+  DNS Name: workbuddy.cn
+
+[Issuer]
+  CN=DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1, O="DigiCert, Inc.", C=US
+  Simple Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+  DNS Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+
+[Serial Number]
+  0E549B4EB1071E8BA3AAD5903D4B594B
+
+[Not Before]
+  2026/3/27 8:00:00
+
+[Not After]
+  2026/10/12 7:59:59
+
+[Thumbprint]
+  07803EB4978AD1B62F53B2AC902408EC51C45451
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 d3 b8 af 84 44 69 20 a0 1d 08 6e c8 6a 7c 66 7f dc 2d 39 75 6d 93 c7 a8 99 8f 89 73 56 64 d1 f8 e7 8e 06 1d b6 c6 0d e6 dc 3a 71 73 5e 66 84 c7 64 91 b0 51 8a 1f 91 9d 97 cd 41 6d 34 9d db e7 78 06 e0 e0 e6 f3 eb 6a 58 e8 f8 12 f4 1a 5b 71 52 a4 6e b0 e5 35 41 8b 77 52 35 83 82 2f 2c 3e 14 1c ba 82 90 66 0e f5 e1 61 68 2f d7 27 c2 93 37 40 bd c0 3e a1 76 7c df b0 aa 6b 1a eb e6 ef 70 e1 95 e5 3a 19 57 bb 12 4a 43 87 9e 0b dc 3c cf 0a fb eb 3d d2 82 aa 27 9e 70 a3 65 16 77 1f b4 f1 41 08 39 68 fd 6f a1 1d ad 90 10 64 d9 0e b2 81 63 30 17 b3 ef 58 13 61 97 77 a3 fa 3b 2e 14 a5 f5 e8 fb de 55 13 56 eb 29 25 14 94 d7 a2 e0 a5 a1 89 63 18 b6 4c 08 b5 0b 22 c9 cc 5c d4 bc c4 4e 13 44 63 85 56 c4 58 7e cc 7a f0 95 89 af e3 72 9d e3 1b 53 0c 51 47 e7 25 80 97 ae d7 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=2b2316811b47898a907aece832d46c8e72f9ce25
+
+* 使用者密钥标识符(2.5.29.14):
+  960d5a9d03b370d7284207147031ce1797cf3d69
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=workbuddy.cn
+DNS Name=*.workbuddy.cn
+DNS Name=www.workbuddy.cn
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+客户端身份验证 (1.3.6.1.5.5.7.3.2)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://ocsp.digicert.cn
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+c2317e574519a345ee7f38deb29041ebc7c2215a22bf7fd5b5ad769ad90e52cd
+‎2026‎年‎3‎月‎27‎日 18:02:16
+SHA256
+ECDSA
+304502202f6bec6b70b0b600343be8966a62394e45579f347de2e9dfba73513f2e88973e0221008288e9c0955e9ca56745732a8b771e159dfe1be0472832b24d98361c55c9b6bf
+
+v1
+d809553b944f7affc816196f944f85abb0f8fc5e8755260f15d12e72bb454b14
+‎2026‎年‎3‎月‎27‎日 18:02:16
+SHA256
+ECDSA
+3045022100c3c75b34bf2dc1c5a95915ce5c98ab192ab29d541e9e0630ee712c776bc531a002200d38c5b0f06a9d17a66ba6d8db8a8f77649954e7ee1f827d990b9d9774d4442e
+
+v1
+944e4387faecc1ef81f3192426a8186501c7d35f3802013f72677d55372e19d8
+‎2026‎年‎3‎月‎27‎日 18:02:16
+SHA256
+ECDSA
+3045022100866ddb7968660afef58af6847732667149168272a5f3dcf9a78cc3ee4371db4d022021c7bf3fd28da8b1c0270e3d5d760adf03a9bb66e21d0975620a7f05a0bbe936
+
+
+[SubjectAltNames]
+DNS Name=workbuddy.cn
+DNS Name=*.workbuddy.cn
+DNS Name=www.workbuddy.cn
+

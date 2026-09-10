@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Date: Tue, 08 Sep 2026 08:06:40 GMT
+Content-Type: application/json
+Content-Length: 570
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: content-type,authorization,x-toa-lang
+Access-Control-Allow-Methods: OPTIONS,HEAD,GET,POST,PATCH,PUT,DELETE,CONNECT,TRACE
+Access-Control-Allow-Origin: https://www.workbuddy.cn
+Access-Control-Expose-Headers: content-type,x-trace-id,x-route-env,x-org-id,x-team-id,x-request-id
+Access-Control-Max-Age: 3600
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate, value
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Last-Modified: Tue, 08 Sep 2026 08:06:39 GMT
+Server: Gateway/OneID
+X-Trace-Id: fa23e9bc7ba3e06339a8f8ebc1550d50

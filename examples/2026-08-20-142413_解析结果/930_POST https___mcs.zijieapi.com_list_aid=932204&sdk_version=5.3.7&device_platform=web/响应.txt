@@ -1,0 +1,23 @@
+HTTP/2 200
+content-type: application/json; charset=utf-8
+content-length: 21
+x-dynamic-status: MISS from KS-CLOUD-SQ-CM-81-03-L
+date: Thu, 20 Aug 2026 06:24:00 GMT
+upstream-caught: 1787207040803046
+x-tt-logid: 2026082014240047B20A76A5B3DF1E5F93
+access-control-allow-origin: vscode-file://vscode-app
+access-control-max-age: 1800
+access-control-allow-credentials: true
+access-control-allow-methods: GET, OPTIONS, HEAD, PUT, POST
+cross-origin-resource-policy: cross-origin
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+expires: 0
+server-timing: inner; dur=7
+x-tt-trace-host: 01207a981426127d02143837b6aace09ad7658e90091f9a1a1c99b07ed29e2d1aaab44dde9172e9dbb33d858cb4b79d800c5dca74e8cca69b24c94907d3d278c8b0e5c874836ff9ffa20db2b6ae5e81c3524088da3327b05f644ae9f2b390a02ca
+x-tt-trace-tag: id=06;cdn-cache=miss;type=dyn
+x-tt-trace-id: 00-26082014240047B20A76A5B3DF1E5F93-344E0570C272C7E4-00
+server: TLB
+server-timing: cdn-cache;desc=miss,edge;dur=0,origin;dur=65
+x-cdn-request-id: 89fb50358e7b77e545ce56bd0b229572
+x-link-via: sqcm81:443

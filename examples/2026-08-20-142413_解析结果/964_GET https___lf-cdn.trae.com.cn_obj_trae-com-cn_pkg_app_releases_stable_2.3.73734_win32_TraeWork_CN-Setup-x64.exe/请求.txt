@@ -1,0 +1,21 @@
+GET https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.73734/win32/TraeWork_CN-Setup-x64.exe HTTP/2
+:method: GET
+:authority: lf-cdn.trae.com.cn
+:scheme: https
+:path: /obj/trae-com-cn/pkg/app/releases/stable/2.3.73734/win32/TraeWork_CN-Setup-x64.exe
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+cache-control: no-cache
+sec-fetch-dest: empty
+sec-fetch-mode: no-cors
+sec-fetch-site: none
+user-agent: electron-builder
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: 37bfefac-1367-4728-a720-12b402beb085
+accept: */*
+x-tt-trace-id: 00-1dd7428f0d945686928468aba087ffff-1dd7428f0d945686-01
+smbyttnet: 1

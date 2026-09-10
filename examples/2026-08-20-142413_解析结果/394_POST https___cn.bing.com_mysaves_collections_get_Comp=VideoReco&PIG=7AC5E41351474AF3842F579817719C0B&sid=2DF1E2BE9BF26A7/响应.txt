@@ -1,0 +1,19 @@
+HTTP/2 200
+cache-control: private
+content-length: 1726
+content-type: application/json
+vary: Accept-Encoding
+p3p: CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+set-cookie: SNRHOP=I=&TS=; domain=.bing.com; path=/; secure; SameSite=None
+set-cookie: MUIDB=1813F96507B063203380EE0D061D628F; expires=Tue, 14-Sep-2027 06:22:31 GMT; path=/; HttpOnly
+access-control-allow-credentials: true
+access-control-allow-origin: https://cn.bing.com
+x-eventid: 6a869d27c10e444aa6406f9fa99c5cce
+accept-ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, ECT, Sec-CH-Prefers-Color-Scheme, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA
+useragentreductionoptout: A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+permissions-policy: unload=()
+content-security-policy: script-src https: 'strict-dynamic' 'report-sample' 'wasm-unsafe-eval' 'nonce-nV8eAgfugDHDTgV+GCzMOQ/wLxyjggd7uhbm+2zpUtg='; base-uri 'self';report-to csp-endpoint
+report-to: {"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}
+x-cache: CONFIG_NOCACHE
+x-msedge-ref: Ref A: 59D8F1E0C26140D9867EA047CF67B3CB Ref B: BJ1EDGE1106 Ref C: 2026-08-20T06:22:31Z
+date: Thu, 20 Aug 2026 06:22:30 GMT

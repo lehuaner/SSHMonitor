@@ -1,0 +1,3 @@
+{
+  "url": "https://open.weixin.qq.com/connect/qrconnect?scope=snsapi_login&appid=wx31d4d71eb5f8c69e&redirect_uri=https%3A%2F%2Fwww.workbuddy.cn%2Fauth%2Frealms%2Fcopilot%2Fbroker%2Fweixinwebchat%2Fendpoint&state=ee62641b-30ba-4ef7-9c20-6a3d9fa90202&response_type=code&prompt=login&nonce=ee62641b-30ba-4ef7-9c20-6a3d9fa90202&self_redirect=true&login_type=jssdk&scope=snsapi_login&style=white&href=data:text/css;base64,Ym9keXtiYWNrZ3JvdW5kOiAjZmZmICFpbXBvcnRhbnR9LmltcG93ZXJCb3ggLmluZm8ge2Rpc3BsYXk6IG5vbmV9LmltcG93ZXJCb3ggLnRpdGxlIHtkaXNwbGF5OiBub25lfS5pbXBvd2VyQm94IC5xcmNvZGUge3dpZHRoOiAyMTBweDtib3JkZXI6IG5vbmU7bWFyZ2luLXRvcDogMH0ud3JwX2NvZGUge2hlaWdodDogMjEwcHg7b3ZlcmZsb3c6IGhpZGRlbn0="
+}

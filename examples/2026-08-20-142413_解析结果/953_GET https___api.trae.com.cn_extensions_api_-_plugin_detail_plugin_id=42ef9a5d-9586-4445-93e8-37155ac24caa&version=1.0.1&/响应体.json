@@ -1,0 +1,57 @@
+{
+  "data": {
+    "plugin": {
+      "plugin_id": "42ef9a5d-9586-4445-93e8-37155ac24caa",
+      "name": "trae-remote-official:seedream",
+      "origin_plugin_name": "seedream",
+      "display_name": "seedream",
+      "description": "AI image generation plugin powered by Seedream.",
+      "i18n": {
+        "description": {
+          "en": "Turn your ideas into stunning images with Seedream. Describe the scene, style, and details you want to create your ideal image with greater accuracy.",
+          "ja": "Seedreamで、あなたのアイデアを魅力的な画像に。作りたいシーンやスタイル、細部を伝えるだけで、イメージに合った画像をより正確に生成できます。",
+          "zh-cn": "使用 Seedream 将你的创意变成精美图片。描述想要的画面、风格和细节，即可更准确地生成理想图像。"
+        },
+        "display_name": {
+          "en": "",
+          "ja": "",
+          "zh-cn": "Seedream（图片生成）"
+        }
+      },
+      "author": "TRAE",
+      "cdn_uri": "p11-market.byteimg.com",
+      "tos_uri": "tos-cn-i-17oceyzymr/plugins",
+      "version": "1.0.1",
+      "source": "INTERNAL_UPLOAD",
+      "registry": "trae-remote-official",
+      "publisher_type": "THIRD_PARTY",
+      "local_available": true,
+      "cloud_available": true,
+      "categories": [
+        "Featured",
+        "content_creation"
+      ],
+      "category_weight": 999,
+      "created_at": 1785741137000,
+      "updated_at": 1785741137000,
+      "pinned": 0,
+      "status": "PUBLISHED",
+      "visibility": "PUBLIC",
+      "is_deleted": false,
+      "icon_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1001/42ef9a5d-9586-4445-93e8-37155ac24caa/icons/fc261b07-e620-4811-835c-517b4dc4a03c.svg",
+      "recommended": false,
+      "default_installed": true,
+      "user_control_policy": "{\"default_enabled\": true, \"tag_theme_color\": \"--viz-viz-series-violet\", \"plugin_toggleable\": false, \"locked_capabilities\": [], \"plugin_uninstallable\": false, \"capability_toggleable\": false, \"show_in_home_available_plugins\": true}"
+    },
+    "changelog": "",
+    "download_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1/42ef9a5d-9586-4445-93e8-37155ac24caa/1.0.1/package.zip",
+    "manifest_json": "{\n  \"name\": \"seedream\",\n  \"version\": \"1.0.1\",\n  \"description\": \"AI image generation plugin powered by Seedream.\",\n  \"author\": {\n    \"name\": \"TRAE\"\n  },\n  \"license\": \"MIT\",\n  \"keywords\": [\n    \"image\",\n    \"generation\",\n    \"seedream\",\n    \"ai-art\"\n  ],\n  \"instructions\": \"INSTRUCTIONS.md\",\n  \"interface\": {\n    \"displayName\": \"Seedream\",\n    \"shortDescription\": \"AI image generation with Seedream\",\n    \"longDescription\": \"Generate images from text prompts using the Seedream model. Supports various styles, resolutions, and creative directions.\",\n    \"developerName\": \"TRAE\",\n    \"category\": \"AI & Creative\",\n    \"capabilities\": [\n      \"GenerateImage\"\n    ],\n    \"defaultPrompt\": [\n      \"Generate an image of a sunset over mountains.\"\n    ]\n  }\n}\n",
+    "connector_json": "",
+    "mcp_servers_json": "",
+    "skills_json": "",
+    "icon_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1001/42ef9a5d-9586-4445-93e8-37155ac24caa/icons/fc261b07-e620-4811-835c-517b4dc4a03c.svg",
+    "checksum": "28b43e3166eb1e3ea236ce5b8766b1d6bb28dec6508401858702c44442a9d01a",
+    "file_size": 962
+  },
+  "success": "true"
+}

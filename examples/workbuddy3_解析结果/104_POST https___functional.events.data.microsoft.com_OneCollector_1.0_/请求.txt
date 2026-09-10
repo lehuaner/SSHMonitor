@@ -1,0 +1,20 @@
+POST https://functional.events.data.microsoft.com/OneCollector/1.0/ HTTP/2
+:method: POST
+:authority: functional.events.data.microsoft.com
+:scheme: https
+:path: /OneCollector/1.0/
+content-length: 767
+apikey: 70109aa3567b40e3bb8ac9e67a07b58a-b00e4868-b511-4be4-90dd-6370c812f0af-7167
+client-id: NO_AUTH
+content-encoding: deflate
+content-type: application/bond-compact-binary
+expect: 100-continue
+sdk-version: EVT-Windows-C++-No-3.10.173.1
+tickets: "10001"="p:GwBGAruEBAAUuXgePZcYxdw8EZuBoUxTAR3gtGcOZgAAELhaCog/YJWmcdvX9GNKd8gQAgCuNPn6RzwokHWf9N8CXg/sRRoLyebU9jseuf3JcIcTjecm5YPBfLB/TMYodEkhWmrJchMPbIFS9tEQ9c3/thTsANmPYVh5sAdViI35vFX0fu0XKpIy4R6NtZEEAAMnmOiqqqx2+AzBqiCbYC+ztzHREO9lcgQ05F9vw2V2VUbwygsfu1rC4mZYLSfDwDUkCoQmRfh1HS2hbhqRYQO6WbTL7iaOtvhPFGvDfrpYP3YEqES/8c3axRjc/wLA4AdP7yVCEB789SyfWu2SO+ysBOio6x6U8LMz3jMTOai+WhmPe5tdNUsJnbQ0IjTjGTRz08PZrM4dqqfbm5VCPWpWN5pz9SQtihW/DHkidcsKSTgNzqE0U5lXf4vzeU46riaRgmT0v9pBIXbl/cH9FXIZ6Nu+syjCAgvG27YCxQpuqyOpLEMdP+m3P1LetVdcCJgny+ZRNgYNZOZ6U67DulXTR8NICjjpLcRrd3di+4ymMp402Xh/q3R80cH7Sq9ng8EAZpve0e11ETTvENhINOrNSaCN95gyYtc4llutJ+UzkQ58jmTe461tSB+2J0b2Tfg6NzY1uhwNNH69X11EUSfg75GX9CzaCe5ztbh4fN2aqvkCcmJWYmfAI+pcsmhE7S6vh2Ijex+WeCIXtvHf87zkuXTNA1VBLotuB259Z7y7qQDLZmKTPX1RYrfeuLZpPNLAOywC"
+upload-time: 1789012891711
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+accept-encoding: gzip, deflate, br, zstd
+priority: u=4, i

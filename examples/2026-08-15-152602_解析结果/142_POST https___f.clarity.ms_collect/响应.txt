@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 15 Aug 2026 07:25:39 GMT
+Content-Type: text/plain; charset=utf-8
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: https://www.trae.cn
+Vary: Origin
+Request-Context: appId=cid-v1:a449a586-8786-487f-a449-dc1b282a2628
+Content-Length: 7

@@ -1,0 +1,98 @@
+<!doctype html><html lang="zh-CN"><head><meta property="og:type" content="website"><meta property="og:site_name" content="WorkBuddy"><meta property="og:title" content="WorkBuddy 资料库"><meta property="og:description" content="WorkBuddy 资料库"><meta property="og:image" content="https://docs.gtimg.com/mindx/favicon.svg"><meta property="og:url" content="https://www.workbuddy.cn/space/home?theme=dark&amp;locale=zh-CN&amp;hostApp=workbuddy-desktop&amp;authed=true&amp;fontSizeLevel=2"><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>WorkBuddy 资料库</title><script>window.__globalReleaseVersion="20260907-1031-mindx-hotfix-20260907_1030_mindx-78df00ac"</script><!--
+      #1835 T4 白屏骨架：JS 就绪前由 HTML 直接渲染内容骨架（复刻
+      WorkspaceContentSkeletonPC 视觉），React createRoot 首次 render 时整体
+      替换 #root 内容，骨架自动消失。纯静态、零请求、零脚本；颜色用固定近似值
+      （CSS 变量所在的 globals.css 此时尚未加载）。use-record-service 的
+      isReady gating 同步渲染同款组件骨架，保证「HTML 骨架 → React 骨架 →
+      内容」全程无白屏帧。
+    --><style>
+      .boot-skeleton {
+        display: flex;
+        justify-content: center;
+        box-sizing: border-box;
+        min-height: 100vh;
+        padding: 64px 56px 48px;
+        background: #ffffff;
+      }
+      .boot-skeleton__inner {
+        width: min(760px, 100%);
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+      }
+      .boot-skeleton__group {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+      .boot-skeleton__grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px 20px;
+        padding-top: 4px;
+      }
+      .boot-skeleton__row {
+        background: #f1f5f9;
+        border-radius: 4px;
+        animation: boot-skeleton-pulse 1.5s ease-in-out infinite;
+      }
+      @keyframes boot-skeleton-pulse {
+        50% {
+          opacity: 0.5;
+        }
+      }
+      @media (max-width: 768px) {
+        .boot-skeleton {
+          padding: 32px 24px;
+        }
+        .boot-skeleton__grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (prefers-color-scheme: dark) {
+        .boot-skeleton {
+          background: #0f1117;
+        }
+        .boot-skeleton__row {
+          background: rgba(255, 255, 255, 0.06);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .boot-skeleton__row {
+          animation: none;
+        }
+      }
+    </style><link href="//docs.gtimg.com/mindx/favicon.svg" rel="icon"><script defer src="//docs.gtimg.com/mindx/js/vendor-lucide-react.5164843a.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-lodash-es.e01edad8.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-i18next.f6b105e2.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-dayjs.087d5312.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-use-sync-external-store.deb694ad.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-entities.8f307d9d.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-stylis.df8f74b7.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-tslib.82f1710a.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--babel-runtime.c4aff2af.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-react-is.bd656e5e.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-react-use.78e429f7.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--phosphor-icons-react.bfcf992e.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--tencent-smart-engine.4c73c221.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-qrcode.00ebfd05.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--tencent-docs-i18n-config.4423c1db.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-mobx-react-lite.069dbfd9.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-css-select.6560d53d.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-domutils.5201cd2f.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-react-remove-scroll.ac714834.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-react.1c8f2506.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-react-style-singleton.b0b9fba8.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-react-remove-scroll-bar.a3700339.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-css-what.7397f296.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--tanstack-virtual-core.b4fdb849.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-use-callback-ref.b7613559.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-react-dom.e6a6c7d7.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-nth-check.188ab0be.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-simplebar-react.0ad66926.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--floating-ui-utils.c95c6fe8.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-nanoid.9af9c7c1.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--tencent-wb-org-picker.d0911344.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-use-sidecar.3d350bb0.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-scheduler.6e366d57.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-domhandler.550a9795.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-dom-serializer.3160d8cf.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--emotion-styled.cdc03f78.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--emotion-react.973a4abf.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--emotion-css.6cdba4dd.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-sonner.0d5b53af.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-simplebar-core.73ea1638.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-idb.bdbf4761.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-dompurify.e8119395.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-clsx.96db24b7.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-class-variance-authority.24eae6d9.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-centrifuge.32ec82f3.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--tencent-wb-library-report.65c88852.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--tencent-mindx-logger.4208caf0.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--tanstack-react-virtual.2fc30d47.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-visually-hidden.18e1662b.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-use-size.264cee86.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-use-layout-effect.4cec2c50.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-use-escape-keydown.6735ef8b.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-use-controllable-state.08e348fd.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-use-callback-ref.334c17e8.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-tooltip.242690cc.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-slot.d2616a0a.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-roving-focus.42a6709b.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-primitive.69339fc3.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-presence.358782cb.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-portal.9a9a5d4c.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-popper.17b5b8a9.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-popover.d9c01e0f.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-menu.23391d36.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-id.1597b8b8.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-focus-scope.fefff9a3.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-focus-guards.637926d6.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-dropdown-menu.3100a862.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-dismissable-layer.82ee62a9.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-direction.05bbb4aa.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-dialog.ebc0eb17.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-context.97274d3e.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-compose-refs.a9bf58a9.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-collection.031ebd2d.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-react-arrow.40aa4ae4.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--radix-ui-primitive.8e1a35e2.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--floating-ui-react-dom.83030599.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--floating-ui-dom.298949cf.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--floating-ui-core.f459d297.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-node-stdlib-browser.eda29964.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-axios.4a743dd5.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-tailwind-merge.a6858822.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-react-router.d137db92.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-react-router-dom.97939baf.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-mobx.77179913.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-ieee754.a1913c3f.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-i18next-browser-languagedetector.d837f3e1.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-hoist-non-react-statics.eec55f05.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-get-nonce.d2c5bd66.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-domelementtype.726c036f.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-dijkstrajs.305d74ef.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-buffer.34a93c37.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-boolbase.d529ba21.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-base64-js.d1949ba5.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor-aria-hidden.edbca6cc.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--remix-run-router.bdbbad1c.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--emotion-weak-memoize.bf3b48bd.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--emotion-utils.a3bdf1b8.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--emotion-use-insertion-effect-with-fallbacks.80b7a8ed.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--emotion-unitless.1cb9cb0f.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--emotion-sheet.738fe6d5.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--emotion-serialize.4ccebdc8.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--emotion-memoize.f493f474.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--emotion-is-prop-valid.7ac2eee4.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--emotion-hash.0faacc3e.js"></script><script defer src="//docs.gtimg.com/mindx/js/vendor--emotion-cache.e3d0381b.js"></script><script defer src="//docs.gtimg.com/mindx/js/pkg-ui-components.75afdd78.js"></script><script defer src="//docs.gtimg.com/mindx/js/pkg-import-kit.1c8ceb0b.js"></script><script defer src="//docs.gtimg.com/mindx/js/pkg-reporter.6bc6e3e1.js"></script><script defer src="//docs.gtimg.com/mindx/js/pkg-request.abff82df.js"></script><script defer src="//docs.gtimg.com/mindx/js/pkg-i18n.d66b2d52.js"></script><script defer src="//docs.gtimg.com/mindx/js/pkg-core-data.f46e5727.js"></script><script defer src="//docs.gtimg.com/mindx/js/main~0.2cabb158.js"></script><script defer src="//docs.gtimg.com/mindx/js/main~1.a10318fb.js"></script><script defer src="//docs.gtimg.com/mindx/js/main~2.3ce52132.js"></script><link href="//docs.gtimg.com/mindx/css/vendor-simplebar-react.eda789f0.css" rel="stylesheet"><link href="//docs.gtimg.com/mindx/css/vendor--tencent-wb-org-picker.8e2a54f7.css" rel="stylesheet"><link href="//docs.gtimg.com/mindx/css/pkg-ui-components.6cb3ceeb.css" rel="stylesheet"><link href="//docs.gtimg.com/mindx/css/pkg-import-kit.6974aaf2.css" rel="stylesheet"><link href="//docs.gtimg.com/mindx/css/main~1.cbe30131.css" rel="stylesheet"><link href="//docs.gtimg.com/mindx/css/main~2.d1169c10.css" rel="stylesheet"><script nonce="NONCE_PLACEHOLDER">window.ToggleConfig = [{"id":"220","type":1,"name":"文档空间","updatedTime":"1755532232000","status":true,"strategyGroupIdx":4,"dataset":{},"strategyGroupDataset":{}},{"id":"225","type":1,"name":"PC分享-空间微信 qq渠道","updatedTime":"1751271776000","status":false,"strategyGroupIdx":-1,"dataset":{},"strategyGroupDataset":{}},{"id":"206","type":1,"name":"AI 通搜开关","updatedTime":"1775198867000","status":false,"strategyGroupIdx":-1,"dataset":{},"strategyGroupDataset":{}}];</script>
+    <script nonce="NONCE_PLACEHOLDER">
+      window.__DWS_INFO__={"dwsVersion":"2.5.37","releaseVersion":"hotfix/20260907_1030_mindx_78df00ac","imageVersion":"oci-keo-1k1sr8449","tkePodName":"tdocs-mindx-webserver-prod-gz3-6bdf95dbf5-gtmhf"};
+    </script>
+  </head><body><div id="root">
+      <div class="boot-skeleton" role="status" aria-live="polite" aria-label="正在加载">
+        <div class="boot-skeleton__inner">
+          <div class="boot-skeleton__group">
+            <div class="boot-skeleton__row" style="width: 48%; height: 34px"></div>
+            <div class="boot-skeleton__row" style="width: 32%; height: 14px"></div>
+          </div>
+          <div class="boot-skeleton__group">
+            <div class="boot-skeleton__row" style="width: 100%; height: 16px"></div>
+            <div class="boot-skeleton__row" style="width: 92%; height: 16px"></div>
+            <div class="boot-skeleton__row" style="width: 76%; height: 16px"></div>
+          </div>
+          <div class="boot-skeleton__group">
+            <div class="boot-skeleton__row" style="width: 96%; height: 16px"></div>
+            <div class="boot-skeleton__row" style="width: 88%; height: 16px"></div>
+            <div class="boot-skeleton__row" style="width: 68%; height: 16px"></div>
+          </div>
+          <div class="boot-skeleton__grid">
+            <div class="boot-skeleton__row" style="height: 18px"></div>
+            <div class="boot-skeleton__row" style="height: 18px"></div>
+            <div class="boot-skeleton__row" style="height: 18px"></div>
+            <div class="boot-skeleton__row" style="height: 18px"></div>
+            <div class="boot-skeleton__row" style="height: 18px"></div>
+            <div class="boot-skeleton__row" style="height: 18px"></div>
+            <div class="boot-skeleton__row" style="height: 18px"></div>
+            <div class="boot-skeleton__row" style="height: 18px"></div>
+          </div>
+        </div>
+      </div>
+    </div></body></html>

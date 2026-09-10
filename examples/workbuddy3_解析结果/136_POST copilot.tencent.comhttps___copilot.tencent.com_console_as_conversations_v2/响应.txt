@@ -1,0 +1,14 @@
+HTTP/1.1 429 Too Many Requests
+Content-Type: application/json; charset=utf-8
+Set-Cookie: tgw_l7_route=cfaf314172df0f5a7868417fc022ba50; Expires=Thu, 10-Sep-2026 05:01:43 GMT; Path=/; sameSite=None; Secure
+Set-Cookie: session=; Path=/console; Max-Age=0; Expires=Thu, 01-Jan-70 00:00:00 GMT; HttpOnly
+Traceid: b30c9acec07b8cd4b4ea4fb74c200c1b
+X-Request-Id: 231bc36ecafe4f62b2df50400645ebb9
+X-User-Id: bb1a0124-b950-4052-9904-bc45ccd68bf0
+Server: APISIX/3.9.1
+X-Content-Type-Options: nosniff
+Content-Length: 168
+Connection: keep-alive
+Date: Thu, 10 Sep 2026 04:01:43 GMT
+EO-LOG-UUID: 11523375528922269128
+EO-Cache-Status: MISS

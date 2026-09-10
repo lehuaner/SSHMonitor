@@ -1,0 +1,11 @@
+HTTP/1.1 302 Moved Temporarily
+Content-Length: 0
+Server: Kestrel
+Location: https://edge.microsoft.com/neededge/v1?iemode=true&bucket=34
+Request-Context: appId=cid-v1:d94c0f68-64bf-4036-8409-a0e761bb7ee1
+X-Response-Cache-Status: True
+Expires: Thu, 10 Sep 2026 04:01:46 GMT
+Cache-Control: max-age=0, no-cache, no-store
+Pragma: no-cache
+Date: Thu, 10 Sep 2026 04:01:46 GMT
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains

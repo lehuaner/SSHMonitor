@@ -1,0 +1,44 @@
+[
+  {
+    "events": [
+      {
+        "event": "abtest_exposure",
+        "ab_sdk_version": "92343923",
+        "params": "{\"app_id\":932204,\"ab_url\":\"vscode-file://vscode-app/d:/Code/Editer/TRAE%20SOLO%20CN/resources/app/out/vs/code/electron-browser/solo/solo-lite.html\"}",
+        "local_time_ms": 1786778742957
+      }
+    ],
+    "user": {
+      "user_unique_id": "3798161405005257",
+      "user_id": "1000985253380538",
+      "user_is_login": true,
+      "device_id": "3798161405005257"
+    },
+    "header": {
+      "app_id": 932204,
+      "app_version": "0.1.50",
+      "os_name": "windows",
+      "os_version": "Windows 11 Pro",
+      "device_model": "82JW",
+      "language": "zh-cn",
+      "region": "CN",
+      "app_language": "zh-cn",
+      "platform": "electron",
+      "sdk_version": "5.3.7",
+      "sdk_lib": "js",
+      "timezone": 8,
+      "tz_offset": -28800,
+      "resolution": "1920x1080",
+      "browser": "Chrome",
+      "browser_version": "142.0.7444.235",
+      "referrer": "",
+      "referrer_host": "",
+      "width": 1920,
+      "height": 1080,
+      "screen_width": 1920,
+      "screen_height": 1080,
+      "tracer_data": "{\"$utm_from_url\":1}",
+      "custom": "{\"network_type\":\"4g\",\"icube_uid\":\"1000985253380538\",\"biz_user_id\":\"1000985253380538\",\"local_device_id\":\"aha-31e0f53a6a3d3e6dbf0a5036f86fa368\",\"is_special_uuid\":false,\"machine_id\":\"0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51\",\"arch\":\"x64\",\"system\":\"win32\",\"scope\":\"marscode\",\"organization\":\"\",\"build_version\":\"2.3.70844\",\"vscode_version\":\"1.107.1\",\"tenant\":\"marscode\",\"aiRegion\":\"CN\",\"quality\":\"stable\",\"build_time\":\"2026-08-13T06:47:34.747Z\",\"icube_main_uid\":\"75f65bea-8b33-4f70-b2cf-cf51a12a2b49\",\"window_id\":1,\"workspace_id\":\"5028d0e419be8cf575dfbf6b5f1acb51\",\"os_release\":\"10.0.26200\",\"device_manufacturer\":\"LENOVO\",\"cpu\":\"AMD\",\"cpu_brand\":\"AMD Ryzen 5 5600H with Radeon Graphics\",\"cpu_speed\":3.294,\"memory\":34204610560,\"is_ssh\":false,\"chat_mode\":0,\"channel_name\":\"common\",\"process_type\":2,\"privacy_mode\":\"off\",\"aha_version\":\"39.2.7-release.1.49.0\",\"store_country_code\":\"\",\"store_country_code_src\":\"did\",\"store_region\":\"CN\",\"workspace_status\":\"unsaved_multi_root\",\"workspace_root_count\":1,\"product_code\":\"SOLO_Lite\",\"ai_chat_version\":\"v1\",\"ai_chat_version_source\":\"default\",\"app_is_solo_mode\":\"0\",\"icube_ab\":\"{\\\"onboarding\\\":\\\"A\\\"}\",\"solo_chat_mode\":\"code\",\"app_window_count\":1,\"app_active_workspace_vscdb_size\":294912,\"app_global_vscdb_size\":1560576,\"app_system_disk_usage\":0.7887394248909542,\"ai_database_db_size\":1265582080,\"ai_snapshot_size\":67109575}"
+    }
+  }
+]

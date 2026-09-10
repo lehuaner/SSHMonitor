@@ -1,0 +1,1 @@
+{"code":0,"msg":"success","is_in_white_list":0,"sample_map":{"api":100,"asset_speed":100,"page_performance":100,"pv":100,"custom":100,"session":100,"error":100,"bridge_speed":100,"load_package_speed":100,"websocket":100,"replay":100,"process_performance":100},"server_time":"1788854814358","start_server_time":"1788854814358"}

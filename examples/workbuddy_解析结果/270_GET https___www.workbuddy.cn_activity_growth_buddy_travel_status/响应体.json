@@ -1,0 +1,19 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "4811b4c6-8355-42a1-b1cb-b209e67faf30",
+  "data": {
+    "state": "idle",
+    "buddy_id": 0,
+    "record_id": 0,
+    "location": null,
+    "depart_at": 0,
+    "arrive_at": 0,
+    "server_now": 1788799159,
+    "letter": null,
+    "use_deeplink": "",
+    "daily_limit_reached": false,
+    "duration_hours": 0,
+    "reward_credit": 0
+  }
+}

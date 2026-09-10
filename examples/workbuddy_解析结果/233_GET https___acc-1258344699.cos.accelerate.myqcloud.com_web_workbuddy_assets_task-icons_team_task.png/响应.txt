@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Content-Type: image/png
+Content-Length: 2774
+Accept-Ranges: bytes
+Date: Mon, 07 Sep 2026 16:39:14 GMT
+ETag: "8506ab778c8c73df1d3fef27dfd426e1"
+Last-Modified: Fri, 12 Jun 2026 08:56:20 GMT
+Server: tencent-cos
+Vary: Origin, Access-Control-Request-Headers, Access-Control-Request-Method
+x-cos-hash-crc64ecma: 3725588688198711265
+x-cos-request-id: NmE5ZWU4YjJfOTU1MDkwMWVfNmQ4Y18xN2IxNTBjZA==
+x-cos-storage-class: MAZ_STANDARD
+x-cos-version-id: MTg0NDQ5NjI4MTkxMjg3NzU5ODE
+x-cosindex-replication-status: Complete

@@ -1,0 +1,116 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:23:56.641
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.byteimg.com
+  Simple Name: *.byteimg.com
+  DNS Name: *.byteimg.com
+
+[Issuer]
+  CN=RapidSSL TLS RSA CA G1, OU=www.digicert.com, O=DigiCert Inc, C=US
+  Simple Name: RapidSSL TLS RSA CA G1
+  DNS Name: RapidSSL TLS RSA CA G1
+
+[Serial Number]
+  0DD5630DBBF523AD263DAFC89D1AC99E
+
+[Not Before]
+  2026/1/19 8:00:00
+
+[Not After]
+  2027/1/19 7:59:59
+
+[Thumbprint]
+  81BCA08902448724EABD725D69191FE8D92EE34C
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 d8 0c aa 0e f8 0e b0 7a e9 81 a9 b0 82 cc 09 2f 81 35 b8 db a2 3e 67 a8 91 70 d0 50 6e bf 4a a3 a6 62 df af d6 54 c3 64 c1 5c 36 de 6e 30 5f 15 a6 10 80 19 83 a4 5f b7 3a 2e cb 00 73 b7 0e a1 1b c7 c2 3f 87 d2 2a 42 bb 24 c7 b0 ef 76 41 46 e5 f4 eb c2 35 8b d8 69 e1 30 57 17 0d bf 59 31 00 83 4b 90 12 68 5d 0c 9e f0 5e 23 9e 71 22 fe 61 40 0b f3 47 7a 92 38 30 77 3c a8 7b b6 76 bc 6f ec 89 0f 1f 92 3b 72 8e b4 0a df 77 12 6f e2 27 bc 52 d2 43 2a 47 35 d8 f9 8c 42 fd 6a 70 3e 8e ef 8e 3e 0c 79 57 1c fb 96 8b 2d 4f 0f 28 7a 6c 2b 42 04 b7 e4 9d 4a 3b 74 dd df 01 1c dc 55 10 fe 46 b1 34 24 ac 1b 97 ce 9d 34 a4 8f 68 1b 7e 0a 74 d8 1c 7e 2d 60 91 2f 7f 9c 7a 46 62 3a 10 1c c5 64 42 77 40 bf 31 a5 b9 c6 8d bb 3b 20 47 1f 5d d5 ca f7 40 9e ed 45 9d 41 38 f4 21 57 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=0cdb6c82490f4a670ab814ee7ac4485288eb5638
+
+* 使用者密钥标识符(2.5.29.14):
+  cb3ef1787344d971e7129c1af2802d141ad2388f
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.byteimg.com
+DNS Name=byteimg.com
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://cdp.rapidssl.com/RapidSSLTLSRSACAG1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://status.rapidssl.com
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.rapidssl.com/RapidSSLTLSRSACAG1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+4c63dc98e59c1dab88f61e8a3ddeae8fab44a3377b5f9b94c3fba19cfcc1be26
+‎2026‎年‎1‎月‎20‎日 3:15:31
+SHA256
+ECDSA
+3046022100a79465a0b875431d56361526f9712f842c3c7d26444ea2a4b60ddba8728244f3022100f48085c143b2ce767a62affd40927b51efe1ed09a6729929f98350b29f105e33
+
+v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎1‎月‎20‎日 3:15:31
+SHA256
+ECDSA
+3044022067a26824101a5fcebf0beb6c488790340fde60dfe3536e3e4200b146b86b0e7802203fcf115752c89ebcac8833cf8c81397ebfd872fe20fd8b6d57b29c456dab1fcf
+
+v1
+604c9aaf7a7f775f01d406fc920dc899eb0b1c7df8c9521bfafa17773b978bc9
+‎2026‎年‎1‎月‎20‎日 3:15:32
+SHA256
+ECDSA
+30440220229e45d96fbedba79f34a07c7b974f7580e34952dded5b035488ed9074f1ad0f0220220279370b97a3f7b60182d781705f94b1257fa35cc41fa206fe40e8634f5e05
+
+
+[SubjectAltNames]
+DNS Name=*.byteimg.com
+DNS Name=byteimg.com
+

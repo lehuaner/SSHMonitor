@@ -1,0 +1,10 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "4280d135-fca0-4064-8e8e-d1ff2565f144",
+  "data": {
+    "balance": 8,
+    "total_consumed": 60,
+    "total_earned": 68
+  }
+}

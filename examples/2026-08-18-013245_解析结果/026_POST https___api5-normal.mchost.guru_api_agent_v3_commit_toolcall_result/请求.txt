@@ -1,0 +1,46 @@
+POST https://api5-normal.mchost.guru/api/agent/v3/commit_toolcall_result HTTP/2
+:method: POST
+:authority: api5-normal.mchost.guru
+:scheme: https
+:path: /api/agent/v3/commit_toolcall_result
+content-length: 908
+accept-encoding: gzip, deflate, br, zstd
+sec-fetch-dest: empty
+sec-fetch-mode: no-cors
+sec-fetch-site: none
+content-type: application/json
+request-traffic-type: prod
+user-agent: TraeClient/TTNet
+app-version: 0.1.51
+x-ahanet-timeout: 86400
+x-app-id: 6eefa01c-1036-4c7e-9ca5-d891f63bfcd8
+x-app-version: default
+x-app-version-code: 20260811
+x-bridge-transport: aha
+x-custom-trace-id: 6d5c591382d0db17b217b40fe9f4f31e
+x-device-brand: 82JW
+x-device-cpu: AMD
+x-device-id: 3798161405005257
+x-device-type: windows
+x-flow-traceparent: 04-6d5c591382d0db17b217b40fe9f4f31e-a80f8f6ebb78bd9c-01
+x-ide-token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTkxMDMxOTI3ODcxOTY2NyIsInNvdXJjZSI6InJlZnJlc2hfdG9rZW4iLCJzb3VyY2VfaWQiOiJUYmpWLXFzQ2JNQXRJUGs2OFp3XzQtU1Q4LXgtc0RwVWNfb1FaOGZaMFkwPS4xOGNiZTlmMGUwMDM0OTI3IiwidGVuYW50X2lkIjoiN28yZDg5NHA3ZHIwbzQiLCJ0eXBlIjoidXNlciJ9LCJleHAiOjE3ODc5ODg0OTcsImlhdCI6MTc4Njc3ODg5N30.MHAOXaLtS0HfQTsctt1PIg7OtNhS_yT-HSaLruE_D4xjdtxD8o4ltxz0nHfFxwLWXA0Xq6ODlQniy2KSmc0_CVxaCV3ePPRBMEEFE_LbGgqa86nHHOIyrtNj-njUleYAgnbrtuZ0Upbm5omQCkDjos83CA3TBACmNfhVc0OVnSFQePAG1H2OmlBvscZtS28QirpFYHLZDEPUtiWknkFo3Cmcj6y53EtgA6ocOocAPnVVCWL4vi-KtzVC22NuT82gkpaxsQzK_cj_XghnMd-nketAACuOm_BXdTrmmZmFQHRLdr4XdW5XKMdg1wqPH44VeYQoO8FLdrLirHxyxR77GeWr_-hVKhFAk8IxamFRaxDSJCswe3TYfxF99nQEUIsbxqpFOFyxcVPs_177axG9C-6najjjBPihtB9LZF7LP5RdqBW1MIszHtGOI1HgK6_8lXYuYMQUBV7m3sEb785254V1YpTZ03apCvjkGOTJIXguAyW-b92xvu4v5ll26RLy1os2aZfQjkTjg1SrBqiGJvmfOZhPUrOrG7ZJuHoWcurdNNWtR2HSGLtGSlgVw6nlcgPYBJ9NmjQ8gfDt1QC4UABTwO9YZB8Rp0NXNZ8Qc51VTlRFyrVoyqhdbCAFhUm2meQHKSPNjTU-a4RDYTvJNrbDjRTcBy7WULLAT78IAKA
+x-ide-version: 0.1.51
+x-ide-version-code: 20260811
+x-ide-version-type: stable
+x-lgw-req-sdk-type: 3
+x-machine-id: 0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51
+x-os-version: Windows 11 Pro
+package-type: stable_cn
+x-request-pin: 46727c5682f7ec10
+x-requested-at: 1786987959
+x-request-id: req_08cce5b2-e2b4-4ebd-a563-23a6c16dbf62
+x-trae-request-id: b50dd474-71e2-4b53-9597-a40e91244617
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+accept: */*
+x-ss-dp: 787976
+x-tt-trace-id: 00-10c856f20dd7e685d584dc9a7f78ffff-10c856f20dd7e685-01
+referer: https://trae-api-cn.mchost.guru/api/agent/v3/commit_toolcall_result
+x-helios: blQAAGjEGiPi7x61/Z7pDTxKRPhT/fnyILKvgGj7rkb65q8R
+x-medusa: tkWDakKt3JBikl9RY29LGuKK4nJkLgMBMgx9VQBAIb00mc7xNhX5VPcQqzE7B5KBBRF5d72ysEIe5s/SowwXBNXt465nBj9EEC9rCUTxO8SNI7cf7+UTsZ8K5qrJAB3UVEetVHa6SPKMolrIbY98atkoxCp4nfDxkgK83fOdsHFTJvIxovwWbcCYEeoudUI250mcd788S0lH/FpDRIekD8+5owRsYDmhvIY5x0aV6JV4kRwoHEPuuYnR96BkYKmCJqOfCCe9xJIiJTp7Zaxn7EOYPzIVWOebOkD+rbsutMgz6Tu9wYtNC93hn1gSdJwcA6AQV/ZSgmaq7hqWlUpCRJtTWi4cNZfzH7YHnILRdCRO37w8wCAiNxURcPzIVpulsdy3saPstYy/Jb0eQYyJLxvpBuK3LKFjruy2D1katBxVKON96fZn4YvGs/TuNBK7Hs6mKhm98GpDbs+Vio2+QJ5VxBssiK9KR8CjN+dvqGz1kQRbT89zI0/E6u10ToOYJl9wJ/J2S+jOBAL0EQotIx4sJAQCRisUuhmbRihsE2MTGngdZCR3XGZkmKne0hU6BSV8UGQy0jNNGMWaDOGSnJpatN3iHVJg3z7EtKtKmA+n0cSw1BfnbWaFErh6Niv20vE5oBYJd7WHnruT0VeDUxqbJfLHVbldPqxHnZ+Pzxcez9/n3c8Hj+indxFIbxzexdMjApLbfxk2/5W5r8k7jWrqXTxY7L0/v82Vj1YuT7xLDc2Cb4fZn3eu0LhvJ2UJ5SOcaLXQFygeZf///7/v9/7/AAA=
+x-neptune: -11|50:51:59:00:09

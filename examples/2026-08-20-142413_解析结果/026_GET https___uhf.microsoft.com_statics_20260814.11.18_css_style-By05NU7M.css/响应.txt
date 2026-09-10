@@ -1,0 +1,11 @@
+HTTP/2 200
+content-type: text/css
+last-modified: Fri, 14 Aug 2026 12:13:12 GMT
+etag: W/"0x8DEF9FD6983F025"
+x-ms-request-id: 5ebae49d-701e-0033-73b9-2ff930000000
+x-ms-version: 2018-03-28
+access-control-allow-origin: *
+x-azure-ref: 20260819T090559Z-17dd7dfd477xtn6jhC1HK1ctx40000000svg000000004yp4
+content-length: 231224
+date: Thu, 20 Aug 2026 06:22:20 GMT
+vary: Accept-Encoding

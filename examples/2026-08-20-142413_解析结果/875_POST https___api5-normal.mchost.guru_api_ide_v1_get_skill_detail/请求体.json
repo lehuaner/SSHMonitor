@@ -1,0 +1,10 @@
+{
+  "os": "windows",
+  "build_time": false,
+  "functions": [
+    "solo_agent_lite",
+    "solo_work_lite",
+    "solo_design_lite"
+  ],
+  "access_type": 1
+}

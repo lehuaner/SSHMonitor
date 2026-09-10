@@ -1,0 +1,25 @@
+{
+  "type": "local",
+  "sessionId": "918cf3a4-7beb-454f-b6a7-6adb9632f2f1",
+  "name": "切换到 main 分支",
+  "conversationOrigin": "legacy_workbuddy_local",
+  "workDir": "D:\\Code\\Project\\Python\\TextPatch",
+  "isPlayground": 0,
+  "createdAtMs": 1788156045199,
+  "updatedAtMs": 1788156854796,
+  "lastActivityAtMs": 1788156854796,
+  "clientContext": {
+    "localStatus": "active",
+    "hostId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "sessionKind": "manual",
+    "model": "",
+    "sourceMode": "",
+    "permissionMode": "",
+    "expert": {
+      "id": "",
+      "locale": "",
+      "runtimeIdentity": "",
+      "marketplace": ""
+    }
+  }
+}

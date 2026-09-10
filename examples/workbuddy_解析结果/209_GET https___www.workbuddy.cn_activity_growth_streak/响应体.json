@@ -1,0 +1,56 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "f17351f2-eec8-4c34-ac43-4a6665a4c583",
+  "data": {
+    "streak": {
+      "days": 8,
+      "month_total_days": 8,
+      "month_consumed_days": 0,
+      "next_tier": "14d",
+      "next_tier_remaining": 6,
+      "makeup_dates": []
+    },
+    "makeup_cards": {
+      "balance": 0,
+      "max": 4
+    },
+    "redemption_status": {
+      "tier_7d_count": 0,
+      "tier_14d_count": 0,
+      "tier_28d_count": 0,
+      "tier_7d_status": "available",
+      "tier_14d_status": "locked",
+      "tier_28d_status": "locked",
+      "remaining_days": 8,
+      "tiers": [
+        {
+          "tier": "7d",
+          "days": 7,
+          "credit": 0,
+          "energy": 2,
+          "cards": 1,
+          "chances": 1
+        },
+        {
+          "tier": "14d",
+          "days": 14,
+          "credit": 50,
+          "energy": 3,
+          "cards": 1,
+          "chances": 1
+        },
+        {
+          "tier": "28d",
+          "days": 28,
+          "credit": 150,
+          "energy": 5,
+          "cards": 1,
+          "chances": 1
+        }
+      ]
+    },
+    "timezone": "Asia/Shanghai",
+    "launch_date": "2026-06-17"
+  }
+}

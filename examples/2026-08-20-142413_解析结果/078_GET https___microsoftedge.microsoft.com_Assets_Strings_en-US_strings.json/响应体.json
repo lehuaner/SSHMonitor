@@ -1,0 +1,1469 @@
+﻿{
+  "NavigationBar.AriaLabel": "Navigation Items",
+  "_NavigationBar.AriaLabel.comment": "Aria label for narrator announcement when user enters the navbar tree",
+
+  "NavigationBar.Home": "Home",
+  "_NavigationBar.Home.comment": "Navigation bar item for extension home page",
+
+  "NavigationBar.Categories": "Categories",
+  "_NavigationBar.Categories.comment": "Navigation bar title for extension categories",
+
+  "Nps.Prompt.Title": "We’d love your feedback!",
+  "_Nps.Prompt.Title.comment": "Title text for survey prompt",
+
+  "Nps.Prompt.Subtitle": "We just have 2 questions for you.",
+  "_Nps.Prompt.Subtitle.comment": "Subtitle for survey prompt",
+
+  "Nps.Rating.Question": "How likely are you to recommend the Edge Addons website to others, if asked?",
+  "_Nps.Rating.Question.comment": "Rating question for survey",
+
+  "Nps.Rating.One": "1 – Not at all likely",
+  "_Nps.Rating.One.comment": "Text for 1 rating on survey",
+
+  "Nps.Rating.Two": "2",
+  "_Nps.Rating.Two.comment": "Text for 2 rating on survey",
+
+  "Nps.Rating.Three": "3",
+  "_Nps.Rating.Three.comment": "Text for 3 rating on survey",
+
+  "Nps.Rating.Four": "4",
+  "_Nps.Rating.Four.comment": "Text for 4 rating on survey",
+
+  "Nps.Rating.Five": "5 – Extremely likely",
+  "_Nps.Rating.Five.comment": "Text for 5 rating on survey",
+
+  "Nps.Comment.Placeholder": "Please tell us more. Why did you choose that answer?",
+  "_Nps.Comment.Placeholder.comment": "Comment textfield placeholder",
+
+  "Badge.Featured": "Featured",
+  "_Badge.Featured.comment": "Featured text on the badge",
+
+  "Badge.Tooltip": "This extension follows all of Microsoft's recommended practices and has been verified.",
+  "_Badge.Tooltip.comment": "Tooltip for featured Badge",
+
+  "Badge.Tooltip.AriaLabel": "Featured extension. This extension follows all of Microsoft's recommended practices and has been verified.",
+  "_Badge.Tooltip.AriaLabel.comment": "Tooltip announcement for featured Badge",
+
+  "Banner.AlertType.Warning": "Warning",
+  "_Banner.AlertType.Warning.comment": "warning type of banner",
+
+  "Common.Yes": "Yes",
+  "_Common.Yes.comment": "Yes label",
+
+  "Common.No": "No",
+  "_Common.No.comment": "No label",
+
+  "Common.AccessDenied.Title": "This page isn’t available",
+  "_Common.AccessDenied.Title.Comment": "Title for access denied error",
+
+  "Common.AccessDenied.Description": "This page contains mature content. You don’t have permission to view this page.",
+  "_Common.AccessDenied.Description.Comment": "Description for access denied error",
+
+  "Carousel.ScrollLeft.Label": "Scroll left",
+  "_Carousel.ScrollLeft.Label.Comment": "Title and aria announcement label for scroll left flipper",
+
+  "Carousel.ScrollRight.Label": "Scroll right",
+  "_Carousel.ScrollRight.Label.Comment": "Title and aria announcement label for scroll right flipper",
+
+  "Carousel.ScrolledLeft": "Scrolled left, Slide {0} of {1}",
+  "_Carousel.ScrolledLeft.Comment": "Aria announcement after scrolling left in the carousel. {0} is the current slide number, {1} is the total number of slides",
+
+  "Carousel.ScrolledRight": "Scrolled right, Slide {0} of {1}",
+  "_Carousel.ScrolledRight.Comment": "Aria announcement after scrolling right in the carousel. {0} is the current slide number, {1} is the total number of slides",
+
+  "Categories.Edge-Extensions": "All add-ons",
+  "_Categories.Edge-Extensions.comment": "All add-ons as extension category",
+
+  "Categories.Spotlight": "Spotlight",
+  "_Categories.Spotlight.comment": "Spotlight as default category",
+
+  "Categories.Accessibility": "Accessibility",
+  "_Categories.Accessibility.comment": "Accessibility as extension category",
+
+  "Categories.Blogging": "Blogging",
+  "_Categories.Blogging.comment": "Blogging as extension category",
+
+  "Categories.Developer-Tools": "Developer tools",
+  "_Categories.Developer-Tools.comment": "Developer tools as extension category",
+
+  "Categories.Entertainment": "Entertainment",
+  "_Categories.Entertainment.comment": "Entertainment as extension category",
+
+  "Categories.News-And-Weather": "News & weather",
+  "_Categories.News-And-Weather.comment": "News & Weather as extension category",
+
+  "Categories.Photos": "Photos",
+  "_Categories.Photos.comment": "Photos as extension category",
+
+  "Categories.Productivity": "Productivity",
+  "_Categories.Productivity.comment": "Productivity as extension category",
+
+  "Categories.Search-Tools": "Search tools",
+  "_Categories.Search-Tools.comment": "Search Tools as extension category",
+
+  "Categories.Shopping": "Shopping",
+  "_Categories.Shopping.comment": "Shopping as extension category",
+
+  "Categories.Social": "Social",
+  "_Categories.Social.comment": "Social as extension category",
+
+  "Categories.Communication": "Communication",
+  "_Categories.Communication.comment": "Communication as extension category",
+
+  "Categories.Sports": "Sports",
+  "_Categories.Sports.comment": "Sports as extension category",
+
+  "Categories.Entertainment-And-Sports": "Entertainment & sports",
+  "_Categories.Entertainment-And-Sports.comment": "Entertainment & Sports as extension category",
+
+  "Categories.Social-And-Communication": "Social & communication",
+  "_Categories.Social-And-Communication.comment": "Social & Communication as extension category",
+
+  "Categories.Animals": "Animals",
+  "_Categories.Animals.comment": "Animals as theme category",
+
+  "Categories.Art-And-Design": "Art & Design",
+  "_Categories.Art-And-Design.comment": "Art & Design as theme category",
+
+  "Categories.Cars": "Cars",
+  "_Categories.Cars.comment": "Cars as theme category",
+
+  "Categories.Colors": "Colors",
+  "_Categories.Colors.comment": "Colors as theme category",
+
+  "Categories.Entertainment-Themes": "Entertainment",
+  "_Categories.Entertainment-Themes.comment": "Entertainment as theme category",
+
+  "Categories.Games": "Games",
+  "_Categories.Games.comment": "Games as theme category",
+
+  "Categories.Nature-And-Landscapes": "Nature & Landscapes",
+  "_Categories.Nature-And-Landscapes.comment": "Nature & Landscapes as theme category",
+
+  "Categories.Space": "Space",
+  "_Categories.Space.comment": "Space as theme category",
+
+  "Categories.Others": "Others",
+  "_Categories.Others.comment": "Others as theme category",
+
+  "Categories.CompactViewSubText.Extensions": "Extension categories",
+  "_Categories.CompactViewSubText.ExtensionSubText.comment": "Subtext for extension categories drop-down in mobile/tablet view",
+
+  "Categories.CompactViewSubText.Themes": "Theme categories",
+  "_Categories.CompactViewSubText.Theme": "Subtext for theme categories drop-down in mobile/tablet view",
+
+  "Common.Close": "Close",
+  "_Common.Close.comment": "Close button label",
+
+  "CollectionCard.Trending.Title": "Trending",
+  "CollectionCard.Trending.Subtitle": "Discover what's popular",
+
+  "CollectionCard.NewUser.Title": "Get started",
+  "CollectionCard.NewUser.Subtitle": "Extensions starter kit",
+
+  "CollectionCard.Education.Title": "Education",
+  "CollectionCard.Education.Subtitle": "Extensions for learning",
+
+  "CollectionCard.PersonalizeEdge.Title": "Personalize Edge",
+  "CollectionCard.PersonalizeEdge.Subtitle": "Exclusive themes for you!",
+
+  "CollectionCard.ByMicrosoft.Title": "By Microsoft",
+  "CollectionCard.ByMicrosoft.Subtitle": "Get Microsoft offerings",
+
+  "CollectionCard.TopRated.Title": "Top rated",
+  "CollectionCard.TopRated.Subtitle": "Top extensions & themes",
+
+  "CollectionCard.AIAssists.Title": "AI-powered extensions",
+  "CollectionCard.AIAssists.Subtitle": "AI tools for smarter browsing",
+
+  "CollectionCard.AndroidExtensions.Title": "Extensions for Mobile",
+  "CollectionCard.AndroidExtensions.Subtitle": "Enhance your mobile browsing",
+
+  "CollectionCard.Adblocking.Title": "Adblocking",
+  "CollectionCard.Adblocking.Subtitle": "Enjoy an ad-free experience",
+
+  "CollectionCard.SecureBrowsing.Title": "Secure browsing",
+  "CollectionCard.SecureBrowsing.Subtitle": "Secure browsing essentials",
+
+  "CollectionCard.TranslateTools.Title": "Translation",
+  "CollectionCard.TranslateTools.Subtitle": "Best translation tools",
+
+  "CollectionCard.ReadingAndWriting.Title": "Grammar & reading",
+  "CollectionCard.ReadingAndWriting.Subtitle": "Boost reading and writing skills",
+
+  "CollectionCard.TrendingThemes.Title": "Trending",
+  "CollectionCard.TrendingThemes.Subtitle": "Popular near you",
+
+  "CollectionCard.GlobalFavouriteThemes.Title": "Global favorites",
+  "CollectionCard.GlobalFavouriteThemes.Subtitle": "Top themes worldwide",
+
+  "CollectionCard.HolidaySparkle.Title": "Holiday sparkle",
+  "CollectionCard.HolidaySparkle.Subtitle": "Experience holiday magic",
+
+  "CollectionCard.SpringFestival.Title": "Spring Festival Theme",
+  "_CollectionCard.SpringFestival.Title.comment": "Holiday Sparkle collection card title for Chinese locales",
+
+  "CollectionCard.GamersHaven.Title": "Gamer's haven",
+  "CollectionCard.GamersHaven.Subtitle": "Top gaming themes",
+
+  "CollectionCard.ExploreTheWorld.Title": "Wander the world",
+  "CollectionCard.ExploreTheWorld.Subtitle": "Explore global wonders",
+
+  "CollectionCard.InterstellarVibes.Title": "Interstellar vibes",
+  "CollectionCard.InterstellarVibes.Subtitle": "Experience cosmic themes",
+
+  "CollectionCard.NextFlipper.Title": "Move next",
+  "_CollectionCard.NextFlipper.comment": "Next button to scroll right",
+
+  "CollectionCard.PrevFlipper.Title": "Move previous",
+  "CollectionCard.PrevFlipper.comment": "Previous button to scroll left",
+
+  "Dialog.Close": "Close",
+  "_Dialog.Close.Comment": "Aria label for close button on dialogs",
+
+  "DownloadEdgeBanner.DisplayText": "To install add-ons, you'll need the new Microsoft Edge.",
+  "_DownloadEdgeBanner.DisplayText.comment": "Display text for banner",
+
+  "DownloadEdgeBanner.InstallationText": "Download the new Microsoft Edge",
+  "_DownloadEdgeBanner.InstallationText.comment": "Installation text for banner",
+
+  "NavigationBar.QuickNavbarItems.AriaLabel": "Quick navigation items",
+  "_NavigationBar.QuickNavbarItems.AriaLabel.comment": "Aria label value for a group of icons shown on the navigation bar in search mode.",
+
+  "NavigationBar.arrowBackAriaLabel": "Go back home.",
+  "_NavigationBar.arrowBackAriaLabel.comment": "Aria label value for the arrow back icon shown on the navigation bar in search mode.",
+
+  "NavigationBar.ClearFilters": "Clear filters",
+  "_NavigationBar.ClearFilters.comment": "Clear filters button to Clear all filters",
+
+  "NavigationBar.ClearFilterSuccess": "All filters cleared",
+  "_NavigationBar.ClearFilterSuccess.comment": "Success message on clearing filters",
+
+  "AddonsType.All": "All",
+  "_AddonsType.All.comment": "All type addons filter in search mode",
+
+  "AddonsType.All.CompactView": "All",
+  "_AddonsType.All.CompactView.comment": "All type addons filter in search for mobile/tablet view",
+
+  "AddonsType.Extensions": "Extensions",
+  "_AddonsType.Extensions.comment": "Extension type addons filter in search mode",
+
+  "AddonsType.Themes": "Themes",
+  "_AddonsType.Themes.comment": "Theme type addons filter in search mode",
+
+  "NavigationBar.FilterBy.Title": "Filter by",
+  "_NavigationBar.FilterBy.Title.comment": "Title value for featured filter options in search mode",
+
+  "NavigationBar.FilterFeatured.Title": "Featured",
+  "_NavigationBar.FilterFeatured.Title.comment": "Title value for featured addons filter in search mode",
+
+  "NavigationBar.FilterFeatured.Tooltip.Title": "Follows Microsoft's recommended best practices related to security, privacy, transparency, and user experience",
+  "_NavigationBar.FilterFeatured.Tooltip.Title.comment": "Title value for featured addons filter in search mode",
+
+  "NavigationBar.FilterFeatured.Tooltip.AriaLabel": "More info",
+  "_NavigationBar.FilterFeatured.Tooltip.AriaLabel.comment": "Accessible label for the featured filter tooltip info icon",
+
+  "NavigationBar.FilterRating.Title": "Ratings",
+  "_NavigationBar.FilterRating.Title.comment": "Title value for rating filter in search mode",
+
+  "NavigationBar.FilterRating.All.Title": "All",
+  "_NavigationBar.FilterRating.All.Title.comment": "Value for All rating filter in search mode",
+
+  "NavigationBar.FilterRating.RatingWrapper.Label": "{0} star",
+  "_NavigationBar.FilterRating.RatingWrapper.Label.comment": "Aria label for rating wrapper value in search mode",
+
+  "NavigationBar.FilterRating.AndUp.Title": " & up",
+  "_NavigationBar.FilterRating.AndUp.Title.comment": "& up suffix for rating filter values in search mode",
+
+  "NavigationBar.FiltersTitle": "Filter",
+  "_NavigationBar.FiltersTitle.comment": "Title value when in search mode",
+
+  "NavigationBar.FiltersTitleCategory": "Filter by category",
+  "_NavigationBar.FiltersTitleCategory.comment": "Filter checkboxes Title bar",
+
+  "NavigationBar.Reset": "Reset",
+  "_NavigationBar.Reset.comment": "Reset to default filters",
+
+  "NavigationBar.CompactView.Reset": "Reset selection",
+  "_NavigationBar.CompactView.Reset.comment": "Reset selection to default filters in mobile/tablet view",
+
+  "NavigationBar.Reset.AriaLabel": "Reset to default filters",
+  "_NavigationBar.Reset.AriaLabel.comment": "Aria label for resetting to default filters",
+
+  "NavigationBar.SortBy.Title": "Sort by",
+  "_NavigationBar.SortBy.Title.comment": "Title value for sort options in search mode",
+
+  "TopNavigationBar.FiltersTitle": "Filter by type",
+  "_TopNavigationBar.FiltersTitle.comment": "Filter Title in top when in search mode",
+
+  "SortBy.Install": "Most installed",
+  "SortBy.Install.comment": "Most installed sort option in search mode",
+
+  "SortBy.Relevance": "Relevance",
+  "SortBy.Relevance.comment": "Relevance sort option in search mode",
+
+  "NavigationBar.SendFeedback": "Send feedback",
+  "_NavigationBar.SendFeedback.comment": "Button header to send feedback",
+
+  "Searchbox.PlaceholderText": "Search extensions, themes, and more",
+  "_Searchbox.PlaceholderText.comment": "Placeholder value for Search Text box",
+
+  "Searchbox.ClearButtonLabel": "Clear search",
+  "_Searchbox.ClearButtonLabel": "Aria label value for clear search box button in search box",
+
+  "Searchbox.ClearSearchSuccess": "Search text cleared",
+  "_Searchbox.ClearSearchSuccess": "Message on clearing text in search box",
+
+  "SendFeedback.Heading": "Send feedback",
+  "_SendFeedback.Heading.comment": "Popup heading containing form of feedback",
+
+  "SendFeedback.Description": "Describe what's happening",
+  "_SendFeedback.Description.comment": "Feedback description input text label",
+
+  "SendFeedback.DescriptionPlaceholder": "Remember not to include personal info like phone numbers.",
+  "_SendFeedback.DescriptionPlaceholder.comment": "Message for user for not including personal information",
+
+  "SendFeedback.UrlLabel": "URL",
+  "_SendFeedback.UrlLabel.comment": "URL label heading",
+
+  "SendFeedback.EmailCheckboxLabel": "Email address",
+  "_SendFeedback.EmailCheckboxLabel.comment": "Email Address label heading",
+
+  "SendFeedback.ScreenshotCheckboxLabel": "Include this screenshot",
+  "_SendFeedback.ScreenshotCheckboxLabel.comment": "Checkbox label to include screenshot",
+
+  "SendFeedback.ScreenshotErrorTitle": "Unable to load screenshot at the moment. Please retry.",
+  "_SendFeedback.ScreenshotErrorTitle.comment": "Error message when screenshot is not able to load",
+
+  "SendFeedback.PrivacyStatement": "Your feedback will be used to improve Microsoft's products and services. By including your email address, you agree that Microsoft can email you about your feedback.",
+  "_SendFeedback.PrivacyStatement.comment": "Email address privacy statement",
+
+  "SendFeedback.MicrosoftPrivacyStatementLabel": "Microsoft Privacy Statement",
+  "_SendFeedback.MicrosoftPrivacyStatementLabel.comment": "Label for privacy statement",
+
+  "SendFeedback.SendButtonLabel": "Send",
+  "_SendFeedback.SendButtonLabel.comment": "Button heading to send feedback",
+
+  "SendFeedback.ScreenshotAltText": "Store page screenshot",
+  "_SendFeedback.ScreenshotAltText.comment": "Store points to Microsoft store, screenshot image alternate text",
+
+  "SendFeedback.SendError": "We couldn't submit your feedback. Please try again.",
+  "_SendFeedback.SendError.Comment": "Error message show when send feedback is unsuccessful",
+
+  "StoreHomePage.Description": "Make Microsoft Edge your own with extensions and themes that help you personalise the browser and be more productive.",
+  "_StoreHomePage.Description.comment": "Meta tag description value for store home page",
+
+  "StoreHomePage.AIThemesBanner.Title": "Create AI Powered Theme",
+  "StoreHomePage.AIThemesBanner.Title.comment": "Title of AI Themes banner",
+
+  "StoreHomePage.AIThemesBanner.CTATitle": "Try Now",
+  "StoreHomePage.AIThemesBanner.CTATitle.comment": "Text to be shown on button of AI banner",
+
+  "StoreHomePage.AndroidExtsBanner.Title": "Discover Extensions on your phone",
+  "StoreHomePage.AndroidExtsBanner.Title.comment": "Title of mobile Extensions banner",
+
+  "StoreHomePage.HolidaySparkleBanner.Title": "A seasonal refresh for your browser",
+  "StoreHomePage.HolidaySparkleBanner.Title.comment": "Title of holiday sparkle banner",
+
+  "StoreHomePage.FootballThemesBanner.Title": "Cheer for your favorite football team",
+  "_StoreHomePage.FootballThemesBanner.Title.comment": "Title of football tournament themes banner",
+
+  "StoreHomePage.FootballThemesBanner.CTATitle": "Explore Themes",
+  "_StoreHomePage.FootballThemesBanner.CTATitle.comment": "Text to be shown on button of football tournament themes banner",
+
+  "EditorsPick.LandmarkTitle": "Editor's picks",
+  "_EditorsPick.LandmarkTitle.Comment": "Aria Label for editors pick page landmark title",
+
+  "ErrorDialog.Message": "An error has occurred",
+  "_ErrorDialog.Message.Comment": "heading of extension install error dialog",
+
+  "ExtensionDetailsButton.GetTheme": "Get theme",
+  "_ExtensionDetailsButton.GetTheme.comment": "Button heading to install extension",
+
+  "ExtensionDetailsButton.Get": "Get",
+  "_ExtensionDetailsButton.Get.comment": "Button heading to install extension",
+
+  "ExtensionDetailsButton.Remove": "Remove",
+  "_ExtensionDetailsButton.Remove.comment": "Button heading to remove extension",
+
+  "ExtensionDetailsButton.Checking": "Checking...",
+  "_ExtensionDetailsButton.Checking.comment": "Button heading denoting status",
+
+  "ExtensionDetails.DescriptionHeader": "Description",
+  "_ExtensionDetails.DescriptionHeader.comment": "Header for extension description",
+
+  "ExtensionDetails.PrivacyHeader": "Privacy",
+  "_ExtensionDetails.PrivacyHeader.comment": "Header for extension privacy section",
+
+  "ExtensionDetails.PrivacyDataCollectedLabel": "Personal data collected:",
+  "_ExtensionDetails.PrivacyDataCollectedLabel.comment": "Bold label shown when extension collects personal data",
+
+  "ExtensionDetails.PrivacyNoDataCollectedLabel": "No personal data collected:",
+  "_ExtensionDetails.PrivacyNoDataCollectedLabel.comment": "Bold label shown when extension does not collect personal data",
+
+  "ExtensionDetails.PrivacyCollectsData": "{0} disclosed it collects personal data.",
+  "_ExtensionDetails.PrivacyCollectsData.comment": "Privacy body text when extension collects user data. {0} is extension name",
+
+  "ExtensionDetails.PrivacyDoesNotCollectData": "{0} disclosed it doesn't collect personal data.",
+  "_ExtensionDetails.PrivacyDoesNotCollectData.comment": "Privacy body text when extension does not collect user data. {0} is extension name",
+
+  "ExtensionDetails.PrivacyCollectsDataWithPolicy": "{0} disclosed it collects personal data. Review the developer's {1}.",
+  "_ExtensionDetails.PrivacyCollectsDataWithPolicy.comment": "Privacy body text when extension collects user data and privacy policy URL is available. {0} is extension name, {1} is privacy policy link text",
+
+  "ExtensionDetails.PrivacyDoesNotCollectDataWithPolicy": "{0} disclosed it doesn't collect personal data. Review the developer's {1}.",
+  "_ExtensionDetails.PrivacyDoesNotCollectDataWithPolicy.comment": "Privacy body text when extension does not collect user data and privacy policy URL is available. {0} is extension name, {1} is privacy policy link text",
+
+  "ExtensionDetails.PrivacyPolicyLink": "privacy policy",
+  "_ExtensionDetails.PrivacyPolicyLink.comment": "Link text for privacy policy",
+
+  "ExtensionDetails.PrivacyHandlesFollowing": "{0} handles the following:",
+  "_ExtensionDetails.PrivacyHandlesFollowing.comment": "Heading for data categories collected by the extension. {0} is the extension name",
+
+  "ExtensionDetails.PrivacyDeveloperDeclares": "This developer declares that your data is:",
+  "_ExtensionDetails.PrivacyDeveloperDeclares.comment": "Heading for the developer's data usage declarations",
+
+  "ExtensionDetails.PrivacyDisclosureNoSellingOrTransferringUserData": "Not sold to third parties outside {0}.",
+  "_ExtensionDetails.PrivacyDisclosureNoSellingOrTransferringUserData.comment": "Data declaration: not sold to third parties. {0} is the approved use cases link",
+
+  "ExtensionDetails.PrivacyDisclosureApprovedUseCases": "approved use cases",
+  "_ExtensionDetails.PrivacyDisclosureApprovedUseCases.comment": "Link text for approved use cases",
+
+  "ExtensionDetails.PrivacyDisclosureNoUnrelatedPurposeUsage": "Not used or shared for purposes unrelated to the extension's functionality.",
+  "_ExtensionDetails.PrivacyDisclosureNoUnrelatedPurposeUsage.comment": "Data declaration: not shared for unrelated purposes",
+
+  "ExtensionDetails.PrivacyDisclosureNoCreditworthinessOrLendingUsage": "Not used or shared to determine creditworthiness or for credit-related purposes.",
+  "_ExtensionDetails.PrivacyDisclosureNoCreditworthinessOrLendingUsage.comment": "Data declaration: not used for credit purposes",
+
+  "ExtensionDetails.PrivacyDataUsagePersonallyIdentifiableInformation": "Personally identifiable information",
+  "_ExtensionDetails.PrivacyDataUsagePersonallyIdentifiableInformation.comment": "Data usage name for personally identifiable information",
+
+  "ExtensionDetails.PrivacyDataUsagePersonallyIdentifiableInformationDesc": "For example: name, address, email address, age, or identification number",
+  "_ExtensionDetails.PrivacyDataUsagePersonallyIdentifiableInformationDesc.comment": "Description for personally identifiable information data usage",
+
+  "ExtensionDetails.PrivacyDataUsageAuthenticationInformation": "Authentication information",
+  "_ExtensionDetails.PrivacyDataUsageAuthenticationInformation.comment": "Data usage name for authentication information",
+
+  "ExtensionDetails.PrivacyDataUsageAuthenticationInformationDesc": "For example: passwords, credentials, security questions, or personal identification numbers (PINs)",
+  "_ExtensionDetails.PrivacyDataUsageAuthenticationInformationDesc.comment": "Description for authentication information data usage",
+
+  "ExtensionDetails.PrivacyDataUsagePersonalCommunications": "Personal communications",
+  "_ExtensionDetails.PrivacyDataUsagePersonalCommunications.comment": "Data usage name for personal communications",
+
+  "ExtensionDetails.PrivacyDataUsagePersonalCommunicationsDesc": "For example: emails, text messages, or chat messages",
+  "_ExtensionDetails.PrivacyDataUsagePersonalCommunicationsDesc.comment": "Description for personal communications data usage",
+
+  "ExtensionDetails.PrivacyDataUsageWebHistory": "Web history",
+  "_ExtensionDetails.PrivacyDataUsageWebHistory.comment": "Data usage name for web history",
+
+  "ExtensionDetails.PrivacyDataUsageWebHistoryDesc": "For example: the list of web pages a user has visited and associated data such as page titles and time of visit",
+  "_ExtensionDetails.PrivacyDataUsageWebHistoryDesc.comment": "Description for web history data usage",
+
+  "ExtensionDetails.PrivacyDataUsageWebsiteContent": "Website content",
+  "_ExtensionDetails.PrivacyDataUsageWebsiteContent.comment": "Data usage name for website content",
+
+  "ExtensionDetails.PrivacyDataUsageWebsiteContentDesc": "For example: text, images, audio, video, or hyperlinks",
+  "_ExtensionDetails.PrivacyDataUsageWebsiteContentDesc.comment": "Description for website content data usage",
+
+  "ExtensionDetails.PrivacyDataUsageHealthInformation": "Health information",
+  "_ExtensionDetails.PrivacyDataUsageHealthInformation.comment": "Data usage name for health information",
+
+  "ExtensionDetails.PrivacyDataUsageHealthInformationDesc": "For example: data about physical or mental health, medical conditions, or treatments",
+  "_ExtensionDetails.PrivacyDataUsageHealthInformationDesc.comment": "Description for health information data usage",
+
+  "ExtensionDetails.PrivacyDataUsageFinancialAndPaymentInformation": "Financial and payment information",
+  "_ExtensionDetails.PrivacyDataUsageFinancialAndPaymentInformation.comment": "Data usage name for financial and payment information",
+
+  "ExtensionDetails.PrivacyDataUsageFinancialAndPaymentInformationDesc": "For example: credit card numbers, bank accounts, or transaction history",
+  "_ExtensionDetails.PrivacyDataUsageFinancialAndPaymentInformationDesc.comment": "Description for financial and payment information data usage",
+
+  "ExtensionDetails.PrivacyDataUsageLocation": "Location data",
+  "_ExtensionDetails.PrivacyDataUsageLocation.comment": "Data usage name for location data",
+
+  "ExtensionDetails.PrivacyDataUsageLocationDesc": "For example: region, IP address, GPS coordinates, or data about things near your device",
+  "_ExtensionDetails.PrivacyDataUsageLocationDesc.comment": "Description for location data usage",
+
+  "ExtensionDetails.PrivacyDataUsageUserActivity": "User activity",
+  "_ExtensionDetails.PrivacyDataUsageUserActivity.comment": "Data usage name for user activity",
+
+  "ExtensionDetails.PrivacyDataUsageUserActivityDesc": "For example: network monitoring, clicks, mouse position, scroll, or keystroke logging",
+  "_ExtensionDetails.PrivacyDataUsageUserActivityDesc.comment": "Description for user activity data usage",
+
+  "ExtensionDetails.PageLoadErrorText": "Sorry, we're unable to get you the add-on details",
+  "_ExtensionDetails.PageLoadErrorText.comment": "Error text when extension detail page load fails",
+
+  "ExtensionDetails.ReviewHeader": "Reviews",
+  "_ExtensionDetails.ReviewHeader.comment": "Header for extension reviews",
+
+  "ExtensionDetails.MatureContentLabel": "Mature content",
+  "_ExtensionDetails.MatureContentLabel.comment": "Label for mature content",
+
+  "ExtensionDetails.VersionLabel": "Version",
+  "_ExtensionDetails.VersionLabel.comment": "Label for version",
+
+  "ExtensionDetails.LastUpdatedOnLabel": "Updated",
+  "_ExtensionDetails.LastUpdatedOnLabel.comment": "Label for last updated on",
+
+  "ExtensionDetails.LastUpdated": "Updated {0}",
+  "_ExtensionDetails.LastUpdated.comment": "Label for last updated on",
+
+  "ExtensionDetails.Version": "Version {0}",
+  "_ExtensionDetails.Version.comment": "Label for version",
+
+  "ExtensionDetails.TermsLabel": "Terms",
+  "_ExtensionDetails.TermsLabel.comment": "Label for terms",
+
+  "ExtensionDetails.Title": "{0} - Microsoft Edge Addons",
+  "_ExtensionDetails.Title.comment": "Extension Title with Store Title for extension details page",
+
+  "ExtensionDetails.PrivacyPolicyButtonTitle": "Privacy policy",
+  "_ExtensionDetails.PrivacyPolicyButtonTitle.comment": "Label for privacy policy",
+
+  "ExtensionDetails.IncognitoBanner": "Some features of the Microsoft Edge add-ons website are not available when using InPrivate browsing or guest mode.",
+  "_ExtensionDetails.IncognitoBanner.comment": "Banner text for incognito mode and guest account on product details page",
+
+  "ExtensionDetails.DisabledBanner": "This extension has been turned off in Microsoft Edge.",
+  "_ExtensionDetails.DisabledBanner.comment": "Banner text for disabled extension",
+
+  "ExtensionDetails.DisabledBannerButton": "Turn on extension",
+  "_ExtensionDetails.DisabledBannerButton.comment": "Banner button text for extension disabled banner",
+
+  "ExtensionDetails.BrowserMinVersionBanner": "This extension can’t be installed because it’s not compatible with the current browser version. Please install the latest version of the browser.",
+  "_ExtensionDetails.BrowserMinVersionBanner.comment": "Banner for browser version mismatch",
+
+  "ExtensionDetails.MicrosoftTranslateBanner": "This extension doesn't need to be installed because translation is now available by default in Microsoft Edge.",
+  "_ExtensionDetails.MicrosoftTranslateBanner.comment": "Banner for microsoft translate extension",
+
+  "ExtensionDetails.MicrosoftTranslateBannerLink": "Learn more",
+  "_ExtensionDetails.MicrosoftTranslateBannerLink.comment": "Banner link for microsoft translate extension",
+
+  "ExtensionDetails.DeveloperTitle": "Developer",
+  "_ExtensionDetails.DeveloperTitle.comment": "Title for Developer section on Product Description Page sidebar",
+
+  "ExtensionInstall.InstallError": "There was an installation problem. Please try again.",
+  "_ExtensionInstall.InstallError.comment": "extension installation error message",
+
+  "ExtensionInstall.InvalidId": "The extension ID is invalid.",
+  "_ExtensionInstall.InvalidId.comment": "extension installation error message",
+
+  "ExtensionInstall.InstallInProgress": "This item is already being downloaded and added into Microsoft Edge.",
+  "_ExtensionInstall.InstallInProgress.comment": "extension installation error message",
+
+  "ExtensionInstall.ManifestError": "The add-on could not be verified as the add-on manifest file is invalid.",
+  "_ExtensionInstall.ManifestError.comment": "extension installation error message",
+
+  "ExtensionInstall.ManifestFetchFailed": "There was a problem getting the manifest file for this add-on. Please try again.",
+  "_ExtensionInstall.ManifestFetchFailed.comment": "extension installation error message",
+
+  "ExtensionInstall.MinBrowserVersionError": "This extension can’t be installed, please view the extension detail page to know more.",
+  "_ExtensionInstall.MinBrowserVersionError.comment": "extension installation error message",
+
+  "ExtensionInstall.IconError": "You can’t specify icon data and an icon url.",
+  "_ExtensionInstall.IconError.comment": "extension installation error message",
+
+  "ExtensionInstall.InvalidIconUrl": "The icon url is invalid",
+  "_ExtensionInstall.InvalidIconUrl.comment": "extension installation error message",
+
+  "ExtensionInstall.AlreadyInstalled": "This item is already installed",
+  "_ExtensionInstall.AlreadyInstalled.comment": "extension installation error message",
+
+  "ExtensionInstall.ChromeNotValid": "We couldn't add the extension to Microsoft Edge. Please refresh the page and try again.",
+  "_ExtensionInstall.ChromeNotValid.comment": "extension installation error message",
+
+  "ExtensionInstall.Default": "There was a problem adding the item to Microsoft Edge. Please refresh the page and try again",
+  "_ExtensionInstall.Default.comment": "extension installation error message",
+
+  "ExtensionList.SearchNoResult": "No results found for \"{0}\"",
+  "_ExtensionList.SearchNoResult.comment": "search extensions zero results",
+
+  "ExtensionsList.GenericError": "Can't load more add-ons now.",
+  "_ExtensionsList.GenericError.comment": "This error string is to be shown when fetch more fails on an extension/search list",
+
+  "Filters.CompactView": "Filters",
+  "_Filters.CompactView.comment": "Search filters heading for mobile/tablet view",
+
+  "ThemesPage.LandmarkTitle": "Themes",
+  "ThemesPage.LandmarkTitle.Comment": "Landmark title of themes page, Themes is not a reference to any Windows app",
+
+  "AndroidExtensionsBanner.Title": "Scan the QR code to get extensions on Edge for your phone",
+  "AndroidExtensionsBanner.Title.Comment": "Title of Android Banner",
+
+  "AndroidExtensionsBanner.SubTitle": "Enhance your mobile browsing experience with Microsoft Edge extensions - now available on iOS and Android.",
+  "AndroidExtensionsBanner.SubTitle.Comment": "Subtitle of Android Banner",
+
+  "GetStartedPage.LandmarkTitle": "Get started with extensions",
+  "_GetStartedPage.LandmarkTitle.Comment": "Landmark title of get started page, Get Started is not a reference to any Windows app",
+
+  "InstallButton.InstalledLabelText": "Installed",
+  "_InstallButton.InstalledLabelText.Comment": "Label shown in place of 'Get' button in cards when the add-on is installed",
+
+  "Internet.NotConnected": "Looks like you’re not connected to the internet. Kindly fix the issue and try again.",
+  "_Internet.NotConnected.Comment": "Hint message to be displayed when showing error internet disconnected error.",
+
+  "GetStartedPage.Results.Card.Title": "{0}. {1} of {2} extensions.",
+  "_GetStartedPage.Results.Card.Title.comment": "Aria label of get started extensions card title. <extension name>. <position> of <total extensions> extensions.",
+
+  "Home.LandmarkTitle": "Extensions",
+  "_Home.LandmarkTitle.Comment": "Aria Label for home page landmark title",
+
+  "ListPage.SubTitle.NoExtension": "{0} extension",
+  "_ListPage.SubTitle.NoExtension.comment": "Sub title for search list page",
+
+  "ListPage.SubTitle.NoAddons": "{0} add-ons",
+  "_ListPage.SubTitle.NoAddons.comment": "Number of addons on the search list page",
+
+  "ListPage.SubTitle.NoExtensions": "{0} extensions",
+  "_ListPage.SubTitle.NoExtensions.comment": "Sub title for search list page",
+
+  "ListPage.SubTitle.NoThemes": "{0} themes",
+  "_ListPage.SubTitle.NoThemes.comment": "Sub title for search list page",
+
+  "LoadMore.Button.Title": "Load more",
+  "_LoadMore.Button.Title.comment": "Load more button",
+
+  "LoadMore.Button.LoadingState": "Loading more add-ons",
+  "LoadMore.Button.LoadingState.comment": "Message on loading more add-ons",
+
+  "LoadMore.Button.LoadingSuccess": "Loading complete",
+  "LoadMore.Button.LoadingSuccess.comment": "Message on loading complete",
+
+  "LocalePicker.Heading": "Choose language and region",
+  "_LocalePicker.Heading.Comment": "heading of locale and region picker",
+
+  "LocalePicker.LocaleSelect": "Select the language you'd like to see in menus and dialogs",
+  "_LocalePicker.LocaleSelect.Comment": "message to select language",
+
+  "LocalePicker.LocaleSelectPlaceholder": "Select language",
+  "_LocalePicker.LocaleSelectPlaceholder.Comment": "message to select language",
+
+  "LocalePicker.RegionSelect": "Select the region where your add-ons are available",
+  "_LocalePicker.RegionSelect.Comment": "message to select region",
+
+  "LocalePicker.RegionSelectPlaceholder": "Select region",
+  "_LocalePicker.RegionSelectPlaceholder.Comment": "message to select region",
+
+  "LocalePicker.Save": "Save",
+  "_LocalePicker.Save.Comment": "buttons on locale and region picker",
+
+  "LocalePicker.Cancel": "Cancel",
+  "_LocalePicker.Cancel.Comment": "button on locale and region picker",
+
+  "LocalePicker.ErrorTitle": "Unable to load language and region data",
+  "_LocalePicker.ErrorTitle.comment": "Error dialog title",
+
+  "LocalePicker.ErrorMessage": "We couldn't get the list of languages and regions. Please check your internet connection and try again.",
+  "_LocalePicker.ErrorMessage.comment": "error dialog message",
+
+  "LocalePicker.ProgressAriaLabel": "Please wait while we download language and region data",
+  "_LocalePicker.ProgressAriaLabel.comment": "aria label message",
+
+  "ProductCard.AriaLabel": "{0} Addon.",
+  "_ProductCard.AriaLabel.Comment": "Product card should be announce as Addon extension name list Item with its position ",
+
+  "ProductCard_V2.AriaLabel": "{0} {1},{2} of {3}",
+  "_ProductCard_V2.AriaLabel.Comment": "Product card should be announce as <name> <addonType> , <position> of <totalCards> ",
+
+  "ProductCard.AriaLabel.Featured": "{0} Addon. This is a featured extension",
+  "_ProductCard.AriaLabel.Featured.Comment": "Product card should be announce as Addon extension name list Item with its position and have featured context ",
+
+  "ProductCard.AriaLabel.Rating": "{0} Addon. Rated {1} out of 5 stars. There are {2} reviews.",
+  "_ProductCard.AriaLabel.Rating.Comment": "Product card should be announce as Addon extension name list Item with its position and have rating context ",
+
+  "ProductCard.AriaLabel.RatingAndFeatured": "{0} Addon. Rated {1} out of 5 stars. There are {2} reviews. This is a featured extension",
+  "_ProductCard.AriaLabel.RatingAndFeatured.Comment": "Product card should be announce as Addon extension name list Item with its position and have rating and featured context ",
+
+  "ProductDetails.Announce.Navigation": "Navigated to product details page.",
+  "_ProductDetails.Announce.Navigation.Comment": "Accessible Announcement when navigating to details page.",
+
+  "ProductDetails.Carousel.label": "{0} screenshots and {1} video for the add-on {2}",
+  "_ProductCard.Carousel.label.Comment": "Accessible label for the carousel component on Product details page. ",
+
+  "ProductDetails.AriaLabel.Developer": "{0}, developer",
+  "_ProductCard.AriaLabel.Developer.Comment": "Accessible label for the developer on Product details page. ",
+
+  "ProductDetails.AriaLabel.ProductType": "Add-on type, {0}",
+  "_ProductCard.AriaLabel.ProductType.Comment": "Accessible label for the product type on Product details page. ",
+
+  "ProductDetails.AriaLabel.ShowMore": "Show more about {0}",
+  "_ProductCard.AriaLabel.ShowMore.Comment": "Accessible label for the showmore button on Product details page. ",
+
+  "ProductDetails.AriaLabel.ShowLess": "Show less about {0}",
+  "_ProductCard.AriaLabel.ShowLess.Comment": "Accessible label for the showless button on Product details page. ",
+
+  "ProductDetails.DefaultImage.label": "Product image",
+  "_ProductCard.DefaultImage.label.Comment": "default alt text for the images shown. ",
+
+  "ProductDetails.ActiveInstallCount.Text": "{0} Users",
+  "_ProductDetails.ActiveInstallCount.Text.Comment": "text for active install users with count",
+
+  "ProductDetails.AvailableLanguage.ButtonText": "Available in {0} language",
+  "_ProductDetails.AvailableLanguage.ButtonText.Comment": "Button Text for the only Available language on Product details page.",
+
+  "ProductDetails.Image.ariaLabelWithPosition": "Product image {0}",
+  "_ProductCard.Image.ariaLabelWithPosition.Comment": "aria label for the image shown with position.",
+
+  "ProductDetails.Video.ariaLabelWithPosition": "Product video {0}",
+  "_ProductCard.Video.ariaLabelWithPosition.Comment": "aria label for the video shown with position.",
+
+  "ProductDetails.AvailableLanguages.ButtonText": "Available in {0} languages",
+  "_ProductCard.AvailableLanguages.ButtonText.Comment": "Button Text for the Available languages on Product details page.",
+
+  "ProductDetails.AvailableLanguages.SubTitle": "{0} is available in the following languages: ",
+  "_ProductCard.AvailableLanguages.SubTitle.Comment": "SubTitle for the available languages dialog.",
+
+  "ProductDetails.AvailableLanguages.Title": "Available languages",
+  "_ProductCard.AvailableLanguages.Title.Comment": "Title for the available languages dialog.",
+
+  "ProductDetails.InstallStatus.isInstalledAndDisabled": "Installed, but disabled",
+  "_ProductCard.InstallStatus.isInstalledAndDisabled.Comment": "Text shown when product is installed and disabled in the browser.",
+
+  "ProductDetails.InstallStatus.InstalledAndDisabled": "Add-on installed, but turned off",
+  "_ProductDetails.InstallStatus.InstalledAndDisabled.Comment": "Text shown when product is installed and disabled in the browser.",
+
+  "ProductDetails.InstallStatus.InstalledAndEnabled": "Add-on already installed on your browser",
+  "_ProductDetails.InstallStatus.InstalledAndEnabled.Comment": "Text shown when product is installed and enabled in the browser.",
+
+  "ProductDetails.InstallStatus.ProductEnabled": "{0} Add-on, is now turned on",
+  "_ProductDetails.InstallStatus.ProductEnabled.Comment": "Success icon with text shown when disabled product is enabled.",
+
+  "ProductDetails.EnableAddon.ButtonText": "Turn on",
+  "_ProductDetails.EnableAddon.ButtonText.Comment": "Text for the button shown when product is disabled and installed.",
+
+  "ProductDetails.InstallStatus.isIncompatible": "{0} Incompatible with your browser",
+  "_ProductCard.InstallStatus.isIncompatible.Comment": "Text shown when product is incompatible with browser version.",
+
+  "ProductDetails.Incompatible.ToolTip": "This extension cannot be installed as it is not compatible with your browser version",
+  "_ProductCard.Incompatible.ToolTip.Comment": "Tooltip Text shown when product is incompatible with browser version.",
+
+  "ProductDetails.InstallStatus.CompatibleAndNotInstalled": "Compatible with your browser",
+  "_ProductCard.InstallStatus.CompatibleAndNotInstalled.Comment": "Text shown when product is compatible and not installed.",
+
+  "ProductDetails.MoreAddonsFromDeveloper": "More add-ons from {0}",
+  "_ProductDetails.MoreAddonsFromDeveloper.Comment": "Link to More extensions by developer under Developer section.",
+
+  "ProductDetails.MoreAddonsByDeveloperWithCount": "More add-ons from {0} ({1})",
+  "_ProductDetails.MoreAddonsByDeveloperWithCount.Comment": "Link to more addons by developer under Developer section in PDP page with extension count.",
+
+  "ProductDetails.SidePanelExtension.Text": "This extension can be opened within the sidebar in Microsoft Edge. Opening it in the sidebar allows you to browse and access your extension in a side-by-side view.",
+  "_ProductDetails.SidePanelExtension.Text.Comment": "Text message for sidebar extension",
+
+  "ProductDetails.ProductType.Extension": "Extension",
+  "_ProductDetails.ProductType.Extension.Comment": "Product type for extension",
+
+  "ProductDetails.ProductType.Theme": "Theme",
+  "_ProductDetails.ProductType.Theme.Comment": "Product type for theme",
+
+  "Rating.AriaLabel": "Rated {0} out of {1} stars. There are {2} reviews.",
+  "_Rating.AriaLabel.comment": "Aria Label for rating component, Rated 4 out of 5 stars",
+
+  "Rating.AriaLabel.Users": "Rated {0} out of {1} stars by {2} users.",
+  "_Rating.AriaLabel.Users.comment": "Aria Label for rating component, Rated 4 out of 5 stars",
+
+  "ReportAbuse.Title": "Report abuse for the {0} add-on",
+  "_ReportAbuse.Title.comment": "Use this form if you feel this add-on violates abuse categories",
+
+  "ReportAbuse.Subtitle": "Use this form if you feel this add-on violates the {0}.",
+  "_ReportAbuse.Subtitle.comment": "Report abuse form subtitle",
+
+  "ReportAbuse.Category.Title": "Choose an abuse category {0}",
+  "_ReportAbuse.Category.Title.comment": "Category selection title. Token will be replaced by * to indicate that this field is required",
+
+  "ReportAbuse.Category.Threat.Title": "Threats, cyberbullying, harassment",
+  "_ReportAbuse.Category.Threat.Title.comment": "Title for Threats, Cyber bullying, Harassment category",
+
+  "ReportAbuse.Category.Child.Endangerment.Title": "Child endangerment or exploitation ",
+  "_ReportAbuse.Category.Child.Endangerment.Title.comment": "Title for Child Endangerment or Exploitation category",
+
+  "ReportAbuse.Category.Offensive.Content.Title": "Offensive content",
+  "_ReportAbuse.Category.Offensive.Content.Title.comment": "Title for Offensive Content category",
+
+  "ReportAbuse.Category.Virus.Title": "Virus, spyware, malware",
+  "_ReportAbuse.Category.Virus.Title.comment": "Title for Virus / Spyware / Malware category",
+
+  "ReportAbuse.Category.Content.Infringement.Title": "Content infringement",
+  "_ReportAbuse.Category.Content.Infringement.Title.comment": "Title for Content Infringement category",
+
+  "ReportAbuse.Category.Other.Title": "Other",
+  "_ReportAbuse.Category.Other.Title.comment": "Title for Other category",
+
+  "ReportAbuse.Category.Threat.Detail": "Harassment is any behavior intended to disturb or upset a person, or group of persons. Threats include any threat of suicide, violence, or harm to another.",
+  "_ReportAbuse.Category.Threat.Detail.comment": "details of Threats, Cyber bullying, Harassment category",
+
+  "ReportAbuse.Category.Child.Endangerment.Detail": "Any link or discussion related to child pornography, child nudity, or other child abuse or exploitation.",
+  "_ReportAbuse.Category.Child.Endangerment.Detail.comment": "Child endangerment category details",
+
+  "ReportAbuse.Category.Offensive.Content.Detail": "Any content of adult theme that is inappropriate or offensive.",
+  "_ReportAbuse.Category.Offensive.Content.Detail.comment": "Offensive category details",
+
+  "ReportAbuse.Category.Virus.Detail": "Any link to or advocacy of virus, spyware, malware or phishing sites. ",
+  "_ReportAbuse.Category.Virus.Detail.comment": "Virus category details",
+
+  "ReportAbuse.Category.Content.Infringement.Detail": "Any behavior that appears to violate your intellectual properties.",
+  "_ReportAbuse.Category.Content.Infringement.Detail.comment": "Content infringement category details",
+
+  "ReportAbuse.Category.Other.Detail": "Any other inappropriate content or behavior as defined by the terms of use or code of conduct.",
+  "_ReportAbuse.Category.Other.Detail.comment": "Other category details",
+
+  "ReportAbuse.Comments.Title": "Comment {0}",
+  "_ReportAbuse.Comments.Title.comment": "Comments text box title, token will be replaced by * to highlight that this is a required field",
+
+  "ReportAbuse.Comments.Placeholder": "Please provide as much detail as possible about the abuse or offensive behavior you are reporting. Please do not provide any personal or sensitive information.",
+  "_ReportAbuse.Comments.Placeholder.comment": "Comments input placeholder text",
+
+  "ReportAbuse.Email.Placeholder": "Enter email address",
+  "_ReportAbuse.Email.Placeholder.comment": "Email input placeholder",
+
+  "ReportAbuse.Email.Checkbox.Label": "Include email address",
+  "_ReportAbuse.Email.Checkbox.Label.comment": "Email checkbox label text",
+
+  "ReportAbuse.Email.Info": "By including your email address, you agree that Microsoft can email you regarding your feedback. {0}",
+  "_ReportAbuse.Email.Info.comment": "Declaration text for email address check box.",
+
+  "ReportAbuse.PrivacyStatement.Hypertext": "Microsoft Privacy Statement",
+  "_ReportAbuse.PrivacyStatement.Hypertext.comment": "Microsoft Privacy Statement label text",
+
+  "ReportAbuse.Submit.Title": "Submit",
+  "_ReportAbuse.Submit.Title.comment": "Submit button title",
+
+  "ReportAbuse.Content.Policies.Hypertext": "Microsoft Store Content Policies",
+  "_ReportAbuse.Content.Policies.Hypertext.comment": "Microsoft content policies link hypertext",
+
+  "ReportAbuse.Success.Dialog.Text": "Thank you for your feedback.",
+  "_ReportAbuse.Success.Dialog.Text.comment": "Report abuse submit success dialog title text ",
+
+  "ReportAbuse.Success.Subtitle": "We have registered your response and shall act on it upon suitable analysis.",
+  "_ReportAbuse.Success.Subtitle.comment": "Report abuse submit success dialog subtitle ",
+
+  "ReportAbuse.Star": "*",
+  "_ReportAbuse.Star.comment": "Append to title of required input",
+
+  "ReportAbuse.EmailAddress.Invalid": "Invalid email address",
+  "_ReportAbuse.EmailAddress.Invalid..comment": "Error message for to invalid email address",
+
+  "ReportAbuse.Success.Dialog.Button.Okay": "Ok",
+  "_ReportAbuse.Success.Dialog.Button.Okay.comment": "Report abuse submit success dialog button title",
+
+  "ReportAbuse.ExtensionDetails.Button.Title": "Report abuse",
+  "_ReportAbuse.ExtensionDetails.Button.Title.comment": "Report abuse button on extension details",
+
+  "ReportAbuse.Required": "Required",
+  "_ReportAbuse.Required.comment": "Used by narrator to narrate required text. It is used to voice out * that we are showing on UI for required fields",
+
+  "ReportAbuse.SubmitReport.Failed": "Unable to submit report. Please try again",
+  "_ReportAbuse.SubmitReport.Failed.comment": "Error message if submitting report fails",
+
+  "SearchList.SearchInWebText": "Didn't find what you're looking for? Check the spelling, try new keywords, or {0} for more results.",
+  "_SearchList.SearchInWebText.comment": "Footer text for search list page",
+
+  "SearchList.MainTitle": "Search results for \"{0}\"",
+  "_SearchList.MainTitle.comment": "Title for search list page",
+
+  "SearchListV2.MainTitle": "{0} results for '{1}'",
+  "_SearchListV2.MainTitle.comment": "Title for search list page",
+
+  "SearchList.DeveloperMainTitle": "Add-ons from '{0}'",
+  "_SearchList.DeveloperMainTitle.comment": "Title for search list page based on developer",
+
+  "SearchList.SearchTheWebHyperText": "search the web",
+  "_SearchList.SearchTheWebHyperText.comment": "Text to point to bing search url",
+
+  "SearchList.FetchMore.Action.AriaLabel": "Fetching more add-ons",
+  "_SearchList.FetchMore.Action.AriaLabel.comment": "Text to announce while fetching more add-ons",
+
+  "SearchList.Results.Card.Title": "{0}, {1} of {2} search result.",
+  "_SearchList.Results.Card.Title.comment": "Aria label of search result card title. <extension name>. <position> of <total extensions> search result.",
+
+  "SearchList.BackToTop.Button.Title": "Back to top",
+  "SearchList.BackToTop.Button.Title.comment": "Back to top button on search list page",
+
+  "SearchResults.LandmarkTitle": "Search results",
+  "_SearchResults.LandmarkTitle.Comment": "Aria Label for search results page landmark title",
+
+  "Store.BackToDiscover": "Back to Discover",
+  "_Store.BackToDiscover.comment": "Back to Discover page link",
+
+  "Store.BackToExtensions": "Back to add-ons home",
+  "_Store.BackToExtensions.comment": "Back to add-ons home link",
+
+  "Store.PageNotFoundErrorText": "We are sorry, the page you requested cannot be found",
+  "_Store.PageNotFoundErrorText.comment": "Error text for invalid page",
+
+  "Store.PageNotFoundErrorSubText": "The URL may be misspelled or the page you're looking for is no longer available",
+  "_Store.PageNotFoundErrorSubText.comment": "Error subtext for invalid page",
+
+  "Store.LandmarkTitle": "{0}",
+  "_Store.LandmarkTitle.comment": "Landmark Title for each store page",
+
+  "Store.Home.Title": "Microsoft Edge Add-ons",
+  "_Store.Home.Title.comment": "Title for store homepage",
+
+  "Store.Title": "Microsoft Edge Add-ons - {0}",
+  "_Store.Title.comment": "Title for each store page",
+
+  "Store.RefreshButtonText": "Refresh",
+  "_Store.RefreshButtonText.comment": "Button text for refresh button",
+
+  "TopCategories.Accessibility": "Accessibility tools",
+  "_TopCategories.Accessibility.comment": "Heading for top extensions from Accessibility category",
+
+  "TopCategories.Blogging": "Blog your heart out",
+  "_TopCategories.Blogging.comment": "Heading for top extensions from Blogging category",
+
+  "TopCategories.Developer-Tools": "Developer tools",
+  "_TopCategories.Developer-Tools.comment": "Heading for top extensions from Developer tools category",
+
+  "TopCategories.Entertainment": "Have fun with Microsoft Edge",
+  "_TopCategories.Entertainment.comment": "Heading for top extensions from Entertainment category",
+
+  "TopCategories.News-And-Weather": "Stay informed",
+  "_TopCategories.News-And-Weather.comment": "Heading for top extensions from News & Weather category",
+
+  "TopCategories.Photos": "Picture perfect",
+  "_TopCategories.Photos.comment": "Heading for top extensions from Photos category",
+
+  "TopCategories.Productivity": "Maximize your productivity",
+  "_TopCategories.Productivity.comment": "Heading for top extensions from Productivity category",
+
+  "TopCategories.Search-Tools": "Boost your searches",
+  "_TopCategories.Search-Tools.comment": "Heading for top extensions from Search Tools category",
+
+  "TopCategories.Shopping": "Go window shopping",
+  "_TopCategories.Shopping.comment": "Heading for top extensions from Shopping category",
+
+  "TopCategories.Social": "Connect with friends",
+  "_TopCategories.Social.comment": "Heading for top extensions from Social category",
+
+  "TopCategories.Communication": "Keep in touch",
+  "_TopCategories.Communication.comment": "Heading for top extensions from Communication category",
+
+  "TopCategories.Sports": "Follow your favorite teams",
+  "_TopCategories.Sports.comment": "Heading for top extensions from Sports category",
+
+  "TopExtensions.Results.Card.Title": "{0}. {1} of {2}.",
+  "_TopExtensions.Results.Card.Title.comment": "Aria label of top extensions card title. <extension name>. <position> of <total extensions>.",
+
+  "Trending.LandmarkTitle": "Trending add-ons",
+  "_Trending.LandmarkTitle.Comment": "Aria Label for trending page landmark title",
+
+  "UhfHeader.Title": "Edge Add-ons",
+  "_UhfHeader.Title.comment": "Localize Add-ons but not Edge. UHF header title",
+
+  "UhfHeader.HelpLinks": "Help",
+  "_UhfHeader.HelpLinks.comment": "Menu title in UHF",
+
+  "UhfHeader.Menu": "Menu",
+  "_UhfHeader.Menu.comment": "Menu title in UHF",
+
+  "UhfHeader.Menu.LocalePicker": "Change language or region",
+  "_UhfHeader.Menu.LocalePicker.comment": "menu option",
+
+  "UhfHeader.Menu.Developers": "Developers",
+  "_UhfHeader.Menu.Developers.comment": "Developer main menu title in UHF",
+
+  "UhfHeader.Menu.PublishExtension": "Publish your extension",
+  "_UhfHeader.Menu.PublishExtension.comment": "Developer menu option for publishing an extension",
+
+  "UhfHeader.Menu.DeveloperDashboard": "Developer dashboard",
+  "_UhfHeader.Menu.DeveloperDashboard.comment": "Developer menu option for developer dashboard",
+
+  "UhfHeader.Menu.BuildYourExtension": "Build your extension",
+  "_UhfHeader.Menu.BuildYourExtension.comment": "Developer menu option for building an extension",
+
+  "UhfHeader.Menu.CommunityForum": "Community forum",
+  "_UhfHeader.Menu.CommunityForum.comment": "Developer menu option for community forum",
+
+  "UhfHeader.Menu.ContactUs": "Contact us",
+  "_UhfHeader.Menu.ContactUs.comment": "Developer menu option for writing a mail to edge extension dev support",
+
+  "UhfHeader.Settings": "Settings",
+  "_UhfHeader.Settings.comment": "Settings main menu title in header",
+
+  "UhfHeader.MicrosoftLogo": "Microsoft",
+  "_UhfHeader.MicrosoftLogo.comment": "Microsoft logo branding",
+
+  "UhfHeader.MoreOptions": "More options",
+  "_UhfHeader.MoreOptions.comment": "UHF header More options button",
+
+  "UhfHeader.NavigationMenu": "Navigation Menu",
+  "_UhfHeader.NavigationMenu.comment": "UHF header Navigation Menu",
+
+  "UhfHeader.TitleName": "Edge Add-ons Home",
+  "_UhfHeader.TitleName.comment": "UHF header title",
+
+  "UhfHeader.SignIn": "Sign In",
+  "_UhfHeader.SignIn.comment": "Narrator announcement for sign in button",
+
+  "UhfHeader.AccountManager": "Account Manager for {0}",
+  "_UhfHeader.AccountManager.comment": "Narrator announcement for account manager button",
+
+  "RatingReview.AddAReview": "Add a review",
+  "_RatingReview.AddAReview.comment": "Add review button on reviews page",
+
+  "RatingReview.ReadMoreReviews": "Read more reviews",
+  "_RatingReview.ReadMoreReviews.comment": "Read more reviews button on reviews page",
+
+  "RatingReview.NoReviewText": "No one has reviewed this add-on yet. Be the first to add a review.",
+  "_RatingReview.NoReviewText.comment": "Text when no reviews present from self and other people",
+
+  "RatingReview.NoReviewTextForUserRegion": "No reviews are available for your current region. To find reviews from other regions, select all regions.",
+  "_RatingReview.NoReviewTextForUserRegion.comment": "Text when no reviews present from self and other people in user region",
+
+  "RatingReview.NoOthersReviewText": "Other users haven't reviewed this add-on yet.",
+  "_RatingReview.NoOthersReviewText.comment": "Text when no reviews present from other people",
+
+  "RatingReview.YourReview": "Your review",
+  "_RatingReview.YourReview.comment": "Title text for your review section",
+
+  "RatingReview.AllReviews": "All reviews",
+  "_RatingReview.AllReviews.comment": "Title text for all reviews section",
+
+  "RatingReview.Edit": "Edit",
+  "_RatingReview.Edit.comment": "Edit button text",
+
+  "RatingReview.SignInButtonText": "Sign in",
+  "_RatingReview.SignInButtonText.comment": "Sign in button text",
+
+  "RatingReview.ReviewBoxPlaceholderText": "Write a review (optional)",
+  "_RatingReview.ReviewBoxPlaceholderText.comment": "Placeholder text for add review box",
+
+  "RatingReview.Submit": "Submit",
+  "_RatingReview.Submit.comment": "Submit button text",
+
+  "RatingReview.Cancel": "Cancel",
+  "_RatingReview.Cancel.comment": "Cancel button text",
+
+  "RatingReview.EditReviewTitle": "Your review for {0}",
+  "_RatingReview.EditReviewTitle.comment": "Title text with extension name for review edit box",
+
+  "RatingReview.Unknown": "Unknown",
+  "_RatingReview.Unknown.comment": "Name for unknown user",
+
+  "RatingReview.NoUserReviews": "No user reviews",
+  "_RatingReview.NoUserReviews.comment": "Title for all reviews section when there is no user review",
+
+  "RatingReview.ReportSpamOrAbuse": "Report as spam or abuse",
+  "_RatingReview.ReportSpamOrAbuse.comment": "Report a review as spam or abuse option",
+
+  "RatingReview.TranslateReview": "Translate",
+  "_RatingReview.TranslateReview.comment": "Translate a review in EAS",
+
+  "RatingReview.ShowOriginal": "Show original",
+  "_RatingReview.ShowOriginal.comment": "Show orginal string in EAS",
+
+  "RatingReview.TranslatedByEdge": "Translated by Edge",
+  "_RatingReview.TranslatedByEdge.comment": "Text to be shown when text is translated",
+
+  "RatingReview.WasItHelpful": "Was this helpful?",
+  "_RatingReview.WasItHelpful.comment": "Asking for review to be helpful or not",
+
+  "RatingReview.SortBy": "Sort by",
+  "_RatingReview.SortBy.comment": "Sort by title",
+
+  "RatingReview.FilterBy": "Filter by region",
+  "_RatingReview.FilterBy.comment": "Filter by title",
+
+  "RatingReview.UserRegion": "User region",
+  "_RatingReview.UserRegion.comment": "User region title",
+
+  "RatingReview.AllRegion": "All regions",
+  "_RatingReview.AllRegion.comment": "All Region title",
+
+  "RatingReview.SelectAriaLabel": "{0} Group , {1}",
+  "_RatingReview.SelectAriaLabel.comment": "Aria Label for Header in userreview sort by",
+
+  "RatingReview.MostHelpful": "Most helpful",
+  "_RatingReview.MostHelpful.comment": "Most Helpful option",
+
+  "RatingReview.MostRecent": "Most recent",
+  "_RatingReview.MostRecent.comment": "Most Recent option",
+
+  "RatingReview.HighestRating": "Highest to lowest",
+  "_RatingReview.HigestRating.comment": "Sort by rating in descending order",
+
+  "RatingReview.LowestRating": "Lowest to highest",
+  "_RatingReview.LowestRating.comment": "Sort by rating in ascending order",
+
+  "RatingReview.UserReviews": "User reviews",
+  "_RatingReview.UserReviews.comment": "Title for all reviews section when no self review is available",
+
+  "RatingReview.OtherReviews": "Other reviews",
+  "_RatingReview.OtherReviews.comment": "Title for all reviews section when self review is available",
+
+  "RatingReview.RatingError": "Rating is required",
+  "_RatingReview.RatingError.comment": "Error text for missing star rating",
+
+  "RatingReview.ReviewSubmitError": "Unable to post review. Please try again.",
+  "_RatingReview.ReviewSubmitError.comment": "Error text for unsuccessful review submission",
+
+  "RatingReview.RatingHint": "Choose a rating",
+  "_RatingReview.RatingHint.comment": "Hint text for star rating",
+
+  "RatingReview.SignIn": "Sign in",
+  "_RatingReview.SignIn.comment": "Text for sign in hyperlink",
+
+  "RatingReview.SignInHint": "{0} to add a review",
+  "_RatingReview.SignInHint.comment": "Hint containing sign in hyperlink",
+
+  "RatingReview.SignInTitle": "Please sign in",
+  "_RatingReview.SignInTitle.comment": "Title for sign in dialog",
+
+  "RatingReview.SignInDialogDescription": "You must sign in to provide feedback.",
+  "_RatingReview.SignInDialogDescription.comment": "Description for sign in dialog",
+
+  "RatingReview.VotingAndReportDialogTitle": "Unable to submit your feedback",
+  "_RatingReview.VotingAndReportDialogTitle.comment": "Title for error dialog for voting review helpful/unhelpful and report spam or abuse",
+
+  "RatingReview.VotingAndReportDialogDescription": "Your feedback could not be submitted for some unexpected reasons. You might want to check your internet connection and try again.",
+  "_RatingReview.VotingAndReportDialogDescription.comment": "Description for error dialog for voting review helpful/unhelpful and report spam or abuse",
+
+  "RatingReview.InstallExtension": "Install add-on",
+  "_RatingReview.InstallExtension.comment": "Title for install add-on dialog",
+
+  "RatingReview.InstallExtensionDescription": "You must install the add-on to review it.",
+  "_RatingReview.InstallExtensionDescription.comment": "Description for install add-on dialog",
+
+  "RatingReview.GetExtension": "Get add-on",
+  "_RatingReview.GetExtension.comment": "Button text for get add-on",
+
+  "RatingReview.MarkedHelpful": "Marked as helpful",
+  "_RatingReview.MarkedHelpful.comment": "Confirmation text after review marked as helpful",
+
+  "RatingReview.MarkedUnhelpful": "Marked as unhelpful",
+  "_RatingReview.MarkedUnhelpful.comment": "Confirmation text after review marked as unhelpful",
+
+  "RatingReview.Proceed": "Proceed",
+  "_RatingReview.Proceed.comment": "Button text for sign in dialog to proceed to sign in",
+
+  "RatingReview.OkayButtonText": "OK",
+  "_RatingReview.OkayButtonText.comment": "Button text for ok button",
+
+  "RatingReview.LoadOtherReviewsErrorTitle": "Unable to load reviews",
+  "_RatingReview.LoadOtherReviewsErrorTitle.comment": "Title for error while loading other reviews",
+
+  "RatingReview.LoadOtherReviewsErrorDescription": "There was an issue while trying to load the reviews. Please try again.",
+  "_RatingReview.LoadOtherReviewsErrorDescription.comment": "Description for error while loading other reviews",
+
+  "RatingReview.ShowMoreAnchor": "Show more",
+  "_RatingReview.ShowMoreAnchor.comment": "Text for read more anchor",
+
+  "RatingReview.ShowLessAnchor": "Show less",
+  "_RatingReview.ShowLessAnchor.comment": "Text for read less anchor",
+
+  "RatingReview.ReportReviewDialogTitle": "Report review",
+  "_RatingReview.ReportReviewDialogTitle.comment": "Title for dialog to mark review as spam or abuse",
+
+  "RatingReview.ReportReviewDialogDescription": "You're trying to report the review as spam or abuse. Do you want to continue?",
+  "_RatingReview.ReportReviewDialogDescription.comment": "Description for dialog to mark review as spam or abuse",
+
+  "RatingReview.ReportReviewSuccessText": "Reported as spam or abuse",
+  "_RatingReview.ReportReviewSuccessText.comment": "Report spam or abuse button text will be changed to this after success",
+
+  "RatingReview.DeveloperResponseTitlePrefix": "Response from ",
+  "_RatingReview.DeveloperResponseTitlePrefix.comment": "Prefix to the developer response",
+
+  "RatingReview.AriaMetaInfoForReview": "{0} rated this {1} stars on {2} {3}",
+  "_RatingReview.AriaMetaInfoForReview.comment": "Aria label for {user} rated this {N} stars on {date}",
+
+  "RatingReview.AriaMetaInfoForDeveloperResponse": "{0} responded on {1}",
+  "_RatingReview.AriaMetaInfoForDeveloperResponse.comment": "Aria label for {developer} response on {date}",
+
+  "RatingReview.AriaMetaInfoForDeveloperResponsePresent": "This review has a response",
+  "_RatingReview.AriaMetaInfoForDeveloperResponsePresent.comment": "Aria label for {developer} response on {date}",
+
+  "RatingReview.A11y.ReviewSubmitSuccess": "Review submitted successfully",
+  "_RatingReview.A11y.ReviewSubmitSuccess.comment": "Aria announcement when user successfully submits a review",
+
+  "RatingReview.Update": "Update",
+  "_RatingReview.Update.comment": "Update button text",
+
+  "SearchList.ErrorPage.MainText": "Oops! Something went wrong. Please try again",
+  "_SearchList.ErrorPage.MainText.comment": "Search error main text",
+
+  "SearchList.ErrorPage.ImageAltText": "Search error image",
+  "_SearchList.ErrorPage.ImageAltText.comment": "Search error image alt text",
+
+  "SearchList.ErrorPage.SubText": "We don't have any search results for you. Check out the add-ons listed on the discover page",
+  "_SearchList.ErrorPage.SubText.comment": "Search error sub text",
+
+  "SearchList.NoResults.SearchInWebText": "Didn't find what you're looking for? Try new keywords, modify filters, or {0} for more results.",
+  "_SearchList.NoResults.SearchInWebText": "Footer text for search in web text shown in zero search results state.",
+
+  "TabbedNavigation.Discover": "Discover",
+  "TabbedNavigation.Discover.comment": "Text for Discover tab in tabbed navigation page.",
+
+  "TabbedNavigation.Extensions": "Extensions",
+  "TabbedNavigation.Extensions.comment": "Text for Extensions tab in tabbed navigation page.",
+
+  "TabbedNavigation.Themes": "Themes",
+  "TabbedNavigation.Themes.comment": "Text for Themes tab in tabbed navigation page.",
+
+  "TablistTab.AriaLabel": "{0}, {1} of {2} {3}",
+  "_TablistTab.AriaLabel.comment": "Aria label for tabitem in tablist. <tab name>, <position> of <total tabs> {selected/unselected}",
+
+  "UnifiedStore.SearchList.NoResults.ExtensionsTitleText": "No extensions were found for \"{0}\"",
+  "_UnifiedStore.SearchList.NoResults.ExtensionsTitleText.comment": "Zero results title text for extensions search list page",
+
+  "UnifiedStore.SearchList.NoResults.SearchInWebText": "Didn't find what you're looking for? Change the filter type on the left, try new keywords, or {0} for more results.",
+  "_UnifiedStore.SearchList.NoResults.SearchInWebText.comment": "Footer text for search list page for unified store",
+
+  "UnifiedStore.SearchList.NoResults.ThemesTitleText": "No themes were found for \"{0}\"",
+  "_UnifiedStore.SearchList.NoResults.ThemesTitleText.comment": "Zero results title text for themes search list page",
+
+  "EntityPage.CollectionListHeading.Edge_Extensions_AI_Powered": "AI-powered extensions",
+  "_EntityPage.CollectionListHeading.Edge_Extensions_AI_Powered.comment": "Collection Page list heading for most AI powered extensions",
+
+  "EntityPage.CollectionListHeading.Edge_Extensions_Editors_Pick_V2": "Editor's pick",
+  "_EntityPage.CollectionListHeading.Edge_Extensions_Editors_Pick_V2.comment": "Collection Page list heading for editor's pick extensions and themes",
+
+  "EntityPage.CollectionListHeading.Edge_Extensions_Productivity_V2": "Boost your productivity",
+  "_EntityPage.CollectionListHeading.Edge_Extensions_Productivity_V2.comment": "Collection Page list heading for productivity extensions",
+
+  "EntityPage.CollectionListHeading.Edge_Extensions_Accessibility_V2": "Make the web accessible",
+  "_EntityPage.CollectionListHeading.Edge_Extensions_Accessibility_V2.comment": "Collection Page list heading for accessible extensions and themes",
+
+  "EntityPage.CollectionListHeading.MostDownloadedExtensions": "Most downloaded",
+  "_EntityPage.CollectionListHeading.MostDownloadedExtensions.comment": "Collection Page list heading for most downloaded extensions",
+
+  "EntityPage.CollectionListHeading.Edge_Extensions_Shopping_V2": "Shop and save",
+  "_EntityPage.CollectionListHeading.Edge_Extensions_Shopping_V2.comment": "Collection Page list heading for top shopping extensions",
+
+  "EntityPage.CollectionListHeading.Edge_Extensions_Gaming_V2": "Game on",
+  "_EntityPage.CollectionListHeading.Edge_Extensions_Gaming_V2.comment": "Collection Page list heading for top gaming extensions",
+
+  "EntityPage.CollectionListHeading.Edge_Extensions_Entertainment": "Entertainment essentials",
+  "_EntityPage.CollectionListHeading.Edge_Extensions_Entertainment.comment": "Collection Page list heading for top entertainment extensions",
+
+  "EntityPage.CollectionListHeading.Edge_Extensions_Dark_Themes": "Select your shade of black",
+  "_EntityPage.CollectionListHeading.Edge_Extensions_Dark_Themes.comment": "Collection Page list heading for top dark themes",
+
+  "EntityPage.CollectionListHeading.Edge_Entertainment_Themes": "For fun",
+  "_EntityPage.CollectionListHeading.Edge_Entertainment_Themes.comment": "Collection Page list heading for top entertainment themes",
+
+  "EntityPage.CollectionListHeading.Edge_Nature_Themes": "Nature's palette",
+  "_EntityPage.CollectionListHeading.Edge_Nature_Themes.comment": "Collection Page list heading for top nature themes",
+
+  "EntityPage.CollectionListHeading.Edge_Art_Themes": "Art & design",
+  "_EntityPage.CollectionListHeading.Edge_Art_Themes.comment": "Collection Page list heading for top art and design themes",
+
+  "EntityPage.CollectionListHeading.Edge_Extensions_Explore_The_World_Themes": "Wander the world",
+  "_EntityPage.CollectionListHeading.Edge_Extensions_Explore_The_World_Themes.comment": "Collection Page list heading for explore the world themes",
+
+  "EntityPage.CollectionListHeading.TrendingThemes": "Popular near you",
+  "_EntityPage.CollectionListHeading.TrendingThemes.comment": "Collection Page list heading for most trending themes",
+
+  "EntityPage.CollectionListHeading.MicrosoftThemes": "Made by Microsoft",
+  "_EntityPage.CollectionListHeading.MicrosoftThemes.comment": "Collection Page list heading for most popular Microsoft themes",
+
+  "EntityPage.CollectionListHeading.ExploreTheWorld": "Around the world",
+  "_EntityPage.CollectionListHeading.ExploreTheWorld.comment": "Collection Page list heading for exploring the world themes",
+
+  "CollectionPage.CollectionListHeading.NewAndRising": "Trending",
+  "_CollectionPage.CollectionListHeading.NewAndRising.comment": "Collection Page list heading for trending addons",
+
+  "CollectionPage.CollectionListSubHeading.NewAndRising": "Discover the most popular extensions and themes to enhance your browsing experience on Microsoft Edge.",
+  "_CollectionPage.CollectionListSubHeading.NewAndRising.comment": "Collection Page list SubHeading for trending addons",
+
+  "CollectionPage.CollectionListHeading.Edge_Get_Started_Addons": "Get Started",
+  "_CollectionPage.CollectionListHeading.Edge_Get_Started_Addons.comment": "Collection Page list heading for get started addons",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Get_Started_Addons": "Kickstart your browsing journey with essential extensions for new Microsoft Edge users.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Get_Started_Addons.comment": "Collection Page list SubHeading for get started addons",
+
+  "CollectionPage.CollectionListHeading.Edge_Extensions_Education_Discover": "Education",
+  "_CollectionPage.CollectionListHeading.Edge_Extensions_Education_Discover.comment": "Collection Page list heading for education addons",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Extensions_Education_Discover": "Enhance your learning experience with top educational extensions for Microsoft Edge.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Extensions_Education_Discover.comment": "Collection Page list SubHeading for education addons",
+
+  "CollectionPage.CollectionListHeading.Edge_Personalized_Themes": "Personalize Edge",
+  "_CollectionPage.CollectionListHeading.Edge_Personalized_Themes.comment": "Collection Page list heading for personalized themes",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Personalized_Themes": "Personalize your browsing experience with stunning themes for Microsoft Edge.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Personalized_Themes.comment": "Collection Page list SubHeading for personalized themes",
+
+  "CollectionPage.CollectionListHeading.Edge_Microsoft_Addons": "By Microsoft",
+  "_CollectionPage.CollectionListHeading.Edge_Microsoft_Addons.comment": "Collection Page list heading for microsoft addons",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Microsoft_Addons": "Explore extensions built by Microsoft to enhance your Edge experience.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Microsoft_Addons.comment": "Collection Page list SubHeading for microsoft addons",
+
+  "CollectionPage.CollectionListHeading.Edge_Top_Rated_Addons": "Top rated",
+  "_CollectionPage.CollectionListHeading.Edge_Top_Rated_Addons.comment": "Collection Page list heading for top rated addons",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Top_Rated_Addons": "Discover the highest-rated extensions and themes to elevate your Microsoft Edge experience.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Top_Rated_Addons.comment": "Collection Page list SubHeading for top rated addons",
+
+  "CollectionPage.CollectionListHeading.Edge_Extensions_AI_Powered": "AI powered extensions",
+  "_CollectionPage.CollectionListHeading.Edge_Extensions_AI_Powered.comment": "Collection Page list heading for AI powered addons",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Extensions_AI_Powered": "Unlock the power of AI with Microsoft Edge extensions.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Extensions_AI_Powered.comment": "Collection Page list SubHeading for top rated addons",
+
+  "CollectionPage.CollectionListHeading.Edge_Extensions_Editors_Pick_V2": "Editors picks",
+  "_CollectionPage.CollectionListHeading.Edge_Extensions_Editors_Pick_V2.comment": "Collection Page list heading for editor's pick addons",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Extensions_Editors_Pick_V2": "Explore the extensions and themes handpicked by the editors for Microsoft Edge.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Extensions_Editors_Pick_V2.comment": "Collection Page list SubHeading for editor's pick addons",
+
+  "CollectionPage.CollectionListHeading.Edge_Extensions_Productivity_V2": "Boost your productivity",
+  "_CollectionPage.CollectionListHeading.Edge_Extensions_Productivity_V2.comment": "Collection Page list heading for productivity addons",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Extensions_Productivity_V2": "Boost your efficiency with top productivity extensions for Microsoft Edge.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Extensions_Productivity_V2.comment": "Collection Page list SubHeading for productivity addons",
+
+  "CollectionPage.CollectionListHeading.Edge_Extensions_Accessibility_V2": "Make the web accessible",
+  "_CollectionPage.CollectionListHeading.Edge_Extensions_Accessibility_V2.comment": "Collection Page list heading for Accessibility",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Extensions_Accessibility_V2": "Improve your browsing experience with top accessibility extensions for Microsoft Edge.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Extensions_Accessibility_V2.comment": "Collection Page list SubHeading for Accessibility",
+
+  "CollectionPage.CollectionListHeading.Edge_AI_Assist_Extensions": "AI powered extensions",
+  "_CollectionPage.CollectionListHeading.Edge_AI_Assist_Extensions.comment": "Collection Page list heading for AI Assist Extensions",
+
+  "CollectionPage.CollectionListSubHeading.Edge_AI_Assist_Extensions": "Unlock the power of AI with Microsoft Edge extensions.",
+  "_CollectionPage.CollectionListSubHeading.Edge_AI_Assist_Extensions.comment": "Collection Page list SubHeading for AI Assist Extensions",
+
+  "CollectionPage.CollectionListHeading.Edge_Android_Extensions": "Extensions for Mobile",
+  "_CollectionPage.CollectionListHeading.Edge_Android_Extensions.comment": "Collection Page list heading for mobile extensions",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Android_Extensions": "Click ‘Get’ to install extensions on this device. To use on your phone or tablet, scan the QR code below.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Android_Extensions.comment": "Collection Page list SubHeading for Mobile Extensions",
+
+  "CollectionPage.CollectionListHeading.Edge_Adblock_Extensions": "Adblocking",
+  "_CollectionPage.CollectionListHeading.Edge_Adblock_Extensions.comment": "Collection Page list heading for Adblock Extensions",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Adblock_Extensions": "Browse without interruptions using top adblocking extensions for Microsoft Edge.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Adblock_Extensions.comment": "Collection Page list SubHeading for Adblock Extensions",
+
+  "CollectionPage.CollectionListHeading.Edge_Secure_Browsing_Extensions": "Secure browsing",
+  "_CollectionPage.CollectionListHeading.Edge_Secure_Browsing_Extensions.comment": "Collection Page list heading for Secure Browsing Extensions",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Secure_Browsing_Extensions": "Ensure a secure browsing experience with top privacy and security extensions for Microsoft Edge.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Secure_Browsing_Extensions.comment": "Collection Page list SubHeading for Secure Browsing Extensions",
+
+  "CollectionPage.CollectionListHeading.Edge_Translate_Extensions": "Translation",
+  "_CollectionPage.CollectionListHeading.Edge_Translate_Extensions.comment": "Collection Page list heading for Translation Extensions",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Translate_Extensions": "Break language barriers with top translation extensions for Microsoft Edge.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Translate_Extensions.comment": "Collection Page list SubHeading for Translation Extensions",
+
+  "CollectionPage.CollectionListHeading.Edge_Grammar_Extensions": "Grammar & reading",
+  "_CollectionPage.CollectionListHeading.Edge_Grammar_Extensions.comment": "Collection Page list heading for Grammar Extensions",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Grammar_Extensions": "Elevate your writing and reading experience with top grammar and reading extensions for Microsoft Edge.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Grammar_Extensions.comment": "Collection Page list SubHeading for Grammar Extensions",
+
+  "CollectionPage.CollectionListHeading.MostDownloadedExtensions": "Most downloaded",
+  "_CollectionPage.CollectionListHeading.MostDownloadedExtensions.comment": "Collection Page list heading for Trending Extensions",
+
+  "CollectionPage.CollectionListSubHeading.MostDownloadedExtensions": "Join millions of users and discover the most downloaded extensions for Microsoft Edge.",
+  "_CollectionPage.CollectionListSubHeading.MostDownloadedExtensions.comment": "Collection Page list SubHeading for Trending Extensions",
+
+  "CollectionPage.CollectionListHeading.Edge_Extensions_Shopping_V2": "Shop and save",
+  "_CollectionPage.CollectionListHeading.Edge_Extensions_Shopping_V2.comment": "Collection Page list heading for Shopping Extensions",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Extensions_Shopping_V2": "Save big and enhance your online shopping experience with top shopping extensions for Microsoft Edge.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Extensions_Shopping_V2.comment": "Collection Page list SubHeading for Shopping Extensions",
+
+  "CollectionPage.CollectionListHeading.Edge_Extensions_Gaming_V2": "Game on",
+  "_CollectionPage.CollectionListHeading.Edge_Extensions_Gaming_V2.comment": "Collection Page list heading for Gaming Extensions",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Extensions_Gaming_V2": "Level up your gaming experience with Edge extensions designed for gamers.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Extensions_Gaming_V2.comment": "Collection Page list SubHeading for Gaming Extensions",
+
+  "CollectionPage.CollectionListHeading.Edge_Extensions_Entertainment": "Entertainment essentials",
+  "_CollectionPage.CollectionListHeading.Edge_Extensions_Entertainment.comment": "Collection Page list heading for Entertainment Extensions",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Extensions_Entertainment": "Unlock endless entertainment with diverse Edge extensions for movies, music, and more.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Extensions_Entertainment.comment": "Collection Page list SubHeading for Entertainment Extensions",
+
+  "CollectionPage.CollectionListHeading.Edge_Gaming_Themes": "Gamer's haven",
+  "_CollectionPage.CollectionListHeading.Edge_Gaming_Themes.comment": "Collection Page list heading for Animal themes",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Gaming_Themes": "Experience gaming like never before with exclusive collection of Edge themes designed for gamers.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Gaming_Themes.comment": "Collection Page list SubHeading for Animal themes",
+
+  "CollectionPage.CollectionListHeading.Edge_Holiday_Sparkle_Themes": "Holiday sparkle",
+  "_CollectionPage.CollectionListHeading.Edge_Holiday_Sparkle_Themes.comment": "Collection Page list heading for Holiday Sparkle themes",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Holiday_Sparkle_Themes": "Step into a world of enchantment, where every moment sparkles with festive joy and wonder.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Holiday_Sparkle_Themes.comment": "Collection Page list SubHeading for Holiday Sparkle themes",
+
+  "CollectionPage.CollectionListHeading.Edge_Classic_Colours_Themes": "Classic Colours",
+  "_CollectionPage.CollectionListHeading.Edge_Classic_Colours_Themes.comment": "Collection Page list heading for Classic Colours themes",
+
+  "CollectionPage.CollectionListHeading.Edge_Football_Tournament_Themes": "Football Tournament Themes",
+  "_CollectionPage.CollectionListHeading.Edge_Football_Tournament_Themes.comment": "Collection Page list heading for Football Tournament themes",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Football_Tournament_Themes": "Every team has its own theme. Pick the one you're cheering for.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Football_Tournament_Themes.comment": "Collection Page list SubHeading for Football Tournament themes",
+
+  "CollectionPage.CollectionListHeading.Edge_Art_Themes": "Art & design",
+  "_CollectionPage.CollectionListHeading.Edge_Art_Themes.comment": "Collection Page list heading for Art Themes",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Art_Themes": "Immerse yourself in creativity with artistic Edge browser themes.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Art_Themes.comment": "Collection Page list SubHeading for Art Themes",
+
+  "CollectionPage.CollectionListHeading.Edge_Colour_Themes": "Pick your color",
+  "_CollectionPage.CollectionListHeading.Edge_Colour_Themes.comment": "Collection Page list heading for Colour themes",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Colour_Themes": "Add a splash of color to your browser with vibrant Edge themes.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Colour_Themes.comment": "Collection Page list SubHeading for Colour themes",
+
+  "CollectionPage.CollectionListHeading.Edge_Entertainment_Themes": "For fun",
+  "_CollectionPage.CollectionListHeading.Edge_Entertainment_Themes.comment": "Collection Page list heading for Entertainment themes",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Entertainment_Themes": "Enjoy a world of entertainment with Edge browser themes.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Entertainment_Themes.comment": "Collection Page list SubHeading for Entertainment themes",
+
+  "CollectionPage.CollectionListHeading.Edge_Nature_Themes": "Nature's palette",
+  "_CollectionPage.CollectionListHeading.Edge_Nature_Themes.comment": "Collection Page list heading for Nature Themes",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Nature_Themes": "Immerse yourself in the tranquility of nature with Edge browser themes.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Nature_Themes.comment": "Collection Page list SubHeading for Nature Themes",
+
+  "CollectionPage.CollectionListHeading.Edge_Space_Themes": "Interstellar vibes",
+  "_CollectionPage.CollectionListHeading.Edge_Space_Themes.comment": "Collection Page list heading for Nature Themes",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Space_Themes": "Explore the wonders of the cosmos with Edge browser themes.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Space_Themes.comment": "Collection Page list SubHeading for Nature Themes",
+
+  "CollectionPage.CollectionListHeading.Edge_Extensions_Dark_Themes": "Select your shade of black",
+  "_CollectionPage.CollectionListHeading.Edge_Extensions_Dark_Themes.comment": "Collection Page list heading for Dark Themes",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Extensions_Dark_Themes": "Choose your perfect shade of black with Edge.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Extensions_Dark_Themes.comment": "Collection Page list SubHeading for Dark Themes",
+
+  "CollectionPage.CollectionListHeading.Edge_Extensions_Explore_The_World_Themes": "Wander the world",
+  "_CollectionPage.CollectionListHeading.Edge_Extensions_Explore_The_World_Themes.comment": "Collection Page list heading for Explore The World Themes",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Extensions_Explore_The_World_Themes": "Explore iconic places and landmarks with Edge browser themes.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Extensions_Explore_The_World_Themes.comment": "Collection Page list SubHeading for Explore The World Themes",
+
+  "CollectionPage.CollectionListHeading.Edge_Extensions_Global_Favourite_Themes": "Global favourites",
+  "_CollectionPage.CollectionListHeading.Edge_Extensions_Global_Favourite_Themes.comment": "Collection Page list heading for global favourite Themes",
+
+  "CollectionPage.CollectionListSubHeading.Edge_Extensions_Global_Favourite_Themes": "Elevate your experience with top picks loved by users everywhere.",
+  "_CollectionPage.CollectionListSubHeading.Edge_Extensions_Global_Favourite_Themes.comment": "Collection Page list SubHeading for global favourite Themes",
+
+  "CollectionPage.CollectionListHeading.TrendingThemes": "Trending",
+  "_CollectionPage.CollectionListHeading.TrendingThemes.comment": "Collection Page list heading for trending Themes",
+
+  "CollectionPage.CollectionListSubHeading.TrendingThemes": "Discover the most popular themes near you.",
+  "_CollectionPage.CollectionListSubHeading.TrendingThemes.comment": "Collection Page list SubHeading for trending Themes",
+
+  "CollectionCardGrid.LandmarkTitle": "Collections",
+  "_CollectionCardGrid.LandmarkTitle.comment": "Aria label for collection grid landmark title",
+
+  "CollectionPage.LandmarkTitle": "{0} Collections",
+  "_CollectionPage.LandmarkTitle.Comment": "Aria label for Collections page landmark title",
+
+  "WelcomeBanner.Title": "Add-ons for Microsoft Edge",
+  "_WelcomeBanner.Title.Comment": "Title for the welcome banner in entity page when carousel is not shown",
+
+  "WelcomeBanner.Subtitle": "Boost your productivity, have more fun, and customize your browsing experience with extensions and themes for Microsoft Edge",
+  "_WelcomeBanner.Subtitle.Comment": "Subtitle for the welcome banner in entity page when carousel is not shown",
+
+  "WelcomeBanner.ButtonText": "Explore",
+  "_WelcomeBanner.ButtonText.Comment": "Button text for the welcome banner in entity page when carousel is not shown"
+
+}

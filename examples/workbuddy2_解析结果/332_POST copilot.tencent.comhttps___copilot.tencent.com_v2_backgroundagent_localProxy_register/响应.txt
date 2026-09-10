@@ -1,0 +1,28 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Set-Cookie: tgw_l7_route=b13974e890eed1801d002823d1109d3f; Expires=Tue, 08-Sep-2026 09:06:53 GMT; Path=/; sameSite=None; Secure
+Set-Cookie: session=; Path=/v2; Max-Age=0; Expires=Thu, 01-Jan-70 00:00:00 GMT; HttpOnly
+Content-Security-Policy: default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self' 'unsafe-inline';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+Cross-Origin-Embedder-Policy: require-corp
+Cross-Origin-Opener-Policy: same-origin
+Cross-Origin-Resource-Policy: same-origin
+X-DNS-Prefetch-Control: off
+Expect-CT: max-age=0
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=15552000; includeSubDomains
+X-Download-Options: noopen
+X-Content-Type-Options: nosniff
+Origin-Agent-Cluster: ?1
+X-Permitted-Cross-Domain-Policies: none
+Referrer-Policy: no-referrer
+X-XSS-Protection: 0
+x-trace-id: 094f036752420f882cd74cefb54e2597
+X-Request-Id: b19bd220-187b-445c-95a4-015bcbfb8d90
+X-User-Id: 8b3cb381-9ebc-4813-92d9-9e5880528465
+ETag: W/"105-LCTqigJ6AkJ5TAhwFzMJiDBOmXA"
+Server: APISIX/3.9.1
+Content-Length: 261
+Connection: keep-alive
+Date: Tue, 08 Sep 2026 08:06:53 GMT
+EO-LOG-UUID: 6251196616668227053
+EO-Cache-Status: MISS

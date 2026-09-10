@@ -1,0 +1,36 @@
+POST https://api5-normal.mchost.guru/api/ide/v1/knowledgebase/uploadFilesLimitConfig HTTP/2
+:method: POST
+:authority: api5-normal.mchost.guru
+:scheme: https
+:path: /api/ide/v1/knowledgebase/uploadFilesLimitConfig
+content-length: 2
+accept-encoding: gzip, deflate, br, zstd
+authorization: Cloud-IDE-JWT eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTAwMDk4NTI1MzM4MDUzOCIsInNvdXJjZSI6InJlZnJlc2hfdG9rZW4iLCJzb3VyY2VfaWQiOiJIbFVqbUxTUmJ1VE9OanF1bDA1d1FUdXlJUDRZcy12WXJILTNHRkRjZnA4PS4xOGNiZTljYzJmNjQ5MDIyIiwidGVuYW50X2lkIjoiN28yZDg5NHA3ZHIwbzQiLCJ0eXBlIjoidXNlciJ9LCJleHAiOjE3ODc5ODgzNDAsImlhdCI6MTc4Njc3ODc0MH0.KJkQvfHXqlJoX9EMzMLxD7ydGkyDHQNAqi4bh-x3rd0isntfMGLa67QjTgMe6hb2JWLOmhhcd2i-KL0-uZMRxBqCKdlGcAc9jYGihcNDLihRR56QiICspWRE-hZ7C0H-noTUMhDJ-EGBD4j68CLtfOBb8oPZIC_bl4Fn9O52Dqnu14_kEvFdDhNEPMdmVgFyc5EJPo-1tSR2C3lGxcLQsW1dc0pEjD6iiNW-0s5BrCbf94Tjfyh8u1hwvqaRLjQdizI-pQmQzFgBJKWRwzVeNwCX7ju5QxTvAZfEAoayuMFZ_5HoSHB_J4atsJskMFWppWEeqQkA0ktxCulBHX_YieAeH3-dhLDP5nZeAiGB3DX-BcGVz1mW33AlzAbRuOvisoyqRql5HJULF6SLoxuzFA5omj4mESPcmjQ5q88w4R_EZpOcRkuQ7Z9TUTWMZe__TXX5V0Z-lvzAKnHo16BFZGlgde2B62HA0vVb20cAJmgn_iijN_KERb8dKOFhwxiYg1yAkM36BjLrZG3UGE0WrQPG0RnMtw8MZrfmb8_JybHAiGLJB1--yPz12e_8lupLtYN6bQwfrjFeambOWKVxm4PFUddN9Mb85_LD6us_TOK-QzqiAnyEbgwedSfaEJTAY5NIkd29pV1FTLOOlTk_IUPChojuwWtDw8LAr0D_9fc
+content-type: application/json
+sec-fetch-dest: empty
+sec-fetch-mode: no-cors
+sec-fetch-site: none
+user-agent: go-resty/2.16.5 (https://github.com/go-resty/resty)
+x-app-id: 6eefa01c-1036-4c7e-9ca5-d891f63bfcd8
+x-ckg-user-id: 1000985253380538
+x-ckg-version: 0.0.160
+x-device-brand: 82JW
+x-device-cpu: AMD
+x-device-id: 3798161405005257
+x-device-type: windows
+x-machine-id: 0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51
+x-os-version: Windows 11 Pro
+x-tt-logid: -
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.50
+x-request-id: a364e3d8-4465-4628-a1ea-321278da3875
+accept: */*
+x-ss-dp: 787976
+x-tt-trace-id: 00-044ffe8b0dd7e685d584dc9acfdeffff-044ffe8b0dd7e685-01
+referer: https://trae-api-cn.mchost.guru/api/ide/v1/knowledgebase/uploadFilesLimitConfig
+x-helios: 7RoAAKRtsAYosHqO76kyUdDFEnURiKHtubYkk3N/mexCJ+w/
+x-medusa: eBSAaoz835Csw1xRrT5IGizb4XLhFAMBcw0EREBAMaE1mFQ9gGDL4ZVSFUOcWl3ntCgbtaoxScCkqM7hee8OEco4B8HNgCtPYyRWLZMlfV0SSL7jyJBknsglf9/zuLHycTDrpWX94598Id02AglKGYHTi3zwTZkR7NSw31FfEjoL7QH5VoaCDPmSIqtE5xUv2B59gM+rE0X6SgjrXQJ4lifX36aA9zOrJoNzAXDfsEMCjXv75gK5oew00Pf7HWW4mpBNhZ3L0mLjgN/QQ2hK4UJLCCEVxd2OUSYX/4dVEBQLTb1qvjTErJOiNMoDQMjam4mJucYP54ECpe4OFsJXeIyWvsI6l6NzwpXEvIKBUSPVLBt5pL/lzqOTGZx+B/AgPof6oMNxktBb/ubHC5d3rK4+P3B6U5MobiJJl2QaPrZyo6GEY+bugmwzkyS70XU1WukmldTf0P2Yl2coRihcPkqDzL2LsREIJPNrh2RzRZYmbCTSdb6bk5DKCEPXzqGyOJNAOtCHK3uhatB7fWuf44UcN3LmRLTy/YGT5raLyD4caSrgpNQBILao8F+LrXgi0fpuCwMj4GaG7Uc4SR4lGNYpki/XO21T39q0R52nE6NySvb8P1L+8SbnuCjJdRm88rPYXoZTO37fGD1361EKxoZqtbBHny6hTrxHn7+Pzx8fz9/l3Y8Xh+gnnJog6zHu+LIjALKbfxk2/5W5j4k7hWvqXT547K03v82Rj1YuT7xKjZ3fEefZB+Ze1LpvZ2UJ5KOYaJWQFyAfZfv93///9///AAA=
+x-neptune: -11|50:51:59:00:09

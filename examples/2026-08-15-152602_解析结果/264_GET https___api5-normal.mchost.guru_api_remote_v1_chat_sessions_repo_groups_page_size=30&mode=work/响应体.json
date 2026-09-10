@@ -1,0 +1,13 @@
+{
+  "code": 0,
+  "data": {
+    "items": [
+      {
+        "session_count": 1,
+        "last_active_at": "1778574401090",
+        "is_ungrouped": true
+      }
+    ]
+  },
+  "message": "success"
+}

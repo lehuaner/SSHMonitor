@@ -1,0 +1,6 @@
+HTTP/2 200
+date: Mon, 07 Sep 2026 16:39:16 GMT
+content-type: text/plain
+server: Sws
+cache-control: no-cache, no-store, must-revalidate
+content-encoding: gzip

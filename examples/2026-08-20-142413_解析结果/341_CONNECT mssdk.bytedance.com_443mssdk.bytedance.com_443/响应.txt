@@ -1,0 +1,116 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:22:27.424
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_128_GCM_SHA256
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.bytedance.com
+  Simple Name: *.bytedance.com
+  DNS Name: *.bytedance.com
+
+[Issuer]
+  CN=RapidSSL TLS RSA CA G1, OU=www.digicert.com, O=DigiCert Inc, C=US
+  Simple Name: RapidSSL TLS RSA CA G1
+  DNS Name: RapidSSL TLS RSA CA G1
+
+[Serial Number]
+  0CF7297C301D8A9C5BA10681845323C0
+
+[Not Before]
+  2026/1/19 8:00:00
+
+[Not After]
+  2027/1/19 7:59:59
+
+[Thumbprint]
+  3007292EFA172BA836A4A4DCE7686F2E2097EFB5
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 b6 c4 42 d6 6d 93 70 62 16 d1 59 18 ff 0a a7 a9 85 08 b4 b1 16 9d 45 2e ce 8f d2 40 70 19 80 31 23 8f 40 bb 16 f0 0e b3 ba 69 05 6a 31 49 0a bc 7b 56 46 bf b2 23 60 cd b6 38 87 63 0c 76 5a 84 6a 8e 39 b7 19 1a 1a 0c 81 ec b6 8a 24 a6 72 7c 6b 67 cf a0 0d 45 3b 70 3e 2c 91 d5 37 b1 a7 6e 67 f3 5f 72 f6 2e 4a 80 6c 73 7f 5e fd 0e 11 cb 33 8b 0d e7 e8 2e a6 f7 81 50 2a a0 02 a2 c2 47 2e 88 dc d9 57 6e ce bc 7b 45 20 f6 92 0a 12 28 70 56 ae e7 19 da fa 9f 05 0c b7 f9 9d 69 79 5c ca 1a d5 b8 a2 d6 c0 d9 ed f3 e9 06 cd b5 02 2d ba 65 bd f0 85 41 19 e2 99 d4 98 1d cc b7 94 2b 02 83 ea 79 ea 72 36 9e 36 c1 a4 1d 8e 4e 85 23 ae 51 6c 29 6f cf 50 c1 85 3d 6c 22 43 d1 b7 56 fd 66 b1 51 31 5a cb fe 62 5e 0c b3 23 dd 93 b5 43 f1 88 5b a7 41 a9 e2 ff a8 af 5e 91 22 b9 9d 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=0cdb6c82490f4a670ab814ee7ac4485288eb5638
+
+* 使用者密钥标识符(2.5.29.14):
+  6b8452f89ad93488a9756f73a747df4f8630f8c7
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.bytedance.com
+DNS Name=bytedance.com
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://cdp.rapidssl.com/RapidSSLTLSRSACAG1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://status.rapidssl.com
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.rapidssl.com/RapidSSLTLSRSACAG1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+4c63dc98e59c1dab88f61e8a3ddeae8fab44a3377b5f9b94c3fba19cfcc1be26
+‎2026‎年‎1‎月‎20‎日 2:48:34
+SHA256
+ECDSA
+3046022100fbea8a77fd6dd848940164383d25b75705cbc26280d892410dcad4d3d5d1c37b022100d2c1ffd41098f0773d5a9a58bee41098f58a5ef10f83044e57aecfdd1fa6f997
+
+v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎1‎月‎20‎日 2:48:34
+SHA256
+ECDSA
+3045022100c42aeb81a540c59e184fd04b9c18473ed41738060f9b076123397c0c7c91024902207c903e9a778bac106402b3bd6611843e39a7d32ba0b43c4c2cae7acb77b6f2f8
+
+v1
+604c9aaf7a7f775f01d406fc920dc899eb0b1c7df8c9521bfafa17773b978bc9
+‎2026‎年‎1‎月‎20‎日 2:48:35
+SHA256
+ECDSA
+3045022100a925b35c1ff4b6361804621de8f4a02d8cc4557294c684b29a3715c01ad1f6ed02201adb83d7a753d2bfa50436769e1972999b69905844b418f856ceb7a1d71baa47
+
+
+[SubjectAltNames]
+DNS Name=*.bytedance.com
+DNS Name=bytedance.com
+

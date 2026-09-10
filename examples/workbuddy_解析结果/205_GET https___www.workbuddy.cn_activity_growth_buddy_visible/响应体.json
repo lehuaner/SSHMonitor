@@ -1,0 +1,9 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "4a47e68e-384b-449f-a977-c8e123ad3a8b",
+  "data": {
+    "buddy_visible": true,
+    "has_buddy": true
+  }
+}

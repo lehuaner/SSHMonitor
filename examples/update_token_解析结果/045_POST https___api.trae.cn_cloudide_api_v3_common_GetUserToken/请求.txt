@@ -1,0 +1,21 @@
+POST https://api.trae.cn/cloudide/api/v3/common/GetUserToken HTTP/2
+:method: POST
+:authority: api.trae.cn
+:scheme: https
+:path: /cloudide/api/v3/common/GetUserToken
+content-length: 0
+traceparent: 03-c61fe98794f651d800aa1ef65963ce08-c9d383653a5d8b8c-01
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0
+accept: application/json, text/plain, */*
+sec-ch-ua: "Not=A?Brand";v="99", "Microsoft Edge";v="151", "Chromium";v="151"
+sec-ch-ua-mobile: ?0
+origin: https://www.trae.cn
+sec-fetch-site: same-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://www.trae.cn/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=1, i
+cookie: is_staff_user=false; has_biz_token=false; passport_csrf_token=43f15ca4c9da64f728dd65556293f1be; passport_csrf_token_default=43f15ca4c9da64f728dd65556293f1be; _clck=1ozn9mz%5E2%5Eg8m%5E0%5E2418; passport_mfa_token=CjhB5QpmyF%2Fr2oT%2FWg%2BA%2Bi9aag2iz18nXy6xFGPp3MEWu386Ke9pE664iIJcwwbl31JJsArMHS9MgxpKCjwAAAAAAAAAAAAAUMgn9KbzPckd%2Fcbdl48oNz7tw1i0GCIZcsB%2FUqmNV2C7gmiey0MQwT1%2FGsFv1D2BHzEQ3MqZDhj2sdFsIAIiAQMmqswe; d_ticket=8248a718c6818d27ff00785c0a004f788ad4d; odin_tt=dfafc9b72f29a4fdf8e09de84a111f43ce5fbc38b195d2d6304a136dc08011197a4827dc4ddf6cf79d9c6de151e2dee4fbc9d61b3b5f52e3088a0852f74e34b3; n_mh=eOsQPh3lUdYRARMHY3y6pjGh7jSRoccynepzYrMQbTE; passport_auth_status=f3edd2c1a555c322cec78939690cc6a1%2C4c72b51480439a17348cf4dd0d6f299c; passport_auth_status_ss=f3edd2c1a555c322cec78939690cc6a1%2C4c72b51480439a17348cf4dd0d6f299c; sid_guard=473a950353405c7dd2d45e24c301b2ae%7C1786778884%7C5184000%7CWed%2C+14-Oct-2026+07%3A28%3A04+GMT; uid_tt=2154afdcde5b6a7061a85b35b5937ae1; uid_tt_ss=2154afdcde5b6a7061a85b35b5937ae1; sid_tt=473a950353405c7dd2d45e24c301b2ae; sessionid=473a950353405c7dd2d45e24c301b2ae; sessionid_ss=473a950353405c7dd2d45e24c301b2ae; session_tlb_tag=sttt%7C6%7CRzqVA1NAXH3S1F4kwwGyrv________-85aRcNbgYrJyZBYmOAe6sg1Are_3Jt83Kd9FAtKyCUyk%3D; sid_ucp_v1=1.0.0-KGNiZjU0Y2ExMjMyZGEyNWRkYTA4MTQwNjE0Mzg3MDUwZmQzMzJhZmQKIAizhZDwza2yAxCEqoDUBhjWsysgDDClwbfOBjgCQPEHGgJscSIgNDczYTk1MDM1MzQwNWM3ZGQyZDQ1ZTI0YzMwMWIyYWU; ssid_ucp_v1=1.0.0-KGNiZjU0Y2ExMjMyZGEyNWRkYTA4MTQwNjE0Mzg3MDUwZmQzMzJhZmQKIAizhZDwza2yAxCEqoDUBhjWsysgDDClwbfOBjgCQPEHGgJscSIgNDczYTk1MDM1MzQwNWM3ZGQyZDQ1ZTI0YzMwMWIyYWU; X-Cloudide-Session=sHGNvQxpIYsFZUc66BRqDxbT4sMB1-VCbZWMzUYkRUo=.18cbee9b8c1adee3; _uetsid=631e32c0986b11f1ba29ff6e8b7d4c88|1yd0nfk|2|g8m|0|2418; _uetmsclkid=_uetf59b994f23a31350474ff36abef9a10f; _uetvid=106456f0736e11f08a888d6c41df36e4|tba133|1786796480424|1|1|bat.bing.com/p/conversions/c/j; _clsk=11oe9ep%5E1786796480901%5E1%5E1%5Eh.clarity.ms%2Fcollect; ttwid=1%7CElKd5EWwwnAGPuiyBBsMe3N0VCuT2r7utgvZO2P8vtg%7C1786815761%7C28a781f5ca36102bc964d5a1422e582a0cf055b4ed3e8f4896ab032d2876d29c

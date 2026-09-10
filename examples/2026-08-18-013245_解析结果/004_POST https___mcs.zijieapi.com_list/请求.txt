@@ -1,0 +1,21 @@
+POST https://mcs.zijieapi.com/list HTTP/2
+:method: POST
+:authority: mcs.zijieapi.com
+:scheme: https
+:path: /list
+content-length: 12608
+authority: https://mcs.zijieapi.com
+accept: */*
+content-type: application/json
+origin: vscode-file://vscode-app
+sec-ch-ua: "Not.A/Brand";v="8", "Chromium";v="114"
+sec-ch-ua-mobile: ?0
+sec-fetch-dest: empty
+sec-fetch-mode: "cors"
+sec-fetch-site: none
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36
+x-bridge-transport: aha
+x-request-id: req_28515ac9-41b1-4721-8179-dc8e8914d5bc
+referer: https://mcs.zijieapi.com/list
+accept-encoding: gzip, deflate, br, zstd
+priority: u=1

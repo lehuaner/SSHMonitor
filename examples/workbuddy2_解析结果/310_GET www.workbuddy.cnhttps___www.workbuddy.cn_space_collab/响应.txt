@@ -1,0 +1,9 @@
+HTTP/1.1 101 Switching Protocols
+Connection: upgrade
+Upgrade: websocket
+Sec-WebSocket-Accept: K3wWIYNicKtz1TiqZuxJYf2fmaA=
+Server: APISIX/3.9.1
+X-Request-ID: 4203a448-dbc8-472f-a2f3-ec79aa9f8904
+Date: Tue, 08 Sep 2026 08:06:52 GMT
+EO-LOG-UUID: 2218218061843111272
+EO-Cache-Status: MISS

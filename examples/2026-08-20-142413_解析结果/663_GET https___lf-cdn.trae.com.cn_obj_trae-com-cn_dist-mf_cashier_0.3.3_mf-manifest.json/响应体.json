@@ -1,0 +1,91 @@
+{
+  "id": "cashier_mf",
+  "name": "cashier_mf",
+  "metaData": {
+    "name": "cashier_mf",
+    "type": "app",
+    "buildInfo": {
+      "buildVersion": "0.3.3",
+      "buildName": "@byted-solo/cashier"
+    },
+    "remoteEntry": {
+      "name": "static/js/cashier_mf.2959f818.js",
+      "path": "",
+      "type": "module"
+    },
+    "types": {
+      "path": "",
+      "name": "",
+      "zip": "",
+      "api": ""
+    },
+    "globalName": "cashier_mf",
+    "pluginVersion": "2.5.0",
+    "publicPath": "https://lf-cdn.trae.com.cn/obj/trae-com-cn/dist-mf/cashier/0.3.3/"
+  },
+  "shared": [
+    {
+      "id": "cashier_mf:react-dom",
+      "name": "react-dom",
+      "version": "18.2.0",
+      "singleton": true,
+      "requiredVersion": "~18.2.0",
+      "assets": {
+        "js": {
+          "async": [],
+          "sync": [
+            "static/js/async/437.35750c91.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      },
+      "fallback": ""
+    },
+    {
+      "id": "cashier_mf:react",
+      "name": "react",
+      "version": "18.2.0",
+      "singleton": true,
+      "requiredVersion": "~18.2.0",
+      "assets": {
+        "js": {
+          "async": [],
+          "sync": [
+            "static/js/async/652.c96a4879.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      },
+      "fallback": ""
+    }
+  ],
+  "remotes": [],
+  "exposes": [
+    {
+      "id": "cashier_mf:index",
+      "name": "index",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/311.44353e58.js",
+            "static/js/async/__federation_expose_index.8efc87d9.js"
+          ],
+          "async": []
+        },
+        "css": {
+          "sync": [
+            "static/css/async/__federation_expose_index.8703c583.css"
+          ],
+          "async": []
+        }
+      },
+      "path": "./index"
+    }
+  ]
+}

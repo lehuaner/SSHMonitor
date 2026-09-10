@@ -1,0 +1,20 @@
+{
+  "ClientID": "en1oxy7wnw8j9n",
+  "AuthCode": "x9QIfAGg7t6tNW6PQHknOO0icmc05uMeH4fX3Y3yJDU",
+  "CodeVerifier": "5AXymQ3aVeu1b_oVRFF83XKLHEB4MCpF96UMOrZnk5-a-yLLrCHzPM-gt6R9sa3a",
+  "DeviceInfo": {
+    "DeviceID": "3798161405005257",
+    "MachineID": "0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51",
+    "PlatformCode": "SOLO_PC",
+    "DeviceType": "PC",
+    "DeviceName": "乐幻的电脑",
+    "DeviceModel": "82JW",
+    "ClientVersion": "0.1.50",
+    "DevicePublicKey": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEMXBnrjOFRYWFmtmgobbEdufkZ7ni\nOPdrPL8m4zH1xHpDN1lWoLgmqwfPYmdx0lsDWrc1S3n+odTj2F2dVkPoMw==\n-----END PUBLIC KEY-----\n",
+    "DeviceBrand": "LENOVO",
+    "DeviceCPU": "AMD Ryzen 5 5600H with Radeon Graphics",
+    "OSInfo": "windows",
+    "OSVersion": "Windows 11 Pro"
+  },
+  "IDEVersion": "0.1.50"
+}

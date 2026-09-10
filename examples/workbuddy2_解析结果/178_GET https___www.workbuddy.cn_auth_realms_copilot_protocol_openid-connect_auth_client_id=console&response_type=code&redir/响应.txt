@@ -1,0 +1,20 @@
+HTTP/2 200
+content-type: text/html;charset=utf-8
+x-kc-routed-to: new
+set-cookie: AUTH_SESSION_ID=d216774f-2d02-4531-8f79-c73a817ce1a6.keycloak-clusterless-5df949fc4d-zm2zt;Version=1;Path=/auth/realms/copilot/;Secure;HttpOnly;SameSite=None
+set-cookie: KC_RESTART=eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..fQ58ecSuE_00wq-7KxwlZw.DbDdKvV5WcW1eKN-qPTe8-KZeM5G3tUbbZGcR049xj1cyoUQu9VvWTEpytld4c6xH1pIQI_4JZbk8aZ3BGOzJ5F45bLYXfR9MbqA2HE6gBWb-jpSlS3o8XR3AN1j6D3ePZRoZgQfp-NUpTSqUlvBb2Vs2Wyap9WxT-hJ4KOu4kHqRuaogf6dCqnw798QAhWuo5_dnvZoBu0M9MaJ8LKkXEr3_586_LJ3IYTDcua0PIvSZF0O38FNadc5wqm1Vb8_ZOokM4Np6aGNy2acDCUiIXkON9wB_l0ab5l_j3-p3yREogclfkGd5pSM2JLpEh8ZYA66cynoOrAigBr8-oAaWlc2obdiGej-oWsog402mkiF-okT8Fk1EbDZGATu2nf2kgEzKaKqq0Qh0odEbAnsN1sXAlRTT5Rc_YBTNvg8S51EXn2wK2UZ3e8igMYMkl835ZIDoufu8wwObJnemmI8poztokZ0GLwOcz4AGE2t9Sj9YDu6VmwQqA_6lKK_KSjDtn78VUX9kMFaIvGMo0kOADwjzZRXMMHkwe_35VF_kFOngmIhVeD0qw3i85NnkYrwqt4915gaK0U2KvA6lEwgjQSctu76vO24pUT70IXUISIX_YJ1hnJhZAGZPvd88VdR5GSn5Xc0Yk_oGPsxESgES6n_f_hSMlal3DLjlvzKRiW60OWwaX0ZRksDEj7qoj17aoX_-JWEYV0lD6CJmQe_AL5GoZnENomEYt-QKMiAipcsYkYaJp315SbtIOWPLP_I_R-MyYIKBrEC6p_hVw_fnOXAn8aJBO6sQmRJWPvQcWbPrxOg64xehXAtEGwv_IWTRISMgWAU2vXlE4d6_zYtn2xwft7iCYPKmd_aWziCp4U2sIITYqeBGmiDT1h-pJELK3WquUdKDTyQ_95Ei8Fa7qVur4QuzfQyGvapoisBG506Krw1j8drwXYX4SyXIphckTcQfS_Su9Wgf3UaRndp6NqIc_dYVwElVD88iPtd-8ci_jms8m6I0WrasbNxgYFnL1JQCNdJR6OVnjbpYcty6yeC9I3is2mhTVX-PRFZf-Kj1sIeUYMV4WuDy3CPp3PhJH3va0-yjadk863dQG1_ElW4nuILYQ0LQl7kywF0Yc5Yw1D6D6BWfuB1372S_CSp.HhyEjs165t0FHFyGMXS7Og;Version=1;Path=/auth/realms/copilot/;Secure;HttpOnly;SameSite=None
+content-language: zh-cn
+content-security-policy: frame-src 'self' open.weixin.qq.com ;frame-src 'self'; frame-ancestors 'self'; object-src 'none';
+referrer-policy: no-referrer
+strict-transport-security: max-age=31536000; includeSubDomains
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-robots-tag: none
+x-xss-protection: 1; mode=block
+server: APISIX/3.9.1
+x-request-id: 533d82c9-17a3-4f18-a5ff-0979fe450e7a
+cache-control: must-revalidate, no-store, max-age=0
+content-length: 33617
+date: Tue, 08 Sep 2026 08:06:24 GMT
+eo-log-uuid: 17146141489102710783
+eo-cache-status: MISS

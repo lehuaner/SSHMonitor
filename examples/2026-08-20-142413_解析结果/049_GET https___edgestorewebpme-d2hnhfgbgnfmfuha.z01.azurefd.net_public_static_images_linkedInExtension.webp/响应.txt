@@ -1,0 +1,21 @@
+HTTP/2 200
+date: Thu, 20 Aug 2026 06:22:21 GMT
+content-type: image/webp
+content-length: 24890
+last-modified: Tue, 18 Aug 2026 23:37:18 GMT
+etag: "0x8DEFD81A478FBBA"
+x-ms-request-id: 85919a53-101e-0027-4879-2f9df4000000
+x-ms-version: 2025-05-05
+x-ms-creation-time: Thu, 13 Nov 2025 12:26:34 GMT
+x-ms-blob-content-md5: QqvMPVL3IjP+j0OV4DZUWQ==
+x-ms-lease-status: unlocked
+x-ms-lease-state: available
+x-ms-blob-type: BlockBlob
+x-ms-server-encrypted: true
+x-ms-access-tier: Hot
+x-ms-access-tier-inferred: true
+x-azure-ref: 20260820T062221Z-1676fcc8cbc5tf6xhC1SEL2q9g0000001a1000000000exqb
+x-fd-int-roxy-purgeid: 0
+x-cache: TCP_HIT
+cache-control: public, max-age=604800, s-maxage=604800
+accept-ranges: bytes

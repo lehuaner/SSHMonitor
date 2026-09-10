@@ -1,0 +1,28 @@
+HTTP/2 200
+cache-control: no-cache
+content-length: 150490
+content-type: image/png
+etag: W/"90f2f7523a6dcd8ae8a76b16ab01dd2516608fb88eba0da8146215139d9aaede"
+server: Microsoft-HTTPAPI/2.0
+x-nanoproxy: 1,1
+request-id: 370badf2-84b8-34d1-f04e-7268eb1a6e14
+ms-photo-source: cloud
+x-calculatedfetarget: SG2PR04CU007.internal.outlook.com
+ms-cv: 8q0LN7iE0TTwTnJo6xpuFA.1.1
+x-besku: Unknown
+x-backendhttpstatus: 200,200
+report-to: {"group":"NelOfficeUpload1","max_age":7200,"endpoints":[{"url":"https://exo.nel.measure.office.net/api/report?TenantId=&FrontEnd=Cafe&DestinationEndpoint=KUL&RemoteIP=112.23.190.0&Environment=MT&HttpStatusFrom=BE&ServiceName=Default.ImageB2&MiraPartnerName="}],"include_subdomains":true}
+x-bepartition: CLAPCPRD04SIN07
+x-calculatedbetarget: SI3PR04MB9422.APCPRD04.PROD.OUTLOOK.COM
+x-end2endlatencyms: 164
+x-feefzinfo: XSP
+x-feserver: KUZPR04CA0021
+x-microserviceversion: 2.2.368.0
+x-ms-appid: 000000004835BC29
+x-proxy-backendserverstatus: 200
+x-proxy-routingcorrectness: 1
+x-firsthopcafeefz: KUL
+alt-svc: h3=":443";ma=2592000,h3-29=":443";ma=2592000
+strict-transport-security: max-age=31536000; includeSubDomains
+nel: {"report_to":"NelOfficeUpload1","max_age":7200,"include_subdomains":true,"failure_fraction":1.0,"success_fraction":0.01}
+date: Thu, 10 Sep 2026 04:01:17 GMT

@@ -1,0 +1,16 @@
+HTTP/1.1 302 Found
+Via: 1.1 BL4PPF6D8F350EB (wls-colorado)
+Content-Length: 0
+Location: https://login.live.com/login.srf?wa=wsignin1.0&rpsnv=202&ct=1787206950&rver=7.5.2146.0&wp=MBI_SSL&wreply=https:%2F%2Fstorage.live.com%2Fstorageservice%2Fpassport%2Fauth.aspx%3Fsru%3Dhttps:%252f%252fstorage.live.com%252fusers%252f0xe68bb90d8118dd39%252fmyprofile%252fexpressionprofile%252fprofilephoto:UserTileStatic%252fp&lc=1033&id=63539
+X-WLSPROXY: BL4PPF6D8F350EB
+MS-CV: IFRr9HCgDku/ZEjf7PxBNg.0
+X-MSNSERVER: S2SEUS2P03-116
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+X-QosStats: {"ApiId":0,"ResultType":2,"SourcePropertyId":0,"TargetPropertyId":42}
+X-ThrowSite: 399f.cc72
+X-ClientErrorCode: AccessDenied
+X-ErrorCodeChain: AccessDenied
+X-AsmVersion: UNKNOWN; 19.1980.810.1005
+P3P: CP="BUS CUR CONo FIN IVDo ONL OUR PHY SAMo TELo"
+X-AsmVersion-ProxyApp: UNKNOWN; 19.1980.810.1005
+Date: Thu, 20 Aug 2026 06:22:30 GMT

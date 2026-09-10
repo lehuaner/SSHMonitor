@@ -1,0 +1,16 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "45c6605e-4fbe-4ac2-8558-4fa105191566",
+  "data": {
+    "starter_count": 0,
+    "advanced_count": 0,
+    "legendary_count": 0,
+    "starter_status": "available",
+    "advanced_status": "locked",
+    "legendary_status": "locked",
+    "total_consumed": 0,
+    "remaining_days": 8,
+    "month_total_days": 8
+  }
+}

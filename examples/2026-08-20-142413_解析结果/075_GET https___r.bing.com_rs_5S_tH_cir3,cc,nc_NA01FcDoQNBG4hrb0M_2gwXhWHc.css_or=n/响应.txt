@@ -1,0 +1,21 @@
+HTTP/2 200
+cache-control: public, max-age=31536000
+content-length: 1100
+content-type: text/css; charset=utf-8
+last-modified: Wed, 19 Aug 2026 17:16:07 GMT
+vary: Accept-Encoding
+x-cache: TCP_HIT
+access-control-allow-headers: *
+access-control-allow-origin: *
+x-eventid: 6a868fb579f94149a2b4b1ff6cbb65cf
+accept-ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, ECT, Sec-CH-Prefers-Color-Scheme, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA
+useragentreductionoptout: A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+permissions-policy: unload=()
+content-security-policy: script-src https: 'strict-dynamic' 'report-sample' 'wasm-unsafe-eval' 'nonce-6T+tKGTsGD2gTLnR3MGwXVM4tkimL+Bc/VlYJltMts0='; base-uri 'self';report-to csp-endpoint
+report-to: {"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}
+report-to: {"group":"network-errors","max_age":604800,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingrms"}]}
+timing-allow-origin: *
+cross-origin-resource-policy: cross-origin
+nel: {"report_to":"network-errors","max_age":604800,"success_fraction":0.001,"failure_fraction":0.75}
+x-msedge-ref: Ref A: 2578964B291A44F8A642A976982E7ED9 Ref B: BJ1EDGE0516 Ref C: 2026-08-20T06:22:22Z
+date: Thu, 20 Aug 2026 06:22:21 GMT

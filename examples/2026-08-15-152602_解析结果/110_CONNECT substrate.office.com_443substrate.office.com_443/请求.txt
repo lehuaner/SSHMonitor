@@ -1,0 +1,55 @@
+CONNECT substrate.office.com:443 HTTP/1.0
+User-Agent: OneAuth/9.3.5 (Windows)
+Host: substrate.office.com:443
+Content-Length: 0
+Proxy-Connection: Keep-Alive
+Pragma: no-cache
+
+A SSLv3-compatible ClientHello handshake was found. Fiddler extracted the parameters below.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+Record Layer Version: 3.3 (TLS/1.2)
+Random: F4 DF 90 52 4B 96 B1 DE 0B 7F EB DC 34 B5 F6 C0 92 03 E1 0F 43 44 51 2E 31 D1 0D BF 54 9C 23 97
+"Time": 2013/11/24 1:03:48
+SessionID: C7 92 CD BF B3 B3 55 B0 00 54 85 F0 AC 1B 9C 42 39 0F 26 20 81 74 61 A8 8A B7 27 C0 F3 EA CF 67
+Extensions: 
+	server_name	substrate.office.com
+	status_request	OCSP - Implicit Responder
+	supported_versions	Tls1.3, Tls1.2
+	signature_algs	rsa_pss_rsae_sha256, rsa_pss_rsae_sha384, rsa_pss_rsae_sha512, rsa_pkcs1_sha256, rsa_pkcs1_sha384, rsa_pkcs1_sha1, ecdsa_secp256r1_sha256, ecdsa_secp384r1_sha384, ecdsa_sha1, dsa_sha1, rsa_pkcs1_sha512, ecdsa_secp521r1_sha512
+	SessionTicket	empty
+	supported_groups	x25519 [0x1d], secp256r1 [0x17], secp384r1 [0x18]
+	ec_point_formats	uncompressed [0x0]
+	key_share	00 CE 00 1D 00 20 5E 45 94 27 CF 67 F1 CC EC 48 26 C7 71 A6 47 5A 28 75 BA 3C 03 1C B8 0C A3 B4 59 97 41 B8 B8 2D 00 17 00 41 04 2C 8F 1D 87 E3 BE 51 0E 29 4B 2C A6 23 AB F1 7F AE 44 50 EA C8 E8 32 5B 05 F9 01 DF 66 B6 FE FF F4 89 BE A3 5E F1 54 67 DB 5F 8E 31 13 22 25 BB 68 D6 09 15 5A A2 AD 12 22 60 B6 58 DF ED 31 63 00 18 00 61 04 C5 3C A4 AE 1B 13 3C F1 86 29 2E 5D DE AC 48 F0 B3 BC A9 36 A3 48 7E 60 23 CC F7 09 DE EA B2 42 78 51 1A 4C 12 44 5E 33 5E 12 F1 68 DE 30 7D 55 AD DF 9A 6D 92 DC 10 96 58 02 1E 8D 7F 41 5A 27 40 2D 04 35 50 95 19 B6 1A C4 EB 7A 0B 01 86 3E 9A A2 8F 6C 50 C0 39 F5 C6 6F 45 76 A3 FD 06 66
+	post_handshake_auth
+	extended_master_secret	empty
+	renegotiation_info	00
+	psk_key_exchange_modes	01 01
+Ciphers: 
+	[1302]	TLS_AES_256_GCM_SHA384
+	[1301]	TLS_AES_128_GCM_SHA256
+	[C02C]	TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+	[C02B]	TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+	[C030]	TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	[C02F]	TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	[C024]	TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+	[C023]	TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+	[C028]	TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+	[C027]	TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+	[C00A]	TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+	[C009]	TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+	[C014]	TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+	[C013]	TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+	[009D]	TLS_RSA_WITH_AES_256_GCM_SHA384
+	[009C]	TLS_RSA_WITH_AES_128_GCM_SHA256
+	[003D]	TLS_RSA_WITH_AES_256_CBC_SHA256
+	[003C]	TLS_RSA_WITH_AES_128_CBC_SHA256
+	[0035]	TLS_RSA_WITH_AES_256_CBC_SHA
+	[002F]	TLS_RSA_WITH_AES_128_CBC_SHA
+
+Compression: 
+	[00]	NO_COMPRESSION
+
+

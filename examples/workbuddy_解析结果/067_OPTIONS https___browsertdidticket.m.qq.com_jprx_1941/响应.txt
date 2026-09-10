@@ -1,0 +1,7 @@
+HTTP/1.1 204 No Content
+Server: stgw
+Date: Mon, 07 Sep 2026 16:38:11 GMT
+Access-Control-Allow-Origin: https://www.workbuddy.cn
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Methods: GET, POST, OPTIONS
+Access-Control-Allow-Headers: DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization

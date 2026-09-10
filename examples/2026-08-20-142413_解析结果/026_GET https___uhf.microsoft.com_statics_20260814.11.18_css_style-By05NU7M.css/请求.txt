@@ -1,0 +1,19 @@
+GET https://uhf.microsoft.com/statics/20260814.11.18/css/style-By05NU7M.css HTTP/2
+:method: GET
+:authority: uhf.microsoft.com
+:scheme: https
+:path: /statics/20260814.11.18/css/style-By05NU7M.css
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 Edg/148.0.0.0
+sec-ch-ua: "Chromium";v="148", "Microsoft Edge";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile: ?0
+accept: text/css,*/*;q=0.1
+x-edge-shopping-flag: 1
+sec-fetch-site: same-site
+sec-fetch-mode: no-cors
+sec-fetch-dest: style
+referer: https://microsoftedge.microsoft.com/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=0
+cookie: MSCC=cid=quqc7zjhrpihqh9hbw6esfm0-c1=1-c2=1-c3=1

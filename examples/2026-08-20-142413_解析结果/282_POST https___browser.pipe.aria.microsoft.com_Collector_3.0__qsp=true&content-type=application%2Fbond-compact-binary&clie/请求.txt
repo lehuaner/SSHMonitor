@@ -1,0 +1,20 @@
+POST https://browser.pipe.aria.microsoft.com/Collector/3.0/?qsp=true&content-type=application%2Fbond-compact-binary&client-id=NO_AUTH&sdk-version=AWT-Web-JS-1.8.6&x-apikey=225704764c804c94911a89e2f005a8c7-bc3a19c7-eaf6-4346-823a-c88981efd3fb-7097&client-time-epoch-millis=1787206944379&time-delta-to-apply-millis=use-collector-delta HTTP/2
+:method: POST
+:authority: browser.pipe.aria.microsoft.com
+:scheme: https
+:path: /Collector/3.0/?qsp=true&content-type=application%2Fbond-compact-binary&client-id=NO_AUTH&sdk-version=AWT-Web-JS-1.8.6&x-apikey=225704764c804c94911a89e2f005a8c7-bc3a19c7-eaf6-4346-823a-c88981efd3fb-7097&client-time-epoch-millis=1787206944379&time-delta-to-apply-millis=use-collector-delta
+content-length: 26766
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 Edg/148.0.0.0
+sec-ch-ua: "Chromium";v="148", "Microsoft Edge";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile: ?0
+accept: */*
+origin: https://microsoftedge.microsoft.com
+x-edge-shopping-flag: 1
+sec-fetch-site: same-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://microsoftedge.microsoft.com/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=1, i

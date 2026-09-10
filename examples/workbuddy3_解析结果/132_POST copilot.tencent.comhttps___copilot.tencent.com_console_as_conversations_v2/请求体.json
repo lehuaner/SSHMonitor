@@ -1,0 +1,25 @@
+{
+  "type": "local",
+  "sessionId": "0d82905c-0c05-4aa5-8309-fba7207fd107",
+  "name": "排查pip调用与web导入图片擦除差异",
+  "conversationOrigin": "legacy_workbuddy_local",
+  "workDir": "D:\\Code\\Project\\Python\\TextPatch",
+  "isPlayground": 0,
+  "createdAtMs": 1788077762396,
+  "updatedAtMs": 1788078013349,
+  "lastActivityAtMs": 1788078013349,
+  "clientContext": {
+    "localStatus": "active",
+    "hostId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "sessionKind": "manual",
+    "model": "",
+    "sourceMode": "",
+    "permissionMode": "",
+    "expert": {
+      "id": "",
+      "locale": "",
+      "runtimeIdentity": "",
+      "marketplace": ""
+    }
+  }
+}

@@ -1,0 +1,19 @@
+GET https://lf3-short.ibytedapm.com/slardar/fe/sdk-web/browser.cn.js?bid=trae_website_cn&globalName=slardarWeb HTTP/2
+:method: GET
+:authority: lf3-short.ibytedapm.com
+:scheme: https
+:path: /slardar/fe/sdk-web/browser.cn.js?bid=trae_website_cn&globalName=slardarWeb
+origin: https://www.trae.cn
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0
+sec-ch-ua: "Not=A?Brand";v="99", "Microsoft Edge";v="151", "Chromium";v="151"
+sec-ch-ua-mobile: ?0
+accept: */*
+sec-fetch-site: cross-site
+sec-fetch-mode: cors
+sec-fetch-dest: script
+referer: https://www.trae.cn/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+if-none-match: W/"31cf28144e66a0d78fc1c7cab51315d2"
+if-modified-since: Tue, 11 Aug 2026 03:28:33 GMT

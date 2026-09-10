@@ -1,0 +1,26 @@
+OPTIONS https://api5-normal.mchost.guru/api/remote/v1/plugins?page_size=100&product_name=lite&chat_mode=work&package_type=stable&client_version=0.1.51&os=windows HTTP/2
+:method: OPTIONS
+:authority: api5-normal.mchost.guru
+:scheme: https
+:path: /api/remote/v1/plugins?page_size=100&product_name=lite&chat_mode=work&package_type=stable&client_version=0.1.51&os=windows
+accept: */*
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+access-control-request-headers: authorization,x-preferenced-language,x-trae-client-type,x-trae-user-timezone,x-user-region
+access-control-request-method: GET
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: 6294ff5d-aa8a-45e4-aceb-09f998a31b23
+x-ss-dp: 787976
+x-tt-trace-id: 00-1dd722fb0d945686928468aaed05ffff-1dd722fb0d945686-01
+x-helios: ySQAALX7wKYnNiX+lguRr+U3EgcYI8HfHmwd/koUgcJWd5+v
+x-medusa: eZ2Gao112ZCtSlpRrLdOGi1S53JXRwMBU4wbH2DAMTI5mbQeB3HGfpCjgM/3irMefpVqVLkNnmWOamccgOk2tnSxtwokDhGpDwtADySiTPFQisBm1EVhRZspmvYvjgMVBCMNlbA5OInmMb3Osm7fPuvJuD2vWBvVz00azT8zC8pM/Wi7yFVt8j1pmv3w3NiJiZHNSCD3BFi+xEDX5LAkOjQrFhbxYF1iJilhENE2aXBfnmp2E/DWy5KPI0wX5J7RvcPKeNKiISsWJkZsF2Pmrj0CyDjG2h/r/1cEDVEGm3mY7lYPhh90UJ4y/bibgk0FnEpkDaZNxni4XhIopef6uaixxBXcngc1NK9FMDUyLTofJkftj+NqSnvR5xgk4xWBeLSQgg3oq9e7Ge8kbvxWO72OTAZurHhMhjKZohFWmiP8snotCf5g+OHI1R7N6NifroYG7avQ0vSshuoL68VBbvaw4DTGaRCSTNgYMRGToj3jY7hmYpN8gi34CPceB8wt38V9j0c17TN4GqqS2mpNVwPGUugZiqfkC8EIgNGCmzxT0p9j4FcniB5WAsLW+xMWGt0HSRDO4nMRnbLNPlAel9bsMjB9ARy2aEid6iZijxKhrdgFNQi0waPoWMVR2CjnXUnVH7xiNPDAZSu1Qnc7utvvLPcvn78/T6/bTReNf+/fKXw0eg4W7L6w5iPC0vs/cRZPk+vf+UPMWs4vfngMVZeP/WXNdi6HLWuJAjOnyVe37tS4b2dlCeUjnGi1kAcgH+X7/9+/7//+/wAA
+x-neptune: -11|50:51:59:00:09

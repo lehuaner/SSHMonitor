@@ -1,0 +1,10 @@
+HTTP/2 304
+cache-control: private,max-age=1800
+accept-ranges: bytes
+etag: "08228456323dd1:0"
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+cross-origin-resource-policy: cross-origin
+x-cache: CONFIG_NOCACHE
+accept-ch: Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+x-msedge-ref: Ref A: 67A3559BBB2246BBB056FFC8AF3FE9F4 Ref B: TYO201151006060 Ref C: 2026-08-15T07:25:37Z
+date: Sat, 15 Aug 2026 07:25:36 GMT

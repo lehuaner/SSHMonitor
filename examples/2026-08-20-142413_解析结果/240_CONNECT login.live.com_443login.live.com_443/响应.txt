@@ -1,0 +1,120 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:22:25.037
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.2
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=login.live.com, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+  Simple Name: login.live.com
+  DNS Name: login.live.com
+
+[Issuer]
+  CN=DigiCert Global G2 TLS RSA SHA256 2020 CA1, O=DigiCert Inc, C=US
+  Simple Name: DigiCert Global G2 TLS RSA SHA256 2020 CA1
+  DNS Name: DigiCert Global G2 TLS RSA SHA256 2020 CA1
+
+[Serial Number]
+  0F9FD2093048E7A2D5B9AEA68E4B513A
+
+[Not Before]
+  2026/7/30 8:00:00
+
+[Not After]
+  2027/1/27 7:59:59
+
+[Thumbprint]
+  C1EF6E5AD45EF4D5843565024EBE7F52F03997C7
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 ca b4 d2 02 4f 0a c0 cb f0 37 1d 93 cc ba 2c 91 e5 3b 38 c0 de 35 a5 a1 8e eb fe 42 a2 50 27 20 8a 12 31 c9 cb 22 65 85 79 a3 d6 5f 86 7d d5 8c d1 bc c2 3d bf ec dd 6d 58 10 4c 20 23 6a 3c 3e 44 1c 83 98 12 2d 88 ac 27 7c 8b 00 ba 7c b1 eb 60 bf 36 c3 a3 17 c0 00 25 04 3d 45 04 f2 31 01 f5 2f 84 00 3d 05 a1 7d 7b cf 4c fb d6 8f b8 3c ce 69 e5 c4 04 27 a0 18 1f af 29 2e f0 dc 63 c6 0d 23 d4 87 76 c8 46 6a e6 b8 84 c6 82 3a c4 0c 18 19 7b 71 27 d1 28 ce 63 09 15 71 ba 5a 81 7a 06 e8 29 ee cb 58 be 2a 10 de 1f fd 13 5c 68 fe ea 56 6a ae 29 53 59 2e eb dd bc 85 dd e7 66 8e bb 76 db 39 cb c0 5a ba 83 22 02 1a 97 3c cf c7 b0 60 68 d8 3a d6 9b fc 25 7a c0 4b 60 db 78 de a5 29 7f a6 5b 20 b3 ae e3 4f 51 90 d4 1c 45 68 a3 16 46 82 0e de c8 2a bc fa d0 88 a9 14 31 b1 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=748580c066c7df37decfbd2937aa031dbeedcd17
+
+* 使用者密钥标识符(2.5.29.14):
+  57aff1eb781ce1a0f5c2bd7c5baea03043193402
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=login.live.com
+DNS Name=*.login.live.com
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl3.digicert.com/DigiCertGlobalG2TLSRSASHA2562020CA1-1.crl
+[2]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl4.digicert.com/DigiCertGlobalG2TLSRSASHA2562020CA1-1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://ocsp.digicert.com
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.digicert.com/DigiCertGlobalG2TLSRSASHA2562020CA1-1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+4c63dc98e59c1dab88f61e8a3ddeae8fab44a3377b5f9b94c3fba19cfcc1be26
+‎2026‎年‎7‎月‎30‎日 8:25:02
+SHA256
+ECDSA
+304502202ad9bd637f1e5b77f3c1cdf4b0e616aa078148436e4ad1ebfeef2846c031e71a022100f459afc4d54d627b824af97fd78e6acf772ae9f1cea4fe5eac827b1f0dde0a68
+
+v1
+d6d58da9d01753f36a4aa0c7574902afebc7dc2cd38cd9f764c80c89191e9f02
+‎2026‎年‎7‎月‎30‎日 8:25:02
+SHA256
+ECDSA
+3046022100aeeb83668e965bae84a87f9cd0c05fd83a2baf2274eb91854a1433fa3b3c336e022100c3aa802192820bebc5d8187ce9c9f5a63134412462a821692b1a519fe30ea0cb
+
+v1
+44c2bd0ce9140e64a5c94a01930a5aa1bb35970e00ee111689682a1c44d7b566
+‎2026‎年‎7‎月‎30‎日 8:25:02
+SHA256
+ECDSA
+3045022100fa3a1a7cc12bc534568c42e9c61e3cb863d04b8d9e5ace53b503b9abbba78a7602203362f719f9534b90616e6fe20c95ef1059ccedbd09fba7e81e0f4232204fac0d
+
+
+[SubjectAltNames]
+DNS Name=login.live.com
+DNS Name=*.login.live.com
+

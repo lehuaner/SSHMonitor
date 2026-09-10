@@ -1,0 +1,18 @@
+HTTP/2 200
+server: Tengine
+content-type: application/json; charset=utf-8
+date: Sat, 15 Aug 2026 07:25:44 GMT
+vary: Accept-Encoding
+access-control-allow-headers: Content-Type,Content-Length, Authorization, Accept,X-Requested-With
+access-control-allow-methods: PUT,POST,GET,DELETE,OPTIONS
+access-control-allow-origin: *
+access-control-max-age: 3600
+x-tt-logid: 20260815152544F12C89B9E31F75311D86
+server-timing: inner; dur=9
+x-tt-trace-host: 01207a981426127d02143837b6aace09adce2809cbb0495dd214156de2a50874bbf83ce178c7123c8a8d1367810f6cf38f1a8eceeeed7fbfe63a71849e123aa2c38316e6a0d5b0fb0292586a4891554ad6f92079c2ea7992d4ce3bd9811273b4d90011fd1b91d76418d24afba8c24c3f74
+x-tt-trace-tag: id=03;cdn-cache=miss;type=dyn
+x-tt-trace-id: 00-260815152544F12C89B9E31F75311D86-32004FA68D9C728A-00
+server-timing: cdn-cache;desc=MISS,edge;dur=0,origin;dur=97
+via: dynamic6.cn1292[97,0]
+timing-allow-origin: *
+eagleid: df6fc1aa17867787444156834e

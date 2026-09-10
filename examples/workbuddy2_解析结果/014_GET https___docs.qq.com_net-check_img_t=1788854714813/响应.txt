@@ -1,0 +1,5 @@
+HTTP/2 200
+server: stgw
+date: Tue, 08 Sep 2026 08:05:14 GMT
+content-type: image/svg+xml
+content-length: 184

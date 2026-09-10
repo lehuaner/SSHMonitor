@@ -1,0 +1,91 @@
+{
+  "id": "user_entitlement_mf",
+  "name": "user_entitlement_mf",
+  "metaData": {
+    "name": "user_entitlement_mf",
+    "type": "app",
+    "buildInfo": {
+      "buildVersion": "0.3.7",
+      "buildName": "@byted-solo/user-entitlement"
+    },
+    "remoteEntry": {
+      "name": "static/js/user_entitlement_mf.4c946b64.js",
+      "path": "",
+      "type": "module"
+    },
+    "types": {
+      "path": "",
+      "name": "",
+      "zip": "",
+      "api": ""
+    },
+    "globalName": "user_entitlement_mf",
+    "pluginVersion": "2.5.0",
+    "publicPath": "https://lf-cdn.trae.com.cn/obj/trae-com-cn/dist-mf/user-entitlement/0.3.7/"
+  },
+  "shared": [
+    {
+      "id": "user_entitlement_mf:react-dom",
+      "name": "react-dom",
+      "version": "18.2.0",
+      "singleton": true,
+      "requiredVersion": ">=18",
+      "assets": {
+        "js": {
+          "async": [],
+          "sync": [
+            "static/js/async/437.c43b44aa.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      },
+      "fallback": ""
+    },
+    {
+      "id": "user_entitlement_mf:react",
+      "name": "react",
+      "version": "18.2.0",
+      "singleton": true,
+      "requiredVersion": ">=18",
+      "assets": {
+        "js": {
+          "async": [],
+          "sync": [
+            "static/js/async/652.acc929c8.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      },
+      "fallback": ""
+    }
+  ],
+  "remotes": [],
+  "exposes": [
+    {
+      "id": "user_entitlement_mf:index",
+      "name": "index",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/526.e79a1e0c.js",
+            "static/js/async/__federation_expose_index.dd1d1189.js"
+          ],
+          "async": []
+        },
+        "css": {
+          "sync": [
+            "static/css/async/__federation_expose_index.b5ae7de5.css"
+          ],
+          "async": []
+        }
+      },
+      "path": "./index"
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "request": {
+    "@os": "win",
+    "@updater": "msedge",
+    "acceptformat": "crx3,download,run,xz,zucc",
+    "apps": [
+      {
+        "appid": "nmcnjaceoejcjmmnabjnmfpoanaengif",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "a9592ae40712c6cfdf7d142e2563ca4ec8f696cfe53e267ad0ea630c43beaa33"
+          }
+        ],
+        "cohort": "rrf@0.26",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.26",
+          "AppMajorVersion": "151",
+          "AppRollout": 0.26,
+          "AppVersion": "151.0.4129.86",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.257.13"
+        },
+        "updatecheck": {},
+        "version": "2026.1.30.1"
+      }
+    ],
+    "arch": "x64",
+    "dedup": "cr",
+    "domainjoined": false,
+    "hw": {
+      "avx": 1,
+      "physmemory": 32,
+      "sse": 1,
+      "sse2": 1,
+      "sse3": 1,
+      "sse41": 1,
+      "sse42": 1,
+      "ssse3": 1
+    },
+    "ismachine": 1,
+    "os": {
+      "arch": "x86_64",
+      "platform": "Windows",
+      "version": "10.0.26200.9168"
+    },
+    "prodversion": "151.0.4129.86",
+    "protocol": "4.0",
+    "requestid": "{50c5ea5f-452c-4be7-96a0-c9cbbecceafc}",
+    "sessionid": "{91e930fd-c751-47ae-b720-557349a8fc73}",
+    "updaters": {
+      "autoupdatecheckenabled": true,
+      "ismachine": 1,
+      "lastchecked": 0,
+      "laststarted": 0,
+      "name": "Omaha",
+      "updatepolicy": -1,
+      "version": "1.3.257.13"
+    },
+    "updaterversion": "151.0.4129.86"
+  }
+}

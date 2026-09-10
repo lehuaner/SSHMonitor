@@ -1,0 +1,14 @@
+HTTP/2 200
+cache-control: no-store, must-revalidate, no-cache, max-age=0
+pragma: no-cache
+content-length: 458
+content-type: application/json
+expires: Mon, 01 Jan 1990 00:00:00 GMT
+x-falcon-ref: Ref A: 4245C27B37DA4BCD8C54E35353ECCB09 Ref B: SC-KORS-M82QN_AKS-GEN10-32917737-VMSS00000G_FABRICROUTER-AZUREGLOBALPRIVATE-7B6F57BCF4-98HM9 Ref C: 2026-08-15T07:25:38Z
+x-falcon-routerstatuscode: SuccessfullyForwarded (200)
+x-frame-options: sameorigin
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+x-cache: CONFIG_NOCACHE
+x-msedge-ref: Ref A: 4245C27B37DA4BCD8C54E35353ECCB09 Ref B: TYO201151001040 Ref C: 2026-08-15T07:25:38Z
+date: Sat, 15 Aug 2026 07:25:38 GMT

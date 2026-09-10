@@ -1,0 +1,12 @@
+HTTP/2 304
+cache-control: public, max-age=86400
+content-type: application/xml
+content-encoding: br
+last-modified: Wed, 05 Aug 2026 09:22:59 GMT
+etag: "7fcfb2a4a51b3f527ffec72e1a157817ccb8d36feb50d6bf0ece8f75bfaf2825"
+x-cache: TCP_HIT
+x-falcon-ref: Ref A: 2C56B26B34DD4989921D9B1720D8FF9D Ref B: SC-KORS-M82QN_AKS-GEN10-32917737-VMSS00000G_FABRICROUTER-AZUREGLOBALPRIVATE-7B6F57BCF4-X6VQH Ref C: 2026-08-20T04:38:45Z
+x-falcon-routerstatuscode: SuccessfullyForwarded (200)
+x-content-type-options: nosniff
+x-msedge-ref: Ref A: 8AB7E15D91A34CD2A988935D971EED18 Ref B: TYO601100914062 Ref C: 2026-08-20T06:22:44Z
+date: Thu, 20 Aug 2026 06:22:44 GMT

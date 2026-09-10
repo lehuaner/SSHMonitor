@@ -1,0 +1,97 @@
+HTTP/1.1 200 Connection established
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=assets.immersivetranslate.cn
+  Simple Name: assets.immersivetranslate.cn
+  DNS Name: assets.immersivetranslate.cn
+
+[Issuer]
+  CN=WE1, O=Google Trust Services, C=US
+  Simple Name: WE1
+  DNS Name: WE1
+
+[Serial Number]
+  2E20052613BDC6350E7494D8F5E1D02F
+
+[Not Before]
+  2026/7/18 1:46:05
+
+[Not After]
+  2026/10/16 2:45:59
+
+[Thumbprint]
+  9117496B9780C3672BF00C45B6D5C4B12FF54191
+
+[Signature Algorithm]
+  sha256ECDSA(1.2.840.10045.4.3.2)
+
+[Public Key]
+  Algorithm: ECC
+  Length: 
+  Key Blob: 04 5d fc e4 42 71 69 01 ff 9e 3f 74 26 8e db b9 55 bc 8b 22 61 5f f6 9b d3 2f c9 2f 47 ef d9 73 70 53 64 41 7a bb ed e6 ce d5 19 e3 24 65 37 e0 a8 03 8a ad be b2 ef 19 11 71 0e af 12 1b c6 c8 60
+  Parameters: 06 08 2a 86 48 ce 3d 03 01 07
+
+[Extensions]
+* 密钥用法(2.5.29.15):
+  Digital Signature (80)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* 使用者密钥标识符(2.5.29.14):
+  40112d1436d40c4a48efdba71cce98a25b619e97
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=9077923567c4ffa8cca9e67bd980797bcc93f938
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://i.pki.goog/we1.crt
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=assets.immersivetranslate.cn
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://c.pki.goog/we1/QfwDhc9dNKY.crl
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+944e4387faecc1ef81f3192426a8186501c7d35f3802013f72677d55372e19d8
+‎2026‎年‎7‎月‎18‎日 2:46:06
+SHA256
+ECDSA
+304402205ccc59573f59e0f24e009789769d2a6b9dd70939bd42fce1d97a1d007de06b1b022070c23244ac3110fad5caba20f62af8aa0aa2e5c35f75bd5a8cdff8b2eaff693f
+
+v1
+d76d7d10d1a7f577c2c7e95fd700bff982c9335a65e1d0b3017317c0c8c56977
+‎2026‎年‎7‎月‎18‎日 2:46:06
+SHA256
+ECDSA
+3045022030fa326b7577e64d36a3157576e1b3a2e3e7be39a4bd8ac454143d1298820092022100dda35eafc0075e1da88be017a1405b92294d02b220274ca569fe79e9309af7d2
+
+
+[SubjectAltNames]
+DNS Name=assets.immersivetranslate.cn
+

@@ -1,0 +1,13 @@
+[
+  {
+    "events": [
+      {
+        "event": "onload",
+        "params": "{\"app_id\":711126,\"app_name\":\"\",\"sdk_version\":\"5.3.5\",\"sdk_type\":\"npm\",\"sdk_config\":{\"app_id\":711126,\"channel\":\"cn\",\"autotrack\":{\"custom\":\"tea\",\"text\":true,\"svg\":true},\"cross_subdomain\":true,\"enable_ttwebid\":true,\"enable_stay_duration\":true,\"disable_auto_pv\":true,\"enable_debug\":false,\"spa\":true,\"enable_ab_test\":true,\"ab_channel_domain\":\"https://abtestvm.bytedance.com\"},\"sdk_desc\":\"TOC\",\"url\":\"https://www.trae.cn/login?redirect_url=https://www.trae.cn/download\"}",
+        "local_time_ms": 1787206945442
+      }
+    ],
+    "user": {},
+    "header": {}
+  }
+]

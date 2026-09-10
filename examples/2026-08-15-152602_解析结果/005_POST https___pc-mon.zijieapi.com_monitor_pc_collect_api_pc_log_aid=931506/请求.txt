@@ -1,0 +1,16 @@
+POST https://pc-mon.zijieapi.com/monitor_pc/collect/api/pc_log?aid=931506 HTTP/2
+:method: POST
+:authority: pc-mon.zijieapi.com
+:scheme: https
+:path: /monitor_pc/collect/api/pc_log?aid=931506
+content-length: 11585
+content-encoding: gzip
+content-type: application/octet-stream
+user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+sec-fetch-storage-access: active
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+priority: u=4, i

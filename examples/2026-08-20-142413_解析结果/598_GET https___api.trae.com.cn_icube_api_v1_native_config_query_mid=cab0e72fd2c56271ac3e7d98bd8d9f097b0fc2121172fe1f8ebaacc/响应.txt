@@ -1,0 +1,26 @@
+HTTP/2 304
+server: Tengine
+date: Thu, 20 Aug 2026 06:23:33 GMT
+access-control-allow-credentials: true
+access-control-allow-headers: *
+access-control-allow-methods: GET, POST, OPTIONS
+access-control-allow-origin: *
+access-control-expose-headers: ETag
+access-control-max-age: 86400
+cache-control: private, max-age=300
+etag: "5eeeaf6271a13dcfb705dc46ebb383e5"
+x-bytefaas-execution-duration: 18.20
+x-bytefaas-request-id: 20260820142333D65542719FB56DEAA611
+x-gw-dst-psm: icube.native.ide
+x-powered-by: Goofy Node
+x-tt-logid: 20260820142333D65542719FB56DEAA611
+strict-transport-security: max-age=31536000; includeSubDomains
+server-timing: inner; dur=26
+x-tt-trace-host: 01207a981426127d02143837b6aace09ad304c304bc4883d99290b6f42b724503a1b651d5dcf0fe671f5f79d12505f8b84e43c012618a433344078405bb006f7fdb7d23dd5424cc923a925f56f078cd91d0e1ed55b55b14d3733060d3c0d7c49cf
+x-tt-trace-tag: id=03;cdn-cache=miss;type=dyn
+x-tt-trace-id: 00-1dd6d24d0d945686928468aeb1beffff-1dd6d24d0d945686-01
+x-tt-timestamp: 1787207013.364
+via: cache15.l2ea120-8[53,0], ens-cache27.cn8109[60,0]
+server-timing: cdn-cache;desc=MISS,edge;dur=7,origin;dur=53
+timing-allow-origin: *
+eagleid: 24973daf17872070133175708e

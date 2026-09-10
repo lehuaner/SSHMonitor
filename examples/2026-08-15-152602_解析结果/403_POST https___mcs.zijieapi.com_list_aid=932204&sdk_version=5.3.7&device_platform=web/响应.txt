@@ -1,0 +1,22 @@
+HTTP/2 200
+date: Sat, 15 Aug 2026 07:25:50 GMT
+content-type: application/json; charset=utf-8
+content-length: 21
+upstream-caught: 1786778750436637
+x-tt-logid: 2026081515255081B3A5C2A5A397ECFCFA
+access-control-allow-origin: vscode-file://vscode-app
+access-control-max-age: 1800
+access-control-allow-credentials: true
+access-control-allow-methods: GET, OPTIONS, HEAD, PUT, POST
+cross-origin-resource-policy: cross-origin
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+expires: 0
+server-timing: cdn-cache;desc=MISS, edge;dur=1, origin;dur=48
+x-tt-trace-host: 01207a981426127d02143837b6aace09adce2809cbb0495dd214156de2a50874bbe1e30b332cc68320a7a315b54678580cc226d2641cec5180c57a48026340fb290c84ded787ade64df355418523124e679ffbecd2e0dc70a4725fe8c7dd7635d03626b2aeeb61d52df8956181d87ec143
+x-tt-trace-tag: id=26;cdn-cache=miss;type=dyn
+x-tt-trace-id: 00-26081515255081B3A5C2A5A397ECFCFA-7067BFBBB718A5FA-00
+server: TLB
+via: CHN-JSlianyungang-AREACMCC5-CACHE27[49],CHN-JSlianyungang-AREACMCC5-CACHE27[ovl,48]
+x-tt-supplier-id: 0_9
+server-timing: inner; dur=4

@@ -1,0 +1,19 @@
+HTTP/2 200
+date: Sat, 15 Aug 2026 07:25:45 GMT
+content-length: 0
+upstream-caught: 1786778745780780
+x-tt-logid: 20260815152545910BE9C65C7CCD39BA3B
+access-control-allow-origin: https://www.trae.cn
+access-control-allow-headers: content-type
+access-control-max-age: 1800
+access-control-allow-credentials: true
+access-control-allow-methods: GET, OPTIONS, HEAD, PUT, POST
+cross-origin-resource-policy: cross-origin
+server-timing: cdn-cache;desc=MISS, edge;dur=25, origin;dur=16
+x-tt-trace-host: 01207a981426127d02143837b6aace09ad4dba3992d3ae3fd63624591ddee030523e87204229d597bc86af9f8e891d9eea7912e2ad49bd6b0167c0876d5208da0412602608733b2fb909dffacacc5a474808c0ee4155fb5e1c01ddeb7210e971be
+x-tt-trace-tag: id=26;cdn-cache=miss;type=dyn
+x-tt-trace-id: 00-260815152545910BE9C65C7CCD39BA3B-4C488834AB8CF3D3-00
+server: TLB
+via: CHN-JSlianyungang-AREACMCC5-CACHE19[41],CHN-JSlianyungang-AREACMCC5-CACHE19[ovl,39],CHN-TJ-GLOBAL6-CACHE62[ovl,16]
+x-tt-supplier-id: 0_9
+server-timing: inner; dur=6

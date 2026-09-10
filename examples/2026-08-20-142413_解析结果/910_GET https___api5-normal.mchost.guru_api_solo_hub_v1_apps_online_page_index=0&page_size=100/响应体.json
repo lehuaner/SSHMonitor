@@ -1,0 +1,17 @@
+{
+  "code": 200,
+  "message": "success",
+  "data": {
+    "apps": [
+      {
+        "id": "virtual",
+        "user_id": "1554024524166871",
+        "name": "virtual",
+        "language": "unknown",
+        "status": "online",
+        "created_at": "2026-08-20T14:24:00.525188461+08:00",
+        "updated_at": "2026-08-20T14:24:00.525188461+08:00"
+      }
+    ]
+  }
+}

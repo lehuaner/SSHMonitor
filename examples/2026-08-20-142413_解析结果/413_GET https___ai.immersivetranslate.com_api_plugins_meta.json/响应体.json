@@ -1,0 +1,703 @@
+{
+  "plugins": {
+    "wyw": {
+      "id": "wyw",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "Modern Chinese to Classical Chinese",
+      "description": "Classical Chinese is a profound and historical language form in China. This expert is designed to help you translate text into Classical Chinese.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/wyw-7k71in.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "白话文转文言文",
+          "description": "噫，寒氣逼人，宜速歸炉火之旁。"
+        },
+        "zh-TW": {
+          "name": "白話文轉文言文",
+          "description": "噫，寒氣逼人，宜速歸爐火之旁。"
+        },
+        "ja": {
+          "name": "Modern Chinese to Classical Chinese",
+          "description": "現代中国語を古典中国語（文言文）へ翻訳するためのエキスパートです。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "wordByWord": {
+      "id": "wordByWord",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "Word-by-Word Translation Assistant",
+      "description": "Intelligently segments sentences and translates each part separately, then combines the translation results.",
+      "avatar": "https://i.imgur.com/FgHBKVt.jpg",
+      "i18n": {
+        "zh-CN": {
+          "name": "分词对照翻译助手",
+          "description": "将句子智能分割为后逐部分翻译，再将翻译结果拼接起来"
+        },
+        "zh-TW": {
+          "name": "分詞對照翻譯助手",
+          "description": "將句子智能分割後逐部分翻譯，再將翻譯結果拼接起來"
+        },
+        "ja": {
+          "name": "Word-by-Word Translation Assistant",
+          "description": "文を適切に分割し、それぞれを個別に翻訳したうえで、全体として自然につなぎ直すエキスパートです。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "web3": {
+      "id": "web3",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "Web3 Translation Expert",
+      "description": "Excelling in Web3 domain translations, this expert ensures your articles are translated with precision and professionalism.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/web3-JHt0Zp.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "Web3翻译大师",
+          "description": "专为Web3领域设计，提供更准确、专业的Web3领域翻译"
+        },
+        "zh-TW": {
+          "name": "Web3翻譯大師",
+          "description": "專為Web3領域設計，提供更準確、專業的Web3領域翻譯"
+        },
+        "ja": {
+          "name": "Web3 Translation Expert",
+          "description": "Web3 分野の翻訳に特化したエキスパートです。記事を正確かつ専門的に翻訳します。"
+        }
+      },
+      "priority": 9999,
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "twitter": {
+      "id": "twitter",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "Twitter Translation Enhancer",
+      "description": "Optimized for translating tweets, ensuring slang, hashtags, and platform-specific language are accurately conveyed.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/twitter-arqU83.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "Twitter 翻译增强器",
+          "description": "专为 Twitter 上的推文翻译优化，确保俚语、话题标签和平台特定语言的准确传达"
+        },
+        "zh-TW": {
+          "name": "Twitter 翻譯增強器",
+          "description": "專為 Twitter 上的推文翻譯優化，確保俚語、話題標籤和平台特定語言的準確傳達"
+        },
+        "ja": {
+          "name": "Twitter Translation Enhancer",
+          "description": "ツイートの翻訳向けに最適化されており、スラング、ハッシュタグ、プラットフォーム特有の表現を正確に伝えます。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "tech": {
+      "id": "tech",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "Technology Expert",
+      "description": "With meticulously crafted Prompts, translations in the technology field become more accurate and professional.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/333-aKkdu7.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "科技类翻译大师",
+          "description": "专为科技领域设计，提供更准确、专业的科技领域翻译"
+        },
+        "zh-TW": {
+          "name": "科技類翻譯大師",
+          "description": "專為科技領域設計，提供更準確、專業的科技領域翻譯"
+        },
+        "ja": {
+          "name": "Technology Expert",
+          "description": "綿密に設計されたプロンプトにより、テクノロジー分野の翻訳をより正確かつ専門的に行うエキスパートです。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "subliminal_lingo": {
+      "id": "subliminal_lingo",
+      "version": "1.1.2",
+      "extensionVersion": "1.4.10",
+      "name": "SubliminalLingo",
+      "description": "A translation expert that helps users learn vocabulary by preserving English words with Chinese translations in parentheses.",
+      "avatar": "https://s.immersivetranslate.com/assets/r2-uploads/call_beabb68f-ef8e-11ef-8b8f-ea91c0c3bdd0_0-e1_rqF3mOriduVVf.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "潜意识学习",
+          "description": "通过保留部分英文单词及其中文翻译，帮助读者在阅读过程中自然习得词汇。"
+        },
+        "zh-TW": {
+          "name": "潜意识学习",
+          "description": "通過保留部分英文單詞及其中文翻譯，幫助讀者在閱讀過程中自然習得詞彙。"
+        },
+        "ja": {
+          "name": "SubliminalLingo",
+          "description": "英語の単語を残しつつ、中国語訳を括弧内に添えることで、語彙学習を助ける翻訳エキスパートです。"
+        }
+      },
+      "priority": 30,
+      "author": "zk"
+    },
+    "steam": {
+      "id": "steam",
+      "version": "1.0.0",
+      "extensionVersion": "1.4.10",
+      "name": "Steam Translator",
+      "description": "Optimized translation prompts for Steam pages and community content.",
+      "avatar": "https://s.immersivetranslate.com/assets/r2-uploads/steam-DHQ1Xsz1KrlkDDwF.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "Steam 译者",
+          "description": "面向 Steam 站点内容的专业翻译，术语准确、格式完整"
+        },
+        "zh-TW": {
+          "name": "Steam 譯者",
+          "description": "面向 Steam 站點內容的專業翻譯，術語準確、格式完整"
+        },
+        "ja": {
+          "name": "Steam Translator",
+          "description": "Steam のストアページやコミュニティコンテンツの翻訳に最適化されたエキスパートです。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "reddit": {
+      "id": "reddit",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "Reddit Translation Enhancer",
+      "description": "Optimized for translating Reddit posts and comments, ensuring community slang, subreddit-specific terminology, and internet jargon are accurately conveyed.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/reddit-JItzMo.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "Reddit 翻译增强器",
+          "description": "专为 Reddit 上的帖子和评论翻译优化，确保社区俚语、特定于子版块的术语和互联网行话的准确传达"
+        },
+        "zh-TW": {
+          "name": "Reddit 翻譯增強器",
+          "description": "專為 Reddit 上的帖子和評論翻譯優化，確保社區俚語、特定於子版塊的術語和互聯網行話的準確傳達"
+        },
+        "ja": {
+          "name": "Reddit Translation Enhancer",
+          "description": "Reddit の投稿やコメントの翻訳向けに最適化されており、コミュニティ特有のスラング、サブレディット用語、ネット用語を的確に伝えます。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "plain-english": {
+      "id": "plain-english",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "Plain English Expert",
+      "description": "An expert that rewrites text into simple, easy-to-understand English while maintaining the original structure.",
+      "avatar": "https://s.immersivetranslate.com/assets/r2-uploads/image-F_BIYTGhnIAlez8u.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "英文简化大师",
+          "description": "将复杂英文内容改写为简单易懂的英语，保持原文结构和意思。"
+        },
+        "zh-TW": {
+          "name": "英文簡化大師",
+          "description": "將複雜英文內容改寫為簡單易懂的英語，保持原文結構和意思。"
+        },
+        "ja": {
+          "name": "Plain English Expert",
+          "description": "原文の構成を保ちながら、よりシンプルで分かりやすい英語に書き換えるエキスパートです。"
+        }
+      },
+      "priority": 12,
+      "author": "Official"
+    },
+    "paraphrase": {
+      "id": "paraphrase",
+      "version": "1.1.2",
+      "extensionVersion": "1.4.10",
+      "name": "Paraphrase Expert",
+      "description": "Designed for nuanced, interpretive translations, this expert ensures that translations go beyond the literal to capture the essence and tone of the original text.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/fluent-7JVve6.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "意译大师",
+          "description": "专门设计用于富有细腻差异和意译的翻译，经过先直译，再意译的步骤，确保翻译超越字面，捕捉原文的精髓和语调。"
+        },
+        "zh-TW": {
+          "name": "意譯專家",
+          "description": "專門設計用於豐富細膩差異和意譯的翻譯，經過先直譯，再意譯的步驟，確保翻譯超越字面，捕捉原文的精髓和語調。"
+        },
+        "ja": {
+          "name": "Paraphrase Expert",
+          "description": "直訳にとどまらず、原文の本質やニュアンス、トーンまで汲み取った意訳寄りの翻訳を行うエキスパートです。"
+        }
+      },
+      "priority": 10,
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "paragraph-summarizer-expert": {
+      "id": "paragraph-summarizer-expert",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "Paragraph Summarizer Expert",
+      "description": "An expert that summarizes each paragraph and translates it to your target language.",
+      "avatar": "https://s.immersivetranslate.com/assets/r2-uploads/1123-LJ3YTugWblMrrIJa.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "段落总结专家",
+          "description": "对段落进行总结并翻译为目标语言，保留核心信息。"
+        },
+        "zh-TW": {
+          "name": "段落總結專家",
+          "description": "對段落進行總結並翻譯為目標語言，保留核心信息。"
+        },
+        "ja": {
+          "name": "Paragraph Summarizer Expert",
+          "description": "各段落を要約し、その内容を指定したターゲット言語に翻訳するエキスパートです。"
+        }
+      },
+      "priority": 11,
+      "author": "Official"
+    },
+    "paper": {
+      "id": "paper",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "Academic Paper Translation Expert",
+      "description": "Tailored for precise and scholarly translation of academic papers, ensuring fidelity to original academic tones and terminologies.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/acedemic-UewrD4.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "学术论文翻译师",
+          "description": "专为学术论文翻译而设计，确保对原文学术语调和术语的忠实传达"
+        },
+        "zh-TW": {
+          "name": "學術論文翻譯師",
+          "description": "專為學術論文翻譯而設計，確保對原文學術語調和術語的忠實傳達"
+        },
+        "ja": {
+          "name": "Academic Paper Translation Expert",
+          "description": "学術論文向けに調整されたエキスパートで、学術的な語調や専門用語を保ちながら、正確で信頼性の高い翻訳を行います。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "news": {
+      "id": "news",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "Media Expert",
+      "description": "Expertly crafted Prompts ensuring accurate and professional translations in the news media field.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/news-nW0qbs.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "新闻媒体译者",
+          "description": "专为新闻媒体领域设计，确保翻译的准确性和专业性"
+        },
+        "zh-TW": {
+          "name": "新聞媒體譯者",
+          "description": "專為新聞媒體領域設計，確保翻譯的準確性和專業性"
+        },
+        "ja": {
+          "name": "Media Expert",
+          "description": "ニュース・メディア分野の翻訳を、より正確かつ専門的に行うために設計されたエキスパートです。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "music": {
+      "id": "music",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.12",
+      "name": "Music Expert",
+      "description": "This expert is designed for professional music field translation. You can use it to accurately translate music-related articles into the target language specified.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/music-NdAthQ.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "音乐专家",
+          "description": "该专家专为专业音乐领域翻译而设计。您可以使用它将音乐相关文章准确翻译为指定的目标语言。"
+        },
+        "zh-TW": {
+          "name": "音樂專家",
+          "description": "該專家專為專業音樂領域翻譯而設計。您可以使用它將音樂相關文章準確翻譯為指定的目標語言。"
+        },
+        "ja": {
+          "name": "Music Expert",
+          "description": "音楽分野の翻訳に特化したエキスパートです。音楽関連の記事や内容を、指定したターゲット言語へ正確に翻訳できます。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "medical": {
+      "id": "medical",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "Medical Expert",
+      "description": "With meticulously crafted Prompts, translations in the medical field become more accurate and professional.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/medi-dgFkFG.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "医学翻译大师",
+          "description": "适合用来翻译医学相关的网站、论文、报告等内容"
+        },
+        "zh-TW": {
+          "name": "醫學翻譯專家",
+          "description": "適合用來翻譯醫學相關的網站、論文、報告等內容"
+        },
+        "ja": {
+          "name": "Medical Expert",
+          "description": "綿密に設計されたプロンプトにより、医療分野の翻訳をより正確かつ専門的に行うエキスパートです。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "legal": {
+      "id": "legal",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "Legal Expert",
+      "description": "With meticulously crafted Prompts, translations in the legal field become more accurate and professional.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/law-ExOJqH.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "法律行业译者",
+          "description": "专为法律行业优化，适合用来翻译法律相关的网站、论文、报告等内容"
+        },
+        "zh-TW": {
+          "name": "法律行業譯者",
+          "description": "專為法律行業優化，適合用來翻譯法律相關的網站、論文、報告等內容"
+        },
+        "ja": {
+          "name": "Legal Expert",
+          "description": "綿密に設計されたプロンプトにより、法律分野の翻訳をより正確かつ専門的に行うエキスパートです。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "github": {
+      "id": "github",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "GitHub Translation Enhancer",
+      "description": "Optimized for translating GitHub repositories, issues, and comments, ensuring technical terms, code snippets, and platform-specific language are accurately conveyed.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/github-fiRHHe.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "GitHub 翻译增强器",
+          "description": "专为 GitHub 上的仓库、问题和评论翻译优化，确保技术术语、代码片段和平台特定语言的准确传达"
+        },
+        "zh-TW": {
+          "name": "GitHub 翻譯增強器",
+          "description": "專為 GitHub 上的倉庫、問題和評論翻譯優化，確保技術術語、代碼片段和平台特定語言的準確傳達"
+        },
+        "ja": {
+          "name": "GitHub Translation Enhancer",
+          "description": "GitHub のリポジトリ、Issue、コメントの翻訳に最適化されており、技術用語、コードスニペット、プラットフォーム特有の表現を正確に伝えます。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "game": {
+      "id": "game",
+      "version": "1.1.2",
+      "extensionVersion": "1.4.10",
+      "name": "Gaming Expert",
+      "description": "Expertly crafted Prompts for the gaming industry, ensuring translations are accurate and resonate with gamers.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/game-X2QelC.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "游戏译者",
+          "description": "专为游戏行业设计，确保翻译准确且能与玩家产生共鸣"
+        },
+        "zh-TW": {
+          "name": "遊戲譯者",
+          "description": "專為遊戲行業設計，確保翻譯準確且能與玩家產生共鳴"
+        },
+        "ja": {
+          "name": "Gaming Expert",
+          "description": "ゲーム業界向けに設計されたエキスパートで、翻訳の正確さとゲーマーに自然に伝わる表現の両立を目指します。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "financial": {
+      "id": "financial",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.12",
+      "name": "Financial Expert",
+      "description": "With carefully designed Prompts, the translation of financial articles becomes more accurate and professional.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/fina-AXX5s8.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "金融翻译顾问",
+          "description": "特别为金融领域优化，适合用来翻译财经，金融类文章。"
+        },
+        "zh-TW": {
+          "name": "金融翻譯顧問",
+          "description": "特別為金融領域優化，適合用來翻譯財經，金融類文章。"
+        },
+        "ja": {
+          "name": "Financial Expert",
+          "description": "丁寧に設計されたプロンプトにより、金融分野の記事をより正確かつ専門的に翻訳するエキスパートです。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "fiction": {
+      "id": "fiction",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "Fiction Translation Expert",
+      "description": "Designed to enrich the narrative and emotional depth of fiction translations, ensuring each word captures the original's essence.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/fiction-wZoRao.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "小说译者",
+          "description": "专注于提升小说类翻译的叙事和情感深度，确保每个词都能捕捉到原文的精髓。"
+        },
+        "zh-TW": {
+          "name": "小說譯者",
+          "description": "專注於提升小說類翻譯的敘事和情感深度，確保每個詞都能捕捉到原文的精髓。"
+        },
+        "ja": {
+          "name": "Fiction Translation Expert",
+          "description": "物語性や感情表現を豊かに保ちながら、小説・フィクションを翻訳するためのエキスパートです。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "ecommerce": {
+      "id": "ecommerce",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "E-commerce Expert",
+      "description": "Carefully designed prompts ensure translations in the e-commerce sector are both accurate and resonate with online shoppers.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/ecommerce-vbxTnq.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "电商翻译大师",
+          "description": "专为电商领域打造，确保翻译精准且能够引起在线购物者的共鸣"
+        },
+        "zh-TW": {
+          "name": "電商翻譯專家",
+          "description": "專為電商領域打造，確保翻譯精準且能夠引起在線購物者的共鳴"
+        },
+        "ja": {
+          "name": "E-commerce Expert",
+          "description": "EC 分野向けに設計されたエキスパートで、正確さを保ちながら、オンラインショッパーに自然に伝わる翻訳を行います。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "ebook": {
+      "id": "ebook",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "eBook Translation Expert",
+      "description": "Specialized in eBook translations, ensuring accurate and contextually relevant digital book translations across genres.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/ebook-CXptDe.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "电子书译者",
+          "description": "专门从事电子书翻译，确保跨类型的电子书翻译准确且符合语境。"
+        },
+        "zh-TW": {
+          "name": "電子書譯者",
+          "description": "專門從事電子書翻譯，確保跨類型的電子書翻譯準確且符合語境。"
+        },
+        "ja": {
+          "name": "eBook Translation Expert",
+          "description": "電子書籍の翻訳に特化したエキスパートです。ジャンルを問わず、文脈に沿った自然な翻訳を行います。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "design": {
+      "id": "design",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "Designer",
+      "description": "Specialized in translating art and design articles, enhancing clarity and preserving the original aesthetic and technical nuances.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/designer-7cApfV.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "设计师",
+          "description": "专注于翻译艺术设计类文章，增强清晰度同时保留原文的审美和细节。"
+        },
+        "zh-TW": {
+          "name": "設計師",
+          "description": "專注於翻譯藝術設計類文章，增強清晰度同時保留原文的審美和細節。"
+        },
+        "ja": {
+          "name": "Designer",
+          "description": "アートやデザイン分野の記事翻訳に特化しており、原文の美的ニュアンスや専門的な表現を保ちながら、分かりやすく翻訳します。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "dbh": {
+      "id": "dbh",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "Northeastern Expert",
+      "description": "Northeastern Dialect is a unique and interesting dialect in China. This expert is designed to help you translate text into Northeastern Dialect.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/223-OX4jT4.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "东北话",
+          "description": "哎呀，这天儿冷得慌，咱们得赶紧回家烤火去。"
+        },
+        "zh-TW": {
+          "name": "東北話",
+          "description": "哎呀，這天兒冷得慌，咱們得趕緊回家烤火去。"
+        },
+        "ja": {
+          "name": "Northeastern Expert",
+          "description": "中国東北地方の方言に翻訳するためのエキスパートです。独特で味わいのある表現を活かした翻訳に対応します。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "classicalToModern": {
+      "id": "classicalToModern",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "Classical Chinese to Modern Chinese",
+      "description": "This is a Classical Chinese translation expert, capable of accurately translating Classical Chinese into modern Chinese. It aims to help users better understand ancient documents and classic works.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/wyw2bhw-m5gJWy.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "文言文转白话文",
+          "description": "这是一款文言文翻译专家，可以将文言文精准地翻译成现代汉语。它旨在帮助用户更好地理解古代文献和经典作品。"
+        },
+        "zh-TW": {
+          "name": "文言文轉白話文",
+          "description": "這是一款文言文翻譯專家，可以將文言文精準地翻譯成現代漢語。它旨在幫助用戶更好地理解古代文獻和經典作品。"
+        },
+        "ja": {
+          "name": "Classical Chinese to Modern Chinese",
+          "description": "古典中国語（文言文）を現代中国語へ正確に翻訳するエキスパートです。古典文献や古文の理解を助けます。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "chess": {
+      "id": "chess",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.12",
+      "name": "Chess Expert",
+      "description": "Specialized in translating chess-related content, ensuring accurate and idiomatic translations for chess.com articles and terminology.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/222-SgjhHm.jpeg",
+      "i18n": {
+        "zh-CN": {
+          "name": "国际象棋专家",
+          "description": "专门针对国际象棋相关内容优化，确保chess.com的文章和术语翻译准确且地道。"
+        },
+        "zh-TW": {
+          "name": "國際象棋專家",
+          "description": "專門針對國際象棋相關內容優化，確保chess.com的文章和術語翻譯準確且地道。"
+        },
+        "ja": {
+          "name": "Chess Expert",
+          "description": "チェス関連コンテンツの翻訳に特化したエキスパートです。chess.com の記事や専門用語を、自然で正確に翻訳します。"
+        }
+      },
+      "author": "akira0245",
+      "homepage": "https://github.com/akira0245/"
+    },
+    "bilingual-mix": {
+      "id": "bilingual-mix",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "Chinglish mixing",
+      "description": "When translating from Chinese to English, only key words are translated into English while other words are kept in Chinese. This can help deepen the user's memory of important vocabulary.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/chinese-english.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "中英夹杂",
+          "description": "不好意思，我明天的 schedule 满了，让我 book 后天的时间好吗？"
+        },
+        "zh-TW": {
+          "name": "中英夾雜",
+          "description": "不好意思，我明天的 schedule 滿了，讓我 book 後天的時間好嗎？"
+        },
+        "ja": {
+          "name": "Chinglish mixing",
+          "description": "中国語から英語へ翻訳する際に、重要な語句だけを英語にし、それ以外は中国語のまま残します。重要語彙の定着を助けるためのエキスパートです。"
+        }
+      },
+      "priority": 30,
+      "author": "Official",
+      "homepage": "https://www.immersivetranslate.com"
+    },
+    "ao3": {
+      "id": "ao3",
+      "version": "1.1.2",
+      "extensionVersion": "1.4.10",
+      "name": "AO3 Translation Expert",
+      "description": "Designed for seamless translation of fanfiction and original works on AO3, ensuring cultural nuances and fandom-specific terminology are accurately preserved.",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/ao3-NzdLCV.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "AO3 译者",
+          "description": "专为 AO3 上的同人及原创作品设计，确保文化细节和特定领域术语的准确传达"
+        },
+        "zh-TW": {
+          "name": "AO3 譯者",
+          "description": "專為 AO3 上的同人及原創作品設計，確保文化細節和特定領域術語的準確傳達"
+        },
+        "ja": {
+          "name": "AO3 Translation Expert",
+          "description": "AO3 上のファンフィクションやオリジナル作品の翻訳向けに設計されており、文化的ニュアンスや fandom 特有の用語をできる限り保って翻訳します。"
+        }
+      },
+      "author": "Official",
+      "homepage": "https://immersivetranslate.com/"
+    },
+    "VocabularyAssistant": {
+      "id": "VocabularyAssistant",
+      "version": "1.1.1",
+      "extensionVersion": "1.4.10",
+      "name": "Vocabulary Assistant",
+      "description": "Provide phonetic transcription and {{to}} translation for difficult words in the current paragraph",
+      "avatar": "https://s.immersivetranslate.com/assets/uploads/vo-8O0GwP.png",
+      "i18n": {
+        "zh-CN": {
+          "name": "词汇助手",
+          "description": "为段落中的疑难单词提供音标翻译和目标语言翻译"
+        },
+        "zh-TW": {
+          "name": "詞彙助手",
+          "description": "為段落中的疑难詞彙提供音標翻譯和目标语言翻譯"
+        },
+        "ja": {
+          "name": "Vocabulary Assistant",
+          "description": "現在の段落内にある難しい単語に、発音表記と {{to}} への翻訳を付けるエキスパートです。"
+        }
+      },
+      "author": "cottman",
+      "homepage": "https://twitter.com/lfly97786343"
+    }
+  }
+}

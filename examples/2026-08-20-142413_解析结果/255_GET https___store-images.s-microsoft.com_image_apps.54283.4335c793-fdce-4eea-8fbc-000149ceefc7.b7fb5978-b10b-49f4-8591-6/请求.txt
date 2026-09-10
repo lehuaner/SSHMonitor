@@ -1,0 +1,18 @@
+GET https://store-images.s-microsoft.com/image/apps.54283.4335c793-fdce-4eea-8fbc-000149ceefc7.b7fb5978-b10b-49f4-8591-6c091cd0ad08.50229802-efcd-4e02-b0d9-d6d6f0e80bbe HTTP/2
+:method: GET
+:authority: store-images.s-microsoft.com
+:scheme: https
+:path: /image/apps.54283.4335c793-fdce-4eea-8fbc-000149ceefc7.b7fb5978-b10b-49f4-8591-6c091cd0ad08.50229802-efcd-4e02-b0d9-d6d6f0e80bbe
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 Edg/148.0.0.0
+sec-ch-ua: "Chromium";v="148", "Microsoft Edge";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile: ?0
+accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+sec-fetch-site: cross-site
+sec-fetch-mode: no-cors
+sec-fetch-dest: image
+sec-fetch-storage-access: active
+referer: https://microsoftedge.microsoft.com/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: i

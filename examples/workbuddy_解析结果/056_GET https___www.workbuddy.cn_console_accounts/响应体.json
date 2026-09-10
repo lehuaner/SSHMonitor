@@ -1,0 +1,36 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "1c939772-370e-4938-a2a6-d03e968faf61",
+  "data": {
+    "accounts": [
+      {
+        "uid": "bb1a0124-b950-4052-9904-bc45ccd68bf0",
+        "nickname": "19154975875",
+        "uin": "330102391206",
+        "type": "personal",
+        "lastLogin": true,
+        "isCreator": false,
+        "isAdmin": false,
+        "pluginEnabled": true,
+        "deployStatus": {
+          "statusCode": 0,
+          "statusMsg": "",
+          "detailMsg": ""
+        },
+        "accountType": "",
+        "sso": {
+          "domain": "",
+          "domainModifiedTimes": 0
+        },
+        "idp": "",
+        "areaInfoComplete": false,
+        "oneidAccountId": "",
+        "isCurrentOneIdEnterprise": false,
+        "isCurrentOneIdPersonal": false,
+        "isFirstLogin": false,
+        "phoneNumber": "19154975875"
+      }
+    ]
+  }
+}

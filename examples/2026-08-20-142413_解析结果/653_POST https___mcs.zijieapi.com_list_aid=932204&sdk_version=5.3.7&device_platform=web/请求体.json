@@ -1,0 +1,54 @@
+[
+  {
+    "events": [
+      {
+        "event": "icube_startup_performance_marks",
+        "params": "{\"version\":\"2.3.71801\",\"initialStartup\":true,\"ellapsed\":6684,\"emptyWorkbench\":false,\"windowKind\":1,\"windowCount\":1,\"editorIds\":\"\",\"freemem\":13412347904,\"isFocused\":true,\"ellapsedAppReady\":298,\"ellapsedNlsGeneration\":0,\"ellapsedLoadMainBundle\":11763,\"ellapsedRunMainBundle\":701,\"ellapsedCrashReporter\":0,\"ellapsedMainServer\":3,\"ellapsedWindowCreate\":209,\"ellapsedWindowRestoreState\":1,\"ellapsedBrowserWindowCreate\":202,\"ellapsedWindowMaximize\":0,\"ellapsedWindowLoad\":1151,\"ellapsedWindowLoadToRequire\":0,\"ellapsedRequire\":0,\"ellapsedWaitForWindowConfig\":0,\"ellapsedStorageInit\":30,\"ellapsedSharedProcesConnected\":0,\"ellapsedWorkspaceServiceInit\":106,\"ellapsedRequiredUserDataInit\":0,\"ellapsedOtherUserDataInit\":0,\"ellapsedExtensions\":484,\"ellapsedAICommonInit\":0,\"ellapsedEditorRestore\":0,\"ellapsedViewletRestore\":0,\"ellapsedAuxiliaryViewletRestore\":0,\"ellapsedPanelRestore\":0,\"ellapsedWorkbenchContributions\":16,\"ellapsedWorkbench\":306,\"ellapsedExtensionsReady\":7311,\"ellapsedRenderer\":4138,\"ellapsedLoadDesktopModules\":740,\"ellapsedLoadICubeWebComponents\":0,\"ellapsedLoadAIChatModule\":0,\"ellapsedLoadSoloLiteModules\":917,\"ellapsedBasicStartupComplete\":57,\"ellapsedInitNodeEnv\":86,\"ellapsedInitRunBrowser\":14,\"ellapsedLoadV8Snapshot\":11,\"ellapsedCreateNodeEnv\":70,\"ellapsedCrashReporterStartup\":99,\"ellapsedInitializeICU\":11,\"event_index\":1787207541946}",
+        "local_time_ms": 1787207016741,
+        "is_bav": 0,
+        "session_id": "cbdaca9e-d4c0-453e-86f4-c02adec85c36"
+      },
+      {
+        "event": "icube_mcp_server_list_update",
+        "params": "{\"length\":0,\"event_index\":1787207541945}",
+        "local_time_ms": 1787207016605,
+        "is_bav": 0,
+        "session_id": "cbdaca9e-d4c0-453e-86f4-c02adec85c36"
+      }
+    ],
+    "user": {
+      "user_unique_id": "2609589533558410",
+      "user_id": "0",
+      "user_is_login": false,
+      "device_id": "2609589533558410"
+    },
+    "header": {
+      "app_id": 932204,
+      "app_version": "0.1.51",
+      "os_name": "windows",
+      "os_version": "Windows 11 Pro",
+      "device_model": "VMware20,1",
+      "language": "zh-cn",
+      "region": "CN",
+      "app_language": "zh-cn",
+      "platform": "electron",
+      "sdk_version": "5.3.7",
+      "sdk_lib": "js",
+      "timezone": 8,
+      "tz_offset": -28800,
+      "resolution": "1199x822",
+      "browser": "Chrome",
+      "browser_version": "142.0.7444.235",
+      "referrer": "",
+      "referrer_host": "",
+      "width": 1199,
+      "height": 822,
+      "screen_width": 1199,
+      "screen_height": 822,
+      "tracer_data": "{\"$utm_from_url\":1}",
+      "custom": "{\"network_type\":\"4g\",\"icube_uid\":\"0\",\"biz_user_id\":\"0\",\"local_device_id\":\"aha-7f12c0855ac2ffa28d075411615cee7d\",\"is_special_uuid\":false,\"machine_id\":\"cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b\",\"arch\":\"x64\",\"system\":\"win32\",\"scope\":\"unknown\",\"build_version\":\"2.3.71801\",\"vscode_version\":\"1.107.1\",\"quality\":\"stable\",\"build_time\":\"2026-08-14T10:40:39.642Z\",\"icube_main_uid\":\"d8b1556e-3a4e-4750-a840-0cd889b6ad29\",\"window_id\":1,\"workspace_id\":\"e04cdd\",\"os_release\":\"10.0.26200\",\"device_manufacturer\":\"VMware, Inc.\",\"cpu\":\"AMD\",\"cpu_brand\":\"AMD Ryzen 5 5600H with Radeon Graphics\",\"cpu_speed\":3.294,\"memory\":19732910080,\"is_ssh\":false,\"chat_mode\":1,\"channel_name\":\"common\",\"process_type\":2,\"privacy_mode\":\"off\",\"aha_version\":\"39.2.7-release.1.49.0\",\"store_country_code\":\"\",\"store_country_code_src\":\"did\",\"store_region\":\"CN\",\"workspace_status\":\"multi_root\",\"workspace_root_count\":1,\"product_code\":\"SOLO_Lite\",\"ai_chat_version\":\"v1\",\"ai_chat_version_source\":\"default\",\"solo_lite_app_slim_enabled\":\"1\",\"app_is_solo_mode\":\"1\",\"icube_ab\":\"{\\\"onboarding\\\":\\\"A\\\"}\",\"app_window_count\":1,\"app_active_workspace_vscdb_size\":12288,\"app_global_vscdb_size\":180224}"
+    },
+    "local_time": 1787207017,
+    "verbose": 1
+  }
+]

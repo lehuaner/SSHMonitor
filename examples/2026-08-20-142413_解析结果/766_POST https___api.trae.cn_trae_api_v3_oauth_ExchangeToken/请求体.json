@@ -1,0 +1,20 @@
+{
+  "ClientID": "en1oxy7wnw8j9n",
+  "AuthCode": "GOOH928BDaNE19g8l5HKmJ9Ad5Ffr3EThYFCadKtLLM",
+  "CodeVerifier": "xrhf8JOGvCGYi4iuQuvr2OnJGujNoIE-ikYNjt39mYL0RaJStiCfnSUUV4dOhiVA",
+  "DeviceInfo": {
+    "DeviceID": "2609589533558410",
+    "MachineID": "cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b",
+    "PlatformCode": "SOLO_PC",
+    "DeviceType": "PC",
+    "DeviceName": "lehuan-pc-pc的电脑",
+    "DeviceModel": "VMware20,1",
+    "ClientVersion": "0.1.51",
+    "DevicePublicKey": "-----BEGIN PUBLIC KEY-----\nMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEfUcqMPJKcUciQm2Pc3QKlhH4SjlD\nym/br//lWGRhhZC07BSwll1rDMy9jLjC5gZbl3Q5Y2NcEEKVS662XHcOmQ==\n-----END PUBLIC KEY-----\n",
+    "DeviceBrand": "VMware, Inc.",
+    "DeviceCPU": "AMD Ryzen 5 5600H with Radeon Graphics",
+    "OSInfo": "windows",
+    "OSVersion": "Windows 11 Pro"
+  },
+  "IDEVersion": "0.1.51"
+}

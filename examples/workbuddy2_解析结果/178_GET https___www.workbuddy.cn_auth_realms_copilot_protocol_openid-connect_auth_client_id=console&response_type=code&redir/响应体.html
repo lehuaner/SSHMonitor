@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html class="login-pf" lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="robots" content="noindex, nofollow">
+
+            <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+            <meta name="HandheldFriendly" content="true"/>
+    <title>Tencent Cloud CodeBuddy</title>
+    <link rel="icon" href="/auth/resources/of3m6/login/phone/img/favicon.ico" />
+            <link href="/auth/resources/of3m6/common/keycloak/vendor/patternfly-v4/patternfly.min.css" rel="stylesheet" />
+            <link href="/auth/resources/of3m6/common/keycloak/vendor/patternfly-v3/css/patternfly.min.css" rel="stylesheet" />
+            <link href="/auth/resources/of3m6/common/keycloak/vendor/patternfly-v3/css/patternfly-additions.min.css" rel="stylesheet" />
+            <link href="/auth/resources/of3m6/common/keycloak/lib/pficon/pficon.css" rel="stylesheet" />
+            <link href="/auth/resources/of3m6/login/phone/css/login.css" rel="stylesheet" />
+            <link href="/auth/resources/of3m6/login/phone/css/styles.v421.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/auth/resources/of3m6/login/phone/css/oauth.v2.css">
+    <script type="importmap">
+        {
+            "imports": {
+                "rfc4648": "/auth/resources/of3m6/common/keycloak/node_modules/rfc4648/lib/rfc4648.js"
+            }
+        }
+    </script>
+    <script src="/auth/resources/of3m6/login/phone/js/menu-button-links.js" type="module"></script>
+        <script src="/auth/resources/of3m6/login/phone/js/axios.min.js"></script>
+        <script src="/auth/resources/of3m6/login/phone/js/vue.min.js"></script>
+    <script src="/auth/resources/of3m6/login/phone/js/main.v421.js"></script>
+
+    <script type="module">
+        import { checkCookiesAndSetTimer } from "/auth/resources/of3m6/login/phone/js/authChecker.js";
+
+        checkCookiesAndSetTimer(
+          "/auth/realms/copilot/login-actions/restart?client_id=console&tab_id=Ncbm0Ybu6N4&client_data=eyJydSI6Imh0dHBzOi8vd3d3LndvcmtidWRkeS5jbi9sb2dpbi8_cGxhdGZvcm09d29ya2J1ZGR5JnN0YXRlPTRmMDA2YmNiLWVlMjEtNDQ4MC1hYjllLWRiMjZiOGE4OWIzNyZ2ZXJzaW9uPTUuNS4zJmxvZ2luU2Vzc2lvbklkPTc3YTVmZDQ1LWE4OWEtNDYwMS1iZTI0LTE3Y2EyYTkwZDc0MiIsInJ0IjoiY29kZSJ9&skip_logout=true"
+        );
+    </script>
+    <style>
+        [v-cloak] > * {
+            display: none;
+        }
+
+        [v-cloak]::before {
+            content: "loading...";
+        }
+    </style>
+</head>
+<body class="common-body  ">
+        <div id="vue-app" style="height:100%">
+            <div v-cloak style="height:100%">
+                <div class="login-pf-page" id="loginwrapper">
+                    <div id="kc-header" class="login-pf-page-header">
+                        <div v-if="isUltimate" id="kc-header-box"
+                            class="kc-standard-logo">copilot</div>
+                        <div v-else id="kc-header-box" class="kc-enter-logo">
+                            <img :src="productInfo.productIcon" alt="">
+                            <span>{{ productInfo.productName }}</span>
+                        </div>
+                    </div>
+                    <div class="card-pf">
+                        <div id="kc-content">
+                            <div id="kc-content-wrapper">
+            <div id="kc-idp-urls" hidden>
+                        <a data-idp="qq" data-display-name="qq" href="/auth/realms/copilot/broker/qq/login?client_id=console&amp;tab_id=Ncbm0Ybu6N4&amp;client_data=eyJydSI6Imh0dHBzOi8vd3d3LndvcmtidWRkeS5jbi9sb2dpbi8_cGxhdGZvcm09d29ya2J1ZGR5JnN0YXRlPTRmMDA2YmNiLWVlMjEtNDQ4MC1hYjllLWRiMjZiOGE4OWIzNyZ2ZXJzaW9uPTUuNS4zJmxvZ2luU2Vzc2lvbklkPTc3YTVmZDQ1LWE4OWEtNDYwMS1iZTI0LTE3Y2EyYTkwZDc0MiIsInJ0IjoiY29kZSJ9&amp;session_code=h0gIT2174hwzjGF7pg1F-bHuH2iHRbTMoO8_PsQOFh4"></a>
+                        <a data-idp="weixinwebchat" data-display-name="weixin" href="/auth/realms/copilot/broker/weixinwebchat/login?client_id=console&amp;tab_id=Ncbm0Ybu6N4&amp;client_data=eyJydSI6Imh0dHBzOi8vd3d3LndvcmtidWRkeS5jbi9sb2dpbi8_cGxhdGZvcm09d29ya2J1ZGR5JnN0YXRlPTRmMDA2YmNiLWVlMjEtNDQ4MC1hYjllLWRiMjZiOGE4OWIzNyZ2ZXJzaW9uPTUuNS4zJmxvZ2luU2Vzc2lvbklkPTc3YTVmZDQ1LWE4OWEtNDYwMS1iZTI0LTE3Y2EyYTkwZDc0MiIsInJ0IjoiY29kZSJ9&amp;session_code=h0gIT2174hwzjGF7pg1F-bHuH2iHRbTMoO8_PsQOFh4"></a>
+                        <a data-idp="oneid" data-display-name="OneID 统一账号平台" href="/auth/realms/copilot/broker/oneid/login?client_id=console&amp;tab_id=Ncbm0Ybu6N4&amp;client_data=eyJydSI6Imh0dHBzOi8vd3d3LndvcmtidWRkeS5jbi9sb2dpbi8_cGxhdGZvcm09d29ya2J1ZGR5JnN0YXRlPTRmMDA2YmNiLWVlMjEtNDQ4MC1hYjllLWRiMjZiOGE4OWIzNyZ2ZXJzaW9uPTUuNS4zJmxvZ2luU2Vzc2lvbklkPTc3YTVmZDQ1LWE4OWEtNDYwMS1iZTI0LTE3Y2EyYTkwZDc0MiIsInJ0IjoiY29kZSJ9&amp;session_code=h0gIT2174hwzjGF7pg1F-bHuH2iHRbTMoO8_PsQOFh4"></a>
+                        <a data-idp="asus" data-display-name="华硕账号" href="/auth/realms/copilot/broker/asus/login?client_id=console&amp;tab_id=Ncbm0Ybu6N4&amp;client_data=eyJydSI6Imh0dHBzOi8vd3d3LndvcmtidWRkeS5jbi9sb2dpbi8_cGxhdGZvcm09d29ya2J1ZGR5JnN0YXRlPTRmMDA2YmNiLWVlMjEtNDQ4MC1hYjllLWRiMjZiOGE4OWIzNyZ2ZXJzaW9uPTUuNS4zJmxvZ2luU2Vzc2lvbklkPTc3YTVmZDQ1LWE4OWEtNDYwMS1iZTI0LTE3Y2EyYTkwZDc0MiIsInJ0IjoiY29kZSJ9&amp;session_code=h0gIT2174hwzjGF7pg1F-bHuH2iHRbTMoO8_PsQOFh4"></a>
+            </div>
+            <script type="text/javascript">
+                (function () {
+                    window.__SOCIAL_PROVIDERS__ = {};
+                    var nodes = document.querySelectorAll('#kc-idp-urls [data-idp]');
+                    for (var i = 0; i < nodes.length; i++) {
+                        var a = nodes[i];
+                        var alias = a.getAttribute('data-idp');
+                        window.__SOCIAL_PROVIDERS__[alias] = {
+                            alias: alias,
+                            displayName: a.getAttribute('data-display-name') || '',
+                            loginUrl: a.href
+                        };
+                    }
+
+                    var oneid = window.__SOCIAL_PROVIDERS__.oneid;
+                    if (!oneid || !oneid.loginUrl) {
+                        return;
+                    }
+
+                    // 会话字段必须从 oneid 自己的 loginUrl 解析，不能 for-in 取「第一个 provider」。
+                    // loginUrl 始终暴露，避免 iframe 侧读到 undefined；解析失败只缺 session 字段。
+                    var session = {};
+                    try {
+                        var u = new URL(oneid.loginUrl, window.location.origin);
+                        session = {
+                            sessionCode: u.searchParams.get('session_code'),
+                            tabId:       u.searchParams.get('tab_id'),
+                            clientId:    u.searchParams.get('client_id'),
+                            clientData:  u.searchParams.get('client_data')
+                        };
+                        window.__KC_SESSION__ = session;
+                    } catch (e) {
+                        console.warn('[kc-idp] failed to parse oneid loginUrl', oneid.loginUrl, e);
+                    }
+
+                    window.__ONEID__ = {
+                        alias:       oneid.alias,
+                        displayName: oneid.displayName,
+                        loginUrl:    oneid.loginUrl,
+                        sessionCode: session.sessionCode || null,
+                        tabId:       session.tabId || null,
+                        clientId:    session.clientId || null,
+                        clientData:  session.clientData || null
+                    };
+                })();
+            </script>
+            <script type="text/javascript">
+                // 仅登录页处理 auto_jump=oneid；template 会被注册/找回密码等页面复用，不能在宏里全局跳转。
+                function checkAutoJump() {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const autoJump = urlParams.get('auto_jump');
+
+                    if (autoJump === 'oneid') {
+                        var oneid = window.__SOCIAL_PROVIDERS__ && window.__SOCIAL_PROVIDERS__.oneid;
+                        if (oneid && oneid.loginUrl) {
+                            window.location.href = oneid.loginUrl;
+                            return true;
+                        }
+                        return false;
+                    }
+                    return false; // 不需要自动跳转
+                }
+
+                checkAutoJump();
+            </script>
+            <script type="text/javascript">
+                window.addEventListener('message', (event) => {
+                    if (event.origin !== origin) return; // 验证来源
+                    if (event.data === 'allowSubmit') {
+                        const loginForm = document.getElementById('kc-form-login');
+                        loginForm.requestSubmit();
+                    }
+                });
+                function handleLoginSubmit() {
+                    if (window.parent === window) {
+                        localStorage.setItem('REPORT_ADMIN_USER_FROM_TIME', Date.now());
+                        app.submitDisable = true;
+                        return true;
+                    }
+                    localStorage.setItem('REPORT_ADMIN_USER_FROM_TIME', Date.now());
+                    const sharedData = sessionStorage.getItem('shared-data') || '';
+                    if (sharedData.toLowerCase().includes('agreed')) {
+                        return true;
+                    } else {
+                        window.parent.postMessage('buttonClicked', window.location.origin);
+                        return false;
+                    }
+                }
+            </script>
+            <form id="kc-form-login" onsubmit="return handleLoginSubmit()" action="https://www.workbuddy.cn/auth/realms/copilot/login-actions/authenticate?session_code=h0gIT2174hwzjGF7pg1F-bHuH2iHRbTMoO8_PsQOFh4&amp;execution=b12d313c-ef6d-4be8-b1e3-944d8b65f5fe&amp;client_id=console&amp;tab_id=Ncbm0Ybu6N4&amp;client_data=eyJydSI6Imh0dHBzOi8vd3d3LndvcmtidWRkeS5jbi9sb2dpbi8_cGxhdGZvcm09d29ya2J1ZGR5JnN0YXRlPTRmMDA2YmNiLWVlMjEtNDQ4MC1hYjllLWRiMjZiOGE4OWIzNyZ2ZXJzaW9uPTUuNS4zJmxvZ2luU2Vzc2lvbklkPTc3YTVmZDQ1LWE4OWEtNDYwMS1iZTI0LTE3Y2EyYTkwZDc0MiIsInJ0IjoiY29kZSJ9" method="post">
+                <h2 v-if="phoneActivated" class="kc-form-title">{{ formTitle }}</h2>
+                <h2 v-else class="kc-form-title">
+                    <span>登录</span>
+                    <span class="name">{{ enterpriseName || DEFAULT_PRODUCT_NAME }}</span>
+                </h2>
+                <input type="hidden" id="phoneActivated" name="phoneActivated" v-model="phoneActivated">
+                <div v-if="!phoneActivated">
+                    <div class="form-group">
+                        <input :disabled="accountDisable" tabindex="0" id="username" placeholder="请输入账号" class="pf-c-form-control" name="username" value=""  type="text" autocomplete="off"
+                            aria-invalid="" v-model="username" @input="inputChange"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <input :disabled="accountDisable" tabindex="0" id="password" placeholder="请输入密码" class="pf-c-form-control" name="password" type="password" autocomplete="off"
+                            aria-invalid=""  v-model="password" @input="inputChange"
+                        />
+                    </div>
+                </div>
+
+                <div v-if="phoneActivated">
+                    <div class="form-group">
+                        <div class="kc-phone-input-wrap" :class="{'is-invalid': phoneInvalid === 'true'}">
+                            <div class="kc-country-selector" @click="toggleAreaCode()">
+                                <span class="kc-country-code-text">{{ areaCode }}</span>
+                                <span class="kc-country-arrow" :class="{'is-open': areaCodeOpen}"></span>
+                            </div>
+                            <div class="kc-country-dropdown" :class="{'is-open': areaCodeOpen}">
+                                <div v-for="item in areaCodes" :key="item.code"
+                                    class="kc-country-option" :class="{'is-selected': areaCode === item.code}"
+                                    @click="selectAreaCode(item.code)">
+                                    <span class="kc-country-option-name">{{ item.name }}</span>
+                                    <span class="kc-country-option-code">{{ item.code }}</span>
+                                </div>
+                            </div>
+                            <div class="kc-phone-divider"></div>
+                            <input tabindex="0" placeholder="请输入你的手机号" type="text" id="phoneNumber" v-model="phoneNumber"
+                                :aria-invalid="phoneInvalid"
+                                class="kc-phone-number-input" @input="inputChange"/>
+                            <!-- 隐藏字段：提交完整号码（区号+手机号），确保后端收到带区号的格式；防止phoneNumber已含区号时重复拼接 -->
+                            <input type="hidden" name="phoneNumber" :value="phoneNumber.startsWith('+') ? phoneNumber : areaCode + phoneNumber"/>
+                        </div>
+                        <span v-show="errorMessage" id="input-error" class="pf-c-form__helper-text pf-m-error required kc-feedback-text" aria-live="polite">
+                            {{ errorMessage }}
+                        </span>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="kc-form-code-wrap">
+                            <input tabindex="0" style="padding-right: 112px;" placeholder="请输入验证码" type="text" id="code" name="code"
+                                :aria-invalid="codeInvalid"
+                                class="pf-c-form-control" autocomplete="off" v-model="authCode" @input="inputChange"/>
+                            <input tabindex="0" style="height: 40px;"
+                                    class="btn-lg code-btn"
+                                    type="button" v-model="sendButtonText" :disabled='sendButtonText !== initSendButtonText' v-on:click="sendVerificationCode()"/>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="kc-form-buttons" class="form-group">
+                    <input type="hidden" id="id-hidden-input" name="credentialId" />
+                    <input tabindex="0" :disabled="accountDisable || submitDisable" class="pf-c-button pf-m-primary pf-m-block btn-lg" name="login" id="kc-login" type="submit" value="登录"/>
+                </div>
+                <div v-if="!phoneActivated" class="form-group login-pf-settings">
+                    <div id="kc-form-options">
+                            <div class="checkbox kc-setting-item">
+                                <label>
+                                        <input tabindex="0" id="rememberMe" name="rememberMe" type="checkbox"> 30天内自动登录
+                                </label>
+                            </div>
+                    </div>
+                </div>
+                <div v-else style="height:30px"></div>
+            </form>
+
+
+            <div v-if="!phoneActivated" id="kc-social-providers" class="kc-social-section kc-social-gray">
+                <h2 class="providers-text">其他登录方式</h2>
+                <ul class="pf-c-login__main-footer-links kc-social-links pf-l-grid kc-social-grid">
+                        <li>
+                            <a id="social-qq" href="/auth/realms/copilot/broker/qq/login?client_id=console&amp;tab_id=Ncbm0Ybu6N4&amp;client_data=eyJydSI6Imh0dHBzOi8vd3d3LndvcmtidWRkeS5jbi9sb2dpbi8_cGxhdGZvcm09d29ya2J1ZGR5JnN0YXRlPTRmMDA2YmNiLWVlMjEtNDQ4MC1hYjllLWRiMjZiOGE4OWIzNyZ2ZXJzaW9uPTUuNS4zJmxvZ2luU2Vzc2lvbklkPTc3YTVmZDQ1LWE4OWEtNDYwMS1iZTI0LTE3Y2EyYTkwZDc0MiIsInJ0IjoiY29kZSJ9&amp;session_code=h0gIT2174hwzjGF7pg1F-bHuH2iHRbTMoO8_PsQOFh4">
+                                    <img v-if="providerMap['qq']" :src="providerMap['qq']" />
+                                    <img v-else-if="'qq' === 'feishu'" src="/auth/resources/of3m6/login/phone/img/feishu.png" />
+                                    <img v-else-if="'qq' === 'wework'" src="/auth/resources/of3m6/login/phone/img/wework.png" />
+                                    <img v-else-if="'qq' === 'oneid'" src="/auth/resources/of3m6/login/phone/img/oneid.png" />
+                                    <span class="kc-social-provider-name">qq</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="social-weixinwebchat" href="/auth/realms/copilot/broker/weixinwebchat/login?client_id=console&amp;tab_id=Ncbm0Ybu6N4&amp;client_data=eyJydSI6Imh0dHBzOi8vd3d3LndvcmtidWRkeS5jbi9sb2dpbi8_cGxhdGZvcm09d29ya2J1ZGR5JnN0YXRlPTRmMDA2YmNiLWVlMjEtNDQ4MC1hYjllLWRiMjZiOGE4OWIzNyZ2ZXJzaW9uPTUuNS4zJmxvZ2luU2Vzc2lvbklkPTc3YTVmZDQ1LWE4OWEtNDYwMS1iZTI0LTE3Y2EyYTkwZDc0MiIsInJ0IjoiY29kZSJ9&amp;session_code=h0gIT2174hwzjGF7pg1F-bHuH2iHRbTMoO8_PsQOFh4">
+                                    <img v-if="providerMap['weixinwebchat']" :src="providerMap['weixinwebchat']" />
+                                    <img v-else-if="'weixinwebchat' === 'feishu'" src="/auth/resources/of3m6/login/phone/img/feishu.png" />
+                                    <img v-else-if="'weixinwebchat' === 'wework'" src="/auth/resources/of3m6/login/phone/img/wework.png" />
+                                    <img v-else-if="'weixinwebchat' === 'oneid'" src="/auth/resources/of3m6/login/phone/img/oneid.png" />
+                                    <span class="kc-social-provider-name">weixin</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="social-oneid" href="/auth/realms/copilot/broker/oneid/login?client_id=console&amp;tab_id=Ncbm0Ybu6N4&amp;client_data=eyJydSI6Imh0dHBzOi8vd3d3LndvcmtidWRkeS5jbi9sb2dpbi8_cGxhdGZvcm09d29ya2J1ZGR5JnN0YXRlPTRmMDA2YmNiLWVlMjEtNDQ4MC1hYjllLWRiMjZiOGE4OWIzNyZ2ZXJzaW9uPTUuNS4zJmxvZ2luU2Vzc2lvbklkPTc3YTVmZDQ1LWE4OWEtNDYwMS1iZTI0LTE3Y2EyYTkwZDc0MiIsInJ0IjoiY29kZSJ9&amp;session_code=h0gIT2174hwzjGF7pg1F-bHuH2iHRbTMoO8_PsQOFh4">
+                                    <img v-if="providerMap['oneid']" :src="providerMap['oneid']" />
+                                    <img v-else-if="'oneid' === 'feishu'" src="/auth/resources/of3m6/login/phone/img/feishu.png" />
+                                    <img v-else-if="'oneid' === 'wework'" src="/auth/resources/of3m6/login/phone/img/wework.png" />
+                                    <img v-else-if="'oneid' === 'oneid'" src="/auth/resources/of3m6/login/phone/img/oneid.png" />
+                                    <span class="kc-social-provider-name">OneID 统一账号平台</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a id="social-asus" href="/auth/realms/copilot/broker/asus/login?client_id=console&amp;tab_id=Ncbm0Ybu6N4&amp;client_data=eyJydSI6Imh0dHBzOi8vd3d3LndvcmtidWRkeS5jbi9sb2dpbi8_cGxhdGZvcm09d29ya2J1ZGR5JnN0YXRlPTRmMDA2YmNiLWVlMjEtNDQ4MC1hYjllLWRiMjZiOGE4OWIzNyZ2ZXJzaW9uPTUuNS4zJmxvZ2luU2Vzc2lvbklkPTc3YTVmZDQ1LWE4OWEtNDYwMS1iZTI0LTE3Y2EyYTkwZDc0MiIsInJ0IjoiY29kZSJ9&amp;session_code=h0gIT2174hwzjGF7pg1F-bHuH2iHRbTMoO8_PsQOFh4">
+                                    <img v-if="providerMap['asus']" :src="providerMap['asus']" />
+                                    <img v-else-if="'asus' === 'feishu'" src="/auth/resources/of3m6/login/phone/img/feishu.png" />
+                                    <img v-else-if="'asus' === 'wework'" src="/auth/resources/of3m6/login/phone/img/wework.png" />
+                                    <img v-else-if="'asus' === 'oneid'" src="/auth/resources/of3m6/login/phone/img/oneid.png" />
+                                    <span class="kc-social-provider-name">华硕账号</span>
+                            </a>
+                        </li>
+                </ul>
+            </div>
+            <div v-else class="kc-login-bottom" style="height:70px"></div>
+            <script type="text/javascript">
+                function getIdpList () {
+                    axios.get('/console/enterprises/idps', {
+                            headers: {
+                                'X-Realm-Id ': 'copilot',
+                            },
+                        })
+                        .then(res => {
+                            const { idps } = res?.data?.data || {};
+                            const providerLogoData = {};
+                            if (idps?.length) {
+                                const accountEnabled = idps.find(idp => idp.alias === 'account' && idp.enabled);
+                                // 非 SaaS 版本 admin 登录账密固定存在（专享版除外，专享版允许禁用账密）
+                                app.accountDisable = !isUltimate && !isExclusive && platform === 'admin' ? false : !accountEnabled;
+                                idps.filter(idp => idp.alias !== 'account').forEach(item => {
+                                    const { logo, alias } = item;
+                                    providerLogoData[alias] = logo;
+                                });
+                                app.providerMap = providerLogoData;
+                                const enabledIdps = idps.filter(item => item.enabled)
+                                if ((isExclusive || platform !== 'admin') && enabledIdps.length === 1) {
+                                    const elementId = 'social-' + enabledIdps[0].alias;
+                                    const idpLink = document.getElementById(elementId);
+                                    idpLink.click();
+                                }
+                            }
+                        })
+                        .catch(e => {
+                            console.log('get idps error', e);
+                        });
+                };
+                if (!isStandard) {
+                    getIdpList();
+                }
+            </script>
+
+
+                            </div>
+                        </div>
+                        <div class="kc-form-tips" v-if="!isEnterprisePrivate">
+                            <span>登录即表示您同意我们的</span>
+                            <a href="https://cloud.tencent.com/document/product/301/106125" target="_blank">《服务条款》</a>和<a href="https://privacy.qq.com/document/preview/284d799a07164d09bfc7cedd0ec3e089" target="_blank">《隐私协议》</a>
+                        </div>
+                    </div>
+                    <div id="kc-footer" v-if="!isEnterprisePrivate">
+                        <footer id="kc-footer-wrapper">
+                            <span>Copyright © 1998 - 2024 Tencent. All Rights Reserved. 腾讯公司 版权所有</span>
+                            <a href="https://cloud.tencent.com/document/product/301/106125" target="_blank">服务协议</a> |
+                            <a href="https://privacy.qq.com/document/preview/284d799a07164d09bfc7cedd0ec3e089" target="_blank">隐私政策</a> |
+                            <a href="http://beian.miit.gov.cn/" target="_blank">粤B2-20090059</a> |
+                            <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=44030002000001" target="_blank">粤公网安备 44030002000001号</a>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            function req(phoneNumber) {
+                const params = {params: {phoneNumber}}
+                axios.get(window.location.origin + '/auth/realms/copilot/sms/authentication-code', params)
+                    .then(res => {
+                        app.disableSend(res.data.expires_in);
+                    })
+                    .catch(e => {
+                        app.errorMessage = e.response.data.error;
+                        const phoneNumber = document.getElementById('phoneNumber');
+                        phoneNumber.setAttribute("aria-invalid", "true");
+                    });
+            }
+
+            function injectEnvDot() {
+                const cleRouteScript = document.createElement('script');
+                cleRouteScript.async = true;
+                cleRouteScript.type = 'text/javascript';
+                cleRouteScript.src = 'https://mirrors.tencent.com/repository/generic/cle-env-switch/latest/cle-switch.min.js';
+                document.head.appendChild(cleRouteScript);
+            };
+
+            function getEnterpriseInfo () {
+                const enterpriseId = app_edition === 'enterprisePrivate' ? 'copilot' : hostname.split('.')[0];
+                axios.get('/console/exclusive/enterprises/' + enterpriseId + '/loginInfo')
+                    .then(res => {
+                        const { enterpriseName, enterpriseQrCode, product } = res?.data?.data || {};
+                        app.enterpriseName = enterpriseName;
+                        app.enterpriseQrCode = enterpriseQrCode;
+                        const { productName, productIcon } = product || {};
+                        const defaultIcon = app_edition === 'enterprisePrivate' ? '/auth/resources/of3m6/login/phone/img/logo-enter.svg' : '/auth/resources/of3m6/login/phone/img/logo.png';
+                        app.productInfo.productName = productName || DEFAULT_PRODUCT_NAME;
+                        app.productInfo.productIcon = productIcon || defaultIcon;
+                        if (productName) {
+                            document.title = productName;
+                        }
+                        if (productIcon) {
+                            const link = document.querySelector("link[rel='icon']");
+                            link.href = productIcon;
+                        }
+                    })
+                    .catch(e => {
+                        console.log('get enterprise info error', e);
+                    })
+            };
+
+            var app = new Vue({
+                el: '#vue-app',
+                data: {
+                    isEnterprisePrivate: app_edition === 'enterprisePrivate',
+                    // 登录页面
+                    errorMessage: '',
+                    freezeSendCodeSeconds: 0,
+                    phoneActivated: isStandard, // 公域使用手机号登录
+                    areaCode: (function() {
+                        const attempted = '';
+                        if (attempted.startsWith('+852')) return '+852';
+                        if (attempted.startsWith('+853')) return '+853';
+                        return '+86';
+                    })(),
+                    areaCodeOpen: false,
+                    areaCodes: [
+                        { name: '中国大陆', code: '+86' },
+                        { name: '中国香港', code: '+852' },
+                        // { name: '中国澳门', code: '+853' }, // 暂时屏蔽，下一期支持
+                    ],
+                    phoneNumber: (function() {
+                        const attempted = '';
+                        // 如果回填的手机号已包含区号前缀，去掉区号只保留纯手机号
+                        const codes = ['+86', '+852', '+853'];
+                        for (const code of codes) {
+                            if (attempted.startsWith(code)) {
+                                return attempted.slice(code.length);
+                            }
+                        }
+                        return attempted;
+                    })(),
+                    authCode: '',
+                    phoneInvalid: '',
+                    codeInvalid: '',
+                    sendButtonText: '获取验证码',
+                    initSendButtonText: '获取验证码',
+                    formTitle: '欢迎使用 Tencent Cloud CodeBuddy',
+                    enterpriseName: '',
+                    enterpriseQrCode: null,
+                    productInfo: {},
+                    username: '',
+                    password: '',
+                    submitDisable: true,
+                    accountDisable: false,
+                    providerMap: {},
+                    // 重置密码页面
+                    newPassword: '',
+                    confirmPassword: '',
+                    resetSubmitDisable: true,
+                },
+                methods: {
+                    toggleAreaCode: function() {
+                        app.areaCodeOpen = !app.areaCodeOpen;
+                    },
+                    selectAreaCode: function(code) {
+                        app.areaCode = code;
+                        app.areaCodeOpen = false;
+                    },
+                    disableSend: function(seconds) {
+                        if (seconds <= 0) {
+                            app.sendButtonText = app.initSendButtonText;
+                        } else {
+                            const minutes = Math.floor(seconds / 60) + '';
+                            const seconds_ = seconds % 60 + '';
+                            app.sendButtonText = String(minutes.padStart(2, '0') + ":" + seconds_.padStart(2, '0'));
+                            setTimeout(function () {
+                                app.disableSend(seconds - 1);
+                            }, 1000);
+                        }
+                    },
+                    sendVerificationCode: function() {
+                        const phoneNumber = app.phoneNumber;
+                        const areaCode = app.areaCode;
+                        const cnReg = /^1[3-9]\d{9}$/;
+                        const hkReg = /^[456789]\d{7}$/;
+                        const moReg = /^6\d{7}$/;
+                        app.codeInvalid = '';
+                        let valid = false;
+                        if (areaCode === '+86') valid = cnReg.test(phoneNumber);
+                        else if (areaCode === '+852') valid = hkReg.test(phoneNumber);
+                        else if (areaCode === '+853') valid = moReg.test(phoneNumber);
+                        if (!phoneNumber || !valid) {
+                            this.errorMessage = !phoneNumber ? '请填写手机号码.' : '无效的电话号码';
+                            app.phoneInvalid = 'true';
+                            return;
+                        }
+                        if (this.sendButtonText !== this.initSendButtonText) {
+                            return;
+                        }
+                        req(areaCode + phoneNumber);
+                    },
+                    inputChange: function() {
+                        if (app.phoneActivated) {
+                            if (app.phoneNumber) {
+                                app.errorMessage = '';
+                                app.phoneInvalid = '';
+                                app.codeInvalid = '';
+                            }
+                            if (app.phoneNumber && app.authCode) {
+                                app.submitDisable = false;
+                            } else {
+                                app.submitDisable = true;
+                            }
+                        } else {
+                            if (app.username && app.password) {
+                                app.submitDisable = false;
+                            } else {
+                                app.submitDisable = true;
+                            }
+                        }
+                    },
+                    resetInputChange: function() {
+                        if (app.newPassword && app.confirmPassword) {
+                            app.resetSubmitDisable = false;
+                        } else {
+                            app.resetSubmitDisable = true;
+                        }
+                    },
+                },
+                mounted: () => {
+                    document.addEventListener('click', function(e) {
+                        const selector = document.querySelector('.kc-country-selector');
+                        const dropdown = document.querySelector('.kc-country-dropdown');
+                        if (selector && dropdown && !selector.contains(e.target) && !dropdown.contains(e.target)) {
+                            app.areaCodeOpen = false;
+                        }
+                    });
+                    if (!isUltimate) {
+                        getEnterpriseInfo();
+                        if (switchEnv !== null && switchEnv !== '0') {
+                            localStorage.setItem('switchEnv', 'true');
+                        } else if (switchEnv === '0') {
+                            localStorage.removeItem('switchEnv');
+                        }
+                        if (localStorage.getItem('switchEnv') === 'true') {
+                            injectEnvDot();
+                        }
+                    }
+                },
+            });
+        </script>
+        <script type="text/javascript">
+            if (window.top !== window) {
+                let theme = window.parent && window.parent.document.documentElement.offsetWidth > 460 ? 'kc-iframe-large' : 'kc-iframe-small';
+                document.getElementById('loginwrapper').className += ' ' + theme;
+            }
+        </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+HTTP/2 200
+date: Thu, 20 Aug 2026 06:22:21 GMT
+content-type: application/javascript
+vary: Accept-Encoding
+cache-control: max-age=604800
+content-md5: afzh4Wh8ZFJXyCJLmwCMdA==
+etag: W/"69fce1e1687c645257c8224b9b008c74"
+last-modified: Wed, 19 Mar 2025 04:11:17 GMT
+x-bdcdn-cache-status: TCP_HIT
+x-kfc-cachekey: http://pinner-imgserver.byted.org/rc-client-security/web/glue/1.0.0.66/sdk-glue.js
+x-tos-hash-crc64ecma: 9971703538312691902
+x-tos-request-id: 55a30958374152316a583741-ac617e2-ace14e4
+x-tos-response-time: Thu, 16 Jul 2026 01:43:29 GMT
+x-tos-storage-class: STANDARD
+x-request-ip: fdbd:dc02:20:232::224
+x-tt-trace-tag: id=09;cdn-cache=hit;type=static
+x-response-cinfo: 183.209.141.106
+x-response-cache: edge_hit
+x-tt-trace-id: 00-2607182028158EEA9BCE3EE817724442-5CC0A78A475B560F-00
+server: TLB
+x-tt-logid: 202607182028158EEA9BCE3EE817724442
+x-ser: i57518_c26071, i62530_c26719, i93060_c29058
+x-cache: HIT from i93060_c29058(cloudsvr)
+server-timing: cdn-cache;desc=HIT,edge;dur=1
+access-control-allow-origin: *
+timing-allow-origin: *
+x-tt-supplier-id: 0_4

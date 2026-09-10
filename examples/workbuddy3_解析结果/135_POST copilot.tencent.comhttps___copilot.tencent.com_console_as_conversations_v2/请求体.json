@@ -1,0 +1,25 @@
+{
+  "type": "local",
+  "sessionId": "ebc77c3e-165c-45dd-ae4d-c56dec533aed",
+  "name": "排查 onnxruntime 模块缺失报错",
+  "conversationOrigin": "legacy_workbuddy_local",
+  "workDir": "D:\\Code\\Project\\Python\\ExtractRole",
+  "isPlayground": 0,
+  "createdAtMs": 1787679934323,
+  "updatedAtMs": 1787680681539,
+  "lastActivityAtMs": 1787680681539,
+  "clientContext": {
+    "localStatus": "active",
+    "hostId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "sessionKind": "manual",
+    "model": "",
+    "sourceMode": "",
+    "permissionMode": "",
+    "expert": {
+      "id": "",
+      "locale": "",
+      "runtimeIdentity": "",
+      "marketplace": ""
+    }
+  }
+}

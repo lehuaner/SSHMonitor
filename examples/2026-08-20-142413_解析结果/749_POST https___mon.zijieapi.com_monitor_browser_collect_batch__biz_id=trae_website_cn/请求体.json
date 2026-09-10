@@ -1,0 +1,1506 @@
+{
+  "ev_type": "batch",
+  "list": [
+    {
+      "ev_type": "pageview",
+      "payload": {
+        "pid": "/authorization",
+        "source": "init"
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "NOT_VERIFIED_USER",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "5d7d3db5-7965-4398-bc3e-c065b922df2b",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64",
+        "timestamp": 1787207025252,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/authorization",
+        "view_id": "/authorization_1787207025252",
+        "context": {
+          "deploy_region": "cn"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    },
+    {
+      "ev_type": "http",
+      "payload": {
+        "api": "xhr",
+        "request": {
+          "url": "https://www.trae.cn/ttwid/check/",
+          "method": "post",
+          "headers": {
+            "accept": "application/json, text/plain, */*",
+            "content-type": "application/json"
+          },
+          "timestamp": 1787207025333
+        },
+        "response": {
+          "status": 200,
+          "is_custom_error": false,
+          "timestamp": 1787207025820,
+          "headers": {
+            "content-length": "63",
+            "content-type": "application/json",
+            "date": "Thu, 20 Aug 2026 06:23:46 GMT",
+            "eagleid": "7014551a17872070263981011e",
+            "server": "Tengine",
+            "server-timing": "inner; dur=22, cdn-cache;desc=MISS,edge;dur=21,origin;dur=101",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "timing-allow-origin": "*",
+            "vary": "Origin",
+            "via": "cache10.l2cm9-6[101,0], cache6.cn7995[122,0]",
+            "x-tt-logid": "2026082014234607BBA33F494815A58FA9",
+            "x-tt-timestamp": "1787207026.504",
+            "x-tt-trace-host": "01207a981426127d02143837b6aace09ad09abbf0bda7f3276a1db774f310434139484b206a84369eb993ea04c68b90fce7e56b50fc2e88fecd02bc8d4d4692138f5e56a73cfcb8b73c3286ae717c0aa2d70cd33a53ebb1757e30828a3bf7d7bab808ae49de5a539967c1e6a4914433325",
+            "x-tt-trace-id": "00-26082014234607BBA33F494815A58FA9-1321B3BF9C701618-00",
+            "x-tt-trace-tag": "id=03;cdn-cache=miss;type=dyn"
+          },
+          "timing": {
+            "name": "https://www.trae.cn/ttwid/check/",
+            "entryType": "resource",
+            "startTime": 1344.8000000000466,
+            "duration": 483.5,
+            "initiatorType": "xmlhttprequest",
+            "deliveryType": "",
+            "nextHopProtocol": "h2",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "application/json",
+            "contentEncoding": "",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 1344.8000000000466,
+            "domainLookupStart": 1344.8000000000466,
+            "domainLookupEnd": 1344.8000000000466,
+            "connectStart": 1344.8000000000466,
+            "secureConnectionStart": 1344.8000000000466,
+            "connectEnd": 1344.8000000000466,
+            "requestStart": 1357.8000000000466,
+            "responseStart": 1821.100000000035,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 1821.100000000035,
+            "responseEnd": 1828.3000000000466,
+            "transferSize": 363,
+            "encodedBodySize": 63,
+            "decodedBodySize": 63,
+            "responseStatus": 200,
+            "serverTiming": [
+              {
+                "name": "inner",
+                "duration": 22,
+                "description": ""
+              },
+              {
+                "name": "cdn-cache",
+                "duration": 0,
+                "description": "MISS"
+              },
+              {
+                "name": "edge",
+                "duration": 21,
+                "description": ""
+              },
+              {
+                "name": "origin",
+                "duration": 101,
+                "description": ""
+              }
+            ]
+          }
+        },
+        "duration": 487
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "NOT_VERIFIED_USER",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "5d7d3db5-7965-4398-bc3e-c065b922df2b",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64",
+        "timestamp": 1787207025333,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/authorization",
+        "view_id": "/authorization_1787207025252",
+        "context": {
+          "deploy_region": "cn"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    },
+    {
+      "ev_type": "http",
+      "payload": {
+        "api": "xhr",
+        "request": {
+          "url": "https://api.trae.cn/cloudide/api/v3/trae/CheckLogin",
+          "method": "post",
+          "headers": {
+            "accept": "application/json, text/plain, */*",
+            "content-type": "application/json",
+            "traceparent": "03-11b6d3281dbda59bc986de4f08f150fa-377762939d672e8f-01"
+          },
+          "timestamp": 1787207025317
+        },
+        "response": {
+          "status": 200,
+          "is_custom_error": false,
+          "timestamp": 1787207026000,
+          "headers": {
+            "content-type": "application/json"
+          },
+          "timing": {
+            "name": "https://api.trae.cn/cloudide/api/v3/trae/CheckLogin",
+            "entryType": "resource",
+            "startTime": 1328.7000000000116,
+            "duration": 680,
+            "initiatorType": "xmlhttprequest",
+            "deliveryType": "",
+            "nextHopProtocol": "h2",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "application/json",
+            "contentEncoding": "br",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 1328.7000000000116,
+            "domainLookupStart": 1328.7000000000116,
+            "domainLookupEnd": 1328.7000000000116,
+            "connectStart": 1328.7000000000116,
+            "secureConnectionStart": 1328.7000000000116,
+            "connectEnd": 1328.7000000000116,
+            "requestStart": 1533.7000000000116,
+            "responseStart": 2003.9000000000233,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 2003.9000000000233,
+            "responseEnd": 2008.7000000000116,
+            "transferSize": 551,
+            "encodedBodySize": 251,
+            "decodedBodySize": 437,
+            "responseStatus": 200,
+            "serverTiming": [
+              {
+                "name": "inner",
+                "duration": 55,
+                "description": ""
+              },
+              {
+                "name": "tt_agw",
+                "duration": 39,
+                "description": ""
+              },
+              {
+                "name": "cdn-cache",
+                "duration": 0,
+                "description": "MISS"
+              },
+              {
+                "name": "edge",
+                "duration": 0,
+                "description": ""
+              },
+              {
+                "name": "origin",
+                "duration": 110,
+                "description": ""
+              }
+            ]
+          }
+        },
+        "duration": 683
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "NOT_VERIFIED_USER",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "5d7d3db5-7965-4398-bc3e-c065b922df2b",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64",
+        "timestamp": 1787207025317,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/authorization",
+        "view_id": "/authorization_1787207025252",
+        "context": {
+          "deploy_region": "cn"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    },
+    {
+      "ev_type": "http",
+      "payload": {
+        "api": "xhr",
+        "request": {
+          "url": "https://api.trae.cn/cloudide/api/v3/trae/CheckLogin",
+          "method": "post",
+          "headers": {
+            "accept": "application/json, text/plain, */*",
+            "content-type": "application/json",
+            "traceparent": "03-f8d4e891c516406a88f2d7f36d8937c8-eeba2db36fc076f8-01"
+          },
+          "timestamp": 1787207025792
+        },
+        "response": {
+          "status": 200,
+          "is_custom_error": false,
+          "timestamp": 1787207026039,
+          "headers": {
+            "content-type": "application/json"
+          },
+          "timing": {
+            "name": "https://api.trae.cn/cloudide/api/v3/trae/CheckLogin",
+            "entryType": "resource",
+            "startTime": 1328.7000000000116,
+            "duration": 680,
+            "initiatorType": "xmlhttprequest",
+            "deliveryType": "",
+            "nextHopProtocol": "h2",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "application/json",
+            "contentEncoding": "br",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 1328.7000000000116,
+            "domainLookupStart": 1328.7000000000116,
+            "domainLookupEnd": 1328.7000000000116,
+            "connectStart": 1328.7000000000116,
+            "secureConnectionStart": 1328.7000000000116,
+            "connectEnd": 1328.7000000000116,
+            "requestStart": 1533.7000000000116,
+            "responseStart": 2003.9000000000233,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 2003.9000000000233,
+            "responseEnd": 2008.7000000000116,
+            "transferSize": 551,
+            "encodedBodySize": 251,
+            "decodedBodySize": 437,
+            "responseStatus": 200,
+            "serverTiming": [
+              {
+                "name": "inner",
+                "duration": 55,
+                "description": ""
+              },
+              {
+                "name": "tt_agw",
+                "duration": 39,
+                "description": ""
+              },
+              {
+                "name": "cdn-cache",
+                "duration": 0,
+                "description": "MISS"
+              },
+              {
+                "name": "edge",
+                "duration": 0,
+                "description": ""
+              },
+              {
+                "name": "origin",
+                "duration": 110,
+                "description": ""
+              }
+            ]
+          }
+        },
+        "duration": 247
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "7675972323816048182",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "5d7d3db5-7965-4398-bc3e-c065b922df2b",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64",
+        "timestamp": 1787207025792,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/authorization",
+        "view_id": "/authorization_1787207025252",
+        "context": {
+          "deploy_region": "cn"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    },
+    {
+      "ev_type": "http",
+      "payload": {
+        "api": "xhr",
+        "request": {
+          "url": "https://api.trae.cn/cloudide/api/v3/trae/CheckLogin",
+          "method": "post",
+          "headers": {
+            "accept": "application/json, text/plain, */*",
+            "content-type": "application/json",
+            "traceparent": "03-e8a80ab4293b4cd24a438ea34ced6a2f-0ed028b7b951edbf-01"
+          },
+          "timestamp": 1787207025821
+        },
+        "response": {
+          "status": 200,
+          "is_custom_error": false,
+          "timestamp": 1787207026115,
+          "headers": {
+            "content-type": "application/json"
+          },
+          "timing": {
+            "name": "https://api.trae.cn/cloudide/api/v3/trae/CheckLogin",
+            "entryType": "resource",
+            "startTime": 1328.7000000000116,
+            "duration": 680,
+            "initiatorType": "xmlhttprequest",
+            "deliveryType": "",
+            "nextHopProtocol": "h2",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "application/json",
+            "contentEncoding": "br",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 1328.7000000000116,
+            "domainLookupStart": 1328.7000000000116,
+            "domainLookupEnd": 1328.7000000000116,
+            "connectStart": 1328.7000000000116,
+            "secureConnectionStart": 1328.7000000000116,
+            "connectEnd": 1328.7000000000116,
+            "requestStart": 1533.7000000000116,
+            "responseStart": 2003.9000000000233,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 2003.9000000000233,
+            "responseEnd": 2008.7000000000116,
+            "transferSize": 551,
+            "encodedBodySize": 251,
+            "decodedBodySize": 437,
+            "responseStatus": 200,
+            "serverTiming": [
+              {
+                "name": "inner",
+                "duration": 55,
+                "description": ""
+              },
+              {
+                "name": "tt_agw",
+                "duration": 39,
+                "description": ""
+              },
+              {
+                "name": "cdn-cache",
+                "duration": 0,
+                "description": "MISS"
+              },
+              {
+                "name": "edge",
+                "duration": 0,
+                "description": ""
+              },
+              {
+                "name": "origin",
+                "duration": 110,
+                "description": ""
+              }
+            ]
+          }
+        },
+        "duration": 294
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "7675972323816048182",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "5d7d3db5-7965-4398-bc3e-c065b922df2b",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64",
+        "timestamp": 1787207025821,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/authorization",
+        "view_id": "/authorization_1787207025252",
+        "context": {
+          "deploy_region": "cn"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    },
+    {
+      "ev_type": "performance",
+      "payload": {
+        "name": "fp",
+        "value": 1108,
+        "isSupport": true,
+        "isPolyfill": false,
+        "isBounced": false,
+        "isCustom": false,
+        "type": "perf"
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "7675972323816048182",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "5d7d3db5-7965-4398-bc3e-c065b922df2b",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64",
+        "timestamp": 1787207026449,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/authorization",
+        "view_id": "/authorization_1787207025252",
+        "context": {
+          "deploy_region": "cn"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    },
+    {
+      "ev_type": "performance",
+      "payload": {
+        "name": "fcp",
+        "value": 1108,
+        "isSupport": true,
+        "isPolyfill": false,
+        "isBounced": false,
+        "isCustom": false,
+        "type": "perf"
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "7675972323816048182",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "5d7d3db5-7965-4398-bc3e-c065b922df2b",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64",
+        "timestamp": 1787207026450,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/authorization",
+        "view_id": "/authorization_1787207025252",
+        "context": {
+          "deploy_region": "cn"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    },
+    {
+      "ev_type": "performance_timing",
+      "payload": {
+        "isBounced": false,
+        "timing": {
+          "connectStart": 1787207024026,
+          "secureConnectionStart": 0,
+          "unloadEventEnd": 0,
+          "domainLookupStart": 1787207024026,
+          "domainLookupEnd": 1787207024026,
+          "responseStart": 1787207024579,
+          "connectEnd": 1787207024026,
+          "responseEnd": 1787207024606,
+          "requestStart": 1787207024254,
+          "domLoading": 1787207024591,
+          "redirectStart": 0,
+          "loadEventEnd": 1787207026428,
+          "domComplete": 1787207026427,
+          "navigationStart": 1787207023988,
+          "loadEventStart": 1787207026427,
+          "domContentLoadedEventEnd": 1787207025150,
+          "unloadEventStart": 0,
+          "redirectEnd": 0,
+          "domInteractive": 1787207025150,
+          "fetchStart": 1787207024026,
+          "domContentLoadedEventStart": 1787207025150
+        },
+        "navigation_timing": {
+          "name": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64",
+          "entryType": "navigation",
+          "startTime": 0,
+          "duration": 2439.5,
+          "initiatorType": "navigation",
+          "deliveryType": "",
+          "nextHopProtocol": "h2",
+          "renderBlockingStatus": "non-blocking",
+          "contentType": "text/html",
+          "contentEncoding": "br",
+          "workerStart": 0,
+          "workerRouterEvaluationStart": 0,
+          "workerCacheLookupStart": 0,
+          "workerMatchedSourceType": "",
+          "workerFinalSourceType": "",
+          "redirectStart": 0,
+          "redirectEnd": 0,
+          "fetchStart": 37.800000000046566,
+          "domainLookupStart": 37.800000000046566,
+          "domainLookupEnd": 37.800000000046566,
+          "connectStart": 37.800000000046566,
+          "secureConnectionStart": 37.800000000046566,
+          "connectEnd": 37.800000000046566,
+          "requestStart": 265.6000000000349,
+          "responseStart": 590.7000000000116,
+          "firstInterimResponseStart": 0,
+          "finalResponseHeadersStart": 590.7000000000116,
+          "responseEnd": 617.3000000000466,
+          "transferSize": 17418,
+          "encodedBodySize": 17118,
+          "decodedBodySize": 46114,
+          "responseStatus": 200,
+          "serverTiming": [
+            {
+              "name": "inner",
+              "duration": 134,
+              "description": ""
+            },
+            {
+              "name": "bd-edenx-server-loader-layout",
+              "duration": 94.99979,
+              "description": ""
+            },
+            {
+              "name": "bd-edenx-server-loader",
+              "duration": 97.000122,
+              "description": ""
+            },
+            {
+              "name": "bd-edenx-ssr-render-shell",
+              "duration": 3.000021,
+              "description": ""
+            },
+            {
+              "name": "bd-edenx-server-handle-request",
+              "duration": 105.999946,
+              "description": ""
+            },
+            {
+              "name": "cdn-cache",
+              "duration": 0,
+              "description": "MISS"
+            },
+            {
+              "name": "edge",
+              "duration": 58,
+              "description": ""
+            },
+            {
+              "name": "origin",
+              "duration": 152,
+              "description": ""
+            }
+          ],
+          "unloadEventStart": 0,
+          "unloadEventEnd": 0,
+          "domInteractive": 1161.8000000000466,
+          "domContentLoadedEventStart": 1161.9000000000233,
+          "domContentLoadedEventEnd": 1161.9000000000233,
+          "domComplete": 2438.8000000000466,
+          "loadEventStart": 2438.9000000000233,
+          "loadEventEnd": 2439.5,
+          "type": "navigate",
+          "redirectCount": 0,
+          "activationStart": 0,
+          "criticalCHRestart": 0,
+          "notRestoredReasons": null,
+          "confidence": {
+            "randomizedTriggerRate": 0.4994798,
+            "value": "high"
+          }
+        }
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "7675972323816048182",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "5d7d3db5-7965-4398-bc3e-c065b922df2b",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64",
+        "timestamp": 1787207026452,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/authorization",
+        "view_id": "/authorization_1787207025252",
+        "context": {
+          "deploy_region": "cn"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    },
+    {
+      "ev_type": "http",
+      "payload": {
+        "api": "xhr",
+        "request": {
+          "url": "https://api.trae.cn/cloudide/api/v3/trae/GetUserInfo",
+          "method": "post",
+          "headers": {
+            "accept": "application/json, text/plain, */*",
+            "traceparent": "03-7004f14e5842dd9ee62441ec4679041d-6e18ef784ec66e24-01"
+          },
+          "timestamp": 1787207026002
+        },
+        "response": {
+          "status": 200,
+          "is_custom_error": false,
+          "timestamp": 1787207026344,
+          "headers": {
+            "content-type": "application/json"
+          },
+          "timing": {
+            "name": "https://api.trae.cn/cloudide/api/v3/trae/GetUserInfo",
+            "entryType": "resource",
+            "startTime": 2013.7000000000116,
+            "duration": 339.70000000001164,
+            "initiatorType": "xmlhttprequest",
+            "deliveryType": "",
+            "nextHopProtocol": "h2",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "application/json",
+            "contentEncoding": "br",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 2013.7000000000116,
+            "domainLookupStart": 2013.7000000000116,
+            "domainLookupEnd": 2013.7000000000116,
+            "connectStart": 2013.7000000000116,
+            "secureConnectionStart": 2013.7000000000116,
+            "connectEnd": 2013.7000000000116,
+            "requestStart": 2159.8000000000466,
+            "responseStart": 2312.8000000000466,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 2312.8000000000466,
+            "responseEnd": 2353.4000000000233,
+            "transferSize": 677,
+            "encodedBodySize": 377,
+            "decodedBodySize": 650,
+            "responseStatus": 200,
+            "serverTiming": [
+              {
+                "name": "inner",
+                "duration": 62,
+                "description": ""
+              },
+              {
+                "name": "tt_agw",
+                "duration": 53,
+                "description": ""
+              },
+              {
+                "name": "cdn-cache",
+                "duration": 0,
+                "description": "MISS"
+              },
+              {
+                "name": "edge",
+                "duration": 0,
+                "description": ""
+              },
+              {
+                "name": "origin",
+                "duration": 97,
+                "description": ""
+              }
+            ]
+          }
+        },
+        "duration": 342
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "7675972323816048182",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "5d7d3db5-7965-4398-bc3e-c065b922df2b",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64",
+        "timestamp": 1787207026002,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/authorization",
+        "view_id": "/authorization_1787207025252",
+        "context": {
+          "deploy_region": "cn"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    },
+    {
+      "ev_type": "http",
+      "payload": {
+        "api": "xhr",
+        "request": {
+          "url": "https://abtestvm.bytedance.com/service/2/abtest_config/",
+          "method": "post",
+          "headers": {
+            "content-type": "application/json; charset=utf-8"
+          },
+          "timestamp": 1787207026124
+        },
+        "response": {
+          "status": 200,
+          "is_custom_error": false,
+          "timestamp": 1787207026374,
+          "headers": {
+            "content-type": "application/json; charset=utf-8"
+          },
+          "timing": {
+            "name": "https://abtestvm.bytedance.com/service/2/abtest_config/",
+            "entryType": "resource",
+            "startTime": 2135.9000000000233,
+            "duration": 248.5,
+            "initiatorType": "xmlhttprequest",
+            "deliveryType": "",
+            "nextHopProtocol": "h2",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "application/json",
+            "contentEncoding": "br",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 2135.9000000000233,
+            "domainLookupStart": 2135.9000000000233,
+            "domainLookupEnd": 2135.9000000000233,
+            "connectStart": 2135.9000000000233,
+            "secureConnectionStart": 2135.9000000000233,
+            "connectEnd": 2135.9000000000233,
+            "requestStart": 2166.100000000035,
+            "responseStart": 2380.100000000035,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 2380.100000000035,
+            "responseEnd": 2384.4000000000233,
+            "transferSize": 641,
+            "encodedBodySize": 341,
+            "decodedBodySize": 747,
+            "responseStatus": 200,
+            "serverTiming": [
+              {
+                "name": "inner",
+                "duration": 11,
+                "description": ""
+              },
+              {
+                "name": "cdn-cache",
+                "duration": 0,
+                "description": "MISS"
+              },
+              {
+                "name": "edge",
+                "duration": 0,
+                "description": ""
+              },
+              {
+                "name": "origin",
+                "duration": 94,
+                "description": ""
+              }
+            ]
+          }
+        },
+        "duration": 250
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "7675972323816048182",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "5d7d3db5-7965-4398-bc3e-c065b922df2b",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64",
+        "timestamp": 1787207026124,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/authorization",
+        "view_id": "/authorization_1787207025252",
+        "context": {
+          "deploy_region": "cn",
+          "biz_user_id": "1554024524166871",
+          "user_id": "7675972323816048182",
+          "user_is_login": "true"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    },
+    {
+      "ev_type": "custom",
+      "payload": {
+        "content": "error_log: rep_url: /cloudide/api/v3/common/GetUserToken, error_code: 20310, log_id: 00000000000000000000000000000000, message: The user is not logged in,, http_status: 401,  error_course: server_error,",
+        "type": "log",
+        "level": "error",
+        "metrics": {},
+        "categories": {
+          "error_type": "error_log",
+          "error_code": "20310",
+          "rep_url": "/cloudide/api/v3/common/GetUserToken"
+        }
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "7675972323816048182",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "5d7d3db5-7965-4398-bc3e-c065b922df2b",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64",
+        "timestamp": 1787207026594,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/authorization",
+        "view_id": "/authorization_1787207025252",
+        "context": {
+          "deploy_region": "cn",
+          "biz_user_id": "1554024524166871",
+          "user_id": "7675972323816048182",
+          "user_is_login": "true"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    },
+    {
+      "ev_type": "http",
+      "payload": {
+        "api": "xhr",
+        "request": {
+          "url": "https://api.trae.cn/cloudide/api/v3/trae/Login?type=",
+          "method": "post",
+          "headers": {
+            "accept": "application/json, text/plain, */*",
+            "content-type": "application/json",
+            "traceparent": "03-394c0f81eb5e005be59f9fda30732c89-0dcde26ca8baf747-01"
+          },
+          "timestamp": 1787207026041
+        },
+        "response": {
+          "status": 200,
+          "is_custom_error": false,
+          "timestamp": 1787207026495,
+          "headers": {
+            "content-type": "application/json"
+          },
+          "timing": {
+            "name": "https://api.trae.cn/cloudide/api/v3/trae/Login?type=&msToken=v5oMtNDmilOobxUoUISL65iShJXapW2G0EUxDc9m_WqkbStpt_QNFCjwF-OmvbE2zuEQvu286T0P2G7XOcY0VQPMeUCgfwbcI_EdcJ1LGCqzdLBddhHmdnUpBG7qyeIunwS6OcK40wsFlB2U9AxuCnpEeiY6mFxNUUlkuvHJPpkkmaJYxyuptQ%3D%3D&a_bogus=dj05hFWyx2%2FVFpebmCjoyUAXLwR%2FNsuy2eTdSTwF9xYjLh0GWaMAKHp9aPFvBzcTUSmYiF17Sn8yYEVPNgTc5H9pFmkfux4Rlt2IVX0o8qqfTFGMDr8kC0Yzww0c8YTL-AQIiHh5UsBqgVKIVHKKlxMa95FnmbuQRrpnd2L9bDS0pTLT9n%2FcenLWvHf%3D",
+            "entryType": "resource",
+            "startTime": 2072.4000000000233,
+            "duration": 430.29999999998836,
+            "initiatorType": "xmlhttprequest",
+            "deliveryType": "",
+            "nextHopProtocol": "h2",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "application/json",
+            "contentEncoding": "br",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 2072.4000000000233,
+            "domainLookupStart": 2072.4000000000233,
+            "domainLookupEnd": 2072.4000000000233,
+            "connectStart": 2072.4000000000233,
+            "secureConnectionStart": 2072.4000000000233,
+            "connectEnd": 2072.4000000000233,
+            "requestStart": 2285.100000000035,
+            "responseStart": 2498.600000000035,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 2498.600000000035,
+            "responseEnd": 2502.7000000000116,
+            "transferSize": 433,
+            "encodedBodySize": 133,
+            "decodedBodySize": 224,
+            "responseStatus": 200,
+            "serverTiming": [
+              {
+                "name": "inner",
+                "duration": 86,
+                "description": ""
+              },
+              {
+                "name": "tt_agw",
+                "duration": 72,
+                "description": ""
+              },
+              {
+                "name": "cdn-cache",
+                "duration": 0,
+                "description": "MISS"
+              },
+              {
+                "name": "edge",
+                "duration": 8,
+                "description": ""
+              },
+              {
+                "name": "origin",
+                "duration": 121,
+                "description": ""
+              }
+            ]
+          }
+        },
+        "duration": 454
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "7675972323816048182",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "5d7d3db5-7965-4398-bc3e-c065b922df2b",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64",
+        "timestamp": 1787207026041,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/authorization",
+        "view_id": "/authorization_1787207025252",
+        "context": {
+          "deploy_region": "cn"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    },
+    {
+      "ev_type": "http",
+      "payload": {
+        "api": "fetch",
+        "request": {
+          "method": "get",
+          "timestamp": 1787207025315,
+          "url": "https://www.trae.cn/api/tcc/commerce?key=errorMessageConfig",
+          "headers": {
+            "accept": "application/json,*/*;q=0.8"
+          }
+        },
+        "response": {
+          "status": 200,
+          "is_custom_error": false,
+          "timestamp": 1787207025624,
+          "headers": {
+            "access-control-allow-headers": "Authorization,X-App-Id,Content-Type,X-Tt-Env,X-Use-Boe,X-Use-Ppe,Fp,X-Jwt-Token,X-Ide-Sign,X-Trae-Client-Type",
+            "access-control-allow-methods": "GET,OPTIONS",
+            "access-control-allow-origin": "*",
+            "access-control-max-age": "600",
+            "content-encoding": "br",
+            "content-type": "text/plain; charset=utf-8",
+            "date": "Thu, 20 Aug 2026 06:23:46 GMT",
+            "eagleid": "7014551a17872070263268888e",
+            "server": "Tengine",
+            "server-timing": "inner; dur=11, cdn-cache;desc=MISS,edge;dur=22,origin;dur=30",
+            "strict-transport-security": "max-age=31536000; includeSubDomains",
+            "timing-allow-origin": "*",
+            "vary": "Origin, Access-Control-Request-Headers, Access-Control-Request-Method, Accept-Encoding",
+            "via": "cache30.l2nu20-1[30,0], cache6.cn7995[52,0]",
+            "x-bytefaas-execution-duration": "4.86",
+            "x-bytefaas-request-id": "202608201423467B8877D53635E4C1B773",
+            "x-country-geonameid": "1814991",
+            "x-ggw-asgw-psm": "goofy.deploy.ggw.asgw.2001.2505528",
+            "x-ggw-config-version": "13488045",
+            "x-gw-dst-psm": "goofy_server.cn.2505528",
+            "x-powered-by": "Goofy Node",
+            "x-tt-logid": "202608201423467B8877D53635E4C1B773",
+            "x-tt-trace-host": "01207a981426127d02143837b6aace09ad8518013d4069bfb0df04b2899b337ceb18ee1151483daa38818ca0d60e8ec5994ba4642349564fe85427d1968514d8675a749e6e42325d6bc87acf0527ba268859b41047b24792b1e9de493a499180b9",
+            "x-tt-trace-id": "00-2608201423467B8877D53635E4C1B773-2CF27CC1A5945A5C-00",
+            "x-tt-trace-tag": "id=03;cdn-cache=miss;type=dyn"
+          },
+          "timing": {
+            "name": "https://www.trae.cn/api/tcc/commerce?key=errorMessageConfig",
+            "entryType": "resource",
+            "startTime": 1326.5,
+            "duration": 308.20000000001164,
+            "initiatorType": "fetch",
+            "deliveryType": "",
+            "nextHopProtocol": "h2",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "text/plain",
+            "contentEncoding": "br",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 1326.5,
+            "domainLookupStart": 1326.5,
+            "domainLookupEnd": 1326.5,
+            "connectStart": 1326.5,
+            "secureConnectionStart": 1326.5,
+            "connectEnd": 1326.5,
+            "requestStart": 1336.600000000035,
+            "responseStart": 1624.600000000035,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 1624.600000000035,
+            "responseEnd": 1634.7000000000116,
+            "transferSize": 503,
+            "encodedBodySize": 203,
+            "decodedBodySize": 475,
+            "responseStatus": 200,
+            "serverTiming": [
+              {
+                "name": "inner",
+                "duration": 11,
+                "description": ""
+              },
+              {
+                "name": "cdn-cache",
+                "duration": 0,
+                "description": "MISS"
+              },
+              {
+                "name": "edge",
+                "duration": 22,
+                "description": ""
+              },
+              {
+                "name": "origin",
+                "duration": 30,
+                "description": ""
+              }
+            ]
+          }
+        },
+        "duration": 309
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "7675972323816048182",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "5d7d3db5-7965-4398-bc3e-c065b922df2b",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64",
+        "timestamp": 1787207025315,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/authorization",
+        "view_id": "/authorization_1787207025252",
+        "context": {
+          "deploy_region": "cn"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    },
+    {
+      "ev_type": "http",
+      "payload": {
+        "api": "xhr",
+        "request": {
+          "url": "https://bat.bing.com/p/conversions/c/e",
+          "method": "post",
+          "headers": {
+            "accept": "application/x-webinsights-gzip"
+          },
+          "timestamp": 1787207026144
+        },
+        "response": {
+          "status": 200,
+          "is_custom_error": false,
+          "timestamp": 1787207026556,
+          "headers": {
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "timing": {
+            "name": "https://bat.bing.com/p/conversions/c/e",
+            "entryType": "resource",
+            "startTime": 2155.5,
+            "duration": 406.4000000000233,
+            "initiatorType": "xmlhttprequest",
+            "deliveryType": "",
+            "nextHopProtocol": "",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "text/plain",
+            "contentEncoding": "",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 2155.5,
+            "domainLookupStart": 0,
+            "domainLookupEnd": 0,
+            "connectStart": 0,
+            "secureConnectionStart": 0,
+            "connectEnd": 0,
+            "requestStart": 0,
+            "responseStart": 0,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 0,
+            "responseEnd": 2561.9000000000233,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0,
+            "responseStatus": 200,
+            "serverTiming": []
+          }
+        },
+        "duration": 412
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "7675972323816048182",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "5d7d3db5-7965-4398-bc3e-c065b922df2b",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64",
+        "timestamp": 1787207026144,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/authorization",
+        "view_id": "/authorization_1787207025252",
+        "context": {
+          "deploy_region": "cn",
+          "biz_user_id": "1554024524166871",
+          "user_id": "7675972323816048182",
+          "user_is_login": "true"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    },
+    {
+      "ev_type": "http",
+      "payload": {
+        "api": "xhr",
+        "request": {
+          "url": "https://api.trae.cn/cloudide/api/v3/common/GetUserToken",
+          "method": "post",
+          "headers": {
+            "accept": "application/json, text/plain, */*",
+            "traceparent": "03-7e6074ec46d76a1cfa849da425feaf68-79951a3f8a968799-01"
+          },
+          "timestamp": 1787207026347
+        },
+        "response": {
+          "status": 401,
+          "is_custom_error": false,
+          "timestamp": 1787207026590,
+          "headers": {
+            "content-length": "329",
+            "content-type": "application/json"
+          },
+          "timing": {
+            "name": "https://api.trae.cn/cloudide/api/v3/common/GetUserToken",
+            "entryType": "resource",
+            "startTime": 2358.7000000000116,
+            "duration": 236.10000000003492,
+            "initiatorType": "xmlhttprequest",
+            "deliveryType": "",
+            "nextHopProtocol": "h2",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "application/json",
+            "contentEncoding": "",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 2358.7000000000116,
+            "domainLookupStart": 2358.7000000000116,
+            "domainLookupEnd": 2358.7000000000116,
+            "connectStart": 2358.7000000000116,
+            "secureConnectionStart": 2358.7000000000116,
+            "connectEnd": 2358.7000000000116,
+            "requestStart": 2471.7000000000116,
+            "responseStart": 2579.3000000000466,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 2579.3000000000466,
+            "responseEnd": 2594.8000000000466,
+            "transferSize": 629,
+            "encodedBodySize": 329,
+            "decodedBodySize": 329,
+            "responseStatus": 401,
+            "serverTiming": [
+              {
+                "name": "inner",
+                "duration": 40,
+                "description": ""
+              },
+              {
+                "name": "tt_agw",
+                "duration": 25,
+                "description": ""
+              },
+              {
+                "name": "cdn-cache",
+                "duration": 0,
+                "description": "MISS"
+              },
+              {
+                "name": "edge",
+                "duration": 0,
+                "description": ""
+              },
+              {
+                "name": "origin",
+                "duration": 72,
+                "description": ""
+              }
+            ]
+          }
+        },
+        "duration": 243
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "7675972323816048182",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "5d7d3db5-7965-4398-bc3e-c065b922df2b",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64",
+        "timestamp": 1787207026347,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/authorization",
+        "view_id": "/authorization_1787207025252",
+        "context": {
+          "deploy_region": "cn",
+          "biz_user_id": "1554024524166871",
+          "user_id": "7675972323816048182",
+          "user_is_login": "true"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    },
+    {
+      "ev_type": "http",
+      "payload": {
+        "api": "xhr",
+        "request": {
+          "url": "https://api.trae.cn/cloudide/api/v3/trae/GetUserInfo",
+          "method": "post",
+          "headers": {
+            "accept": "application/json, text/plain, */*",
+            "traceparent": "03-1d6ebc882130ce8547438dd13db7b4f9-21cdbb5b3f97e294-01"
+          },
+          "timestamp": 1787207026496
+        },
+        "response": {
+          "status": 200,
+          "is_custom_error": false,
+          "timestamp": 1787207026625,
+          "headers": {
+            "content-type": "application/json"
+          },
+          "timing": {
+            "name": "https://api.trae.cn/cloudide/api/v3/trae/GetUserInfo",
+            "entryType": "resource",
+            "startTime": 2508.3000000000466,
+            "duration": 123.59999999997672,
+            "initiatorType": "xmlhttprequest",
+            "deliveryType": "",
+            "nextHopProtocol": "h2",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "application/json",
+            "contentEncoding": "br",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 2508.3000000000466,
+            "domainLookupStart": 2508.3000000000466,
+            "domainLookupEnd": 2508.3000000000466,
+            "connectStart": 2508.3000000000466,
+            "secureConnectionStart": 2508.3000000000466,
+            "connectEnd": 2508.3000000000466,
+            "requestStart": 2520.100000000035,
+            "responseStart": 2627.7000000000116,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 2627.7000000000116,
+            "responseEnd": 2631.9000000000233,
+            "transferSize": 676,
+            "encodedBodySize": 376,
+            "decodedBodySize": 650,
+            "responseStatus": 200,
+            "serverTiming": [
+              {
+                "name": "inner",
+                "duration": 55,
+                "description": ""
+              },
+              {
+                "name": "tt_agw",
+                "duration": 49,
+                "description": ""
+              },
+              {
+                "name": "cdn-cache",
+                "duration": 0,
+                "description": "MISS"
+              },
+              {
+                "name": "edge",
+                "duration": 0,
+                "description": ""
+              },
+              {
+                "name": "origin",
+                "duration": 85,
+                "description": ""
+              }
+            ]
+          }
+        },
+        "duration": 129
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "7675972323816048182",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "5d7d3db5-7965-4398-bc3e-c065b922df2b",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64",
+        "timestamp": 1787207026496,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/authorization",
+        "view_id": "/authorization_1787207025252",
+        "context": {
+          "deploy_region": "cn",
+          "biz_user_id": "1554024524166871",
+          "user_id": "7675972323816048182",
+          "user_is_login": "true"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    },
+    {
+      "ev_type": "http",
+      "payload": {
+        "api": "xhr",
+        "request": {
+          "url": "https://j.clarity.ms/collect",
+          "method": "post",
+          "headers": {
+            "accept": "application/x-clarity-gzip"
+          },
+          "timestamp": 1787207026522
+        },
+        "response": {
+          "status": 200,
+          "is_custom_error": false,
+          "timestamp": 1787207027438,
+          "headers": {
+            "content-length": "7",
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "timing": {
+            "name": "https://j.clarity.ms/collect",
+            "entryType": "resource",
+            "startTime": 2533.7000000000116,
+            "duration": 912.4000000000233,
+            "initiatorType": "xmlhttprequest",
+            "deliveryType": "",
+            "nextHopProtocol": "",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "text/plain",
+            "contentEncoding": "",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 2533.7000000000116,
+            "domainLookupStart": 0,
+            "domainLookupEnd": 0,
+            "connectStart": 0,
+            "secureConnectionStart": 0,
+            "connectEnd": 0,
+            "requestStart": 0,
+            "responseStart": 0,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 0,
+            "responseEnd": 3446.100000000035,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0,
+            "responseStatus": 200,
+            "serverTiming": []
+          }
+        },
+        "duration": 916
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "7675972323816048182",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "5d7d3db5-7965-4398-bc3e-c065b922df2b",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64",
+        "timestamp": 1787207026522,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/authorization",
+        "view_id": "/authorization_1787207025252",
+        "context": {
+          "deploy_region": "cn",
+          "biz_user_id": "1554024524166871",
+          "user_id": "7675972323816048182",
+          "user_is_login": "true"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+POST https://api5-normal.mchost.guru/api/solo_hub/v1/clis/register HTTP/2
+:method: POST
+:authority: api5-normal.mchost.guru
+:scheme: https
+:path: /api/solo_hub/v1/clis/register
+content-length: 234
+accept-encoding: gzip, deflate, br, zstd
+sec-fetch-dest: empty
+sec-fetch-mode: no-cors
+sec-fetch-site: none
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+content-type: application/json
+request-traffic-type: prod
+x-app-id: 6eefa01c-1036-4c7e-9ca5-d891f63bfcd8
+x-app-version: default
+x-app-version-code: 20260811
+x-bridge-transport: aha
+x-custom-trace-id: 141d263551cababdb0d131dfcde7bcc4
+x-device-brand: 82JW
+x-device-cpu: AMD
+x-device-id: 3798161405005257
+x-device-type: windows
+x-frontier-id: 6314809709597590163
+x-hub-version: 1
+x-ide-token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTAwMDk4NTI1MzM4MDUzOCIsInNvdXJjZSI6InJlZnJlc2hfdG9rZW4iLCJzb3VyY2VfaWQiOiJIbFVqbUxTUmJ1VE9OanF1bDA1d1FUdXlJUDRZcy12WXJILTNHRkRjZnA4PS4xOGNiZTljYzJmNjQ5MDIyIiwidGVuYW50X2lkIjoiN28yZDg5NHA3ZHIwbzQiLCJ0eXBlIjoidXNlciJ9LCJleHAiOjE3ODc5ODgzNDAsImlhdCI6MTc4Njc3ODc0MH0.KJkQvfHXqlJoX9EMzMLxD7ydGkyDHQNAqi4bh-x3rd0isntfMGLa67QjTgMe6hb2JWLOmhhcd2i-KL0-uZMRxBqCKdlGcAc9jYGihcNDLihRR56QiICspWRE-hZ7C0H-noTUMhDJ-EGBD4j68CLtfOBb8oPZIC_bl4Fn9O52Dqnu14_kEvFdDhNEPMdmVgFyc5EJPo-1tSR2C3lGxcLQsW1dc0pEjD6iiNW-0s5BrCbf94Tjfyh8u1hwvqaRLjQdizI-pQmQzFgBJKWRwzVeNwCX7ju5QxTvAZfEAoayuMFZ_5HoSHB_J4atsJskMFWppWEeqQkA0ktxCulBHX_YieAeH3-dhLDP5nZeAiGB3DX-BcGVz1mW33AlzAbRuOvisoyqRql5HJULF6SLoxuzFA5omj4mESPcmjQ5q88w4R_EZpOcRkuQ7Z9TUTWMZe__TXX5V0Z-lvzAKnHo16BFZGlgde2B62HA0vVb20cAJmgn_iijN_KERb8dKOFhwxiYg1yAkM36BjLrZG3UGE0WrQPG0RnMtw8MZrfmb8_JybHAiGLJB1--yPz12e_8lupLtYN6bQwfrjFeambOWKVxm4PFUddN9Mb85_LD6us_TOK-QzqiAnyEbgwedSfaEJTAY5NIkd29pV1FTLOOlTk_IUPChojuwWtDw8LAr0D_9fc
+x-ide-version: 0.1.50
+x-ide-version-code: 20260811
+x-ide-version-type: stable
+x-lgw-req-sdk-type: 3
+x-machine-id: 0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51
+x-os-version: Windows 11 Pro
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.50
+x-request-id: req_1b18eea5-429b-499f-9766-e23ca945eff2
+accept: */*
+x-ss-dp: 787976
+x-tt-trace-id: 00-044ff3120dd7e685d584dc9a3cadffff-044ff3120dd7e685-01
+referer: https://trae-api-cn.mchost.guru/api/solo_hub/v1/clis/register
+x-helios: f04AANL37SzryEB/OSqOxiJlExsLrYIva4/Exxq2+eC2KUTK
+x-medusa: exSAao/835Cvw1xRrj5IGi/b4XI7PAMBPYyPLiBAEbc1GTdcqgPEKR6Hve5Ou1MTRG4Y/SqKZNXmpA0nTCfmupth14e7IEfOMNA8bIA5a9iCkZVhc+eIIGtp1wAvIy1tDWxIeuAPy9FSDpqGLZTL6LIjpptwq1CubP5vtOWWp0Bss93LLV7zlpesvrGmlxtNtvcqkWHvZgOnaRZh0JKk8MZqvuUaRIsKtaFpNZTrKLE4cyMuM+B51dy4n5tT5MSxsGumSvOu6/JQEdBeBFP6fgJvqXF1oz8SNuloYL+WsFaOReRqJpt92et0xxLgU89u1lvWisV4YFgGarRJn3te95mLB4V9Y9LgIuC/wVmB0VU7kyMImdfdf8+unrTWs3nOY1Y5Ma+iqVCSDf+4nUPN8yAojnDRI+3l6U7o3Vx+JbjGuOm2Eo6x+jQ7DMe/qggsYBEA9jrKInmIXslm32cClTYFYetx2xn9cbSm0yvbjxNnWGVEwca9ijvg0w5T/cOXknU/Pmm7D3JS0ZhGgL4/4UxygIqCqTD6zEAyxZ2KYhVghM50vEIDF21Ee32fVke3kMTSfbAnw2wFt2W5YsnTjtL4bUtxwxaXF5Y1v0VI8M+Kgeuw3yhdfDkTAKCc4FgnN9gZAXuEMLirXXIQXcYF3OOlL7dCFx/efm8s9S/frz9PL9tNF41v59+pJyw40BupJ/jmIeKS6z9wFk+Ry9/pS8xayi1eOBxdl4/9Z802Pocs67lrcafJT+dO1LhPZ3UJ5SOcaJXQByAfZfv9////////AAA=
+x-neptune: -11|50:51:59:00:09

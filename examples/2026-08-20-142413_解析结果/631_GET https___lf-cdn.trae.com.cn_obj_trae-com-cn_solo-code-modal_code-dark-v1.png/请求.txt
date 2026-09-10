@@ -1,0 +1,25 @@
+GET https://lf-cdn.trae.com.cn/obj/trae-com-cn/solo-code-modal/code-dark-v1.png HTTP/2
+:method: GET
+:authority: lf-cdn.trae.com.cn
+:scheme: https
+:path: /obj/trae-com-cn/solo-code-modal/code-dark-v1.png
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+sec-fetch-dest: empty
+sec-fetch-mode: no-cors
+sec-fetch-site: cross-site
+sec-fetch-storage-access: active
+sec-purpose: prefetch
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Chromium";v="142"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: 4df660ae-727b-4471-9542-7ba7e86d0050
+x-tt-trace-id: 00-1dd6e2920d945686928468ad01f1ffff-1dd6e2920d945686-01
+smbyttnet: 1

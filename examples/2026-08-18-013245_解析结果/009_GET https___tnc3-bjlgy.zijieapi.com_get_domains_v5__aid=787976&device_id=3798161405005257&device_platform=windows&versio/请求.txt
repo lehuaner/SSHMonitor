@@ -1,0 +1,12 @@
+GET https://tnc3-bjlgy.zijieapi.com/get_domains/v5/?aid=787976&device_id=3798161405005257&device_platform=windows&version_code=0151&app_name=SOLO%20CN&cronet_version=992a646e_2026-06-12&ttnet_version=4.2.243.19-trae&tnc_src=1&delay=0 HTTP/2
+:method: GET
+:authority: tnc3-bjlgy.zijieapi.com
+:scheme: https
+:path: /get_domains/v5/?aid=787976&device_id=3798161405005257&device_platform=windows&version_code=0151&app_name=SOLO%20CN&cronet_version=992a646e_2026-06-12&ttnet_version=4.2.243.19-trae&tnc_src=1&delay=0
+local-etag: e4f24584-0d36effc-548692dd-558a3d0e
+app-version: 0.1.51
+package-type: stable_cn
+x-tt-tnc-summary: e4f245840d36effc548692dd558a3d0e
+user-agent: Cronet/TTNetVersion:992a646e 2026-06-12 QuicVersion:40cc763c 2025-07-01
+accept-encoding: gzip, deflate, br
+smbyttnet: 1

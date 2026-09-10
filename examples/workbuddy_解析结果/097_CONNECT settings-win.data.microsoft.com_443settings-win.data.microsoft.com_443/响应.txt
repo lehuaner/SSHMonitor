@@ -1,0 +1,81 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 00:38:28.669
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=settings-win.data.microsoft.com, OU=WSE, O=Microsoft, L=Redmond, S=WA, C=US
+  Simple Name: settings-win.data.microsoft.com
+  DNS Name: settings-win.data.microsoft.com
+
+[Issuer]
+  CN=Microsoft Secure Server CA 2011, O=Microsoft Corporation, L=Redmond, S=Washington, C=US
+  Simple Name: Microsoft Secure Server CA 2011
+  DNS Name: Microsoft Secure Server CA 2011
+
+[Serial Number]
+  3300000413A65D07E741456BFF000000000413
+
+[Not Before]
+  2025/10/24 4:56:06
+
+[Not After]
+  2026/10/18 4:56:06
+
+[Thumbprint]
+  C46B1C2FF61523E4FDE09521788776BD6BCC6438
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 c7 53 69 9c 60 eb c2 49 0a 0c 1c 43 71 ec 93 b2 a3 40 f2 eb f5 fa 8f 5c 7c a0 17 76 de 43 2e eb 07 db 9a 0a fe b4 f2 3a 9b 4f 5e 74 fc 54 97 9d bc 4d 64 4c 53 49 ac cc 57 e5 87 56 7d d0 ba fc 76 a2 f8 00 b0 a9 1b 0f 37 37 e3 1b 18 fe fa fc 23 96 c5 45 6f e9 a0 10 ad b8 d1 d7 00 e6 78 44 48 67 e9 68 79 8e 3a f6 cd f6 51 cd 79 c9 6c 2b 73 02 86 8b 8e ae b9 91 6f 32 c0 b5 7c 38 e1 3b 4c ea 36 af 53 99 14 a7 94 1a 2e 18 64 aa 72 9e e9 09 82 77 b8 37 ca 40 4b 37 78 d1 de 35 00 a3 3f c4 b0 34 16 52 3e 74 04 85 8a 49 b5 ce 2c a1 7d 6c 89 1c 03 a6 3b 49 58 b5 f4 de 30 8c f7 14 ea eb d7 ec 42 50 a3 da 97 d2 36 bc a1 13 24 ff f4 3b d0 04 9d bf cd 7f f7 bb 62 36 65 15 16 e0 e4 ec 46 84 fa 43 28 7f 0d d9 d7 b3 e9 a4 d1 69 0b ba 22 d6 c8 d8 a5 b9 00 d4 9b 13 6d 7f b0 d1 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 密钥用法(2.5.29.15):
+  Digital Signature, Non-Repudiation, Key Encipherment, Data Encipherment (f0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+客户端身份验证 (1.3.6.1.5.5.7.3.2)
+
+* 使用者密钥标识符(2.5.29.14):
+  42ed4042a99aef94222a8451b12cae2f62df99c8
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=settings-win.data.microsoft.com
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=3656896549cb5b9b2f3cac4216504d91b933d791
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://www.microsoft.com/pkiops/crl/MicSecSerCA2011_2011-10-18.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://www.microsoft.com/pkiops/certs/MicSecSerCA2011_2011-10-18.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+
+[SubjectAltNames]
+DNS Name=settings-win.data.microsoft.com
+

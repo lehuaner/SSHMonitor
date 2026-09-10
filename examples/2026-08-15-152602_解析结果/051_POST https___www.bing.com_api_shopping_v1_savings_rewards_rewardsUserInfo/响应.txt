@@ -1,0 +1,17 @@
+HTTP/2 200
+cache-control: max-age=0, no-cache, no-store, must-revalidate
+content-length: 264
+content-type: application/json; charset=utf-8
+access-control-allow-credentials: true
+access-control-allow-origin: *
+x-falcon-ref: Ref A: 3655647224144EC69A22115B39F750C0 Ref B: SC-KORS-JGQ89_AKS-GEN10-88885062-VMSS00000C_FABRICROUTER-58DC575BBC-X5JFD Ref C: 2026-08-15T07:25:36Z
+x-falcon-routerstatuscode: SuccessfullyForwarded (200)
+accept-ch: Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+x-msedge-ref: Ref A: 3655647224144EC69A22115B39F750C0 Ref B: TYO601100902060 Ref C: 2026-08-15T07:25:36Z
+date: Sat, 15 Aug 2026 07:25:36 GMT
+set-cookie: _EDGE_S=F=1&SID=1DD22995EDA4681E391F3E23ECC969EF; path=/; httponly; domain=bing.com
+set-cookie: _EDGE_V=1; path=/; httponly; expires=Thu, 09-Sep-2027 07:25:36 GMT; domain=bing.com
+set-cookie: MUID=349955E1A512679B380D4257A47F6603; samesite=none; path=/; secure; expires=Thu, 09-Sep-2027 07:25:36 GMT; domain=bing.com
+set-cookie: MUIDB=349955E1A512679B380D4257A47F6603; path=/; httponly; expires=Thu, 09-Sep-2027 07:25:36 GMT
+alt-svc: h3=":443"; ma=93600
+x-cdn-traceid: 0.2e2ec017.1786778736.755935e

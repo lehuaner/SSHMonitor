@@ -1,0 +1,17 @@
+HTTP/1.1 401 Authorization Required
+Content-Type: application/json; charset=utf-8
+Set-Cookie: tgw_l7_route=fdbdc2fac5b1eecd45318390a9b62ba6; Expires=Tue, 08-Sep-2026 09:06:53 GMT; Path=/; sameSite=None; Secure
+Set-Cookie: session=; Path=/v2; Max-Age=0; Expires=Thu, 01-Jan-70 00:00:00 GMT; HttpOnly
+Traceid: 402837c9e32f71277308f6789c51e092
+X-Request-Id: f6a28960-ea41-460b-9243-426317a56474
+Server: APISIX/3.9.1
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS
+Access-Control-Max-Age: 3600
+Access-Control-Expose-Headers: *
+Access-Control-Allow-Headers: *
+Content-Length: 241
+Connection: keep-alive
+Date: Tue, 08 Sep 2026 08:06:53 GMT
+EO-LOG-UUID: 14437303184864564058
+EO-Cache-Status: MISS

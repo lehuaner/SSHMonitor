@@ -1,0 +1,14 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "8041ad34-9d21-46d3-96dd-ea2f2ed0be47",
+  "data": {
+    "subscribe_task": {
+      "task_code": "",
+      "subscribed": false,
+      "remaining_seconds": 0,
+      "task_status": "none",
+      "advanced": false
+    }
+  }
+}

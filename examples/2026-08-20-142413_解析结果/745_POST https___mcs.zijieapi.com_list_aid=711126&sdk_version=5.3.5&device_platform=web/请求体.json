@@ -1,0 +1,48 @@
+[
+  {
+    "events": [
+      {
+        "event": "__bav_page_statistics",
+        "params": "{\"is_html\":1,\"page_key\":\"https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64\",\"refer_page_key\":\"\",\"page_title\":\"Authorization | TRAE - 复杂工作，就用 TraeWork\",\"page_manual_key\":\"\",\"refer_page_manual_key\":\"\",\"page_init_cost_ms\":2700,\"page_start_ms\":1787207023988,\"event_index\":1787207126258}",
+        "local_time_ms": 1787207026700,
+        "is_bav": 1,
+        "session_id": "1a42d621-1937-42f8-94dc-f637d39d8f08"
+      }
+    ],
+    "user": {
+      "user_unique_id": "7675972323816048182",
+      "user_id": "1554024524166871",
+      "user_is_login": true
+    },
+    "header": {
+      "app_id": 711126,
+      "os_name": "windows",
+      "os_version": "10",
+      "device_model": "Windows NT 10.0",
+      "language": "zh-CN",
+      "region": "China-North",
+      "platform": "web",
+      "sdk_version": "5.3.5",
+      "sdk_lib": "js",
+      "timezone": 8,
+      "tz_offset": -28800,
+      "resolution": "1199x822",
+      "browser": "Microsoft Edge",
+      "browser_version": "148.0.0.0",
+      "referrer": "",
+      "referrer_host": "",
+      "width": 1199,
+      "height": 822,
+      "screen_width": 1199,
+      "screen_height": 822,
+      "utm_term": "trae_bing_sem_dm_pc_cpc_pinp_solo_1",
+      "utm_source": "bing",
+      "utm_medium": "bing_sem",
+      "utm_campaign": "487898715",
+      "tracer_data": "{\"$utm_from_url\":1}",
+      "custom": "{\"network_type\":\"4g\",\"biz_web_id\":\"7675972323816048182\",\"version\":\"1.0.0.1511\",\"env\":\"prod\",\"biz_user_id\":\"1554024524166871\",\"os\":\"Windows\",\"cpu\":\"Unknown\"}"
+    },
+    "local_time": 1787207026,
+    "verbose": 1
+  }
+]

@@ -1,0 +1,18 @@
+POST https://mimo-server-cn.xiaomimimo.com/api/route/chat/completions HTTP/2
+:method: POST
+:authority: mimo-server-cn.xiaomimimo.com
+:scheme: https
+:path: /api/route/chat/completions
+content-length: 8776041
+content-type: application/json
+user-agent: mimocode/desktop-1d6a9fe ai-sdk/provider-utils/4.0.23 runtime/node.js/24
+x-client-version: 26.909.91205
+x-mimo-source: mimocode-cli, mimocode-cli-free
+x-session-affinity: ses_ffe5f7a024d56ffebZA6hX0UVE
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+priority: u=4, i
+cookie: serviceToken=QWCBInjfV6oGgUpi6TW3RSnOYxnUOSZc+X1NPYGmTND3tkSYi9PwL5tYqdaRsUVQ7md+bUWrO2s+NDK7UlKkzvtZZowtr5tpBZhuqQ0CAXzdkuDI4vfoB0fRQ/ntViGaLWaK2VZ5vaMqkSpzmizFS2eb/HKuP9lo+qZGRCfIYlGs0mj8+zOZtFWW5y5F/gDnbdMJzfOUc4LkXwqlT+CpTNBglPj/1UxnutlCzR/8G/UAyaOmpqUgWaDsOQXA5VR9bj3wDMnsluS8oF1FpnYthfQnLFS6lj+NVECsEuL7UluWAakuWL5WJHEAaii+QdOW4fFwhUC6r02XCKwee1y3nwuYtEJOgoLoDIfdmkGWfyE=; userId=2364959618; mimopc_slh=dGpZnpANztDO63Tfm5H6syHMfdo=; mimopc_ph=+7gCMkHMLU4qEJspZgn5ow==

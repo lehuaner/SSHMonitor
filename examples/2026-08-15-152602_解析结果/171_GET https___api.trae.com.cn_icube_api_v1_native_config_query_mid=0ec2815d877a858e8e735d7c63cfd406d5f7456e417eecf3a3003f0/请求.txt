@@ -1,0 +1,22 @@
+GET https://api.trae.com.cn/icube/api/v1/native/config/query?mid=0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51&did=3798161405005257&uid=1000985253380538&userRegion=CN&packageType=stable_cn&productCode=SOLO_Lite&platform=Win&branch=release_solo_win32_cn&arch=x64&tenant=marscode&appVersion=0.1.50&buildVersion=2.3.70844 HTTP/2
+:method: GET
+:authority: api.trae.com.cn
+:scheme: https
+:path: /icube/api/v1/native/config/query?mid=0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51&did=3798161405005257&uid=1000985253380538&userRegion=CN&packageType=stable_cn&productCode=SOLO_Lite&platform=Win&branch=release_solo_win32_cn&arch=x64&tenant=marscode&appVersion=0.1.50&buildVersion=2.3.70844
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+sec-fetch-dest: empty
+sec-fetch-mode: no-cors
+sec-fetch-site: none
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+content-type: application/json
+x-icube-token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTAwMDk4NTI1MzM4MDUzOCIsInNvdXJjZSI6InJlZnJlc2hfdG9rZW4iLCJzb3VyY2VfaWQiOiJIbFVqbUxTUmJ1VE9OanF1bDA1d1FUdXlJUDRZcy12WXJILTNHRkRjZnA4PS4xOGNiZTljYzJmNjQ5MDIyIiwidGVuYW50X2lkIjoiN28yZDg5NHA3ZHIwbzQiLCJ0eXBlIjoidXNlciJ9LCJleHAiOjE3ODc5ODgzNDAsImlhdCI6MTc4Njc3ODc0MH0.KJkQvfHXqlJoX9EMzMLxD7ydGkyDHQNAqi4bh-x3rd0isntfMGLa67QjTgMe6hb2JWLOmhhcd2i-KL0-uZMRxBqCKdlGcAc9jYGihcNDLihRR56QiICspWRE-hZ7C0H-noTUMhDJ-EGBD4j68CLtfOBb8oPZIC_bl4Fn9O52Dqnu14_kEvFdDhNEPMdmVgFyc5EJPo-1tSR2C3lGxcLQsW1dc0pEjD6iiNW-0s5BrCbf94Tjfyh8u1hwvqaRLjQdizI-pQmQzFgBJKWRwzVeNwCX7ju5QxTvAZfEAoayuMFZ_5HoSHB_J4atsJskMFWppWEeqQkA0ktxCulBHX_YieAeH3-dhLDP5nZeAiGB3DX-BcGVz1mW33AlzAbRuOvisoyqRql5HJULF6SLoxuzFA5omj4mESPcmjQ5q88w4R_EZpOcRkuQ7Z9TUTWMZe__TXX5V0Z-lvzAKnHo16BFZGlgde2B62HA0vVb20cAJmgn_iijN_KERb8dKOFhwxiYg1yAkM36BjLrZG3UGE0WrQPG0RnMtw8MZrfmb8_JybHAiGLJB1--yPz12e_8lupLtYN6bQwfrjFeambOWKVxm4PFUddN9Mb85_LD6us_TOK-QzqiAnyEbgwedSfaEJTAY5NIkd29pV1FTLOOlTk_IUPChojuwWtDw8LAr0D_9fc
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-request-id: 87d82fa6-bf5a-4088-a545-a12ce2b7139d
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.50
+accept: */*
+x-tt-trace-id: 00-044feea30dd7e685d584dc935b93ffff-044feea30dd7e685-01
+smbyttnet: 1

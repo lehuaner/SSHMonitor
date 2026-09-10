@@ -1,0 +1,117 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 00:38:10.444
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.2
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.m.qq.com, O=Tencent Technology (Shenzhen) Company Limited, L=Shenzhen, S=Guangdong Province, C=CN
+  Simple Name: *.m.qq.com
+  DNS Name: *.m.qq.com
+
+[Issuer]
+  CN=DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1, O="DigiCert, Inc.", C=US
+  Simple Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+  DNS Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+
+[Serial Number]
+  0821CEE11E223A5D52AB9D4FD8EC3A19
+
+[Not Before]
+  2026/7/8 8:00:00
+
+[Not After]
+  2027/1/23 7:59:59
+
+[Thumbprint]
+  090346BA9FF6D72255DAA2C76B60B7903B05AAA3
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 ce 78 32 65 2f 10 ba 83 d7 e5 2d fa 19 e2 b2 9d 00 81 06 4f c1 1e d8 f3 7f fd 60 b2 bb 03 34 e5 3a 38 3e 10 b6 33 97 ce 11 55 3d 07 fc d4 a2 97 52 6c 72 58 ab 65 27 70 a4 8d 68 af f9 a4 06 11 1c 9b c4 68 90 dd 74 62 01 de 93 9e 70 9d 4c 55 d7 4f 45 4e 47 c0 14 41 9d 8a db b2 f4 9a eb 45 66 51 e7 ca 1b c6 ca 35 86 ea 6a 45 d9 80 fc 04 9b eb f2 a4 b7 07 95 8f a2 6f 40 da aa 30 58 c6 30 51 1d 05 d5 26 8f a4 a3 80 bb 56 82 8b 42 15 72 e8 b2 66 d8 3b 5b a4 84 47 95 37 f9 f4 2f fa e6 ff cb 38 9b 9c db 2d e3 cb 0a e4 5c 7a 78 05 12 50 88 bb da cb 1a b0 d5 49 4d 24 e8 4d 12 7f f7 e2 34 7d 14 e4 da 10 4d b5 d5 59 52 a0 e5 a2 5f c4 1a 8b 82 b2 95 20 c3 c2 85 87 01 68 2d 54 74 4d bb a3 41 39 ba 87 0f c4 93 74 d2 da c0 8e 51 bc 0b 7c c7 2d 76 65 65 38 e5 1d c6 eb 17 27 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=2b2316811b47898a907aece832d46c8e72f9ce25
+
+* 使用者密钥标识符(2.5.29.14):
+  11f71efb732664cf55c197161217c87da94fd901
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.m.qq.com
+DNS Name=m.qq.com
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+客户端身份验证 (1.3.6.1.5.5.7.3.2)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://ocsp.digicert.cn
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+4c63dc98e59c1dab88f61e8a3ddeae8fab44a3377b5f9b94c3fba19cfcc1be26
+‎2026‎年‎7‎月‎8‎日 15:47:23
+SHA256
+ECDSA
+304502202ae591c5fe0ef0a811c830aafae900a538dc1b89f7e46fe842de39fe35c73f420221008be45077a81b650ff65d432fe220d8d4da1e7cf3a2abe2c438b8206054695034
+
+v1
+d6d58da9d01753f36a4aa0c7574902afebc7dc2cd38cd9f764c80c89191e9f02
+‎2026‎年‎7‎月‎8‎日 15:47:23
+SHA256
+ECDSA
+304402202f43bba7ec2115bfb0766afde5e74ea8ed8d48e5411ebc7fa0fe19f327b263ad0220606c61e61a9f254e4b46c2eb985803ce786207f3ac31ad082c86627a90606480
+
+v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎7‎月‎8‎日 15:47:23
+SHA256
+ECDSA
+3045022100cdc84c154220eac0e46c2e109b21c9cc4d4ce89da55019db3e971eabc3e202d802205e517cc02e43060ef7cb2173ad4813d6163c306660d56c8460e3787f882c8ac2
+
+
+[SubjectAltNames]
+DNS Name=*.m.qq.com
+DNS Name=m.qq.com
+

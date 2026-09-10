@@ -1,0 +1,9 @@
+HTTP/2 200
+cache-control: max-age=691200
+content-length: 4505
+content-type: application/json; charset=utf-8
+x-cache: TCP_HIT
+x-falcon-ref: Ref A: 8B680F6737394D9BBC01EFBEBE2DD868 Ref B: SC-KORS-M82QN_AKS-GEN10-32917737-VMSS000004_FABRICROUTER-AZUREGLOBALPRIVATE-7B6F57BCF4-GF8TV Ref C: 2026-08-16T08:09:49Z
+x-falcon-routerstatuscode: SuccessfullyForwarded (200)
+x-msedge-ref: Ref A: D9193D68B00347C6B4EFECE4ABDD6420 Ref B: TYO601100912052 Ref C: 2026-08-20T06:22:22Z
+date: Thu, 20 Aug 2026 06:22:22 GMT

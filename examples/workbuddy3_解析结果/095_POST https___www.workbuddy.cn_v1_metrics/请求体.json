@@ -1,0 +1,165 @@
+{
+  "resourceMetrics": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "login-frontend"
+            }
+          },
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "webjs"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.29.0"
+            }
+          },
+          {
+            "key": "service.version",
+            "value": {
+              "stringValue": "1.0.0"
+            }
+          },
+          {
+            "key": "detectors",
+            "value": {
+              "arrayValue": {
+                "values": [
+                  {
+                    "stringValue": "all"
+                  }
+                ]
+              }
+            }
+          }
+        ],
+        "droppedAttributesCount": 0
+      },
+      "scopeMetrics": [
+        {
+          "scope": {
+            "name": "copilot-metrics-meter",
+            "version": ""
+          },
+          "metrics": [
+            {
+              "name": "login_all",
+              "description": "Total count of page impressions",
+              "unit": "",
+              "sum": {
+                "aggregationTemporality": 2,
+                "isMonotonic": true,
+                "dataPoints": [
+                  {
+                    "attributes": [
+                      {
+                        "key": "uin",
+                        "value": {
+                          "stringValue": "74bb0063b3fc6102da366da3cd9ec235"
+                        }
+                      },
+                      {
+                        "key": "from_source",
+                        "value": {
+                          "stringValue": "gwzcw.15291244.15291244.15291244"
+                        }
+                      },
+                      {
+                        "key": "device",
+                        "value": {
+                          "stringValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0"
+                        }
+                      },
+                      {
+                        "key": "timestamp",
+                        "value": {
+                          "intValue": 1789012888326
+                        }
+                      },
+                      {
+                        "key": "user_id",
+                        "value": {
+                          "stringValue": "bb1a0124-b950-4052-9904-bc45ccd68bf0"
+                        }
+                      },
+                      {
+                        "key": "user_nickname",
+                        "value": {
+                          "stringValue": "19154975875"
+                        }
+                      },
+                      {
+                        "key": "account_type",
+                        "value": {
+                          "stringValue": "personal"
+                        }
+                      },
+                      {
+                        "key": "enterprise_id",
+                        "value": {
+                          "stringValue": ""
+                        }
+                      },
+                      {
+                        "key": "enterprise_name",
+                        "value": {
+                          "stringValue": ""
+                        }
+                      },
+                      {
+                        "key": "login_method",
+                        "value": {
+                          "stringValue": "phone"
+                        }
+                      },
+                      {
+                        "key": "primary_platform",
+                        "value": {
+                          "stringValue": "IDE"
+                        }
+                      },
+                      {
+                        "key": "secondary_platform",
+                        "value": {
+                          "stringValue": "workbuddy"
+                        }
+                      },
+                      {
+                        "key": "first_login",
+                        "value": {
+                          "stringValue": "0"
+                        }
+                      },
+                      {
+                        "key": "result",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      }
+                    ],
+                    "startTimeUnixNano": "1789012888328000000",
+                    "timeUnixNano": "1789012888329000000",
+                    "asDouble": 0
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

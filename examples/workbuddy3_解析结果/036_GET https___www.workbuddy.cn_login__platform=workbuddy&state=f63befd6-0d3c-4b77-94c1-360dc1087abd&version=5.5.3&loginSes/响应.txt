@@ -1,0 +1,15 @@
+HTTP/2 200
+content-type: text/html; charset=utf-8
+set-cookie: tgw_l7_route=9e24052132dab93c3a229afaead4cb89; Expires=Thu, 10-Sep-2026 05:01:23 GMT; Path=/; sameSite=None; Secure
+etag: "6aa16ada-447b"
+expires: Thu, 10 Sep 2026 04:01:22 GMT
+accept-ranges: bytes
+server: APISIX/3.9.1
+x-request-id: 9450f0e1-99a9-4fa9-8ef6-3472928d8caa
+x-content-type-options: nosniff
+last-modified: Wed, 09 Sep 2026 14:19:06 GMT
+cache-control: must-revalidate, proxy-revalidate, no-cache, no-store, max-age=0
+content-length: 17531
+date: Thu, 10 Sep 2026 04:01:23 GMT
+eo-log-uuid: 1165159770224079816
+eo-cache-status: MISS

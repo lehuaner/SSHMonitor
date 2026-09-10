@@ -1,0 +1,11 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "89fd02ed-beb6-4783-8907-5378f50335a4",
+  "data": {
+    "affordable": 0,
+    "balance": 8,
+    "cost_per_open": 10,
+    "max_open_count": 5
+  }
+}

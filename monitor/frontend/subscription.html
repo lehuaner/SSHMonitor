@@ -1,0 +1,367 @@
+<!DOCTYPE html><html lang=zh-CN><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>订阅管理 - Honor10</title><script src="config.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif}
+body{background:#0b1120;color:#e2e8f0;display:flex;align-items:center;justify-content:center}
+.app{width:100%;max-width:1200px;padding:20px}
+.nav{display:flex;gap:4px;margin-bottom:20px;background:#131c31;border-radius:10px;padding:4px;border:1px solid #1e293b}
+.nav a{padding:8px 20px;border-radius:6px;text-decoration:none;color:#94a3b8;font-size:.85rem;transition:.2s}
+.nav a:hover,.nav a.active{background:#2563eb;color:#fff}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.header h1{font-size:1.4rem;font-weight:600;background:linear-gradient(135deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.card{background:#131c31;border:1px solid #1e293b;border-radius:12px;padding:16px;margin-bottom:12px}
+.card-h{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.card-h label{font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px;font-weight:500}
+.btn{padding:6px 16px;border-radius:6px;border:none;font-size:.8rem;cursor:pointer;color:#fff;transition:opacity .2s;background:#1e293b;white-space:nowrap;display:inline-flex;align-items:center;gap:4px}
+.btn:hover{opacity:.8}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-primary{background:#2563eb}
+.btn-warn{background:#d97706}
+.btn-rst{background:#059669}
+.btn-del{background:#dc2626}
+textarea,input{background:#0b1120;border:1px solid #334155;border-radius:6px;padding:8px 12px;color:#e2e8f0;font-size:.85rem;outline:none;width:100%;font-family:inherit}
+textarea:focus,input:focus{border-color:#38bdf8}
+textarea{min-height:60px;resize:vertical;word-break:break-all}
+.form-row{display:grid;grid-template-columns:120px 1fr;gap:8px;align-items:center;margin-bottom:8px}
+.form-row label{font-size:.75rem;color:#94a3b8}
+.sub-list{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.sub-item{padding:12px;background:#0b1120;border-radius:8px;border:1px solid #1e293b;transition:border-color .2s}
+.sub-item:hover{border-color:#38bdf8}
+.sub-item .name{font-size:.9rem;font-weight:500;color:#e2e8f0;display:flex;align-items:center;gap:6px;margin-bottom:4px}
+.sub-item .url{font-size:.7rem;color:#64748b;font-family:monospace;word-break:break-all;margin-bottom:4px;max-height:2.6em;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.sub-item .meta{display:flex;flex-wrap:wrap;gap:8px;font-size:.7rem;color:#64748b;align-items:center}
+.sub-item .badge{display:inline-block;font-size:.6rem;padding:1px 6px;border-radius:3px;background:rgba(56,189,248,.12);color:#38bdf8}
+.sub-item .actions{display:flex;gap:4px;margin-top:6px}
+.node-list{display:flex;flex-direction:column;gap:4px;margin-top:8px}
+.node-item{display:flex;justify-content:space-between;align-items:center;padding:8px 12px;background:#0b1120;border-radius:6px;font-size:.8rem;border:1px solid #1e293b;gap:8px;flex-wrap:wrap}
+.node-item .tag{color:#e2e8f0;font-weight:500;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.node-item .server{color:#64748b;font-family:monospace;font-size:.7rem;margin-top:2px}
+.node-item .type{color:#38bdf8;font-size:.6rem;background:rgba(56,189,248,.1);padding:2px 6px;border-radius:3px;white-space:nowrap}
+.node-item .delay{font-size:.7rem;font-weight:600;font-family:monospace;padding:2px 8px;border-radius:4px;white-space:nowrap}
+.node-item .delay.ok{background:rgba(34,197,94,.12);color:#22c55e}
+.node-item .delay.warn{background:rgba(245,158,11,.12);color:#f59e0b}
+.node-item .delay.fail{background:rgba(239,68,68,.12);color:#ef4444}
+.node-item .delay.unknown{background:rgba(100,116,139,.12);color:#64748b}
+.node-item .traffic{font-size:.65rem;color:#64748b;font-family:monospace;text-align:right;white-space:nowrap}
+.node-item .traffic b{color:#94a3b8}
+.node-status-bar{display:flex;align-items:center;gap:6px;font-size:.7rem;color:#64748b;margin-bottom:6px;flex-wrap:wrap}
+.node-status-bar .badge-ok{color:#22c55e}
+.node-status-bar .badge-fail{color:#ef4444}
+.empty{text-align:center;color:#64748b;padding:20px;font-size:.8rem}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e293b;color:#e2e8f0;padding:10px 24px;border-radius:8px;font-size:.8rem;z-index:99;transition:opacity .3s;opacity:0;pointer-events:none}
+.toast.show{opacity:1}
+.loading{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+.status{font-size:.75rem;color:#64748b;margin-top:8px;min-height:1em}
+.status.ok{color:#22c55e}
+.status.err{color:#ef4444}
+.note{font-size:.7rem;color:#64748b;margin-top:4px;line-height:1.5}
+.usage-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:6px;margin:8px 0}
+.usage-item{display:flex;flex-direction:column;gap:2px;background:#0b1120;padding:6px 8px;border-radius:4px;border:1px solid #1e293b}
+.usage-item span{font-size:.6rem;color:#64748b}
+.usage-item b{font-size:.75rem;color:#e2e8f0}
+.usage-bar{grid-column:1/-1;height:4px;background:#1e293b;border-radius:2px;overflow:hidden}
+.usage-fill{height:100%;background:linear-gradient(90deg,#22c55e 0%,#f59e0b 50%,#ef4444 100%) no-repeat;background-size:100% 100%;border-radius:2px;transition:width .3s}
+.sub-group{margin-bottom:12px}
+.sub-group-header{font-size:.8rem;font-weight:500;color:#38bdf8;margin-bottom:6px;padding:6px 10px;background:rgba(56,189,248,.05);border-radius:6px;display:flex;align-items:center;gap:6px}
+/* DNS 模式开关 */
+.dns-card .dns-options{display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.dns-opt{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:#0b1120;border:1px solid #1e293b;border-radius:8px;cursor:pointer;transition:border-color .2s,background .2s}
+.dns-opt:hover{border-color:#38bdf8}
+.dns-opt.active{border-color:#2563eb;background:rgba(37,99,235,.08)}
+.dns-opt input{margin-top:3px;width:auto;accent-color:#2563eb}
+.dns-opt .dns-name{font-size:.85rem;font-weight:500;color:#e2e8f0}
+.dns-opt .dns-desc{font-size:.7rem;color:#64748b;margin-top:2px;line-height:1.4}
+.dns-opt .dns-tag{font-size:.6rem;background:rgba(34,197,94,.12);color:#22c55e;padding:1px 6px;border-radius:3px;margin-left:6px}
+.dns-apply{margin-top:10px}
+.dns-status{font-size:.7rem;color:#64748b;margin-top:8px;min-height:1em}
+.dns-status.ok{color:#22c55e}
+.dns-status.err{color:#ef4444}
+@media(max-width:600px){.form-row{grid-template-columns:1fr;gap:4px}}
+</style>
+<div class=app>
+<div class=nav><a href=/>&#9660; 监控</a><a href=/sb/ui/ target=_blank>&#9881; Sing-box</a><a href=/subscription class=active>&#128230; 订阅</a><a href=/notify>&#128276; 通知</a><a href=/files>&#128193; 文件</a><a href=/android>&#128241; Android</a><a href=/checkin>&#9989; 签到</a></div>
+<div class=header><h1>&#128230; 订阅管理</h1></div>
+<div class=card>
+<div class=card-h><label>添加订阅</label></div>
+<div class=form-row><label>名称</label><input id=subName placeholder="例如: sub1"></div>
+<div class=form-row><label>订阅链接</label><input id=subUrl placeholder="输入 Hysteria2 订阅链接..."></div>
+<div style=display:flex;gap:6px;flex-wrap:wrap>
+<button class="btn btn-primary" id=addBtn onclick=addSub()>&#10010; 添加</button>
+</div>
+<div class=note>提示: 添加后会自动解析所有订阅并合并节点，每个节点 tag 会加上订阅名前缀（如 sub1_香港_01）以避免冲突。</div>
+<div class=status id=status></div>
+</div>
+<div class="card dns-card">
+<div class=card-h><label>DNS 解析模式</label><span style=font-size:.7rem;color:#64748b id=dnsMode>加载中...</span></div>
+<div class=note>提示: 若发现节点解析失败或时好时坏，可在此切换 DNS 模式。切换后自动写入配置并重启 sing-box。</div>
+<div class=dns-options id=dnsOptions>加载中...</div>
+<button class="btn btn-primary dns-apply" id=dnsApplyBtn onclick=applyDns()>&#9989; 应用 DNS 模式</button>
+<div class=dns-status id=dnsStatus></div>
+</div>
+<div class=card>
+<div class=card-h><label>订阅列表</label><span style=font-size:.7rem;color:#64748b id=subCount>加载中...</span></div>
+<div class=sub-list id=subList><div class=empty>加载中...</div></div>
+</div>
+<div class=card>
+<div class=card-h><label>节点状态</label><span style=font-size:.7rem;color:#64748b id=nodeCount>加载中...</span></div>
+<div class=node-status-bar id=nodeStatusBar></div>
+<div class=node-list id=nodeList><div class=empty>加载中...</div></div>
+</div>
+</div>
+<div id=toast class=toast></div>
+<script>
+const $=id=>document.getElementById(id);
+const show=(msg,sec=3)=>{const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),sec*1000)};
+function setStatus(msg,kind){const s=$('status');s.textContent=msg||'';s.className='status'+(kind?' '+kind:'')}
+function esc(s){if(!s)return '';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function fmtTime(t){if(!t)return '-';try{return new Date(t).toLocaleString('zh-CN')}catch{return t}}
+// 格式化字节数
+function fmtBytes(b){if(!b||isNaN(b))return '-';if(b<1024)return b+'B';if(b<1048576)return (b/1024).toFixed(1)+'KB';if(b<1073741824)return (b/1048576).toFixed(1)+'MB';return (b/1073741824).toFixed(2)+'GB'}
+// 渲染用量信息
+function fmtUsage(u){
+  if(!u)return '<div class=meta style="color:#475569">无用量信息</div>';
+  let h='<div class=usage-grid>';
+  if(u.upload!==undefined&&u.download!==undefined&&u.total){
+    const used=(u.upload||0)+(u.download||0);const rem=Math.max(0,u.total-used);const pct=u.total>0?Math.round(used/u.total*100):0;
+    h+='<div class=usage-item><span>已用</span><b>'+fmtBytes(used)+'</b></div>';
+    h+='<div class=usage-item><span>剩余</span><b>'+fmtBytes(rem)+'</b></div>';
+    h+='<div class=usage-item><span>总量</span><b>'+fmtBytes(u.total)+'</b></div>';
+    // 渐变始终对应 .usage-bar 全宽度，按使用百分比显示渐变的对应部分
+    // 例：pct=50 时 background-size=200%，渐变被拉伸到 .usage-fill 的两倍宽（即 .usage-bar 全宽），
+    //     只显示渐变的前 50% 部分（绿→黄）
+    //     pct=100 时 background-size=100%，显示完整渐变（绿→黄→红）
+    const safePct=Math.max(0,Math.min(100,pct));
+    const bgSize=safePct>0?Math.round(100/safePct*100):100;
+    h+='<div class=usage-bar><div class=usage-fill style="width:'+safePct+'%;background-size:'+bgSize+'% 100%"></div></div>';
+    if(u.expire){const d=new Date(u.expire*1000).toLocaleDateString('zh-CN');const days=Math.ceil((u.expire*1000-Date.now())/86400000);h+='<div class=usage-item><span>到期</span><b>'+d+(days>0?' ('+days+'天)':' (已过期)')+'</b></div>'}
+  }else{
+    if(u.used_str)h+='<div class=usage-item><span>已用</span><b>'+esc(u.used_str)+'</b></div>';
+    if(u.remaining_str)h+='<div class=usage-item><span>剩余</span><b>'+esc(u.remaining_str)+'</b></div>';
+    if(u.total_str)h+='<div class=usage-item><span>总量</span><b>'+esc(u.total_str)+'</b></div>';
+    if(u.expire_str)h+='<div class=usage-item><span>到期</span><b>'+esc(u.expire_str)+'</b></div>';
+  }
+  // 下次重置日期 / 重置剩余天数
+  if(u.next_reset)h+='<div class=usage-item><span>下次重置</span><b>'+esc(u.next_reset)+'</b></div>';
+  else if(u.reset_days)h+='<div class=usage-item><span>距重置</span><b>'+u.reset_days+' 天</b></div>';
+  // 套餐名称
+  if(u.plan_name)h+='<div class=usage-item><span>套餐</span><b>'+esc(u.plan_name)+'</b></div>';
+  // 更新间隔（小时）
+  if(u.update_interval)h+='<div class=usage-item><span>更新间隔</span><b>'+u.update_interval+' 小时</b></div>';
+  // 官网链接
+  if(u.website)h+='<div class=usage-item><span>官网</span><b><a href="'+esc(u.website)+'" target=_blank style="color:#38bdf8;text-decoration:none">打开 &#8599;</a></b></div>';
+  h+='</div>';return h;
+}
+// 渲染订阅列表
+function renderSubs(subs){
+  const el=$('subList');
+  $('subCount').textContent=(subs||[]).length+' 个订阅';
+  if(!subs||!subs.length){el.innerHTML='<div class=empty>暂无订阅，请在上方添加</div>';return}
+  el.innerHTML=subs.map(s=>{
+    // 显示 profileTitle（如有）作为副标题
+    const titleHtml=s.profileTitle?'<div class=meta style="color:#38bdf8;margin-bottom:4px">&#128279; '+esc(s.profileTitle)+'</div>':'';
+    return '<div class=sub-item>'+
+      '<div class=name>&#128230; '+esc(s.name)+' <span class=badge>'+s.nodeCount+' 节点</span></div>'+
+      titleHtml+
+      '<div class=url>'+esc(s.url)+'</div>'+
+      fmtUsage(s.usage)+
+      '<div class=meta><span>&#128337; 更新: '+fmtTime(s.lastUpdate)+'</span></div>'+
+      '<div class=actions>'+
+        '<button class="btn btn-rst" id=refresh-'+s.id+' onclick=refreshSub("'+esc(s.id)+'")>&#128259; 刷新</button>'+
+        '<button class="btn btn-del" onclick=deleteSub("'+esc(s.id)+'")>&#128465; 删除</button>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+// 渲染当前节点列表（按订阅分组，含延迟/连通性/流量）
+function renderNodes(nodes,cached,cacheTime){
+  const el=$('nodeList');
+  $('nodeCount').textContent=nodes.length+' 个节点';
+  // 状态栏：统计连通/不通数量 + 缓存时间 + 手动刷新按钮
+  const okCount=nodes.filter(n=>n.connected).length;
+  const failCount=nodes.length-okCount;
+  const bar=$('nodeStatusBar');
+  if(bar){
+    let bh='<span class=badge-ok>&#10003; 连通 '+okCount+'</span>';
+    if(failCount>0)bh+='<span class=badge-fail>&#10007; 不通 '+failCount+'</span>';
+    bh+='<span>&#128337; '+(cacheTime?fmtTime(cacheTime):'--')+(cached?' (缓存)':'')+'</span>';
+    bh+='<button class="btn" style="padding:2px 10px;font-size:.7rem" onclick=loadNodes(true)>&#128259; 刷新</button>';
+    bar.innerHTML=bh;
+  }
+  if(!nodes.length){el.innerHTML='<div class=empty>暂无节点，请先添加订阅</div>';return}
+  const groups={};const noGroup=[];
+  for(const n of nodes){if(n.subName){if(!groups[n.subName])groups[n.subName]=[];groups[n.subName].push(n)}else{noGroup.push(n)}}
+  let h='';
+  for(const[name,ns]of Object.entries(groups)){
+    h+='<div class=sub-group><div class=sub-group-header>&#128230; '+esc(name)+' <span class=badge>'+ns.length+' 节点</span></div>';
+    h+=ns.map(n=>renderNodeItem(n,name)).join('');
+    h+='</div>';
+  }
+  if(noGroup.length){h+='<div class=sub-group><div class=sub-group-header>其他 <span class=badge>'+noGroup.length+' 节点</span></div>';h+=noGroup.map(n=>renderNodeItem(n,'')).join('');h+='</div>'}
+  el.innerHTML=h;
+}
+// 渲染单个节点项
+function renderNodeItem(n,prefix){
+  const tag=prefix?n.tag.replace(prefix+'_',''):n.tag;
+  // 延迟标签
+  let delayHtml='';
+  if(n.delay>0){
+    const cls=n.delay<200?'ok':(n.delay<500?'warn':'fail');
+    delayHtml='<span class="delay '+cls+'">'+n.delay+'ms</span>';
+  }else{
+    delayHtml='<span class="delay unknown">&#10007; 超时</span>';
+  }
+  // 流量信息
+  let trafHtml='';
+  if(n.download>0||n.upload>0||n.conns>0){
+    trafHtml='<div class=traffic>'+(n.conns>0?'<b>'+n.conns+'</b>连接 ':'')+'<b>&#11015;</b>'+fmtBytes(n.download)+' <b>&#11014;</b>'+fmtBytes(n.upload)+'</div>';
+  }
+  return '<div class=node-item><div class=tag>'+esc(tag)+'</div>'+(n.type?'<span class=type>'+esc(n.type)+'</span>':'')+delayHtml+trafHtml+'</div>';
+}
+// 加载订阅列表
+async function loadSubs(){
+  try{
+    const r=await fetch('/api/subscriptions');
+    const d=await r.json();
+    if(d.ok){renderSubs(d.subscriptions||[]);setStatus('已加载 '+(d.subscriptions||[]).length+' 个订阅','ok')}
+    else{setStatus(d.error||'加载失败','err')}
+  }catch(e){setStatus('网络错误: '+e.message,'err')}
+}
+// 刷新单个订阅
+async function refreshSub(id){
+  const btn=$('refresh-'+id);
+  if(btn){btn.disabled=true;btn.innerHTML='<span class=loading></span> 刷新中'}
+  setStatus('正在刷新订阅...');
+  try{
+    const r=await fetch('/api/subscriptions/refresh?id='+id,{method:'POST'});
+    const d=await r.json();
+    if(d.ok){
+      show(d.msg||'刷新成功');
+      setStatus(d.msg||'刷新成功','ok');
+      await loadSubs();await loadNodes();
+    }else{
+      show(d.error||'刷新失败');
+      setStatus(d.error||'刷新失败','err');
+    }
+  }catch(e){show('网络错误: '+e.message);setStatus('网络错误: '+e.message,'err')}
+  if(btn){btn.disabled=false;btn.innerHTML='&#128259; 刷新'}
+}
+// 加载节点状态（延迟/连通性/流量）— 页面加载时调用一次，之后每小时刷新
+let nodeRefreshTimer=null;
+async function loadNodes(force){
+  try{
+    const url=force?'/api/node-status?force=1':'/api/node-status';
+    const r=await fetch(url);
+    const d=await r.json();
+    if(d.ok){renderNodes(d.nodes||[],d.cached,d.cacheTime)}
+    else{renderNodes([],false,null)}
+  }catch(e){renderNodes([],false,null)}
+  // 设置 1 小时后自动刷新
+  if(nodeRefreshTimer)clearTimeout(nodeRefreshTimer);
+  nodeRefreshTimer=setTimeout(()=>loadNodes(false),3600000);
+}
+// 添加订阅
+async function addSub(){
+  const name=$('subName').value.trim();
+  const url=$('subUrl').value.trim();
+  if(!name){show('请输入订阅名称');return}
+  if(!url){show('请输入订阅链接');return}
+  $('addBtn').disabled=true;
+  const oldHtml=$('addBtn').innerHTML;
+  $('addBtn').innerHTML='<span class=loading></span> 添加中';
+  setStatus('正在下载并解析订阅...');
+  try{
+    const r=await fetch('/api/subscriptions',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name,url:url})});
+    const d=await r.json();
+    if(d.ok){
+      show(d.msg||'添加成功');
+      setStatus(d.msg||'添加成功','ok');
+      $('subName').value='';$('subUrl').value='';
+      await loadSubs();await loadNodes();
+    }else{
+      show(d.error||'添加失败');
+      setStatus(d.error||'添加失败','err');
+    }
+  }catch(e){show('网络错误: '+e.message);setStatus('网络错误: '+e.message,'err')}
+  $('addBtn').disabled=false;
+  $('addBtn').innerHTML=oldHtml;
+}
+// 删除订阅
+async function deleteSub(id){
+  if(!confirm('确定删除此订阅？'))return;
+  try{
+    const r=await fetch('/api/subscriptions?id='+id,{method:'DELETE'});
+    const d=await r.json();
+    if(d.ok){show(d.msg||'已删除');setStatus(d.msg||'已删除','ok');await loadSubs();await loadNodes()}
+    else{show(d.error||'删除失败');setStatus(d.error||'删除失败','err')}
+  }catch(e){show('网络错误: '+e.message);setStatus('网络错误: '+e.message,'err')}
+}
+// 加载 DNS 配置
+let dnsCurrentMode=null;
+async function loadDns(){
+  const optsEl=$('dnsOptions');
+  const modeEl=$('dnsMode');
+  try{
+    const r=await fetch('/api/dns-config');
+    const d=await r.json();
+    if(!d.ok){optsEl.innerHTML='<div class=empty>加载失败: '+esc(d.error||'未知错误')+'</div>';return}
+    dnsCurrentMode=d.mode;
+    modeEl.textContent='当前: '+((d.presets&&d.presets[d.mode])?d.presets[d.mode].name:d.mode);
+    const modeLabel={ip:'推荐',domain:'备用'};
+    optsEl.innerHTML=Object.entries(d.presets||{}).map(([key,p])=>
+      '<label class="dns-opt'+(key===d.mode?' active':'')+'" onclick=selDns("'+key+'")>'+
+        '<input type=radio name=dnsMode name-v="'+key+'" '+(key===d.mode?'checked':'')+'>'+
+        '<div><div class=dns-name>'+esc(p.name)+(modeLabel[key]?'<span class=dns-tag>'+modeLabel[key]+'</span>':'')+'</div>'+
+        '<div class=dns-desc>'+esc(p.desc)+'</div></div>'+
+      '</label>').join('');
+  }catch(e){
+    optsEl.innerHTML='<div class=empty>网络错误: '+esc(e.message)+'</div>';
+    modeEl.textContent='加载失败';
+  }
+}
+// 选中 DNS 模式（切换选中态，未点击"应用"前不生效）
+function selDns(key){
+  document.querySelectorAll('#dnsOptions .dns-opt').forEach(o=>o.classList.remove('active'));
+  const opts=document.querySelectorAll('#dnsOptions .dns-opt input');
+  opts.forEach(i=>{i.checked=(i.getAttribute('name-v')===key)});
+  const target=Array.from(opts).find(i=>i.getAttribute('name-v')===key);
+  if(target)target.closest('.dns-opt').classList.add('active');
+  $('dnsStatus').textContent='';
+  $('dnsStatus').className='dns-status';
+}
+// 应用 DNS 模式
+async function applyDns(){
+  const selected=document.querySelector('#dnsOptions .dns-opt.active input');
+  const mode=selected?selected.getAttribute('name-v'):null;
+  if(!mode){show('请先选择 DNS 模式');return}
+  if(mode===dnsCurrentMode){show('该模式已是当前生效模式');return}
+  const btn=$('dnsApplyBtn');
+  btn.disabled=true;
+  const oldHtml=btn.innerHTML;
+  btn.innerHTML='<span class=loading></span> 应用中';
+  $('dnsStatus').textContent='正在应用并重启 sing-box...';
+  $('dnsStatus').className='dns-status';
+  try{
+    const r=await fetch('/api/dns-config',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mode})});
+    const d=await r.json();
+    if(d.ok){
+      dnsCurrentMode=d.mode;
+      show(d.msg||'DNS 模式已应用');
+      $('dnsStatus').textContent='已切换: '+d.mode;
+      $('dnsStatus').className='dns-status ok';
+      $('dnsMode').textContent='当前: '+(d.mode==='ip'?'IP 直连 DoH':'域名 DoH');
+    }else{
+      show(d.error||'应用失败');
+      $('dnsStatus').textContent=d.error||'应用失败';
+      $('dnsStatus').className='dns-status err';
+    }
+  }catch(e){
+    show('网络错误: '+e.message);
+    $('dnsStatus').textContent='网络错误: '+e.message;
+    $('dnsStatus').className='dns-status err';
+  }
+  btn.disabled=false;
+  btn.innerHTML=oldHtml;
+}
+loadSubs().then(()=>loadNodes());
+loadDns();
+</script>

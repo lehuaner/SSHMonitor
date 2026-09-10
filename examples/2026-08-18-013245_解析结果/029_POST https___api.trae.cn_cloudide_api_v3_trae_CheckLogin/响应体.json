@@ -1,0 +1,28 @@
+{
+  "ResponseMetadata": {
+    "Action": "",
+    "OID": "0",
+    "Region": "",
+    "RequestId": "",
+    "Service": "",
+    "Source": "",
+    "TraceID": "00000000000000000000000000000000",
+    "Version": "",
+    "WID": "0"
+  },
+  "Result": {
+    "AIHost": "",
+    "AIPayHost": "",
+    "AIRegion": "CN",
+    "BoundDeviceID": "jdl08j7nenn28q",
+    "DeviceBindStatus": "BOUND",
+    "ExpiredAt": 1802330897933,
+    "Host": "https://api.trae.com.cn",
+    "IsLogin": true,
+    "MigrateToSG": false,
+    "NickNameEditStatus": "",
+    "PasswordChanged": false,
+    "Region": "CN",
+    "UserID": "1910319278719667"
+  }
+}

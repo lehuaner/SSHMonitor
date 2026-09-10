@@ -1,0 +1,16 @@
+OPTIONS https://abtestvm.bytedance.com/service/2/abtest_config/ HTTP/2
+:method: OPTIONS
+:authority: abtestvm.bytedance.com
+:scheme: https
+:path: /service/2/abtest_config/
+accept: */*
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+access-control-request-headers: content-type
+access-control-request-method: POST
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+priority: u=1, i

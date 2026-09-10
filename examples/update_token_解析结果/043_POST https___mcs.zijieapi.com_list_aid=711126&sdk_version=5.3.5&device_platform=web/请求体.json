@@ -1,0 +1,54 @@
+[
+  {
+    "events": [
+      {
+        "event": "__bav_page_statistics",
+        "params": "{\"is_html\":1,\"page_key\":\"https://www.trae.cn/dashboard#usage\",\"refer_page_key\":\"\",\"page_title\":\"TRAE | TRAE - 复杂工作，就用 TraeWork\",\"page_manual_key\":\"\",\"refer_page_manual_key\":\"\",\"page_init_cost_ms\":1844,\"page_start_ms\":1786815762240,\"event_index\":1786816444815}",
+        "local_time_ms": 1786815764097,
+        "is_bav": 1,
+        "ab_sdk_version": "92445595",
+        "session_id": "1fd3622f-ac4b-4a6f-9279-ca7a5ae054be"
+      },
+      {
+        "event": "common_expose",
+        "params": "{\"module_id\":\"trae.dashboard.header_banner_expose\",\"banner_id\":\"referral-2026-q3\",\"banner_text\":\"邀请好友体验 TraeWork，双方各得 500 积分，最高得 3500 积分 + 2 杯星巴克咖啡\",\"target_url\":\"/work-fission?utm_source=trae_homepage&utm_medium=trae_homepage_header_banner\",\"url\":\"https://www.trae.cn/dashboard\",\"event_index\":1786816444814}",
+        "local_time_ms": 1786815764086,
+        "is_bav": 1,
+        "ab_sdk_version": "92445595",
+        "session_id": "1fd3622f-ac4b-4a6f-9279-ca7a5ae054be"
+      }
+    ],
+    "user": {
+      "user_unique_id": "7623996721186293291",
+      "user_id": "1910319278719667",
+      "user_is_login": true
+    },
+    "header": {
+      "app_id": 711126,
+      "os_name": "windows",
+      "os_version": "10",
+      "device_model": "Windows NT 10.0",
+      "language": "zh-CN",
+      "region": "China-North",
+      "platform": "web",
+      "sdk_version": "5.3.5",
+      "sdk_lib": "js",
+      "timezone": 8,
+      "tz_offset": -28800,
+      "resolution": "1920x1080",
+      "browser": "Microsoft Edge",
+      "browser_version": "151.0.0.0",
+      "referrer": "",
+      "referrer_host": "",
+      "width": 1920,
+      "height": 1080,
+      "screen_width": 1920,
+      "screen_height": 1080,
+      "utm_source": "traework_client_chat_tip",
+      "tracer_data": "{\"$utm_from_url\":1}",
+      "custom": "{\"network_type\":\"3g\",\"biz_web_id\":\"7623996721186293291\",\"version\":\"1.0.0.1462\",\"env\":\"prod\",\"biz_user_id\":\"1910319278719667\",\"os\":\"Windows\",\"cpu\":\"NVIDIA x64\"}"
+    },
+    "local_time": 1786815764,
+    "verbose": 1
+  }
+]

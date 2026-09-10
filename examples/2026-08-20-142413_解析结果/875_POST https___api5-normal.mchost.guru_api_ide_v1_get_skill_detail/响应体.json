@@ -1,0 +1,1883 @@
+{
+  "skill_payload": {
+    "agent_type_skills": [
+      {
+        "agent_type": "code",
+        "model_skills": [
+          {
+            "model": "default",
+            "skills": [
+              {
+                "deploy_scope": 1,
+                "sha256": "e8744aa5887374abde4fd98709912bae228bcca47e64990bd4e2f25c7dde3829",
+                "skill_id": "trae_agent::default::prod_20260609_windows::TRAE-computer-use-ptc",
+                "skill_name": "TRAE-computer-use-ptc",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609_windows::TRAE-computer-use-ptc/0.0.8/package.zip",
+                "version": "0.0.8"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "7472aec0f137d014e6bef6f2273628acebb8d5186b61a92dd9b7d24744be489e",
+                "skill_id": "trae_agent::default::prod_20260609::TRAE-product-knowledge",
+                "skill_name": "TRAE-product-knowledge",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::TRAE-product-knowledge/0.0.2/package.zip",
+                "version": "0.0.2"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "5de63121a0c88d6ab090fa07b7629f742f28fb3c533288e60f8c526f21fa41be",
+                "skill_id": "trae_agent::default::prod_20260609::feedback",
+                "skill_name": "feedback",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::feedback/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "ada17b892306bc978e040870b15cd24401fb6a129cc839a1b86c614c47463a25",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::skill-creator",
+                "skill_name": "skill-creator",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::skill-creator/0.0.1/package.zip",
+                "version": "0.0.1"
+              }
+            ]
+          },
+          {
+            "model": "hebe",
+            "skills": [
+              {
+                "deploy_scope": 1,
+                "sha256": "11f33c6091323fe87e240d7a0c3c86407b29463593c645df996c64edc0ffd209",
+                "skill_id": "trae_agent::default::prod_20260609_kimi_windows::TRAE-computer-use-ptc",
+                "skill_name": "TRAE-computer-use-ptc",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609_kimi_windows::TRAE-computer-use-ptc/0.0.10/package.zip",
+                "version": "0.0.10"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "7472aec0f137d014e6bef6f2273628acebb8d5186b61a92dd9b7d24744be489e",
+                "skill_id": "trae_agent::default::prod_20260609::TRAE-product-knowledge",
+                "skill_name": "TRAE-product-knowledge",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::TRAE-product-knowledge/0.0.2/package.zip",
+                "version": "0.0.2"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "5de63121a0c88d6ab090fa07b7629f742f28fb3c533288e60f8c526f21fa41be",
+                "skill_id": "trae_agent::default::prod_20260609::feedback",
+                "skill_name": "feedback",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::feedback/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "ada17b892306bc978e040870b15cd24401fb6a129cc839a1b86c614c47463a25",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::skill-creator",
+                "skill_name": "skill-creator",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::skill-creator/0.0.1/package.zip",
+                "version": "0.0.1"
+              }
+            ]
+          },
+          {
+            "model": "non_multimodal",
+            "skills": [
+              {
+                "deploy_scope": 1,
+                "sha256": "65bff98429c1c226fce12f0b2bc224fb0e44420b9d37b4cb7ce82b3a815a999b",
+                "skill_id": "trae_agent::default::prod_20260609_non_multimodal_windows::TRAE-computer-use-ptc",
+                "skill_name": "TRAE-computer-use-ptc",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609_non_multimodal_windows::TRAE-computer-use-ptc/0.0.4/package.zip",
+                "version": "0.0.4"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "agent_type": "design",
+        "model_skills": [
+          {
+            "model": "default",
+            "skills": [
+              {
+                "deploy_scope": 1,
+                "sha256": "e8744aa5887374abde4fd98709912bae228bcca47e64990bd4e2f25c7dde3829",
+                "skill_id": "trae_agent::default::prod_20260609_windows::TRAE-computer-use-ptc",
+                "skill_name": "TRAE-computer-use-ptc",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609_windows::TRAE-computer-use-ptc/0.0.8/package.zip",
+                "version": "0.0.8"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "152e650d72abb1d43290329b8d9846802818f98b2c482b6c20d3c9c50ae22e03",
+                "skill_id": "trae_agent::solo_design::default::prod_20260722::design-library-creator",
+                "skill_name": "design-library-creator",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_design::default::prod_20260722::design-library-creator/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "5de63121a0c88d6ab090fa07b7629f742f28fb3c533288e60f8c526f21fa41be",
+                "skill_id": "trae_agent::default::prod_20260609::feedback",
+                "skill_name": "feedback",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::feedback/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "ada17b892306bc978e040870b15cd24401fb6a129cc839a1b86c614c47463a25",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::skill-creator",
+                "skill_name": "skill-creator",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::skill-creator/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "509205ab3620c4c1c289a23184746ec856843295d9d511939f66bfae9baef477",
+                "skill_id": "trae_agent::solo_design::default::prod_20260810::solo-design",
+                "skill_name": "solo-design",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_design::default::prod_20260810::solo-design/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "32391067a1badbbf2e0e5774402de5e37d699431d1ef97343509a53983c73333",
+                "skill_id": "trae_agent::solo_design::default::prod_20260810::solo-graphic-generation",
+                "skill_name": "solo-graphic-generation",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_design::default::prod_20260810::solo-graphic-generation/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "4793867204576540729cbeab7fc177c254749b8bfd499326287243842d0e7c3e",
+                "skill_id": "trae_agent::solo_design::default::prod_20260810::solo-image-edit",
+                "skill_name": "solo-image-edit",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_design::default::prod_20260810::solo-image-edit/0.0.1/package.zip",
+                "version": "0.0.1"
+              }
+            ]
+          },
+          {
+            "model": "non_multimodal",
+            "skills": [
+              {
+                "deploy_scope": 1,
+                "sha256": "65bff98429c1c226fce12f0b2bc224fb0e44420b9d37b4cb7ce82b3a815a999b",
+                "skill_id": "trae_agent::default::prod_20260609_non_multimodal_windows::TRAE-computer-use-ptc",
+                "skill_name": "TRAE-computer-use-ptc",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609_non_multimodal_windows::TRAE-computer-use-ptc/0.0.4/package.zip",
+                "version": "0.0.4"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "agent_type": "work",
+        "model_skills": [
+          {
+            "model": "default",
+            "skills": [
+              {
+                "deploy_scope": 1,
+                "sha256": "e8744aa5887374abde4fd98709912bae228bcca47e64990bd4e2f25c7dde3829",
+                "skill_id": "trae_agent::default::prod_20260609_windows::TRAE-computer-use-ptc",
+                "skill_name": "TRAE-computer-use-ptc",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609_windows::TRAE-computer-use-ptc/0.0.8/package.zip",
+                "version": "0.0.8"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "7472aec0f137d014e6bef6f2273628acebb8d5186b61a92dd9b7d24744be489e",
+                "skill_id": "trae_agent::default::prod_20260609::TRAE-product-knowledge",
+                "skill_name": "TRAE-product-knowledge",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::TRAE-product-knowledge/0.0.2/package.zip",
+                "version": "0.0.2"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "80cf0a8a0c73d752cadb8d48f7363725a8306bc3dab49dc342136621afda7ec8",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::doc-writing-guide",
+                "skill_name": "doc-writing-guide",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::doc-writing-guide/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "ff269b2a2f39170e862a211e1eaa9f5f9a88f0e16845882976af3fd4852f3f85",
+                "skill_id": "trae_agent::solo_work::default::prod_20260203_windows::docx",
+                "skill_name": "docx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260203_windows::docx/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "5de63121a0c88d6ab090fa07b7629f742f28fb3c533288e60f8c526f21fa41be",
+                "skill_id": "trae_agent::default::prod_20260609::feedback",
+                "skill_name": "feedback",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::feedback/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "012f6dbf9d036c19e69fead891170fb033c1a9a75fd59d7325644611c855f0da",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::html-deck",
+                "skill_name": "html-deck",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::html-deck/0.0.8/package.zip",
+                "version": "0.0.8"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "becc081cd015d286b4f41b91beb862bdc54380d5ead65511491fd71b8a9907fc",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::html-report",
+                "skill_name": "html-report",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::html-report/0.0.3/package.zip",
+                "version": "0.0.3"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "7e3e03830bec4f8d852804525fed702fc6b598fad097b94d430011de7075a733",
+                "skill_id": "trae_agent::solo_work::default::prod_20260203_windows::pdf",
+                "skill_name": "pdf",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260203_windows::pdf/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "a89b06c156d2c87ad21c254646196b24168aee6e60d165090fd3b1d51dc2ad92",
+                "skill_id": "trae_agent::solo_work::default::prod_20260203_windows::pptx",
+                "skill_name": "pptx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260203_windows::pptx/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "57305239f3d9bd4ea811481147fdcab4fa716a19b6a6cfcdfea48d993f8a85d7",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::research-guide",
+                "skill_name": "research-guide",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::research-guide/0.0.4/package.zip",
+                "version": "0.0.4"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "ada17b892306bc978e040870b15cd24401fb6a129cc839a1b86c614c47463a25",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::skill-creator",
+                "skill_name": "skill-creator",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::skill-creator/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "84665063c3f3bc69243f5f7736c7ce9fe4275e1f6cf08dd24a58b9878b00f26e",
+                "skill_id": "trae_agent::solo_work::default::prod_20260203_windows::xlsx",
+                "skill_name": "xlsx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260203_windows::xlsx/0.0.1/package.zip",
+                "version": "0.0.1"
+              }
+            ]
+          },
+          {
+            "model": "hebe",
+            "skills": [
+              {
+                "deploy_scope": 1,
+                "sha256": "11f33c6091323fe87e240d7a0c3c86407b29463593c645df996c64edc0ffd209",
+                "skill_id": "trae_agent::default::prod_20260609_kimi_windows::TRAE-computer-use-ptc",
+                "skill_name": "TRAE-computer-use-ptc",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609_kimi_windows::TRAE-computer-use-ptc/0.0.10/package.zip",
+                "version": "0.0.10"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "7472aec0f137d014e6bef6f2273628acebb8d5186b61a92dd9b7d24744be489e",
+                "skill_id": "trae_agent::default::prod_20260609::TRAE-product-knowledge",
+                "skill_name": "TRAE-product-knowledge",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::TRAE-product-knowledge/0.0.2/package.zip",
+                "version": "0.0.2"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "80cf0a8a0c73d752cadb8d48f7363725a8306bc3dab49dc342136621afda7ec8",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::doc-writing-guide",
+                "skill_name": "doc-writing-guide",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::doc-writing-guide/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "ff269b2a2f39170e862a211e1eaa9f5f9a88f0e16845882976af3fd4852f3f85",
+                "skill_id": "trae_agent::solo_work::default::prod_20260203_windows::docx",
+                "skill_name": "docx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260203_windows::docx/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "5de63121a0c88d6ab090fa07b7629f742f28fb3c533288e60f8c526f21fa41be",
+                "skill_id": "trae_agent::default::prod_20260609::feedback",
+                "skill_name": "feedback",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::feedback/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "012f6dbf9d036c19e69fead891170fb033c1a9a75fd59d7325644611c855f0da",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::html-deck",
+                "skill_name": "html-deck",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::html-deck/0.0.8/package.zip",
+                "version": "0.0.8"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "becc081cd015d286b4f41b91beb862bdc54380d5ead65511491fd71b8a9907fc",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::html-report",
+                "skill_name": "html-report",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::html-report/0.0.3/package.zip",
+                "version": "0.0.3"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "7e3e03830bec4f8d852804525fed702fc6b598fad097b94d430011de7075a733",
+                "skill_id": "trae_agent::solo_work::default::prod_20260203_windows::pdf",
+                "skill_name": "pdf",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260203_windows::pdf/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "a89b06c156d2c87ad21c254646196b24168aee6e60d165090fd3b1d51dc2ad92",
+                "skill_id": "trae_agent::solo_work::default::prod_20260203_windows::pptx",
+                "skill_name": "pptx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260203_windows::pptx/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "57305239f3d9bd4ea811481147fdcab4fa716a19b6a6cfcdfea48d993f8a85d7",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::research-guide",
+                "skill_name": "research-guide",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::research-guide/0.0.4/package.zip",
+                "version": "0.0.4"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "ada17b892306bc978e040870b15cd24401fb6a129cc839a1b86c614c47463a25",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::skill-creator",
+                "skill_name": "skill-creator",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::skill-creator/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "84665063c3f3bc69243f5f7736c7ce9fe4275e1f6cf08dd24a58b9878b00f26e",
+                "skill_id": "trae_agent::solo_work::default::prod_20260203_windows::xlsx",
+                "skill_name": "xlsx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260203_windows::xlsx/0.0.1/package.zip",
+                "version": "0.0.1"
+              }
+            ]
+          },
+          {
+            "model": "iphigenia",
+            "skills": [
+              {
+                "deploy_scope": 1,
+                "sha256": "e8744aa5887374abde4fd98709912bae228bcca47e64990bd4e2f25c7dde3829",
+                "skill_id": "trae_agent::default::prod_20260609_windows::TRAE-computer-use-ptc",
+                "skill_name": "TRAE-computer-use-ptc",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609_windows::TRAE-computer-use-ptc/0.0.8/package.zip",
+                "version": "0.0.8"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "7472aec0f137d014e6bef6f2273628acebb8d5186b61a92dd9b7d24744be489e",
+                "skill_id": "trae_agent::default::prod_20260609::TRAE-product-knowledge",
+                "skill_name": "TRAE-product-knowledge",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::TRAE-product-knowledge/0.0.2/package.zip",
+                "version": "0.0.2"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "80cf0a8a0c73d752cadb8d48f7363725a8306bc3dab49dc342136621afda7ec8",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::doc-writing-guide",
+                "skill_name": "doc-writing-guide",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::doc-writing-guide/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "4f4c2211c3bff7f455de30a0a72e5788b4dcb6d559d0ea7940d1ca914894bd34",
+                "skill_id": "trae_agent::solo_work::gpt_54::prod_20260403_windows::docx",
+                "skill_name": "docx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::gpt_54::prod_20260403_windows::docx/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "5de63121a0c88d6ab090fa07b7629f742f28fb3c533288e60f8c526f21fa41be",
+                "skill_id": "trae_agent::default::prod_20260609::feedback",
+                "skill_name": "feedback",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::feedback/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "012f6dbf9d036c19e69fead891170fb033c1a9a75fd59d7325644611c855f0da",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::html-deck",
+                "skill_name": "html-deck",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::html-deck/0.0.8/package.zip",
+                "version": "0.0.8"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "becc081cd015d286b4f41b91beb862bdc54380d5ead65511491fd71b8a9907fc",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::html-report",
+                "skill_name": "html-report",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::html-report/0.0.3/package.zip",
+                "version": "0.0.3"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "5c07302677cd4f6d8bf443e11336da9ae27e631526e227e850ee293869b38ddc",
+                "skill_id": "trae_agent::solo_work::gpt_54::prod_20260403_windows::pdf",
+                "skill_name": "pdf",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::gpt_54::prod_20260403_windows::pdf/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "68d7455d188b540c5aa9191203af8a89c6af332419906af5f472f629401b510e",
+                "skill_id": "trae_agent::solo_work::gpt_54::prod_20260403_windows::pptx",
+                "skill_name": "pptx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::gpt_54::prod_20260403_windows::pptx/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "57305239f3d9bd4ea811481147fdcab4fa716a19b6a6cfcdfea48d993f8a85d7",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::research-guide",
+                "skill_name": "research-guide",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::research-guide/0.0.4/package.zip",
+                "version": "0.0.4"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "ada17b892306bc978e040870b15cd24401fb6a129cc839a1b86c614c47463a25",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::skill-creator",
+                "skill_name": "skill-creator",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::skill-creator/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "3c5b8b3501fb936634f70bcb78552a38cea9675142a31bbfc375ceb2c87ed1cd",
+                "skill_id": "trae_agent::solo_work::gpt_54::prod_20260403_windows::xlsx",
+                "skill_name": "xlsx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::gpt_54::prod_20260403_windows::xlsx/0.0.1/package.zip",
+                "version": "0.0.1"
+              }
+            ]
+          },
+          {
+            "model": "non_multimodal",
+            "skills": [
+              {
+                "deploy_scope": 1,
+                "sha256": "65bff98429c1c226fce12f0b2bc224fb0e44420b9d37b4cb7ce82b3a815a999b",
+                "skill_id": "trae_agent::default::prod_20260609_non_multimodal_windows::TRAE-computer-use-ptc",
+                "skill_name": "TRAE-computer-use-ptc",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609_non_multimodal_windows::TRAE-computer-use-ptc/0.0.4/package.zip",
+                "version": "0.0.4"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "global_skills": [
+      {
+        "deploy_scope": 1,
+        "sha256": "b462f4ffc18520bc7020d10f2fb3828f144b83ff82d812ae114185e86137beec",
+        "skill_id": "trae_agent::default::prod_20260609::TRAE-browseruse",
+        "skill_name": "TRAE-browseruse",
+        "supported_os": [
+          "macos",
+          "windows",
+          "linux"
+        ],
+        "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::TRAE-browseruse/0.0.4/package.zip",
+        "version": "0.0.4"
+      },
+      {
+        "deploy_scope": 1,
+        "sha256": "4bb76a4cc7ab52c5fc9f7e930b1b0cde8b1e1f3e92334ec06f95512d47a9aa10",
+        "skill_id": "trae_agent::default::prod_20260609::TRAE-browseruse-external",
+        "skill_name": "TRAE-browseruse-external",
+        "supported_os": [
+          "macos",
+          "windows",
+          "linux"
+        ],
+        "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::TRAE-browseruse-external/0.0.4/package.zip",
+        "version": "0.0.4"
+      },
+      {
+        "deploy_scope": 1,
+        "sha256": "627238f2ed294120f96249a0ae65900de1d425015cc4b6fdabc6c700b87e9259",
+        "skill_id": "trae_agent::default::prod_20260609::TRAE-code-mode-orchestrator",
+        "skill_name": "TRAE-code-mode-orchestrator",
+        "supported_os": [
+          "macos",
+          "windows",
+          "linux"
+        ],
+        "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::TRAE-code-mode-orchestrator/0.0.2/package.zip",
+        "version": "0.0.2"
+      },
+      {
+        "deploy_scope": 1,
+        "sha256": "ec48cf6383a70875a8aa7b882b64c7d0ab269520acfd438eda18e097756a52c7",
+        "skill_id": "trae_agent::default::prod_20260609::TRAE-computer-use",
+        "skill_name": "TRAE-computer-use",
+        "supported_os": [
+          "macos",
+          "windows",
+          "linux"
+        ],
+        "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::TRAE-computer-use/0.0.1/package.zip",
+        "version": "0.0.1"
+      },
+      {
+        "deploy_scope": 1,
+        "sha256": "7a3f818864bade0daefc97b2fbf2af191b9659061360b7d5d8513d90bbc04699",
+        "skill_id": "trae_agent::default::prod_20260609::digital-avatar-creator",
+        "skill_name": "digital-avatar-creator",
+        "supported_os": [
+          "macos",
+          "windows",
+          "linux"
+        ],
+        "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::digital-avatar-creator/0.0.1/package.zip",
+        "version": "0.0.1"
+      },
+      {
+        "deploy_scope": 1,
+        "sha256": "ffaa13bb09fe02598ced3c73d373d4ec2a93a8c85e4dbb04be5152115f724424",
+        "skill_id": "trae_agent::default::prod_20260609::dynamic-ui",
+        "skill_name": "dynamic-ui",
+        "supported_os": [
+          "macos",
+          "windows",
+          "linux"
+        ],
+        "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::dynamic-ui/0.0.1/package.zip",
+        "version": "0.0.1"
+      },
+      {
+        "deploy_scope": 1,
+        "sha256": "2a2262728ca822e4b192208d2fc24ceea5af32afb0bff803108a11acf2954eed",
+        "skill_id": "trae_agent::default::prod_20260609::skill-creator",
+        "skill_name": "skill-creator",
+        "supported_os": [
+          "macos",
+          "windows",
+          "linux"
+        ],
+        "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::skill-creator/0.0.1/package.zip",
+        "version": "0.0.1"
+      }
+    ],
+    "is_empty": false,
+    "meta": {
+      "agentTypes": {
+        "solo_agent": "trae",
+        "solo_agent_lite": "code",
+        "solo_agent_remote": "code",
+        "solo_design_lite": "design",
+        "solo_design_remote": "design",
+        "solo_work_lite": "work",
+        "solo_work_remote": "work"
+      },
+      "models": {
+        "DeepSeek-V4-Flash": "non_multimodal",
+        "DeepSeek-V4-Flash-Official": "non_multimodal",
+        "DeepSeek-V4-Pro": "non_multimodal",
+        "DeepSeek-V4-Pro-Official": "non_multimodal",
+        "Doubao-Seed-2.0-Code": "default",
+        "Doubao-Seed-2.0-Code-auto": "default",
+        "Doubao-Seed-2.1-Pro": "default",
+        "Doubao-Seed-2.1-Turbo": "default",
+        "Doubao-Seed-2.1-Turbo-auto": "default",
+        "Doubao-Seed-Code": "default",
+        "Doubao_1_6": "default",
+        "aquila": "iphigenia",
+        "custom_model_1M": "default",
+        "custom_model_1M_text": "default",
+        "custom_model_200k": "default",
+        "custom_model_200k_text": "default",
+        "custom_model_claude": "default",
+        "custom_model_deepseek_chat": "default",
+        "custom_model_deepseek_reasoner": "default",
+        "custom_model_deepseek_v4": "default",
+        "custom_model_gemini": "default",
+        "custom_model_gpt-5": "default",
+        "custom_model_kimi": "default",
+        "custom_model_no-fc": "default",
+        "custom_model_placeholder": "default",
+        "doubao-for-auto": "default",
+        "glm-5": "non_multimodal",
+        "glm-5-turbo": "default",
+        "glm-5.1": "non_multimodal",
+        "glm-5.2": "non_multimodal",
+        "glm-5.3": "non_multimodal",
+        "glm-5v-turbo": "default",
+        "kimi-k2.5": "default",
+        "kimi-k2.6": "hebe",
+        "kimi-k2.7-code": "default",
+        "kimi-k3": "default",
+        "minimax-m2.5": "default",
+        "minimax-m2.7": "default",
+        "minimax-m3": "default",
+        "qwen-3.5": "default",
+        "qwen-3.6-plus": "default",
+        "qwen-3.7-plus": "default",
+        "qwen3.8-max": "default",
+        "sagitta": "default"
+      },
+      "region": "cn",
+      "version_lock_tag": "20260813225502_external_prod_skill_version"
+    },
+    "new_agent_type_skills": [
+      {
+        "agent_type": "code",
+        "model_skills": [
+          {
+            "model": "default",
+            "skills": [
+              {
+                "deploy_scope": 1,
+                "sha256": "e8744aa5887374abde4fd98709912bae228bcca47e64990bd4e2f25c7dde3829",
+                "skill_id": "trae_agent::default::prod_20260609_windows::TRAE-computer-use-ptc",
+                "skill_name": "TRAE-computer-use-ptc",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609_windows::TRAE-computer-use-ptc/0.0.8/package.zip",
+                "version": "0.0.8"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "7472aec0f137d014e6bef6f2273628acebb8d5186b61a92dd9b7d24744be489e",
+                "skill_id": "trae_agent::default::prod_20260609::TRAE-product-knowledge",
+                "skill_name": "TRAE-product-knowledge",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::TRAE-product-knowledge/0.0.2/package.zip",
+                "version": "0.0.2"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "5de63121a0c88d6ab090fa07b7629f742f28fb3c533288e60f8c526f21fa41be",
+                "skill_id": "trae_agent::default::prod_20260609::feedback",
+                "skill_name": "feedback",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::feedback/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "ada17b892306bc978e040870b15cd24401fb6a129cc839a1b86c614c47463a25",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::skill-creator",
+                "skill_name": "skill-creator",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::skill-creator/0.0.1/package.zip",
+                "version": "0.0.1"
+              }
+            ]
+          },
+          {
+            "model": "hebe",
+            "skills": [
+              {
+                "deploy_scope": 1,
+                "sha256": "11f33c6091323fe87e240d7a0c3c86407b29463593c645df996c64edc0ffd209",
+                "skill_id": "trae_agent::default::prod_20260609_kimi_windows::TRAE-computer-use-ptc",
+                "skill_name": "TRAE-computer-use-ptc",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609_kimi_windows::TRAE-computer-use-ptc/0.0.10/package.zip",
+                "version": "0.0.10"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "7472aec0f137d014e6bef6f2273628acebb8d5186b61a92dd9b7d24744be489e",
+                "skill_id": "trae_agent::default::prod_20260609::TRAE-product-knowledge",
+                "skill_name": "TRAE-product-knowledge",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::TRAE-product-knowledge/0.0.2/package.zip",
+                "version": "0.0.2"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "5de63121a0c88d6ab090fa07b7629f742f28fb3c533288e60f8c526f21fa41be",
+                "skill_id": "trae_agent::default::prod_20260609::feedback",
+                "skill_name": "feedback",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::feedback/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "ada17b892306bc978e040870b15cd24401fb6a129cc839a1b86c614c47463a25",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::skill-creator",
+                "skill_name": "skill-creator",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::skill-creator/0.0.1/package.zip",
+                "version": "0.0.1"
+              }
+            ]
+          },
+          {
+            "model": "non_multimodal",
+            "skills": [
+              {
+                "deploy_scope": 1,
+                "sha256": "65bff98429c1c226fce12f0b2bc224fb0e44420b9d37b4cb7ce82b3a815a999b",
+                "skill_id": "trae_agent::default::prod_20260609_non_multimodal_windows::TRAE-computer-use-ptc",
+                "skill_name": "TRAE-computer-use-ptc",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609_non_multimodal_windows::TRAE-computer-use-ptc/0.0.4/package.zip",
+                "version": "0.0.4"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "agent_type": "design",
+        "model_skills": [
+          {
+            "model": "default",
+            "skills": [
+              {
+                "deploy_scope": 1,
+                "sha256": "e8744aa5887374abde4fd98709912bae228bcca47e64990bd4e2f25c7dde3829",
+                "skill_id": "trae_agent::default::prod_20260609_windows::TRAE-computer-use-ptc",
+                "skill_name": "TRAE-computer-use-ptc",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609_windows::TRAE-computer-use-ptc/0.0.8/package.zip",
+                "version": "0.0.8"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "152e650d72abb1d43290329b8d9846802818f98b2c482b6c20d3c9c50ae22e03",
+                "skill_id": "trae_agent::solo_design::default::prod_20260722::design-library-creator",
+                "skill_name": "design-library-creator",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_design::default::prod_20260722::design-library-creator/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "5de63121a0c88d6ab090fa07b7629f742f28fb3c533288e60f8c526f21fa41be",
+                "skill_id": "trae_agent::default::prod_20260609::feedback",
+                "skill_name": "feedback",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::feedback/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "ada17b892306bc978e040870b15cd24401fb6a129cc839a1b86c614c47463a25",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::skill-creator",
+                "skill_name": "skill-creator",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::skill-creator/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "509205ab3620c4c1c289a23184746ec856843295d9d511939f66bfae9baef477",
+                "skill_id": "trae_agent::solo_design::default::prod_20260810::solo-design",
+                "skill_name": "solo-design",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_design::default::prod_20260810::solo-design/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "32391067a1badbbf2e0e5774402de5e37d699431d1ef97343509a53983c73333",
+                "skill_id": "trae_agent::solo_design::default::prod_20260810::solo-graphic-generation",
+                "skill_name": "solo-graphic-generation",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_design::default::prod_20260810::solo-graphic-generation/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "4793867204576540729cbeab7fc177c254749b8bfd499326287243842d0e7c3e",
+                "skill_id": "trae_agent::solo_design::default::prod_20260810::solo-image-edit",
+                "skill_name": "solo-image-edit",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_design::default::prod_20260810::solo-image-edit/0.0.1/package.zip",
+                "version": "0.0.1"
+              }
+            ]
+          },
+          {
+            "model": "non_multimodal",
+            "skills": [
+              {
+                "deploy_scope": 1,
+                "sha256": "65bff98429c1c226fce12f0b2bc224fb0e44420b9d37b4cb7ce82b3a815a999b",
+                "skill_id": "trae_agent::default::prod_20260609_non_multimodal_windows::TRAE-computer-use-ptc",
+                "skill_name": "TRAE-computer-use-ptc",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609_non_multimodal_windows::TRAE-computer-use-ptc/0.0.4/package.zip",
+                "version": "0.0.4"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "agent_type": "work",
+        "model_skills": [
+          {
+            "model": "default",
+            "skills": [
+              {
+                "deploy_scope": 1,
+                "sha256": "e8744aa5887374abde4fd98709912bae228bcca47e64990bd4e2f25c7dde3829",
+                "skill_id": "trae_agent::default::prod_20260609_windows::TRAE-computer-use-ptc",
+                "skill_name": "TRAE-computer-use-ptc",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609_windows::TRAE-computer-use-ptc/0.0.8/package.zip",
+                "version": "0.0.8"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "7472aec0f137d014e6bef6f2273628acebb8d5186b61a92dd9b7d24744be489e",
+                "skill_id": "trae_agent::default::prod_20260609::TRAE-product-knowledge",
+                "skill_name": "TRAE-product-knowledge",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::TRAE-product-knowledge/0.0.2/package.zip",
+                "version": "0.0.2"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "80cf0a8a0c73d752cadb8d48f7363725a8306bc3dab49dc342136621afda7ec8",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::doc-writing-guide",
+                "skill_name": "doc-writing-guide",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::doc-writing-guide/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "ff269b2a2f39170e862a211e1eaa9f5f9a88f0e16845882976af3fd4852f3f85",
+                "skill_id": "trae_agent::solo_work::default::prod_20260203_windows::docx",
+                "skill_name": "docx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260203_windows::docx/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "5de63121a0c88d6ab090fa07b7629f742f28fb3c533288e60f8c526f21fa41be",
+                "skill_id": "trae_agent::default::prod_20260609::feedback",
+                "skill_name": "feedback",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::feedback/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "012f6dbf9d036c19e69fead891170fb033c1a9a75fd59d7325644611c855f0da",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::html-deck",
+                "skill_name": "html-deck",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::html-deck/0.0.8/package.zip",
+                "version": "0.0.8"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "becc081cd015d286b4f41b91beb862bdc54380d5ead65511491fd71b8a9907fc",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::html-report",
+                "skill_name": "html-report",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::html-report/0.0.3/package.zip",
+                "version": "0.0.3"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "7e3e03830bec4f8d852804525fed702fc6b598fad097b94d430011de7075a733",
+                "skill_id": "trae_agent::solo_work::default::prod_20260203_windows::pdf",
+                "skill_name": "pdf",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260203_windows::pdf/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "a89b06c156d2c87ad21c254646196b24168aee6e60d165090fd3b1d51dc2ad92",
+                "skill_id": "trae_agent::solo_work::default::prod_20260203_windows::pptx",
+                "skill_name": "pptx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260203_windows::pptx/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "57305239f3d9bd4ea811481147fdcab4fa716a19b6a6cfcdfea48d993f8a85d7",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::research-guide",
+                "skill_name": "research-guide",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::research-guide/0.0.4/package.zip",
+                "version": "0.0.4"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "ada17b892306bc978e040870b15cd24401fb6a129cc839a1b86c614c47463a25",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::skill-creator",
+                "skill_name": "skill-creator",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::skill-creator/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "84665063c3f3bc69243f5f7736c7ce9fe4275e1f6cf08dd24a58b9878b00f26e",
+                "skill_id": "trae_agent::solo_work::default::prod_20260203_windows::xlsx",
+                "skill_name": "xlsx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260203_windows::xlsx/0.0.1/package.zip",
+                "version": "0.0.1"
+              }
+            ]
+          },
+          {
+            "model": "hebe",
+            "skills": [
+              {
+                "deploy_scope": 1,
+                "sha256": "11f33c6091323fe87e240d7a0c3c86407b29463593c645df996c64edc0ffd209",
+                "skill_id": "trae_agent::default::prod_20260609_kimi_windows::TRAE-computer-use-ptc",
+                "skill_name": "TRAE-computer-use-ptc",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609_kimi_windows::TRAE-computer-use-ptc/0.0.10/package.zip",
+                "version": "0.0.10"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "7472aec0f137d014e6bef6f2273628acebb8d5186b61a92dd9b7d24744be489e",
+                "skill_id": "trae_agent::default::prod_20260609::TRAE-product-knowledge",
+                "skill_name": "TRAE-product-knowledge",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::TRAE-product-knowledge/0.0.2/package.zip",
+                "version": "0.0.2"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "80cf0a8a0c73d752cadb8d48f7363725a8306bc3dab49dc342136621afda7ec8",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::doc-writing-guide",
+                "skill_name": "doc-writing-guide",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::doc-writing-guide/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "ff269b2a2f39170e862a211e1eaa9f5f9a88f0e16845882976af3fd4852f3f85",
+                "skill_id": "trae_agent::solo_work::default::prod_20260203_windows::docx",
+                "skill_name": "docx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260203_windows::docx/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "5de63121a0c88d6ab090fa07b7629f742f28fb3c533288e60f8c526f21fa41be",
+                "skill_id": "trae_agent::default::prod_20260609::feedback",
+                "skill_name": "feedback",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::feedback/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "012f6dbf9d036c19e69fead891170fb033c1a9a75fd59d7325644611c855f0da",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::html-deck",
+                "skill_name": "html-deck",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::html-deck/0.0.8/package.zip",
+                "version": "0.0.8"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "becc081cd015d286b4f41b91beb862bdc54380d5ead65511491fd71b8a9907fc",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::html-report",
+                "skill_name": "html-report",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::html-report/0.0.3/package.zip",
+                "version": "0.0.3"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "7e3e03830bec4f8d852804525fed702fc6b598fad097b94d430011de7075a733",
+                "skill_id": "trae_agent::solo_work::default::prod_20260203_windows::pdf",
+                "skill_name": "pdf",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260203_windows::pdf/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "a89b06c156d2c87ad21c254646196b24168aee6e60d165090fd3b1d51dc2ad92",
+                "skill_id": "trae_agent::solo_work::default::prod_20260203_windows::pptx",
+                "skill_name": "pptx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260203_windows::pptx/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "57305239f3d9bd4ea811481147fdcab4fa716a19b6a6cfcdfea48d993f8a85d7",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::research-guide",
+                "skill_name": "research-guide",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::research-guide/0.0.4/package.zip",
+                "version": "0.0.4"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "ada17b892306bc978e040870b15cd24401fb6a129cc839a1b86c614c47463a25",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::skill-creator",
+                "skill_name": "skill-creator",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::skill-creator/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "84665063c3f3bc69243f5f7736c7ce9fe4275e1f6cf08dd24a58b9878b00f26e",
+                "skill_id": "trae_agent::solo_work::default::prod_20260203_windows::xlsx",
+                "skill_name": "xlsx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260203_windows::xlsx/0.0.1/package.zip",
+                "version": "0.0.1"
+              }
+            ]
+          },
+          {
+            "model": "iphigenia",
+            "skills": [
+              {
+                "deploy_scope": 1,
+                "sha256": "e8744aa5887374abde4fd98709912bae228bcca47e64990bd4e2f25c7dde3829",
+                "skill_id": "trae_agent::default::prod_20260609_windows::TRAE-computer-use-ptc",
+                "skill_name": "TRAE-computer-use-ptc",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609_windows::TRAE-computer-use-ptc/0.0.8/package.zip",
+                "version": "0.0.8"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "7472aec0f137d014e6bef6f2273628acebb8d5186b61a92dd9b7d24744be489e",
+                "skill_id": "trae_agent::default::prod_20260609::TRAE-product-knowledge",
+                "skill_name": "TRAE-product-knowledge",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::TRAE-product-knowledge/0.0.2/package.zip",
+                "version": "0.0.2"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "80cf0a8a0c73d752cadb8d48f7363725a8306bc3dab49dc342136621afda7ec8",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::doc-writing-guide",
+                "skill_name": "doc-writing-guide",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::doc-writing-guide/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "4f4c2211c3bff7f455de30a0a72e5788b4dcb6d559d0ea7940d1ca914894bd34",
+                "skill_id": "trae_agent::solo_work::gpt_54::prod_20260403_windows::docx",
+                "skill_name": "docx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::gpt_54::prod_20260403_windows::docx/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "5de63121a0c88d6ab090fa07b7629f742f28fb3c533288e60f8c526f21fa41be",
+                "skill_id": "trae_agent::default::prod_20260609::feedback",
+                "skill_name": "feedback",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::feedback/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "012f6dbf9d036c19e69fead891170fb033c1a9a75fd59d7325644611c855f0da",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::html-deck",
+                "skill_name": "html-deck",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::html-deck/0.0.8/package.zip",
+                "version": "0.0.8"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "becc081cd015d286b4f41b91beb862bdc54380d5ead65511491fd71b8a9907fc",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::html-report",
+                "skill_name": "html-report",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::html-report/0.0.3/package.zip",
+                "version": "0.0.3"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "5c07302677cd4f6d8bf443e11336da9ae27e631526e227e850ee293869b38ddc",
+                "skill_id": "trae_agent::solo_work::gpt_54::prod_20260403_windows::pdf",
+                "skill_name": "pdf",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::gpt_54::prod_20260403_windows::pdf/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "68d7455d188b540c5aa9191203af8a89c6af332419906af5f472f629401b510e",
+                "skill_id": "trae_agent::solo_work::gpt_54::prod_20260403_windows::pptx",
+                "skill_name": "pptx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::gpt_54::prod_20260403_windows::pptx/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "57305239f3d9bd4ea811481147fdcab4fa716a19b6a6cfcdfea48d993f8a85d7",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::research-guide",
+                "skill_name": "research-guide",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::research-guide/0.0.4/package.zip",
+                "version": "0.0.4"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "ada17b892306bc978e040870b15cd24401fb6a129cc839a1b86c614c47463a25",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::skill-creator",
+                "skill_name": "skill-creator",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::skill-creator/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "3c5b8b3501fb936634f70bcb78552a38cea9675142a31bbfc375ceb2c87ed1cd",
+                "skill_id": "trae_agent::solo_work::gpt_54::prod_20260403_windows::xlsx",
+                "skill_name": "xlsx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::gpt_54::prod_20260403_windows::xlsx/0.0.1/package.zip",
+                "version": "0.0.1"
+              }
+            ]
+          },
+          {
+            "model": "iris",
+            "skills": [
+              {
+                "deploy_scope": 1,
+                "sha256": "e8744aa5887374abde4fd98709912bae228bcca47e64990bd4e2f25c7dde3829",
+                "skill_id": "trae_agent::default::prod_20260609_windows::TRAE-computer-use-ptc",
+                "skill_name": "TRAE-computer-use-ptc",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609_windows::TRAE-computer-use-ptc/0.0.8/package.zip",
+                "version": "0.0.8"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "7472aec0f137d014e6bef6f2273628acebb8d5186b61a92dd9b7d24744be489e",
+                "skill_id": "trae_agent::default::prod_20260609::TRAE-product-knowledge",
+                "skill_name": "TRAE-product-knowledge",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::TRAE-product-knowledge/0.0.2/package.zip",
+                "version": "0.0.2"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "80cf0a8a0c73d752cadb8d48f7363725a8306bc3dab49dc342136621afda7ec8",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::doc-writing-guide",
+                "skill_name": "doc-writing-guide",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::doc-writing-guide/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "ff269b2a2f39170e862a211e1eaa9f5f9a88f0e16845882976af3fd4852f3f85",
+                "skill_id": "trae_agent::solo_work::default::prod_20260203_windows::docx",
+                "skill_name": "docx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260203_windows::docx/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "5de63121a0c88d6ab090fa07b7629f742f28fb3c533288e60f8c526f21fa41be",
+                "skill_id": "trae_agent::default::prod_20260609::feedback",
+                "skill_name": "feedback",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609::feedback/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "012f6dbf9d036c19e69fead891170fb033c1a9a75fd59d7325644611c855f0da",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::html-deck",
+                "skill_name": "html-deck",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::html-deck/0.0.8/package.zip",
+                "version": "0.0.8"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "becc081cd015d286b4f41b91beb862bdc54380d5ead65511491fd71b8a9907fc",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::html-report",
+                "skill_name": "html-report",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::html-report/0.0.3/package.zip",
+                "version": "0.0.3"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "7e3e03830bec4f8d852804525fed702fc6b598fad097b94d430011de7075a733",
+                "skill_id": "trae_agent::solo_work::default::prod_20260203_windows::pdf",
+                "skill_name": "pdf",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260203_windows::pdf/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "ff0b918e8c348f9fecb95f8804eef9eaae85b964d2b9f7729c4efa7453d1fbfb",
+                "skill_id": "trae_agent::solo_work::minimax_m3::prod_20260203::pptx",
+                "skill_name": "pptx",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::minimax_m3::prod_20260203::pptx/0.0.3/package.zip",
+                "version": "0.0.3"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "57305239f3d9bd4ea811481147fdcab4fa716a19b6a6cfcdfea48d993f8a85d7",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::research-guide",
+                "skill_name": "research-guide",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::research-guide/0.0.4/package.zip",
+                "version": "0.0.4"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "ada17b892306bc978e040870b15cd24401fb6a129cc839a1b86c614c47463a25",
+                "skill_id": "trae_agent::solo_work::default::prod_20260609::skill-creator",
+                "skill_name": "skill-creator",
+                "supported_os": [
+                  "macos",
+                  "windows",
+                  "linux"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260609::skill-creator/0.0.1/package.zip",
+                "version": "0.0.1"
+              },
+              {
+                "deploy_scope": 1,
+                "sha256": "84665063c3f3bc69243f5f7736c7ce9fe4275e1f6cf08dd24a58b9878b00f26e",
+                "skill_id": "trae_agent::solo_work::default::prod_20260203_windows::xlsx",
+                "skill_name": "xlsx",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::solo_work::default::prod_20260203_windows::xlsx/0.0.1/package.zip",
+                "version": "0.0.1"
+              }
+            ]
+          },
+          {
+            "model": "non_multimodal",
+            "skills": [
+              {
+                "deploy_scope": 1,
+                "sha256": "65bff98429c1c226fce12f0b2bc224fb0e44420b9d37b4cb7ce82b3a815a999b",
+                "skill_id": "trae_agent::default::prod_20260609_non_multimodal_windows::TRAE-computer-use-ptc",
+                "skill_name": "TRAE-computer-use-ptc",
+                "supported_os": [
+                  "windows"
+                ],
+                "tos_uri": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/1001/trae_agent::default::prod_20260609_non_multimodal_windows::TRAE-computer-use-ptc/0.0.4/package.zip",
+                "version": "0.0.4"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "new_meta": {
+      "agentTypes": {
+        "solo_agent": "trae",
+        "solo_agent_lite": "code",
+        "solo_agent_remote": "code",
+        "solo_design_lite": "design",
+        "solo_design_remote": "design",
+        "solo_work_lite": "work",
+        "solo_work_remote": "work"
+      },
+      "models": {
+        "code": {
+          "DeepSeek-V4-Flash": "non_multimodal",
+          "DeepSeek-V4-Flash-Official": "non_multimodal",
+          "DeepSeek-V4-Pro": "non_multimodal",
+          "DeepSeek-V4-Pro-Official": "non_multimodal",
+          "Doubao-Seed-2.0-Code": "default",
+          "Doubao-Seed-2.1-Pro": "default",
+          "Doubao-Seed-2.1-Turbo": "default",
+          "Doubao-Seed-Code": "default",
+          "Doubao_1_6": "default",
+          "custom_model_1M": "default",
+          "custom_model_1M_text": "default",
+          "custom_model_claude": "default",
+          "custom_model_deepseek_chat": "default",
+          "custom_model_deepseek_reasoner": "default",
+          "custom_model_deepseek_v4": "default",
+          "custom_model_gemini": "default",
+          "custom_model_gpt-5": "default",
+          "custom_model_kimi": "default",
+          "custom_model_no-fc": "default",
+          "custom_model_placeholder": "default",
+          "glm-5": "non_multimodal",
+          "glm-5.1": "non_multimodal",
+          "glm-5.2": "non_multimodal",
+          "glm-5.3": "non_multimodal",
+          "glm-5v-turbo": "default",
+          "kimi-k2.5": "default",
+          "kimi-k2.6": "hebe",
+          "kimi-k2.7-code": "default",
+          "kimi-k3": "default",
+          "minimax-m2.5": "default",
+          "minimax-m2.7": "default",
+          "minimax-m3": "default",
+          "qwen-3.5": "default",
+          "qwen-3.6-plus": "default",
+          "qwen-3.7-plus": "default",
+          "qwen3.8-max": "default"
+        },
+        "design": {
+          "DeepSeek-V4-Pro": "non_multimodal",
+          "Doubao-Seed-2.1-Pro": "default",
+          "Doubao-Seed-2.1-Turbo": "default",
+          "custom_model_1M": "default",
+          "custom_model_1M_text": "default",
+          "custom_model_200k": "default",
+          "custom_model_200k_text": "default",
+          "custom_model_claude": "default",
+          "custom_model_deepseek_chat": "default",
+          "custom_model_deepseek_reasoner": "default",
+          "custom_model_deepseek_v4": "default",
+          "custom_model_gemini": "default",
+          "custom_model_gpt-5": "default",
+          "custom_model_kimi": "default",
+          "custom_model_no-fc": "default",
+          "custom_model_placeholder": "default",
+          "glm-5-turbo": "default",
+          "glm-5.2": "non_multimodal",
+          "kimi-k2.7-code": "default"
+        },
+        "trae": {
+          "DeepSeek-V4-Flash": "non_multimodal",
+          "DeepSeek-V4-Flash-Official": "non_multimodal",
+          "DeepSeek-V4-Pro": "non_multimodal",
+          "DeepSeek-V4-Pro-Official": "non_multimodal",
+          "Doubao-Seed-2.0-Code": "default",
+          "Doubao-Seed-2.0-Code-auto": "default",
+          "Doubao-Seed-2.1-Pro": "default",
+          "Doubao-Seed-2.1-Turbo": "default",
+          "Doubao-Seed-2.1-Turbo-auto": "default",
+          "Doubao-Seed-Code": "default",
+          "doubao-for-auto": "default",
+          "glm-5": "non_multimodal",
+          "glm-5.1": "non_multimodal",
+          "glm-5.2": "non_multimodal",
+          "glm-5.3": "non_multimodal",
+          "kimi-k2.7-code": "default",
+          "kimi-k3": "default",
+          "minimax-m3": "default",
+          "qwen-3.7-plus": "default",
+          "qwen3.8-max": "default"
+        },
+        "work": {
+          "DeepSeek-V4-Flash": "non_multimodal",
+          "DeepSeek-V4-Flash-Official": "non_multimodal",
+          "DeepSeek-V4-Pro": "non_multimodal",
+          "DeepSeek-V4-Pro-Official": "non_multimodal",
+          "Doubao-Seed-2.1-Pro": "default",
+          "Doubao-Seed-2.1-Turbo": "default",
+          "aquila": "iphigenia",
+          "custom_model_1M": "default",
+          "custom_model_1M_text": "default",
+          "custom_model_claude": "default",
+          "custom_model_deepseek_chat": "default",
+          "custom_model_deepseek_reasoner": "default",
+          "custom_model_deepseek_v4": "default",
+          "custom_model_gemini": "default",
+          "custom_model_gpt-5": "default",
+          "custom_model_kimi": "default",
+          "custom_model_no-fc": "default",
+          "custom_model_placeholder": "default",
+          "glm-5": "non_multimodal",
+          "glm-5-turbo": "default",
+          "glm-5.2": "non_multimodal",
+          "glm-5.3": "non_multimodal",
+          "kimi-k2.5": "default",
+          "kimi-k2.6": "hebe",
+          "kimi-k2.7-code": "default",
+          "kimi-k3": "default",
+          "minimax-m2.7": "default",
+          "minimax-m3": "iris",
+          "qwen-3.7-plus": "default",
+          "qwen3.8-max": "default",
+          "sagitta": "default"
+        }
+      },
+      "region": "cn",
+      "version_lock_tag": "20260813225502_external_prod_skill_version"
+    }
+  }
+}

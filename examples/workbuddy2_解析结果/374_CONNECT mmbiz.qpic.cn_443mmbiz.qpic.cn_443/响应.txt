@@ -1,0 +1,195 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 16:07:22.475
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=weixin.qq.com, O=Shenzhen Tencent Computer Systems Company Limited, L=Shenzhen, S=Guangdong Province, C=CN
+  Simple Name: weixin.qq.com
+  DNS Name: weixin.qq.com
+
+[Issuer]
+  CN=DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1, O="DigiCert, Inc.", C=US
+  Simple Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+  DNS Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+
+[Serial Number]
+  06F4DB2E53C8BCD8C0427FA82D36C9ED
+
+[Not Before]
+  2026/3/9 8:00:00
+
+[Not After]
+  2026/9/24 7:59:59
+
+[Thumbprint]
+  C9D8EA1917B181D5C94E5068793CFDC93CFB7049
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 d4 5a 97 b9 e8 7b 73 82 be 4a fa 0c 2f 57 fb b7 b2 1a 3c f6 1f f1 4e b9 c1 8d 8f 11 2b 6a 69 ae d0 0e e3 78 af 5a 26 8a ce d1 bf 32 1d 52 45 87 b3 3e bb ee 10 2a ea bb 65 bb ac c4 f7 82 b7 04 7b 7e 03 d7 0b 4b 59 9f a0 4d 0a e1 9b 06 19 2c f1 ab 55 fe 1d d8 e5 7b e1 6b f9 00 8f 9f ca ca 84 45 c6 86 af 83 f5 30 96 92 63 ff 1c 75 ef f1 d6 a9 f9 56 7c 48 94 58 92 41 51 58 5c be ed ae f6 c8 46 f4 2d ec 04 2a 66 ae 2d df fe 69 a6 37 b0 e4 f2 c1 31 35 be dc bb c6 b4 25 c1 0f c4 2d 11 ea 3d b3 56 51 28 ed 5b 03 48 52 d8 b7 76 35 76 98 95 58 82 d4 51 27 5e 90 10 a5 5a 4a 0e 41 74 00 9f ad b9 20 1b 02 a1 24 f0 06 57 4b f7 21 a5 c1 42 d9 94 2b 68 fc 94 5f a7 83 0a 62 91 97 46 d1 ae 00 db f8 e5 91 3a db 7f 08 e2 1b 1a 4b 77 ea 0e df 94 ac e5 e7 a4 5e 25 d3 a6 34 92 9b 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=2b2316811b47898a907aece832d46c8e72f9ce25
+
+* 使用者密钥标识符(2.5.29.14):
+  1eae419ba8c088729be2eb7805a3e8940efa5d1b
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=weixin.qq.com
+DNS Name=*.acimg.cn
+DNS Name=*.cdn-go.cn
+DNS Name=*.cdn.myqcloud.com
+DNS Name=*.file.myqcloud.com
+DNS Name=*.gdtimg.com
+DNS Name=*.gtimg.cn
+DNS Name=*.gtimg.com
+DNS Name=*.i.gtimg.cn
+DNS Name=*.idqqimg.com
+DNS Name=*.imgcache.gtimg.cn
+DNS Name=*.imgcache.qq.com
+DNS Name=*.mail.qq.com
+DNS Name=*.mp.qq.com
+DNS Name=*.myapp.com
+DNS Name=*.qcloud.com
+DNS Name=*.qpic.cn
+DNS Name=*.qzonestyle.gtimg.cn
+DNS Name=*.qzs.qq.com
+DNS Name=*.ugdtimg.com
+DNS Name=*.url.cn
+DNS Name=*.weishi.qq.com
+DNS Name=*.weixin.qq.com
+DNS Name=*.weiyun.com
+DNS Name=*.wx.qq.com
+DNS Name=agame.qq.com
+DNS Name=cdn-go.cn
+DNS Name=cdn.b.qq.com
+DNS Name=cloudcache.qq.com
+DNS Name=combo.b.qq.com
+DNS Name=d3g.qq.com
+DNS Name=gdtimg.com
+DNS Name=imgcache.qq.com
+DNS Name=music.qq.com
+DNS Name=pingjs.qq.com
+DNS Name=qzapp.qq.com
+DNS Name=sharechain.qq.com
+DNS Name=ugdtimg.com
+DNS Name=upload.weiyun.qq.com
+DNS Name=weiyun.com
+DNS Name=wximg.qq.com
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+客户端身份验证 (1.3.6.1.5.5.7.3.2)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://ocsp.digicert.cn
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+c2317e574519a345ee7f38deb29041ebc7c2215a22bf7fd5b5ad769ad90e52cd
+‎2026‎年‎3‎月‎9‎日 17:23:44
+SHA256
+ECDSA
+3046022100c06fdb223255b0a98056d14c0169bd264495e2acf22560af45c45c6ff34060cf022100e7d82061a4159aca6446282ff92726dcbbb0e8904278596aa2a3c7203e05528c
+
+v1
+d76d7d10d1a7f577c2c7e95fd700bff982c9335a65e1d0b3017317c0c8c56977
+‎2026‎年‎3‎月‎9‎日 17:23:44
+SHA256
+ECDSA
+3045022100fa025c6ca4589814e42d7769dc2b0346c52cf7e97bc13fa4135c49ba2295a17c02202e70b0b8d46a00c828bc99dd7ad85ec5c95f7a8e8153c13f682a12f81751cc5b
+
+v1
+944e4387faecc1ef81f3192426a8186501c7d35f3802013f72677d55372e19d8
+‎2026‎年‎3‎月‎9‎日 17:23:44
+SHA256
+ECDSA
+304502205f42824abe3633e220792809be3fba02def16196a80b5ed57c8eaf7b3288c3dd022100a3c38fb48dbd3217e136f0ff02a2db48601284953149bccf9dc3dcf54cd4f61c
+
+
+[SubjectAltNames]
+DNS Name=weixin.qq.com
+DNS Name=*.acimg.cn
+DNS Name=*.cdn-go.cn
+DNS Name=*.cdn.myqcloud.com
+DNS Name=*.file.myqcloud.com
+DNS Name=*.gdtimg.com
+DNS Name=*.gtimg.cn
+DNS Name=*.gtimg.com
+DNS Name=*.i.gtimg.cn
+DNS Name=*.idqqimg.com
+DNS Name=*.imgcache.gtimg.cn
+DNS Name=*.imgcache.qq.com
+DNS Name=*.mail.qq.com
+DNS Name=*.mp.qq.com
+DNS Name=*.myapp.com
+DNS Name=*.qcloud.com
+DNS Name=*.qpic.cn
+DNS Name=*.qzonestyle.gtimg.cn
+DNS Name=*.qzs.qq.com
+DNS Name=*.ugdtimg.com
+DNS Name=*.url.cn
+DNS Name=*.weishi.qq.com
+DNS Name=*.weixin.qq.com
+DNS Name=*.weiyun.com
+DNS Name=*.wx.qq.com
+DNS Name=agame.qq.com
+DNS Name=cdn-go.cn
+DNS Name=cdn.b.qq.com
+DNS Name=cloudcache.qq.com
+DNS Name=combo.b.qq.com
+DNS Name=d3g.qq.com
+DNS Name=gdtimg.com
+DNS Name=imgcache.qq.com
+DNS Name=music.qq.com
+DNS Name=pingjs.qq.com
+DNS Name=qzapp.qq.com
+DNS Name=sharechain.qq.com
+DNS Name=ugdtimg.com
+DNS Name=upload.weiyun.qq.com
+DNS Name=weiyun.com
+DNS Name=wximg.qq.com
+

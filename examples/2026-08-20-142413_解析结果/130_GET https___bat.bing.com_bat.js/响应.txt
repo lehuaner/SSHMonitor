@@ -1,0 +1,14 @@
+HTTP/2 200
+cache-control: private,max-age=1800
+content-length: 15390
+content-type: application/javascript
+last-modified: Mon, 03 Aug 2026 16:15:16 GMT
+accept-ranges: bytes
+etag: "08228456323dd1:0"
+vary: Accept-Encoding
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+cross-origin-resource-policy: cross-origin
+x-cache: CONFIG_NOCACHE
+accept-ch: Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+x-msedge-ref: Ref A: 98727721E4354C67A25D99EB064DC1FC Ref B: TYO201151001040 Ref C: 2026-08-20T06:22:24Z
+date: Thu, 20 Aug 2026 06:22:24 GMT

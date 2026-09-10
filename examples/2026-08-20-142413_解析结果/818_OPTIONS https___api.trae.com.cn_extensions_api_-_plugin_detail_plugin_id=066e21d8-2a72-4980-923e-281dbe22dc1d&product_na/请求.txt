@@ -1,0 +1,23 @@
+OPTIONS https://api.trae.com.cn/extensions/api/-/plugin/detail?plugin_id=066e21d8-2a72-4980-923e-281dbe22dc1d&product_name=web&chat_mode=work HTTP/2
+:method: OPTIONS
+:authority: api.trae.com.cn
+:scheme: https
+:path: /extensions/api/-/plugin/detail?plugin_id=066e21d8-2a72-4980-923e-281dbe22dc1d&product_name=web&chat_mode=work
+accept: */*
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+access-control-request-headers: authorization,content-type,x-app-version,x-preferenced-language,x-trae-client
+access-control-request-method: GET
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: 95c03512-3b6d-4e0b-898a-2654565b2dee
+x-tt-trace-id: 00-1dd72d6c0d945686928468a4ea24ffff-1dd72d6c0d945686-01
+smbyttnet: 1

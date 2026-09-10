@@ -1,0 +1,190 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "beef6f94-c576-44d9-bf6d-47f3a7bd068e",
+  "data": {
+    "buddies": [
+      {
+        "acquired_at": "2026-09-02T22:50:27+08:00",
+        "appearance": {
+          "eye": null,
+          "hat": null,
+          "body_accessory": null,
+          "effect": null
+        },
+        "base_animated_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/00bb5a4c635ab991.webm",
+        "base_static_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/16a18766e3b99f0c.png",
+        "current_buddy": false,
+        "full_animated_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/9d7f424430da575a.png",
+        "instance_id": 6455126,
+        "name": "好事喵",
+        "personality": "「科技，让善意放大。」——机械猫头戴全息VR眼镜，荧光蓝眼闪烁。身穿嫩绿针织毛衣，机械手举小红花，潮酷软萌。冷外壳里的热心肠，科技是手段，向善是内核，这朵小红花既是它做过的好事勋章，也是它持续出发的理由。",
+        "rarity": "R",
+        "source": "task:Expert_Philanthropy",
+        "template_id": 22,
+        "thumbnail_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/fc466b8ee8092924.png"
+      },
+      {
+        "acquired_at": "2026-09-02T22:46:40+08:00",
+        "appearance": {
+          "eye": null,
+          "hat": null,
+          "body_accessory": null,
+          "effect": null
+        },
+        "base_animated_url": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/usercenter/activity/GrowthSpace/BuddyCats/chilun-miao.webm",
+        "base_static_url": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/workbuddy/assets/buddy_static_assets/chibi.png",
+        "current_buddy": false,
+        "full_animated_url": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/workbuddy/assets/work_cat_sprite_anim/work_cat11_sprite_anim.png",
+        "instance_id": 6454875,
+        "name": "暗影喵",
+        "personality": "安全守护者",
+        "rarity": "SR",
+        "source": "gacha",
+        "template_id": 6,
+        "thumbnail_url": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/usercenter/activity/GrowthSpace/BuddyCats/chilun-miao.png"
+      },
+      {
+        "acquired_at": "2026-09-02T22:44:37+08:00",
+        "appearance": {
+          "eye": null,
+          "hat": null,
+          "body_accessory": null,
+          "effect": null
+        },
+        "base_animated_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/9ee3b54ed23cc310.webm",
+        "base_static_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/d14862cb941b6ad2.png",
+        "current_buddy": true,
+        "full_animated_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/9399962ea9a253dc.apng",
+        "instance_id": 6454735,
+        "name": "设计喵",
+        "personality": "于寻常处捕捉灵光，把留白、线条和每处细节都抠到极致的灵感设计师。",
+        "rarity": "R",
+        "source": "gacha",
+        "template_id": 20,
+        "thumbnail_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/5a29258b591ed23e.png"
+      },
+      {
+        "acquired_at": "2026-09-02T22:44:26+08:00",
+        "appearance": {
+          "eye": null,
+          "hat": null,
+          "body_accessory": null,
+          "effect": null
+        },
+        "base_animated_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/3e06c7cfa660efda.webm",
+        "base_static_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/85e625d56e9ffeb4.png",
+        "current_buddy": false,
+        "full_animated_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/4befb40079b3f7af.apng",
+        "instance_id": 6454721,
+        "name": "咒语喵",
+        "personality": "别人靠运气，它靠咒语——手握与 AI 对话的终极密码，看似念念有词实则字字千金，一段提示词便能召唤出你想要的一切答案的提示词工程师。",
+        "rarity": "R",
+        "source": "gacha",
+        "template_id": 21,
+        "thumbnail_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/1dfe7f9f752fd00e.png"
+      },
+      {
+        "acquired_at": "2026-09-02T22:44:21+08:00",
+        "appearance": {
+          "eye": null,
+          "hat": null,
+          "body_accessory": null,
+          "effect": null
+        },
+        "base_animated_url": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/usercenter/activity/GrowthSpace/BuddyCats/longyan-miao.webm",
+        "base_static_url": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/workbuddy/assets/buddy_static_assets/chibi_v2.png",
+        "current_buddy": false,
+        "full_animated_url": "https://download.codebuddy.cn/growth-plan/sprite_dragon_shift28.png",
+        "instance_id": 6454717,
+        "name": "龙焰喵",
+        "personality": "技术霸主",
+        "rarity": "SSR",
+        "source": "gacha",
+        "template_id": 8,
+        "thumbnail_url": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/usercenter/activity/GrowthSpace/BuddyCats/longyan-miao.png"
+      },
+      {
+        "acquired_at": "2026-09-02T22:26:35+08:00",
+        "appearance": {
+          "eye": null,
+          "hat": null,
+          "body_accessory": null,
+          "effect": null
+        },
+        "base_animated_url": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/usercenter/activity/GrowthSpace/BuddyCats/xiangsu-miao.webm",
+        "base_static_url": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/workbuddy/assets/buddy_static_assets/cat_knight.png",
+        "current_buddy": false,
+        "full_animated_url": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/workbuddy/assets/work_cat_sprite_anim/work_cat09_sprite_anim.png",
+        "instance_id": 6453573,
+        "name": "像素喵",
+        "personality": "全栈冒险家",
+        "rarity": "R",
+        "source": "gacha",
+        "template_id": 3,
+        "thumbnail_url": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/usercenter/activity/GrowthSpace/BuddyCats/xiangsu-miao.png"
+      },
+      {
+        "acquired_at": "2026-09-02T22:08:51+08:00",
+        "appearance": {
+          "eye": null,
+          "hat": null,
+          "body_accessory": null,
+          "effect": null
+        },
+        "base_animated_url": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/usercenter/activity/GrowthSpace/BuddyCats/longyan-miao.webm",
+        "base_static_url": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/workbuddy/assets/buddy_static_assets/chibi_v2.png",
+        "current_buddy": false,
+        "full_animated_url": "https://download.codebuddy.cn/growth-plan/sprite_dragon_shift28.png",
+        "instance_id": 6452389,
+        "name": "龙焰喵",
+        "personality": "技术霸主",
+        "rarity": "SSR",
+        "source": "gacha",
+        "template_id": 8,
+        "thumbnail_url": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/usercenter/activity/GrowthSpace/BuddyCats/longyan-miao.png"
+      },
+      {
+        "acquired_at": "2026-09-02T22:08:44+08:00",
+        "appearance": {
+          "eye": null,
+          "hat": null,
+          "body_accessory": null,
+          "effect": null
+        },
+        "base_animated_url": "https://download.codebuddy.cn/growth-plan/baofumiao.webm",
+        "base_static_url": "https://download.codebuddy.cn/growth-plan/%E6%9A%B4%E5%AF%8C%E5%96%B5-%E9%9D%99%E6%80%81%E5%85%A8%E8%BA%AB%E5%9B%BE-%E9%80%8F%E6%98%8E.png",
+        "current_buddy": false,
+        "full_animated_url": "https://download.codebuddy.cn/growth-plan/%E6%9A%B4%E5%AF%8C%E5%96%B5%20apng.png",
+        "instance_id": 6452381,
+        "name": "暴富喵",
+        "personality": "",
+        "rarity": "UR",
+        "source": "task:RichMeow_Chat",
+        "template_id": 11,
+        "thumbnail_url": "https://download.codebuddy.cn/growth-plan/ce213474871e88c6.png"
+      },
+      {
+        "acquired_at": "2026-09-01T11:16:26+08:00",
+        "appearance": {
+          "eye": null,
+          "hat": null,
+          "body_accessory": null,
+          "effect": null
+        },
+        "base_animated_url": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/usercenter/activity/GrowthSpace/BuddyCats/longyan-miao.webm",
+        "base_static_url": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/workbuddy/assets/buddy_static_assets/chibi_v2.png",
+        "current_buddy": false,
+        "full_animated_url": "https://download.codebuddy.cn/growth-plan/sprite_dragon_shift28.png",
+        "instance_id": 6255383,
+        "name": "龙焰喵",
+        "personality": "技术霸主",
+        "rarity": "SSR",
+        "source": "first_buddy",
+        "template_id": 8,
+        "thumbnail_url": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/usercenter/activity/GrowthSpace/BuddyCats/longyan-miao.png"
+      }
+    ],
+    "count": 9
+  }
+}

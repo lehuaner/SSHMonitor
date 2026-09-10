@@ -1,0 +1,201 @@
+{
+  "ttl": 3600,
+  "clients": [
+    {
+      "name": "Bing",
+      "types": [
+        "msa"
+      ],
+      "group": "default",
+      "hosts": [
+        "www.bing.com"
+      ],
+      "tokens": {
+        "root": {
+          "clientId": "82864fa0-ed49-4711-8395-a0e6003dca1f",
+          "scopes": "077c9b95-2f57-4442-8872-134fcc08fcb3/Bing.MSA.Default",
+          "useMsaV2Api": true
+        }
+      },
+      "loginActions": {
+        "networkRequests": [
+          {
+            "url": "https://www.bing.com/fd/auth/signin/v2?action=header",
+            "method": "GET",
+            "headers": {
+              "X-Search-MsaV2Token": "${root}"
+            }
+          }
+        ]
+      },
+      "logoutActions": {
+        "networkRequests": [
+          {
+            "url": "https://www.bing.com/logoutgif.asp",
+            "method": "GET"
+          }
+        ]
+      },
+      "watch": [
+        {
+          "trigger": "cookie",
+          "host": "www.bing.com",
+          "name": "_U",
+          "value": "",
+          "action": "logout"
+        }
+      ]
+    },
+    {
+      "name": "MSN",
+      "types": [
+        "msa"
+      ],
+      "group": "default",
+      "hosts": [
+        "localhost.msn.com",
+        "ntp.msn.com",
+        "www.msn.com",
+        "ntp.msn.cn"
+      ],
+      "tokens": {
+        "msn": {
+          "clientId": "f3222e55-ab35-49de-81f3-88a3be08cf77",
+          "scopes": "service::www.msn.com::mbi_ssl"
+        }
+      },
+      "loginActions": {
+        "cookies": {
+          "add": [
+            {
+              "url": "https://www.msn.com/",
+              "line": "lt=${msn}; domain=msn.com; path=/; max-age=2592000; secure; samesite=none"
+            }
+          ]
+        }
+      },
+      "logoutActions": {
+        "networkRequests": [
+          {
+            "url": "https://api.msn.com/auth/cookie/EdgeProfile?apikey=0QfOX3Vn51YCzitbLaRkTTBadtWpgTN8NZLW0C1SEM&ocid=edge",
+            "method": "DELETE"
+          }
+        ],
+        "cookies": {
+          "add": [
+            {
+              "url": "https://www.msn.com/",
+              "line": "lt=; domain=msn.com; path=/; expires=Thu, 23 Jan 1970 00:00:01 GMT; secure; samesite=none"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "MSNV2_CN",
+      "types": [
+        "msa"
+      ],
+      "group": "default",
+      "hosts": [],
+      "tokens": {
+        "oneservice": {
+          "clientId": "d7b530a4-7680-4c23-a8bf-c52c121d2e87",
+          "resource": "https://oneservice.microsoft.com/OneService.Read",
+          "useMsaV2Api": true
+        }
+      },
+      "loginActions": {
+        "cookies": {
+          "add": [
+            {
+              "url": "https://www.msn.cn/",
+              "line": "elt=%7B%22access_token%22%3A%22${oneservice}%22%2C%22account_type%22%3A%22MSA%22%2C%22login_hint%22%3A%22${oneservice.login_hint}%22%2C%22e%22%3A%22${oneservice.email_hash}%22%7D; domain=msn.cn; path=/; secure; samesite=none"
+            },
+            {
+              "url": "https://www.msn.cn/",
+              "line": "eltc=%7B%22account_type%22%3A%22MSA%22%2C%22e%22%3A%22${oneservice.email_hash}%22%7D; domain=msn.cn; path=/; secure; samesite=none"
+            }
+          ]
+        }
+      },
+      "logoutActions": {
+        "networkRequests": [
+          {
+            "url": "https://api.msn.com/auth/cookie/EdgeProfile?apikey=0QfOX3Vn51YCzitbLaRkTTBadtWpgTN8NZLW0C1SEM&ocid=edge",
+            "method": "DELETE"
+          }
+        ],
+        "cookies": {
+          "add": [
+            {
+              "url": "https://www.msn.cn/",
+              "line": "elt=; domain=msn.cn; path=/; secure; expires=Thu, 23 Jan 1970 00:00:01 GMT; samesite=none"
+            },
+            {
+              "url": "https://www.msn.cn/",
+              "line": "eltc=; domain=msn.cn; path=/; secure; expires=Thu, 23 Jan 1970 00:00:01 GMT; samesite=none"
+            }
+          ]
+        }
+      },
+      "filter": {
+        "country": [
+          "CN"
+        ],
+        "version": {
+          "min": "125.0.2535.0"
+        }
+      }
+    },
+    {
+      "name": "MSNV2",
+      "types": [
+        "msa"
+      ],
+      "group": "default",
+      "hosts": [],
+      "tokens": {
+        "oneservice": {
+          "clientId": "d7b530a4-7680-4c23-a8bf-c52c121d2e87",
+          "resource": "https://oneservice.microsoft.com/OneService.Read",
+          "useMsaV2Api": true
+        }
+      },
+      "loginActions": {
+        "cookies": {
+          "add": [
+            {
+              "url": "https://www.msn.com/",
+              "line": "elt=%7B%22access_token%22%3A%22${oneservice}%22%2C%22account_type%22%3A%22MSA%22%2C%22login_hint%22%3A%22${oneservice.login_hint}%22%2C%22e%22%3A%22${oneservice.email_hash}%22%7D; domain=msn.com; path=/; max-age=604800; secure; samesite=none"
+            },
+            {
+              "url": "https://www.msn.com/",
+              "line": "eltc=%7B%22account_type%22%3A%22MSA%22%2C%22e%22%3A%22${oneservice.email_hash}%22%7D; domain=msn.com; path=/; max-age=604800; secure; samesite=none"
+            }
+          ]
+        }
+      },
+      "logoutActions": {
+        "networkRequests": [
+          {
+            "url": "https://api.msn.com/auth/cookie/EdgeProfile?apikey=0QfOX3Vn51YCzitbLaRkTTBadtWpgTN8NZLW0C1SEM&ocid=edge",
+            "method": "DELETE"
+          }
+        ],
+        "cookies": {
+          "add": [
+            {
+              "url": "https://www.msn.com/",
+              "line": "elt=; domain=msn.com; path=/; secure; expires=Thu, 23 Jan 1970 00:00:01 GMT; samesite=none"
+            },
+            {
+              "url": "https://www.msn.com/",
+              "line": "eltc=; domain=msn.com; path=/; secure; expires=Thu, 23 Jan 1970 00:00:01 GMT; samesite=none"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

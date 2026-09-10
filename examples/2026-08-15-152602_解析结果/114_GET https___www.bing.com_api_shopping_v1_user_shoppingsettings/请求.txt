@@ -1,0 +1,15 @@
+GET https://www.bing.com/api/shopping/v1/user/shoppingsettings HTTP/2
+:method: GET
+:authority: www.bing.com
+:scheme: https
+:path: /api/shopping/v1/user/shoppingsettings
+x-client-data: eyIxIjoiMTAiLCIyIjoiMSIsIjMiOiIwIiwiNCI6Ijc3MTU5NzU3NDkyNjI1NTc0OTMiLCI2Ijoic3RhYmxlIiwiOSI6ImRlc2t0b3AifQ==
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+sec-fetch-storage-access: active
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=4, i
+cookie: ANON=; MUID=06AD6D0EFAEB690921F5787FFBA868C6; _RwBf=r=1449777124B1466A8&mta=0&rc=23461&rb=23461&gb=2025w17_c&rg=0&pc=23461&mtu=0&rbb=0.0&g=newLevel3&cid=3005&clo=0&v=4&l=2026-08-14T07:00:00.0000000Z&lft=0001-01-01T00:00:00.0000000&aof=0&ard=0001-01-01T00:00:00.0000000&rwdbt=-62135539200&rwflt=1705246875&rwaul2=0&o=16&p=bingcopilotwaitlist&c=MY00IA&t=6686&s=2023-02-13T17:02:08.3410469+00:00&ts=2026-08-15T03:41:49.8436548+00:00&rwred=0&wls=2&wlb=0&wle=0&ccp=2&cpt=0&lka=0&lkt=0&aad=0&TH=&e=Ok086NZleXIYTlRrm4CCH2CDQgjw8q2R7ehs6O-dVL8Mc618cnm1TKp2ChW-wjteTZfLTjUeUcNmncyH3zoI0g&A=&ispd=4; 

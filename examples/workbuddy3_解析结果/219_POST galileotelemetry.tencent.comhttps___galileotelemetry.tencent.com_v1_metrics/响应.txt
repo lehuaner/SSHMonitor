@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Date: Thu, 10 Sep 2026 04:02:11 GMT
+Content-Type: application/json
+Content-Length: 2
+Connection: keep-alive
+Trpc-Trans-Info: {"affinity_attribute":"dHJwYy5odHRwLnVwc2VydmVyLnVwc2VydmljZeKUglBDRy0xMjMuZ2FsaWxlby5wdWJsaWNnYXRld2F54pSCMg=="}
+X-Content-Type-Options: nosniff
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Methods: *
+Access-Control-Allow-Headers: *

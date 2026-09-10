@@ -1,0 +1,34 @@
+{
+  "data": {
+    "items": [
+      {
+        "id": "127",
+        "sceneId": "business_growth",
+        "displayText": "分析平台商品和流量，制定经营计划",
+        "prompt": "分析平台商品和流量，制定经营计划",
+        "pluginId": "066e21d8-2a72-4980-923e-281dbe22dc1d"
+      },
+      {
+        "id": "101",
+        "sceneId": "content_creation",
+        "displayText": "把这份产品说明改写成易懂的使用教程和常见问题",
+        "prompt": "把这份产品说明改写成易懂的使用教程和常见问题"
+      },
+      {
+        "id": "59",
+        "sceneId": "video",
+        "displayText": "为新品发布活动制作一条三十秒预热视频",
+        "prompt": "为新品发布活动制作一条三十秒预热视频"
+      },
+      {
+        "id": "84",
+        "sceneId": "product_development",
+        "displayText": "为 SaaS 产品制作一个清晰的价格页面",
+        "prompt": "为 SaaS 产品制作一个清晰的价格页面",
+        "pluginId": "9a2783e4-0fee-4dfe-a558-bc49ad963c75"
+      }
+    ]
+  },
+  "success": true,
+  "logId": "20260820142353E640D59C1955CA266E99"
+}

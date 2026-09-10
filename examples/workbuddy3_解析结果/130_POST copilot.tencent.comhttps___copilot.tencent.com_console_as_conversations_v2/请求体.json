@@ -1,0 +1,25 @@
+{
+  "type": "local",
+  "sessionId": "d0ea0f6a-a47b-4124-9de2-9f42499da256",
+  "name": "修复选择组并应用中的显示与选择问题",
+  "conversationOrigin": "legacy_workbuddy_local",
+  "workDir": "D:\\Code\\Project\\Python\\ExtractRole",
+  "isPlayground": 0,
+  "createdAtMs": 1787667875965,
+  "updatedAtMs": 1787722976151,
+  "lastActivityAtMs": 1787722976151,
+  "clientContext": {
+    "localStatus": "active",
+    "hostId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "sessionKind": "manual",
+    "model": "",
+    "sourceMode": "",
+    "permissionMode": "",
+    "expert": {
+      "id": "",
+      "locale": "",
+      "runtimeIdentity": "",
+      "marketplace": ""
+    }
+  }
+}

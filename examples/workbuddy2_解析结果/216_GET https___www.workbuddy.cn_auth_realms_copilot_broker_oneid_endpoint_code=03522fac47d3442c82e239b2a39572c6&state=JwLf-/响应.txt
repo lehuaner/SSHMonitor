@@ -1,0 +1,14 @@
+HTTP/2 302
+x-kc-routed-to: new
+set-cookie: AUTH_SESSION_ID=d216774f-2d02-4531-8f79-c73a817ce1a6.keycloak-clusterless-5df949fc4d-26vwd;Version=1;Path=/auth/realms/copilot/;Secure;HttpOnly;SameSite=None
+location: https://www.workbuddy.cn/auth/realms/copilot/login-actions/post-broker-login?client_id=console&tab_id=Ncbm0Ybu6N4&client_data=eyJydSI6Imh0dHBzOi8vd3d3LndvcmtidWRkeS5jbi9sb2dpbi8_cGxhdGZvcm09d29ya2J1ZGR5JnN0YXRlPTRmMDA2YmNiLWVlMjEtNDQ4MC1hYjllLWRiMjZiOGE4OWIzNyZ2ZXJzaW9uPTUuNS4zJmxvZ2luU2Vzc2lvbklkPTc3YTVmZDQ1LWE4OWEtNDYwMS1iZTI0LTE3Y2EyYTkwZDc0MiIsInJ0IjoiY29kZSJ9
+referrer-policy: no-referrer
+strict-transport-security: max-age=31536000; includeSubDomains
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+server: APISIX/3.9.1
+x-request-id: 730ff3fb-e55b-40e1-817f-0fdf85b2e502
+content-length: 0
+date: Tue, 08 Sep 2026 08:06:40 GMT
+eo-log-uuid: 9937365278492784197
+eo-cache-status: MISS

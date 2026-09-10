@@ -1,0 +1,24 @@
+GET https://lf-cdn.trae.com.cn/obj/trae-com-cn/dist-mf/user-entitlement/0.3.7/mf-manifest.json HTTP/2
+:method: GET
+:authority: lf-cdn.trae.com.cn
+:scheme: https
+:path: /obj/trae-com-cn/dist-mf/user-entitlement/0.3.7/mf-manifest.json
+accept: */*
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Chromium";v="142"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: 06617501-93b9-4423-a17d-1f8d3dc34d3f
+x-tt-trace-id: 00-1dd6e4180d945686928468ad8823ffff-1dd6e4180d945686-01
+smbyttnet: 1

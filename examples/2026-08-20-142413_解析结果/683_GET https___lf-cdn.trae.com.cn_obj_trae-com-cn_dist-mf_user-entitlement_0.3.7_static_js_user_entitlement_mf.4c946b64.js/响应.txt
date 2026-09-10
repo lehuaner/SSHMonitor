@@ -1,0 +1,33 @@
+HTTP/2 200
+server: Tengine
+content-type: application/javascript; charset=utf-8
+content-length: 33348
+date: Wed, 19 Aug 2026 03:46:57 GMT
+vary: Accept-Encoding
+cache-control: public, max-age=31536000, immutable
+etag: W/"8bf7c1062d47460f3afe3a7a97f5e1f2"
+last-modified: Wed, 19 Aug 2026 03:46:33 GMT
+x-bdcdn-cache-status: TCP_HIT
+x-kfc-cachekey: http://d-ks-origin-cache-all-lf.originalstatic.com/trae-com-cn/dist-mf/user-entitlement/0.3.7/static/js/user_entitlement_mf.4c946b64.js
+x-tos-hash-crc64ecma: 6592744205767067855
+x-tos-request-id: 5cbd0051-45ab-43b7-a2ea-aba58cde96e3-fdbdgdc02g24gc42gg43-a2e311d
+x-tos-response-time: Wed, 19 Aug 2026 03:46:51 GMT
+x-tos-storage-class: STANDARD
+via: fdbd:dc02:27:289::27, cache24.l2cn1816[0,0,200-0,H], cache59.l2cn1816[1,0], cache14.cn7729[0,0,200-0,H], cache19.cn7729[2,0]
+x-request-ip: fdbd:dc01:25:7::147
+x-tt-trace-tag: id=03;cdn-cache=hit;type=static
+x-response-cinfo: fdbd:dc01:25:7::147
+x-response-cache: edge_hit
+server-timing: inner; dur=6
+x-tt-trace-host: 01002c3bf10caed2893a322f9f341fcc2ac82db1314e34b513b674ba8221072e59af47d2e5848346cfb3f73836e87d43760c7c20c9462917ca8013c7c500dab78b389a44c8e55e4aa6db73d4f2340e156032b270fd439986257a555f60235cf06a2fe45c44c5eb4a4e8244df15b6faed79
+x-tt-trace-id: 00-182118a50d7c96b8bf52e29246fdffff-182118a50d7c96b8-01
+x-tt-logid: 2026081911465700033A7D0E34B4597617
+age: 95804
+ali-swift-global-savetime: 1787111217
+x-cache: HIT TCP_MEM_HIT dirn:-2:-2
+x-swift-savetime: Wed, 19 Aug 2026 04:13:30 GMT
+x-swift-cachetime: 31534407
+x-tt-supplier-id: 0_1
+access-control-allow-origin: *
+timing-allow-origin: *
+eagleid: 2497e51817872070218716664e

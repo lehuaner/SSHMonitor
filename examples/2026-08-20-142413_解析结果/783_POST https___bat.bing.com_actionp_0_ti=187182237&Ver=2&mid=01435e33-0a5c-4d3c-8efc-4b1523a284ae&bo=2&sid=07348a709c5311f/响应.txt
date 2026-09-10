@@ -1,0 +1,12 @@
+HTTP/2 204
+cache-control: no-cache, must-revalidate
+pragma: no-cache
+expires: Fri, 01 Jan 1990 00:00:00 GMT
+vary: Origin
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+access-control-allow-origin: https://www.trae.cn
+access-control-allow-credentials: true
+x-cache: CONFIG_NOCACHE
+accept-ch: Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+x-msedge-ref: Ref A: E9E75D9B1C314A43AF33D5B02BCDE805 Ref B: TYO201151006040 Ref C: 2026-08-20T06:23:53Z
+date: Thu, 20 Aug 2026 06:23:53 GMT

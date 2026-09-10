@@ -1,0 +1,25 @@
+{
+  "type": "local",
+  "sessionId": "31ab8fe2-a287-47e6-b501-7911caf0fb3f",
+  "name": "恢复 git 操作或仓库状态",
+  "conversationOrigin": "legacy_workbuddy_local",
+  "workDir": "D:\\Code\\Project\\Python\\TextPatch",
+  "isPlayground": 0,
+  "createdAtMs": 1788080247563,
+  "updatedAtMs": 1788114698928,
+  "lastActivityAtMs": 1788114698928,
+  "clientContext": {
+    "localStatus": "active",
+    "hostId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "sessionKind": "manual",
+    "model": "",
+    "sourceMode": "",
+    "permissionMode": "",
+    "expert": {
+      "id": "",
+      "locale": "",
+      "runtimeIdentity": "",
+      "marketplace": ""
+    }
+  }
+}

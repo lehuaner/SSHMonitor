@@ -1,0 +1,212 @@
+<!DOCTYPE html><html lang=zh-CN><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>文件管理 - Honor10</title><script src="config.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif}
+body{background:#0b1120;color:#e2e8f0;display:flex;align-items:center;justify-content:center}
+.app{width:100%;max-width:1200px;padding:20px}
+.nav{display:flex;gap:4px;margin-bottom:20px;background:#131c31;border-radius:10px;padding:4px;border:1px solid #1e293b}
+.nav a{padding:8px 20px;border-radius:6px;text-decoration:none;color:#94a3b8;font-size:.85rem;transition:.2s}
+.nav a:hover,.nav a.active{background:#2563eb;color:#fff}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:8px}
+.header h1{font-size:1.2rem;font-weight:600}
+.breadcrumb{display:flex;align-items:center;gap:4px;font-size:.8rem;margin-bottom:12px;flex-wrap:wrap}
+.breadcrumb a{color:#38bdf8;text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb .sep{color:#475569}
+.card{background:#131c31;border:1px solid #1e293b;border-radius:10px;padding:12px}
+table{width:100%;border-collapse:collapse;font-size:.8rem}
+th{color:#64748b;font-weight:500;padding:8px 8px;text-align:left;border-bottom:1px solid #1e293b}
+td{padding:6px 8px;border-bottom:1px solid #131c31}
+tr:hover td{background:rgba(56,189,248,.03)}
+tr.dir td{font-weight:500}
+tr.protd td:first-child{color:#f59e0b}
+.icon{width:20px;display:inline-block;text-align:center;margin-right:4px}
+.name{color:#e2e8f0;text-decoration:none}
+.name:hover{color:#38bdf8}
+.size{color:#64748b;font-family:monospace;font-size:.75rem}
+.time{color:#64748b;font-size:.75rem}
+.actions{display:flex;gap:4px;flex-wrap:nowrap;justify-content:flex-start;align-items:center}
+.btn{padding:3px 10px;border-radius:4px;border:none;font-size:.7rem;cursor:pointer;color:#fff;transition:opacity .2s;white-space:nowrap}
+.btn:hover{opacity:.8}
+.btn-edit{background:#2563eb}
+.btn-del{background:#dc2626}
+.btn-rename{background:#7c3aed}
+.btn-dir{background:#059669}
+.btn-note{background:#0891b2}
+.toolbar{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.toolbar .btn{background:#1e293b;padding:5px 14px}
+.toolbar .btn-primary{background:#2563eb}
+.toolbar .btn-warn{background:#d97706}
+.protd-badge{display:inline-block;background:rgba(245,158,11,.15);color:#f59e0b;font-size:.6rem;padding:0 5px;border-radius:3px;margin-left:4px}
+.note-badge{display:inline-block;background:rgba(56,189,248,.12);color:#38bdf8;font-size:.55rem;padding:0 4px;border-radius:3px;margin-left:4px;max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;vertical-align:middle}
+.file-row{cursor:pointer;transition:background .15s}
+.file-row:hover td{background:rgba(56,189,248,.08)!important}
+.file-row .edit-indicator{display:none;color:#38bdf8;font-size:.6rem;margin-left:6px;opacity:.6}
+.file-row:hover .edit-indicator{display:inline}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:100}
+.modal.show{display:flex}
+.modal-box{background:#1e293b;border-radius:12px;padding:20px;width:92%;max-width:800px;max-height:85vh;overflow:hidden;display:flex;flex-direction:column}
+.modal-box h3{font-size:1rem;margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-shrink:0}
+.modal-box input,.modal-box textarea{width:100%;background:#0b1120;border:1px solid #334155;border-radius:6px;padding:8px 12px;color:#e2e8f0;font-size:.85rem;margin-bottom:8px;outline:none}
+.modal-box input:focus,.modal-box textarea:focus{border-color:#38bdf8}
+.modal-ft{display:flex;gap:6px;justify-content:flex-end;margin-top:6px;flex-shrink:0}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e293b;color:#e2e8f0;padding:10px 24px;border-radius:8px;font-size:.8rem;z-index:99;transition:opacity .3s;opacity:0;pointer-events:none}
+.toast.show{opacity:1}
+@media(max-width:600px){.modal-box{width:95%}}
+</style>
+<div class=app>
+<div class=nav><a href=/><span>&#9660; 监控</span></a><a href=/sb/ui/ target=_blank><span>&#9881; Sing-box</span></a><a href=/subscription><span>&#128230; 订阅</span></a><a href=/notify><span>&#128276; 通知</span></a><a href=/files class=active><span>&#128193; 文件</span></a><a href=/android><span>&#128241; Android</span></a><a href=/checkin><span>&#9989; 签到</span></a></div>
+<div class=header><h1>&#128193; 文件管理</h1><div style=font-size:.75rem;color:#64748b>路径: /<span id=pathDisplay></span></div></div>
+<div class=breadcrumb id=breadcrumb>加载中...</div>
+<div class=toolbar>
+<button class="btn btn-primary" onclick=newFile()>新建文件</button>
+<button class="btn btn-dir" onclick=newDir()>新建文件夹</button>
+<button class="btn btn-warn" onclick=uploadFile()>上传文件</button>
+</div>
+<div class=card><table><thead><tr><th>名称</th><th style=width:80px>大小</th><th style=width:130px>修改时间</th><th style=width:170px>操作</th></tr></thead>
+<tbody id=fileBody><tr><td colspan=4 style=text-align:center;color:#64748b;padding:12px>加载中...</td></tr></tbody></table></div>
+<div style=text-align:right;font-size:.7rem;color:#334155;margin-top:8px>路径: /<span id=pathDisplay2></span></div>
+</div>
+<div id=modal class=modal><div class=modal-box><h3 id=modalTitle>操作</h3><div id=modalBody></div><div class=modal-ft><button class="btn btn-sm" onclick=closeModal()>取消</button><button class="btn btn-primary" id=modalConfirm onclick=modalOk()>确定</button></div></div></div>
+<div id=toast class=toast></div>
+<script>
+const $=id=>document.getElementById(id);
+const show=(m,s=3)=>{const t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),s*1000)};
+const enc=s=>s?encodeURIComponent(s):'';
+const de=s=>{try{return decodeURIComponent(s)}catch{return s}};
+let currentPath='';
+let allNotes={};
+let modalCb=null;
+
+function esc(s){if(!s)return '';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function fmtSize(s){if(s<1024)return s+'B';if(s<1048576)return(s/1024).toFixed(1)+'KB';return(s/1048576).toFixed(1)+'MB'}
+function fmtTime(t){if(!t)return '-';try{return new Date(t).toLocaleString('zh-CN')}catch{return '-'}}
+function getRowClass(i){return(i.isDir?'dir ':'')+(i.protected?'protd':'')}
+function closeModal(){document.getElementById('modal').classList.remove('show');modalCb=null}
+function openModal(title,body,cb){document.getElementById('modalTitle').innerHTML=title;document.getElementById('modalBody').innerHTML=body;document.getElementById('modal').classList.add('show');modalCb=cb}
+function modalOk(){if(modalCb)modalCb();closeModal()}
+
+function loadDir(){
+  const params=new URLSearchParams(window.location.search);
+  currentPath=params.get('path')||'';
+  $('pathDisplay').textContent='/'+currentPath;
+  $('pathDisplay2').textContent='/'+currentPath;
+  const url='/api/list-dir?path='+enc(currentPath);
+  fetch(url).then(r=>r.json()).then(d=>{
+    if(!d.ok){$('fileBody').innerHTML='<tr><td colspan=4 style=text-align:center;color:#ef4444;padding:12px>加载失败: '+esc(d.error||'未知错误')+'</td></tr>';return}
+    allNotes=d.notes||{};
+    renderBreadcrumbs(d.path);
+    renderTable(d.path,d.items,d.parent);
+  }).catch(e=>{$('fileBody').innerHTML='<tr><td colspan=4 style=text-align:center;color:#ef4444;padding:12px>网络错误: '+esc(e.message)+'</td></tr>'})
+}
+
+function renderBreadcrumbs(path){
+  const parts=path.split('/').filter(Boolean);
+  let acc='',html='<a href=files>根目录</a>';
+  for(const p of parts){
+    acc+='/'+p;
+    html+='<span class=sep> / </span><a href=files?path='+enc(acc.slice(1))+'>'+esc(p)+'</a>';
+  }
+  $('breadcrumb').innerHTML=html;
+}
+
+function renderTable(path,items,parent){
+  let html='';
+  if(parent!==null&&parent!==undefined&&parent!==''){
+    html+='<tr class=dir><td colspan=4><a class=name href=files?path='+enc(parent)+'>&#128281; ..</a></td></tr>';
+  }
+  for(const i of items){
+    const rp=path?path+'/'+i.name:i.name;
+    const n=allNotes[rp]||'';
+    const isFile=!i.isDir;
+    const cls=getRowClass(i)+(isFile?' file-row':'');
+    html+='<tr class="'+cls+'"'+(isFile?' onclick=editFile("'+enc(rp)+'") title="点击编辑 '+esc(i.name)+'"':'')+'>';
+    html+='<td><span class=icon>'+(i.isDir?'&#128193;':'&#128196;')+'</span>';
+    html+='<a class=name href="'+(i.isDir?'files?path='+enc(rp):'#')+'"'+(isFile?' onclick="event.stopPropagation();editFile(\''+enc(rp)+'\');return false"':'')+'>'+esc(i.name)+'</a>';
+    if(isFile)html+='<span class=edit-indicator>&#9998; 编辑</span>';
+    if(i.protected)html+='<span class=protd-badge title="系统关键文件">&#9888;</span>';
+    if(n)html+='<span class=note-badge title="'+esc(n)+'">&#128221; '+esc(n)+'</span>';
+    html+='</td><td class=size>'+(i.isDir?'-':fmtSize(i.size))+'</td><td class=time>'+fmtTime(i.mtime)+'</td>';
+    html+='<td><div class=actions>';
+    html+='<button class="btn btn-note btn-sm" onclick=event.stopPropagation();editNote("'+enc(rp)+'") title=备注>&#128221;</button>';
+    if(isFile){
+      html+='<button class="btn btn-edit btn-sm" onclick=event.stopPropagation();editFile("'+enc(rp)+'")>编辑</button>';
+    }else{
+      html+='<span class=btn-placeholder style=width:42px></span>';
+    }
+    html+='<button class="btn btn-rename btn-sm" onclick=event.stopPropagation();renameItem("'+enc(rp)+'")>重命名</button>';
+    html+='<button class="btn btn-del btn-sm" onclick=event.stopPropagation();deleteItem("'+enc(rp)+'")>删除</button>';
+    html+='</div></td></tr>';
+  }
+  if(!html)html='<tr><td colspan=4 style=text-align:center;color:#64748b;padding:12px>空目录</td></tr>';
+  $('fileBody').innerHTML=html;
+}
+
+function newFile(){
+  openModal('新建文件','<input id=inpName placeholder="文件名"><textarea id=inpContent style=min-height:200px placeholder="文件内容"></textarea>',async()=>{
+    const n=document.getElementById('inpName').value;const c=document.getElementById('inpContent').value;
+    if(!n)return;
+    const target=currentPath?currentPath+'/'+n:n;
+    const r=await fetch('/api/file?path='+enc(target),{method:'POST',headers:{'Content-Type':'text/plain'},body:c});
+    const d=await r.json();show(d.msg||d.error);if(d.ok)location.reload()
+  })
+}
+
+function newDir(){
+  openModal('新建文件夹','<input id=inpName placeholder="文件夹名称">',async()=>{
+    const n=document.getElementById('inpName').value;if(!n)return;
+    const target=currentPath?currentPath+'/'+n:n;
+    const r=await fetch('/api/mkdir?path='+enc(target));const d=await r.json();
+    show(d.msg||d.error);if(d.ok)location.reload()
+  })
+}
+
+function editFile(p){
+  const fp=de(p);
+  fetch('/api/file?path='+p).then(r=>r.json()).then(d=>{
+    if(!d.ok){show(d.error||'读取失败');return}
+    openModal('编辑: '+fp,'<textarea id=inpContent style=min-height:400px;font-family:monospace;font-size:.8rem;line-height:1.5;resize:vertical>'+esc(d.content)+'</textarea>',async()=>{
+      const c=document.getElementById('inpContent').value;
+      const r=await fetch('/api/file?path='+p,{method:'POST',headers:{'Content-Type':'text/plain'},body:c});
+      const rd=await r.json();show(rd.msg||rd.error)
+    })
+  })
+}
+
+function renameItem(p){
+  const old=de(p);const name=old.split('/').pop();
+  openModal('重命名','<input id=inpName value="'+esc(name)+'">',async()=>{
+    const n=document.getElementById('inpName').value;if(!n)return;
+    const r=await fetch('/api/rename?path='+p+'&name='+enc(n));const d=await r.json();
+    show(d.msg||d.error);if(d.ok)location.reload()
+  })
+}
+
+function deleteItem(p){
+  if(!confirm('确定删除？'))return;
+  fetch('/api/delete?path='+p,{method:'DELETE'}).then(r=>r.json()).then(d=>{show(d.msg||d.error);if(d.ok)location.reload()})
+}
+
+function editNote(p){
+  const fp=de(p);
+  fetch('/api/notes').then(r=>r.json()).then(notes=>{
+    const n=notes[fp]||'';
+    openModal('备注: '+fp,'<input id=noteInput value="'+esc(n)+'" placeholder="输入文件备注..." onkeydown="if(event.key===\'Enter\')document.getElementById(\'modalConfirm\').click()">',async()=>{
+      const v=document.getElementById('noteInput').value;
+      await fetch('/api/notes',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({filePath:fp,note:v})});
+      show('备注已保存');location.reload()
+    })
+  })
+}
+
+function uploadFile(){
+  const inp=document.createElement('input');inp.type='file';
+  inp.onchange=()=>{
+    const f=inp.files[0];if(!f)return;
+    const fd=new FormData();fd.append('file',f);
+    fetch('/api/upload?path='+enc(currentPath),{method:'POST',body:fd}).then(r=>r.json()).then(d=>{show(d.msg||d.error);if(d.ok)location.reload()})
+  };
+  inp.click()
+}
+
+loadDir();
+</script>

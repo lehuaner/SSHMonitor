@@ -1,0 +1,6 @@
+HTTP/2 204
+access-control-allow-origin: *
+x-cache: CONFIG_NOCACHE
+accept-ch: Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+x-msedge-ref: Ref A: 0D38E67C9B3641CFA1066B3B5C027009 Ref B: BJ1EDGE0405 Ref C: 2026-09-08T08:07:39Z
+date: Tue, 08 Sep 2026 08:07:38 GMT

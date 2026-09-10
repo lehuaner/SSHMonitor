@@ -1,0 +1,7 @@
+HTTP/2 204
+server: stgw
+date: Tue, 08 Sep 2026 08:06:46 GMT
+access-control-allow-origin: *
+access-control-allow-credentials: true
+access-control-allow-methods: *
+access-control-allow-headers: *

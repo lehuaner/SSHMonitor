@@ -1,0 +1,26 @@
+{
+  "ResponseMetadata": {
+    "Action": "",
+    "OID": "1554024524166871",
+    "Region": "",
+    "RequestId": "",
+    "Service": "",
+    "Source": "",
+    "TraceID": "00000000000000000000000000000000",
+    "Version": "",
+    "WID": "7675972323816048182"
+  },
+  "Result": {
+    "AIHost": "",
+    "AIPayHost": "",
+    "AIRegion": "",
+    "ExpiredAt": 1788416627238,
+    "Host": "https://api.trae.com.cn",
+    "IsLogin": true,
+    "MigrateToSG": false,
+    "NickNameEditStatus": "init",
+    "PasswordChanged": false,
+    "Region": "CN",
+    "UserID": "1554024524166871"
+  }
+}

@@ -1,0 +1,13 @@
+HTTP/2 200
+content-type: text/html; charset=utf-8
+etag: "6a9e75e1-45d6"
+expires: Tue, 08 Sep 2026 08:06:11 GMT
+accept-ranges: bytes
+server: APISIX/3.9.1
+x-request-id: 38106da7-16d2-4d55-90ef-4074c6575f2a
+last-modified: Mon, 07 Sep 2026 08:29:21 GMT
+cache-control: must-revalidate, proxy-revalidate, no-cache, no-store, max-age=0
+content-length: 17878
+date: Tue, 08 Sep 2026 08:06:12 GMT
+eo-log-uuid: 9993929581309974467
+eo-cache-status: MISS

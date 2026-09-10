@@ -1,0 +1,28 @@
+{
+  "code": 0,
+  "data": {
+    "items": [
+      {
+        "chat_session_id": "6a02e3a52753a930fd359562",
+        "user_id": "1000985253380538",
+        "status": 5,
+        "mode": "work",
+        "source": {
+          "repo_url": "restic://1000985253380538/01KRDMJTYSJQ1N5PWQ60S9FJTZ",
+          "ref": "ca6b42a5be3e5540fab91ec0f4479e1a76fa25b4ef04e5702ed779e50a9f3604",
+          "type": "restic"
+        },
+        "target": {
+          "review_status": "idle"
+        },
+        "title": "你好",
+        "created_at": "1778574245168",
+        "updated_at": "1778574401090",
+        "origin": "mobile",
+        "icon": "chat"
+      }
+    ],
+    "total": 1
+  },
+  "message": "success"
+}

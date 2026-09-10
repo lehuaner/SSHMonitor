@@ -1,0 +1,44 @@
+{
+  "appVersion": "",
+  "sdkId": "js",
+  "sdkVersion": "4.5.30-web",
+  "mainAppKey": "0NODE5XD0HDHK2AC",
+  "platformId": 3,
+  "common": {
+    "A2": "NcZsaBBiS5nX4kE0CjwWTGBNh0PZi2DN",
+    "A8": "",
+    "A12": "zh-CN",
+    "A17": "1920*1080*1",
+    "A23": "",
+    "A50": "",
+    "A76": "0NODE5XD0HDHK2AC_1789012849346",
+    "A101": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "A102": "https://www.workbuddy.cn/login/?platform%3Dworkbuddy%26state%3Df63befd6-0d3c-4b77-94c1-360dc1087abd%26version%3D5.5.3%26loginSessionId%3D0e5ae834-d822-4dba-b788-f8dadd3ef799",
+    "A104": "",
+    "A119": "?platform%3Dworkbuddy%26state%3Df63befd6-0d3c-4b77-94c1-360dc1087abd%26version%3D5.5.3%26loginSessionId%3D0e5ae834-d822-4dba-b788-f8dadd3ef799%26session_state%3Dc22fd392-1002-4f1e-a1ec-36b716850e2f%26iss%3Dhttps%3A%2F%2Fwww.workbuddy.cn%2Fauth%2Frealms%2Fcopilot%26code%3Df03e3f16-3b4f-45fc-886b-f533d35bd198.c22fd392-1002-4f1e-a1ec-36b716850e2f.3feb966c-1151-42a6-9619-5ac899a8ba88",
+    "A153": ""
+  },
+  "events": [
+    {
+      "eventCode": "login_all",
+      "eventTime": "1789012888326",
+      "mapValue": {
+        "uin": "NcZsaBBiS5nX4kE0CjwWTGBNh0PZi2DN",
+        "user_id": "bb1a0124-b950-4052-9904-bc45ccd68bf0",
+        "user_nickname": "19154975875",
+        "account_type": "personal",
+        "enterprise_id": "",
+        "enterprise_name": "",
+        "login_method": "phone",
+        "primary_platform": "IDE",
+        "secondary_platform": "workbuddy",
+        "first_login": "0",
+        "result": "success",
+        "A99": "N",
+        "A100": "6",
+        "A72": "4.5.30-web",
+        "A88": "1787201270908"
+      }
+    }
+  ]
+}

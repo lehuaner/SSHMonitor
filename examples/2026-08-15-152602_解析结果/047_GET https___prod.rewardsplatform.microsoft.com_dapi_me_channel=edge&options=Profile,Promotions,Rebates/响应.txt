@@ -1,0 +1,11 @@
+HTTP/2 200
+date: Sat, 15 Aug 2026 07:25:36 GMT
+content-type: application/json; charset=utf-8
+cache-control: no-cache, no-store, must-revalidate
+expires: 0
+pragma: no-cache
+mise-correlation-id: c0a4ba7a-ebf0-44d4-8c62-5d5a1aed2af6
+x-ms-correlation-id: 2028d2cf5bc84fb1b880881682e95b50
+strict-transport-security: max-age=31536000; includeSubDomains
+x-azure-ref: 20260815T072536Z-164d64556d4b9rwjhC1TYO3ygs0000001020000000002d0d
+x-cache: CONFIG_NOCACHE

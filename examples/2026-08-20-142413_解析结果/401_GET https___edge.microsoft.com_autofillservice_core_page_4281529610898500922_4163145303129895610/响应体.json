@@ -1,0 +1,410 @@
+{
+  "formResponses": [
+    {
+      "fields": [
+        {
+          "fieldSign": "-8879602490077826295",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-8581708409987896194",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-8281785150308423333",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-7508618784465780423",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-7500663749121918440",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-7377187320853125576",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-7258993499490776303",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-6989802431249576648",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-5954326347228411208",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-5480043844585265316",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-3619374530283635182",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-3152666539517818771",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-3020946662617929381",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-2919843461754671641",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-2337579108635209344",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-2025939230801720851",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-1933486406719244896",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-1690759885761165874",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-1202525785794932117",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-1033025212257182176",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-1028548487838243114",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-162979383627666089",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-157927078971205806",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-140418817614743615",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-21830468248541521",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "8307408549740769",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "973773142798171128",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "1362315331551245971",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "1513665746340898439",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "1647183080155581779",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "2504449446950880733",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "2818655270320945674",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "3673189884592845524",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "3775519686924261606",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "3780272025655149750",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "3879726037488025355",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "4675567267303900476",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "5317979719768106819",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "5713018804901950547",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "5731353465146176865",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "5962916826319559477",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "6524391351754545894",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "6640457958041326132",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "6733964739878154795",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "7857738458584655624",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "8470626577996458725",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "8513213062910387460",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "8668362584217992270",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "8709398321112778775",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "9190408728909387969",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        }
+      ],
+      "formSign": "4163145303129895610",
+      "canUploadLabels": true
+    }
+  ]
+}

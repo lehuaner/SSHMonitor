@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Set-Cookie: tgw_l7_route=8be5ca4a316bb53f38d4b3be3f7ddc2e; Expires=Thu, 10-Sep-2026 05:02:10 GMT; Path=/; sameSite=None; Secure
+Set-Cookie: session=; Path=/console; Max-Age=0; Expires=Thu, 01-Jan-70 00:00:00 GMT; HttpOnly
+Traceid: 8d30ae30f3653d88438e1e9d3076ec7f
+X-Request-Id: b6fbf146c89e4fcdb493bc71f2dd7d13
+X-User-Id: bb1a0124-b950-4052-9904-bc45ccd68bf0
+Server: APISIX/3.9.1
+X-Content-Type-Options: nosniff
+Content-Length: 121
+Connection: keep-alive
+Date: Thu, 10 Sep 2026 04:02:10 GMT
+EO-LOG-UUID: 10092617693410693689
+EO-Cache-Status: MISS

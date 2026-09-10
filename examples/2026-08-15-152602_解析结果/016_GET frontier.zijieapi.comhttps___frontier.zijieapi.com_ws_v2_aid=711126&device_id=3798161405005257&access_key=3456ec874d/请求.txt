@@ -1,0 +1,20 @@
+GET https://frontier.zijieapi.com/ws/v2?aid=711126&device_id=3798161405005257&access_key=3456ec874d72f0c19109796d102aa6c2&fpid=1458&iid=1&version_code=150&is_background=0&x_fsdk_v=1.1.1 HTTP/1.1
+Host: frontier.zijieapi.com
+Connection: Upgrade
+Pragma: no-cache
+Cache-Control: no-cache
+x-support-ack: 1
+x-tt-ext-info: etag=e4f24584-0d36effc-548692dd-558a3d0e;net_type=2;version=4.2.243.19-trae
+Authorization: Cloud-IDE-JWT 
+x-icube-context: dGMFEAAACRfEUiN/nPRVBinZ48QmnOgqxKNkSl14y3AHa1OEVqMlIA7q/Bie8Zgg2IbzmE8pSKirfCeWtEKFQB92aIp/oTO/uAwTTIoLkzSV8g1KxdEE8AdQLhQWA0g48bJikhRaRe2F2sAlkFovmFqDAnsuXwPucXXKbqrsymMnpsD3e+ofBTe2XUIHIJDObOMpIDJcHw9xs1RsE8SOZQ3Aex9aACliTZnDHAQFhHmErxt4BDMC4IligP22yV7B/DlXnKU2HhvY2FzDVhyCb+CieBW00a9tg85nb+GJI3+ODmZ1iKocIVJJBgePOg+41xPZs4eX8PeKfXh/U88Ttyjdmi1tM5xqM/fbJKip3yNrJI+hkdpm6WNRs3neNsDb4tdCrm3Gj3FsGh9QR/6ImapBAPerRk4GMqRR2KDwt3Fbp2zaS3tflzCG79dKIYsIO4w10zB+DHBT8fTB2tC6F2EAjwmYS9GhZHgAONeYwYKrbxhZa+V9wVaOIH8PrSC4GLG0+wEu8N+ostC+A3azv9cvwAEoc6mOFRb9AKfp7+HQl/SHaplHTBRP9id8jtw+ynIY6JzQXdMW0NTplyAMfjEaXwj/RQ==
+x-icube-productCode: SOLO_Lite
+Upgrade: websocket
+Origin: wss://frontier.zijieapi.com
+Sec-WebSocket-Version: 13
+x-tt-trace-id: 00-044fca210dd7e685d584dc9499cbffff-044fca210dd7e685-01
+User-Agent: Cronet/TTNetVersion:992a646e 2026-06-12 QuicVersion:40cc763c 2025-07-01
+Accept-Encoding: gzip, deflate, br
+smbyttnet: 1
+Sec-WebSocket-Key: 0pfslkYd6on2xwTNsjQhsw==
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+Sec-WebSocket-Protocol: pbbp2

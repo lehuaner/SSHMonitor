@@ -1,0 +1,26 @@
+HTTP/2 200
+server: Tengine
+content-type: text/plain; charset=utf-8
+date: Thu, 20 Aug 2026 06:23:53 GMT
+access-control-allow-headers: Authorization,X-App-Id,Content-Type,X-Tt-Env,X-Use-Boe,X-Use-Ppe,Fp,X-Jwt-Token,X-Ide-Sign,X-Trae-Client-Type
+access-control-allow-methods: GET,OPTIONS
+access-control-allow-origin: *
+access-control-max-age: 600
+vary: Origin, Access-Control-Request-Headers, Access-Control-Request-Method, Accept-Encoding
+x-bytefaas-execution-duration: 3.92
+x-bytefaas-request-id: 20260820142353A016BDACB93633A2101A
+x-ggw-asgw-psm: goofy.deploy.ggw.asgw.2001.2505528
+x-ggw-config-version: 13488049
+x-gw-dst-psm: goofy_server.cn.2505528
+x-powered-by: Goofy Node
+x-tt-logid: 20260820142353A016BDACB93633A2101A
+strict-transport-security: max-age=31536000; includeSubDomains
+server-timing: inner; dur=11
+x-tt-trace-host: 01207a981426127d02143837b6aace09ad52728d12570338e091ed285bcb9e67eb9760d3cab8c10f20f26a3e20837ef56fbbd82e6bcff3c8c1ef6ff89a5a6854aede184f19f4df4404c7930157b4eb098f8e3d6bec941f29b02f8e66e38fddc37c
+x-tt-trace-tag: id=03;cdn-cache=miss;type=dyn
+x-tt-trace-id: 00-260820142353A016BDACB93633A2101A-2C91025D7E66D73C-00
+x-country-geonameid: 1814991
+server-timing: cdn-cache;desc=MISS,edge;dur=0,origin;dur=58
+via: cache6.cn7995[58,0]
+timing-allow-origin: *
+eagleid: 7014551a17872070339078118e

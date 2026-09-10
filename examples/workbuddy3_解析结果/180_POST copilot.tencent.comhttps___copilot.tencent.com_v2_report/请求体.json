@@ -1,0 +1,33 @@
+[
+  {
+    "eventCode": "web_element_click",
+    "timestamp": 1789012914092,
+    "reportDelay": 2001,
+    "elementId": "avatar_menu_view_credit",
+    "elementName": "积分余额",
+    "pageURL": "/D:/Code/Editer/WorkBuddy/resources/app.asar/renderer/index.html",
+    "buddyId": "",
+    "buddyName": "",
+    "timezone": "Asia/Shanghai",
+    "qimei36": "54087800e7eca71a288568e430001de1910b",
+    "userId": "bb1a0124-b950-4052-9904-bc45ccd68bf0",
+    "username": "19154975875",
+    "userNickname": "19154975875",
+    "product": "SaaS",
+    "releaseDate": 1788443875561,
+    "commit": "104760a280d1710d375d024bc87a03f08d97c590",
+    "ideName": "WorkBuddy",
+    "ideType": "WorkBuddy",
+    "ideVersion": "5.5.3",
+    "machineId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "sessionId": "b0169d43-d9ab-4f50-bdab-2ee0a18012ad",
+    "extName": "workbuddy-desktop",
+    "extVersion": "5.5.3",
+    "os": "win32",
+    "arch": "x64",
+    "osVersion": "10.0.26200",
+    "cpuModel": "AMD Ryzen 5 5600H with Radeon Graphics         ",
+    "cpuCores": 12,
+    "memorySize": 32
+  }
+]

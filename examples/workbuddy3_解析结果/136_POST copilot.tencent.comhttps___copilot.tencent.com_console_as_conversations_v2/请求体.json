@@ -1,0 +1,25 @@
+{
+  "type": "local",
+  "sessionId": "d678d831-999f-402d-923e-2a8564f0db8f",
+  "name": "新增内容识别填充去除衣服文字",
+  "conversationOrigin": "legacy_workbuddy_local",
+  "workDir": "D:\\Code\\Project\\Python\\ExtractRole",
+  "isPlayground": 0,
+  "createdAtMs": 1787720992838,
+  "updatedAtMs": 1787745919044,
+  "lastActivityAtMs": 1787745919044,
+  "clientContext": {
+    "localStatus": "active",
+    "hostId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "sessionKind": "manual",
+    "model": "",
+    "sourceMode": "",
+    "permissionMode": "",
+    "expert": {
+      "id": "",
+      "locale": "",
+      "runtimeIdentity": "",
+      "marketplace": ""
+    }
+  }
+}

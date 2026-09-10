@@ -1,0 +1,21 @@
+GET https://open.weixin.qq.com/connect/qrconnect?scope=snsapi_login&appid=wx31d4d71eb5f8c69e&redirect_uri=https%3A%2F%2Fwww.workbuddy.cn%2Fauth%2Frealms%2Fcopilot%2Fbroker%2Fweixinwebchat%2Fendpoint&state=ee62641b-30ba-4ef7-9c20-6a3d9fa90202&response_type=code&prompt=login&nonce=ee62641b-30ba-4ef7-9c20-6a3d9fa90202&self_redirect=true&login_type=jssdk&scope=snsapi_login&style=white&href=data:text/css;base64,Ym9keXtiYWNrZ3JvdW5kOiAjZmZmICFpbXBvcnRhbnR9LmltcG93ZXJCb3ggLmluZm8ge2Rpc3BsYXk6IG5vbmV9LmltcG93ZXJCb3ggLnRpdGxlIHtkaXNwbGF5OiBub25lfS5pbXBvd2VyQm94IC5xcmNvZGUge3dpZHRoOiAyMTBweDtib3JkZXI6IG5vbmU7bWFyZ2luLXRvcDogMH0ud3JwX2NvZGUge2hlaWdodDogMjEwcHg7b3ZlcmZsb3c6IGhpZGRlbn0= HTTP/2
+:method: GET
+:authority: open.weixin.qq.com
+:scheme: https
+:path: /connect/qrconnect?scope=snsapi_login&appid=wx31d4d71eb5f8c69e&redirect_uri=https%3A%2F%2Fwww.workbuddy.cn%2Fauth%2Frealms%2Fcopilot%2Fbroker%2Fweixinwebchat%2Fendpoint&state=ee62641b-30ba-4ef7-9c20-6a3d9fa90202&response_type=code&prompt=login&nonce=ee62641b-30ba-4ef7-9c20-6a3d9fa90202&self_redirect=true&login_type=jssdk&scope=snsapi_login&style=white&href=data:text/css;base64,Ym9keXtiYWNrZ3JvdW5kOiAjZmZmICFpbXBvcnRhbnR9LmltcG93ZXJCb3ggLmluZm8ge2Rpc3BsYXk6IG5vbmV9LmltcG93ZXJCb3ggLnRpdGxlIHtkaXNwbGF5OiBub25lfS5pbXBvd2VyQm94IC5xcmNvZGUge3dpZHRoOiAyMTBweDtib3JkZXI6IG5vbmU7bWFyZ2luLXRvcDogMH0ud3JwX2NvZGUge2hlaWdodDogMjEwcHg7b3ZlcmZsb3c6IGhpZGRlbn0=
+sec-ch-ua: "Chromium";v="152", "Not?A_Brand";v="24", "Microsoft Edge";v="152"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+sec-fetch-site: cross-site
+sec-fetch-mode: navigate
+sec-fetch-user: ?1
+sec-fetch-dest: iframe
+sec-fetch-storage-access: active
+referer: https://www.workbuddy.cn/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=0, i
+cookie: omgid=0_Etd6ArbNT8Gj6; ETCI=481d0144e8654ae580cd34a0d34eeddd; logTrackKey=4a861183b91f4733a89e6e62e8b79bd2

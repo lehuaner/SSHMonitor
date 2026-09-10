@@ -1,0 +1,61 @@
+{
+  "data": {
+    "plugin": {
+      "plugin_id": "ba7138ba-ba41-43df-b71c-aefa5f2cd724",
+      "name": "trae-remote-official:computer-use",
+      "origin_plugin_name": "computer-use",
+      "display_name": "computer-use",
+      "description": "让 TraeWork 直接操作电脑，替你完成跨应用任务。",
+      "i18n": {
+        "description": {
+          "en": "Let TraeWork operate your computer directly to complete cross-app tasks for you.",
+          "ja": "TraeWork がコンピュータを直接操作し、アプリをまたいだタスクを代行します。",
+          "zh-cn": "让 TraeWork 直接操作电脑，替你完成跨应用任务。"
+        },
+        "display_name": {
+          "en": "Computer Use",
+          "ja": "コンピュータ操作",
+          "zh-cn": "电脑控制"
+        }
+      },
+      "author": "TraeWork",
+      "cdn_uri": "p11-market.byteimg.com",
+      "tos_uri": "tos-cn-i-17oceyzymr/plugins",
+      "version": "0.0.5",
+      "source": "INTERNAL_UPLOAD",
+      "registry": "trae-remote-official",
+      "publisher_type": "BUILT_IN",
+      "local_available": true,
+      "cloud_available": false,
+      "supported_os": [
+        "darwin",
+        "windows"
+      ],
+      "categories": [
+        "productivity",
+        "Featured"
+      ],
+      "category_weight": 100,
+      "created_at": 1785247099000,
+      "updated_at": 1785247099000,
+      "pinned": 0,
+      "status": "PUBLISHED",
+      "visibility": "PUBLIC",
+      "is_deleted": false,
+      "icon_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1/ba7138ba-ba41-43df-b71c-aefa5f2cd724/icons/56215f58-cf25-492f-957d-8b31d7b1a859.svg",
+      "recommended": false,
+      "default_installed": false,
+      "user_control_policy": "{\"default_enabled\": true, \"tag_theme_color\": \"--viz-viz-series-violet\", \"plugin_toggleable\": true, \"locked_capabilities\": [], \"plugin_uninstallable\": true, \"capability_toggleable\": true, \"show_in_home_available_plugins\": true}"
+    },
+    "changelog": "",
+    "download_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1/ba7138ba-ba41-43df-b71c-aefa5f2cd724/0.0.5/package.zip",
+    "manifest_json": "{\n  \"name\": \"computer-use\",\n  \"version\": \"0.0.5\",\n  \"description\": \"让 TraeWork 直接操作电脑，替你完成跨应用任务。\",\n  \"author\": {\n    \"name\": \"TraeWork\"\n  },\n  \"keywords\": [\n    \"computer-use\",\n    \"trae-computer-use\",\n    \"traework-computer-use\",\n    \"cu\",\n    \"cua\"\n  ],\n  \"interface\": {\n    \"displayName\": \"电脑控制\",\n    \"shortDescription\": \"让 TraeWork 直接操作电脑，替你完成跨应用任务。\",\n    \"longDescription\": \"Let TraeWork operate your computer directly to complete cross-app tasks for you. Use for tasks that require reading or operating app UI by clicking, typing, scrolling, dragging, pressing keys, or setting values.\",\n    \"developerName\": \"TraeWork\",\n    \"category\": \"Productivity\"\n  },\n  \"i18n\": {\n    \"display_name\": {\n      \"en\": \"Computer Use\",\n      \"zh-cn\": \"电脑控制\",\n      \"ja\": \"コンピュータ操作\"\n    },\n    \"description\": {\n      \"en\": \"Let TraeWork operate your computer directly to complete cross-app tasks for you.\",\n      \"zh-cn\": \"让 TraeWork 直接操作电脑，替你完成跨应用任务。\",\n      \"ja\": \"TraeWork がコンピュータを直接操作し、アプリをまたいだタスクを代行します。\"\n    }\n  },\n  \"logo\": \"./assets/icon-logo.svg\",\n  \"composerIcon\": \"./assets/icon-logo.svg\"\n}\n",
+    "connector_json": "",
+    "mcp_servers_json": "",
+    "skills_json": "",
+    "icon_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1/ba7138ba-ba41-43df-b71c-aefa5f2cd724/icons/56215f58-cf25-492f-957d-8b31d7b1a859.svg",
+    "checksum": "f3ccc00ea67358cf11f624540122b3f536bfd123610fdbc5d906be8aebbb39cd",
+    "file_size": 25234
+  },
+  "success": "true"
+}

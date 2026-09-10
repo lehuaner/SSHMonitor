@@ -1,0 +1,32 @@
+GET https://api5-normal.mchost.guru/api/remote/v1/skills?page_size=200&sort_by=updated_at&sort_order=desc HTTP/2
+:method: GET
+:authority: api5-normal.mchost.guru
+:scheme: https
+:path: /api/remote/v1/skills?page_size=200&sort_by=updated_at&sort_order=desc
+accept: */*
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+authorization: Cloud-IDE-JWT eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTU1NDAyNDUyNDE2Njg3MSIsInNvdXJjZSI6InJlZnJlc2hfdG9rZW4iLCJzb3VyY2VfaWQiOiJKVFZhR3k0aXR0YmlZNUpXdWJHUU9fX1JWeWo4UmdNX1kzcGdtY2k5UVUwPS4xOGNkNmY1M2JlM2I5NjhiIiwidGVuYW50X2lkIjoiN28yZDg5NHA3ZHIwbzQiLCJ0eXBlIjoidXNlciJ9LCJleHAiOjE3ODg0MTY2MzIsImlhdCI6MTc4NzIwNzAzMn0.ibWFhfXYgm7p8Ut42q6-Cv5wVdzLJL7h-SejWlJNqgOj8tPbZTIFP2sdYJqaHIl1IrtvSNpvpkjDPQWE7A5p7nQHZ3vuEjEOqdlfRqORUOuh-dmR7v2uebd-Fhv1eWAvKo30pIrV5Op5J-82UJMlH2N8AQqAGC8e_jt7375WlVGAJFWI0u164rJJqgVRNjlpudZDlgkCvCxKoXdHjfdOeUxdM7ZJNEJPoA5HSAdSsrDiY29ap8YaZpz3YyYWnrin5IgtFsgStlTewWV5n87R5RRAyEXsduiE3OxVeUpMhSoc7dbzlmi40fmffrQ_Uut5r1n4qMVTUu-NWuT4FvRW94aCy0TrC0NcZhr7h7F7eG3bPX6eURTC_UejvSAWitQI0vj4Dp6l5PJIzCpum5iAIgF05jNy0AsiZjfF3POY26tJDKnA45QnoPRDVof5073kvgMi_xw3GGIF7EkQ9qQMim_1GhKTs-_gx9KtYVyGlkSgdhbvzNC5qHR1B1uNi4a4_hWj1-Ui71xJnhVn7Hy9G5HeqYCU7PHT0hfiBGuONn1RZB8S_JFMRsWAc_sAAVZDT5di1Ms4tMZ7kR456829kLEideUzle0t1U-DnUFB7k_7QCYp46JjulTqvIReUAyRUAedDUpRs6BJttscYDrwhxNRju_L6_FLvSwEzlJ78a0
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+x-preferenced-language: zh-cn
+x-trae-client-type: lite
+x-trae-user-timezone: Asia/Shanghai
+x-user-region: CN
+sec-ch-ua: "Not_A Brand";v="99", "Chromium";v="142"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: 09c42096-f035-4496-a5f2-362ce7b77d5d
+x-ss-dp: 787976
+x-tt-trace-id: 00-1dd73b4b0d945686928468a36799ffff-1dd73b4b0d945686-01
+x-helios: 3nkAAGB3hQAi2ZeM2/IuKU8wwcHYdA3CE+2YjK6LDrA3s48P
+x-medusa: fJ2Gaoh12ZCoSlpRqbdOGihS53KcPwMBMQ3jVkBAMdM3mWv9qODMZ8aHTZRIUZVePp3wm8HLqBKy2qrHgICE5AJ7RZ2fUSO47gDeIjw5oJdFRTiII9MZJ+fOUBkqVD/ep2lQl2DX8yDuMGFGvlhuA7ba7h4mvvoQxdrt9lIkFmhyxmBbCBtN6OCezd/LPyp0c/2Uc1PNxWp7eHS0NTYpfogwlRdWDjlB5b0BGIZeGGdKwYV5+v8ObFacHQdPhAJy4tt2jCHlCOZcv45EcWA8JAA8Z6yU0t6aEhqEnP5miBiA1M7VegXh3twhow9OLIoY5Y7yGmu2jFK+z0E78dOpD9r3DY8poXiaMZqk2FGxOR4H2VtGYyTcLS2S4KsS2AlasnyFnBB5ikBJN5tnd56TmPQ3bvFl1QL2+QBBiAzUxJPNnn8j2rafu185PasMkO+v0s0crQs3xIe5uuYlx+Iig7IMjCb4xNxfRr/3c45hemH8LBOKCE5xUF5iLrEgwmAjpBmD+8LZu1prF4eMYUjQ/4sxUjkjBJvcV6xqBTNdzvE+xSyQE3wBEaaLUrwwV50/2Tr1UJQt3LdUCKv2weP82PSPXFecJIN/V6A6+/a+BNpEsfALoYj6fy0zzvF4bK1bo9IXTwD6gxyai53a8rnAUb0bsTJ3iyrhzixHnb+PzxcfT9vl/c8Hj+mnVG5dBn1YP2ojALKbbxE3f5W7r8k7hWpqWT5YrK0/v82RjXZuX7xLDciD/YfJr3aO0LpPZ2UB5COYaLWQFyge5fv93//v9///AAA=
+x-neptune: -11|50:51:59:00:09

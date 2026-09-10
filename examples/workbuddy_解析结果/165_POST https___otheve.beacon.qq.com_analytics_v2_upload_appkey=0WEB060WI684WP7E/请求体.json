@@ -1,0 +1,51 @@
+{
+  "appVersion": "",
+  "sdkId": "js",
+  "sdkVersion": "4.5.30-web",
+  "mainAppKey": "0WEB060WI684WP7E",
+  "platformId": 3,
+  "common": {
+    "A300": "4.3.18",
+    "trace_id": "9cb050b6-d887-4e8a-ba46-e8704eaae82c",
+    "userId": "bb1a0124-b950-4052-9904-bc45ccd68bf0",
+    "fromSource": "",
+    "clientPlatform": "web",
+    "A301": "Windows(11)-Blink",
+    "A302": "Edge(152.0.0.0)",
+    "A323": "",
+    "A2": "NcZsaBBiS5nX4kE0CjwWTGBNh0PZi2DN",
+    "A8": "",
+    "A12": "zh-CN",
+    "A17": "1920*1080*1",
+    "A23": "",
+    "A50": "",
+    "A76": "0WEB060WI684WP7E_1788799137534",
+    "A101": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "A102": "https://www.workbuddy.cn/profile/plans-usage",
+    "A104": "",
+    "A119": "",
+    "A153": ""
+  },
+  "events": [
+    {
+      "eventCode": "at_imp",
+      "eventTime": "1788799137554",
+      "mapValue": {
+        "A309": "1605",
+        "A310": "856",
+        "A102": "https://www.workbuddy.cn/profile/plans-usage",
+        "A303": "/profile/plans-usage",
+        "A306": "",
+        "A307": "www.workbuddy.cn",
+        "A305": "$$$$",
+        "A304": "",
+        "A308": "WorkBuddy - 个人中心",
+        "page_vid": "e8b45b95-0463-4507-b9a0-19f9e2976dc6",
+        "A99": "Y",
+        "A100": "240",
+        "A72": "4.5.30-web",
+        "A88": "1787201063296"
+      }
+    }
+  ]
+}

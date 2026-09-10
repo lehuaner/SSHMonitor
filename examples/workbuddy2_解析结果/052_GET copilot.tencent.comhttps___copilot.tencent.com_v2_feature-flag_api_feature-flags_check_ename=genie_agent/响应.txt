@@ -1,0 +1,20 @@
+HTTP/1.1 401 Authorization Required
+Content-Type: text/html; charset=utf-8
+Set-Cookie: tgw_l7_route=8110897b762b2ddd2d4b9347fafd3ac5; Expires=Tue, 08-Sep-2026 09:05:20 GMT; Path=/; sameSite=None; Secure
+WWW-Authenticate: Bearer realm="copilot"
+Set-Cookie: session=; Expires=Thu, 01 Jan 1970 00:00:01 GMT; Max-Age=0; Path=/; SameSite=Lax; HttpOnly
+Server: APISIX/3.9.1
+X-Request-ID: b78bf262-a92f-41b4-bbf4-c26788069705
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS
+Access-Control-Max-Age: 3600
+Access-Control-Expose-Headers: *
+Access-Control-Allow-Headers: *
+Set-Cookie: session=; Path=/; Max-Age=0; Expires=Thu, 01-Jan-70 00:00:00 GMT; Domain=copilot.tencent.com; HttpOnly
+Set-Cookie: session_2=; Path=/; Max-Age=0; Expires=Thu, 01-Jan-70 00:00:00 GMT; Domain=copilot.tencent.com; HttpOnly
+Set-Cookie: session=; Path=/v2; Max-Age=0; Expires=Thu, 01-Jan-70 00:00:00 GMT; HttpOnly
+Content-Length: 251
+Connection: keep-alive
+Date: Tue, 08 Sep 2026 08:05:20 GMT
+EO-LOG-UUID: 8747163575222472010
+EO-Cache-Status: MISS

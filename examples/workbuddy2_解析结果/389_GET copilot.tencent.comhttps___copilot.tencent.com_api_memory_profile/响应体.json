@@ -1,0 +1,12 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "",
+  "data": {
+    "user_id": "8b3cb381-9ebc-4813-92d9-9e5880528465",
+    "user_name": "17327137416",
+    "foryou_prompt": "**工作背景**\n用户正在开发一个基于Fyne框架的图像比较工具（Go语言），同时维护一个C# WinForms项目ComparePhotoInExploer。开发环境为.NET 10 SDK与PowerShell，运行在中文Windows系统上。项目发布采用7z SFX静默自解压方式（约1MB），通过build-release.ps1脚本管理版本号（git tags），依赖C:\\\\Program Files\\\\7-Zip进行压缩打包。\n\n**个人背景**\n用户偏好中文交流，风格简洁直接。要求代码严格遵循业务逻辑和UI设计规范，习惯先进行代码审核再立即修复问题。打包脚本偏好直接压缩方式，不依赖WinRAR。\n\n**当前关注**\n持续迭代调试中，遇到问题会直接报错并寻求修复方案。需要注意Windows用户名含中文（如“乐幻”）可能导致构建路径问题。曾调研过BoxedApp SDK作为7z SFX的替代方案，但最终仍采用7z路线。发布流程使用GitHub CLI（gh），需注意刷新PATH缓存。\n\n**近期动态**\n- 推进Fyne图像比较项目开发，关注UI设计与业务逻辑实现\n- 维护ComparePhotoInExploer（C# WinForms, .NET 10, 无NuGet, 代码<1MB）\n- 完善build-release.ps1打包脚本，支持多文件极限压缩与SFX自解压\n- 排查中文用户名导致的构建路径兼容性\n- 评估BoxedApp SDK替代7z SFX的可行性",
+    "version": 48,
+    "updated_at": "2026-04-19T23:30:59+08:00"
+  }
+}

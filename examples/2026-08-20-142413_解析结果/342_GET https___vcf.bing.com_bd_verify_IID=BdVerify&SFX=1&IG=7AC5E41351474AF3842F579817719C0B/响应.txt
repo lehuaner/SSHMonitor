@@ -1,0 +1,26 @@
+HTTP/2 200
+date: Thu, 20 Aug 2026 06:22:28 GMT
+content-type: text/html
+server: cloudflare
+access-control-allow-origin: https://www.bing.com
+cache-control: private
+cf-cache-status: DYNAMIC
+x-cdn-traceid: a2df4dc34810982c-HKG
+vary: Accept-Encoding
+x-eventid: 6a869d24891f42369410cc8458c1bcbd
+accept-ch: Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+useragentreductionoptout: A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+set-cookie: MUID=2B57971DCDCC6DD3158780A6CCE86CC6; domain=.bing.com; expires=Tue, 14-Sep-2027 06:22:28 GMT; path=/; secure; SameSite=None
+set-cookie: MUIDB=2B57971DCDCC6DD3158780A6CCE86CC6; expires=Tue, 14-Sep-2027 06:22:28 GMT; path=/; HttpOnly
+set-cookie: _EDGE_S=F=1&SID=35EFF7E975B86EC02019E052749C6FA2; domain=.bing.com; path=/; HttpOnly
+set-cookie: _EDGE_V=1; domain=.bing.com; expires=Tue, 14-Sep-2027 06:22:28 GMT; path=/; HttpOnly
+set-cookie: USRLOC=HS=1; domain=.bing.com; expires=Sun, 20-Aug-2028 06:22:28 GMT; path=/; secure; HttpOnly; SameSite=None
+set-cookie: __cf_bm=FnZuMH.4wIQVr4ZVSrn6.5KYhGEkashrDDDiCvQI1vM-1787206948.366913-1.0.1.1-V53XEXHukjECdddYXViaKKaGl8FmM9Xnsxxu3Mwi40CMO9GmG8JdSmbNiPXm5hUcnY090DtUWmh.qJ_YH2LixpNA.06Q4Y3JNVEULSE.k1Ci6KiSCfyUy.OByjJdH4Hy; HttpOnly; SameSite=None; Secure; Path=/; Domain=bing.com; Expires=Thu, 20 Aug 2026 06:52:28 GMT
+permissions-policy: unload=()
+content-security-policy: script-src https: 'strict-dynamic' 'report-sample' 'wasm-unsafe-eval' 'nonce-+gI7w9XEMlYFwzC47lUmT2aLlo8xqR1EAnugVhE4EM0='; base-uri 'self';report-to csp-endpoint
+report-to: {"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}
+report-to: {"group":"network-errors","max_age":604800,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingserp&ndcParam=Q2xvdWRmbGFyZQ%3d%3d"}]}
+report-to: {"group":"crossorigin-errors","max_age":604800,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingserp"}]}
+nel: {"report_to":"network-errors","max_age":604800,"success_fraction":0.01,"failure_fraction":1.0,"include_subdomains":true}
+cf-ray: a2df4dc34810982c-HKG
+alt-svc: h3=":443"; ma=86400

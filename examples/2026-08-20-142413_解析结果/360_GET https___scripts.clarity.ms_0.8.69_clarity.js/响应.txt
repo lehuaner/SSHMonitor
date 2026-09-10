@@ -1,0 +1,13 @@
+HTTP/2 200
+date: Thu, 20 Aug 2026 06:22:29 GMT
+content-type: application/javascript;charset=utf-8
+vary: Accept-Encoding
+last-modified: Tue, 18 Aug 2026 06:22:16 GMT
+etag: W/"0x8DEFCF10CE0F12A"
+x-ms-request-id: 85579474-901e-007b-0206-2f6c47000000
+x-ms-version: 2018-03-28
+access-control-allow-origin: *
+x-azure-ref: 20260820T062229Z-1676fcc8cbczj5d4hC1SELta2g0000000r5000000000duzs
+x-fd-int-roxy-purgeid: 0
+x-cache: TCP_HIT
+cache-control: public, max-age=86400

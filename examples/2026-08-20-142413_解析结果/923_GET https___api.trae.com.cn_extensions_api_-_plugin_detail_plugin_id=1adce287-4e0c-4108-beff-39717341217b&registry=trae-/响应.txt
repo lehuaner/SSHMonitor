@@ -1,0 +1,19 @@
+HTTP/2 200
+server: Tengine
+content-type: application/json; charset=utf-8
+date: Thu, 20 Aug 2026 06:24:00 GMT
+upstream-caught: 1787207040779391
+x-tt-logid: 20260820142400E17D51975FB87C1A668D
+access-control-allow-credentials: true
+vary: Origin, Accept-Encoding
+access-control-allow-origin: vscode-file://vscode-app
+strict-transport-security: max-age=31536000; includeSubDomains
+server-timing: inner; dur=9
+x-tt-trace-host: 01207a981426127d02143837b6aace09ad135fb75d4770a18a21c8173c8cbededf9dfa143f72b0e81e1004935392b7bb812d3ab4415561fc5ec82d6349f57f6c9d257b6d824d8508a9826bf017e0eb13ea0184f285e862ab231499e46b64e97ef213cb368dbf84d19792e77fad7abfcd17
+x-tt-trace-tag: id=03;cdn-cache=miss;type=dyn
+x-tt-trace-id: 00-1dd73c1d0d945686928468a9e001ffff-1dd73c1d0d945686-01
+x-tt-timestamp: 1787207040.782
+via: cache45.l2cm9-2[29,0], ens-cache9.cn8109[46,0]
+server-timing: cdn-cache;desc=MISS,edge;dur=17,origin;dur=29
+timing-allow-origin: *
+eagleid: 24973d9d17872070407552919e

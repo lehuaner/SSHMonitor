@@ -1,0 +1,26 @@
+OPTIONS https://api5-normal.mchost.guru/api/remote/v1/chat_sessions/pinned?page_size=100&mode=design HTTP/2
+:method: OPTIONS
+:authority: api5-normal.mchost.guru
+:scheme: https
+:path: /api/remote/v1/chat_sessions/pinned?page_size=100&mode=design
+accept: */*
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+access-control-request-headers: authorization,x-preferenced-language,x-trae-client-type,x-trae-user-timezone,x-user-region
+access-control-request-method: GET
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: b5d45782-f0b9-403f-a138-5eb9b70ed93f
+x-ss-dp: 787976
+x-tt-trace-id: 00-1dd722fb0d945686928468a989d2ffff-1dd722fb0d945686-01
+x-helios: 6D0AAFTB9aEtnavvtDVdgcBQhblksUIP+uocztm2npkzZLCu
+x-medusa: eZ2Gao112ZCtSlpRrLdOGi1S53IxHAMBMg3kEACAAb06mOSt+M48ktQO2KUyrMn+L3KSMTCJ2+Xbbr0SZBz63XPN54O4u8TRzJFl8IcUQw1lnDzfQFHjYTdgY9cerFVSoC7oRwQrtaYxwld6to8Ank0PLUZoMpyqZtbTXdyO/lFttr5LndGAPJIzIA3QqMw3POIR9PsIYSFVagbStZsQjj7PtP6lDZNxeb+0wvMWBgBZzCph7sGbj5deXjZtez3GBwwK7ElF2zkirDz1eRJNaibUevwwavM61Lyk152orP2PzmyP8L6jLfYqyGq7B7numNl3fiUiRKhIunXhSrmKnC0Le798qNBMOMKeXalhBWdr2uW4asZgR86ICHqh9aJ26MElO2a64JZ4dSgDev1CZH8rbgDTgtpW6DpFiMn2tcQrITdD9yYk5jnxPkfNaUwp28L8DVBQRmKOFg/7raya7tLdpHVBSWsuGHVGCy5MYP8tQW02pQ0SeLNcst31vv/HmT5Yom9id9YiBrujXG2fzomrpmYBxB8ps3g/r5zMGLyr1x6uIH/14F5HYTGOx8JjJ6jgHAUAfnetEtsdR3xMWJ3an4bTKky7w+Xzm0iOKG7hQR89nzLdi6wh5M6w9iB4DBtThmkvKfYVf5DsVXrA1DJ9MaJXixrrz6xHn5/Pzx8fz9/n/c8Hj+gnnJogqyHm+bInAJKbfxE2f5G7j4krjWtqWT5Y7K03vs2RjXYuT7RLjYyf58fJd2Z+0LpvZ3UJ5COYaLWQFygf5f//37/v//7/AAA=
+x-neptune: -11|50:51:59:00:09

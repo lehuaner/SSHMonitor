@@ -1,0 +1,31 @@
+{
+  "cli_conversation_ids": [
+    "6a741359c8f9701a18fe136b",
+    "6a740877c8f9701a18fe12bf",
+    "6a70d0cbdb7ae5bd6ae18a1c",
+    "6a71fda3ae9f6687178b6f33",
+    "6a72aadd5ba6c22fe907ced2",
+    "6a70dbb6d29c8c6d2bdfb296",
+    "6a70d097db7ae5bd6ae189b5",
+    "6a6b4c6f7ee3684ccd01f58a",
+    "6a69f98992bf090f6d30c761",
+    "6a6a3a9116bb462ec7f44d60",
+    "6a69460e24f01db7b426d519",
+    "6a6826f624f01db7b426d1dd",
+    "6a64f3eb0c46123a6c462346",
+    "6a5cab4c2e2afc060171ba94",
+    "6a5c62805e6a29a68d394adf",
+    "6a5a3ad1875f8691fc3b4a0d",
+    "6a59b8b377aa222658c5378a",
+    "6a3be0c0e4413e4d641bad34"
+  ],
+  "cli_id": "2b1ff3fef2d3f503dc5e23491b070bc4",
+  "page_size": 100,
+  "order_by": "seq_id",
+  "sort": "desc",
+  "fields": [
+    "message_id",
+    "chat_session_id",
+    "status"
+  ]
+}

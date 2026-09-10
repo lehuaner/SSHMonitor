@@ -1,0 +1,102 @@
+[
+  {
+    "user": {
+      "user_unique_id": "3798161405005257",
+      "user_id": "1910319278719667",
+      "device_id": "3798161405005257",
+      "user_is_login": true
+    },
+    "header": {
+      "app_id": 932204,
+      "custom": "{\"icube_uid\":\"1910319278719667\",\"scope\":\"marscode\",\"system\":\"win32\",\"arch\":\"x64\",\"quality\":\"stable\",\"machine_id\":\"0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51\",\"build_version\":\"2.3.71801\",\"user_id\":\"1910319278719667\",\"user_name\":\"用户3370882502\",\"region\":\"CN\",\"user_region\":\"CN\",\"build_time\":\"2026-08-14T10:40:39.642Z\",\"vscode_version\":\"1.107.1\",\"biz_user_id\":\"1910319278719667\",\"user_is_login\":true,\"user_unique_id\":\"3798161405005257\",\"device_id\":\"3798161405005257\",\"local_device_id\":\"aha-31e0f53a6a3d3e6dbf0a5036f86fa368\",\"is_special_uuid\":false,\"organization\":\"\",\"tenant\":\"marscode\",\"aiRegion\":\"CN\",\"icube_main_uid\":\"7c52d492-7b0b-4be1-b7a9-8083acc8ca5a\",\"window_id\":1,\"workspace_id\":\"5028d0e419be8cf575dfbf6b5f1acb51\",\"app_version\":\"0.1.51\",\"os_name\":\"windows\",\"os_version\":\"Windows 11 Pro\",\"os_release\":\"10.0.26200\",\"platform\":\"electron\",\"device_model\":\"82JW\",\"device_manufacturer\":\"LENOVO\",\"cpu\":\"AMD\",\"cpu_brand\":\"AMD Ryzen 5 5600H with Radeon Graphics\",\"cpu_speed\":3.294,\"memory\":34204610560,\"is_ssh\":false,\"language\":\"zh-cn\",\"app_language\":\"zh-cn\",\"chat_mode\":1,\"identity\":\"0\",\"identity_str\":\"Free\",\"is_freshman\":\"1\",\"channel_name\":\"common\",\"process_type\":2,\"privacy_mode\":\"off\",\"aha_version\":\"39.2.7-release.1.49.0\",\"store_country_code\":\"\",\"store_country_code_src\":\"\",\"store_region\":\"CN\",\"workspace_status\":\"unsaved_multi_root\",\"workspace_root_count\":1,\"product_code\":\"SOLO_Lite\",\"ai_chat_version\":\"v1\",\"ai_chat_version_source\":\"default\",\"solo_lite_app_slim_enabled\":\"0\",\"app_is_solo_mode\":\"1\",\"icube_ab\":\"{\\\"onboarding\\\":\\\"A\\\"}\",\"solo_chat_mode\":\"work\",\"app_window_count\":1,\"app_active_workspace_vscdb_size\":294912,\"app_global_vscdb_size\":1667072,\"app_system_disk_usage\":0.7860756344893657,\"ai_database_db_size\":1381761024,\"ai_snapshot_size\":150747380,\"agent_type\":\"solo_work_lite\",\"shell_execute_strategy\":\"shell_exec\",\"message_source\":\"manual\",\"chat_process_version\":\"v3\",\"ab_versions\":\"\"}",
+      "region": "CN",
+      "app_version": "0.1.51",
+      "os_name": "windows",
+      "os_version": "Windows 11 Pro",
+      "device_model": "82JW",
+      "platform": "electron"
+    },
+    "events": [
+      {
+        "event": "code_comp_success",
+        "params": "{\"chat_model\":\"DeepSeek-V4-Flash-Official\",\"chat_type\":\"builder\",\"session_id\":\"6a817f5d6674ddb0e39798d4\",\"message_id\":\"6a833f8abadf79eba240a3e2\",\"agent_type\":\"solo_work_lite\",\"agent_name\":\"\",\"agent_source\":\"builtin\",\"chat_model_mode\":0,\"is_max_mode\":0,\"is_auto_mode\":0,\"is_custom_model\":0,\"is_plan_mode\":0,\"is_spec_mode\":0,\"model_source\":1,\"model_usage\":\"chat_completion\",\"duration\":0.0,\"git_repo_url\":\"https://github.com/lehuaner/motion-demos.git\",\"git_branch\":\"master\"}"
+      }
+    ],
+    "transaction": 0
+  },
+  {
+    "user": {
+      "user_unique_id": "3798161405005257",
+      "user_id": "1910319278719667",
+      "device_id": "3798161405005257",
+      "user_is_login": true
+    },
+    "header": {
+      "app_id": 932204,
+      "custom": "{\"icube_uid\":\"1910319278719667\",\"scope\":\"marscode\",\"system\":\"win32\",\"arch\":\"x64\",\"quality\":\"stable\",\"machine_id\":\"0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51\",\"build_version\":\"2.3.71801\",\"user_id\":\"1910319278719667\",\"user_name\":\"用户3370882502\",\"region\":\"CN\",\"user_region\":\"CN\",\"build_time\":\"2026-08-14T10:40:39.642Z\",\"vscode_version\":\"1.107.1\",\"biz_user_id\":\"1910319278719667\",\"user_is_login\":true,\"user_unique_id\":\"3798161405005257\",\"device_id\":\"3798161405005257\",\"local_device_id\":\"aha-31e0f53a6a3d3e6dbf0a5036f86fa368\",\"is_special_uuid\":false,\"organization\":\"\",\"tenant\":\"marscode\",\"aiRegion\":\"CN\",\"icube_main_uid\":\"7c52d492-7b0b-4be1-b7a9-8083acc8ca5a\",\"window_id\":1,\"workspace_id\":\"5028d0e419be8cf575dfbf6b5f1acb51\",\"app_version\":\"0.1.51\",\"os_name\":\"windows\",\"os_version\":\"Windows 11 Pro\",\"os_release\":\"10.0.26200\",\"platform\":\"electron\",\"device_model\":\"82JW\",\"device_manufacturer\":\"LENOVO\",\"cpu\":\"AMD\",\"cpu_brand\":\"AMD Ryzen 5 5600H with Radeon Graphics\",\"cpu_speed\":3.294,\"memory\":34204610560,\"is_ssh\":false,\"language\":\"zh-cn\",\"app_language\":\"zh-cn\",\"chat_mode\":1,\"identity\":\"0\",\"identity_str\":\"Free\",\"is_freshman\":\"1\",\"channel_name\":\"common\",\"process_type\":2,\"privacy_mode\":\"off\",\"aha_version\":\"39.2.7-release.1.49.0\",\"store_country_code\":\"\",\"store_country_code_src\":\"\",\"store_region\":\"CN\",\"workspace_status\":\"unsaved_multi_root\",\"workspace_root_count\":1,\"product_code\":\"SOLO_Lite\",\"ai_chat_version\":\"v1\",\"ai_chat_version_source\":\"default\",\"solo_lite_app_slim_enabled\":\"0\",\"app_is_solo_mode\":\"1\",\"icube_ab\":\"{\\\"onboarding\\\":\\\"A\\\"}\",\"solo_chat_mode\":\"work\",\"app_window_count\":1,\"app_active_workspace_vscdb_size\":294912,\"app_global_vscdb_size\":1667072,\"app_system_disk_usage\":0.7860756344893657,\"ai_database_db_size\":1381761024,\"ai_snapshot_size\":150747380,\"agent_type\":\"solo_work_lite\",\"shell_execute_strategy\":\"shell_exec\",\"message_source\":\"manual\",\"chat_process_version\":\"v3\",\"ab_versions\":\"\"}",
+      "region": "CN",
+      "app_version": "0.1.51",
+      "os_name": "windows",
+      "os_version": "Windows 11 Pro",
+      "device_model": "82JW",
+      "platform": "electron"
+    },
+    "events": [
+      {
+        "event": "tool_call_request",
+        "params": "{\"session_id\":\"6a817f5d6674ddb0e39798d4\",\"message_id\":\"6a833f8abadf79eba240a3e2\",\"tool_id\":\"6a8345a9badf79eba240a5de\",\"project_id\":\"6a817ed26674ddb0e39798a0\",\"chat_type\":\"builder\",\"chat_model\":\"DeepSeek-V4-Flash-Official\",\"agent_type\":\"solo_work_lite\",\"agent_name\":\"\",\"tool_type\":\"Read\",\"chat_model_mode\":0,\"is_max_mode\":0,\"is_auto_mode\":0,\"is_custom_model\":0,\"is_plan_mode\":0,\"is_spec_mode\":0,\"model_source\":1,\"is_cloud_agent\":1,\"solo_chat_mode\":\"work\",\"browser_mode\":\"default\"}"
+      }
+    ],
+    "transaction": 0
+  },
+  {
+    "user": {
+      "user_unique_id": "3798161405005257",
+      "user_id": "1910319278719667",
+      "device_id": "3798161405005257",
+      "user_is_login": true
+    },
+    "header": {
+      "app_id": 932204,
+      "custom": "{\"icube_uid\":\"1910319278719667\",\"scope\":\"marscode\",\"system\":\"win32\",\"arch\":\"x64\",\"quality\":\"stable\",\"machine_id\":\"0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51\",\"build_version\":\"2.3.71801\",\"user_id\":\"1910319278719667\",\"user_name\":\"用户3370882502\",\"region\":\"CN\",\"user_region\":\"CN\",\"build_time\":\"2026-08-14T10:40:39.642Z\",\"vscode_version\":\"1.107.1\",\"biz_user_id\":\"1910319278719667\",\"user_is_login\":true,\"user_unique_id\":\"3798161405005257\",\"device_id\":\"3798161405005257\",\"local_device_id\":\"aha-31e0f53a6a3d3e6dbf0a5036f86fa368\",\"is_special_uuid\":false,\"organization\":\"\",\"tenant\":\"marscode\",\"aiRegion\":\"CN\",\"icube_main_uid\":\"7c52d492-7b0b-4be1-b7a9-8083acc8ca5a\",\"window_id\":1,\"workspace_id\":\"5028d0e419be8cf575dfbf6b5f1acb51\",\"app_version\":\"0.1.51\",\"os_name\":\"windows\",\"os_version\":\"Windows 11 Pro\",\"os_release\":\"10.0.26200\",\"platform\":\"electron\",\"device_model\":\"82JW\",\"device_manufacturer\":\"LENOVO\",\"cpu\":\"AMD\",\"cpu_brand\":\"AMD Ryzen 5 5600H with Radeon Graphics\",\"cpu_speed\":3.294,\"memory\":34204610560,\"is_ssh\":false,\"language\":\"zh-cn\",\"app_language\":\"zh-cn\",\"chat_mode\":1,\"identity\":\"0\",\"identity_str\":\"Free\",\"is_freshman\":\"1\",\"channel_name\":\"common\",\"process_type\":2,\"privacy_mode\":\"off\",\"aha_version\":\"39.2.7-release.1.49.0\",\"store_country_code\":\"\",\"store_country_code_src\":\"\",\"store_region\":\"CN\",\"workspace_status\":\"unsaved_multi_root\",\"workspace_root_count\":1,\"product_code\":\"SOLO_Lite\",\"ai_chat_version\":\"v1\",\"ai_chat_version_source\":\"default\",\"solo_lite_app_slim_enabled\":\"0\",\"app_is_solo_mode\":\"1\",\"icube_ab\":\"{\\\"onboarding\\\":\\\"A\\\"}\",\"solo_chat_mode\":\"work\",\"app_window_count\":1,\"app_active_workspace_vscdb_size\":294912,\"app_global_vscdb_size\":1667072,\"app_system_disk_usage\":0.7860756344893657,\"ai_database_db_size\":1381761024,\"ai_snapshot_size\":150747380,\"agent_type\":\"solo_work_lite\",\"shell_execute_strategy\":\"shell_exec\",\"message_source\":\"manual\",\"chat_process_version\":\"v3\",\"ab_versions\":\"\"}",
+      "region": "CN",
+      "app_version": "0.1.51",
+      "os_name": "windows",
+      "os_version": "Windows 11 Pro",
+      "device_model": "82JW",
+      "platform": "electron"
+    },
+    "events": [
+      {
+        "event": "tool_call_run",
+        "params": "{\"session_id\":\"6a817f5d6674ddb0e39798d4\",\"message_id\":\"6a833f8abadf79eba240a3e2\",\"tool_id\":\"6a8345a9badf79eba240a5de\",\"project_id\":\"6a817ed26674ddb0e39798a0\",\"chat_type\":\"builder\",\"chat_model\":\"DeepSeek-V4-Flash-Official\",\"agent_type\":\"solo_work_lite\",\"agent_name\":\"\",\"tool_type\":\"Read\",\"chat_model_mode\":0,\"is_max_mode\":0,\"is_auto_mode\":0,\"is_custom_model\":0,\"is_plan_mode\":0,\"is_spec_mode\":0,\"model_source\":1,\"auto_run\":1,\"is_cloud_agent\":1,\"now_run_mode\":\"auto\",\"solo_chat_mode\":\"work\",\"sandbox_awareness_enabled\":true,\"dangerously_disable_sandbox\":false,\"browser_mode\":\"default\"}"
+      }
+    ],
+    "transaction": 0
+  },
+  {
+    "user": {
+      "user_unique_id": "3798161405005257",
+      "user_id": "1910319278719667",
+      "device_id": "3798161405005257",
+      "user_is_login": true
+    },
+    "header": {
+      "app_id": 932204,
+      "custom": "{\"icube_uid\":\"1910319278719667\",\"scope\":\"marscode\",\"system\":\"win32\",\"arch\":\"x64\",\"quality\":\"stable\",\"machine_id\":\"0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51\",\"build_version\":\"2.3.71801\",\"user_id\":\"1910319278719667\",\"user_name\":\"用户3370882502\",\"region\":\"CN\",\"user_region\":\"CN\",\"build_time\":\"2026-08-14T10:40:39.642Z\",\"vscode_version\":\"1.107.1\",\"biz_user_id\":\"1910319278719667\",\"user_is_login\":true,\"user_unique_id\":\"3798161405005257\",\"device_id\":\"3798161405005257\",\"local_device_id\":\"aha-31e0f53a6a3d3e6dbf0a5036f86fa368\",\"is_special_uuid\":false,\"organization\":\"\",\"tenant\":\"marscode\",\"aiRegion\":\"CN\",\"icube_main_uid\":\"7c52d492-7b0b-4be1-b7a9-8083acc8ca5a\",\"window_id\":1,\"workspace_id\":\"5028d0e419be8cf575dfbf6b5f1acb51\",\"app_version\":\"0.1.51\",\"os_name\":\"windows\",\"os_version\":\"Windows 11 Pro\",\"os_release\":\"10.0.26200\",\"platform\":\"electron\",\"device_model\":\"82JW\",\"device_manufacturer\":\"LENOVO\",\"cpu\":\"AMD\",\"cpu_brand\":\"AMD Ryzen 5 5600H with Radeon Graphics\",\"cpu_speed\":3.294,\"memory\":34204610560,\"is_ssh\":false,\"language\":\"zh-cn\",\"app_language\":\"zh-cn\",\"chat_mode\":1,\"identity\":\"0\",\"identity_str\":\"Free\",\"is_freshman\":\"1\",\"channel_name\":\"common\",\"process_type\":2,\"privacy_mode\":\"off\",\"aha_version\":\"39.2.7-release.1.49.0\",\"store_country_code\":\"\",\"store_country_code_src\":\"\",\"store_region\":\"CN\",\"workspace_status\":\"unsaved_multi_root\",\"workspace_root_count\":1,\"product_code\":\"SOLO_Lite\",\"ai_chat_version\":\"v1\",\"ai_chat_version_source\":\"default\",\"solo_lite_app_slim_enabled\":\"0\",\"app_is_solo_mode\":\"1\",\"icube_ab\":\"{\\\"onboarding\\\":\\\"A\\\"}\",\"solo_chat_mode\":\"work\",\"app_window_count\":1,\"app_active_workspace_vscdb_size\":294912,\"app_global_vscdb_size\":1667072,\"app_system_disk_usage\":0.7860756344893657,\"ai_database_db_size\":1381761024,\"ai_snapshot_size\":150747380,\"agent_type\":\"solo_work_lite\",\"shell_execute_strategy\":\"shell_exec\",\"message_source\":\"manual\",\"chat_process_version\":\"v3\",\"ab_versions\":\"\"}",
+      "region": "CN",
+      "app_version": "0.1.51",
+      "os_name": "windows",
+      "os_version": "Windows 11 Pro",
+      "device_model": "82JW",
+      "platform": "electron"
+    },
+    "events": [
+      {
+        "event": "tool_call_success",
+        "params": "{\"session_id\":\"6a817f5d6674ddb0e39798d4\",\"message_id\":\"6a833f8abadf79eba240a3e2\",\"tool_id\":\"6a8345a9badf79eba240a5de\",\"project_id\":\"6a817ed26674ddb0e39798a0\",\"chat_type\":\"builder\",\"chat_model\":\"DeepSeek-V4-Flash-Official\",\"agent_type\":\"solo_work_lite\",\"agent_name\":\"\",\"tool_type\":\"Read\",\"chat_model_mode\":0,\"is_max_mode\":0,\"is_auto_mode\":0,\"is_custom_model\":0,\"is_plan_mode\":0,\"is_spec_mode\":0,\"model_source\":1,\"auto_run\":1,\"run_duration\":13,\"is_cloud_agent\":1,\"now_run_mode\":\"auto\",\"solo_chat_mode\":\"work\",\"has_virtual_path\":0,\"sandbox_awareness_enabled\":true,\"dangerously_disable_sandbox\":false,\"browser_mode\":\"default\"}"
+      }
+    ],
+    "transaction": 0
+  }
+]

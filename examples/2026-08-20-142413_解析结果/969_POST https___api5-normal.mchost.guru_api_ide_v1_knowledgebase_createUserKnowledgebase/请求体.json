@@ -1,0 +1,11 @@
+{
+  "knowledgebase_path": "c:\\Users\\LEHUAN~1\\AppData\\Local\\Temp",
+  "knowledgebase_uri": "",
+  "strategy": {
+    "index_type": 1,
+    "index_strategy": {
+      "embedding_model": "codekg_bge_m3",
+      "split_method": "v3"
+    }
+  }
+}

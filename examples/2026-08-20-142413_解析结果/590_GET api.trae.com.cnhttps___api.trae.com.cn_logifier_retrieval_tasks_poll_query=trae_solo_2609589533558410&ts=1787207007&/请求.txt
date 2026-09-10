@@ -1,0 +1,4 @@
+GET https://api.trae.com.cn/logifier/retrieval/tasks/poll?query=trae_solo_2609589533558410&ts=1787207007&sign=861bc825e0815cd296939c0a5083c357f013f9f18104a1e7bff2c8e2f4a2363a HTTP/1.1
+x-app-id: 931506
+accept: */*
+host: api.trae.com.cn

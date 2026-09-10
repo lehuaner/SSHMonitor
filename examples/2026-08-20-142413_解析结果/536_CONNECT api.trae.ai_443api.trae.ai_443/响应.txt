@@ -1,0 +1,116 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:23:03.577
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.trae.ai
+  Simple Name: *.trae.ai
+  DNS Name: *.trae.ai
+
+[Issuer]
+  CN=RapidSSL TLS ECC CA G1, OU=www.digicert.com, O=DigiCert Inc, C=US
+  Simple Name: RapidSSL TLS ECC CA G1
+  DNS Name: RapidSSL TLS ECC CA G1
+
+[Serial Number]
+  0F5C59ABEB34D961EC68634D0CB1AF5E
+
+[Not Before]
+  2026/5/6 8:00:00
+
+[Not After]
+  2026/11/21 7:59:59
+
+[Thumbprint]
+  34AF809B4392F92E12C9EC489516C54200B3235C
+
+[Signature Algorithm]
+  sha256ECDSA(1.2.840.10045.4.3.2)
+
+[Public Key]
+  Algorithm: ECC
+  Length: 
+  Key Blob: 04 27 80 83 1d 1c 10 c0 c1 e3 a8 34 a4 7a 72 e6 c9 fa 92 bf ed 62 ec df 90 f2 f2 2f ed 7b 17 97 6a 7d 82 0d 45 aa 80 00 1b 51 b3 2c 22 ba ec d5 08 7e 66 c9 d4 6e ee 6d 34 6c fc 23 36 bf 68 d0 8d
+  Parameters: 06 08 2a 86 48 ce 3d 03 01 07
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=41df4df06193c7fcb5abcd7c92029d0f7c9c0a90
+
+* 使用者密钥标识符(2.5.29.14):
+  3ddade863fbdd77419ad91a0dedbb907636cd995
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.trae.ai
+DNS Name=trae.ai
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Agreement (88)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://cdp.rapidssl.com/RapidSSLTLSECCCAG1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://status.rapidssl.com
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.rapidssl.com/RapidSSLTLSECCCAG1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+c2317e574519a345ee7f38deb29041ebc7c2215a22bf7fd5b5ad769ad90e52cd
+‎2026‎年‎5‎月‎6‎日 14:06:03
+SHA256
+ECDSA
+3046022100d9090cae62675e75fb9692cee4565173d1cece2a2f94f789781f5867deb84328022100dfffc92143a3cbd7e50f62c320a3e332f2df4604d87f302771b87b23386c6dc2
+
+v1
+d76d7d10d1a7f577c2c7e95fd700bff982c9335a65e1d0b3017317c0c8c56977
+‎2026‎年‎5‎月‎6‎日 14:06:03
+SHA256
+ECDSA
+3045022100877115404168504633847eaf36db5bc5fe98fd87ff97d3df12da6a6e56c3236902200a9cb53f8274ab7e8a21bb0cc8866c6b05cb907ba6f5868d646a912b77a4a0d1
+
+v1
+944e4387faecc1ef81f3192426a8186501c7d35f3802013f72677d55372e19d8
+‎2026‎年‎5‎月‎6‎日 14:06:03
+SHA256
+ECDSA
+304502210092f60000234375c0c1c913453593097d6b67adcbd7fbb9465cd196329c30c19702200951a752ae46d649be2564b3387c5b048b8b88b05853494176109714c9af87fb
+
+
+[SubjectAltNames]
+DNS Name=*.trae.ai
+DNS Name=trae.ai
+

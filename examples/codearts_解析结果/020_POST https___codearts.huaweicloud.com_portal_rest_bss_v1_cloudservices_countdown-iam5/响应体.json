@@ -1,0 +1,28 @@
+{
+  "cloudServiceCountDowns": [
+    {
+      "resourceId": "fa64939fc6ae40fd9c80edac79e6b444",
+      "regionId": "cn-north-4",
+      "cloudServiceType": "hws.service.type.devcloud",
+      "resourceType": "hws.resource.type.codearts.snap",
+      "resourceSpecCode": "codearts.agent.individual.trial",
+      "countDownCode": "hws_countdown_period_using",
+      "countDownInfos": "{\"status\":2,\"nextOperationPolicy\":0,\"nextOperationRemainingDay\":30}",
+      "countDownTips": "{\"effTime\":\"2026-09-08T09:03:07Z\",\"expTime\":\"2026-10-08T15:59:59Z\"}",
+      "isTrial": 0,
+      "isAutoRenew": 1,
+      "orderId": "CS2609081702KQW88",
+      "productId": "OFFI1296473119762554880",
+      "isPurchaseAlone": null,
+      "periodType": 2,
+      "subscriptionId": "01154-363254500-00",
+      "rootResourceId": null,
+      "rootResourceType": null,
+      "rootCloudServiceType": null,
+      "expireModeInfo": {
+        "expireMode": "AUTO_RENEW",
+        "expireModeInfo": "自动续订"
+      }
+    }
+  ]
+}

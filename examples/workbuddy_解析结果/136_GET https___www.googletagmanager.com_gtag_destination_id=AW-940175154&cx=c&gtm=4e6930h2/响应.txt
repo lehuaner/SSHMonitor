@@ -1,0 +1,18 @@
+HTTP/2 200
+content-type: application/javascript; charset=UTF-8
+access-control-allow-origin: *
+access-control-allow-credentials: true
+access-control-allow-headers: Cache-Control
+vary: Accept-Encoding
+date: Mon, 07 Sep 2026 16:38:56 GMT
+expires: Mon, 07 Sep 2026 16:38:56 GMT
+cache-control: private, max-age=900
+strict-transport-security: max-age=31536000; includeSubDomains
+cross-origin-resource-policy: cross-origin
+content-security-policy-report-only: script-src 'none'; form-action 'none'; frame-src 'none'; report-uri https://csp.withgoogle.com/csp/scaffolding/ascgsrsghrgc:71:0
+cross-origin-opener-policy-report-only: same-origin; report-to=ascgsrsghrgc:71:0
+report-to: {"group":"ascgsrsghrgc:71:0","max_age":2592000,"endpoints":[{"url":"https://csp.withgoogle.com/csp/report-to/scaffolding/ascgsrsghrgc:71:0"}],}
+server: Google Tag Manager
+content-length: 148173
+x-xss-protection: 0
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000

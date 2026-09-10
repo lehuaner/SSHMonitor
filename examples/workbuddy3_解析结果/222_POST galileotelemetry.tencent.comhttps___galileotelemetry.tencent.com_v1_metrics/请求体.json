@@ -1,0 +1,339 @@
+{
+  "resourceMetrics": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "target",
+            "value": {
+              "stringValue": "ElectronApp.WorkBuddy.Desktop"
+            }
+          },
+          {
+            "key": "type",
+            "value": {
+              "stringValue": "resource"
+            }
+          },
+          {
+            "key": "env_name",
+            "value": {
+              "stringValue": "formal"
+            }
+          },
+          {
+            "key": "instance",
+            "value": {
+              "stringValue": "desktop-1788877360404"
+            }
+          },
+          {
+            "key": "namespace",
+            "value": {
+              "stringValue": "Production"
+            }
+          },
+          {
+            "key": "version",
+            "value": {
+              "stringValue": "5.5.3"
+            }
+          },
+          {
+            "key": "container_name",
+            "value": {
+              "stringValue": "genie.ElectronApp.WorkBuddy.Desktop"
+            }
+          },
+          {
+            "key": "ideType",
+            "value": {
+              "stringValue": "workbuddy-desktop"
+            }
+          },
+          {
+            "key": "ideVersion",
+            "value": {
+              "stringValue": "5.5.3"
+            }
+          },
+          {
+            "key": "os",
+            "value": {
+              "stringValue": "win32-x64"
+            }
+          },
+          {
+            "key": "ext1",
+            "value": {
+              "stringValue": "desktop"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "scope": {
+            "name": "Custom_wb.metrics",
+            "version": "1.0.0"
+          },
+          "metrics": [
+            {
+              "name": "ch_sdk_publish_http_ms",
+              "description": "",
+              "unit": "",
+              "histogram": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1789012932817000000",
+                    "count": "6",
+                    "sum": 718,
+                    "bucketCounts": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "3",
+                      "2",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0"
+                    ],
+                    "explicitBounds": [
+                      1,
+                      2,
+                      5,
+                      10,
+                      20,
+                      50,
+                      100,
+                      200,
+                      500,
+                      1000,
+                      2000,
+                      5000,
+                      10000,
+                      20000,
+                      30000
+                    ],
+                    "attributes": [
+                      {
+                        "key": "clientType",
+                        "value": {
+                          "stringValue": "desktop"
+                        }
+                      },
+                      {
+                        "key": "channelScope",
+                        "value": {
+                          "stringValue": "user"
+                        }
+                      },
+                      {
+                        "key": "ok",
+                        "value": {
+                          "stringValue": "true"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "aggregationTemporality": 1
+              }
+            },
+            {
+              "name": "ch_sdk_send_latency_ms",
+              "description": "",
+              "unit": "ms",
+              "histogram": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1789012932818000000",
+                    "count": "6",
+                    "sum": 721,
+                    "bucketCounts": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "3",
+                      "2",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0"
+                    ],
+                    "explicitBounds": [
+                      1,
+                      2,
+                      5,
+                      10,
+                      20,
+                      50,
+                      100,
+                      200,
+                      500,
+                      1000,
+                      2000,
+                      5000,
+                      10000,
+                      20000,
+                      30000
+                    ],
+                    "attributes": [
+                      {
+                        "key": "clientType",
+                        "value": {
+                          "stringValue": "desktop"
+                        }
+                      },
+                      {
+                        "key": "channelScope",
+                        "value": {
+                          "stringValue": "user"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "aggregationTemporality": 1
+              }
+            },
+            {
+              "name": "ch_sdk_publish_total",
+              "description": "",
+              "unit": "",
+              "sum": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1789012932718000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "channelScope",
+                        "value": {
+                          "stringValue": "user"
+                        }
+                      },
+                      {
+                        "key": "outcome",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789012932740000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "channelScope",
+                        "value": {
+                          "stringValue": "user"
+                        }
+                      },
+                      {
+                        "key": "outcome",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789012932744000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "channelScope",
+                        "value": {
+                          "stringValue": "user"
+                        }
+                      },
+                      {
+                        "key": "outcome",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789012932745000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "channelScope",
+                        "value": {
+                          "stringValue": "user"
+                        }
+                      },
+                      {
+                        "key": "outcome",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789012932780000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "channelScope",
+                        "value": {
+                          "stringValue": "user"
+                        }
+                      },
+                      {
+                        "key": "outcome",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789012932818000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "channelScope",
+                        "value": {
+                          "stringValue": "user"
+                        }
+                      },
+                      {
+                        "key": "outcome",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "aggregationTemporality": 1,
+                "isMonotonic": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

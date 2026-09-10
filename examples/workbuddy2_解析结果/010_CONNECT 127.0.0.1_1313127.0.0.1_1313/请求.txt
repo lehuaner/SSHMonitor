@@ -1,0 +1,5 @@
+CONNECT 127.0.0.1:1313 HTTP/1.1
+host: 127.0.0.1:1313
+connection: close
+
+After the client received notice of the established CONNECT, it failed to send any data.

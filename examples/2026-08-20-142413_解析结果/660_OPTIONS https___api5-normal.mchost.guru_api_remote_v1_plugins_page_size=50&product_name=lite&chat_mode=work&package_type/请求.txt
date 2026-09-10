@@ -1,0 +1,26 @@
+OPTIONS https://api5-normal.mchost.guru/api/remote/v1/plugins?page_size=50&product_name=lite&chat_mode=work&package_type=stable&client_version=0.1.51&os=windows HTTP/2
+:method: OPTIONS
+:authority: api5-normal.mchost.guru
+:scheme: https
+:path: /api/remote/v1/plugins?page_size=50&product_name=lite&chat_mode=work&package_type=stable&client_version=0.1.51&os=windows
+accept: */*
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+access-control-request-headers: authorization,x-preferenced-language,x-trae-client-type,x-trae-user-timezone,x-user-region
+access-control-request-method: GET
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: 7a268599-ce94-4328-ba7d-3b03cb6b786b
+x-ss-dp: 787976
+x-tt-trace-id: 00-1dd6e5e90d945686928468a59ec1ffff-1dd6e5e90d945686-01
+x-helios: 5D8AANfhwsEPbC+NEqP+dPOJhE+Y/wjRAOQU4LFK6J/3Q1Hc
+x-medusa: ap2Gap512ZC+SlpRv7dOGj5S53IxUQMBqgzdBgAAEXg7mWYIBgW6gaxR2Mx0p0jWMjMnvdS1nuyN8o/dP46/d/+SWEhxiZJS49qqAhE6anE7Plua1g3xsIQgks54fNwCnLFkGy4G1AaKLncgiefXQRgEMUcDu+U8HFkF9bY4LAI5C8J/tznCAUTYAu6FSaaXV5YBlgxbwl7xDDgcUc+LYkwNQIMwc1xJwvyN/sBwjU2lGnqO4FCd1kgBHgZsUcN6m5ecz78KfMye+PTqefz6VscroJ/wnIEotVhxJBaDQb0dzQ+t0uVO8x8jPn3wl7b/t+y7ZnC/48Bn3P+vGgPdTBYKE16RE9ng4vb6bPmVyKCEjDRqL4/sEAt57KxdWRVZBZpxMOqvbihGfTblL4bVM2+swQKJBESVmpMv0c0GaK53bg30+Q1IUDnfs6rpAdsV+eILBNAgWep/ZfD+1eo4MGddxmT9Pk+eQ9BDmDXosYIXokvL+fBfO+P9ZWaq5SkGvMQk1hYGcEdHuDOmkcSVV0hoMErmuvY4+KZK1huaWho3NB5Y2pnt3DjiZ15Xy3KRQ0Mih42TLvqNJcvAPy+SsjbkPTtfG1GluCGeFhUb7QWrxpe138Io8N1AWJ++TGp0FU0WcEw110C3a7WwZ8uKxc8sQ52/j98XH8/f5f3PB4foJ8p4+qYBmdBpJwKy228RN/+Ru6+JK4Vq6lk+WKytN77NlY92bk+0S429x2WHyUc33tS4TydlCeQjmGqVkBcoH+X//d+/7/f//wAA
+x-neptune: -11|50:51:59:00:09

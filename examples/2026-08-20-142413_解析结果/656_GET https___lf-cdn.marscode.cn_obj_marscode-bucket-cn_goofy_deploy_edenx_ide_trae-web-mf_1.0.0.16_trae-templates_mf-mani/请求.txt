@@ -1,0 +1,17 @@
+GET https://lf-cdn.marscode.cn/obj/marscode-bucket-cn/goofy_deploy_edenx/ide/trae-web-mf/1.0.0.16/trae-templates/mf-manifest.json HTTP/2
+:method: GET
+:authority: lf-cdn.marscode.cn
+:scheme: https
+:path: /obj/marscode-bucket-cn/goofy_deploy_edenx/ide/trae-web-mf/1.0.0.16/trae-templates/mf-manifest.json
+accept: */*
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Chromium";v="142"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+priority: u=1, i

@@ -1,0 +1,10 @@
+{
+  "type": "wechatmp",
+  "sessionId": "8b3cb381-9ebc-4813-92d9-9e5880528465_d82687f14222418bb8b5f14277ea7261_d89fed93f5e74bd8",
+  "channelId": "",
+  "userId": "8b3cb381-9ebc-4813-92d9-9e5880528465",
+  "extra": {
+    "enabled": true,
+    "connectionMode": "webhook"
+  }
+}

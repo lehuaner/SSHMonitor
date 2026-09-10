@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "data": {
+    "skills": [
+      {
+        "name": "feedback",
+        "description": "Only used when the user explicitly uses /feedback, injects Use Skill: feedback on the end, or the user explicitly says they want to submit/record TRAE feedback; do not use for normal development, writing, querying, or creating tasks.",
+        "scope": "user",
+        "path_id": "^/feedback/SKILL.md"
+      },
+      {
+        "name": "skill-creator",
+        "description": "快速创建符合你需求的专属技能",
+        "scope": "user",
+        "path_id": "^/skill-creator/SKILL.md"
+      }
+    ],
+    "slash_commands": []
+  }
+}

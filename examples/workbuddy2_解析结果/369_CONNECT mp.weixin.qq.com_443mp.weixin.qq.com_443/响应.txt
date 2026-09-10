@@ -1,0 +1,133 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 16:07:21.817
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=mp.weixin.qq.com, O=Tencent Technology (Shenzhen) Company Limited, L=Shenzhen, S=Guangdong Province, C=CN
+  Simple Name: mp.weixin.qq.com
+  DNS Name: mp.weixin.qq.com
+
+[Issuer]
+  CN=DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1, O="DigiCert, Inc.", C=US
+  Simple Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+  DNS Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+
+[Serial Number]
+  03CBC2020B4467191EB4E893A92208B4
+
+[Not Before]
+  2025/10/23 8:00:00
+
+[Not After]
+  2026/11/24 7:59:59
+
+[Thumbprint]
+  B3FB043FCE4D418B805F89D505FA66874FC106F9
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 be e2 92 2c 79 4b ef 0e 46 ae 2b ee 43 66 c5 d1 59 b4 90 67 c4 34 24 cc de 52 0e 4f ce 97 e3 8d ad aa 15 e1 2e e5 c2 c2 e6 b8 fb c2 5b 13 6e 3d 37 9a 32 b1 56 b3 e7 ed dc 3c 86 13 6f ac 0b 46 7a eb 47 e1 b5 44 db 5e d5 2b 3d 0b f6 64 48 9d ee 95 3d 40 e6 a8 6b 2e ed 47 12 98 d0 8f 3b cb 1a af c5 06 17 5f 53 4b 7a b7 2d 70 0f 7c ce a1 5b d0 76 d4 26 a2 08 a5 b5 fa 03 f0 44 8a 55 68 00 73 ab a8 17 a2 7a 34 bd 4a db 3c e5 27 46 3a 3c 26 4d 8e d5 06 2d 03 58 66 f0 26 53 ce 05 3f 47 3b 58 f0 d8 81 b9 cb 5e 19 76 50 5f ab 9b 18 0b 1e d1 fe 21 18 45 41 f3 5a b4 60 28 54 b2 81 53 fe d6 37 91 82 e7 20 40 b8 1d bb 8d 27 13 00 d3 da 56 c3 b8 cc 22 8c df a0 10 e9 39 1a 9d a7 b3 48 6c 30 ff 4a 18 b9 29 87 64 90 8c 3a c4 f9 f6 54 81 c4 73 ca 1e c4 4a 3b 71 e6 78 b5 cc 0f 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=2b2316811b47898a907aece832d46c8e72f9ce25
+
+* 使用者密钥标识符(2.5.29.14):
+  60f57d1ccdc3fe854ae3e679d2ddbc22212a53d2
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=mp.weixin.qq.com
+DNS Name=*.api.weixin.qq.com
+DNS Name=*.mp.weixin.qq.com
+DNS Name=*.open.weixin.qq.com
+DNS Name=*.weixin.qq.com
+DNS Name=admin.wechat.com
+DNS Name=api.wechat.com
+DNS Name=mp.weixinbridge.com
+DNS Name=open.wechat.com
+DNS Name=rd.wechat.com
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+客户端身份验证 (1.3.6.1.5.5.7.3.2)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://ocsp.digicert.cn
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+d76d7d10d1a7f577c2c7e95fd700bff982c9335a65e1d0b3017317c0c8c56977
+‎2025‎年‎10‎月‎23‎日 15:52:09
+SHA256
+ECDSA
+3045022100855028a2214421294ad6fa2602431b1d55b2ff37dc709648d925f49aa84f505702204d9ea9a66bfe47e91b02d4e299f6a49468aa7af53f198b90b0ddf8c6826c80fa
+
+v1
+c2317e574519a345ee7f38deb29041ebc7c2215a22bf7fd5b5ad769ad90e52cd
+‎2025‎年‎10‎月‎23‎日 15:52:10
+SHA256
+ECDSA
+3045022100ec364484d9a89e6013948f9928a39f827a54033673cd60bdefb7474c1af3c287022062e51cfa762e6f13b52a08901b258d439da7cf404e815fccb6c532acf3487b3e
+
+v1
+944e4387faecc1ef81f3192426a8186501c7d35f3802013f72677d55372e19d8
+‎2025‎年‎10‎月‎23‎日 15:52:10
+SHA256
+ECDSA
+304502204b61bed899fc06c27b9c2055a6180a53ba5133b9cff305529f7f1b7674d2d398022100a21f3809c24c36c98c22b489209c3727fee51f65a05416d84f9c985b66308385
+
+
+[SubjectAltNames]
+DNS Name=mp.weixin.qq.com
+DNS Name=*.api.weixin.qq.com
+DNS Name=*.mp.weixin.qq.com
+DNS Name=*.open.weixin.qq.com
+DNS Name=*.weixin.qq.com
+DNS Name=admin.wechat.com
+DNS Name=api.wechat.com
+DNS Name=mp.weixinbridge.com
+DNS Name=open.wechat.com
+DNS Name=rd.wechat.com
+

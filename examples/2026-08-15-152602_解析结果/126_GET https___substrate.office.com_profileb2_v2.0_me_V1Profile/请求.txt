@@ -1,0 +1,14 @@
+GET https://substrate.office.com/profileb2/v2.0/me/V1Profile HTTP/2
+:method: GET
+:authority: substrate.office.com
+:scheme: https
+:path: /profileb2/v2.0/me/V1Profile
+authorization: Passport1.4 from-PP='EwAoBGKBBAAUcnotHNLXVkMD2e8VE2fOVpx751UAAdu+USOYK9PDh2VBimUL9vFER4ATSVbDi0mJVt+y/6H+UCx1jL+wFvW7HVn3ZZFPdQQYhgY0d06UQsG22C2i4v1obfJVS0sxOsZg/s8TgscCjzZZsY0meGY0jlPY8xG21fS0evWIoUdJNKrIT+Yb39iZ0LaapgZmj4Lcrr2B/Po8Yj/vZD0hg/ojZfg1HJMy8zZCHzykjw0+E9zepDbwF9Cjql23ylb5EfuamNzzdtYy1t9fUFxqgrwnj0GFfiS1Bjp2K9nhiqFUXNPHSV4+2wWlBvRqMwz6WAMp3c3l3js4u5kexTQeOtqHejTH479bk5axMJpg+spd4ClACsiqnmkQZgAAEPrAR9/vblido0Q1M7FQZrvwApQAm8psPrxsh2u3foJeipuQl6XRfEaNyFotKX8foNkLO3MB59O5mWiSix/EyTpZh92sCQHyWeXEGo1JRfS/tv102E0L2iCPjkdTCZz492c89qT+9WWhaFpqFncbR3icSsH4/d4dfN0XcLS5nQiTp7eZvb5Fz0fxHgGtxu+ittYBnZINHJLLenW5XmZk0d02QjVTF0eltnoO2nhDGgImPcIsdvKMK9964+ybk78+NY5XSLjjxp4TdCj5iDJIaPtRWTzGIIcNiR9DSEnmUHksdBh0kQIExZqW4zbDuwMoDqVBhxeAj6FwoZxQpvH/YqiWmNDGfLT2COoZqgXQ+OycuVANWg0LMSmIX0UCnH93CHlmC0YYm5lKLbBTp5YQTu+5KZlMBcb4/P+HoXeQpXZwrXW3SmZdYPGxZE341XKYTLuLwVk4axnkMtiVLZvTOgZIzvkIb1SHDHqMBVAWA7UAkvvoQz1tuwPxvQ1PWY3cptRKcAYOijFrWX7m4A3RsJAX1/wjZK/tCKLfUAGoUBNjWcToaJwYz2zOfrA7v6R8AJhpojtPbm0V87DBFePBJs6ENJ5gt4F7YNr0j9NKsN/1CFaWUHFfNf3EUu1AvIdYq6QklG0HTjWwvwX12tIgvOasRwsOEVvR+Y2p5fp3hdm9Pb1iXBd+UAgNM8/Bsm1pUgZC+caX2pjegCfv2H5mMCb+6NZ5sMcdnqQm2n+0aDMp7aYtnjPrtWw3cksuS3v4MGQxPifdPLbaoAt7V6eecZo7iCX5/hyjVwz7Sq9oP/fAMMLdkSBl+LvhRCDGQpFU2bqzXQKsYI3o1a7EDu8BwpaIdLdLhGXj54ReQ+b11qpXIKf5LuF5MDeZjY4lVm+aVtM7zWf61paUjlKrwYKKFq56Na7Lh7/PetNmiwgsLaxjljSqe1/v6yHBmsApUlL3+aGB+0tbeerZIeNJjk2mPiYPsFjqxJbpAq/KKzD0ZdCqsGqsmhi1IyAelYZ85dj3fM6SHQM=
+x-anchormailbox: CID:e68bb90d8118dd39
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=4, i

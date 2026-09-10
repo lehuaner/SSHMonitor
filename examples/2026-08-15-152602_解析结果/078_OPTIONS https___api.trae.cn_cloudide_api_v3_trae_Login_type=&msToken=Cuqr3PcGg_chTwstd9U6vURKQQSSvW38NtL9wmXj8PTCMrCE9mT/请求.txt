@@ -1,0 +1,17 @@
+OPTIONS https://api.trae.cn/cloudide/api/v3/trae/Login?type=&msToken=Cuqr3PcGg_chTwstd9U6vURKQQSSvW38NtL9wmXj8PTCMrCE9mTalxfGW47wISw3HD51KBxcWnPsOlNvCLOrOX4nX0NPx19GYOa1jGfmom3spDiEAX3uxaDlBbO-6NSNSRNnbCzxb5cdVhNFfGmW3oVXr6AXt8iL0W6L4ERGBttCSw%3D%3D&a_bogus=Ov0VDHywDomcP3AbmKcRt4nX%2FK5MrTuyvFT2WGRzCNzlyZ0TOMM4Q9iKaxYFm2bN-YD8wHVHUj0WYEDOZfPmvCrpzmkfSYsbGt2IIL8o%2FqwpG0v8EHgwS0mzwwBG8bJNaQ9JiIm5XsMC2EOWVHCwAQI7K%2FvnmbfdPN3JV2Tjx9Km0Sujk9%2FIa5tdxhTquD%3D%3D HTTP/2
+:method: OPTIONS
+:authority: api.trae.cn
+:scheme: https
+:path: /cloudide/api/v3/trae/Login?type=&msToken=Cuqr3PcGg_chTwstd9U6vURKQQSSvW38NtL9wmXj8PTCMrCE9mTalxfGW47wISw3HD51KBxcWnPsOlNvCLOrOX4nX0NPx19GYOa1jGfmom3spDiEAX3uxaDlBbO-6NSNSRNnbCzxb5cdVhNFfGmW3oVXr6AXt8iL0W6L4ERGBttCSw%3D%3D&a_bogus=Ov0VDHywDomcP3AbmKcRt4nX%2FK5MrTuyvFT2WGRzCNzlyZ0TOMM4Q9iKaxYFm2bN-YD8wHVHUj0WYEDOZfPmvCrpzmkfSYsbGt2IIL8o%2FqwpG0v8EHgwS0mzwwBG8bJNaQ9JiIm5XsMC2EOWVHCwAQI7K%2FvnmbfdPN3JV2Tjx9Km0Sujk9%2FIa5tdxhTquD%3D%3D
+accept: */*
+access-control-request-method: POST
+access-control-request-headers: content-type,traceparent
+origin: https://www.trae.cn
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0
+sec-fetch-mode: cors
+sec-fetch-site: same-site
+sec-fetch-dest: empty
+referer: https://www.trae.cn/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=1, i

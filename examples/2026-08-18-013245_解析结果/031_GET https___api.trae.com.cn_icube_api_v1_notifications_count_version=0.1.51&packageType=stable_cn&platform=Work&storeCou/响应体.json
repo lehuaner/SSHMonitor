@@ -1,0 +1,51 @@
+{
+  "data": {
+    "count": 1,
+    "list": [
+      {
+        "platforms": [
+          "Work"
+        ],
+        "appVersion": {
+          "Work": ">=0.1.50"
+        },
+        "id": 105,
+        "notificationType": "account",
+        "tenantId": "marscode",
+        "userType": "all",
+        "data": {
+          "title": {
+            "en": "@TraeWork in Feishu/WeChat. Create tasks from your chats!",
+            "ja": "TraeWork が Feishu/WeChat に対応。チャットからいつでもタスクを作成！",
+            "zh-cn": "TraeWork 接入飞书/微信，随时在聊天中下发任务！"
+          },
+          "button": {
+            "label": {
+              "en": "Try it now",
+              "ja": "試してみる",
+              "zh-cn": "去体验"
+            },
+            "commandId": "icube.soloLite.openIMBridge"
+          },
+          "content": {
+            "en": "Mention your bot assistant TraeWork in messaging apps, and your messages will automatically become tasks. No need to switch apps — view results directly in your chat.",
+            "ja": "チャットアプリであなたのボットアシスタント TraeWork にメンションすると、メッセージが自動的にタスクに変換されます。アプリを切り替えることなく、チャット内で結果を確認できます。",
+            "zh-cn": "在通讯工具 @你的办公助理 TraeWork，消息自动转为任务。无需切换应用，直接在聊天中查看结果。"
+          }
+        },
+        "extraData": null,
+        "packageType": "stable_cn",
+        "template": "default",
+        "status": "publish",
+        "effectiveTime": "2026-08-17T04:13:42.000Z",
+        "expireTime": null,
+        "createdAt": "2026-08-05T06:44:17.000Z",
+        "updatedAt": "2026-08-17T04:13:42.000Z",
+        "draftId": 55,
+        "isRead": false
+      }
+    ]
+  },
+  "success": true,
+  "logId": "202608180132417F7CB06B88EB6B01668C"
+}

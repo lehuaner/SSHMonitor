@@ -1,0 +1,22 @@
+HTTP/2 200
+content-type: application/json; charset=utf-8
+content-length: 21
+x-dynamic-status: MISS from KS-CLOUD-SQ-CM-81-03-L
+date: Thu, 20 Aug 2026 06:23:54 GMT
+upstream-caught: 1787207034013393
+x-tt-logid: 20260820142353812405035B36FF83115E
+access-control-max-age: 1800
+access-control-allow-credentials: true
+access-control-allow-methods: GET, OPTIONS, HEAD, PUT, POST
+cross-origin-resource-policy: cross-origin
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+expires: 0
+server-timing: inner; dur=15
+x-tt-trace-host: 01207a981426127d02143837b6aace09ad8c6cdf210c2ff9bf28169878dd896427345aa3c94935055bbd1044fa419013dcc7e4c7548abb74047aa282a140101acc915b4c5e61daf2de4a8f7921ae9f26384f36e3f68dba560a6cad86d479099a4a
+x-tt-trace-tag: id=06;cdn-cache=miss;type=dyn
+x-tt-trace-id: 00-260820142353812405035B36FF83115E-2502A915BAAF3D14-00
+server: TLB
+server-timing: cdn-cache;desc=miss,edge;dur=0,origin;dur=59
+x-cdn-request-id: f2f08423a2de00edd8aec437d7265c75
+x-link-via: sqcm81:443

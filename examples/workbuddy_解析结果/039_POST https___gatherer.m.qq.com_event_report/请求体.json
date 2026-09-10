@@ -1,0 +1,17 @@
+{
+  "channel": "109137",
+  "platform": 4,
+  "events": [
+    {
+      "id": "EId_TId_Init_Start",
+      "content": "{\"t\":1788799090355,\"ret\":0,\"msg\":\"\"}"
+    },
+    {
+      "id": "EId_TId_Init_End",
+      "content": "{\"t\":1788799090363,\"ret\":0,\"msg\":\"\",\"dur\":8}"
+    }
+  ],
+  "buildno": 200707,
+  "uuid": "5319609db6a4489482260a1d866be13a",
+  "seq": "23798228-65f1-45e3-bb81-951f15eea4e7"
+}

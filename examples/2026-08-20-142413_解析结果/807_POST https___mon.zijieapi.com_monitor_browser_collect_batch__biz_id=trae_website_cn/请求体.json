@@ -1,0 +1,219 @@
+{
+  "ev_type": "batch",
+  "list": [
+    {
+      "ev_type": "http",
+      "payload": {
+        "api": "xhr",
+        "request": {
+          "url": "https://api.trae.cn/cloudide/api/v3/trae/GetUserInfo",
+          "method": "post",
+          "headers": {
+            "accept": "application/json, text/plain, */*",
+            "traceparent": "03-db53a8566f2d21773085815a6a02d0a5-ecd715a5828a96ad-01"
+          },
+          "timestamp": 1787207028111
+        },
+        "response": {
+          "status": 200,
+          "is_custom_error": false,
+          "timestamp": 1787207029466,
+          "headers": {
+            "content-type": "application/json"
+          },
+          "timing": {
+            "name": "https://api.trae.cn/cloudide/api/v3/trae/GetUserInfo",
+            "entryType": "resource",
+            "startTime": 46678.70000000001,
+            "duration": 375.3999999999651,
+            "initiatorType": "xmlhttprequest",
+            "deliveryType": "",
+            "nextHopProtocol": "h2",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "application/json",
+            "contentEncoding": "br",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 46678.70000000001,
+            "domainLookupStart": 46678.70000000001,
+            "domainLookupEnd": 46678.70000000001,
+            "connectStart": 46678.70000000001,
+            "secureConnectionStart": 46678.70000000001,
+            "connectEnd": 46678.70000000001,
+            "requestStart": 46881.899999999965,
+            "responseStart": 47047.79999999999,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 47047.79999999999,
+            "responseEnd": 47054.09999999998,
+            "transferSize": 676,
+            "encodedBodySize": 376,
+            "decodedBodySize": 650,
+            "responseStatus": 200,
+            "serverTiming": [
+              {
+                "name": "inner",
+                "duration": 71,
+                "description": ""
+              },
+              {
+                "name": "tt_agw",
+                "duration": 57,
+                "description": ""
+              },
+              {
+                "name": "cdn-cache",
+                "duration": 0,
+                "description": "MISS"
+              },
+              {
+                "name": "edge",
+                "duration": 6,
+                "description": ""
+              },
+              {
+                "name": "origin",
+                "duration": 99,
+                "description": ""
+              }
+            ]
+          }
+        },
+        "duration": 1355
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "7675972323816048182",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "e9afdc0a-6401-47a6-a1a1-246ce083b6f5",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/download",
+        "timestamp": 1787207028111,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/download",
+        "view_id": "/download_1787206983112",
+        "context": {
+          "deploy_region": "cn",
+          "biz_user_id": "1554024524166871",
+          "user_id": "7675972323816048182",
+          "user_is_login": "true"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    },
+    {
+      "ev_type": "http",
+      "payload": {
+        "api": "xhr",
+        "request": {
+          "url": "https://api.trae.cn/cloudide/api/v3/common/GetUserToken",
+          "method": "post",
+          "headers": {
+            "accept": "application/json, text/plain, */*",
+            "traceparent": "03-9b045efbe2d686477c5db3d7d6b288b0-4e63fc8e1d5d3613-01"
+          },
+          "timestamp": 1787207029562
+        },
+        "response": {
+          "status": 200,
+          "is_custom_error": false,
+          "timestamp": 1787207029826,
+          "headers": {
+            "content-type": "application/json"
+          },
+          "timing": {
+            "name": "https://api.trae.cn/cloudide/api/v3/common/GetUserToken",
+            "entryType": "resource",
+            "startTime": 47325.399999999965,
+            "duration": 158.40000000002328,
+            "initiatorType": "xmlhttprequest",
+            "deliveryType": "",
+            "nextHopProtocol": "h2",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "application/json",
+            "contentEncoding": "br",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 47325.399999999965,
+            "domainLookupStart": 47325.399999999965,
+            "domainLookupEnd": 47325.399999999965,
+            "connectStart": 47325.399999999965,
+            "secureConnectionStart": 47325.399999999965,
+            "connectEnd": 47325.399999999965,
+            "requestStart": 47360.20000000001,
+            "responseStart": 47479.899999999965,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 47479.899999999965,
+            "responseEnd": 47483.79999999999,
+            "transferSize": 1262,
+            "encodedBodySize": 962,
+            "decodedBodySize": 1290,
+            "responseStatus": 200,
+            "serverTiming": [
+              {
+                "name": "inner",
+                "duration": 37,
+                "description": ""
+              },
+              {
+                "name": "tt_agw",
+                "duration": 22,
+                "description": ""
+              },
+              {
+                "name": "cdn-cache",
+                "duration": 0,
+                "description": "MISS"
+              },
+              {
+                "name": "edge",
+                "duration": 19,
+                "description": ""
+              },
+              {
+                "name": "origin",
+                "duration": 71,
+                "description": ""
+              }
+            ]
+          }
+        },
+        "duration": 264
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "7675972323816048182",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "e9afdc0a-6401-47a6-a1a1-246ce083b6f5",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/download",
+        "timestamp": 1787207029563,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/download",
+        "view_id": "/download_1787206983112",
+        "context": {
+          "deploy_region": "cn",
+          "biz_user_id": "1554024524166871",
+          "user_id": "7675972323816048182",
+          "user_is_login": "true"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+HTTP/2 302
+x-kc-routed-to: new
+set-cookie: AUTH_SESSION_ID=c22fd392-1002-4f1e-a1ec-36b716850e2f.keycloak-clusterless-67478d88df-z5x65;Version=1;Path=/auth/realms/copilot/;Secure;HttpOnly;SameSite=None
+set-cookie: KEYCLOAK_IDENTITY=eyJhbGciOiJIUzUxMiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICI2M2I4YzRkNS1jMTJjLTRhMGQtYjk5NC01ZTBjMDY0N2QwMDIifQ.eyJleHAiOjE4MjA1NDg4ODMsImlhdCI6MTc4OTAxMjg4MywianRpIjoiNWM4ODQ4ODktMGVkYS00YjI3LWJhZGYtMWE5ODNjZGI1MTdiIiwiaXNzIjoiaHR0cHM6Ly93d3cud29ya2J1ZGR5LmNuL2F1dGgvcmVhbG1zL2NvcGlsb3QiLCJzdWIiOiJiYjFhMDEyNC1iOTUwLTQwNTItOTkwNC1iYzQ1Y2NkNjhiZjAiLCJ0eXAiOiJTZXJpYWxpemVkLUlEIiwic2lkIjoiYzIyZmQzOTItMTAwMi00ZjFlLWExZWMtMzZiNzE2ODUwZTJmIiwic3RhdGVfY2hlY2tlciI6ImNrS3ZpT1BNRVlhZ1RNS2dLRXIzSk1EUmw4Nk8yZGo3YnkzVEh1MjBDLVEifQ.Za0Ho0YS1vbrMvxd2blznfNYtwKN4qQLk_fKtnG68Vxdmz-bgrAOXYbkcUza-4n8P16P9nZhIo1Cg4pF66SjOw;Version=1;Path=/auth/realms/copilot/;Secure;HttpOnly;SameSite=None
+set-cookie: KEYCLOAK_SESSION="copilot/bb1a0124-b950-4052-9904-bc45ccd68bf0/c22fd392-1002-4f1e-a1ec-36b716850e2f";Version=1;Path=/auth/realms/copilot/;Max-Age=31536000;Secure;SameSite=None
+location: https://www.workbuddy.cn/login/?platform=workbuddy&state=f63befd6-0d3c-4b77-94c1-360dc1087abd&version=5.5.3&loginSessionId=0e5ae834-d822-4dba-b788-f8dadd3ef799&session_state=c22fd392-1002-4f1e-a1ec-36b716850e2f&iss=https%3A%2F%2Fwww.workbuddy.cn%2Fauth%2Frealms%2Fcopilot&code=f03e3f16-3b4f-45fc-886b-f533d35bd198.c22fd392-1002-4f1e-a1ec-36b716850e2f.3feb966c-1151-42a6-9619-5ac899a8ba88
+referrer-policy: no-referrer
+strict-transport-security: max-age=31536000; includeSubDomains
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+server: APISIX/3.9.1
+x-request-id: 4cecf0ed-a7f3-4177-91e9-2d2fec42d236
+cache-control: no-cache
+content-length: 0
+date: Thu, 10 Sep 2026 04:01:23 GMT
+eo-log-uuid: 5123057643631015263
+eo-cache-status: MISS

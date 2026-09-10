@@ -1,0 +1,13 @@
+HTTP/2 200
+content-type: text/css
+x-kc-routed-to: new
+referrer-policy: no-referrer
+strict-transport-security: max-age=31536000; includeSubDomains
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+server: APISIX/3.9.1
+x-request-id: e061a9a8-5ac3-4e0d-9bee-b220b0651c8f
+cache-control: max-age=2592000
+date: Tue, 08 Sep 2026 08:06:25 GMT
+eo-log-uuid: 160683674909911515
+eo-cache-status: MISS

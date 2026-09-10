@@ -1,0 +1,37 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "713e9d8f-6d77-4518-be00-7b5803b95101",
+  "data": {
+    "accounts": [
+      {
+        "uid": "8b3cb381-9ebc-4813-92d9-9e5880528465",
+        "nickname": "乐幻",
+        "uin": "330102140407",
+        "type": "personal",
+        "lastLogin": true,
+        "isCreator": false,
+        "isAdmin": false,
+        "pluginEnabled": true,
+        "deployStatus": {
+          "statusCode": 0,
+          "statusMsg": "",
+          "detailMsg": ""
+        },
+        "accountType": "",
+        "sso": {
+          "domain": "",
+          "domainModifiedTimes": 0
+        },
+        "idp": "",
+        "areaInfoComplete": false,
+        "oneidAccountId": "",
+        "isCurrentOneIdEnterprise": false,
+        "isCurrentOneIdPersonal": true,
+        "isFirstLogin": false,
+        "phoneNumber": "17327137416",
+        "mpOpenId": "oKK9J16f4mibhCrguJGD7IG3K5n0"
+      }
+    ]
+  }
+}

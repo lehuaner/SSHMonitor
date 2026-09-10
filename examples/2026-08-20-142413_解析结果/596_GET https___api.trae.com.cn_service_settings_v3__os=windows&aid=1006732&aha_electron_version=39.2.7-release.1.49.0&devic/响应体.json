@@ -1,0 +1,93 @@
+{
+  "data": {
+    "__logid": "2026082014233096D878AD76C91F1F556C",
+    "settings_time": 1787207010,
+    "settings": {
+      "AhaRendererPerfMetrics": {
+        "state": true,
+        "params": {}
+      },
+      "AhaEnableDelayedDestroyWebsocket": {
+        "state": true,
+        "params": {
+          "DelayedDestroyTimeSeconds": 60
+        }
+      },
+      "WindowRendererThreadCpuReport": {
+        "state": false,
+        "params": {}
+      },
+      "EstablishGpuChannelAsync": {
+        "state": true,
+        "params": {}
+      },
+      "AhaEnableBDMSSdk": {
+        "state": true,
+        "params": {}
+      },
+      "AhaEnableGwpAsan": {
+        "state": true,
+        "params": {
+          "ProcessEnableList": "NetworkService",
+          "MinPhysicalMemorySizeMB": "0"
+        }
+      },
+      "AhaFrameEvictionBugFix": {
+        "state": true,
+        "params": {}
+      },
+      "AhaCulledInlineHitTestOptimization": {
+        "state": true,
+        "params": {}
+      },
+      "AhaOverrideProcessTitle": {
+        "state": true,
+        "params": {}
+      },
+      "V8HeapTrackerConfig": {
+        "state": false,
+        "params": {
+          "LargeAllocEnable": "true",
+          "LargeAllocMinCaptureSizeMB": "4",
+          "ReplaceJsStack": "false",
+          "LargeAllocTopStackCount": "3",
+          "LargeAllocCaptureThresholdMB": "2048",
+          "LargeAllocUpgradeThresholdMB": "100",
+          "LargeAllocMergeOOMStack": "false"
+        }
+      },
+      "AhaChildProcessBlockDetect": {
+        "state": true,
+        "params": {}
+      },
+      "AhaOomV8JsStackCollect": {
+        "state": true,
+        "params": {}
+      },
+      "EarlyEstablishGpuChannel": {
+        "state": true,
+        "params": {}
+      },
+      "CrashpadIpcLimitOptimize": {
+        "state": true,
+        "params": {
+          "SizeThreshold": "8192"
+        }
+      },
+      "AhaEnableGpuModeFallbackForDeviceReset": {
+        "state": true,
+        "params": {}
+      },
+      "AhaCloseAutoDetectSystemAccessibility": {
+        "state": true,
+        "params": {}
+      }
+    },
+    "vid_info": {},
+    "downstream_status": {
+      "ab_loader_status": true
+    },
+    "ctx_infos": "eyJlIjoianRMdkJ3NkFTbkhGWmRYOHpwUVliZz09IiwidiI6ODk5NDk1NX0="
+  },
+  "message": "success"
+}

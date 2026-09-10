@@ -1,0 +1,10 @@
+HTTP/2 301
+content-type: text/html
+set-cookie: tgw_l7_route=390097ac40f17771afba69f320386eeb; Expires=Tue, 08-Sep-2026 09:05:20 GMT; Path=/; sameSite=None; Secure
+location: /login/?platform=workbuddy&state=9a6e2d5a-8653-4e9f-8a73-2ee839b873fd&version=5.5.3&loginSessionId=77a5fd45-a89a-4601-be24-17ca2a90d742
+server: APISIX/3.9.1
+x-request-id: 55a1d6c1-7d5d-4f4d-8e60-e7f8235d3fad
+content-length: 169
+date: Tue, 08 Sep 2026 08:05:20 GMT
+eo-log-uuid: 13640471507132109606
+eo-cache-status: MISS

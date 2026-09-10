@@ -1,0 +1,5 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 16:06:12.598
+
+fiddler.network.https> HTTPS handshake to www.google.com (for #186) failed. System.IO.IOException Unable to read data from the transport connection: 远程主机强迫关闭了一个现有的连接。. < 远程主机强迫关闭了一个现有的连接。

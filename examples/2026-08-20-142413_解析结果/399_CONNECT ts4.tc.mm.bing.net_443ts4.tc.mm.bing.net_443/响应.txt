@@ -1,0 +1,130 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:22:30.606
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.tc.mm.bing.net, O=Microsoft Corporation, L=Redmond, S=WA, C=US
+  Simple Name: *.tc.mm.bing.net
+  DNS Name: *.tc.mm.bing.net
+
+[Issuer]
+  CN=Microsoft TLS G2 RSA CA OCSP 16, O=Microsoft Corporation, C=US
+  Simple Name: Microsoft TLS G2 RSA CA OCSP 16
+  DNS Name: Microsoft TLS G2 RSA CA OCSP 16
+
+[Serial Number]
+  550003829A7DE5F1B93560FBFB00000003829A
+
+[Not Before]
+  2026/1/23 14:56:48
+
+[Not After]
+  2027/1/18 14:56:48
+
+[Thumbprint]
+  A01CEC1CCA47D55073CC91EF441FE2AFC39F074E
+
+[Signature Algorithm]
+  sha384RSA(1.2.840.113549.1.1.12)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 b3 4f 9a e1 07 2b df a7 d7 5a 99 09 6b b7 59 27 68 c2 f4 e2 e7 cb 2c a2 79 18 36 10 fa 13 be a7 f9 69 f3 ca 8c 94 74 81 bf 7c fc c4 b7 a9 23 e5 ca 3f 52 c7 91 d2 c8 99 dc ed 2c 85 32 af fe 58 1d f7 b5 63 1e 51 fd 1d 36 b9 71 ff 0e 00 21 c6 60 46 8f 3f 4d 17 8b cf 3d d5 80 52 f3 f6 02 bb f5 79 99 b2 a5 bd fb 1a 0b e6 13 2a 6b f4 e1 f2 40 d6 5a 10 37 17 d4 9e ea af e9 14 6b 6b e1 11 0f 13 d0 c8 b3 70 8a 9a 91 b5 d2 6c d2 2e b4 b3 99 7c af 47 d9 ac 14 98 45 03 d7 02 61 59 34 02 50 ef 2b 7c 74 21 eb 56 a7 4c f9 b5 d5 36 2a f5 89 38 9f 54 7c fb 70 39 bf a7 cc 51 9d 5a 99 40 13 05 2a 83 fe 29 4f 4e d9 7c bf 3f ca f6 55 91 c6 6c 0e 52 4b bb 50 21 b1 73 48 95 94 5c 2e 5e bb ae 20 92 b9 0d 30 a5 da 8b 84 6d 81 86 5d dd e7 20 00 d4 51 45 8f 65 df 65 ec a8 57 9a 33 4b 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+d6d58da9d01753f36a4aa0c7574902afebc7dc2cd38cd9f764c80c89191e9f02
+‎2026‎年‎1‎月‎23‎日 15:06:52
+SHA256
+ECDSA
+3044022037304908b3ad4b2da8ac7468681ab017955b9db46c5f2f3a6aa64cee00f72601022048fcbffbcfa7ec0672bf509224bd224ea9e762f5217654ea0f435cdfe35a97c9
+
+v1
+604c9aaf7a7f775f01d406fc920dc899eb0b1c7df8c9521bfafa17773b978bc9
+‎2026‎年‎1‎月‎23‎日 15:06:52
+SHA256
+ECDSA
+3046022100c7644abb719e66e24422dcbcd71607dcf0dd717c799ef82f064d8592d5865d54022100dd9c210d8da02fbaccf94435b1a65a20da723fabadbbe303e347c3eaa10551d3
+
+v1
+44c2bd0ce9140e64a5c94a01930a5aa1bb35970e00ee111689682a1c44d7b566
+‎2026‎年‎1‎月‎23‎日 15:06:52
+SHA256
+ECDSA
+3044022005dea363117020a3c3c7f77a286b67225efd32dfb254d5e08fa5c1dcf96a901402203c796ad9cc0bbf3125f92f5dd99bce2d6a095a85d85384f87e4eb456dc19f5a5
+
+* 应用程序策略(1.3.6.1.4.1.311.21.10):
+  [1]Application Certificate Policy:
+     Policy Identifier=服务器身份验证
+
+* 证书模板信息(1.3.6.1.4.1.311.21.7):
+  Template=1.3.6.1.4.1.311.21.8.15690651.3798470.4214446.239628.16526621.93.2977488.11009781
+Major Version Number=100
+Minor Version Number=33
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://www.microsoft.com/pkiops/certs/Microsoft TLS G2 RSA CA OCSP 16.crt (http://www.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2016.crt)
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://caissuers.microsoft.com/pkiops/certs/Microsoft TLS G2 RSA CA OCSP 16.crt (http://caissuers.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2016.crt)
+[3]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://oneocsp.microsoft.com/ocsp
+
+* 使用者密钥标识符(2.5.29.14):
+  02b09f3846a6c5c5bb1bd53483a45163ad559d93
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.tc.mm.bing.net
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://www.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 RSA CA OCSP 16_Partition00014.crl (http://www.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2016_Partition00014.crl)
+               URL=http://crl2.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 RSA CA OCSP 16_Partition00014.crl (http://crl2.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2016_Partition00014.crl)
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=1.3.6.1.4.1.311.76.509.1.1
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.microsoft.com/pkiops/Docs/Repository.htm
+[2]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=0639f056d1ed90c836a3a00f94fe6294a7e6fc37
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+
+[SubjectAltNames]
+DNS Name=*.tc.mm.bing.net
+

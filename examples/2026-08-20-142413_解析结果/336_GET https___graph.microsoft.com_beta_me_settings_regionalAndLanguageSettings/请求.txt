@@ -1,0 +1,13 @@
+GET https://graph.microsoft.com/beta/me/settings/regionalAndLanguageSettings HTTP/2
+:method: GET
+:authority: graph.microsoft.com
+:scheme: https
+:path: /beta/me/settings/regionalAndLanguageSettings
+authorization: Bearer EwBYBMl6BAAUCBUz0PacyGyQMzAdZCXlnFTa1qQAATAYsQQvvdec1Ae0SXeQ1nlL3HY+uofOLaYGNqGnENfYHnRh09LRlN5/Epv+SEPpBHNcnmAX5yrTArV78xdYAfLyeTO7i8sKb0T4HOgw+oJz8wYXD2JeG5bn5K7covH+uUG9B8i8hg4G+9Hu1FHAp7WojPA9ApNrho7drhm+loAUt1l88RuAyIu1U48n2NlO777rbb5pP9lF2pxW3+NenH9mv5SIukvrLuJQ4zfrP0kcL7OBjaHsbbB16pdnLwL+vDR4gybRnWjZse6LWTDriOMOnaZ0WYd+JDYMJvLIeMoAOKx6aUoHDmTvOzpaCWQqKo0TggqDsAkGgBHQ8oVNCmcQZgAAEN3UHJrUXwY1Pile9GyxpxcgA7twg0AiaYpmdBRFUTvFUqxj8Kgm2u6+mHdpDHiDUY7RC4YblKEoVgCtfq3+OLdh+jAPdCP8U8C3VwZilzFmjxxCdbsTAtXCjcMqA2LB9OkHDhkGNHNBfUuEntrj8DLob0IFTonaWM0zNXDLcbQefRVl71tOleyctLE5s5LVmVlr/XDMeYgBCmQ+9/Yv4PAfI8auqOdKGvTZrROd6ZsEcWjG7agcBpdB72ETFo4u3Um0BWtIJ9peUic7RBzK2jZ1GSQwSe/KDCZgzIvnqVf+EW5nX06rDd92fAkhI9A4EkuAAp/Xtyn27L5yXhYV3XyyAtaYOC6On3eNntQoeBDtb5VXx+LdZv8X+30cCGcwTIrIUcuN05Zu33kw61XR92VhxWi4V0JZOg1W1jCferPKiwEyf3c7Xg5MSjpvwNuEE0ur8QoYsq+ExbBf3am17DKuZpBYEYqA2qSDu/AAZZKA+UXCcJyQKsMnsbEf0V6a53MLELW9qsBtw9kiWFMd9XngebmGc+lb8QENGmV0KXXJurHJvaYVBSQkm4fdeDGw8bimF/rbuZ1xlUfyaMXXZvyAngygw2tf/SMLWHjN9h154H2uKfvbWDp82ZrG2zOUphZAz2LWEBRULVdIo1ubhEmQKR0ZXL+6fa5muOpIOqzh1YDBuJTGbFlsDKM6GyyPtac74fQlOP4xnD9s6pCAWYZ3+2GlG4/uTAq695E5gRiW/O/KbyZEHHFQqOu2cdu2JiNnAvIghmnj+nHWtgJT0a2HhXsldCCYm/M3X1csmqkoUFmqxiKbvgSvbqAx26TdzQ7/xEgCPH4LqrQhz01JLA2bQ18XJ6G7VtbdEwSpX6oD6/Gr0wOr8OwCHuAgzVZl/Ma++VWMDXCbgR+FmvjHBEGkcjbvqh0+Asw/QvEAj7vNStDJ0kTqWVHOq350LiGv3PJ8rwZXsJkB1rIeEVYS9+a2AOBX7Ap13ZRHSOobilmeECyJjtpCRucYhZcrDC9ylxG8cbA9gQbDJz+g7ztA1eD18cR19Ug3VXBNPUOzvlFYzWM4ikq3M+t2eguhHRCJHWDlMgM=
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 Edg/148.0.0.0
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=4, i

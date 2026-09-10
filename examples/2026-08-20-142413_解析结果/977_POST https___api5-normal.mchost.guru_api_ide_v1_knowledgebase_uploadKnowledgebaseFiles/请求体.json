@@ -1,0 +1,49 @@
+{
+  "knowledgebase_strategy_id": "938fc100e0123dc9539ae5e4fb232246_merge",
+  "user_knowledgebase_id": "5f16f4b04abb1e74e3a2f6f9724027c8-1f9e1a2f8f26a7d1985171fc13a6b29b-beb9f27af66d9e91756abbae87d2ff1e",
+  "strategy": {
+    "index_type": 1,
+    "index_strategy": {
+      "embedding_model": "codekg_bge_m3",
+      "split_method": "v3"
+    }
+  },
+  "files": [
+    {
+      "content": "",
+      "file_id": "bef828abddd2de6762ae61892f55e0183d28b704",
+      "path": "xml_file (61).xml",
+      "language": "",
+      "upload_type": 1
+    },
+    {
+      "content": "",
+      "file_id": "9a0aae8f70df907a5a8b69cb6d3c1e9806c65555",
+      "path": "xml_file (69).xml",
+      "language": "",
+      "upload_type": 1
+    },
+    {
+      "content": "",
+      "file_id": "9fb5258b2b45070d5c8c7ed6f899f303c251f458",
+      "path": "xml_file (21).xml",
+      "language": "",
+      "upload_type": 1
+    },
+    {
+      "content": "",
+      "file_id": "f122aedde0e92c99bf72598d6bde5f5900216e48",
+      "path": "xml_file (32).xml",
+      "language": "",
+      "upload_type": 1
+    },
+    {
+      "content": "",
+      "file_id": "9df98256a1326c4a8e8e51635d09ad7c1cc56c25",
+      "path": "xml_file (38).xml",
+      "language": "",
+      "upload_type": 1
+    }
+  ],
+  "update_scene_type": 0
+}

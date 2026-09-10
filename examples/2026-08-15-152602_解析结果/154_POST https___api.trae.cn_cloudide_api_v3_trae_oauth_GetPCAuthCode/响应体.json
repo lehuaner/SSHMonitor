@@ -1,0 +1,18 @@
+{
+  "ResponseMetadata": {
+    "Action": "",
+    "OID": null,
+    "Region": "",
+    "RequestId": "",
+    "Service": "",
+    "Source": "",
+    "TraceID": "00000000000000000000000000000000",
+    "Version": "",
+    "WID": null
+  },
+  "Result": {
+    "AuthCode": "x9QIfAGg7t6tNW6PQHknOO0icmc05uMeH4fX3Y3yJDU",
+    "ExpireAt": 1786779340071,
+    "ExpireDuration": 600000
+  }
+}

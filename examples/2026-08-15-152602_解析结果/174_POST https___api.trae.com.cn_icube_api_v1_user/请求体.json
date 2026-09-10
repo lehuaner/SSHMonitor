@@ -1,0 +1,17 @@
+{
+  "mid": "0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51",
+  "did": "3798161405005257",
+  "uid": "1000985253380538",
+  "userRegion": "CN",
+  "organization": "",
+  "packageType": "stable_cn",
+  "productCode": "SOLO_Lite",
+  "platform": "Win",
+  "branch": "release_solo_win32_cn",
+  "arch": "x64",
+  "tenant": "marscode",
+  "tenantId": "",
+  "appVersion": "0.1.50",
+  "buildVersion": "2.3.70844",
+  "scope": "marscode"
+}

@@ -1,0 +1,10 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "05024620-e4d6-44bc-9cab-9bfc40a09af4",
+  "data": {
+    "credit": 100,
+    "streak_days": 9,
+    "is_streak_day": false
+  }
+}

@@ -1,0 +1,17 @@
+HTTP/2 200
+server: Tengine
+content-type: application/json
+date: Mon, 17 Aug 2026 17:32:36 GMT
+vary: Accept-Encoding
+x-tt-agw-login: 0
+x-tt-logid: 20260818013236F036BA0F103ABC5B0980
+server-timing: inner; dur=22,tt_agw; dur=7
+strict-transport-security: max-age=31536000; includeSubDomains
+x-tt-trace-host: 01207a981426127d02143837b6aace09ad8fb157b50b89a0f16a1fe5a5bc39dcad686889658d963071ecb1ff31db97240d5c626c564855042b218c4f50db6b71bd2fc2f1090cefc1e7713e91484f16e5aa318d706124510aee7fbfb5026de3e4d84d72c2bb1e59dd332507448237e5ef90
+x-tt-trace-tag: id=03;cdn-cache=miss;type=dyn
+x-tt-trace-id: 00-10c8457a0dd7e685d584dc9a71ddffff-10c8457a0dd7e685-01
+x-tt-timestamp: 1786987956.065
+via: cache50.l2nu20-17[61,0], cache15.cn1292[79,0]
+server-timing: cdn-cache;desc=MISS,edge;dur=18,origin;dur=61
+timing-allow-origin: *
+eagleid: df6fc1a317869879560026021e

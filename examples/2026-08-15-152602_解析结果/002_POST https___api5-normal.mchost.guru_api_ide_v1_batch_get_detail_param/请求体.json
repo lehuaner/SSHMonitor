@@ -1,0 +1,36 @@
+{
+  "functions": [
+    "ui_builder_v2",
+    "solo_coder",
+    "chat_v3",
+    "solo_builder",
+    "builder_v3",
+    "builder",
+    "chat",
+    "inline_chat",
+    "git_ai",
+    "custom_agent_generation",
+    "utils",
+    "code_reviewer",
+    "code_review_summary",
+    "solo_agent",
+    "solo_agent_remote",
+    "solo_work_remote",
+    "solo_agent_lite",
+    "solo_work_lite",
+    "solo_design_lite",
+    "solo_design_remote",
+    "multimodal",
+    "system_diagnosis"
+  ],
+  "agent_type": "",
+  "current_config_info": {
+    "config_name": "",
+    "is_custom_model": false
+  },
+  "mode_type": 0,
+  "access_type": 0,
+  "ab_force_vids": "",
+  "ab_autotest_advanced_mode": 0,
+  "show_custom_model": true
+}

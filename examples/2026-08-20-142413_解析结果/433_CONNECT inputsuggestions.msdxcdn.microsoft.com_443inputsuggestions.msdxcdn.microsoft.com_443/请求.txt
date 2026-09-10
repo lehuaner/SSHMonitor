@@ -1,0 +1,6 @@
+CONNECT inputsuggestions.msdxcdn.microsoft.com:443 HTTP/1.0
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; WebView/3.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.102 Safari/537.36 Edge/18.26200
+Content-Length: 0
+Host: inputsuggestions.msdxcdn.microsoft.com:443
+Proxy-Connection: Keep-Alive
+Pragma: no-cache

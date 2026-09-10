@@ -1,0 +1,29 @@
+POST https://api.trae.cn/trae/api/v2/pay/ide_user_ent_usage HTTP/2
+:method: POST
+:authority: api.trae.cn
+:scheme: https
+:path: /trae/api/v2/pay/ide_user_ent_usage
+content-length: 37
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+authorization: Cloud-IDE-JWT eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTkxMDMxOTI3ODcxOTY2NyIsInNvdXJjZSI6InJlZnJlc2hfdG9rZW4iLCJzb3VyY2VfaWQiOiJUYmpWLXFzQ2JNQXRJUGs2OFp3XzQtU1Q4LXgtc0RwVWNfb1FaOGZaMFkwPS4xOGNiZTlmMGUwMDM0OTI3IiwidGVuYW50X2lkIjoiN28yZDg5NHA3ZHIwbzQiLCJ0eXBlIjoidXNlciJ9LCJleHAiOjE3ODc5ODg0OTcsImlhdCI6MTc4Njc3ODg5N30.MHAOXaLtS0HfQTsctt1PIg7OtNhS_yT-HSaLruE_D4xjdtxD8o4ltxz0nHfFxwLWXA0Xq6ODlQniy2KSmc0_CVxaCV3ePPRBMEEFE_LbGgqa86nHHOIyrtNj-njUleYAgnbrtuZ0Upbm5omQCkDjos83CA3TBACmNfhVc0OVnSFQePAG1H2OmlBvscZtS28QirpFYHLZDEPUtiWknkFo3Cmcj6y53EtgA6ocOocAPnVVCWL4vi-KtzVC22NuT82gkpaxsQzK_cj_XghnMd-nketAACuOm_BXdTrmmZmFQHRLdr4XdW5XKMdg1wqPH44VeYQoO8FLdrLirHxyxR77GeWr_-hVKhFAk8IxamFRaxDSJCswe3TYfxF99nQEUIsbxqpFOFyxcVPs_177axG9C-6najjjBPihtB9LZF7LP5RdqBW1MIszHtGOI1HgK6_8lXYuYMQUBV7m3sEb785254V1YpTZ03apCvjkGOTJIXguAyW-b92xvu4v5ll26RLy1os2aZfQjkTjg1SrBqiGJvmfOZhPUrOrG7ZJuHoWcurdNNWtR2HSGLtGSlgVw6nlcgPYBJ9NmjQ8gfDt1QC4UABTwO9YZB8Rp0NXNZ8Qc51VTlRFyrVoyqhdbCAFhUm2meQHKSPNjTU-a4RDYTvJNrbDjRTcBy7WULLAT78IAKA
+sec-fetch-dest: empty
+sec-fetch-mode: no-cors
+sec-fetch-site: none
+user-agent: VSCode 1.107.1 (TRAE SOLO CN)
+vscode-sessionid: 0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51
+x-market-client-id: VSCode 1.107.1
+x-market-user-id: 27d676f6-393e-4bc7-833c-2dc7a0da0dc2
+x-user-region: CN
+content-type: application/json
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-request-id: 082b5626-33b1-498e-bb4b-e11a0cbd24c3
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+accept: */*
+x-tt-trace-id: 00-10c849130dd7e685d584dc9ba780ffff-10c849130dd7e685-01
+x-helios: Z1oAACab7HpES1yvx4+MLL+5AIEn2Onr+6ktIkfYqeHs6O2Q
+x-medusa: skWDakat3JBmkl9RZ29LGuaK4nJiTAMBvo0SZwDAEaY1mZv281bHL9Z4F9CMKRv09Y5JO91KRlLs7FzI28PsSqBY9Sag54+aJ9TUryEdyByWA9eC9V4YKZfypVl60aIKE03+7H0G7TqfgKTzi8P8/H+yO/wR5nsj+zCM96PFmWHgR73Iv3Ly8PNH4OCUdJzGYCB8czAOjggl4NHMY5PVei6MxuyApK7uJTz0v/h1vL20u/qoLm366TzRcvuH2/PaR65yJ01o72nx4VYC3LDBFuTrzzwgSFbbymm2WA98ILt0aQRiNm4xCRUG2jkHPCLn0ZgB5eWuRGtyRnYjYB48Cs5F3/x532b+wGd9OPGk1AsSnlkLM/1RDG1tDkmkGpAaaoU+Z3lJuwYLaIQF4w/P1fR1Y933vm4n9EIxJJ2jpgsffk3u6cFOShFwNpcPr6rOP6MWCc7mlM7joN2Yj1mEzgpO1NEJyfrQOl99jOpwT0UOhxN5TaG1mnAlkM7daOPU/JOhhycUY+zqoFTr4UywAb6cg9NL1jyXCq8eK0fwj6273WKG0mnWPGxQPMt67s4sX2fLYOacR5Z2kanW5x8SoHwLHwqteOM8sfiL93Y4Fp4e4LJ3lkbzYmfUGdt9Ef0UVU22Q7ywVZXiD+PyiLYwzMibIXDHFYlVPqxDn5+Pzx8fz9vn3Y8Xj+knfymlVZTGSuMnArKbfxk3f5W7j8krjWtqXT5YrK03v82Rj3ZuT7xLjZ54gafpz+fu1LpPJ2UJ5COYapWQByAfZf/////v9///AAA=
+x-neptune: -11|50:51:59:00:09

@@ -1,0 +1,20 @@
+POST https://mcs.zijieapi.com/list?aid=932204&sdk_version=5.3.7&device_platform=web HTTP/2
+:method: POST
+:authority: mcs.zijieapi.com
+:scheme: https
+:path: /list?aid=932204&sdk_version=5.3.7&device_platform=web
+content-length: 4181
+accept: */*
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+content-type: application/json; charset=UTF-8
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+sec-fetch-storage-access: active
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Chromium";v="142"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+priority: u=1, i

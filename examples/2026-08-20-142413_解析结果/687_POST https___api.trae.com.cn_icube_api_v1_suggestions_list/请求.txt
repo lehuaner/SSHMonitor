@@ -1,0 +1,29 @@
+POST https://api.trae.com.cn/icube/api/v1/suggestions/list HTTP/2
+:method: POST
+:authority: api.trae.com.cn
+:scheme: https
+:path: /icube/api/v1/suggestions/list
+content-length: 29
+accept: application/json
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+content-type: application/json
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Chromium";v="142"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+x-app-version: 0.1.51
+x-lgw-req-sdk-type: 3
+x-preferenced-language: zh-cn
+package-type: stable_cn
+x-trae-client: Work
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: 34bbce0f-c914-4ff8-950b-d6a05c0bf04d
+x-tt-trace-id: 00-1dd6f4200d945686928468ae8301ffff-1dd6f4200d945686-01
+smbyttnet: 1

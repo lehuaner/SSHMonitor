@@ -1,0 +1,25 @@
+GET https://api5-normal.mchost.guru/api/remote/v1/skills?page_size=200&sort_by=updated_at&sort_order=desc HTTP/2
+:method: GET
+:authority: api5-normal.mchost.guru
+:scheme: https
+:path: /api/remote/v1/skills?page_size=200&sort_by=updated_at&sort_order=desc
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+sec-fetch-dest: empty
+sec-fetch-mode: no-cors
+sec-fetch-site: none
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+authorization: Cloud-IDE-JWT eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTU1NDAyNDUyNDE2Njg3MSIsInNvdXJjZSI6InJlZnJlc2hfdG9rZW4iLCJzb3VyY2VfaWQiOiJKVFZhR3k0aXR0YmlZNUpXdWJHUU9fX1JWeWo4UmdNX1kzcGdtY2k5UVUwPS4xOGNkNmY1M2JlM2I5NjhiIiwidGVuYW50X2lkIjoiN28yZDg5NHA3ZHIwbzQiLCJ0eXBlIjoidXNlciJ9LCJleHAiOjE3ODg0MTY2MzIsImlhdCI6MTc4NzIwNzAzMn0.ibWFhfXYgm7p8Ut42q6-Cv5wVdzLJL7h-SejWlJNqgOj8tPbZTIFP2sdYJqaHIl1IrtvSNpvpkjDPQWE7A5p7nQHZ3vuEjEOqdlfRqORUOuh-dmR7v2uebd-Fhv1eWAvKo30pIrV5Op5J-82UJMlH2N8AQqAGC8e_jt7375WlVGAJFWI0u164rJJqgVRNjlpudZDlgkCvCxKoXdHjfdOeUxdM7ZJNEJPoA5HSAdSsrDiY29ap8YaZpz3YyYWnrin5IgtFsgStlTewWV5n87R5RRAyEXsduiE3OxVeUpMhSoc7dbzlmi40fmffrQ_Uut5r1n4qMVTUu-NWuT4FvRW94aCy0TrC0NcZhr7h7F7eG3bPX6eURTC_UejvSAWitQI0vj4Dp6l5PJIzCpum5iAIgF05jNy0AsiZjfF3POY26tJDKnA45QnoPRDVof5073kvgMi_xw3GGIF7EkQ9qQMim_1GhKTs-_gx9KtYVyGlkSgdhbvzNC5qHR1B1uNi4a4_hWj1-Ui71xJnhVn7Hy9G5HeqYCU7PHT0hfiBGuONn1RZB8S_JFMRsWAc_sAAVZDT5di1Ms4tMZ7kR456829kLEideUzle0t1U-DnUFB7k_7QCYp46JjulTqvIReUAyRUAedDUpRs6BJttscYDrwhxNRju_L6_FLvSwEzlJ78a0
+content-type: application/json
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-request-id: 01440fce-25a4-4ea1-a6c0-8100fc3f215a
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+accept: */*
+x-ss-dp: 787976
+x-tt-trace-id: 00-1dd72f0c0d945686928468a92a7bffff-1dd72f0c0d945686-01
+x-helios: 1TUAAKa6mEo8VOGFILcNKBro2lXvoavlEWmigy3maU/IfOYz
+x-medusa: f52Gaot12ZCrSlpRqrdOGitS53LgbAMBCQzEXADAIcQ3GW/UtyeNDN6zK1VeGWVrarWicnY8po0BWMRZc1+u8G/mFJ3FzsPdn8bsNhEURyPfNM3oVgbaHrYJzcPYswhzIdblig8ifre/XfszezZ1i+stSJLxxt1yU2et6mn1TdtJSbGvzl5CbHyzJ9nYFm0TXsPA1oeyVgnUoKDHGM8tBBGxzNKFSmLfxZ3FI0ochBNN06E71Lnh9mwRguBScs0ZSdBP3aou8PfS9sofARAag4PLFhGCkX1vYqq8ZsdPofbl8k2tUGkJlOuViE+eqD7ohSloA0vxzOurnQo/vRRbscFbhZLV7ibUVOEy+GTwLVptYO7qSTMqnIOOjq5uR51o+mLOcJqZcJTab5AtiouTkJ1qRjQ1G1Vf+QeieToRkRTE5czG3QHhP6HrTUlH2sCX4rNC/XbmdC4YpmU2rZVw//MqcYtjLl27TLEOTimBd96hr6DrRBcU4Y00q9Glm4MPebiV9REYuFGR8284lS6W13ptPciGrjuHNVEiRYtYPdQUAA2jwuwO0ZcF45FLk0y3SLO31hpoFzh3Sk35JZ72wQ4kj8cyc46yv8jmwqctTpCe/tAbwuHGHJn8uG/8Y/bNbvTbn2V62BzKcTUiZ4u678+sR5+/z98XH0/f5d2PF4fop5yaAKsx5vkyIwKS228RNn+Vu4/JO41r6lk8WKytN77NlY12bk+8S42+JpeH+Uc3ntS6bydlAeUjnGqV0BcoH2X//////////wAA
+x-neptune: -11|50:51:59:00:09

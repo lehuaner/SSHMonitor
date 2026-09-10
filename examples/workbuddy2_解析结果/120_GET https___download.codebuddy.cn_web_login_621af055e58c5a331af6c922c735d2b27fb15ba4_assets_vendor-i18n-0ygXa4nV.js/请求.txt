@@ -1,0 +1,20 @@
+GET https://download.codebuddy.cn/web/login/621af055e58c5a331af6c922c735d2b27fb15ba4/assets/vendor-i18n-0ygXa4nV.js HTTP/2
+:method: GET
+:authority: download.codebuddy.cn
+:scheme: https
+:path: /web/login/621af055e58c5a331af6c922c735d2b27fb15ba4/assets/vendor-i18n-0ygXa4nV.js
+origin: https://www.workbuddy.cn
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+sec-ch-ua: "Chromium";v="152", "Not?A_Brand";v="24", "Microsoft Edge";v="152"
+sec-ch-ua-mobile: ?0
+accept: */*
+sec-fetch-site: cross-site
+sec-fetch-mode: cors
+sec-fetch-dest: script
+referer: https://www.workbuddy.cn/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+if-none-match: "9b64c1ae0f7bf7692c8ab6fe9d097ca1"
+if-modified-since: Wed, 02 Sep 2026 08:50:33 GMT
+priority: u=1

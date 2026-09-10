@@ -1,0 +1,18 @@
+HTTP/2 200
+server: Tengine
+content-type: application/json
+content-length: 63
+date: Thu, 20 Aug 2026 06:22:25 GMT
+set-cookie: ttwid=1%7CPtdMQoreepBDjCw0b1WB_uaeBrfKAlJJtiH0OxXlJX4%7C1787206945%7C34537ae6774e64ef243b9f1f2bf01d4fe62491e5514a328c5d9cb945f9c781e2; Path=/; Domain=trae.cn; Max-Age=31536000; HttpOnly; Secure; SameSite=None
+vary: Origin
+x-tt-logid: 20260820142225D97A00DC9E3EDC03A361
+strict-transport-security: max-age=31536000; includeSubDomains
+server-timing: inner; dur=26
+x-tt-trace-host: 01207a981426127d02143837b6aace09ad850205d19bcdbca924dee3b9aaa384eb7ad2ee71399a1035a0e0d4f599358799660dfc1e7228605ba0595373ede69701490d1effe320c9f7d9d0fa9827b5c2a9059285fc1a28e999d5a1e847807ebb05
+x-tt-trace-tag: id=03;cdn-cache=miss;type=dyn
+x-tt-trace-id: 00-260820142225D97A00DC9E3EDC03A361-55FC4EDD8F9F9672-00
+x-tt-timestamp: 1787206945.652
+server-timing: cdn-cache;desc=MISS,edge;dur=0,origin;dur=108
+via: cache1.cn7995[108,0]
+timing-allow-origin: *
+eagleid: 7014551517872069455641626e

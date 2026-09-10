@@ -1,0 +1,11 @@
+HTTP/2 200
+date: Thu, 20 Aug 2026 06:22:23 GMT
+content-type: application/json; charset=utf-8
+access-control-allow-origin: *
+set-cookie: ARRAffinity=061b35fadd59c19be75461bfa4b3cfff41b41a529c5b890952b218ce7e07133b;Path=/;HttpOnly;Secure;Domain=app-uhfui-exp-prod-sea-gwawb8bcc2crg4bq.southeastasia-01.azurewebsites.net
+set-cookie: ARRAffinitySameSite=061b35fadd59c19be75461bfa4b3cfff41b41a529c5b890952b218ce7e07133b;Path=/;HttpOnly;SameSite=None;Secure;Domain=app-uhfui-exp-prod-sea-gwawb8bcc2crg4bq.southeastasia-01.azurewebsites.net
+vary: Accept-Encoding
+request-context: appId=cid-v1:dca3ef70-2854-4306-b104-d013520f8f75
+x-powered-by: ASP.NET
+x-azure-ref: 20260820T062223Z-157597c5969w9k6qhC1SELneb40000000rqg00000000eat0
+x-cache: CONFIG_NOCACHE

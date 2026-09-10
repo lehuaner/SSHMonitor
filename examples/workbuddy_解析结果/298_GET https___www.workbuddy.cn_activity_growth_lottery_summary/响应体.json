@@ -1,0 +1,11 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "0cd9a3bc-06fd-4127-bf0e-d953655fa54e",
+  "data": {
+    "chances": 1,
+    "module": {
+      "enabled": true
+    }
+  }
+}

@@ -1,0 +1,9 @@
+POST https://login.live.com/RST2.srf HTTP/2
+:method: POST
+:path: /RST2.srf
+:authority: login.live.com
+:scheme: https
+content-type: application/soap+xml
+accept: */*
+user-agent: MSAWindows/55 (OS 10.0.26200.0.0 ge_release; IDK 10.0.26100.8737 ge_release; Cfg 16.000.29325.00; Test 0)
+content-length: 6882

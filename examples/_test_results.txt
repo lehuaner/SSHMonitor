@@ -1,0 +1,59 @@
+=== WorkBuddy 签到平台 接口可用性测试 ===
+时间: 2026-09-08 01:03:33
+会话cookie长度: 3909  过期(中间段): 2026-09-14T16:38:55Z
+
+--- [A] 负向用例：不带 cookie 调用 streak（应 401） ---
+GET /activity/growth/streak | no-cookie | HTTP 401 | 0.234s | <html>
+<head><title>401 Authorization Required</title></head>
+<body>
+<center>
+
+--- [B] 正向用例：携带 session cookie 的只读接口 ---
+OK GET  /activity/growth/streak                                    | HTTP 200 code=0 | 0.245s
+      note=连续签到核心       data={"streak": {"days": 8, "month_total_days": 8, "month_consumed_days": 0, "next_tier": "14d", "next_tier_remaining": 6, "makeup_dates": []}, "makeup_cards": {"balance": 1, "max": 4}, "redemption_status": {"tier_7d_count": 1, "tier_14d_count":...(len=686)
+OK GET  /activity/growth/energy                                    | HTTP 200 code=0 | 0.11s
+      note=能量/积分余额      data={"balance": 10, "total_consumed": 60, "total_earned": 70}
+OK GET  /activity/growth/heatmap                                   | HTTP 200 code=0 | 0.094s
+      note=打卡热力图        data={"cells": [{"date": "2025-09-09", "score": 0, "has_new_buddy": false}, {"date": "2025-09-10", "score": 0, "has_new_buddy": false}, {"date": "2025-09-11", "score": 0, "has_new_buddy": false}, {"date": "2025-09-12", "score": 0, "has_new_buddy...(len=22156)
+OK GET  /activity/growth/buddy/info                                | HTTP 200 code=0 | 0.184s
+      note=当前buddy      data={"buddy": {"instance_id": 6454735, "name": "设计喵", "personality": "于寻常处捕捉灵光，把留白、线条和每处细节都抠到极致的灵感设计师。", "rarity": "R", "soul_desc": "灵感设计师", "base_static_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/d14862cb9...(len=717)
+OK GET  /activity/growth/buddy/list                                | HTTP 200 code=0 | 0.418s
+      note=已拥有buddy     data={"buddies": [{"acquired_at": "2026-09-02T22:50:27+08:00", "appearance": {"eye": null, "hat": null, "body_accessory": null, "effect": null}, "base_animated_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/00bb5...(len=7048)
+OK GET  /activity/growth/buddy/quota                               | HTTP 200 code=0 | 0.085s
+      note=抽取额度         data={"affordable": 1, "balance": 10, "cost_per_open": 10, "max_open_count": 5}
+OK GET  /activity/growth/buddy/visible                             | HTTP 200 code=0 | 0.113s
+      note=buddy可见性     data={"buddy_visible": true, "has_buddy": true}
+OK GET  /activity/growth/buddy/agreement                           | HTTP 200 code=0 | 0.125s
+      note=协议状态         data={"agreed": true, "dismissed_scenes": {"growth_onboarding": "v1"}}
+OK GET  /activity/growth/buddy/travel/status                       | HTTP 200 code=0 | 0.123s
+      note=出行状态         data={"state": "traveling", "buddy_id": 6454735, "record_id": 3949530, "location": {"id": 1, "code": "coffee", "name": "咖啡馆", "duration_hours": 2, "cover_url": ""}, "depart_at": 1788799160, "arrive_at": 1788806360, "server_now": 1788800614, "let...(len=342)
+OK GET  /activity/growth/buddy/travel/config                       | HTTP 200 code=0 | 0.12s
+      note=出行配置         data={"locations": [{"id": 1, "code": "coffee", "name": "咖啡馆", "description": "阳光、音乐和手冲咖啡的香气，是放空的好地方。", "cover_url": "", "duration_hours_min": 1, "duration_hours_max": 4, "reward_credit_min": 5, "reward_credit_max": 10, "sort": 1, "preview_photo...(len=5636)
+OK GET  /activity/growth/lottery/summary                           | HTTP 200 code=0 | 0.129s
+      note=抽奖概览         data={"chances": 0, "module": {"enabled": true}}
+OK GET  /activity/growth/lottery/prizes                            | HTTP 200 code=0 | 0.084s
+      note=奖池           data={"prizes": [{"prize_code": "积分_1", "prize_name": "10 积分", "prize_type": "credit", "credit_amount": 10, "probability_pct": 45, "icon_url": ""}, {"prize_code": "实物奖励", "prize_name": "杯子", "prize_type": "physical", "credit_amount": 0, "probabi...(len=814)
+OK GET  /activity/growth/lottery/chances                           | HTTP 200 code=0 | 0.094s
+      note=抽奖余量         data={"balance": 0}
+OK GET  /activity/growth/redeem/summary                            | HTTP 200 code=0 | 0.143s
+      note=兑换概览         data={"starter_count": 1, "advanced_count": 0, "legendary_count": 0, "starter_status": "claimed", "advanced_status": "locked", "legendary_status": "locked", "total_consumed": 0, "remaining_days": 8, "month_total_days": 8}
+OK GET  /activity/growth/buddy/templates                           | HTTP 200 code=0 | 0.133s
+      note=模板库          data={"count": 23, "templates": [{"template_id": 1, "name": "量子喵", "description": "顶着标志性的白色乱发，身穿实验室白大褂，手握原子模型。擅长将复杂问题简化，帮你用科学思维拆解工作难题。", "personality": "首席科学家", "catchphrase": "", "species": "cat", "rarity": "R", "base_static_url": "https://acc-...(len=17631)
+OK GET  /v2/activity/growth/profile                                | HTTP 200 code=0 | 0.174s
+      note=成长档案         data={"completed": 13, "first_visit": false, "level": 13, "level_icon": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/workbuddy/assets/badge-assets/badge-07.png", "level_name": "", "max_level": false, "total": 16}
+OK GET  /v2/activity/growth/badges                                 | HTTP 200 code=0 | 0.301s
+      note=徽章           data={"badges": [{"task_id": 1, "code": "first_chat", "title": "完成一次对话", "earned": false, "url": "https://dscache.tencent-cloud.cn/upload/uploader/badge_lv1_yangxia_changshi_560-914af4b4958147c0ca9f14ec5a87e6448f1fc54f.png", "share_uuid": "", "r...(len=4266)
+OK GET  /v2/activity/growth/subscribe-task/status                  | HTTP 200 code=0 | 0.095s
+      note=订阅任务         data={"subscribe_task": {"task_code": "", "subscribed": false, "remaining_seconds": 0, "task_status": "none", "advanced": false}}
+OK GET  /v2/activity/growth/tasks                                  | HTTP 200 code=0 | 0.837s
+      note=任务列表         data={"tasks": [{"task_code": "create_canvas", "title": "体验「设计创意模式」", "description": "前往Workbuddy，进入「新建任务」，切换滑块到「设计创意」模式，并创建1个画布。例如：帮我设计一个移动端登录页。", "task_desc": "在「设计创意」模式下成功创建1个画布。", "task_type": "single", "jump_url": "workbuddy://chat", "valid...(len=11512)
+OK POST /billing/meter/get-user-resource-summary                   | HTTP 200 code=0 | 0.319s
+      note=资源汇总(只读)     data={"Packages": [{"PackageCode": "TCACA_code_007_nzdH5h4Nl0", "CycleTotalCapacity": "7636", "CycleRemainCapacity": "726.80000239", "CycleUsedCapacity": "6909.19999761", "CycleFrozenCapacity": "0", "CapacityUnit": "credits"}, {"PackageCode": "T...(len=491)
+OK POST /billing/meter/compensation-status                         | HTTP 200 code=0 | 0.144s
+      note=补偿包状态        data={"claimed": true, "active": false, "credit_num": 1000, "validity_period": 12, "end_time": "2026-04-30 23:59:59"}
+OK POST /billing/meter/check-gift-claimed                          | HTTP 200 code=0 | 0.197s
+      note=赠礼状态         data={"claimed": true, "claimed_at": "2026-04-19 14:57:00", "active": true, "credit_num": 1500, "validity_period": 1, "start_time": "2026-04-01 00:00:00", "end_time": "2026-09-30 23:59:59"}
+!! POST /v2/plugin/login/gray-decision?feature=oneid_component&pla | HTTP 404 code=- | 0.076s
+      note=灰度开关         data=404 page not found
+
+小结: 正向用例通过 22/23

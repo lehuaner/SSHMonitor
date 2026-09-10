@@ -1,0 +1,116 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:23:02.351
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.zijieapi.com
+  Simple Name: *.zijieapi.com
+  DNS Name: *.zijieapi.com
+
+[Issuer]
+  CN=RapidSSL TLS RSA CA G1, OU=www.digicert.com, O=DigiCert Inc, C=US
+  Simple Name: RapidSSL TLS RSA CA G1
+  DNS Name: RapidSSL TLS RSA CA G1
+
+[Serial Number]
+  0C56D249C1CC5B16384DAC17016F1BB5
+
+[Not Before]
+  2026/1/19 8:00:00
+
+[Not After]
+  2027/1/19 7:59:59
+
+[Thumbprint]
+  7E441EBC7D2E02D28C3EB3FEABECBDF923099CDC
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 ee f6 e4 47 b5 f5 94 87 94 9f a8 ef 88 bb ed fa 4c 32 18 d8 16 77 30 cf dc 55 71 b9 12 98 7b d2 3d f2 42 e4 b5 d5 55 22 91 5d ca 9e 98 f8 50 7e 13 01 ea 4f d5 f8 3a d0 13 a7 3a 43 cb 6e a9 12 92 cb 5b 5c c3 0b 20 28 e4 41 95 fa d6 07 2b a0 58 6f bf cf a9 67 85 4b 7c 6c c0 d6 17 e7 94 ac 7c 49 ed fc e5 4f 79 09 d3 4d 94 48 7b 95 52 d9 e3 47 3a c0 76 ac 60 4a a3 bf db f9 72 8e 25 d7 67 72 c7 10 01 3c 65 7f 1c a3 b6 1e f7 77 52 29 4a 10 0a 3e e4 2c 1b 61 32 d0 7f a6 07 2b b8 12 6a 70 b8 74 bd aa 67 5b 99 07 07 e1 4f 9f 61 f5 00 23 c0 fe a6 15 a9 9a 95 7c b3 82 db 74 f2 63 c5 43 92 80 9b c2 20 2e 98 8a 11 f3 ec 26 aa 1a 24 42 a1 e9 8f 9c ed 33 bc 3f 47 96 aa ad bf 5b 52 18 73 d4 70 33 f8 6f 8b 70 7f e7 ef fa a0 25 33 25 df 6a 04 bb f7 76 e6 1b bd 0f af 28 0e 9f 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=0cdb6c82490f4a670ab814ee7ac4485288eb5638
+
+* 使用者密钥标识符(2.5.29.14):
+  a7e0693d2d89ff0f6e5e72d204505e1493766086
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.zijieapi.com
+DNS Name=zijieapi.com
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://cdp.rapidssl.com/RapidSSLTLSRSACAG1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://status.rapidssl.com
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.rapidssl.com/RapidSSLTLSRSACAG1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+4c63dc98e59c1dab88f61e8a3ddeae8fab44a3377b5f9b94c3fba19cfcc1be26
+‎2026‎年‎1‎月‎19‎日 23:48:54
+SHA256
+ECDSA
+3045022022db99fbb0aea01852f20929c28ac139ff34b2e27a2941f173ceb14c16344e52022100efff4872c95a8ee2aa254a3b8ed687f9bfbfcee83b22dccd3f19c67743d63183
+
+v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎1‎月‎19‎日 23:48:54
+SHA256
+ECDSA
+3046022100dabf68651243da439b596d20f8757a628d0a4043416c39519385b8fede1b1e54022100d89f34d6f14256d6247704473a73c880354995de217de0cef689e413e092e00f
+
+v1
+604c9aaf7a7f775f01d406fc920dc899eb0b1c7df8c9521bfafa17773b978bc9
+‎2026‎年‎1‎月‎19‎日 23:48:55
+SHA256
+ECDSA
+3044022024ad3a0bb2a41bf03710420ee1e5996aaee41db5ca3303fcbdae18feca7fb2f40220586425bf58e67c693e38d67924822adc996bd9e7d92e9aa80f39a36978aa9d0c
+
+
+[SubjectAltNames]
+DNS Name=*.zijieapi.com
+DNS Name=zijieapi.com
+

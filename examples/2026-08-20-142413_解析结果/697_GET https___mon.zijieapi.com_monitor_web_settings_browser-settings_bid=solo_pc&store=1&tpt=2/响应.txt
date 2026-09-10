@@ -1,0 +1,20 @@
+HTTP/2 200
+date: Thu, 20 Aug 2026 06:23:44 GMT
+content-type: application/json; charset=utf-8
+x-tt-logid: 2026082014234430842A448CDA54475E4A
+access-control-allow-origin: 
+access-control-allow-headers: Content-Type
+access-control-request-method: POST,GET,OPTIONS
+access-control-allow-credentials: true
+access-control-max-age: 600
+cache-control: public, max-age=600
+vary: Origin, Accept-Encoding
+server-timing: cdn-cache;desc=MISS, edge;dur=1, origin;dur=40
+x-tt-trace-host: 01207a981426127d02143837b6aace09adce2809cbb0495dd214156de2a50874bbd41bf3f3561f52c8cfbe58f059cbf7e38c1f26e64195c0e2a69e95ecdb9acb31e6ecc13c51b6700cc197ada83fb32b0ad0dc0acc5dc58c731cdd1de6369ddf77653e2a6cd0df17abfa2ce9331c219740
+x-tt-trace-tag: id=26;cdn-cache=miss;type=dyn
+x-tt-trace-id: 00-26082014234430842A448CDA54475E4A-39FBF4C21EC9C367-00
+server: TLB
+via: CHN-JSlianyungang-AREACMCC5-CACHE20[41],CHN-JSlianyungang-AREACMCC5-CACHE20[ovl,40]
+x-ccdn-req-id-46b1: 60b94a2f7343c2984df6a3467e171928
+x-tt-supplier-id: 0_9
+server-timing: inner; dur=13

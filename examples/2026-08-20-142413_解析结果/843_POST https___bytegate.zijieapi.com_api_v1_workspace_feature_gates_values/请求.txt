@@ -1,0 +1,14 @@
+POST https://bytegate.zijieapi.com/api/v1/workspace/feature_gates/values HTTP/2
+:method: POST
+:authority: bytegate.zijieapi.com
+:scheme: https
+:path: /api/v1/workspace/feature_gates/values
+content-length: 206
+user-agent: go-resty/2.16.5 (https://github.com/go-resty/resty)
+content-type: application/json
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+referer: https://bytegate.zijieapi.com/api/v1/workspace/feature_gates/values
+accept-encoding: gzip, deflate, br, zstd
+priority: u=1

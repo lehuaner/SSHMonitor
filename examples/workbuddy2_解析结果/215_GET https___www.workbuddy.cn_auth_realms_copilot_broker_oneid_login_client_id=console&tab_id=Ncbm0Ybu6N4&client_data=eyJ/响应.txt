@@ -1,0 +1,17 @@
+HTTP/2 200
+content-type: application/json
+set-cookie: tgw_l7_route=771bdf86f10d83cb55576fa80823da4b; Expires=Tue, 08-Sep-2026 09:06:40 GMT; Path=/; sameSite=None; Secure
+x-kc-routed-to: new
+set-cookie: AUTH_SESSION_ID=d216774f-2d02-4531-8f79-c73a817ce1a6.keycloak-clusterless-5df949fc4d-lvl4z;Version=1;Path=/auth/realms/copilot/;Secure;HttpOnly;SameSite=None
+referrer-policy: no-referrer
+strict-transport-security: max-age=31536000; includeSubDomains
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1; mode=block
+server: APISIX/3.9.1
+x-request-id: cdd3c2ba-46cd-4e67-b0ed-0b34ae81ee31
+cache-control: no-cache
+content-length: 424
+date: Tue, 08 Sep 2026 08:06:40 GMT
+eo-log-uuid: 12181560906133571624
+eo-cache-status: MISS

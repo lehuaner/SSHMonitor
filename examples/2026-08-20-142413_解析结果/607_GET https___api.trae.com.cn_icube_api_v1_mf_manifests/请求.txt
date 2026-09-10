@@ -1,0 +1,26 @@
+GET https://api.trae.com.cn/icube/api/v1/mf/manifests HTTP/2
+:method: GET
+:authority: api.trae.com.cn
+:scheme: https
+:path: /icube/api/v1/mf/manifests
+accept: */*
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Chromium";v="142"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+x-app-version: 0.1.51
+x-icube-product: Work
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: f072ad6a-6947-450d-9d39-69308b214ec7
+x-tt-trace-id: 00-1dd6db3b0d945686928468ada48dffff-1dd6db3b0d945686-01
+smbyttnet: 1

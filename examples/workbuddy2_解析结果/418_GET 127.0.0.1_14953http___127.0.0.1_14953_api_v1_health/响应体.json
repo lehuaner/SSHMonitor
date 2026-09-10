@@ -1,0 +1,13 @@
+{
+  "data": {
+    "status": "ok",
+    "uptime": 4.1647051,
+    "platforms": [
+      "generic",
+      "wecom",
+      "wechat-kf"
+    ],
+    "pid": 24804,
+    "runtimeInstanceId": "1d1f2a8e-1b51-4979-8386-11b5c1ca956e"
+  }
+}

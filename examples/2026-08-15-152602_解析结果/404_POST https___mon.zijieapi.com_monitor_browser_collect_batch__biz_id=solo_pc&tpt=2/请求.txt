@@ -1,0 +1,13 @@
+POST https://mon.zijieapi.com/monitor_browser/collect/batch/?biz_id=solo_pc&tpt=2 HTTP/2
+:method: POST
+:authority: mon.zijieapi.com
+:scheme: https
+:path: /monitor_browser/collect/batch/?biz_id=solo_pc&tpt=2
+content-length: 4681
+content-type: application/json
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+accept-encoding: gzip, deflate, br, zstd
+priority: u=4, i

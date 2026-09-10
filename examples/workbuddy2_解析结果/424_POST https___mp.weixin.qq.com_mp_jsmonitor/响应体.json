@@ -1,0 +1,12 @@
+{
+  "ret": 0,
+  "errmsg": "ok",
+  "cookie_count": 0,
+  "base_resp": {
+    "ret": 0,
+    "errmsg": "ok",
+    "cookie_count": 0,
+    "sessionid": "svr_4feadfb30e5"
+  },
+  "sessionid": "svr_4feadfb30e5"
+}

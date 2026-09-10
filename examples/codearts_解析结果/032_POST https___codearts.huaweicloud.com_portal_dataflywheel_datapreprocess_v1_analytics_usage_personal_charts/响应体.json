@@ -1,0 +1,14 @@
+{
+  "code": 200,
+  "data": {
+    "series": [
+      {
+        "name": "REQUEST_COUNT",
+        "xDimension": "MODEL",
+        "yDimension": null,
+        "valueType": "COUNT",
+        "cells": []
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+HTTP/2 200
+date: Tue, 08 Sep 2026 08:07:41 GMT
+content-type: text/plain;charset=UTF-8
+content-length: 45
+trpc-trans-info: {"affinity_attribute":"dHJwYy5odHRwLnVwc2VydmVyLnVwc2VydmljZeKUglBDRy0xMjMuZ2FsaWxlby5sb2dhZGFwdGVy4pSCMg=="}
+x-content-type-options: nosniff
+access-control-allow-origin: *
+access-control-allow-credentials: true
+access-control-allow-methods: *
+access-control-allow-headers: *

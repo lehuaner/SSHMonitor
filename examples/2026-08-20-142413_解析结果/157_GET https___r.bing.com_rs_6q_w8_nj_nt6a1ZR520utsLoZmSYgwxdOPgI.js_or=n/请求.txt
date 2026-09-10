@@ -1,0 +1,22 @@
+GET https://r.bing.com/rs/6q/w8/nj/nt6a1ZR520utsLoZmSYgwxdOPgI.js?or=n HTTP/2
+:method: GET
+:authority: r.bing.com
+:scheme: https
+:path: /rs/6q/w8/nj/nt6a1ZR520utsLoZmSYgwxdOPgI.js?or=n
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 Edg/148.0.0.0
+sec-ch-ua: "Chromium";v="148", "Microsoft Edge";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile: ?0
+accept: */*
+origin: https://cn.bing.com
+x-edge-shopping-flag: 1
+sec-ms-gec: 0883F277D7C2B0E2-53833D8D79BF4213D96878A026214DC4EB5FD9EEA9FC6F0BAAE1141B16D796AC
+sec-ms-gec-version: 2-148.0.3967.96
+x-client-data: eyIxIjoiMCIsIjIiOiIwIiwiMyI6IjAiLCI0IjoiLTQ2MjU5MjM2MzY3MTI5NDAwMjMiLCI2Ijoic3RhYmxlIiwiOSI6ImRlc2t0b3AifQ==
+sec-fetch-site: same-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://cn.bing.com/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=1, i

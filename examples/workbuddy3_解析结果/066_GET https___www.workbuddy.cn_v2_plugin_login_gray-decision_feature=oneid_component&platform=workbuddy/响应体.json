@@ -1,0 +1,10 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "2adfe5a4-7938-41c9-8a07-687d32d6ba43",
+  "data": {
+    "enabled": true,
+    "reason": "full_rollout",
+    "ip": "112.23.190.214"
+  }
+}

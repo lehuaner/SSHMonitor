@@ -1,0 +1,8 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Thu, 20 Aug 2026 06:23:04 GMT
+Content-Type: application/x-javascript
+Content-Length: 802
+Cache-Control: no-cache, no-store
+Expires: -1
+Request-Context: appId=cid-v1:a894a21c-0197-44e5-b203-3cbc01252c82

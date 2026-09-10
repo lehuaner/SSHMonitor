@@ -1,0 +1,11 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "e9c2e218-d333-42b8-bfe3-ad209dbba26b",
+  "data": {
+    "agreed": true,
+    "dismissed_scenes": {
+      "growth_onboarding": "v1"
+    }
+  }
+}

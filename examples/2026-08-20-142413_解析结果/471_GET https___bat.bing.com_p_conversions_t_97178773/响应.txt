@@ -1,0 +1,11 @@
+HTTP/2 200
+cache-control: no-cache, no-store
+content-length: 794
+content-type: application/x-javascript
+expires: -1
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+request-context: appId=cid-v1:a894a21c-0197-44e5-b203-3cbc01252c82
+x-cache: CONFIG_NOCACHE
+accept-ch: Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+x-msedge-ref: Ref A: EB1E2079DD1346CFA8C1164BEF8C6C9F Ref B: TYO201151006040 Ref C: 2026-08-20T06:23:02Z
+date: Thu, 20 Aug 2026 06:23:02 GMT

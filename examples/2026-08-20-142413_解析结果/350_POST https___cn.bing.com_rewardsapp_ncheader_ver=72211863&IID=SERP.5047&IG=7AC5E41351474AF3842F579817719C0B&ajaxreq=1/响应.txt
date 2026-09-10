@@ -1,0 +1,22 @@
+HTTP/2 200
+cache-control: no-cache, no-store, must-revalidate
+pragma: no-cache
+content-length: 799
+content-type: text/html; charset=utf-8
+expires: -1
+vary: Accept-Encoding
+p3p: CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+set-cookie: _C_ETH=1; expires=Wed, 19 Aug 2026 06:22:28 GMT; domain=.bing.com; path=/; secure; httponly
+set-cookie: _C_Auth=
+set-cookie: GC=DksnssHZFsZv-cKd5LjU5hzjjiKfwRh6p4GIcWb5gz-3okwYv4_bMk-baVYicJz0c6SwU7bfaOy7U54yQqP-fA; expires=Fri, 21 Aug 2026 06:22:28 GMT; domain=.bing.com; path=/; secure; samesite=none
+set-cookie: SNRHOP=I=&TS=; domain=.bing.com; path=/; secure; SameSite=None
+x-eventid: 6a869d24db0e4161ba7722c5e970e6c5
+accept-ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, ECT, Sec-CH-Prefers-Color-Scheme, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA
+useragentreductionoptout: A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+permissions-policy: unload=()
+content-security-policy: script-src https: 'strict-dynamic' 'report-sample' 'wasm-unsafe-eval' 'nonce-P4l/IxYdhGFCqYn1MdKgsuiljxfZRch5aTzrCLOwNqk='; base-uri 'self';report-to csp-endpoint
+report-to: {"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}
+x-ceto-ref: 6a869d24db0e4161ba7722c5e970e6c5|AFD:6a869d24db0e4161ba7722c5e970e6c5|2026-08-20T06:22:28.920Z
+x-cache: CONFIG_NOCACHE
+x-msedge-ref: Ref A: BA7CCA609615451890836F4FAD8D323E Ref B: BJ1EDGE1106 Ref C: 2026-08-20T06:22:28Z
+date: Thu, 20 Aug 2026 06:22:28 GMT

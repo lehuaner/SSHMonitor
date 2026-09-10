@@ -1,0 +1,14 @@
+POST https://mobile.events.data.microsoft.com/OneCollector/1.0/ HTTP/1.1
+Accept: */*
+APIKey: 5476d0c4a7a347909c4b8a13078d4390-f8bdcecf-243f-40f8-b7c3-b9c44a57dead-7230
+AuthMsaDeviceTicket: t=GwDmAbuEBAAUuXgePZcYxdw8EZuBoUxTAR3gtGcOZgAAEMtWDjlbInZXxnjHUgjwC82wATH84hl65cHz3PWpDhaGa4toEV9z9VVKhAfTUh2QcovNUA3FCKUkk8iSSKxFEBk4Qn3cPfDjdXgKjGjpRd3HdLonuD687WU6uzdi0dKlVBSmEGAtfNllAK20imgUZQP2AoQTsnfeA8Bgpll3Rj5hYv32eG8ra8oG0QgjgD2L6cRKhrEz7IbfJ1EovlFaLSNlXRY9mbD48Pa4d6Et/o2iicBe6nfkWJdiGQwv98K7/vOZsHLYQ74+HpL16kXqRyftbVn2BUYEXIITbl/G1u8tOIcZUd7FCc6T3UZOymFJg7vmQRiFmtP6eQYd68PaOvi5VbfrHA3yYQyP6w5r+K0XHkmltIc/7TGGuAUICQ+sP+pi2ib/NxV07t/5X8QH9TKSqAn3AkLi0cpKed54M1G2UThxpScwJ7DGuwmt+6IxebF99zGEdsurCugPxzD1XBeeghfboZwVffb+ZcnoT8PCuditohbyA93ChtXNOCe1qYZRq/MWxsiQ4/CSOoUYiJ8i8Jh4Cyliy67a0bLEdoLEtwanvaYCnc0S2LaVo1lmpz12ERC/K2oeluBtHMJpo19dd+YB&p=
+Client-Id: NO_AUTH
+Content-Encoding: deflate
+Content-Type: application/bond-compact-binary
+Expect: 100-continue
+SDK-Version: EVT-Windows-C++-No-3.4.276.7
+Upload-Time: 1787207039985
+Host: mobile.events.data.microsoft.com
+Content-Length: 1834
+Connection: Keep-Alive
+Cache-Control: no-cache

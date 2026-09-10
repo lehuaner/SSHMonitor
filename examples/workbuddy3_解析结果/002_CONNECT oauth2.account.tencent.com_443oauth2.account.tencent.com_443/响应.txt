@@ -1,0 +1,116 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 12:01:12.984
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.account.tencent.com, O=Tencent Technology (Shenzhen) Company Limited, L=Shenzhen, S=Guangdong Province, C=CN
+  Simple Name: *.account.tencent.com
+  DNS Name: *.account.tencent.com
+
+[Issuer]
+  CN=DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1, O="DigiCert, Inc.", C=US
+  Simple Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+  DNS Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+
+[Serial Number]
+  0C10F0CCF9E8B535A5315C2F3B958DFA
+
+[Not Before]
+  2026/1/12 8:00:00
+
+[Not After]
+  2027/2/13 7:59:59
+
+[Thumbprint]
+  F72A5FF86C3023A9DEE3200C1F7914E210498C2E
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 c3 4c 33 f2 04 5e 72 a5 5a dc 95 66 9a 19 29 be 75 ac a2 23 06 be a4 ad ce c9 52 e3 91 9c 77 9f 27 23 6a 6d 4e 7e 21 0b bf 13 67 ab 8f fa 27 df 86 60 d1 b3 af 7d 0d 8c d3 13 0b 35 0a 1a 2c f2 b1 3c d8 84 4f a1 dd 13 9c 38 15 11 67 95 bd b0 fd 1d 24 81 4f 9a 5e ec fb 11 0d ff 99 5c 45 08 f9 b8 0e fb 61 dd 73 9c 50 ba 84 86 32 f1 f1 28 cb 46 e7 56 6c e1 53 fa d1 6f e8 5d 77 26 d0 f5 34 c3 03 51 23 cb 0b 0e a7 a6 16 fd a1 4b f6 00 b3 cb 8f 66 9d e8 8c 27 12 70 d8 ed 5b af fc d9 87 a8 02 e9 e5 53 50 e3 d6 49 a2 62 0a 0a be da a2 d4 25 13 92 15 ca 35 5c 1a 73 07 08 b1 bd 14 5d e3 67 49 62 44 4c 1d ae 2f 40 78 fb ee ff 2c 66 77 78 f0 b9 9c f7 cd cc 04 c5 14 aa e2 ea 08 23 72 78 44 d1 93 f3 fc e0 01 26 39 be 75 ad df cc a9 fd 9b e4 20 c7 92 fd cc 48 8d cd 85 13 4b 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=2b2316811b47898a907aece832d46c8e72f9ce25
+
+* 使用者密钥标识符(2.5.29.14):
+  cbcedb27c42883ddef6351a92357f8e934479c89
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.account.tencent.com
+DNS Name=account.tencent.com
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://ocsp.digicert.cn
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+4c63dc98e59c1dab88f61e8a3ddeae8fab44a3377b5f9b94c3fba19cfcc1be26
+‎2026‎年‎1‎月‎12‎日 10:21:01
+SHA256
+ECDSA
+3045022100a4d870fe8971b513f6b50d6c7363db66af9a37c86c060e48dfcb23ed44f8679402202764f7772a4902af657808d9c7da9ac45667770f776925369883f86485ac0afc
+
+v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎1‎月‎12‎日 10:21:01
+SHA256
+ECDSA
+30450221008867d6e70188443ba1a6da732316c9134505b186ac8c6dc8adfcf6f8c25c1fa5022057e9b3f0dc82d1230a97684b35e6ceb6a6af066bfffdee1836a769314f791d0f
+
+v1
+a2810018734e176e1d47e09540f381ba546697cd63a84350716eb8094edaf10d
+‎2026‎年‎1‎月‎12‎日 10:21:01
+SHA256
+ECDSA
+304502206a8f17c3c15abe8329e5cef118794844feb2bcaeff3cb05d79a356c8b934a58c022100fed5864850e1f6c812e66a60567491abea03507b72b7a6499dfe0ff62f8866af
+
+
+[SubjectAltNames]
+DNS Name=*.account.tencent.com
+DNS Name=account.tencent.com
+

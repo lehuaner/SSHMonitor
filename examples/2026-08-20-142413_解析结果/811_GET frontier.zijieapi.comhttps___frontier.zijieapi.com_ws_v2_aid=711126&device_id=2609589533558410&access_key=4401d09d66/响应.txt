@@ -1,0 +1,10 @@
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: Pwr/Pfpf9w1n476cULKT1nsm7WI=
+Sec-Websocket-Protocol: pbbp2
+Handshake-Options: ping-interval=30;
+X-Frontier-Logid: 02178720703664700000000000000000000ffff0ad040aec1e053
+Traceparent: 00-7e5f33447081a8c86cf10deee5c8176b-86573d127c72cc63-01
+Handshake-Status: 0
+Handshake-Msg: OK

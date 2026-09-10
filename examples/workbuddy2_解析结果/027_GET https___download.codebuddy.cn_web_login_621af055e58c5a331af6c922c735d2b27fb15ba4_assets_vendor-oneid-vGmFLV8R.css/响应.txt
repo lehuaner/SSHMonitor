@@ -1,0 +1,20 @@
+HTTP/2 200
+last-modified: Wed, 02 Sep 2026 08:50:34 GMT
+etag: "5da5a4630dc5b040938f161a7ea28245"
+content-type: text/css
+access-control-expose-headers: ETag,Content-Length,x-cos-request-id
+date: Mon, 07 Sep 2026 08:17:27 GMT
+server: tencent-cos
+vary: Origin, Access-Control-Request-Headers, Access-Control-Request-Method
+x-cos-hash-crc64ecma: 11124745680497741019
+x-cos-meta-md5: 5da5a4630dc5b040938f161a7ea28245
+x-cos-request-id: NmE5ZTczMTdfOTM3M2VjMDlfZDAzMV9lNmNlOGVm
+x-cos-storage-class: MAZ_STANDARD
+x-cos-version-id: MTg0NDQ5NTU3MzQ2NzU0OTY3Mjc
+x-cosindex-replication-status: Complete
+content-length: 70180
+accept-ranges: bytes
+x-nws-log-uuid: 16628107155146637957
+x-cache-lookup: Cache Hit
+access-control-allow-origin: *
+access-control-allow-methods: PUT,GET,POST,DELETE,HEAD

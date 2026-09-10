@@ -1,0 +1,33 @@
+HTTP/2 200
+server: Tengine
+content-type: image/png
+content-length: 488
+date: Sun, 26 Jul 2026 12:14:55 GMT
+accept-ranges: bytes
+cache-control: max-age=2592000
+x-bdcdn-cache-status: TCP_HIT
+x-kfc-cachekey: http://d-ks-origin-cache-all-lf.originalstatic.com/trae-com-cn/trae_website_prod_cn/favicon.png
+x-tos-hash-crc64ecma: 15522976675013037368
+x-tos-request-id: 497a2065c645cd1c6a65c645-a909ae9-a2ea554
+x-tos-response-time: Sun, 26 Jul 2026 08:33:09 GMT
+x-tos-storage-class: STANDARD
+via: n151-190-069, cache55.l2cn1816[0,0,200-0,H], cache54.l2cn1816[1,0], cache1.cn7729[0,0,200-0,H], cache7.cn7729[1,0]
+x-request-ip: fdbd:dc03:11:586::77
+x-tt-trace-tag: id=03;cdn-cache=hit;type=static
+x-response-cinfo: fdbd:dc03:11:586::77
+x-response-cache: edge_hit
+server-timing: inner; dur=8
+x-tt-trace-host: 01f18a666b79508483e0b7a54b9eafb39cd47d40c93f2015bc41649fd0b31f62238e93b4d5a21af9ddec55cff442a024164d04d76ab6bf17d2e10881de62452907b126642588befb0c7772c3a1eb6e9de1b6afcea3d551b73dac7ac17d8f31235491beccf50f19f742de2171461c94ee5f
+x-tt-trace-id: 00-26072620145558237E4BC5764B1A2349-7D8B42714C0E8E46-00
+x-tt-logid: 2026072620145558237E4BC5764B1A2349
+etag: "98405406dcfc40174dc6115d6df4e2c7"
+last-modified: Fri, 26 Jun 2026 07:00:27 GMT
+age: 2138889
+ali-swift-global-savetime: 1785068095
+x-cache: HIT TCP_MEM_HIT dirn:-2:-2
+x-swift-savetime: Wed, 12 Aug 2026 14:34:51 GMT
+x-swift-cachetime: 1114804
+x-tt-supplier-id: 0_1
+access-control-allow-origin: *
+timing-allow-origin: *
+eagleid: 2497e50c17872069847126584e

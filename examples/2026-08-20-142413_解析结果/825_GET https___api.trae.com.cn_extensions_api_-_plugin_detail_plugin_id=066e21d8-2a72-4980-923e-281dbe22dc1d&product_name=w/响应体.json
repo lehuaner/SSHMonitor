@@ -1,0 +1,57 @@
+{
+  "data": {
+    "plugin": {
+      "plugin_id": "066e21d8-2a72-4980-923e-281dbe22dc1d",
+      "name": "trae-remote-official:omnichannel-commerce-assistant",
+      "origin_plugin_name": "omnichannel-commerce-assistant",
+      "display_name": "电商经营助手",
+      "description": "服务多平台、多渠道经营的品牌和商家，统一分析不同平台的商品结构、流量表现、转化效率、促销策略和用户运营，帮助经营者建立全域经营视角。",
+      "i18n": {
+        "description": {
+          "en": "Unify product, traffic, conversion, promotion, and customer analysis across platforms and channels to build an omnichannel operating view.",
+          "ja": "",
+          "zh-cn": "服务多平台、多渠道经营的品牌和商家，统一分析不同平台的商品结构、流量表现、转化效率、促销策略和用户运营，帮助经营者建立全域经营视角。"
+        },
+        "display_name": {
+          "en": "Omnichannel Commerce Assistant",
+          "ja": "",
+          "zh-cn": "电商经营助手"
+        }
+      },
+      "author": "trae-work",
+      "cdn_uri": "p11-market.byteimg.com",
+      "tos_uri": "tos-cn-i-17oceyzymr/plugins",
+      "version": "0.1.0",
+      "source": "INTERNAL_UPLOAD",
+      "registry": "trae-remote-official",
+      "publisher_type": "THIRD_PARTY",
+      "local_available": true,
+      "cloud_available": true,
+      "categories": [
+        "Featured",
+        "research_analysis"
+      ],
+      "category_weight": 5,
+      "created_at": 1784811261000,
+      "updated_at": 1784811261000,
+      "pinned": 0,
+      "status": "PUBLISHED",
+      "visibility": "PUBLIC",
+      "is_deleted": false,
+      "icon_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1/066e21d8-2a72-4980-923e-281dbe22dc1d/icons/23009962-7635-4c98-9b4d-2554e34a314d.svg",
+      "recommended": true,
+      "default_installed": false,
+      "user_control_policy": "{\"default_enabled\": true, \"tag_theme_color\": \"--status-error-active\", \"plugin_toggleable\": true, \"locked_capabilities\": [], \"plugin_uninstallable\": true, \"capability_toggleable\": true, \"show_in_home_available_plugins\": true}"
+    },
+    "changelog": "",
+    "download_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1/066e21d8-2a72-4980-923e-281dbe22dc1d/0.1.0/package.zip",
+    "manifest_json": "{\n  \"name\": \"omnichannel-commerce-assistant\",\n  \"version\": \"0.1.0\",\n  \"displayName\": \"全域电商经营助手\",\n  \"displayNameEn\": \"Omnichannel Commerce Assistant\",\n  \"description\": \"服务多平台、多渠道经营的品牌和商家，统一分析不同平台的商品结构、流量表现、转化效率、促销策略和用户运营，帮助经营者建立全域经营视角。\",\n  \"descriptionEn\": \"Unify product, traffic, conversion, promotion, and customer analysis across platforms and channels to build an omnichannel operating view.\",\n  \"author\": {\n    \"name\": \"trae-work\"\n  },\n  \"license\": \"UNLICENSED\",\n  \"logo\": \"./assets/icon.png\",\n  \"keywords\": [\n    \"全域电商\",\n    \"多平台运营\",\n    \"品牌电商\",\n    \"渠道运营\",\n    \"跨境电商\",\n    \"经营分析\"\n  ],\n  \"skills\": \"./skills/\",\n  \"interface\": {\n    \"displayName\": \"全域电商经营助手\",\n    \"shortDescription\": \"跨越平台看经营，统一视角做增长。\",\n    \"longDescription\": \"服务多平台、多渠道经营的品牌和商家，统一分析不同平台的商品结构、流量表现、转化效率、促销策略和用户运营，帮助经营者建立全域经营视角。\",\n    \"developerName\": \"trae-work\",\n    \"category\": \"Data Analysis\",\n    \"capabilities\": [\n      \"Interactive\",\n      \"Read\",\n      \"Write\"\n    ],\n    \"defaultPrompt\": [\n      \"Use omnichannel-commerce-assistant to complete this task.\"\n    ],\n    \"brandColor\": \"#2456E8\",\n    \"composerIcon\": \"./assets/icon.png\",\n    \"logo\": \"./assets/icon.png\",\n    \"screenshots\": []\n  }\n}\n",
+    "connector_json": "",
+    "mcp_servers_json": "",
+    "skills_json": "[{\"content_sha256\":\"0bdf1a9ecc02c73a4bedf90c02d60cc26e6d6c826beb8bc312a48830391f182f\",\"description\":\"Diagnose and improve China-domestic and China-led cross-border e-commerce operations across store performance, product/category, bestseller creation, traffic/conversion, pricing/promotion, inventory/supply, and retention/membership. Use for operating diagnosis, metric analysis, bestseller discovery or incubation, competitor benchmarking, growth decisions, campaign reviews, assortment and supply decisions, market entry, or an e-commerce operating plan. Do not use for creative production, hands-on ad buying, customer-service execution, warehouse/data-platform construction, or brand identity design.\",\"file_info\":\"plugins/1/066e21d8-2a72-4980-923e-281dbe22dc1d/0.1.0/skills/omnichannel-commerce-assistant/SKILL.md\",\"id\":\"omnichannel-commerce-assistant\",\"name\":\"omnichannel-commerce-assistant\",\"path\":\"omnichannel-commerce-assistant/skills/omnichannel-commerce-assistant/SKILL.md\"}]",
+    "icon_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1/066e21d8-2a72-4980-923e-281dbe22dc1d/icons/23009962-7635-4c98-9b4d-2554e34a314d.svg",
+    "checksum": "73b1cd7fe0a9b910ceeb514cd05ea7d180b02e5c24776520420ef56645c56bd9",
+    "file_size": 71277
+  },
+  "success": "true"
+}

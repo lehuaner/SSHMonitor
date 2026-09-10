@@ -1,0 +1,24 @@
+HTTP/2 204
+server: Tengine
+date: Thu, 20 Aug 2026 06:23:53 GMT
+access-control-allow-credentials: true
+access-control-allow-headers: *
+access-control-allow-methods: GET, POST, OPTIONS
+access-control-allow-origin: *
+access-control-expose-headers: ETag
+access-control-max-age: 86400
+x-bytefaas-execution-duration: 1.80
+x-bytefaas-request-id: 20260820142353AA1C434D3073096DEA7C
+x-gw-dst-psm: icube.native.ide
+x-powered-by: Goofy Node
+x-tt-logid: 20260820142353AA1C434D3073096DEA7C
+strict-transport-security: max-age=31536000; includeSubDomains
+server-timing: inner; dur=9
+x-tt-trace-host: 01207a981426127d02143837b6aace09adb04408367b10773d83eb0727fb5dc5a37bea195582f8aad0247bb8d6d1b28bd00e04abc3f678d48db5683fdbbce193cad7073be089591c8d7512bf3560e479c274dbbd28c8ea89609f85a68d7361bfdf
+x-tt-trace-tag: id=03;cdn-cache=miss;type=dyn
+x-tt-trace-id: 00-1dd71e870d945686928468a2187dffff-1dd71e870d945686-01
+x-tt-timestamp: 1787207033.033
+via: cache9.l2cm9-6[52,0], ens-cache26.cn8109[71,0]
+server-timing: cdn-cache;desc=MISS,edge;dur=19,origin;dur=52
+timing-allow-origin: *
+eagleid: 24973dae17872070329804069e

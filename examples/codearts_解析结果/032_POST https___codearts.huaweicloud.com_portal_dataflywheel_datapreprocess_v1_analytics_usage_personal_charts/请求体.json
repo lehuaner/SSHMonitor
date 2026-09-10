@@ -1,0 +1,8 @@
+{
+  "startDate": "2026-09-02",
+  "endDate": "2026-09-08",
+  "metrics": [
+    "REQUEST_COUNT"
+  ],
+  "xDimension": "MODEL"
+}

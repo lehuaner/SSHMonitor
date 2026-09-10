@@ -1,0 +1,15 @@
+{
+  "PriceType": "getPrice",
+  "ResInfo": [
+    {
+      "GoodsCategoryId": 2023396,
+      "Region": "ap-others",
+      "Zone": "ap-others-4",
+      "GoodsNum": 1,
+      "Currency": "CNY",
+      "PayMode": "prePay",
+      "Purpose": "purchase",
+      "GoodsDetail": "{\"pid\":1053698,\"productCode\":\"p_tcaca\",\"subProductCode\":\"sp_tcaca_codebuddyide_creditplan\",\"sv_tcaca_subscribe_idecreditplansubscribtion\":\"1\",\"timeUnit\":\"m\",\"timeSpan\":1,\"action\":\"purchase\",\"goodsNum\":1,\"commodityCode\":\"TCACA_code_009_0XmEQc2xOf\",\"packageTimeSpan\":1,\"packageTimeUnit\":\"m\",\"ProductInfo\":[{\"commodityCode\":\"TCACA_code_009_0XmEQc2xOf\",\"packageTimeSpan\":1,\"packageTimeUnit\":\"m\"}],\"BusinessInfo\":[{\"name\":\"payment_platform\",\"value\":\"wb_web\"}]}"
+    }
+  ]
+}

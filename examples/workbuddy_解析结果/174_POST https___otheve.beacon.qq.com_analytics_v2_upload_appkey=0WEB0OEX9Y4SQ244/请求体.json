@@ -1,0 +1,62 @@
+{
+  "appVersion": "",
+  "sdkId": "js",
+  "sdkVersion": "4.5.20-web",
+  "mainAppKey": "0WEB0OEX9Y4SQ244",
+  "platformId": 3,
+  "common": {
+    "atversion": "4.1.15",
+    "uid": "",
+    "fromsource": "gwzcw.15291246.15291246.15291246",
+    "from": "",
+    "from_column": "",
+    "islogined": "false",
+    "pagetag": "",
+    "trafficparams": "***$;timestamp%3D1788407369458;from_type%3Dserver;track%3De29eeb59-0eea-49d8-9497-31d5ddc90871;$***",
+    "uaCategory": "PC端-非微信",
+    "owneruin": "",
+    "qclouduid": "undefined",
+    "articleSource": "",
+    "magicSource": "",
+    "authorType": "",
+    "subjectTime": "",
+    "productSlug": "",
+    "system": "Windows(11)-Blink",
+    "browser": "Edge(152.0.0.0)",
+    "spider": "",
+    "seoKeywords": "",
+    "A2": "NcZsaBBiS5nX4kE0CjwWTGBNh0PZi2DN",
+    "A8": "",
+    "A12": "zh-CN",
+    "A17": "1920*1080*1",
+    "A23": "",
+    "A50": "",
+    "A76": "0WEB0OEX9Y4SQ244_1788799136600",
+    "A101": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "A102": "https://www.workbuddy.cn/profile/plans-usage",
+    "A104": "",
+    "A119": "",
+    "A153": ""
+  },
+  "events": [
+    {
+      "eventCode": "show_page",
+      "eventTime": "1788799138015",
+      "mapValue": {
+        "viewportWidth": "1605",
+        "viewportHeight": "856",
+        "url": "https://www.workbuddy.cn/profile/plans-usage",
+        "pathname": "/profile/plans-usage",
+        "query": "",
+        "hostname": "www.workbuddy.cn",
+        "pagefrom": "www.workbuddy.cn$$/profile/plan$$",
+        "urlfrom": "https://www.workbuddy.cn/profile/plan",
+        "title": "WorkBuddy - 个人中心",
+        "A99": "Y",
+        "A100": "250",
+        "A72": "4.5.20-web",
+        "A88": "1787201063335"
+      }
+    }
+  ]
+}

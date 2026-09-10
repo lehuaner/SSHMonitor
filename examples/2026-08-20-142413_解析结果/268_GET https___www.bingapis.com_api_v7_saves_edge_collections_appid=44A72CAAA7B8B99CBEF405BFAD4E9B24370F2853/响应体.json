@@ -1,0 +1,17 @@
+{
+  "_type": "CollectionsPage",
+  "collections": [
+    {
+      "id": "36a0ce38550040b4b05594c66356f0b8",
+      "title": "chatgpt",
+      "dateModified": "2025-12-06T10:20:29.6267282Z",
+      "adultItemCount": 0,
+      "isAdult": false,
+      "genericCollectionTagPath": "",
+      "allowedItemTagPaths": [],
+      "customData": "",
+      "itemCount": 5
+    }
+  ],
+  "actualCollectionCount": 1
+}

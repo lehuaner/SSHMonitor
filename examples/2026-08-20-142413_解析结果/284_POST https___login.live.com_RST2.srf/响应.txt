@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Cache-Control: no-store, no-cache
+Pragma: no-cache
+Content-Type: application/soap+xml; charset=utf-8
+Expires: Thu, 20 Aug 2026 06:21:26 GMT
+P3P: CP="DSP CUR OTPi IND OTRi ONL FIN"
+Referrer-Policy: strict-origin-when-cross-origin
+x-ms-route-info: C538_BAY
+x-ms-request-id: 07bc3ce5-012d-40f2-9bda-cdf3ec43606d
+PPServer: PPV: 30 H: PH1PEPF00011ED5 V: 0
+X-Content-Type-Options: nosniff
+Strict-Transport-Security: max-age=31536000
+X-XSS-Protection: 1; mode=block
+Date: Thu, 20 Aug 2026 06:22:26 GMT
+Content-Length: 20453

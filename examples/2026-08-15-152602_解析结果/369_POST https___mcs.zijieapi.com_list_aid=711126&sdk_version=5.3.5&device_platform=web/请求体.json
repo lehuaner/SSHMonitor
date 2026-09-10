@@ -1,0 +1,46 @@
+[
+  {
+    "events": [
+      {
+        "event": "__bav_beat",
+        "params": "{\"beat_type\":3,\"page_key\":\"https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.70844&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=1&login_trace_id=55ad23b1-7581-481d-a6a1-0d96f86703d4&auth_callback_url=http://127.0.0.1:58448/authorize&machine_id=0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51&device_id=3798161405005257&x_device_id=3798161405005257&x_machine_id=0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51&x_device_brand=82JW&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.50&x_app_type=stable&code_challenge=e4LjjO5hI9_HH0os44LAHCvFzocgeeNTWd43S5_iUHE&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=TRAE%20SOLOSetup-stable-2.3.70844\",\"is_html\":1,\"page_title\":\"Authorization | TRAE - 复杂工作，就用 TraeWork\",\"page_manual_key\":\"\",\"page_viewport_width\":1304,\"page_viewport_height\":680,\"page_total_width\":1304,\"page_total_height\":680,\"scroll_width\":1304,\"scroll_height\":680,\"since_page_start_ms\":5512,\"page_start_ms\":1786778741632,\"event_index\":1786778853795}",
+        "local_time_ms": 1786778747144,
+        "is_bav": 1,
+        "ab_sdk_version": "92445595",
+        "session_id": "fdf5d97b-11e0-4219-9ef7-642bada10bd3"
+      }
+    ],
+    "user": {
+      "user_unique_id": "7623996721186293291",
+      "user_id": "1000985253380538",
+      "user_is_login": true
+    },
+    "header": {
+      "app_id": 711126,
+      "os_name": "windows",
+      "os_version": "10",
+      "device_model": "Windows NT 10.0",
+      "language": "zh-CN",
+      "region": "China-North",
+      "platform": "web",
+      "sdk_version": "5.3.5",
+      "sdk_lib": "js",
+      "timezone": 8,
+      "tz_offset": -28800,
+      "resolution": "1920x1080",
+      "browser": "Microsoft Edge",
+      "browser_version": "151.0.0.0",
+      "referrer": "",
+      "referrer_host": "",
+      "width": 1920,
+      "height": 1080,
+      "screen_width": 1920,
+      "screen_height": 1080,
+      "utm_source": "traework_client_chat_tip",
+      "tracer_data": "{\"$utm_from_url\":1}",
+      "custom": "{\"network_type\":\"4g\",\"biz_web_id\":\"7623996721186293291\",\"version\":\"1.0.0.1462\",\"env\":\"prod\",\"biz_user_id\":\"1000985253380538\",\"os\":\"Windows\",\"cpu\":\"NVIDIA x64\"}"
+    },
+    "local_time": 1786778747,
+    "verbose": 1
+  }
+]

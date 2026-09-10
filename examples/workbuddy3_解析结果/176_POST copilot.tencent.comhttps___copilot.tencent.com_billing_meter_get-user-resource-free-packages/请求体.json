@@ -1,0 +1,23 @@
+{
+  "PageNumber": 1,
+  "PageSize": 200,
+  "PackageCodes": [
+    "TCACA_code_001_PqouKr6QWV",
+    "TCACA_code_008_cfWoLwvjU4",
+    "TCACA_code_035_ArVxJcGDsm",
+    "TCACA_code_006_DbXS0lrypC",
+    "TCACA_code_039_KRcQj7wUat",
+    "TCACA_code_040_mi9rCYg46x",
+    "TCACA_code_007_nzdH5h4Nl0",
+    "TCACA_code_028_NtpWi0jzXs",
+    "TCACA_code_037_WxOD3MpI2o",
+    "TCACA_code_029_6wCGEWquYy",
+    "TCACA_code_030_BjSt89qTvr"
+  ],
+  "Status": [
+    0,
+    3
+  ],
+  "SlicePeriodStartTime": "2026-09-10 00:00:00",
+  "SlicePeriodEndTime": "2026-09-10 23:59:59"
+}

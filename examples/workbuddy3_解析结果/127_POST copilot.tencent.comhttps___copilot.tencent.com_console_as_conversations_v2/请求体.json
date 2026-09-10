@@ -1,0 +1,25 @@
+{
+  "type": "local",
+  "sessionId": "6a9377eb-26e5-47d5-81ae-1baeb8eeb6be",
+  "name": "更正编号并重新开始任务",
+  "conversationOrigin": "legacy_workbuddy_local",
+  "workDir": "D:\\Code\\Project\\Python\\TextPatch",
+  "isPlayground": 0,
+  "createdAtMs": 1788115652787,
+  "updatedAtMs": 1788155975267,
+  "lastActivityAtMs": 1788155975267,
+  "clientContext": {
+    "localStatus": "active",
+    "hostId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "sessionKind": "manual",
+    "model": "",
+    "sourceMode": "",
+    "permissionMode": "",
+    "expert": {
+      "id": "",
+      "locale": "",
+      "runtimeIdentity": "",
+      "marketplace": ""
+    }
+  }
+}

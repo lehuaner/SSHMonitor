@@ -1,0 +1,83 @@
+{
+  "ev_type": "batch",
+  "list": [
+    {
+      "ev_type": "http",
+      "payload": {
+        "api": "xhr",
+        "request": {
+          "url": "https://j.clarity.ms/collect",
+          "method": "post",
+          "headers": {
+            "accept": "application/x-clarity-gzip"
+          },
+          "timestamp": 1787207027642
+        },
+        "response": {
+          "status": 204,
+          "is_custom_error": false,
+          "timestamp": 1787207028494,
+          "headers": {},
+          "timing": {
+            "name": "https://j.clarity.ms/collect",
+            "entryType": "resource",
+            "startTime": 3653.7000000000116,
+            "duration": 847.6000000000349,
+            "initiatorType": "xmlhttprequest",
+            "deliveryType": "",
+            "nextHopProtocol": "",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "",
+            "contentEncoding": "",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 3653.7000000000116,
+            "domainLookupStart": 0,
+            "domainLookupEnd": 0,
+            "connectStart": 0,
+            "secureConnectionStart": 0,
+            "connectEnd": 0,
+            "requestStart": 0,
+            "responseStart": 0,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 0,
+            "responseEnd": 4501.300000000047,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0,
+            "responseStatus": 204,
+            "serverTiming": []
+          }
+        },
+        "duration": 852
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "7675972323816048182",
+        "device_id": "f605a24d-6a2f-4de4-beee-6e76815703d2",
+        "session_id": "5d7d3db5-7965-4398-bc3e-c065b922df2b",
+        "release": "1.0.0.1511",
+        "env": "production",
+        "url": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=0&login_trace_id=f2e9b1fa-73f1-48dd-b666-74055079f95d&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=FLgn_0eOngzYuvzJ2eKgyolqS1xpLByK6UY4KuzBkEg&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64",
+        "timestamp": 1787207027642,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/authorization",
+        "view_id": "/authorization_1787207025252",
+        "context": {
+          "deploy_region": "cn",
+          "biz_user_id": "1554024524166871",
+          "user_id": "7675972323816048182",
+          "user_is_login": "true"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+GET https://api.trae.com.cn/icube/api/v1/package/check_update?mid=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&did=2609589533558410&uid=stable_cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&userRegion=CN&packageType=stable_cn&productCode=SOLO_Lite&platform=Win&branch=release_solo_win32_cn&arch=x64&tenant=marscode&appVersion=0.1.51&buildVersion=2.3.71801&pid=7409949320595642651&iid=1554024524166871&branch=release_solo_win32_cn&buildId=1202142408194 HTTP/2
+:method: GET
+:authority: api.trae.com.cn
+:scheme: https
+:path: /icube/api/v1/package/check_update?mid=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&did=2609589533558410&uid=stable_cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&userRegion=CN&packageType=stable_cn&productCode=SOLO_Lite&platform=Win&branch=release_solo_win32_cn&arch=x64&tenant=marscode&appVersion=0.1.51&buildVersion=2.3.71801&pid=7409949320595642651&iid=1554024524166871&branch=release_solo_win32_cn&buildId=1202142408194
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+sec-fetch-dest: empty
+sec-fetch-mode: no-cors
+sec-fetch-site: none
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: d30482a9-90f7-42d5-bfc5-816a14ed7c2c
+accept: */*
+x-tt-trace-id: 00-1dd73f9a0d945686928468a268caffff-1dd73f9a0d945686-01
+smbyttnet: 1

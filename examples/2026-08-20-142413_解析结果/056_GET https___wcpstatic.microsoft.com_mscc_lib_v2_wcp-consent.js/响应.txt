@@ -1,0 +1,22 @@
+HTTP/2 200
+date: Thu, 20 Aug 2026 06:22:22 GMT
+content-type: application/javascript
+content-length: 282992
+cache-control: max-age=300
+content-md5: fPkb6FZqJXam6WiBk7Wrmw==
+last-modified: Mon, 17 Aug 2026 05:10:44 GMT
+etag: "0x8DEFC1DE462800C"
+x-ms-request-id: 3838443c-c01e-00a5-636c-3076e0000000
+x-ms-version: 2025-05-05
+x-ms-creation-time: Tue, 30 Jun 2020 09:59:38 GMT
+x-ms-lease-status: unlocked
+x-ms-lease-state: available
+x-ms-blob-type: BlockBlob
+x-ms-server-encrypted: true
+x-ms-access-tier: Hot
+x-ms-access-tier-inferred: true
+access-control-expose-headers: x-ms-request-id,Server,x-ms-version,Content-Type,Cache-Control,ETag,Last-Modified,x-ms-creation-time,Content-MD5,x-ms-lease-status,x-ms-lease-state,x-ms-blob-type,x-ms-server-encrypted,x-ms-access-tier,x-ms-access-tier-inferred,Accept-Ranges,Content-Length,Date,Transfer-Encoding
+access-control-allow-origin: *
+x-azure-ref: 20260820T062221Z-1676fcc8cbc9ppx2hC1SELq2n000000019s000000000nvwb
+x-cache: CONFIG_NOCACHE
+accept-ranges: bytes

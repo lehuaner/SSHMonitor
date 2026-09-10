@@ -1,0 +1,11 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "f2eb3b05-9b20-4d60-b5a3-66f9d4d0b11d",
+  "data": {
+    "loginType": "login",
+    "userId": "bb1a0124-b950-4052-9904-bc45ccd68bf0",
+    "nickName": "19154975875",
+    "bindTencentCloudAccount": true
+  }
+}

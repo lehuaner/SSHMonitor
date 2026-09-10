@@ -1,0 +1,20 @@
+HTTP/2 200
+server: Tengine
+content-length: 0
+date: Sat, 15 Aug 2026 17:42:41 GMT
+access-control-allow-credentials: true
+access-control-allow-methods: GET,POST,PUT,DELETE,HEAD
+access-control-allow-headers: *,Content-Type,Traceparent
+access-control-allow-origin: https://www.trae.cn
+vary: Access-Control-Request-Headers
+x-tt-logid: 20260816014241F7827B4576D0406796A8
+server-timing: inner; dur=6,tt_agw; dur=0
+strict-transport-security: max-age=31536000; includeSubDomains
+x-tt-trace-host: 01207a981426127d02143837b6aace09ad36b6b1c5331917cd96266784b2a82b801acdc2b0c486aaef0b4d0a484caf579d094aa163da4e1aa6510be6f9eb3882b6d3613653962284466a97ab98f1e9bbc09be6dacfbcbe3b5a6c0f24e480b82c61f51fbb3411b7af25427534abd2e683be
+x-tt-trace-tag: id=03;cdn-cache=miss;type=dyn
+x-tt-trace-id: 00-260816014241F7827B4576D0406796A8-750DB4DF842124AC-00
+x-tt-timestamp: 1786815761.668
+via: cache24.l2nu20-8[24,0], cache25.cn4936[43,0]
+server-timing: cdn-cache;desc=MISS,edge;dur=19,origin;dur=24
+timing-allow-origin: *
+eagleid: 2497e21e17868157616438948e

@@ -1,0 +1,6 @@
+GET http://ipv6.msftncsi.com/connecttest.txt HTTP/1.1
+Cache-Control: no-cache
+Connection: Close
+Pragma: no-cache
+User-Agent: Microsoft NCSI
+Host: ipv6.msftncsi.com

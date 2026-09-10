@@ -1,0 +1,20 @@
+HTTP/2 200
+server: volc-dcdn
+content-type: application/json; charset=utf-8
+content-length: 50
+date: Sat, 15 Aug 2026 07:25:43 GMT
+x-tt-logid: 20260815152543B86B8DE99F6691462B17
+vary: Origin
+access-control-allow-credentials: true
+access-control-expose-headers: Content-Length,Content-Type,X-Tt-Logid
+access-control-allow-origin: vscode-file://vscode-app
+strict-transport-security: max-age=31536000; includeSubDomains
+server-timing: inner; dur=19, cdn-cache;desc=MISS, origin;dur=56, edge;dur=0
+x-tt-trace-host: 01207a981426127d02143837b6aace09ad9287dd3dd18a937850633b7dc036f795a41fa4632a1cabfc04c18421daf475cc46f977d6499b0454d6680ea016bb6374ec8da05e2fb34a0ad7f8adf068860dc90b9ef96f78043e176430c8d61eb5983c42d9ad61981c833cdcb25344ff689640
+x-tt-trace-tag: id=5
+x-tt-trace-id: 00-044ff90a0dd7e685d584dc948650ffff-044ff90a0dd7e685-01
+x-tt-timestamp: 1786778743.237
+via: n61-214-098.jslianyungang-mp02-cm.Creative
+x-request-ip: 183.209.141.106
+x-dsa-trace-id: 178677874356783a5391fc1f3122b1908a0ffb7ce9
+x-dsa-origin-status: 200

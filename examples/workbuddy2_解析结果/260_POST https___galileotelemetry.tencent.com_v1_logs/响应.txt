@@ -1,0 +1,10 @@
+HTTP/2 200
+date: Tue, 08 Sep 2026 08:06:41 GMT
+content-type: application/json
+content-length: 2
+trpc-trans-info: {"affinity_attribute":"dHJwYy5odHRwLnVwc2VydmVyLnVwc2VydmljZeKUglBDRy0xMjMuZ2FsaWxlby5wdWJsaWNnYXRld2F54pSCMg=="}
+x-content-type-options: nosniff
+access-control-allow-origin: *
+access-control-allow-credentials: true
+access-control-allow-methods: *
+access-control-allow-headers: *

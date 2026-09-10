@@ -1,0 +1,12 @@
+GET https://edge-consumer-static.azureedge.net/mouse-gesture/config.json HTTP/2
+:method: GET
+:authority: edge-consumer-static.azureedge.net
+:scheme: https
+:path: /mouse-gesture/config.json
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+sec-fetch-storage-access: active
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+accept-encoding: gzip, deflate, br, zstd
+priority: u=4, i

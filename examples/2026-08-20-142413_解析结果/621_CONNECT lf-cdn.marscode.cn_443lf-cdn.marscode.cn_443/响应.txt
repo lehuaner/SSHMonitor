@@ -1,0 +1,116 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:23:37.864
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_128_GCM_SHA256
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.marscode.cn
+  Simple Name: *.marscode.cn
+  DNS Name: *.marscode.cn
+
+[Issuer]
+  CN=RapidSSL TLS RSA CA G1, OU=www.digicert.com, O=DigiCert Inc, C=US
+  Simple Name: RapidSSL TLS RSA CA G1
+  DNS Name: RapidSSL TLS RSA CA G1
+
+[Serial Number]
+  056CB7D62986D2E00C92AF0FC83D0397
+
+[Not Before]
+  2026/1/19 8:00:00
+
+[Not After]
+  2027/1/19 7:59:59
+
+[Thumbprint]
+  192CC2C8A26C3700FC3E16BEB738063CF7A4D52B
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 bc 47 eb ad f8 f4 7f f0 27 37 14 5a c0 55 5b 0a b6 06 74 98 d4 5f ad 7c 7d af 14 62 3f e4 8a 19 be 99 5f 1f a1 61 bd 75 7c ed 11 ca 80 2d 6a d8 b8 28 70 b2 1a da 23 42 5d ca ad d0 07 bf 03 d6 ae f8 80 51 84 6e bb db 41 56 ae 3c c6 2e 00 4a 60 42 5c db c3 70 3c 71 73 2f 8f 8a 97 7a 49 88 9a 35 d5 26 fe ee 16 39 50 fd d6 51 84 2b 7c b4 a1 6c 0d a5 fa 0a 07 eb 6f ea 78 9b 16 64 ab 23 17 6a a8 8e 14 51 ba 51 96 6f 2e 9f 27 66 ad 31 c3 57 fc e6 75 51 15 32 1c 0d 50 c5 fb 7f 23 03 11 9a 5a 3a d2 55 e4 1d 81 d8 e2 55 c6 ab 7d d2 f3 81 fa bf ad d7 49 aa e5 2e a7 e8 61 7c d2 fb 09 38 3f 86 08 5e 9f 8c a3 ca 4f 93 4d 17 2b b5 a8 85 1d 99 2b f4 3f 2d d1 94 83 07 ba 73 6d 4d b0 53 77 72 32 6d 8b f7 df 9b 93 1a bc 8e 71 49 77 68 bb 9c 7b 75 87 02 86 24 b1 7c ad a5 b1 5b 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=0cdb6c82490f4a670ab814ee7ac4485288eb5638
+
+* 使用者密钥标识符(2.5.29.14):
+  a300ff339956fabecb4799f4bdcde461ac4eb2a3
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.marscode.cn
+DNS Name=marscode.cn
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://cdp.rapidssl.com/RapidSSLTLSRSACAG1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://status.rapidssl.com
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.rapidssl.com/RapidSSLTLSRSACAG1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+4c63dc98e59c1dab88f61e8a3ddeae8fab44a3377b5f9b94c3fba19cfcc1be26
+‎2026‎年‎1‎月‎20‎日 3:51:18
+SHA256
+ECDSA
+30440220546c65a79086c03981cb6b003400a6483c880b819f019ae9d7b5b9d41878363802202b071a4f3c57346b11e056f28edd263ba83b9de9b4082ce7ce83d8d50a312182
+
+v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎1‎月‎20‎日 3:51:18
+SHA256
+ECDSA
+3046022100f1a48247b166fda1e00f037ae9f458accc4438d624e63ba82ebe364b742f6f04022100a0f7ba83fdd076a6853dd56e0596101e1e9fb68dbfe256914e682db7a3191825
+
+v1
+604c9aaf7a7f775f01d406fc920dc899eb0b1c7df8c9521bfafa17773b978bc9
+‎2026‎年‎1‎月‎20‎日 3:51:18
+SHA256
+ECDSA
+3046022100ae74df910ca6327176996912788ded758779951269233654a7a926c40d3d7d7e0221009359725309d9643133612ae09ef86a4c746165d23c8ea8ba6c4f1d349d8c2b3a
+
+
+[SubjectAltNames]
+DNS Name=*.marscode.cn
+DNS Name=marscode.cn
+

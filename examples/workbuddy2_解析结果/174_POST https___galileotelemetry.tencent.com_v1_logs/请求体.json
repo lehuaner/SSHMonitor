@@ -1,0 +1,120 @@
+{
+  "resourceLogs": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "target",
+            "value": {
+              "stringValue": "ElectronApp.WorkBuddy.Desktop"
+            }
+          },
+          {
+            "key": "type",
+            "value": {
+              "stringValue": "resource"
+            }
+          },
+          {
+            "key": "env_name",
+            "value": {
+              "stringValue": "production"
+            }
+          },
+          {
+            "key": "instance",
+            "value": {
+              "stringValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0-1788854781993"
+            }
+          },
+          {
+            "key": "namespace",
+            "value": {
+              "stringValue": "Production"
+            }
+          },
+          {
+            "key": "container_name",
+            "value": {
+              "stringValue": "genie.ElectronApp.WorkBuddy.Desktop"
+            }
+          },
+          {
+            "key": "ideType",
+            "value": {
+              "stringValue": "web-login"
+            }
+          },
+          {
+            "key": "os",
+            "value": {
+              "stringValue": "Windows"
+            }
+          }
+        ]
+      },
+      "scopeLogs": [
+        {
+          "scope": {
+            "name": "workbuddy.agent",
+            "version": "1.0.0"
+          },
+          "logRecords": [
+            {
+              "timeUnixNano": "1788854782981000000",
+              "severityNumber": 9,
+              "severityText": "INFO",
+              "body": {
+                "stringValue": "web.login.accounts_ready"
+              },
+              "attributes": [
+                {
+                  "key": "account_count",
+                  "value": {
+                    "stringValue": "1"
+                  }
+                },
+                {
+                  "key": "auto_selected",
+                  "value": {
+                    "stringValue": "true"
+                  }
+                },
+                {
+                  "key": "appVersion",
+                  "value": {
+                    "stringValue": "5.5.3"
+                  }
+                },
+                {
+                  "key": "platform",
+                  "value": {
+                    "stringValue": "workbuddy"
+                  }
+                },
+                {
+                  "key": "state",
+                  "value": {
+                    "stringValue": "4f006bcb-ee21-4480-ab9e-db26b8a89b37"
+                  }
+                },
+                {
+                  "key": "loginSessionId",
+                  "value": {
+                    "stringValue": "77a5fd45-a89a-4601-be24-17ca2a90d742"
+                  }
+                },
+                {
+                  "key": "traceId",
+                  "value": {
+                    "stringValue": "77a5fd45a89a4601be2417ca2a90d742"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

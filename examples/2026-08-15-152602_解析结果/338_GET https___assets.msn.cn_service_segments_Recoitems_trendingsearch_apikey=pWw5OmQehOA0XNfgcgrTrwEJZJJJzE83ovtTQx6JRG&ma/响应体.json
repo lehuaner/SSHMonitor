@@ -1,0 +1,29 @@
+[
+  {
+    "type": "TrendingSearchCard",
+    "data": "[{\"Query\":\"\\u591A\\u5730\\u8981\\u6C42\\u793E\\u4FDD\\u5168\\u989D\\u7F34\\u7EB3\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false},{\"Query\":\"\\u6691\\u671F\\u6863\\u6700\\u201C\\u70B8\\u88C2\\u201D\\u7535\\u5F71\\u6765\\u4E86\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false},{\"Query\":\"\\u8FFD\\u89C5\\u624B\\u673A\\u9996\\u552E\\u8D8520\\u4E07\\u5143\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false},{\"Query\":\"\\u9152\\u5427\\u5973\\u5B50\\u7A7F\\u6D77\\u822A\\u5236\\u670D\\u8DF3\\u821E\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false},{\"Query\":\"\\u738B\\u5609\\u5C14\\u5B8B\\u96E8\\u7426\\u88AB\\u66DD\\u604B\\u7231\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false},{\"Query\":\"\\u5973\\u5B50\\u9686\\u80F81\\u5468\\u540E\\u67E5\\u51FA\\u5DF2\\u6000\\u5B555\\u5468\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false},{\"Query\":\"\\u6CB9\\u4EF7\\u4ECA\\u665A\\u4E0B\\u8C03 \\u52A0\\u6EE1\\u77019\\u5143\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false},{\"Query\":\"\\u6D59\\u6C5F\\u957F\\u5174\\u7A81\\u53D1\\u5C71\\u6D2A\\u6CE5\\u77F3\\u6D41\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false},{\"Query\":\"\\u7CD6\\u62CC\\u897F\\u7EA2\\u67FF\\u7ED9\\u8C22\\u9706\\u950B\\u6574\\u4E0D\\u4F1A\\u4E86\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false},{\"Query\":\"\\u4E1C\\u5357\\u4E9A\\u69B4\\u83B2\\u4EF7\\u683C\\u5D29\\u76D8\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false},{\"Query\":\"\\u5468\\u661F\\u9A70\\u7ECF\\u7EAA\\u4EBA\\u5185\\u6DB5\\u9F99\\u9910\\u9986\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false},{\"Query\":\"\\u5E7F\\u4E1C\\u53D1\\u73B026cm\\u5DE8\\u5927\\u86C7\\u5934\\u86FE\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false},{\"Query\":\"221\\u5143\\u9152\\u5E97\\u5546\\u5BB6\\u5230\\u624B40.67\\u5143\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false},{\"Query\":\"\\u4E09\\u4F0F\\u5929\\u8FD9\\u91CC\\u7684\\u7FBD\\u7ED2\\u670D\\u7206\\u5355\\u4E86\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false},{\"Query\":\"\\u6E56\\u5357\\u7164\\u77FF\\u74E6\\u65AF\\u4E8B\\u65457\\u4EBA\\u5931\\u8054\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false},{\"Query\":\"\\u7092\\u80A1\\u7FA42724\\u4EBA\\u5168\\u662F\\u6258\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false},{\"Query\":\"\\u501F\\u7ED9\\u670B\\u53CB140\\u4E07\\u79BB\\u4E16\\u94B1\\u8981\\u4E0D\\u56DE\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false},{\"Query\":\"\\u56FD\\u4E521\\u5929\\u8F936\\u573A\\u5916\\u6218\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false},{\"Query\":\"\\u6CB3\\u5357\\u5468\\u53E3\\u5824\\u575D\\u6E83\\u53E3\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false},{\"Query\":\"\\u5FAE\\u4FE1\\u670B\\u53CB\\u5708\\u65B0\\u589E\\u7F16\\u8F91\\u529F\\u80FD\",\"Score\":0,\"IsAds\":false,\"IsHighQuality\":false}]",
+    "version": 122,
+    "metadata": {
+      "totalClickLastKHours1": "0",
+      "totalOrganicClients1": "0",
+      "totalExponentialDecayClicks1": "0",
+      "totalClickLastKHours2": "0",
+      "totalOrganicClients2": "0",
+      "totalExponentialDecayClicks2": "0",
+      "totalClickLastKHours3": "0",
+      "totalOrganicClients3": "0",
+      "totalExponentialDecayClicks3": "0",
+      "totalClickLastKHours4": "0",
+      "totalOrganicClients4": "0",
+      "totalExponentialDecayClicks4": "0",
+      "totalClickLastKHours5": "0",
+      "totalOrganicClients5": "0",
+      "totalExponentialDecayClicks5": "0",
+      "totalClickLastKHours6": "0",
+      "totalOrganicClients6": "0",
+      "totalExponentialDecayClicks6": "0"
+    },
+    "isSkipped": false,
+    "additionalNewsContent": []
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "d1191343-b2a1-4a0b-bba3-421648ffdd9b",
+  "data": {
+    "redemption_id": 543960,
+    "tier": "7d",
+    "credit_granted": 0,
+    "energy_granted": 2,
+    "cards_granted": 1,
+    "cards_overflow": 0,
+    "chances_granted": 1,
+    "remaining_days": 0
+  }
+}

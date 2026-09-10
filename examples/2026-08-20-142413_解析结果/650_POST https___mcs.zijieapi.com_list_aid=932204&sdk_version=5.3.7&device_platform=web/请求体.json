@@ -1,0 +1,68 @@
+[
+  {
+    "events": [
+      {
+        "event": "new_version_guide",
+        "params": "{\"action\":\"show\",\"appVersion\":\"0.1.51\",\"versionCode\":\"20260609\",\"pageTotal\":0,\"pageAvg\":0,\"isFocus\":\"focus\",\"isVisible\":\"visible\",\"event_index\":1787207541944}",
+        "local_time_ms": 1787207014320,
+        "is_bav": 0,
+        "session_id": "cbdaca9e-d4c0-453e-86f4-c02adec85c36"
+      },
+      {
+        "event": "icube_app_open",
+        "params": "{\"open_type\":\"active\",\"utm_source\":\"\",\"isFocus\":\"focus\",\"isVisible\":\"visible\",\"event_index\":1787207541943}",
+        "local_time_ms": 1787207014144,
+        "is_bav": 0,
+        "session_id": "cbdaca9e-d4c0-453e-86f4-c02adec85c36"
+      },
+      {
+        "event": "solo_mode_display",
+        "params": "{\"open_mode\":\"default\",\"is_flow\":1,\"event_index\":1787207541942}",
+        "local_time_ms": 1787207014144,
+        "is_bav": 0,
+        "session_id": "cbdaca9e-d4c0-453e-86f4-c02adec85c36"
+      },
+      {
+        "event": "electron_sandbox_init",
+        "params": "{\"code_didStartMain\":11762.044921875,\"code_willLoadMainBundle\":-11763,\"code_didLoadMainBundle\":11763,\"electron_willBasicStartupComplete\":-11752,\"electron_didBasicStartupComplete\":57,\"electron_willCrashReporterStartup\":22,\"electron_didCrashReporterStartup\":99,\"electron_willCreateNodeEnv\":22,\"electron_didCreateNodeEnv\":70,\"electron_willInitNodeEnv\":0,\"electron_didInitNodeEnv\":86,\"electron_willInitRunBrowser\":-175,\"electron_didInitRunBrowser\":14,\"electron_willInitializeICU\":-138,\"electron_didInitializeICU\":11,\"electron_willLoadV8Snapshot\":0,\"electron_didLoadV8Snapshot\":11,\"code_mainAppReady\":11971,\"code_willGenerateNls\":2,\"code_didGenerateNls\":0,\"code_willLoadNls\":232,\"code_didLoadNls\":29,\"code_registerFilesystem_file\":130,\"code_registerFilesystem_vscode_userdata\":3,\"code_didRunMainBundle\":7,\"code_willStartMainServer\":356,\"code_didStartMainServer\":3,\"code_willCreateCodeWindow\":171,\"code_willRestoreCodeWindowState\":1,\"code_didRestoreCodeWindowState\":1,\"code_willCreateCodeBrowserWindow\":1,\"code_didCreateCodeBrowserWindow\":202,\"code_didCreateCodeWindow\":4,\"code_willOpenNewWindow\":9,\"perfmarks_time\":13211.044921875,\"isFocus\":\"focus\",\"isVisible\":\"visible\",\"event_index\":1787207541941}",
+        "local_time_ms": 1787207014143,
+        "is_bav": 0,
+        "session_id": "cbdaca9e-d4c0-453e-86f4-c02adec85c36"
+      }
+    ],
+    "user": {
+      "user_unique_id": "2609589533558410",
+      "user_id": "0",
+      "user_is_login": false,
+      "device_id": "2609589533558410"
+    },
+    "header": {
+      "app_id": 932204,
+      "app_version": "0.1.51",
+      "os_name": "windows",
+      "os_version": "Windows 11 Pro",
+      "device_model": "VMware20,1",
+      "language": "zh-cn",
+      "region": "CN",
+      "app_language": "zh-cn",
+      "platform": "electron",
+      "sdk_version": "5.3.7",
+      "sdk_lib": "js",
+      "timezone": 8,
+      "tz_offset": -28800,
+      "resolution": "1199x822",
+      "browser": "Chrome",
+      "browser_version": "142.0.7444.235",
+      "referrer": "",
+      "referrer_host": "",
+      "width": 1199,
+      "height": 822,
+      "screen_width": 1199,
+      "screen_height": 822,
+      "tracer_data": "{\"$utm_from_url\":1}",
+      "custom": "{\"network_type\":\"4g\",\"icube_uid\":\"0\",\"biz_user_id\":\"0\",\"local_device_id\":\"aha-7f12c0855ac2ffa28d075411615cee7d\",\"is_special_uuid\":false,\"machine_id\":\"cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b\",\"arch\":\"x64\",\"system\":\"win32\",\"scope\":\"unknown\",\"build_version\":\"2.3.71801\",\"vscode_version\":\"1.107.1\",\"quality\":\"stable\",\"build_time\":\"2026-08-14T10:40:39.642Z\",\"icube_main_uid\":\"d8b1556e-3a4e-4750-a840-0cd889b6ad29\",\"window_id\":1,\"workspace_id\":\"e04cdd\",\"os_release\":\"10.0.26200\",\"device_manufacturer\":\"VMware, Inc.\",\"cpu\":\"AMD\",\"cpu_brand\":\"AMD Ryzen 5 5600H with Radeon Graphics\",\"cpu_speed\":3.294,\"memory\":19732910080,\"is_ssh\":false,\"chat_mode\":1,\"channel_name\":\"common\",\"process_type\":2,\"privacy_mode\":\"off\",\"aha_version\":\"39.2.7-release.1.49.0\",\"store_country_code\":\"\",\"store_country_code_src\":\"did\",\"store_region\":\"CN\",\"workspace_status\":\"multi_root\",\"workspace_root_count\":1,\"product_code\":\"SOLO_Lite\",\"ai_chat_version\":\"v1\",\"ai_chat_version_source\":\"default\",\"solo_lite_app_slim_enabled\":\"1\",\"app_is_solo_mode\":\"1\",\"icube_ab\":\"{\\\"onboarding\\\":\\\"A\\\"}\",\"app_window_count\":1,\"app_active_workspace_vscdb_size\":12288,\"app_global_vscdb_size\":180224}"
+    },
+    "local_time": 1787207016,
+    "verbose": 1
+  }
+]

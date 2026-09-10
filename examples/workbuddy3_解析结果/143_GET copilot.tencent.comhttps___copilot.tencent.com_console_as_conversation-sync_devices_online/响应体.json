@@ -1,0 +1,31 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": {
+    "devices": [
+      {
+        "deviceId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+        "deviceType": "local",
+        "displayName": "LEHUAN-PC",
+        "localAgentType": "",
+        "lastSeenAtMs": 1789012900090,
+        "onlineFlag": false,
+        "remoteViewFlag": 1,
+        "chSdkVersion": "0.0.1",
+        "appVersion": ""
+      },
+      {
+        "deviceId": "446cd438",
+        "deviceType": "cloud",
+        "displayName": "WorkBuddy App · HarmonyOS · v1.3.2",
+        "localAgentType": "",
+        "lastSeenAtMs": 1788808196807,
+        "onlineFlag": false,
+        "remoteViewFlag": 0,
+        "chSdkVersion": "2.1.0",
+        "appVersion": ""
+      }
+    ],
+    "cacheSource": "redis+cf"
+  }
+}

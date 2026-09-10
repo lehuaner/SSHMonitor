@@ -1,0 +1,58 @@
+{
+  "name": "git/git.repositoryInitialScan",
+  "time": "2026-08-17T17:32:36.851Z",
+  "ver": "4.0",
+  "iKey": "o:0c6ae279ed8443289764825290e4f9e2",
+  "ext": {
+    "sdk": {
+      "ver": "1DS-Web-JS-4.3.4"
+    },
+    "web": {
+      "consentDetails": "{\"GPC_DataSharingOptIn\":false}"
+    },
+    "metadata": {
+      "f": {
+        "baseData": {
+          "f": {
+            "measurements": {
+              "f": {
+                "repositoryCount": {
+                  "t": 6
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "data": {
+    "baseData": {
+      "name": "git/git.repositoryInitialScan",
+      "properties": {
+        "autoRepositoryDetection": "true",
+        "common.os": "win32",
+        "common.nodeArch": "x64",
+        "common.platformversion": "10.0.26200",
+        "common.telemetryclientversion": "0.9.8",
+        "common.extname": "vscode.git",
+        "common.extversion": "1.0.0",
+        "common.vscodemachineid": "0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51",
+        "common.vscodesessionid": "03a2851a-2be4-4efe-84be-97f2427fc8c71786966963000",
+        "common.vscodecommithash": "a6889884f0ff515f85271def5aa04cdfa3d98b10",
+        "common.sqmid": "{1BA25A1E-796F-4226-92B5-DB53593A8E9C}",
+        "common.devDeviceId": "33489686-e229-47bc-9104-de5e873c8906",
+        "common.vscodeversion": "1.107.1",
+        "common.vscodereleasedate": "2026-08-14T10:40:39.642Z",
+        "common.isnewappinstall": false,
+        "common.product": "desktop",
+        "common.uikind": "desktop",
+        "common.remotename": "none",
+        "version": "PostChannel=4.3.4"
+      },
+      "measurements": {
+        "repositoryCount": 0
+      }
+    }
+  }
+}

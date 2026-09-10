@@ -1,0 +1,32 @@
+GET https://api5-normal.mchost.guru/api/remote/v1/plugins?page_size=50&product_name=lite&chat_mode=work&package_type=stable&client_version=0.1.51&os=windows HTTP/2
+:method: GET
+:authority: api5-normal.mchost.guru
+:scheme: https
+:path: /api/remote/v1/plugins?page_size=50&product_name=lite&chat_mode=work&package_type=stable&client_version=0.1.51&os=windows
+accept: */*
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+authorization: Cloud-IDE-JWT eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTU1NDAyNDUyNDE2Njg3MSIsInNvdXJjZSI6InJlZnJlc2hfdG9rZW4iLCJzb3VyY2VfaWQiOiJKVFZhR3k0aXR0YmlZNUpXdWJHUU9fX1JWeWo4UmdNX1kzcGdtY2k5UVUwPS4xOGNkNmY1M2JlM2I5NjhiIiwidGVuYW50X2lkIjoiN28yZDg5NHA3ZHIwbzQiLCJ0eXBlIjoidXNlciJ9LCJleHAiOjE3ODg0MTY2MzIsImlhdCI6MTc4NzIwNzAzMn0.ibWFhfXYgm7p8Ut42q6-Cv5wVdzLJL7h-SejWlJNqgOj8tPbZTIFP2sdYJqaHIl1IrtvSNpvpkjDPQWE7A5p7nQHZ3vuEjEOqdlfRqORUOuh-dmR7v2uebd-Fhv1eWAvKo30pIrV5Op5J-82UJMlH2N8AQqAGC8e_jt7375WlVGAJFWI0u164rJJqgVRNjlpudZDlgkCvCxKoXdHjfdOeUxdM7ZJNEJPoA5HSAdSsrDiY29ap8YaZpz3YyYWnrin5IgtFsgStlTewWV5n87R5RRAyEXsduiE3OxVeUpMhSoc7dbzlmi40fmffrQ_Uut5r1n4qMVTUu-NWuT4FvRW94aCy0TrC0NcZhr7h7F7eG3bPX6eURTC_UejvSAWitQI0vj4Dp6l5PJIzCpum5iAIgF05jNy0AsiZjfF3POY26tJDKnA45QnoPRDVof5073kvgMi_xw3GGIF7EkQ9qQMim_1GhKTs-_gx9KtYVyGlkSgdhbvzNC5qHR1B1uNi4a4_hWj1-Ui71xJnhVn7Hy9G5HeqYCU7PHT0hfiBGuONn1RZB8S_JFMRsWAc_sAAVZDT5di1Ms4tMZ7kR456829kLEideUzle0t1U-DnUFB7k_7QCYp46JjulTqvIReUAyRUAedDUpRs6BJttscYDrwhxNRju_L6_FLvSwEzlJ78a0
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+x-preferenced-language: zh-cn
+x-trae-client-type: lite
+x-trae-user-timezone: Asia/Shanghai
+x-user-region: CN
+sec-ch-ua: "Not_A Brand";v="99", "Chromium";v="142"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: 8257828f-fd80-4829-9151-4fff5158981e
+x-ss-dp: 787976
+x-tt-trace-id: 00-1dd73e4a0d945686928468a99e33ffff-1dd73e4a0d945686-01
+x-helios: IHwAAEW01tjMymS6NrecYOPNh4yfcM+ogDZ6z9x+aDNPWPfo
+x-medusa: g52Gand12ZBXSlpRVrdOGtdS53L2KgMBRA2fHCAAMVI5mLrPcgKYWt5LWcpIHMjg9236QXmWzeZajqkQar6s/PQgfdST9b2cqqx15LR1Fd9CI61cXujN3q+MBrRt7Oth6bBXfKSlDsGPuYqIkHAcRhAUW5ncJ5nCFnH8gyiJop7CLTpaCtsaE7XMRSJCucNv6orDmrjLwpRIMXd4YlCJ2YJGMjMBkYNzFKjFzKEGhz350sSuyYUyWLvOwDOMCFaRObax84feQ7ex85LhVr61VkKSsheQyxskV9ORREgqqEA/YKGBncsJXP+ElPB4Bqh3NOKoB8yA0I0WL9JCfn2jD2IlFmPW2Ktbcuxxbo/pq48pC6T0KUgwwMZexgmfAb63F5xY7cJwOwMIgMnqZRdwTyONT/cSfGyWmrqOpNYLczxu2ormhaEmbLLmYUiH3LYn58ogZTQ0KSY59bJ8DEk2/GfizC71miXGgNFFIzyt8M5RaVHEG6XAVICj1QfdIGYfB5FAEyQ1kOzFYkRN2MaKU3NQFzUNyBiofVCfyzd4wESCe1HbpvhP2/+FvIpoHBWnUAeB51MQv6a9WcJdTY6oIGnoKYUz7XMEGyddusGK5dAGtWJSrEwQ/vwrNE/KqW73k9J7MIcWOVvXVcJK1n9jRSLvobDHC5mvzoxDn7+Pzx8fT9/l3Y8Hj+mnnJoA6zHu+bInApLbfxE2/5W5r4k7jWvqXT5YrL0/vs2RjXYuX7xKDc5j+af57/du1LpPJ2UJ5SOYarWQFyAe5fv/3//v9///AAA=
+x-neptune: -11|50:51:59:00:09

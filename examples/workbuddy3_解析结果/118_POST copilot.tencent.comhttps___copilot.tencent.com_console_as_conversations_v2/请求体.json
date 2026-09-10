@@ -1,0 +1,25 @@
+{
+  "type": "local",
+  "sessionId": "f2691a1c-61f7-411c-91bc-779aaebbfe6a",
+  "name": "排查 testEraser 标注框回退问题",
+  "conversationOrigin": "legacy_workbuddy_local",
+  "workDir": "D:\\Code\\Project\\Python\\ExtractRole",
+  "isPlayground": 0,
+  "createdAtMs": 1788078180079,
+  "updatedAtMs": 1788172190034,
+  "lastActivityAtMs": 1788172190034,
+  "clientContext": {
+    "localStatus": "active",
+    "hostId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "sessionKind": "manual",
+    "model": "",
+    "sourceMode": "",
+    "permissionMode": "",
+    "expert": {
+      "id": "",
+      "locale": "",
+      "runtimeIdentity": "",
+      "marketplace": ""
+    }
+  }
+}

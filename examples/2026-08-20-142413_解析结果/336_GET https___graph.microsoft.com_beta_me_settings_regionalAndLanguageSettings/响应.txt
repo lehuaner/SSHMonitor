@@ -1,0 +1,11 @@
+HTTP/1.1 200 OK
+Content-Type: application/json;odata.metadata=minimal;odata.streaming=true;IEEE754Compatible=false;charset=utf-8
+Vary: Accept-Encoding
+Strict-Transport-Security: max-age=31536000
+request-id: 195c8b74-6522-44ea-a7b6-15e9229a91cf
+client-request-id: 195c8b74-6522-44ea-a7b6-15e9229a91cf
+x-ms-ags-diagnostic: {"ServerInfo":{"DataCenter":"Korea Central","Slice":"E","Ring":"4","ScaleUnit":"002","RoleInstance":"SE1PEPF00015623"}}
+X-Content-Type-Options: nosniff
+OData-Version: 4.0
+Date: Thu, 20 Aug 2026 06:22:26 GMT
+Content-Length: 557

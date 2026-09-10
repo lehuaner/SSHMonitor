@@ -1,0 +1,8 @@
+{
+    "activity_id": "work_fission_202607",
+    "startTime": "2026-07-18T10:00:00+08:00",
+    "endTime": "",
+    "extraRewardStartTime": "2026-08-12T10:00:00+08:00",
+    "extraRewardEndTime": "",
+    "extraReward": "2 杯星巴克咖啡"
+}

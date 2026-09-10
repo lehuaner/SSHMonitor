@@ -1,0 +1,153 @@
+{
+  "code": 200,
+  "message": "success",
+  "data": {
+    "conversations": [
+      {
+        "id": "bac97a858f204e6a87a7fdbd3c33cb86",
+        "cli_conversation_id": "6a741359c8f9701a18fe136b",
+        "status": 4,
+        "updated_at": "2026-08-06T14:19:27+08:00",
+        "is_default_folder": false,
+        "is_pinned": false
+      },
+      {
+        "id": "fdb19a0ae15e4f4d8ea36dad2e20b67f",
+        "cli_conversation_id": "6a740877c8f9701a18fe12bf",
+        "status": 4,
+        "updated_at": "2026-08-06T12:12:03+08:00",
+        "is_default_folder": false,
+        "is_pinned": false
+      },
+      {
+        "id": "68d167f049954ff3ba4a60a95acd02b1",
+        "cli_conversation_id": "6a70d0cbdb7ae5bd6ae18a1c",
+        "status": 5,
+        "updated_at": "2026-08-06T11:50:51+08:00",
+        "is_default_folder": false,
+        "is_pinned": false
+      },
+      {
+        "id": "a21a1da01e364be3880f3f952d640b91",
+        "cli_conversation_id": "6a71fda3ae9f6687178b6f33",
+        "status": 5,
+        "updated_at": "2026-08-05T14:07:47+08:00",
+        "is_default_folder": false,
+        "is_pinned": false
+      },
+      {
+        "id": "df9b559c2b1440bc947c65c3f1e2c23f",
+        "cli_conversation_id": "6a72aadd5ba6c22fe907ced2",
+        "status": 5,
+        "updated_at": "2026-08-05T12:25:50+08:00",
+        "is_default_folder": false,
+        "is_pinned": false
+      },
+      {
+        "id": "c5d350de016f433495e178268a54cde5",
+        "cli_conversation_id": "6a70dbb6d29c8c6d2bdfb296",
+        "status": 5,
+        "updated_at": "2026-08-04T02:37:31+08:00",
+        "is_default_folder": false,
+        "is_pinned": false
+      },
+      {
+        "id": "e241233baaab4cb8b7257e307047bbf4",
+        "cli_conversation_id": "6a70d097db7ae5bd6ae189b5",
+        "status": 5,
+        "updated_at": "2026-08-04T01:33:01+08:00",
+        "is_default_folder": false,
+        "is_pinned": false
+      },
+      {
+        "id": "75690798ac564ed29d416dd67bd9ff7f",
+        "cli_conversation_id": "6a6b4c6f7ee3684ccd01f58a",
+        "status": 5,
+        "updated_at": "2026-07-30T22:19:16+08:00",
+        "is_default_folder": false,
+        "is_pinned": false
+      },
+      {
+        "id": "092460ca88284e1cbb9db0155c4143b8",
+        "cli_conversation_id": "6a69f98992bf090f6d30c761",
+        "status": 5,
+        "updated_at": "2026-07-30T21:05:52+08:00",
+        "is_default_folder": false,
+        "is_pinned": false
+      },
+      {
+        "id": "0dd563f92e72462e88e3b788c2bbbcde",
+        "cli_conversation_id": "6a6a3a9116bb462ec7f44d60",
+        "status": 5,
+        "updated_at": "2026-07-30T11:56:05+08:00",
+        "is_default_folder": false,
+        "is_pinned": false
+      },
+      {
+        "id": "bcebf9ef5bff47c093c751fac16e039a",
+        "cli_conversation_id": "6a69460e24f01db7b426d519",
+        "status": 5,
+        "updated_at": "2026-07-29T13:03:32+08:00",
+        "is_default_folder": false,
+        "is_pinned": false
+      },
+      {
+        "id": "ee8f76084649461abc2468580218f365",
+        "cli_conversation_id": "6a6826f624f01db7b426d1dd",
+        "status": 5,
+        "updated_at": "2026-07-28T23:21:06+08:00",
+        "is_default_folder": false,
+        "is_pinned": false
+      },
+      {
+        "id": "71c2c3e5ef2e4b2a9f2395edc0ad0912",
+        "cli_conversation_id": "6a64f3eb0c46123a6c462346",
+        "status": 4,
+        "updated_at": "2026-07-28T11:48:18+08:00",
+        "is_default_folder": false,
+        "is_pinned": false
+      },
+      {
+        "id": "135b3eb5173f479cb2e711896a61fd4f",
+        "cli_conversation_id": "6a5cab4c2e2afc060171ba94",
+        "status": 4,
+        "updated_at": "2026-07-19T18:48:49+08:00",
+        "is_default_folder": false,
+        "is_pinned": false
+      },
+      {
+        "id": "7d010dab1ab94ba98640af6964f2b3fb",
+        "cli_conversation_id": "6a5c62805e6a29a68d394adf",
+        "status": 4,
+        "updated_at": "2026-07-19T13:37:12+08:00",
+        "is_default_folder": false,
+        "is_pinned": false
+      },
+      {
+        "id": "8f1356552a60408e990fcc96a06d5d00",
+        "cli_conversation_id": "6a5a3ad1875f8691fc3b4a0d",
+        "status": 5,
+        "updated_at": "2026-07-17T22:26:21+08:00",
+        "is_default_folder": false,
+        "is_pinned": false
+      },
+      {
+        "id": "1f126f20df6c4691b178dd989201199c",
+        "cli_conversation_id": "6a59b8b377aa222658c5378a",
+        "status": 5,
+        "updated_at": "2026-07-17T13:45:16+08:00",
+        "is_default_folder": false,
+        "is_pinned": false
+      },
+      {
+        "id": "45cc4db7584c429eb0a24acd856fbaa0",
+        "cli_conversation_id": "6a3be0c0e4413e4d641bad34",
+        "status": 4,
+        "updated_at": "2026-06-24T21:50:58+08:00",
+        "is_default_folder": false,
+        "is_pinned": false
+      }
+    ],
+    "total": 18
+  }
+}

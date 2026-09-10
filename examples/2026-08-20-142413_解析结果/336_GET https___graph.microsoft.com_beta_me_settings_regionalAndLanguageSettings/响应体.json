@@ -1,0 +1,36 @@
+{
+  "@odata.context": "https://graph.microsoft.com/beta/$metadata#users('s2384335609%40gmail.com')/settings/regionalAndLanguageSettings/$entity",
+  "id": "1d2415e0-dbf4-40be-a56f-911c6235de68",
+  "defaultSpeechInputLanguage": null,
+  "defaultTranslationLanguage": null,
+  "authoringLanguages": [
+    {
+      "locale": "zh-CN",
+      "displayName": "中文(中国)"
+    }
+  ],
+  "defaultDisplayLanguage": {
+    "locale": "zh-CN",
+    "displayName": "中文(中国)"
+  },
+  "defaultRegionalFormat": {
+    "locale": "zh-CN",
+    "displayName": "中文(中国)"
+  },
+  "regionalFormatOverrides": {
+    "calendar": "Gregorian",
+    "firstDayOfWeek": "monday",
+    "shortDateFormat": "yyyy/M/d",
+    "longDateFormat": "yyyy'年'M'月'd'日'",
+    "shortTimeFormat": "H:mm",
+    "longTimeFormat": "H:mm:ss",
+    "timeZone": "China Standard Time"
+  },
+  "translationPreferences": {
+    "translationBehavior": "Ask",
+    "untranslatedLanguages": [
+      "zh-hans"
+    ],
+    "languageOverrides": []
+  }
+}

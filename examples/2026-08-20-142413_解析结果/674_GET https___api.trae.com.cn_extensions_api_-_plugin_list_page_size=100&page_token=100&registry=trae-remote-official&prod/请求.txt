@@ -1,0 +1,26 @@
+GET https://api.trae.com.cn/extensions/api/-/plugin/list?page_size=100&page_token=100&registry=trae-remote-official&product_name=lite&chat_mode=work&package_type=stable&client_version=0.1.51&os=windows HTTP/2
+:method: GET
+:authority: api.trae.com.cn
+:scheme: https
+:path: /extensions/api/-/plugin/list?page_size=100&page_token=100&registry=trae-remote-official&product_name=lite&chat_mode=work&package_type=stable&client_version=0.1.51&os=windows
+accept: application/json
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+content-type: application/json
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+x-preferenced-language: zh-cn
+sec-ch-ua: "Not_A Brand";v="99", "Chromium";v="142"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: 4879fa84-f0af-4551-8b8c-0a780bae219b
+x-tt-trace-id: 00-1dd6f1c70d945686928468ab3d24ffff-1dd6f1c70d945686-01
+smbyttnet: 1

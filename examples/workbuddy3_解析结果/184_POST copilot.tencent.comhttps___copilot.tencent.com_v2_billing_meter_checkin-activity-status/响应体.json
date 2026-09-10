@@ -1,0 +1,49 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "5996af9a-4a83-4e19-a83e-83845856a3b1",
+  "data": {
+    "active": true,
+    "today_checked_in": true,
+    "streak_days": 9,
+    "daily_credit": 100,
+    "today_credit": 100,
+    "is_streak_day": false,
+    "next_streak_day": 0,
+    "streak_bonus_days": 0,
+    "streak_bonus_credit": 0,
+    "checkin_dates": [
+      "2026-09-10",
+      "2026-09-08",
+      "2026-09-07",
+      "2026-09-06",
+      "2026-09-05",
+      "2026-09-04",
+      "2026-09-03",
+      "2026-09-02",
+      "2026-09-01"
+    ],
+    "week_checkin_days": 3,
+    "week_progress": [
+      true,
+      true,
+      false,
+      true,
+      false,
+      false,
+      false
+    ],
+    "total_credits": 900,
+    "start_time": "2026-09-01 00:00:00",
+    "end_time": "2026-09-15 23:59:59",
+    "theme_name": "Buddy加油站",
+    "season": 8,
+    "activity_name": "开学季",
+    "claim_button_text": "立即领取",
+    "action_button": {
+      "show": true,
+      "text": "认证领积分",
+      "action": "https://www.workbuddy.cn/events/campus-freshman/"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+HTTP/2 200
+date: Mon, 07 Sep 2026 16:38:58 GMT
+content-type: text/plain; charset=utf-8
+content-length: 326
+access-control-allow-origin: *
+access-control-allow-credentials: true
+access-control-allow-methods: *
+access-control-allow-headers: *

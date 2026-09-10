@@ -1,0 +1,101 @@
+{
+  "data": {
+    "count": 2,
+    "list": [
+      {
+        "platforms": [
+          "Work"
+        ],
+        "appVersion": {
+          "Work": ">=0.1.50"
+        },
+        "id": 105,
+        "notificationType": "account",
+        "tenantId": "marscode",
+        "userType": "all",
+        "data": {
+          "title": {
+            "en": "@TraeWork in Feishu/WeChat. Create tasks from your chats!",
+            "ja": "TraeWork が Feishu/WeChat に対応。チャットからいつでもタスクを作成！",
+            "zh-cn": "TraeWork 接入飞书/微信，随时在聊天中下发任务！"
+          },
+          "button": {
+            "label": {
+              "en": "Try it now",
+              "ja": "試してみる",
+              "zh-cn": "去体验"
+            },
+            "commandId": "icube.soloLite.openIMBridge"
+          },
+          "content": {
+            "en": "Mention your bot assistant TraeWork in messaging apps, and your messages will automatically become tasks. No need to switch apps — view results directly in your chat.",
+            "ja": "チャットアプリであなたのボットアシスタント TraeWork にメンションすると、メッセージが自動的にタスクに変換されます。アプリを切り替えることなく、チャット内で結果を確認できます。",
+            "zh-cn": "在通讯工具 @你的办公助理 TraeWork，消息自动转为任务。无需切换应用，直接在聊天中查看结果。"
+          }
+        },
+        "extraData": null,
+        "packageType": "stable_cn",
+        "template": "default",
+        "status": "publish",
+        "effectiveTime": "2026-08-17T04:13:42.000Z",
+        "expireTime": null,
+        "createdAt": "2026-08-05T06:44:17.000Z",
+        "updatedAt": "2026-08-17T04:13:42.000Z",
+        "draftId": 55,
+        "isRead": false
+      },
+      {
+        "platforms": [
+          "IDE",
+          "Work",
+          "Web",
+          "iOS",
+          "Android"
+        ],
+        "appVersion": {
+          "IDE": "*",
+          "Work": "*",
+          "Web": null,
+          "iOS": "*",
+          "Android": "*"
+        },
+        "id": 97,
+        "notificationType": "account",
+        "tenantId": "marscode",
+        "userType": "all",
+        "data": {
+          "title": {
+            "en": "New Credit System Now Live: Exclusive Model Subsidies",
+            "ja": "新ポイントシステム登場！専用モデル補助金をプレゼント",
+            "zh-cn": "全新积分体系现已上线，享专属模型补贴"
+          },
+          "button": {
+            "url": "https://docs.trae.cn/ide_plans-and-billing",
+            "label": {
+              "en": "View Details",
+              "ja": "詳細を見る",
+              "zh-cn": "查看详情"
+            }
+          },
+          "content": {
+            "en": "TRAE's new credit system is here. Your remaining Express Pass is automatically converted into credits and precisely offset against actual usage. Update to the latest client to claim bonus credits, plus multiple credit campaigns await you.",
+            "ja": " TRAEの新ポイントシステムがスタート。残りのExpress Passは自動的にポイントへ換算され、実際の消費に応じて正確に控除されます。クライアントを最新版にアップデートして追加ポイントをゲット。さらに多数のポイントキャンペーンもご用意しています。",
+            "zh-cn": "TRAE 全新积分体系已上线，您的剩余速通将自动折算为积分，按实际消耗精准抵扣。升级客户端至最新版本，即可体验并领取加赠积分，更有专属模型补贴、多重积分活动等你来。"
+          }
+        },
+        "extraData": null,
+        "packageType": "stable_cn",
+        "template": "default",
+        "status": "publish",
+        "effectiveTime": "2026-07-31T08:29:53.000Z",
+        "expireTime": null,
+        "createdAt": "2026-07-31T06:52:17.000Z",
+        "updatedAt": "2026-07-31T08:29:53.000Z",
+        "draftId": 52,
+        "isRead": false
+      }
+    ]
+  },
+  "success": true,
+  "logId": "202608201423567653E20E8B0A0088520E"
+}

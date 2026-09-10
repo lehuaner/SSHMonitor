@@ -1,0 +1,160 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:22:19.804
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.azurefd.net, O=Microsoft Corporation, L=Redmond, S=WA, C=US
+  Simple Name: *.azurefd.net
+  DNS Name: *.azurefd.net
+
+[Issuer]
+  CN=Microsoft TLS G2 ECC CA OCSP 02, O=Microsoft Corporation, C=US
+  Simple Name: Microsoft TLS G2 ECC CA OCSP 02
+  DNS Name: Microsoft TLS G2 ECC CA OCSP 02
+
+[Serial Number]
+  57000145BF01B3DB9F69ED09770000000145BF
+
+[Not Before]
+  2026/5/17 6:35:59
+
+[Not After]
+  2026/11/13 6:35:59
+
+[Thumbprint]
+  99D4F0C05E65ED6173E5461B29AB9FFF0EB2AE06
+
+[Signature Algorithm]
+  sha384ECDSA(1.2.840.10045.4.3.3)
+
+[Public Key]
+  Algorithm: ECC
+  Length: 
+  Key Blob: 04 63 06 da 61 1b 36 55 71 76 50 88 d8 19 3d 3d c4 9f 95 bf 3c 6d 76 32 d9 5e 02 9e 6f 8a c4 5b b1 82 e7 8a 09 3e 0e a6 df de 3d f3 f0 c5 de a6 78 f5 10 28 a6 35 14 c4 de b1 a0 d1 c0 1e 80 5e d0
+  Parameters: 06 08 2a 86 48 ce 3d 03 01 07
+
+[Extensions]
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+d76d7d10d1a7f577c2c7e95fd700bff982c9335a65e1d0b3017317c0c8c56977
+‎2026‎年‎5‎月‎17‎日 6:46:05
+SHA256
+ECDSA
+3046022100ba9d8ba830fe99502b8e30cc23a55749362cdeb69e61e7b425adbfde34134c7f022100bfa070434e25e8317bf9fc5863a4c6fae7508cd55f68fb1c5712849751951bec
+
+v1
+c2317e574519a345ee7f38deb29041ebc7c2215a22bf7fd5b5ad769ad90e52cd
+‎2026‎年‎5‎月‎17‎日 6:46:05
+SHA256
+ECDSA
+304402201431501f2ed13967fc54974b85fe6c5cac8e883a79aac6a0d82880f1302ab868022066a6d865dc5ef1efbbcffa061e60fe8469b6b49ae12e5af9771a36a82e71b3bc
+
+v1
+c8a3c47fc7b3adb9356b013f6a7a126de33a4e43a5c646f997ad3975991dcf9a
+‎2026‎年‎5‎月‎17‎日 6:46:05
+SHA256
+ECDSA
+30450220746e274fc298fedc2ec24a939e36be9a56efe2910d3badb4aee1b1aaa1368ab5022100e76e8d4cca5f63d4a8197dec6dbccf410a59760ff07b0873f17792a9202a94e7
+
+* 应用程序策略(1.3.6.1.4.1.311.21.10):
+  [1]Application Certificate Policy:
+     Policy Identifier=服务器身份验证
+
+* 证书模板信息(1.3.6.1.4.1.311.21.7):
+  Template=1.3.6.1.4.1.311.21.8.15690651.3798470.4214446.239628.16526621.93.8020455.5050828
+Major Version Number=100
+Minor Version Number=32
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://www.microsoft.com/pkiops/certs/Microsoft TLS G2 ECC CA OCSP 02.crt (http://www.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20ECC%20CA%20OCSP%2002.crt)
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://caissuers.microsoft.com/pkiops/certs/Microsoft TLS G2 ECC CA OCSP 02.crt (http://caissuers.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20ECC%20CA%20OCSP%2002.crt)
+[3]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://oneocsp.microsoft.com/ocsp
+
+* 使用者密钥标识符(2.5.29.14):
+  77c3e94e4a816e7a2e9980f205df42eb455f494b
+
+* 密钥用法(2.5.29.15):
+  Digital Signature (80)
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.azurefd.net
+DNS Name=*.z01.azurefd.net
+DNS Name=*.z02.azurefd.net
+DNS Name=*.z03.azurefd.net
+DNS Name=*.z04.azurefd.net
+DNS Name=*.z05.azurefd.net
+DNS Name=*.z06.azurefd.net
+DNS Name=*.z07.azurefd.net
+DNS Name=*.z08.azurefd.net
+DNS Name=*.z09.azurefd.net
+DNS Name=*.z10.azurefd.net
+DNS Name=*.a01.azurefd.net
+DNS Name=*.a02.azurefd.net
+DNS Name=*.a03.azurefd.net
+DNS Name=*.b01.azurefd.net
+DNS Name=*.b02.azurefd.net
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://www.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 ECC CA OCSP 02_Partition00065.crl (http://www.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20ECC%20CA%20OCSP%2002_Partition00065.crl)
+               URL=http://crl2.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 ECC CA OCSP 02_Partition00065.crl (http://crl2.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20ECC%20CA%20OCSP%2002_Partition00065.crl)
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+[2]Certificate Policy:
+     Policy Identifier=1.3.6.1.4.1.311.76.509.1.1
+     [2,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.microsoft.com/pkiops/Docs/Repository.htm
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=e51fc46a0936e2afe1646ebdfc6be9edc5d02a74
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+
+[SubjectAltNames]
+DNS Name=*.azurefd.net
+DNS Name=*.z01.azurefd.net
+DNS Name=*.z02.azurefd.net
+DNS Name=*.z03.azurefd.net
+DNS Name=*.z04.azurefd.net
+DNS Name=*.z05.azurefd.net
+DNS Name=*.z06.azurefd.net
+DNS Name=*.z07.azurefd.net
+DNS Name=*.z08.azurefd.net
+DNS Name=*.z09.azurefd.net
+DNS Name=*.z10.azurefd.net
+DNS Name=*.a01.azurefd.net
+DNS Name=*.a02.azurefd.net
+DNS Name=*.a03.azurefd.net
+DNS Name=*.b01.azurefd.net
+DNS Name=*.b02.azurefd.net
+

@@ -1,0 +1,20 @@
+POST https://galileotelemetry.tencent.com/collect HTTP/2
+:method: POST
+:authority: galileotelemetry.tencent.com
+:scheme: https
+:path: /collect
+content-length: 624
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) WorkBuddy/5.5.3 Chrome/138.0.7204.251 Electron/37.10.3 Safari/537.36
+sec-ch-ua: "Not)A;Brand";v="8", "Chromium";v="138"
+content-type: text/plain;charset=UTF-8
+sec-ch-ua-mobile: ?0
+accept: */*
+origin: https://www.workbuddy.cn
+sec-fetch-site: cross-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://www.workbuddy.cn/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+priority: u=1, i

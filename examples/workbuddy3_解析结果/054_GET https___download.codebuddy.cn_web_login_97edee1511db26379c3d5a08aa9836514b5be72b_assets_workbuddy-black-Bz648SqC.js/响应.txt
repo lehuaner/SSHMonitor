@@ -1,0 +1,17 @@
+HTTP/2 304
+etag: "06beeaeee118e54fc213fdf9413a0902"
+content-type: application/javascript
+access-control-expose-headers: ETag,Content-Length,x-cos-request-id
+date: Wed, 09 Sep 2026 14:09:05 GMT
+server: tencent-cos
+vary: Origin, Access-Control-Request-Headers, Access-Control-Request-Method
+x-cos-hash-crc64ecma: 3318978652850379187
+x-cos-meta-md5: 06beeaeee118e54fc213fdf9413a0902
+x-cos-request-id: NmFhMTY4ODFfNTQ1OGQ4MWNfMWNkZV80NWI2Njc0
+x-cos-storage-class: MAZ_STANDARD
+x-cos-version-id: MTg0NDQ5NTUxNDk2OTAyOTE3ODI
+x-cosindex-replication-status: Complete
+x-nws-log-uuid: 10876772689262745016
+x-cache-lookup: Cache Hit
+access-control-allow-origin: *
+access-control-allow-methods: PUT,GET,POST,DELETE,HEAD

@@ -1,0 +1,124 @@
+{
+  "data": {
+    "categories": [
+      {
+        "registry": "trae-remote-official",
+        "category_key": "Featured",
+        "display_name": "Featured",
+        "i18n": {
+          "en": "Featured",
+          "ja": "おすすめ",
+          "zh": "推荐"
+        },
+        "weight": 1000,
+        "status": "ACTIVE"
+      },
+      {
+        "registry": "trae-remote-official",
+        "category_key": "investment_inance",
+        "display_name": "Investment & Finance",
+        "i18n": {
+          "en": "Investment & Finance",
+          "ja": "金融・投資",
+          "zh": "金融投资"
+        },
+        "weight": 602,
+        "status": "ACTIVE"
+      },
+      {
+        "registry": "trae-remote-official",
+        "category_key": "legal_compliance",
+        "display_name": "Legal & Compliance",
+        "i18n": {
+          "ja": "法務・コンプライアンス",
+          "zh": "法务合规"
+        },
+        "weight": 601,
+        "status": "ACTIVE"
+      },
+      {
+        "registry": "trae-remote-official",
+        "category_key": "development_tools",
+        "display_name": "Developer Tools",
+        "i18n": {
+          "en": "Developer Tools",
+          "ja": "開発ツール",
+          "zh": "开发工具"
+        },
+        "weight": 600,
+        "status": "ACTIVE"
+      },
+      {
+        "registry": "trae-remote-official",
+        "category_key": "research_analysis",
+        "display_name": "调研分析",
+        "i18n": {
+          "en": "Research & Analysis",
+          "ja": "リサーチ・分析",
+          "zh-cn": "调研分析"
+        },
+        "weight": 500,
+        "status": "ACTIVE"
+      },
+      {
+        "registry": "trae-remote-official",
+        "category_key": "ui_design",
+        "display_name": "界面设计",
+        "i18n": {
+          "en": "UI Design",
+          "ja": "UIデザイン",
+          "zh-cn": "界面设计"
+        },
+        "weight": 400,
+        "status": "ACTIVE"
+      },
+      {
+        "registry": "trae-remote-official",
+        "category_key": "content_creation",
+        "display_name": "内容创作",
+        "i18n": {
+          "en": "Content Creation",
+          "ja": "コンテンツ制作",
+          "zh-cn": "内容创作"
+        },
+        "weight": 300,
+        "status": "ACTIVE"
+      },
+      {
+        "registry": "trae-remote-official",
+        "category_key": "productivity",
+        "display_name": "效率提升",
+        "i18n": {
+          "en": "Productivity",
+          "ja": "生産性向上",
+          "zh-cn": "效率提升"
+        },
+        "weight": 200,
+        "status": "ACTIVE"
+      },
+      {
+        "registry": "trae-remote-official",
+        "category_key": "lifestyle_services",
+        "display_name": "生活服务",
+        "i18n": {
+          "en": "Lifestyle Services",
+          "ja": "生活サービス",
+          "zh-cn": "生活服务"
+        },
+        "weight": 100,
+        "status": "ACTIVE"
+      },
+      {
+        "registry": "trae-remote-official",
+        "category_key": "test_group",
+        "display_name": "test group",
+        "i18n": {
+          "zh": "测试分组"
+        },
+        "weight": 0,
+        "status": "ACTIVE"
+      }
+    ]
+  },
+  "success": "true"
+}

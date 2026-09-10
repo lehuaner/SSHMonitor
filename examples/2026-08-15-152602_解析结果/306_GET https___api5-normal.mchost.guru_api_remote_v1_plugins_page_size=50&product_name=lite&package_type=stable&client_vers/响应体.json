@@ -1,0 +1,65 @@
+{
+  "code": 0,
+  "data": {
+    "items": [
+      {
+        "plugin_id": "builtin:trae-remote-official:seedance",
+        "name": "trae-remote-official:seedance",
+        "dir_name": "seedance",
+        "display_name": "seedance",
+        "description": "AI video generation plugin powered by Seedance.",
+        "version": "1.0.1",
+        "marketplace_plugin_id": "62d25e0e-333e-4ddd-887a-3307c010b0f5",
+        "enabled": true,
+        "created_at": 0,
+        "updated_at": 0,
+        "registry": "trae-remote-official",
+        "origin_plugin_name": "seedance"
+      },
+      {
+        "plugin_id": "builtin:trae-remote-official:seedream",
+        "name": "trae-remote-official:seedream",
+        "dir_name": "seedream",
+        "display_name": "seedream",
+        "description": "AI image generation plugin powered by Seedream.",
+        "version": "1.0.1",
+        "marketplace_plugin_id": "42ef9a5d-9586-4445-93e8-37155ac24caa",
+        "enabled": true,
+        "created_at": 0,
+        "updated_at": 0,
+        "registry": "trae-remote-official",
+        "origin_plugin_name": "seedream"
+      },
+      {
+        "plugin_id": "builtin:trae-remote-official:lark",
+        "name": "trae-remote-official:lark",
+        "dir_name": "lark",
+        "display_name": "lark",
+        "description": "Feishu/Lark workflows for messaging, documents, spreadsheets, calendar, tasks, meetings, and enterprise collaboration.",
+        "version": "1.0.3",
+        "marketplace_plugin_id": "6614a267-48fb-485f-8758-fea6136602f8",
+        "enabled": true,
+        "created_at": 0,
+        "updated_at": 0,
+        "registry": "trae-remote-official",
+        "origin_plugin_name": "lark"
+      },
+      {
+        "plugin_id": "MZM1UTAOJ1VCJQ",
+        "name": "trae-remote-official:browser",
+        "dir_name": "browser",
+        "display_name": "浏览器控制",
+        "description": "用 TraeWork 内置浏览器，自动完成网页操作。",
+        "version": "1.0.3",
+        "marketplace_plugin_id": "1adce287-4e0c-4108-beff-39717341217b",
+        "enabled": true,
+        "created_at": 1785589894206,
+        "updated_at": 1785589894206,
+        "registry": "trae-remote-official",
+        "origin_plugin_name": "browser"
+      }
+    ],
+    "total": 1
+  },
+  "message": "success"
+}

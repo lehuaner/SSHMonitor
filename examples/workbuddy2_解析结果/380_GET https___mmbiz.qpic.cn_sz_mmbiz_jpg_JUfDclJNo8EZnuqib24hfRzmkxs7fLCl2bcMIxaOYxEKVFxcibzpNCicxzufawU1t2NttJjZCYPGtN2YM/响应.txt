@@ -1,0 +1,25 @@
+HTTP/2 200
+last-modified: Sun, 21 Jun 2026 21:41:13 GMT
+server: NWSs
+date: Fri, 03 Jul 2026 08:18:27 GMT
+content-type: image/webp
+x-delay: 3074 us
+x-info: real data
+x-bcheck: 0_1
+x-cpt: filename=0
+user-returncode: 0
+x-datasrc: 9
+x-reqgue: 0
+size: 12828
+chid: 0
+fid: 0
+x-webp-type: tp
+cache-control: max-age=2500000
+age: 1016
+content-length: 12828
+accept-ranges: bytes
+x-nws-log-uuid: 788557040163041005
+x-cache-lookup: Cache Hit
+vary: Origin,Accept
+access-control-allow-origin: *
+x-uuri: "/sz_mmbiz_jpg/JUfDclJNo8EZnuqib24hfRzmkxs7fLCl2bcMIxaOYxEKVFxcibzpNCicxzufawU1t2NttJjZCYPGtN2YMUnJCXftA/640?wxtype=jpeg&wxfrom=400&tp=webp"

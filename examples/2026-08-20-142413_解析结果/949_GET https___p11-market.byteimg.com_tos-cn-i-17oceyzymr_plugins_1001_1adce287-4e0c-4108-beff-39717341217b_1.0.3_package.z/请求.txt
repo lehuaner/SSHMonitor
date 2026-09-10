@@ -1,0 +1,30 @@
+GET https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1001/1adce287-4e0c-4108-beff-39717341217b/1.0.3/package.zip HTTP/2
+:method: GET
+:authority: p11-market.byteimg.com
+:scheme: https
+:path: /tos-cn-i-17oceyzymr/plugins/1001/1adce287-4e0c-4108-beff-39717341217b/1.0.3/package.zip
+x-app-id: 6eefa01c-1036-4c7e-9ca5-d891f63bfcd8
+x-app-version: default
+x-ide-version-code: 20260811
+x-app-version-code: 20260811
+x-custom-trace-id: bfcbf653d7a61030da1ab7a1526025a2
+x-flow-traceparent: 04-bfcbf653d7a61030da1ab7a1526025a2-cd232da858f24d69-01
+x-device-brand: VMware20,1
+x-device-cpu: AMD
+x-device-id: 2609589533558410
+x-machine-id: cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b
+x-os-version: Windows 11 Pro
+x-device-type: windows
+x-ide-version: 0.1.51
+x-ide-version-type: stable
+request-traffic-type: prod
+x-ide-token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTU1NDAyNDUyNDE2Njg3MSIsInNvdXJjZSI6InJlZnJlc2hfdG9rZW4iLCJzb3VyY2VfaWQiOiJKVFZhR3k0aXR0YmlZNUpXdWJHUU9fX1JWeWo4UmdNX1kzcGdtY2k5UVUwPS4xOGNkNmY1M2JlM2I5NjhiIiwidGVuYW50X2lkIjoiN28yZDg5NHA3ZHIwbzQiLCJ0eXBlIjoidXNlciJ9LCJleHAiOjE3ODg0MTY2MzIsImlhdCI6MTc4NzIwNzAzMn0.ibWFhfXYgm7p8Ut42q6-Cv5wVdzLJL7h-SejWlJNqgOj8tPbZTIFP2sdYJqaHIl1IrtvSNpvpkjDPQWE7A5p7nQHZ3vuEjEOqdlfRqORUOuh-dmR7v2uebd-Fhv1eWAvKo30pIrV5Op5J-82UJMlH2N8AQqAGC8e_jt7375WlVGAJFWI0u164rJJqgVRNjlpudZDlgkCvCxKoXdHjfdOeUxdM7ZJNEJPoA5HSAdSsrDiY29ap8YaZpz3YyYWnrin5IgtFsgStlTewWV5n87R5RRAyEXsduiE3OxVeUpMhSoc7dbzlmi40fmffrQ_Uut5r1n4qMVTUu-NWuT4FvRW94aCy0TrC0NcZhr7h7F7eG3bPX6eURTC_UejvSAWitQI0vj4Dp6l5PJIzCpum5iAIgF05jNy0AsiZjfF3POY26tJDKnA45QnoPRDVof5073kvgMi_xw3GGIF7EkQ9qQMim_1GhKTs-_gx9KtYVyGlkSgdhbvzNC5qHR1B1uNi4a4_hWj1-Ui71xJnhVn7Hy9G5HeqYCU7PHT0hfiBGuONn1RZB8S_JFMRsWAc_sAAVZDT5di1Ms4tMZ7kR456829kLEideUzle0t1U-DnUFB7k_7QCYp46JjulTqvIReUAyRUAedDUpRs6BJttscYDrwhxNRju_L6_FLvSwEzlJ78a0
+user-agent: TraeClient/TTNet
+x-bridge-transport: aha
+x-request-id: req_31c52dac-369c-44fb-8f6a-c91a00f0e77e
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+referer: https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1001/1adce287-4e0c-4108-beff-39717341217b/1.0.3/package.zip
+accept-encoding: gzip, deflate, br, zstd
+priority: u=1

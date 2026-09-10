@@ -1,0 +1,61 @@
+{
+  "data": {
+    "plugin": {
+      "plugin_id": "1adce287-4e0c-4108-beff-39717341217b",
+      "name": "trae-remote-official:browser",
+      "origin_plugin_name": "browser",
+      "display_name": "browser",
+      "description": "AI-driven built-in browser automation.",
+      "i18n": {
+        "description": {
+          "en": "Connect to TraeWork's built-in browser for web automation.",
+          "ja": "TraeWork内蔵ブラウザに接続し、Webページの自動化を実現します。",
+          "zh-cn": "连接 TraeWork 内置浏览器，实现网页自动化。"
+        },
+        "display_name": {
+          "en": "In-App Browser",
+          "ja": "In-App Browser",
+          "zh-cn": "内置浏览器"
+        }
+      },
+      "author": "TRAE",
+      "cdn_uri": "p11-market.byteimg.com",
+      "tos_uri": "tos-cn-i-17oceyzymr/plugins",
+      "version": "1.0.3",
+      "source": "INTERNAL_UPLOAD",
+      "registry": "trae-remote-official",
+      "publisher_type": "BUILT_IN",
+      "local_available": false,
+      "cloud_available": false,
+      "supported_os": [
+        "darwin",
+        "windows",
+        "linux"
+      ],
+      "categories": [
+        "productivity"
+      ],
+      "category_weight": 0,
+      "created_at": 1785398759000,
+      "updated_at": 1785398759000,
+      "pinned": 0,
+      "status": "PUBLISHED",
+      "visibility": "PUBLIC",
+      "is_deleted": false,
+      "icon_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1/1adce287-4e0c-4108-beff-39717341217b/icons/fa4aa2d6-ec24-4528-b010-5a580137bf71.svg",
+      "recommended": false,
+      "default_installed": true,
+      "user_control_policy": "{\"default_enabled\": true, \"tag_theme_color\": \"--brand-blue-800\", \"plugin_toggleable\": true, \"locked_capabilities\": [], \"plugin_uninstallable\": false, \"capability_toggleable\": true, \"show_in_home_available_plugins\": true}"
+    },
+    "changelog": "",
+    "download_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1001/1adce287-4e0c-4108-beff-39717341217b/1.0.3/package.zip",
+    "manifest_json": "{\n  \"name\": \"browser\",\n  \"version\": \"1.0.3\",\n  \"description\": \"AI-driven built-in browser automation.\",\n  \"author\": {\n    \"name\": \"Trae Team\"\n  },\n  \"license\": \"MIT\",\n  \"keywords\": [\"browser\", \"automation\", \"web\", \"builtin\"],\n  \"i18n\": {\n    \"display_name\": {\n      \"en\": \"Browser Use\",\n      \"zh-cn\": \"浏览器控制\",\n      \"ja\": \"Browser Use\"\n    },\n    \"description\": {\n      \"en\": \"Use TraeWork's built-in browser to automatically perform web actions.\",\n      \"zh-cn\": \"用 TraeWork 内置浏览器，自动完成网页操作。\",\n      \"ja\": \"TraeWork内蔵ブラウザで、ウェブ操作を自動的に実行します。\"\n    }\n  },\n  \"interface\": {\n    \"displayName\": \"浏览器控制\",\n    \"developerName\": \"Trae Team\",\n    \"category\": \"Developer Tools\",\n    \"capabilities\": [\"Interactive\"],\n    \"composerIcon\": \"./assets/browser-icon.svg\",\n    \"logo\": \"./assets/browser-icon.svg\",\n    \"brandColor\": \"#4A90D9\"\n  }\n}\n",
+    "connector_json": "",
+    "mcp_servers_json": "",
+    "skills_json": "",
+    "icon_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1/1adce287-4e0c-4108-beff-39717341217b/icons/fa4aa2d6-ec24-4528-b010-5a580137bf71.svg",
+    "checksum": "f18792cff58338fa15abd4e4603b342a9edf4d529b92b326bd4bafc65adbb04a",
+    "file_size": 5982
+  },
+  "success": "true"
+}

@@ -1,0 +1,114 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 00:38:11.757
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.2
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=oth.str.beacon.qq.com, O=Tencent Technology (Shenzhen) Company Limited, L=Shenzhen, S=Guangdong Province, C=CN
+  Simple Name: oth.str.beacon.qq.com
+  DNS Name: oth.str.beacon.qq.com
+
+[Issuer]
+  CN=DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1, O="DigiCert, Inc.", C=US
+  Simple Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+  DNS Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+
+[Serial Number]
+  0451F2C50C6E8905B2918B7A63864D9D
+
+[Not Before]
+  2026/1/5 8:00:00
+
+[Not After]
+  2027/2/6 7:59:59
+
+[Thumbprint]
+  416197259242D312B10DD08F5F2317359FE36761
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 b8 ce 8a 3f f9 08 c5 8b 70 4f 27 6b 38 41 c4 14 72 1d da d0 14 df 00 c7 9d f3 f8 ec 80 76 17 4f ca 6f 44 f1 82 c2 86 6b 8c 0f 0a 3c c4 cc 4a ec 7b a1 b7 bf 9b 39 4e e5 10 c8 d3 02 c6 49 3e 80 02 f3 c0 0b 64 29 04 7c 4b 1a 69 15 3d d8 0a 36 8e 1a de 16 fc b9 4e f0 10 c9 8c d9 67 2d c3 bf 42 57 3f 7a 48 ad e5 f5 0d 11 78 2f 44 39 87 71 1f 47 a1 15 f7 7f 52 04 1a fc 1f 2a 22 14 88 a5 14 da 1f 3a 5d 4e 6c d6 b7 39 8c a5 3d 35 65 94 c3 d4 3e 33 af be 43 bd c6 c3 c4 23 07 c3 fa 24 67 e0 7a 22 70 9a c0 7c 36 78 01 0f 4d 1c 7b ab 9a f8 f3 53 cc af 4e a0 7d dd cd 8d 5f c3 5b a0 c4 20 c0 47 0e 58 5e 47 21 3a 37 57 94 f1 53 cc cc 74 d1 6d cc 6f 15 ee b8 b7 e6 1e 7d 41 b3 77 f1 44 5c 2b 7b c5 89 b5 d2 65 b2 09 24 61 99 ea 1e 9a ba 7b 58 59 78 b6 ae f2 ed 86 60 af a0 e1 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=2b2316811b47898a907aece832d46c8e72f9ce25
+
+* 使用者密钥标识符(2.5.29.14):
+  19b6348a30c216286012b508c5d69dd5355b528e
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=oth.str.beacon.qq.com
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://ocsp.digicert.cn
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+4c63dc98e59c1dab88f61e8a3ddeae8fab44a3377b5f9b94c3fba19cfcc1be26
+‎2026‎年‎1‎月‎5‎日 11:11:59
+SHA256
+ECDSA
+3045022100c0b316c10ee904401a91953aea49e0dd4b437dd48ec659607d72b6ab28a3dfb102205b834fbba960e2579540118ae809963ef24c1c2b019c27f21d2597a8208f5a05
+
+v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎1‎月‎5‎日 11:11:59
+SHA256
+ECDSA
+3044022052422a925e4602a322b9565d3143eb73499d85310636dcf5cba152505a3f4a81022063fd7e3dc7000e5b3b60dcc36346a695c9702f14624cc4bfcc6b480d64cb816d
+
+v1
+604c9aaf7a7f775f01d406fc920dc899eb0b1c7df8c9521bfafa17773b978bc9
+‎2026‎年‎1‎月‎5‎日 11:12:00
+SHA256
+ECDSA
+304402204845f3ea30522e09ed16bf9664f3e1d07d052814e12ad3b9a6ae06444f37f78702205e67e33759ea00138b41985e4e0d567c2a5b734e75b3c0dd50efe9479d39cb83
+
+
+[SubjectAltNames]
+DNS Name=oth.str.beacon.qq.com
+

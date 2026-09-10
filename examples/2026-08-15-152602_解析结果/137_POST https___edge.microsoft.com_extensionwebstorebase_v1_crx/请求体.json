@@ -1,0 +1,402 @@
+{
+  "request": {
+    "@os": "win",
+    "@updater": "msedgecrx",
+    "acceptformat": "crx3,download,run,xz,zucc",
+    "apps": [
+      {
+        "appid": "amkbmndfnliijdhojkpoglbnaaahippg",
+        "cached_items": [
+          {
+            "sha256": "3c411ebe34dc235fc82575d34cea276c3c1c807171833194e9c603fee547c1bf"
+          }
+        ],
+        "cohort": "rrf@0.17",
+        "enabled": true,
+        "installdate": 6730,
+        "installedby": "internal",
+        "lang": "zh-CN",
+        "ping": {
+          "ping_freshness": "{82e10959-c6f7-4dc8-a540-304b985a25ef}",
+          "rd": 7166
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.17",
+          "AppMajorVersion": "151",
+          "AppRollout": 0.17,
+          "AppVersion": "151.0.4129.86",
+          "IsInternalUser": false,
+          "Priority": false
+        },
+        "updatecheck": {},
+        "version": "1.32.5"
+      },
+      {
+        "appid": "capohkkfagimodmlpnahjoijgoocdjhd",
+        "cohort": "rrf@0.52",
+        "disabled": [
+          {
+            "reason": 1
+          }
+        ],
+        "enabled": false,
+        "installdate": 6730,
+        "installedby": "internal",
+        "lang": "zh-CN",
+        "ping": {
+          "ping_freshness": "{52254249-a784-43cc-926f-560ae913b5cc}",
+          "rd": 7166
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.52",
+          "AppMajorVersion": "151",
+          "AppRollout": 0.52,
+          "AppVersion": "151.0.4129.86",
+          "IsInternalUser": false,
+          "Priority": false
+        },
+        "updatecheck": {},
+        "version": "1.38.0"
+      },
+      {
+        "appid": "cgjgjfacjflmgphhhepmbhhbgjieaecn",
+        "cohort": "rrf@0.55",
+        "enabled": true,
+        "installdate": 6730,
+        "installedby": "other",
+        "lang": "zh-CN",
+        "ping": {
+          "ping_freshness": "{9c399a81-9730-431b-8b72-fb6bedb892e7}",
+          "rd": 7166
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.55",
+          "AppMajorVersion": "151",
+          "AppRollout": 0.55,
+          "AppVersion": "151.0.4129.86",
+          "IsInternalUser": false,
+          "Priority": false
+        },
+        "updatecheck": {},
+        "version": "135.0.3176.0"
+      },
+      {
+        "appid": "djbcdihpmcbpkljpjibeiedjenilallo",
+        "cohort": "rrf@0.56",
+        "enabled": true,
+        "installdate": 6730,
+        "installedby": "internal",
+        "lang": "zh-CN",
+        "ping": {
+          "ping_freshness": "{2ef93288-8a2d-48b1-9c7a-f0646135ba73}",
+          "rd": 7166
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.56",
+          "AppMajorVersion": "151",
+          "AppRollout": 0.56,
+          "AppVersion": "151.0.4129.86",
+          "IsInternalUser": false,
+          "Priority": false
+        },
+        "updatecheck": {},
+        "version": "4.1.1"
+      },
+      {
+        "appid": "eefifgmeapjeeccnnojafjmhpcbabbkj",
+        "cohort": "rrf@0.91",
+        "enabled": true,
+        "installdate": 6730,
+        "installedby": "internal",
+        "lang": "zh-CN",
+        "ping": {
+          "ping_freshness": "{ceb8e6fa-3a81-4c3e-8e38-ff996a4e7fed}",
+          "rd": 7166
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.91",
+          "AppMajorVersion": "151",
+          "AppRollout": 0.91,
+          "AppVersion": "151.0.4129.86",
+          "IsInternalUser": false,
+          "Priority": false
+        },
+        "updatecheck": {},
+        "version": "2.7"
+      },
+      {
+        "appid": "fijkjelhepfddlcekneeembleehcgppn",
+        "cohort": "rrf@0.53",
+        "enabled": true,
+        "installdate": 6832,
+        "installedby": "internal",
+        "lang": "zh-CN",
+        "ping": {
+          "ping_freshness": "{60e7d2cd-d0cb-41b1-bfca-26ce52a0ff7c}",
+          "rd": 7166
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.53",
+          "AppMajorVersion": "151",
+          "AppRollout": 0.53,
+          "AppVersion": "151.0.4129.86",
+          "IsInternalUser": false,
+          "Priority": false
+        },
+        "updatecheck": {},
+        "version": "1.3.2"
+      },
+      {
+        "appid": "flpegnepialmlbhpfblhgehjgdoeaapj",
+        "cohort": "rrf@0.46",
+        "disabled": [
+          {
+            "reason": 1
+          }
+        ],
+        "enabled": false,
+        "installdate": 6730,
+        "installedby": "internal",
+        "lang": "zh-CN",
+        "ping": {
+          "ping_freshness": "{df81d189-803c-4f86-aad3-7d267a9661e8}",
+          "rd": 7166
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.46",
+          "AppMajorVersion": "151",
+          "AppRollout": 0.46,
+          "AppVersion": "151.0.4129.86",
+          "IsInternalUser": false,
+          "Priority": false
+        },
+        "updatecheck": {},
+        "version": "1.0.4"
+      },
+      {
+        "appid": "hkglfocchlcpfjpakdebhfofikldecmb",
+        "cohort": "rrf@0.77",
+        "disabled": [
+          {
+            "reason": 134217728
+          }
+        ],
+        "enabled": false,
+        "installdate": 6779,
+        "installedby": "external",
+        "lang": "zh-CN",
+        "ping": {
+          "ping_freshness": "{42015eb3-a900-4b1e-8731-0ff5103b0072}",
+          "rd": 7166
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.77",
+          "AppMajorVersion": "151",
+          "AppRollout": 0.77,
+          "AppVersion": "151.0.4129.86",
+          "IsInternalUser": false,
+          "Priority": false
+        },
+        "updatecheck": {},
+        "version": "0.1.23"
+      },
+      {
+        "appid": "jkmnnedinolbhjcibbfpdlkmmibkcbgf",
+        "cohort": "rrf@0.70",
+        "enabled": true,
+        "installdate": 7036,
+        "installedby": "internal",
+        "lang": "zh-CN",
+        "ping": {
+          "ping_freshness": "{6754a01f-defb-4ff3-ba0d-d677fb2c0468}",
+          "rd": 7166
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.70",
+          "AppMajorVersion": "151",
+          "AppRollout": 0.7,
+          "AppVersion": "151.0.4129.86",
+          "IsInternalUser": false,
+          "Priority": false
+        },
+        "updatecheck": {},
+        "version": "1.8.7"
+      },
+      {
+        "appid": "jmjflgjpcpepeafmmgdpfkogkghcpiha",
+        "cohort": "rrf@0.89",
+        "enabled": true,
+        "installdate": 6730,
+        "installedby": "other",
+        "lang": "zh-CN",
+        "ping": {
+          "ping_freshness": "{a8554713-2b96-4f62-b2e2-dac014511ba8}",
+          "rd": 7166
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.89",
+          "AppMajorVersion": "151",
+          "AppRollout": 0.89,
+          "AppVersion": "151.0.4129.86",
+          "IsInternalUser": false,
+          "Priority": false
+        },
+        "updatecheck": {},
+        "version": "1.2.1"
+      },
+      {
+        "appid": "kfbdpdaobnofkbopebjglnaadopfikhh",
+        "cohort": "rrf@0.34",
+        "enabled": true,
+        "installdate": 6730,
+        "installedby": "other",
+        "lang": "zh-CN",
+        "ping": {
+          "ping_freshness": "{521f9997-0468-4bfe-a8fc-fdefa2f0ea65}",
+          "rd": 7166
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.34",
+          "AppMajorVersion": "151",
+          "AppRollout": 0.34,
+          "AppVersion": "151.0.4129.86",
+          "IsInternalUser": false,
+          "Priority": false
+        },
+        "updatecheck": {},
+        "version": "113.0.1765.0"
+      },
+      {
+        "appid": "kjjmbhmmbfgbaannpbpoaabponeogaop",
+        "cohort": "rrf@0.72",
+        "disabled": [
+          {
+            "reason": 1
+          }
+        ],
+        "enabled": false,
+        "installdate": 6730,
+        "installedby": "internal",
+        "lang": "zh-CN",
+        "ping": {
+          "ping_freshness": "{0e57bdc5-12e7-4e10-b09f-5f392c68fe94}",
+          "rd": 7166
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.72",
+          "AppMajorVersion": "151",
+          "AppRollout": 0.72,
+          "AppVersion": "151.0.4129.86",
+          "IsInternalUser": false,
+          "Priority": false
+        },
+        "updatecheck": {},
+        "version": "4.0.5"
+      },
+      {
+        "appid": "npjnioaeoicmjokbdpfiecnbildopjad",
+        "cohort": "rrf@0.60",
+        "enabled": true,
+        "installdate": 6730,
+        "installedby": "internal",
+        "lang": "zh-CN",
+        "ping": {
+          "ping_freshness": "{787bce5e-68e6-422c-9d08-e1b101ff2e4e}",
+          "rd": 7166
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.60",
+          "AppMajorVersion": "151",
+          "AppRollout": 0.6,
+          "AppVersion": "151.0.4129.86",
+          "IsInternalUser": false,
+          "Priority": false
+        },
+        "updatecheck": {},
+        "version": "1.0.17"
+      },
+      {
+        "appid": "ojfnlocbpncbjopoflkoceenfkjdinho",
+        "cohort": "rrf@0.50",
+        "disabled": [
+          {
+            "reason": 1
+          }
+        ],
+        "enabled": false,
+        "installdate": 6730,
+        "installedby": "internal",
+        "lang": "zh-CN",
+        "ping": {
+          "ping_freshness": "{73843d46-4ecd-4e78-8731-052ad94b4d9b}",
+          "rd": 7166
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.50",
+          "AppMajorVersion": "151",
+          "AppRollout": 0.5,
+          "AppVersion": "151.0.4129.86",
+          "IsInternalUser": false,
+          "Priority": false
+        },
+        "updatecheck": {},
+        "version": "1.0.1"
+      },
+      {
+        "appid": "popomkonnjgcdagdhgcpcekbdeoibglc",
+        "cohort": "rrf@0.14",
+        "disabled": [
+          {
+            "reason": 2
+          },
+          {
+            "reason": 268435456
+          }
+        ],
+        "enabled": false,
+        "installdate": 6730,
+        "installedby": "internal",
+        "lang": "zh-CN",
+        "ping": {
+          "ping_freshness": "{b14d6150-d092-4ba5-a3db-e5c7b22c4364}",
+          "rd": 7166
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.14",
+          "AppMajorVersion": "151",
+          "AppRollout": 0.14,
+          "AppVersion": "151.0.4129.86",
+          "IsInternalUser": false,
+          "Priority": false
+        },
+        "updatecheck": {},
+        "version": "3.52.14"
+      }
+    ],
+    "arch": "x64",
+    "dedup": "cr",
+    "domainjoined": false,
+    "hw": {
+      "avx": 1,
+      "physmemory": 32,
+      "sse": 1,
+      "sse2": 1,
+      "sse3": 1,
+      "sse41": 1,
+      "sse42": 1,
+      "ssse3": 1
+    },
+    "ismachine": 1,
+    "os": {
+      "arch": "x86_64",
+      "platform": "Windows",
+      "version": "10.0.26200.9168"
+    },
+    "prodversion": "151.0.4129.86",
+    "protocol": "4.0",
+    "requestid": "{2c153fcf-b857-4148-a006-6da20d51bfed}",
+    "revocationviaomahaenabled": "1",
+    "sessionid": "{a273857f-5004-4fe5-b0b2-d70cb0db9861}",
+    "updaterversion": "151.0.4129.86"
+  }
+}

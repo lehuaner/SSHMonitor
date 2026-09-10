@@ -1,0 +1,21 @@
+GET https://api.trae.com.cn/service/settings/v3/?os=windows&aid=1006732&aha_electron_version=39.2.7-release.1.49.0&device_id=3798161405005257&app_aid=931506&app_version=0.1.50&app_region=cn&tenant_id=marscode HTTP/2
+:method: GET
+:authority: api.trae.com.cn
+:scheme: https
+:path: /service/settings/v3/?os=windows&aid=1006732&aha_electron_version=39.2.7-release.1.49.0&device_id=3798161405005257&app_aid=931506&app_version=0.1.50&app_region=cn&tenant_id=marscode
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+sec-fetch-dest: empty
+sec-fetch-mode: no-cors
+sec-fetch-site: none
+sec-fetch-storage-access: active
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.50
+x-request-id: a697bda4-2d00-44de-a15e-3a4147232665
+accept: */*
+x-tt-trace-id: 00-044fee9f0dd7e685d584dc9344d9ffff-044fee9f0dd7e685-01
+smbyttnet: 1

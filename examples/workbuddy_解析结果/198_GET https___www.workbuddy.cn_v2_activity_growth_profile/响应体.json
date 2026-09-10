@@ -1,0 +1,14 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "b712a0fd-c943-402f-b6d1-1cb163a6d2b8",
+  "data": {
+    "completed": 13,
+    "first_visit": false,
+    "level": 13,
+    "level_icon": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/workbuddy/assets/badge-assets/badge-07.png",
+    "level_name": "",
+    "max_level": false,
+    "total": 16
+  }
+}

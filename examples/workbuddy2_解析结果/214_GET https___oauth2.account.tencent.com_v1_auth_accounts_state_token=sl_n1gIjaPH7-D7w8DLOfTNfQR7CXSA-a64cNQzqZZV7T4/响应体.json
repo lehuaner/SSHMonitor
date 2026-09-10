@@ -1,0 +1,33 @@
+{
+  "accounts": [
+    {
+      "id": "codebuddy@",
+      "logo_url": "https://identity.tencent.com/public/images/account-logo.png",
+      "name": "乐幻",
+      "type": 2,
+      "handshake_id": "",
+      "in_handshake": false,
+      "inviter_name": "",
+      "test": false,
+      "create_time": 0,
+      "AccountSource": 0,
+      "AUDisplayName": "",
+      "version_code": "personal",
+      "version": "个人版",
+      "show_verified": true,
+      "verified": false,
+      "status": "",
+      "status_tips": "",
+      "PersonalAccountCooling": null,
+      "Mobile": ""
+    }
+  ],
+  "code": "03522fac47d3442c82e239b2a39572c6",
+  "state": "",
+  "client_id": "ztPxdKSUDy6sAUE7azhv5g0v",
+  "next_step": "login",
+  "login_info": {
+    "auth_type": "",
+    "auth_value": ""
+  }
+}

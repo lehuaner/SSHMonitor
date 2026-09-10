@@ -1,0 +1,25 @@
+{
+  "type": "local",
+  "sessionId": "bd4bc110-2577-4de1-b624-34d11b297b67",
+  "name": "查看项目状态并准备更新 pypi",
+  "conversationOrigin": "legacy_workbuddy_local",
+  "workDir": "D:\\Code\\Project\\Python\\TextPatch",
+  "isPlayground": 0,
+  "createdAtMs": 1788171529233,
+  "updatedAtMs": 1788172038600,
+  "lastActivityAtMs": 1788172038600,
+  "clientContext": {
+    "localStatus": "active",
+    "hostId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "sessionKind": "manual",
+    "model": "",
+    "sourceMode": "",
+    "permissionMode": "",
+    "expert": {
+      "id": "",
+      "locale": "",
+      "runtimeIdentity": "",
+      "marketplace": ""
+    }
+  }
+}

@@ -1,0 +1,21 @@
+HTTP/2 200
+server: Tengine
+content-type: application/json
+date: Sat, 15 Aug 2026 17:42:42 GMT
+x-send-ts: 1786815762904
+x-recv-ts: 1786815762888
+access-control-allow-credentials: true
+access-control-expose-headers: Authorization,X-App-Id,Content-Type,X-Tt-Env,X-Use-Boe,X-Use-Ppe,Bdturing-Verify,X-Jwt-Token,X-Tt-Logid
+access-control-allow-origin: https://www.trae.cn
+vary: Origin, Accept-Encoding
+x-tt-logid: 20260816014242C13657D98AF1369511F1
+server-timing: inner; dur=21,tt_agw; dur=17
+strict-transport-security: max-age=31536000; includeSubDomains
+x-tt-trace-host: 01207a981426127d02143837b6aace09ad72a42bb69962775d6c76d560fafaea5a7729b1cd04805846854225afedf106860fbb67c0cdf10fc30d153f5d24de59c24f1dcdf52d8ceb7308399db09a97a029d4f9495bbf849a9b6d07fcbc16271d538e39751458375956da48b3c3925ed6e1
+x-tt-trace-tag: id=03;cdn-cache=miss;type=dyn
+x-tt-trace-id: 00-260816014242C13657D98AF1369511F1-724EBCE73C25F444-00
+x-tt-timestamp: 1786815762.904
+via: cache14.l2nu20-17[37,0], cache20.cn4661[57,0]
+server-timing: cdn-cache;desc=MISS,edge;dur=20,origin;dur=37
+timing-allow-origin: *
+eagleid: 2497e41a17868157628574325e

@@ -1,0 +1,22 @@
+HTTP/2 200
+date: Thu, 20 Aug 2026 06:22:28 GMT
+content-type: application/wasm
+cf-ray: a2df4dc09a6e6a65-SEA
+cf-cache-status: HIT
+fly-request-id: 01M00SMB7JVTFW16XRR787G8GW-sjc
+access-control-allow-origin: *
+age: 140155
+cache-control: public, max-age=31536000
+expires: Fri, 20 Aug 2027 06:22:27 GMT
+last-modified: Fri, 14 Aug 2026 18:47:56 GMT
+server: cloudflare
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+vary: accept-encoding
+via: 1.1 fly.io
+access-control-allow-headers: *
+access-control-allow-methods: GET, HEAD, OPTIONS
+access-control-expose-headers: *
+cross-origin-resource-policy: cross-origin
+x-content-type-options: nosniff
+content-digest: sha256=:FyGPoBAktmaUelZYOBN09XoYS3FHPW4tjzQD8Z+vgm8=:
+alt-svc: h3=":443"; ma=86400

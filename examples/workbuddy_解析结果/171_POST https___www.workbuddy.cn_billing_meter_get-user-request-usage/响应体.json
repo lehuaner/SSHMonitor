@@ -1,0 +1,110 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "6ceef2f8-fac8-4065-860b-cbe073595e01",
+  "data": {
+    "total": 363,
+    "data": [
+      {
+        "requestId": "ac63241e230e4a9db34458864607b75c",
+        "credit": 0,
+        "model": "hy3",
+        "client": "WorkBuddy",
+        "requestTime": "2026-09-07 23:44:00",
+        "inputTrunc": "Your task is to create a detailed and highly structured summary of the conversation so far.\r\n\r\nYour summary must be technically ",
+        "input": "Your task is to create a detailed and highly structured summary of the conversation so far.\r\n\r\nYour summary must be technically accurate, comprehensive, and strictly follow the required output format.\r\n\r\nWhen generating the summary:\r\n\r\n1. Review the conversation chronologically.\r\n2. Identify clearly:\r\n\r\n   * All explicit user requests and intents\r\n   * Your actions and responses\r\n   * Technical decisions, design choices, and code patterns\r\n   * File names, code snippets, function signatures, and file edits\r\n   * Any errors encountered and how they were resolved\r\n   * Any direct user feedback instructing you to change behavior\r\n\r\n3. Ensure completeness and precision in all sections.\r\n\r\n\r\n## **Your final summary MUST strictly follow this structure:**\r\n\r\nSummary:\r\n\r\n1. **Primary Request and Intent:**\r\n   A detailed description of all explicit user requests and intentions.\r\n\r\n2. **Key Technical Concepts:**\r\n\r\n   * Concept 1\r\n   * Concept 2\r\n   * …\r\n\r\n3. **Files and Code Sections:**\r\n\r\n   * `FileName`\r\n\r\n     * Why this file is important\r\n     * Summary of changes made (if any)\r\n     * Important code snippet (if applicable)\r\n\r\n4. **Errors and fixes:**\r\n\r\n   * Error description\r\n\r\n     * How it was fixed\r\n     * Any user feedback\r\n\r\n5. **Problem Solving:**\r\n   Problems solved and ongoing troubleshooting work.\r\n\r\n6. **All user messages:**\r\n   List *all* user messages (actual text, excluding tool results).\r\n\r\n7. **Pending Tasks:**\r\n   List all tasks the user explicitly asked you to continue.\r\n\r\n8. **Current Work:**\r\n   Describe exactly what you were working on immediately before this summary request, including file names and code snippets if applicable.\r\n\r\n9. **Optional Next Step:**\r\n   Only if directly aligned with the user's latest explicit request.\r\n   Include verbatim quotations showing where the previous task left off.\r\n",
+        "agentPurpose": "context_summary_max_token"
+      },
+      {
+        "requestId": "0f866289d6794909b4a7dbfa13bb88f6",
+        "credit": 10.5,
+        "model": "glm-5.3-flash",
+        "client": "WorkBuddy",
+        "requestTime": "2026-09-07 23:42:00",
+        "inputTrunc": "使用B的结果，新增算法，算法名称在原来的基础上加上（诡秘之主版），对于使用该算法的标注图，无需知道该图的提亮场指数，而是直接按照该曲线进行应用。\n但是其实有一个关键的问题，如果图片被裁切了，只有某一段内容，如何知道这段内容对应曲线哪一块，我希望你能设计出来",
+        "input": "使用B的结果，新增算法，算法名称在原来的基础上加上（诡秘之主版），对于使用该算法的标注图，无需知道该图的提亮场指数，而是直接按照该曲线进行应用。\n但是其实有一个关键的问题，如果图片被裁切了，只有某一段内容，如何知道这段内容对应曲线哪一块，我希望你能设计出来这个功能",
+        "agentPurpose": "conversation"
+      },
+      {
+        "requestId": "99bb5cc3a891458c854a90837ceea102",
+        "credit": 7.61,
+        "model": "glm-5.3-flash",
+        "client": "WorkBuddy",
+        "requestTime": "2026-09-07 23:30:00",
+        "inputTrunc": "四个算法不要重叠展示，分开展示",
+        "input": "四个算法不要重叠展示，分开展示",
+        "agentPurpose": "conversation"
+      },
+      {
+        "requestId": "5dde5ff5b67a4ca6ad853d894cf64005",
+        "credit": 19.57,
+        "model": "glm-5.3-flash",
+        "client": "WorkBuddy",
+        "requestTime": "2026-09-07 23:19:00",
+        "inputTrunc": "请依照产出的数据拟合出曲线，要求先清洗数据，要求平滑，不使用谷区峰区数据，按照你的想法，给出多种结果",
+        "input": "请依照产出的数据拟合出曲线，要求先清洗数据，要求平滑，不使用谷区峰区数据，按照你的想法，给出多种结果",
+        "agentPurpose": "conversation"
+      },
+      {
+        "requestId": "1dee6d2d5a7a4e70936fbad0cea1011a",
+        "credit": 14.78,
+        "model": "glm-5.3-flash",
+        "client": "WorkBuddy",
+        "requestTime": "2026-09-07 22:55:00",
+        "inputTrunc": "我给你D:\\图片\\Screenshots\\2026\\08\\22 中003149图-最后，这几十张图作为输入，注意需要裁切，裁切大小参考456或者789，要求最后使用当前算法输出 清除谷污染后 的 散点数据，然后做一个长的图，只显示曲线和点，每张图分开显示，",
+        "input": "我给你D:\\图片\\Screenshots\\2026\\08\\22 中003149图-最后，这几十张图作为输入，注意需要裁切，裁切大小参考456或者789，要求最后使用当前算法输出 清除谷污染后 的 散点数据，然后做一个长的图，只显示曲线和点，每张图分开显示，你可以总结一下你看到的规律，然后我再尝试是否采纳",
+        "agentPurpose": "conversation"
+      },
+      {
+        "requestId": "ab9743cd5020490bb63e0fade8afc4fe",
+        "credit": 5.26,
+        "model": "glm-5.3-flash",
+        "client": "WorkBuddy",
+        "requestTime": "2026-09-07 22:40:00",
+        "inputTrunc": "两张图片支持缩放，支持拖拽，支持超出视角的拖拽，缩放需要以鼠标所指中心作为缩放中心，两张图需要联动。\n曲线也要支持缩放和拖拽，并且删除操作需要按下del或者按下某个按钮，而不是被选中自动删除",
+        "input": "两张图片支持缩放，支持拖拽，支持超出视角的拖拽，缩放需要以鼠标所指中心作为缩放中心，两张图需要联动。\n曲线也要支持缩放和拖拽，并且删除操作需要按下del或者按下某个按钮，而不是被选中自动删除",
+        "agentPurpose": "conversation"
+      },
+      {
+        "requestId": "80434704afdd4551b521c8d9866d425e",
+        "credit": 1.88,
+        "model": "glm-5.3-flash",
+        "client": "WorkBuddy",
+        "requestTime": "2026-09-07 22:37:00",
+        "inputTrunc": "两张图片支持缩放，支持拖拽，支持超出视角的拖拽，缩放需要以鼠标所指中心作为缩放中心，两张图需要联动",
+        "input": "两张图片支持缩放，支持拖拽，支持超出视角的拖拽，缩放需要以鼠标所指中心作为缩放中心，两张图需要联动",
+        "agentPurpose": "conversation"
+      },
+      {
+        "requestId": "7a055295adc84e1baf1cb8082075b09d",
+        "credit": 22.3299999,
+        "model": "glm-5.3-flash",
+        "client": "WorkBuddy",
+        "requestTime": "2026-09-07 22:20:00",
+        "inputTrunc": "为该脚本制作python ui，支持调参，导出参数，导入参数，支持自定义导入图片、支持批量、支持批量裁剪（裁剪后作为输入源）、支持分步输出，即当前分支中的每个步骤都作为可操控过程，下一步按钮来进行下一步操作，并且可对当前曲线进行删点操作，删除某几个点后，为",
+        "input": "为该脚本制作python ui，支持调参，导出参数，导入参数，支持自定义导入图片、支持批量、支持批量裁剪（裁剪后作为输入源）、支持分步输出，即当前分支中的每个步骤都作为可操控过程，下一步按钮来进行下一步操作，并且可对当前曲线进行删点操作，删除某几个点后，为了连续性需要算法插值补充，也可以框选范围进行删点操作，界面建议 显示两张图，一张原图，一张算法应用图\n底部的表格参考debug输出的布局，包括一些标注内容",
+        "agentPurpose": "conversation"
+      },
+      {
+        "requestId": "908444c0c3a14d7a937d910da5e3f2cd",
+        "credit": 11.80999998,
+        "model": "glm-5.3-flash",
+        "client": "WorkBuddy",
+        "requestTime": "2026-09-07 22:07:00",
+        "inputTrunc": "继续",
+        "input": "继续",
+        "agentPurpose": "conversation"
+      },
+      {
+        "requestId": "91cce8e4a11e407694a28af2a0d91080",
+        "credit": 2.65,
+        "model": "glm-5.3-flash",
+        "client": "WorkBuddy",
+        "requestTime": "2026-09-07 22:05:00",
+        "inputTrunc": "789这个组中的第一个标注框作为输入源，使用当前脚本输出debug",
+        "input": "789这个组中的第一个标注框作为输入源，使用当前脚本输出debug",
+        "agentPurpose": "conversation"
+      }
+    ]
+  }
+}

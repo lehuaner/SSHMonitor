@@ -1,0 +1,21 @@
+{
+  "ResponseMetadata": {
+    "Action": "",
+    "Error": {
+      "Code": "20310",
+      "Data": {
+        "__Message.error": "get session empty, have session id param:true"
+      },
+      "Message": "The user is not logged in,",
+      "StandardCode": "040203"
+    },
+    "OID": null,
+    "Region": "",
+    "RequestId": "",
+    "Service": "",
+    "Source": "",
+    "TraceID": "00000000000000000000000000000000",
+    "Version": "",
+    "WID": null
+  }
+}

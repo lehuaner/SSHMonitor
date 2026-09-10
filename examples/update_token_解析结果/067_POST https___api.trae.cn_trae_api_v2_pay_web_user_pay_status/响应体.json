@@ -1,0 +1,85 @@
+{
+  "client_reminder": {},
+  "commercial_activities": [
+    {
+      "Enabled": true,
+      "activity_id": "express_lottery",
+      "activity_type": 2,
+      "end_time_ms": 1780588799000,
+      "start_time_ms": 1776830400000
+    },
+    {
+      "Enabled": false,
+      "activity_id": "work_lite_202606",
+      "activity_type": 101,
+      "end_time_ms": 1785340800000,
+      "start_time_ms": 1783059300000,
+      "work_extra": {
+        "eligible": false,
+        "grantable": false,
+        "granted": false
+      }
+    },
+    {
+      "Enabled": true,
+      "activity_id": "work_fission_202607",
+      "activity_type": 103,
+      "end_time_ms": 1798646400000,
+      "start_time_ms": 1785427200000,
+      "work_extra": {
+        "eligible": true,
+        "extra_reward_enabled": true,
+        "grantable": false,
+        "granted": false
+      }
+    },
+    {
+      "Enabled": true,
+      "activity_id": "new_user_credits",
+      "activity_type": 102,
+      "end_time_ms": 1798646400000,
+      "start_time_ms": 1785427200000,
+      "work_extra": {
+        "eligible": false
+      }
+    },
+    {
+      "Enabled": true,
+      "activity_id": "send_message_reward",
+      "activity_type": 105,
+      "end_time_ms": 1798732799000,
+      "start_time_ms": 1785859200000,
+      "work_extra": {
+        "eligible": true,
+        "general_credits": 500
+      }
+    }
+  ],
+  "detail": {
+    "can_gen_solo_code": false,
+    "can_get_express_status": 0,
+    "can_show_get_express": false,
+    "fast_request_per": 0,
+    "in_wait": false,
+    "in_work_lottery_selected_scope": false,
+    "next_get_express_time_ms": 0,
+    "permission": 0,
+    "toast_read": false
+  },
+  "enable_fission": false,
+  "enable_solo_builder": true,
+  "enable_solo_coder": true,
+  "enable_solo_lite": true,
+  "enable_solo_web": true,
+  "is_credits_billing": true,
+  "is_dollar_usage_billing": false,
+  "is_pay_freshman": true,
+  "is_pay_freshman_v2_deprecated": false,
+  "is_support_commercialization": false,
+  "server_time_ms": 1786815762898,
+  "solo_fission_expire_time": 0,
+  "solo_fission_max_usage": 0,
+  "solo_fission_start_time": 0,
+  "user_pay_identity": 0,
+  "user_pay_identity_str": "Free"
+}

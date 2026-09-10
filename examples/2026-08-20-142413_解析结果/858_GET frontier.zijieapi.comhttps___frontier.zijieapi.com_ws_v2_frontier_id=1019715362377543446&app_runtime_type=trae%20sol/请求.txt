@@ -1,0 +1,34 @@
+GET https://frontier.zijieapi.com/ws/v2?frontier_id=1019715362377543446&app_runtime_type=trae%20solo%20stable&process_id=1787207036&client_timestamp=1787207036902&name=lehuan-pc-pc&device_model=VMware20,1&aid=787976&device_id=2609589533558410&access_key=00692173bab2fc55c12cbd0c2e0c6d1b&fpid=420&is_background=0&x_fsdk_v=1.1.1 HTTP/1.1
+Host: frontier.zijieapi.com
+Connection: Upgrade
+Pragma: no-cache
+Cache-Control: no-cache
+x-support-ack: 1
+x-tt-ext-info: etag=e4f24584-0d36effc-548692dd-558a3d0e;net_type=1;version=4.2.243.19-trae
+User-Agent: TraeClient/TTNet
+request-traffic-type: prod
+x-app-id: 6eefa01c-1036-4c7e-9ca5-d891f63bfcd8
+x-app-version: default
+x-app-version-code: 20260811
+x-bridge-transport: aha
+x-custom-trace-id: 0dc1887e2a3fe155d171dc85a136546a
+x-device-brand: VMware20,1
+x-device-cpu: AMD
+x-device-id: 2609589533558410
+x-device-type: windows
+x-hub-version: 1
+x-ide-token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTU1NDAyNDUyNDE2Njg3MSIsInNvdXJjZSI6InJlZnJlc2hfdG9rZW4iLCJzb3VyY2VfaWQiOiJKVFZhR3k0aXR0YmlZNUpXdWJHUU9fX1JWeWo4UmdNX1kzcGdtY2k5UVUwPS4xOGNkNmY1M2JlM2I5NjhiIiwidGVuYW50X2lkIjoiN28yZDg5NHA3ZHIwbzQiLCJ0eXBlIjoidXNlciJ9LCJleHAiOjE3ODg0MTY2MzIsImlhdCI6MTc4NzIwNzAzMn0.ibWFhfXYgm7p8Ut42q6-Cv5wVdzLJL7h-SejWlJNqgOj8tPbZTIFP2sdYJqaHIl1IrtvSNpvpkjDPQWE7A5p7nQHZ3vuEjEOqdlfRqORUOuh-dmR7v2uebd-Fhv1eWAvKo30pIrV5Op5J-82UJMlH2N8AQqAGC8e_jt7375WlVGAJFWI0u164rJJqgVRNjlpudZDlgkCvCxKoXdHjfdOeUxdM7ZJNEJPoA5HSAdSsrDiY29ap8YaZpz3YyYWnrin5IgtFsgStlTewWV5n87R5RRAyEXsduiE3OxVeUpMhSoc7dbzlmi40fmffrQ_Uut5r1n4qMVTUu-NWuT4FvRW94aCy0TrC0NcZhr7h7F7eG3bPX6eURTC_UejvSAWitQI0vj4Dp6l5PJIzCpum5iAIgF05jNy0AsiZjfF3POY26tJDKnA45QnoPRDVof5073kvgMi_xw3GGIF7EkQ9qQMim_1GhKTs-_gx9KtYVyGlkSgdhbvzNC5qHR1B1uNi4a4_hWj1-Ui71xJnhVn7Hy9G5HeqYCU7PHT0hfiBGuONn1RZB8S_JFMRsWAc_sAAVZDT5di1Ms4tMZ7kR456829kLEideUzle0t1U-DnUFB7k_7QCYp46JjulTqvIReUAyRUAedDUpRs6BJttscYDrwhxNRju_L6_FLvSwEzlJ78a0
+x-ide-version: 0.1.51
+x-ide-version-code: 20260811
+x-ide-version-type: stable
+x-machine-id: cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b
+x-os-version: Windows 11 Pro
+Upgrade: websocket
+Origin: wss://frontier.zijieapi.com
+Sec-WebSocket-Version: 13
+x-tt-trace-id: 00-1dd731f40d945686928468a5a263ffff-1dd731f40d945686-01
+Accept-Encoding: gzip, deflate, br
+smbyttnet: 1
+Sec-WebSocket-Key: menYVnsu4HkfFtbZn2lkYw==
+Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+Sec-WebSocket-Protocol: pbbp2

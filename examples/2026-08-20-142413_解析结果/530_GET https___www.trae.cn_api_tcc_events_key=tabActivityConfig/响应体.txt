@@ -1,0 +1,8 @@
+{
+  "texts": "🔥 FORCE 原动力大会火热进行中！",
+  "description": "聚焦 AI 最新探索，解锁落地实践的无限可能",
+  "img": "https://tosv.byted.org/obj/trae-com-cn/Force2.png",
+  "isShow": false,
+  "link": "https://www.volcengine.com/event/force-2506?utm_campaign=20250611&utm_content=springforce&utm_medium=in_mkt&utm_source=juejin&utm_term=juejin_huoshanguanwanghuodongye",
+  "rightContent": []
+}

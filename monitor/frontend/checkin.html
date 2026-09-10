@@ -1,0 +1,747 @@
+<!DOCTYPE html><html lang=zh-CN><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>签到 - Honor10</title>
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif}
+body{background:#0b1120;color:#e2e8f0;display:flex;align-items:center;justify-content:center}
+.app{width:100%;max-width:1200px;padding:20px}
+.nav{display:flex;gap:4px;margin-bottom:20px;background:#131c31;border-radius:10px;padding:4px;border:1px solid #1e293b;flex-wrap:wrap}
+.nav a{padding:8px 20px;border-radius:6px;text-decoration:none;color:#94a3b8;font-size:.85rem;transition:.2s}
+.nav a:hover,.nav a.active{background:#2563eb;color:#fff}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.header h1{font-size:1.4rem;font-weight:600;background:linear-gradient(135deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.card{background:#131c31;border:1px solid #1e293b;border-radius:12px;padding:16px;margin-bottom:12px}
+.card-h{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;gap:8px}
+.card-h label{font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px;font-weight:500}
+.btn{padding:6px 16px;border-radius:6px;border:none;font-size:.8rem;cursor:pointer;color:#fff;transition:opacity .2s;background:#1e293b;white-space:nowrap;display:inline-flex;align-items:center;gap:4px}
+.btn:hover{opacity:.8}.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-primary{background:#2563eb}.btn-warn{background:#d97706}.btn-rst{background:#059669}.btn-danger{background:#dc2626}
+.btn-sm{padding:4px 10px;font-size:.75rem}
+input,select,textarea{background:#0b1120;border:1px solid #334155;border-radius:6px;padding:8px 12px;color:#e2e8f0;font-size:.85rem;outline:none;width:100%;font-family:inherit}
+input:focus,select:focus{border-color:#38bdf8}
+.form-row{display:grid;grid-template-columns:120px 1fr;gap:8px;align-items:center;margin-bottom:8px}
+.form-row .field-hint{grid-column:2;font-size:.68rem;color:#64748b;line-height:1.4;margin-top:-4px}
+.form-row label{font-size:.75rem;color:#94a3b8}
+.toggle{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0}
+.toggle input{opacity:0;width:0;height:0}
+.toggle .slider{position:absolute;cursor:pointer;inset:0;background:#1e293b;border-radius:24px;transition:.3s}
+.toggle .slider:before{content:"";position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:#94a3b8;border-radius:50%;transition:.3s}
+.toggle input:checked+.slider{background:#2563eb}
+.toggle input:checked+.slider:before{transform:translateX(20px);background:#fff}
+.toggle-row{display:flex;align-items:center;gap:10px;margin:8px 0}
+.empty{text-align:center;color:#64748b;padding:20px;font-size:.8rem}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e293b;color:#e2e8f0;padding:10px 24px;border-radius:8px;font-size:.8rem;z-index:99;transition:opacity .3s;opacity:0;pointer-events:none}
+.toast.show{opacity:1}
+.loading{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+.status{font-size:.75rem;color:#64748b;margin-top:8px;min-height:1em}
+.status.ok{color:#22c55e}.status.err{color:#ef4444}
+.task{background:#0b1120;border:1px solid #1e293b;border-radius:10px;padding:12px;margin-bottom:10px}
+.task-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.task-name{font-size:.9rem;font-weight:600;color:#e2e8f0;flex:1;min-width:120px}
+.tag{font-size:.65rem;padding:2px 8px;border-radius:4px;background:#1e293b;color:#94a3b8;white-space:nowrap}
+.tag.ok{background:rgba(34,197,94,.15);color:#22c55e}
+.tag.err{background:rgba(239,68,68,.15);color:#ef4444}
+.tag.warn{background:rgba(217,119,6,.15);color:#f59e0b}
+.tag.purple{background:rgba(167,139,250,.15);color:#a78bfa}
+.task-meta{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px;font-size:.72rem;color:#64748b}
+.task-meta b{color:#e2e8f0;font-family:monospace;font-weight:600}
+.task-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.log-block{display:none;margin-top:10px;border-top:1px solid #1e293b;padding-top:8px}
+.log-block.show{display:block}
+.log-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(40px,1fr));gap:4px;margin-top:6px}
+.log-day{height:34px;border-radius:6px;background:#1e293b;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.55rem;color:#64748b;cursor:default}
+.log-day.ok{background:linear-gradient(135deg,#059669,#10b981);color:#fff;box-shadow:0 0 6px rgba(16,185,129,.45);border:1px solid #34d399}
+.log-day.fail{background:rgba(239,68,68,.18);color:#ef4444}
+.log-day.invalid{background:rgba(217,119,6,.18);color:#f59e0b}
+.log-day.skip{background:#1e293b;color:#475569}
+.log-day .d{font-size:.6rem;font-weight:600}
+.log-day .v{font-size:.5rem}
+.log-day.ok .v{font-weight:800;font-size:.62rem}
+.usage-block{display:none;margin-top:10px;border-top:1px solid #1e293b;padding-top:8px}
+.usage-block.show{display:block}
+.usage-summ{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:8px;font-size:.78rem;color:#94a3b8}
+.usage-summ b{color:#f59e0b;font-family:monospace}
+.usage-row{display:flex;gap:10px;padding:6px 8px;border-bottom:1px solid #16203a;align-items:flex-start;font-size:.75rem}
+.usage-row .um{color:#38bdf8;white-space:nowrap;font-weight:600;min-width:70px}
+.usage-row .ut{color:#64748b;white-space:nowrap;font-variant-numeric:tabular-nums}
+.usage-row .uc{color:#f59e0b;white-space:nowrap;font-family:monospace}
+.usage-row .up{color:#94a3b8;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.usage-row .usk{color:#475569;white-space:nowrap;font-size:.68rem}
+.usage-empty{color:#64748b;font-size:.75rem;padding:8px 0}
+.usage-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.usage-bar input[type=date]{width:auto;background:#0b1120;border:1px solid #334155;border-radius:6px;padding:4px 8px;color:#e2e8f0;font-size:.75rem;outline:none}
+.usage-bar input[type=date]:focus{border-color:#38bdf8}
+.chart-box{position:relative;height:300px;margin-bottom:8px}
+.chart-box canvas{position:absolute;inset:0}
+.cal-wrap{overflow-x:auto;}
+.cal{display:grid;grid-auto-flow:column;grid-auto-columns:auto;gap:4px;width:max-content;margin-top:6px}
+.cal-col{display:grid;grid-template-rows:repeat(7,1fr);gap:4px}
+.cal-day{width:26px;height:26px;border-radius:4px;background:#0b1120;border:1px solid #1e293b;display:flex;align-items:center;justify-content:center;font-size:.55rem;color:#475569;cursor:default;position:relative}
+.cal-day .cv{display:none;position:absolute;bottom:calc(100% + 4px);left:50%;transform:translateX(-50%);background:#1e293b;border:1px solid #334155;border-radius:4px;padding:3px 6px;font-size:.6rem;color:#e2e8f0;white-space:nowrap;z-index:10}
+.cal-day:hover .cv{display:block}
+.cal-day.zero{background:#0b1120;color:#334155}
+.cal-dow{font-size:.5rem;color:#475569;text-align:center;height:14px}
+.cal-legend{display:flex;gap:4px;align-items:center;justify-content:flex-end;margin-top:6px;font-size:.6rem;color:#64748b}
+.cal-legend i{display:inline-block;width:12px;height:12px;border-radius:2px}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:100}
+.overlay.show{display:flex}
+.modal{background:#131c31;border:1px solid #1e293b;border-radius:12px;padding:20px;width:100%;max-width:480px;max-height:90vh;overflow:auto}
+.modal-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.modal-h label{font-size:.85rem;color:#e2e8f0;font-weight:600;text-transform:none}
+.modal-close{cursor:pointer;color:#64748b;font-size:1rem;padding:0 4px}
+.modal-close:hover{color:#ef4444}
+.field-toggle{display:flex;align-items:center;justify-content:space-between;padding:6px 0}
+.field-toggle label{font-size:.75rem;color:#94a3b8}
+@media(max-width:600px){.form-row{grid-template-columns:1fr;gap:4px}}
+</style>
+<div class=app>
+<div class=nav><a href=/>▼ 监控</a><a href=/sb/ui/ target=_blank>⚙ Sing-box</a><a href=/subscription>📦 订阅</a><a href=/notify>🔔 通知</a><a href=/files>📁 文件</a><a href=/android>📱 Android</a><a href=/checkin class=active>✅ 签到</a></div>
+<div class=header><h1>✅ 自动签到</h1></div>
+<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
+<button class="btn btn-primary" onclick=openModal()>＋ 新增账号</button>
+<button class="btn btn-rst" onclick=runAll()>▶ 全部签到</button>
+<button class="btn" onclick=loadData()>↻ 刷新</button>
+<button class="btn btn-primary" id=chartsBtn onclick=openCharts() style="display:none">📈 图表</button>
+<span class=status id=status style="margin:0;flex:1;min-width:120px"></span>
+</div>
+<div id=tasks></div>
+<div class=empty id=empty style="display:none">暂无签到账号，点击「新增账号」开始配置。</div>
+
+<!-- 图表浮层 -->
+<div class=overlay id=chartsOverlay onclick="if(event.target===this)closeCharts()">
+<div class=modal style=max-width:920px>
+<div class=modal-h><label id=chartsTitle>📈 Trae 消耗统计</label><span class=modal-close onclick=closeCharts()>✕</span></div>
+<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px">
+  <label style="font-size:.75rem;color:#94a3b8">账号</label>
+  <select id=chartsAccount onchange="renderCharts();renderStats()" style="width:auto;padding:4px 8px;font-size:.75rem"></select>
+  <label style="font-size:.75rem;color:#94a3b8">模型</label>
+  <select id=chartsModel onchange="renderCharts();renderStats()" style="width:auto;padding:4px 8px;font-size:.75rem"></select>
+  <button class="btn btn-sm" id=chartsUnitBtn onclick=toggleUnit() title="切换 积分 / Token">积分</button>
+  <button class="btn btn-sm btn-primary" onclick=loadData()>↻ 刷新</button>
+</div>
+<div class=card style="border:1px solid #1e293b;margin-bottom:10px">
+  <div class=card-h><label>📊 积分消耗统计</label>
+    <div style="display:flex;gap:8px;align-items:center">
+      <select id=statsFilter onchange=renderStats() style="width:auto;padding:4px 8px;font-size:.75rem">
+        <option value=total>总消耗</option>
+        <option value=model>按模型分类</option>
+      </select>
+      <button class="btn btn-sm" onclick=refreshStats()>↻ 更新</button>
+    </div>
+  </div>
+  <div id=statsTotal style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:8px"></div>
+  <div id=statsBreakdown></div>
+</div>
+<div id=chartBar></div>
+<div id=chartMonthly></div>
+<div id=chartCalendar></div>
+<div id=chartHint style="color:#64748b;font-size:.72rem;margin-top:8px"></div>
+</div>
+</div>
+
+<div class=overlay id=overlay onclick="if(event.target===this)closeModal()">
+<div class=modal>
+<div class=modal-h><label id=modalTitle>新增账号</label><span class=modal-close onclick=closeModal()>✕</span></div>
+<div class=form-row><label>Provider</label><select id=f_provider onchange=renderFields()></select></div>
+<div class=form-row><label>名称</label><input id=f_name placeholder="例：Trae 主账号"></div>
+<div id=f_fields></div>
+<div class=field-toggle><label>启用计划</label><label class=toggle><input type=checkbox id=f_enabled checked><span class=slider></span></label></div>
+<div style="display:flex;gap:8px;margin-top:14px">
+<button class="btn btn-primary" style=flex:1 onclick=saveTask()>保存</button>
+<button class="btn" onclick=closeModal()>取消</button>
+</div>
+</div>
+</div>
+<div class=toast id=toast></div>
+<script>
+const $=s=>document.querySelector(s);
+let providers=[], tasks=[], stats=null, editingId=null;
+
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
+function status(msg,type){const s=$('#status');s.textContent=msg;s.className='status'+(type?' '+type:'');}
+
+async function api(url,opts){
+  try{
+    const r=await fetch(url,opts);
+    return await r.json().catch(()=>({ok:false,error:'响应异常 HTTP '+r.status}));
+  }catch(e){
+    return {ok:false,error:'网络/网关错误: '+(e.message||e)};
+  }
+}
+function fmtTime(ts){if(!ts)return '—';const d=new Date(ts);const p=n=>String(n).padStart(2,'0');return `${p(d.getMonth()+1)}-${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;}
+function cookieLeftTxt(ts){
+  const d=Math.ceil((ts-Date.now())/86400000);
+  const dt=new Date(ts),p=n=>String(n).padStart(2,'0');
+  const s=`${dt.getFullYear()}-${p(dt.getMonth()+1)}-${p(dt.getDate())}`;
+  if(d<=0)return `<b style="color:#ef4444">已到期 (${s})</b>`;
+  const c=d<=3?'#f59e0b':'#34d399';
+  return `<b style="color:${c}">${d} 天后到期 (${s})</b>`;
+}
+function fmtDate(date){const [,m,d]=date.split('-');return `${m}/${d}`;}
+
+async function loadData(){
+  status('加载中…','');$('#status').innerHTML='<span class=loading></span> 加载中…';
+  const [p,t,s]=await Promise.all([api('/api/checkin/providers'),api('/api/checkin/tasks'),api('/api/checkin/stats')]);
+  providers=p.providers||[];
+  tasks=t.tasks||[];
+  if(s.accounts)stats=s;
+  render();
+  renderStats();
+  updateChartsBtn();
+  status(`已加载 ${tasks.length} 个账号`,'ok');
+  autoCheck();
+}
+function provName(id){const p=providers.find(x=>x.id===id);return p?p.name:id;}
+// 图表按钮：显示当前账号所属 provider 名，点击打开图表浮层
+function updateChartsBtn(){
+  const btn=$('#chartsBtn');
+  const names=[...new Set(tasks.map(t=>provName(t.providerId)).filter(Boolean))];
+  btn.style.display=names.length?'':'none';
+  btn.textContent='📈 '+(names.join(' / ')||'图表');
+}
+function openCharts(){
+  $('#chartsOverlay').classList.add('show');
+  renderStats();
+  renderCharts();
+}
+function closeCharts(){
+  $('#chartsOverlay').classList.remove('show');
+}
+
+function render(){
+  $('#empty').style.display=tasks.length?'none':'';
+  const box=$('#tasks');box.innerHTML='';
+  for(const t of tasks){
+    const card=document.createElement('div');card.className='task';
+    const st=t.credentialInvalid?'err':(t.lastResult==='success'?'ok':(t.lastResult==='fail'?'warn':''));
+    const stTxt=t.credentialInvalid?'凭证无效':(t.lastResult==='success'?'✓ 正常':(t.lastResult==='fail'?'✗ 失败':'未签到'));
+    const todayCheck=t.todayCheckedIn===true?'今日已签':(t.todayCheckedIn===false?'今日未签':'今日未检测');
+    const todayCls=t.todayCheckedIn===true?'ok':(t.todayCheckedIn===false?'warn':'');
+    const reward=t.lastResult==='success'?'':'';
+    card.innerHTML=
+      `<div class=task-h>
+        <span class=task-name>${esc(t.name)}</span>
+        <span class=tag>${esc(provName(t.providerId))}</span>
+        <span class="tag ${st}">${stTxt}</span>
+        <span class="tag ${todayCls}">${todayCheck}</span>
+        <span class="tag ${t.enabled?'ok':''}">${t.enabled?'已启用':'已停用'}</span>
+        <span class=tag>总积分 <b style=color:#34d399 data-total="${t.id}">${fmtCredits(t.totalCredits)}</b></span>
+      </div>
+      <div class=task-meta>
+        <span>签到时间 <b>${esc(t.config.time)}</b> (${esc(t.config.timezone)})</span>
+        <span>失败阈值 <b>${esc(t.config.failThreshold)}</b></span>
+        <span>连续失败 <b>${t.failCount||0}</b> 次</span>
+        <span>平均每日消耗 <b style=color:#f59e0b>${fmtDelta(avgConsumption(t.id))}</b></span>
+        ${t.hasCookie&&t.cookieExpiresAt?`<span>Cookie ${cookieLeftTxt(t.cookieExpiresAt)}</span>`:''}
+        <span>最近 <b>${fmtTime(t.lastRun)}</b></span>
+        ${t.lastError?`<span style=color:#ef4444>${esc(t.lastError)}</span>`:''}
+      </div>
+      <div class=task-actions>
+        <button class="btn btn-sm btn-primary" onclick=runOne('${t.id}')>▶ 立即签到</button>
+        <button class="btn btn-sm" onclick=checkToday('${t.id}')>☑ 检测签到</button>
+        <button class="btn btn-sm" onclick=testCred('${t.id}')>d 测试凭证</button>
+        <button class="btn btn-sm" onclick=getTotalCredits('${t.id}')>◈ 查总积分</button>
+        <button class="btn btn-sm" onclick=toggleLog('${t.id}',this)>📅 近30天</button>
+        <button class="btn btn-sm" onclick=toggleUsage('${t.id}',this)>◈ 积分消耗明细</button>
+        <button class="btn btn-sm" onclick=openModal('${t.id}')>✎ 编辑</button>
+        <button class="btn btn-sm btn-danger" onclick=delTask('${t.id}')>🗑 删除</button>
+        <label class="toggle" style=margin-left:auto><input type=checkbox ${t.enabled?'checked':''} onclick=toggleEnable('${t.id}',this.checked)><span class=slider></span></label>
+      </div>
+      <div class=log-block id=log_${t.id}></div>
+      <div class=usage-block id=usage_${t.id}></div>`;
+    box.appendChild(card);
+  }
+}
+function esc(s){if(s==null)return '';return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function maskToken(t){
+  if(!t||t.length<10)return t;
+  return t.slice(0,4)+'…'+t.slice(-4);
+}
+function isMasked(v){return typeof v==='string'&&(v.includes('…')||/^\*{3,}$/.test(v));}
+function fmtCredits(v){if(v==null||v==='')return '—';return Number(v).toFixed(2);}
+function fmtDelta(v){if(v==null||isNaN(v))return '—';return Number(v).toFixed(2)+' 分';}
+function fmtEst(v){if(v==null||v==='')return '—';if(v==='充足')return '充足';return Number(v).toFixed(1)+' 天';}
+function avgConsumption(id){if(!stats)return null;const a=(stats.accounts||[]).find(x=>x.id===id);return a?a.avgDailyConsumption:null;}
+
+// ====== 每日消耗统计 ======
+let chartUnit='credit'; // 'credit' | 'token'
+function isToken(){return chartUnit==='token';}
+function unitSuffix(){return isToken()?'Tok':'分';}
+function fmtVal(v){return v==null||isNaN(v)?'—': (isToken()?Math.round(v).toLocaleString():Number(v).toFixed(2));}
+function toggleUnit(){
+  chartUnit=isToken()?'credit':'token';
+  $('#chartsUnitBtn').textContent=isToken()?'Token':'积分';
+  if(stats)renderStats();
+  renderCharts();
+}
+function accYear(a){return isToken()?a.tokensYearTotal:a.yearTotal;}
+function accMonth(a){return isToken()?a.tokensMonthTotal:a.monthTotal;}
+function accAvg(a){return isToken()?a.avgDailyTokens:a.avgDailyConsumption;}
+function mYear(m){return isToken()?m.tokensYearTotal:m.yearTotal;}
+function mMonth(m){return isToken()?m.tokensMonthTotal:m.monthTotal;}
+function accNetDaily(a){return isToken()?a.netDailyAvgTokens:a.netDailyAvgConsumption;}
+function accNetMonth(a){return isToken()?a.netMonthlyAvgTokens:a.netMonthlyAvgConsumption;}
+function mNetDaily(m){return isToken()?m.netDailyTokens:m.netDailyConsumption;}
+function mNetMonth(m){return isToken()?m.netMonthlyTokens:m.netMonthlyConsumption;}
+function renderStats(){
+  if(!stats||!stats.accounts||!stats.accounts.length){
+    $('#statsTotal').innerHTML='<div style=color:#64748b;font-size:.78rem>暂无消耗数据，点击「↻ 更新」拉取已过去日期的实际消耗并落库。</div>';
+    $('#statsBreakdown').innerHTML='';
+    return;
+  }
+  const total=stats.total||{};
+  const mode=$('#statsFilter').value;
+  const tYear=isToken()?total.tokensYearTotal:total.yearTotal;
+  const tMonth=isToken()?total.tokensMonthTotal:total.monthTotal;
+  const tAvg=isToken()?total.avgDailyTokens:total.avgDailyConsumption;
+  const tNetDaily=isToken()?total.netDailyAvgTokens:total.netDailyAvgConsumption;
+  const tNetMonth=isToken()?total.netMonthlyAvgTokens:total.netMonthlyAvgConsumption;
+  $('#statsTotal').innerHTML=
+    `<div><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">年${isToken()?'Token':'积分'}总</div><div style="font-size:1.3rem;font-weight:700;color:#f59e0b">${fmtVal(tYear)} ${unitSuffix()}</div></div>
+     <div><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">月${isToken()?'Token':'积分'}总</div><div style="font-size:1.3rem;font-weight:700;color:#e2e8f0">${fmtVal(tMonth)} ${unitSuffix()}</div></div>
+     <div><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">平均每日总消耗</div><div style="font-size:1.3rem;font-weight:700;color:#38bdf8">${fmtVal(tAvg)} ${unitSuffix()}</div></div>
+     <div><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">净日均</div><div style="font-size:1.3rem;font-weight:700;color:#22c55e">${fmtVal(tNetDaily)} ${unitSuffix()}</div></div>
+     <div><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">净月均</div><div style="font-size:1.3rem;font-weight:700;color:#a78bfa">${fmtVal(tNetMonth)} ${unitSuffix()}</div></div>
+     <div><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">预估可用天数(总)</div><div style="font-size:1.3rem;font-weight:700;color:#fbbf24">${fmtEst(total.estimatedDays)}</div></div>
+     <div><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">预估可用天数(总·近10天)</div><div style="font-size:1.3rem;font-weight:700;color:#fbbf24">${fmtEst(total.estimatedDays10d)}</div></div>`;
+  const rows=stats.accounts.map(a=>{
+    if(mode==='model'){
+      const ms=(a.models&&a.models.length)?a.models.map(m=>
+        `<div style="display:flex;justify-content:space-between;gap:8px;padding:2px 0;font-size:.75rem">
+          <span style=color:#38bdf8>${esc(m.model)}</span>
+          <span style=white-space:nowrap>年 <b style=color:#f59e0b>${fmtVal(mYear(m))}</b> · 月 <b style=color:#e2e8f0>${fmtVal(mMonth(m))}</b> · 净日均 <b style=color:#22c55e>${fmtVal(mNetDaily(m))}</b> · 净月均 <b style=color:#a78bfa>${fmtVal(mNetMonth(m))}</b></span>
+        </div>`).join(''):'<div style=color:#64748b;font-size:.75rem>暂无数据</div>';
+      return `<div style="padding:6px 0;border-bottom:1px solid #1e293b;font-size:.78rem">
+        <div style="display:flex;justify-content:space-between;gap:8px;font-weight:600"><span>${esc(a.name)}</span><span style=white-space:nowrap>年 <b style=color:#f59e0b>${fmtVal(accYear(a))}</b> · 月 <b style=color:#e2e8f0>${fmtVal(accMonth(a))}</b> · 净日均 <b style=color:#22c55e>${fmtVal(accNetDaily(a))}</b> · 净月均 <b style=color:#a78bfa>${fmtVal(accNetMonth(a))}</b> · 预估 <b style=color:#fbbf24>${fmtEst(a.estimatedDays)}</b> <span style=color:#64748b>(近10天 <b style=color:#fbbf24>${fmtEst(a.estimatedDays10d)}</b>)</span></span></div>
+        <div style=margin-top:4px>${ms}</div>
+      </div>`;
+    }
+    return `<div style="display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid #1e293b;font-size:.78rem">
+      <span>${esc(a.name)}</span>
+      <span style=white-space:nowrap>年 <b style=color:#f59e0b>${fmtVal(accYear(a))}</b> · 月 <b style=color:#e2e8f0>${fmtVal(accMonth(a))}</b> · 平均 <b style=color:#94a3b8>${fmtVal(accAvg(a))}</b> · 净日均 <b style=color:#22c55e>${fmtVal(accNetDaily(a))}</b> · 净月均 <b style=color:#a78bfa>${fmtVal(accNetMonth(a))}</b> · 预估 <b style=color:#fbbf24>${fmtEst(a.estimatedDays)}</b> <span style=color:#64748b>(近10天 <b style=color:#fbbf24>${fmtEst(a.estimatedDays10d)}</b>)</span></span>
+    </div>`;
+  }).join('');
+  $('#statsBreakdown').innerHTML=rows;
+}
+async function refreshStats(){
+  toast('⏳ 更新统计中…');
+  const r=await api('/api/checkin/stats?force=1');
+  if(!r.ok){toast('❌ 更新失败: '+(r.error||'未知错误'));return;}
+  if(r.accounts)stats=r;
+  renderStats();
+  toast('✅ 统计已更新');
+}
+
+// ====== 账号 CRUD ======
+function openModal(id){
+  editingId=id||null;
+  const t=id?tasks.find(x=>x.id===id):null;
+  $('#modalTitle').textContent=t?'编辑账号':'新增账号';
+  const sel=$('#f_provider');sel.innerHTML=providers.map(p=>`<option value="${p.id}">${esc(p.name)}</option>`).join('');
+  if(t){sel.value=t.providerId;sel.disabled=true;}
+  $('#f_name').value=t?t.name:'';
+  $('#f_enabled').checked=t?(t.enabled!==false):true;
+  renderFields(t);
+  $('#overlay').classList.add('show');
+}
+function renderFields(task){
+  const p=providers.find(x=>x.id===$('#f_provider').value);
+  const box=$('#f_fields');box.innerHTML='';
+  if(!p)return;
+  for(const f of p.configSchema||[]){
+    // 取值：编辑时用已存值，否则用 schema 默认值（新增时也要回填默认）
+    const cur=task?(task.config[f.key]??f.default):(f.default);
+    if(f.type==='toggle'){
+      const tv=cur===undefined?false:cur;
+      box.insertAdjacentHTML('beforeend',`<div class=field-toggle><label>${esc(f.label)}</label><label class=toggle><input type=checkbox data-k="${f.key}" ${tv?'checked':''}><span class=slider></span></label></div>`);
+    }else if(f.type==='select'){
+      const opts=f.options||[];
+      const isCustom=cur!==undefined&&!opts.some(o=>String(o.value)===String(cur));
+      const optHtml=opts.map(o=>`<option value="${esc(o.value)}" ${String(o.value)===String(cur)?'selected':''}>${esc(o.label)}</option>`).join('');
+      const customSel=isCustom?' selected':'';
+      const customIn=isCustom?`<input type="text" data-k="${f.key}_custom" placeholder="自定义值" value="${esc(cur)}">`:'';
+      box.insertAdjacentHTML('beforeend',
+        `<div class=form-row><label>${esc(f.label)}${f.required?' *':''}</label>
+          <select data-k="${f.key}" onchange=onSelectChange(this)>${optHtml}<option value="__custom__"${customSel}>自定义…</option></select>
+          <span data-custom="${f.key}" style="grid-column:2">${customIn}</span>
+        </div>`);
+    }else{
+      const isPwd=f.type==='password';
+      const oldVal=isPwd&&task?(task.config[f.key]??''):'';
+      const ph=isPwd&&task?'留空则不修改（当前已掩码）':(f.placeholder||'');
+      let val='';
+      if(isPwd&&task&&oldVal){ val=maskToken(oldVal); }
+      else if(!isPwd){ val=(cur===undefined?'':cur); }
+      const hintTxt=f.hint?`<div class=field-hint>${esc(f.hint)}</div>`:'';
+      box.insertAdjacentHTML('beforeend',`<div class=form-row><label>${esc(f.label)}${f.required?' *':''}</label><input type="${f.type||'text'}" data-k="${f.key}" value="${esc(val)}" placeholder="${esc(ph)}">${hintTxt}</div>`);
+    }
+  }
+}
+// select 切换为"自定义…"时显示输入框
+function onSelectChange(sel){
+  const span=document.querySelector(`[data-custom="${sel.dataset.k}"]`);
+  if(!span||span.tagName!=='SPAN')return;
+  if(sel.value==='__custom__'){
+    if(!span.querySelector('input'))span.innerHTML='<input type="text" data-k="'+sel.dataset.k+'_custom" placeholder="自定义值">';
+  }else{
+    span.innerHTML='';
+  }
+}
+function closeModal(){$('#overlay').classList.remove('show');editingId=null;}
+function collectFields(){
+  const p=providers.find(x=>x.id===$('#f_provider').value);
+  const cfg={};
+  if(!p)return cfg;
+  for(const f of p.configSchema||[]){
+    const el=$(`#f_fields [data-k="${f.key}"]`);
+    if(!el)continue;
+    if(f.type==='select'){
+      if(el.value==='__custom__'){
+        const c=document.querySelector(`#f_fields [data-k="${f.key}_custom"]`);
+        cfg[f.key]=c&&c.value.trim()?c.value.trim():'';
+      }else{
+        cfg[f.key]=el.value;
+      }
+      continue;
+    }
+    // password 型字段（如 token）：编辑时留空或仍为掩码值表示"不修改"，不覆盖旧值
+    if(f.type==='password' && el.type==='password'){
+      const v=el.value.trim();
+      if(!v||isMasked(v))continue;
+      cfg[f.key]=v;
+      continue;
+    }
+    cfg[f.key]=f.type==='toggle'?el.checked:(el.value.trim());
+  }
+  return cfg;
+}
+async function saveTask(){
+  const name=$('#f_name').value.trim();
+  if(!name){toast('请填写名称');return;}
+  const providerId=$('#f_provider').value;
+  const config=collectFields();
+  const p=providers.find(x=>x.id===providerId);
+  // 新增时必填字段校验（编辑时 password 留空跳过）
+  if(!editingId&&p){
+    for(const f of p.configSchema||[]){
+      if(f.required&&!config[f.key]){toast(`请填写「${f.label}」`);return;}
+    }
+  }
+  if(editingId){
+    const r=await api('/api/checkin/tasks?id='+editingId,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,config})});
+    r.ok?toast('已保存'):toast('保存失败: '+(r.error||''));
+  }else{
+    const r=await api('/api/checkin/tasks',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({providerId,name,config,enabled:$('#f_enabled').checked})});
+    r.ok?toast('已新增账号'):toast('新增失败: '+(r.error||''));
+  }
+  closeModal();loadData();
+}
+async function delTask(id){
+  if(!confirm('确定删除该账号？'))return;
+  const r=await api('/api/checkin/tasks?id='+id,{method:'DELETE'});
+  r.ok?toast('已删除'):toast('删除失败');
+  loadData();
+}
+async function toggleEnable(id,on){
+  await api('/api/checkin/tasks?id='+id,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({enabled:on})});
+  loadData();
+}
+
+// ====== 操作 ======
+async function runOne(id){toast('⏳ 签到中…');const r=await api('/api/checkin/run?id='+id,{method:'POST'});toast(r.ok?(r.alreadyCheckedIn?'ℹ️ 今日已签到过':'✅ 签到成功'):'❌ 签到失败: '+(r.error||'未知错误'));loadData();}
+async function runAll(){toast('⏳ 全部签到中…');const r=await api('/api/checkin/run-all',{method:'POST'});const ok=r.results?r.results.filter(x=>x.ok).length:0;toast(ok?`✅ 完成：成功 ${ok}/${r.results?r.results.length:0}`:'❌ 全部签到失败');loadData();}
+async function testCred(id){toast('⏳ 测试凭证中…');const r=await api('/api/checkin/test?id='+id,{method:'POST'});if(r.ok){toast(`✅ 凭证有效，可用积分 ${r.total??'?'}`);refreshTotal(id);}else{toast('❌ 凭证无效: '+(r.error||'未知错误'));}loadData();}
+async function refreshTotal(id){const r=await api('/api/checkin/credits/total?id='+id);if(r.ok){const el=document.querySelector(`[data-total="${id}"]`);if(el)el.textContent=fmtCredits(r.total);}}
+async function getTotalCredits(id){toast('⏳ 查询总积分中…');const r=await api('/api/checkin/credits/total?id='+id);toast(r.ok?`✅ 总积分: ${fmtCredits(r.total)}`:'❌ 查总积分失败: '+(r.error||'未知错误'));loadData();}
+async function checkToday(id){toast('⏳ 检测中…');const r=await api('/api/checkin/status?id='+id);if(!r.ok){toast('❌ 检测失败: '+(r.error||'未知错误'));loadData();return;}toast(r.checked_in?`✅ 今日已签到，积分 ${r.credits??'未知'}`:`今日未签到，积分 ${r.credits??'未知'}`);loadData();}
+
+// 进入页面后对每个账号做"今日首次检测"：当天已检/已签则后端跳过
+async function autoCheck(){
+  const r=await api('/api/checkin/auto-check');
+  if(!r.ok||!r.results)return;
+  const done=r.results.filter(x=>!x.skipped);
+  if(!done.length)return;
+  const okN=done.filter(x=>x.ok).length;
+  toast(`检测完成：${okN} 正常，${done.length-okN} 异常`);
+  const t=await api('/api/checkin/tasks');
+  tasks=t.tasks||[];render();
+}
+
+// ====== 30 天日志 ======
+async function toggleLog(id,btn){
+  const block=$('#log_'+id);
+  const show=!block.classList.contains('show');
+  btn.textContent=show?'📅 收起日志':'📅 近30天';
+  block.classList.toggle('show',show);
+  if(show&&!block.dataset.loaded){
+    block.dataset.loaded='1';
+    const r=await api('/api/checkin/logs?taskId='+id);
+    const logs=r.logs||[];
+    let html='<div style="font-size:.7rem;color:#64748b;margin-bottom:4px">近30天签到记录</div><div class=log-grid>';
+    for(let i=29;i>=0;i--){
+      const d=new Date();d.setDate(d.getDate()-i);
+      const p=n=>String(n).padStart(2,'0');
+      const ds=`${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`;
+      const log=logs.find(L=>L.date===ds);
+      let cls='skip',v='·';
+      if(log){cls=log.status==='success'?'ok':log.status;v=log.status==='success'?'✓':(log.status==='invalid'?'!':'✗');}
+      html+=`<div class="log-day ${cls}" title="${ds} ${log?log.status:''}${log&&log.reward?' +'+log.reward:''}"><span class=d>${p(d.getMonth()+1)}/${p(d.getDate())}</span><span class=v>${v}</span></div>`;
+    }
+    html+='</div>';
+    block.innerHTML=html;
+  }
+}
+
+// ====== 积分消耗明细 ======
+function todayStr(offsetDays=0){
+  const d=new Date(Date.now()+offsetDays*86400*1000);
+  const p=n=>String(n).padStart(2,'0');
+  return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`;
+}
+function dateToSec(str){
+  const d=new Date(str+'T00:00:00');
+  return Math.floor(d.getTime()/1000);
+}
+async function loadUsage(id,block){
+  const stI=block.querySelector('.u-start'),enI=block.querySelector('.u-end');
+  const st=dateToSec(stI.value),en=dateToSec(enI.value)+86400-1;
+  const bodyEl=block.querySelector('.u-body');
+  bodyEl.innerHTML='<div style="font-size:.75rem;color:#64748b"><span class=loading></span> 查询中…</div>';
+  const all=[];
+  const pageSize=50;
+  let pageNum=1,total=0;
+  for(;;){
+    const body=JSON.stringify({start_time:st,end_time:en,page_size:pageSize,page_num:pageNum,usage_type:[7]});
+    const r=await api('/api/checkin/usage?id='+id,{method:'POST',headers:{'Content-Type':'application/json'},body});
+    if(!r.ok){bodyEl.innerHTML='<div class=usage-empty>查询失败: '+(r.error||'未知错误')+'</div>';return;}
+    const data=r.data||{};
+    const list=data.user_usage_group_by_sessions||[];
+    all.push(...list);
+    total=data.total??list.length;
+    if(all.length>=total||list.length<pageSize)break;
+    pageNum++;
+  }
+  if(!all.length){bodyEl.innerHTML='<div class=usage-empty>该时段暂无积分消耗记录</div>';return;}
+  const totalCred=all.reduce((s,x)=>s+(x.credits_float||0),0);
+  let html=`<div class=usage-summ><span>会话 <b>${all.length}</b> 条</span><span>共消耗 <b>${totalCred.toFixed(2)}</b> 分</span></div>`;
+  for(const x of all){
+    const tok=x.extra_info||{};
+    html+=`<div class=usage-row>
+      <span class=um>${esc(x.model_name||'—')}</span>
+      <span class=ut>${fmtTime((x.usage_time||0)*1000)}</span>
+      <span class=uc>${(x.credits_float||0).toFixed(2)}分</span>
+      <span class=up title="${esc(x.user_input_preview||'')}">${esc(x.user_input_preview||'')}</span>
+      <span class=usk>${tok.input_token||0}/${tok.output_token||0} tok</span>
+    </div>`;
+  }
+  bodyEl.innerHTML=html;
+}
+async function toggleUsage(id,btn){
+  const block=document.querySelector('#usage_'+id);
+  const show=!block.classList.contains('show');
+  btn.textContent=show?'◈ 收起明细':'◈ 积分消耗明细';
+  block.classList.toggle('show',show);
+  if(show&&!block.dataset.loaded){
+    block.dataset.loaded='1';
+    block.innerHTML=`<div class=usage-bar>
+      <input type=date class=u-start value="${todayStr(-29)}">
+      <span style="color:#64748b">至</span>
+      <input type=date class=u-end value="${todayStr()}">
+      <button class="btn btn-sm btn-primary" onclick="loadUsage('${id}',this.parentElement.parentElement)">查询</button>
+    </div><div class=u-body></div>`;
+    loadUsage(id,block);
+  }
+}
+// ====== 消耗图表（每日柱状图 + 每日日历热力图，支持按 账号/模型 筛选） ======
+let barChart=null;
+// 取当前账号/总的每日序列，统一为 {date,total,models}
+function chartSeries(accountId){
+  if(!accountId){
+    return ((stats.total&&stats.total.byDate)||[]).map(d=>({date:d.date,total:d.consumption||0,tokens:d.tokens||0,models:d.models||{}}));
+  }
+  const acc=(stats.accounts||[]).find(a=>a.id===accountId);
+  return (acc&&acc.days)?acc.days:[];
+}
+function collectModels(series){
+  const set=new Set();
+  for(const d of series)for(const m of Object.keys(d.models||{}))set.add(m);
+  return [...set];
+}
+function dayVal(d,model){
+  if(!d)return 0;
+  if(!model)return isToken()?(d.tokens||0):(d.total!=null?d.total:(d.consumption||0));
+  const m=d.models&&d.models[model];
+  if(!m)return 0;
+  return isToken()?(m.tokens||0):(m.consumption||0);
+}
+function renderBar(labels,data){
+  const box=$('#chartBar');
+  if(!barChart){
+    box.innerHTML='<div style="font-size:.72rem;color:#94a3b8;margin-bottom:4px">每日消耗</div><div class=chart-box><canvas id=barCanvas></canvas></div>';
+    barChart=new Chart(document.getElementById('barCanvas'),{
+      type:'bar',
+      data:{labels,datasets:[{label:'每日消耗',data,backgroundColor:'#38bdf8',borderRadius:2}]},
+      options:{
+        responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:(c)=>c.parsed.y.toFixed(2)+' '+unitSuffix()}}},
+        scales:{
+          y:{beginAtZero:true,grid:{color:'rgba(148,163,184,.12)'},ticks:{color:'#64748b',font:{size:10}}},
+          x:{grid:{display:false},ticks:{color:'#94a3b8',font:{size:9},maxRotation:0,autoSkip:true,maxTicksLimit:15}}
+        }
+      }
+    });
+  }else{
+    barChart.data.labels=labels;
+    barChart.data.datasets[0].data=data;
+    barChart.update();
+  }
+}
+// 每月消耗序列（总/账号），统一为 {month,total,tokens,models}
+function monthSeries(accountId){
+  if(!accountId){
+    return ((stats.total&&stats.total.months)||[]).map(m=>({month:m.month,total:m.total||0,tokens:m.tokens||0,models:m.models||{}}));
+  }
+  const acc=(stats.accounts||[]).find(a=>a.id===accountId);
+  if(!acc||!acc.days)return [];
+  const agg={};
+  for(const d of acc.days){
+    const m=(d.date||'').slice(0,7);
+    if(!m)continue;
+    const t=agg[m]||(agg[m]={total:0,tokens:0,models:{}});
+    t.total+=d.consumption||0;
+    t.tokens+=d.tokens||0;
+    for(const [model,v] of Object.entries(d.models||{})){
+      const mm=t.models[model]||(t.models[model]={consumption:0,tokens:0});
+      mm.consumption+=v.consumption||0;
+      mm.tokens+=v.tokens||0;
+    }
+  }
+  return Object.entries(agg).map(([month,t])=>({month,total:t.total,tokens:t.tokens,models:t.models})).sort((a,b)=>a.month<b.month?-1:1);
+}
+function monthVal(mm,model){
+  if(!mm)return 0;
+  if(!model)return isToken()?(mm.tokens||0):(mm.total||0);
+  const v=mm.models&&mm.models[model];
+  if(!v)return 0;
+  return isToken()?(v.tokens||0):(v.consumption||0);
+}
+let monthChart=null;
+function renderMonthBar(labels,data){
+  const box=$('#chartMonthly');
+  if(!monthChart){
+    box.innerHTML='<div style="font-size:.72rem;color:#94a3b8;margin-top:14px;margin-bottom:4px">每月消耗</div><div class=chart-box><canvas id=monthCanvas></canvas></div>';
+    monthChart=new Chart(document.getElementById('monthCanvas'),{
+      type:'bar',
+      data:{labels,datasets:[{label:'每月消耗',data,backgroundColor:'#818cf8',borderRadius:2}]},
+      options:{
+        responsive:true,maintainAspectRatio:false,
+        plugins:{legend:{display:false},tooltip:{callbacks:{label:(c)=>c.parsed.y.toFixed(2)+' '+unitSuffix()}}},
+        scales:{
+          y:{beginAtZero:true,grid:{color:'rgba(148,163,184,.12)'},ticks:{color:'#64748b',font:{size:10}}},
+          x:{grid:{display:false},ticks:{color:'#94a3b8',font:{size:9},maxRotation:0,autoSkip:true,maxTicksLimit:15}}
+        }
+      }
+    });
+  }else{
+    monthChart.data.labels=labels;
+    monthChart.data.datasets[0].data=data;
+    monthChart.update();
+  }
+}
+function renderCharts(){
+  if(!stats||!stats.total||!stats.total.byDate){
+    $('#chartBar').innerHTML='<div style="color:#64748b;font-size:.78rem;padding:8px 0">暂无消耗数据。</div>';
+    $('#chartMonthly').innerHTML='';
+    $('#chartCalendar').innerHTML='';
+    $('#chartHint').textContent='';
+    return;
+  }
+  // 账号选择器：总 + 各账号
+  const accSel=$('#chartsAccount');
+  const accCur=accSel.value;
+  const accs=stats.accounts||[];
+  accSel.innerHTML='<option value="">总</option>'+accs.map(a=>`<option value="${esc(a.id)}">${esc(a.name)}</option>`).join('');
+  if(accs.some(a=>a.id===accCur))accSel.value=accCur;
+
+  // 根据账号取每日序列
+  const series=chartSeries(accSel.value);
+
+  // 模型选择器：按当前账号数据动态生成
+  const mSel=$('#chartsModel');
+  const mCur=mSel.value;
+  const models=collectModels(series);
+  mSel.innerHTML='<option value="">总消耗</option>'+models.map(m=>`<option value="${esc(m)}">${esc(m)}</option>`).join('');
+  if(models.includes(mCur))mSel.value=mCur;
+
+  // 每日柱状图：当年6月1日 至 今天
+  const dayMap={};for(const d of series)dayMap[d.date]=d;
+  const now=new Date();
+  const start=new Date(now.getFullYear(),5,1);
+  const end=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  const labels=[],data=[];
+  for(let t=new Date(start);t<=end;t.setDate(t.getDate()+1)){
+    const key=fmtLocal(t);
+    labels.push(key.slice(5).replace('-','/'));
+    data.push(dayVal(dayMap[key],mSel.value));
+  }
+  renderBar(labels,data);
+
+  // 每月柱状图（当前账号 + 模型筛选）
+  const months=monthSeries(accSel.value);
+  const mLabels=months.map(m=>m.month.slice(5).replace('-','/'));
+  const mData=months.map(m=>monthVal(m,mSel.value));
+  renderMonthBar(mLabels,mData);
+
+  // 每日日历热力图
+  $('#chartCalendar').innerHTML=renderCalendar(dayMap,mSel.value);
+  $('#chartHint').textContent='上方为每日消耗柱状图与每月消耗柱状图；下方日历颜色越深表示当日消耗越高。数据由「每日消耗统计」自动落库，缺失日期在访问本页时自动补齐。';
+}
+function heatColor(v,max){
+  if(!v)return '#0b1120';
+  const r=Math.min(1,v/max);
+  if(r<=0.25)return '#1e3a5f';
+  if(r<=0.5)return '#2563eb';
+  if(r<=0.75)return '#38bdf8';
+  return '#22d3ee';
+}
+function renderCalendar(dayMap,model){
+  const now=new Date();
+  const startY=now.getFullYear();
+  const start=new Date(startY,5,1);
+  const end=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  const vals=[];
+  for(let t=new Date(start);t<=end;t.setDate(t.getDate()+1)){
+    vals.push(dayVal(dayMap[fmtLocal(t)],model));
+  }
+  const max=Math.max(...vals,1);
+  const startDow=start.getDay(); // 0=周日
+  const cols=Math.ceil((vals.length+startDow)/7);
+  const dows=['日','一','二','三','四','五','六'];
+  let html='<div style="font-size:.72rem;color:#94a3b8;margin-top:8px;margin-bottom:2px">每日日历</div><div class=cal-wrap><div class=cal>';
+  html+='<div class=cal-col>'+dows.map(d=>`<div class=cal-dow>${d}</div>`).join('')+'</div>';
+  for(let c=0;c<cols;c++){
+    let cells='';
+    for(let r=0;r<7;r++){
+      const globalDay=c*7+r;
+      if(globalDay<startDow||globalDay>=startDow+vals.length){cells+='<div class=cal-day></div>';continue;}
+      const d=new Date(start);d.setDate(d.getDate()+(globalDay-startDow));
+      const key=fmtLocal(d);
+      const v=vals[globalDay-startDow];
+      const title=key+' · '+(v>0?v.toFixed(2)+' '+unitSuffix():'无消耗');
+      cells+=`<div class="cal-day ${v?'':'zero'}" style="background:${heatColor(v,max)}">${d.getDate()}<span class=cv>${title}</span></div>`;
+    }
+    html+=`<div class=cal-col>${cells}</div>`;
+  }
+  html+='</div>';
+  html+=`<div class=cal-legend>少 <i style="background:#0b1120;border:1px solid #1e293b"></i><i style="background:#1e3a5f"></i><i style="background:#2563eb"></i><i style="background:#38bdf8"></i><i style="background:#22d3ee"></i> 多</div>`;
+  html+='</div>';
+  return html;
+}
+function fmtLocal(d){
+  const p=n=>String(n).padStart(2,'0');
+  return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`;
+}
+
+loadData();
+</script>

@@ -1,0 +1,144 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:22:34.005
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.2
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=a.tag.clarity.ms, O=Microsoft Corporation, L=Redmond, S=WA, C=US
+  Simple Name: a.tag.clarity.ms
+  DNS Name: a.tag.clarity.ms
+
+[Issuer]
+  CN=Microsoft TLS G2 RSA CA OCSP 04, O=Microsoft Corporation, C=US
+  Simple Name: Microsoft TLS G2 RSA CA OCSP 04
+  DNS Name: Microsoft TLS G2 RSA CA OCSP 04
+
+[Serial Number]
+  430046295BC3F44C2681DA14E500000046295B
+
+[Not Before]
+  2026/6/3 14:03:23
+
+[Not After]
+  2026/11/30 14:03:23
+
+[Thumbprint]
+  49FF8C118D1E754FA215CA02AC8B23FEE7B80D0F
+
+[Signature Algorithm]
+  sha384RSA(1.2.840.113549.1.1.12)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 bf 3e 2d 21 ef 9b ee d1 01 88 23 fb 66 8e 65 c9 6f 03 6f cf 67 3c 5f 98 46 8d 64 99 bc e0 e3 6d fd cb fa 68 c0 84 8b b5 bd 21 5f f8 01 0e b7 fa ce 20 bf 6c 22 99 72 00 f6 9d 6c 36 f4 3f 7d cb 6d 5f 55 c4 1f 35 53 2d 90 13 56 9a b1 33 f4 ba e9 a5 99 29 67 88 3c d1 cf ee 60 63 6e ee e0 1c 9e a3 fe 6a 5c d6 03 57 8a 88 51 ee 80 fb ef 8f 35 04 f1 73 31 44 fc 93 52 39 33 f3 d6 4d 85 e3 01 6d 2a 87 55 54 ab 99 29 b0 16 ad b7 cb aa 9f a5 a3 82 c1 59 0a fb 98 e8 d7 03 32 8e cb a3 fd fc 56 f1 1a 45 d4 82 8a 37 23 49 ad c1 90 a3 ad f5 9c ee 40 c9 3e 1a b4 13 75 2b fc 20 f3 9a f6 ca 2f 44 72 93 a8 74 71 61 83 69 11 91 7b 0c 87 e6 21 08 5d 8c 1f a1 e4 09 b2 1f 0b 84 ce f2 f1 e6 6f 9e dd a5 4c 67 3e 40 6b 25 f0 fa ce 0a 5f ff 81 06 97 cb 10 92 4b 05 32 0c 03 af 9d 98 bd 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+d809553b944f7affc816196f944f85abb0f8fc5e8755260f15d12e72bb454b14
+‎2026‎年‎6‎月‎3‎日 14:13:28
+SHA256
+ECDSA
+3045022047e87ea479291be376732492ee0c498992518f54bf59731f4c46e9762b78f3e1022100c18c5b81d8673e102a98d820d0b3b8fdcc821897168ba33227878c081a5696a1
+
+v1
+c2317e574519a345ee7f38deb29041ebc7c2215a22bf7fd5b5ad769ad90e52cd
+‎2026‎年‎6‎月‎3‎日 14:13:27
+SHA256
+ECDSA
+304502206b6e816cd96a43465ebb608268a430449cb95aedef038e314fb7a779e41eb55d022100e8e3434a6ab8d6014100e84c07543d8be4cdcc71c19966d8b04ab72c072645b9
+
+v1
+c8a3c47fc7b3adb9356b013f6a7a126de33a4e43a5c646f997ad3975991dcf9a
+‎2026‎年‎6‎月‎3‎日 14:13:28
+SHA256
+ECDSA
+3044022079589367e379cb07ea43efb71bfdaf4d018c2eb4b2f42ef8d8f9e8d81ee204ec02206e868e85fb375af6a515dd097b8646c833f76395e78622c6ca19c4a6371f88db
+
+* 应用程序策略(1.3.6.1.4.1.311.21.10):
+  [1]Application Certificate Policy:
+     Policy Identifier=服务器身份验证
+
+* 证书模板信息(1.3.6.1.4.1.311.21.7):
+  Template=1.3.6.1.4.1.311.21.8.15690651.3798470.4214446.239628.16526621.93.8020455.5050828
+Major Version Number=100
+Minor Version Number=32
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://www.microsoft.com/pkiops/certs/Microsoft TLS G2 RSA CA OCSP 04.crt (http://www.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2004.crt)
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://caissuers.microsoft.com/pkiops/certs/Microsoft TLS G2 RSA CA OCSP 04.crt (http://caissuers.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2004.crt)
+[3]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://oneocsp.microsoft.com/ocsp
+
+* 使用者密钥标识符(2.5.29.14):
+  cdd02ceccb65dbebd660ef74378a54c286157894
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=a.tag.clarity.ms
+DNS Name=b.tag.clarity.ms
+DNS Name=c.tag.clarity.ms
+DNS Name=d.tag.clarity.ms
+DNS Name=e.tag.clarity.ms
+DNS Name=f.tag.clarity.ms
+DNS Name=tag.clarity.ms
+DNS Name=www.clarity.ms
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://www.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 RSA CA OCSP 04_Partition00010.crl (http://www.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2004_Partition00010.crl)
+               URL=http://crl2.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 RSA CA OCSP 04_Partition00010.crl (http://crl2.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2004_Partition00010.crl)
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+[2]Certificate Policy:
+     Policy Identifier=1.3.6.1.4.1.311.76.509.1.1
+     [2,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.microsoft.com/pkiops/Docs/Repository.htm
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=540cbcec18f77df103e284be34644467cf751f65
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+
+[SubjectAltNames]
+DNS Name=a.tag.clarity.ms
+DNS Name=b.tag.clarity.ms
+DNS Name=c.tag.clarity.ms
+DNS Name=d.tag.clarity.ms
+DNS Name=e.tag.clarity.ms
+DNS Name=f.tag.clarity.ms
+DNS Name=tag.clarity.ms
+DNS Name=www.clarity.ms
+

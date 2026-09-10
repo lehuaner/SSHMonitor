@@ -1,0 +1,37 @@
+POST https://api5-normal.mchost.guru/api/ide/v1/knowledgebase/createUserKnowledgebase HTTP/2
+:method: POST
+:authority: api5-normal.mchost.guru
+:scheme: https
+:path: /api/ide/v1/knowledgebase/createUserKnowledgebase
+content-length: 240
+accept-encoding: gzip, deflate, br, zstd
+authorization: Cloud-IDE-JWT eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTAwMDk4NTI1MzM4MDUzOCIsInNvdXJjZSI6InJlZnJlc2hfdG9rZW4iLCJzb3VyY2VfaWQiOiJIbFVqbUxTUmJ1VE9OanF1bDA1d1FUdXlJUDRZcy12WXJILTNHRkRjZnA4PS4xOGNiZTljYzJmNjQ5MDIyIiwidGVuYW50X2lkIjoiN28yZDg5NHA3ZHIwbzQiLCJ0eXBlIjoidXNlciJ9LCJleHAiOjE3ODc5ODgzNDAsImlhdCI6MTc4Njc3ODc0MH0.KJkQvfHXqlJoX9EMzMLxD7ydGkyDHQNAqi4bh-x3rd0isntfMGLa67QjTgMe6hb2JWLOmhhcd2i-KL0-uZMRxBqCKdlGcAc9jYGihcNDLihRR56QiICspWRE-hZ7C0H-noTUMhDJ-EGBD4j68CLtfOBb8oPZIC_bl4Fn9O52Dqnu14_kEvFdDhNEPMdmVgFyc5EJPo-1tSR2C3lGxcLQsW1dc0pEjD6iiNW-0s5BrCbf94Tjfyh8u1hwvqaRLjQdizI-pQmQzFgBJKWRwzVeNwCX7ju5QxTvAZfEAoayuMFZ_5HoSHB_J4atsJskMFWppWEeqQkA0ktxCulBHX_YieAeH3-dhLDP5nZeAiGB3DX-BcGVz1mW33AlzAbRuOvisoyqRql5HJULF6SLoxuzFA5omj4mESPcmjQ5q88w4R_EZpOcRkuQ7Z9TUTWMZe__TXX5V0Z-lvzAKnHo16BFZGlgde2B62HA0vVb20cAJmgn_iijN_KERb8dKOFhwxiYg1yAkM36BjLrZG3UGE0WrQPG0RnMtw8MZrfmb8_JybHAiGLJB1--yPz12e_8lupLtYN6bQwfrjFeambOWKVxm4PFUddN9Mb85_LD6us_TOK-QzqiAnyEbgwedSfaEJTAY5NIkd29pV1FTLOOlTk_IUPChojuwWtDw8LAr0D_9fc
+content-type: application/json
+sec-fetch-dest: empty
+sec-fetch-mode: no-cors
+sec-fetch-site: none
+user-agent: go-resty/2.16.5 (https://github.com/go-resty/resty)
+x-app-id: 6eefa01c-1036-4c7e-9ca5-d891f63bfcd8
+x-ckg-user-id: 1000985253380538
+x-ckg-version: 0.0.160
+x-custom-repo-urls: https://github.com/lehuaner/ai-unified.git
+x-device-brand: 82JW
+x-device-cpu: AMD
+x-device-id: 3798161405005257
+x-device-type: windows
+x-machine-id: 0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51
+x-os-version: Windows 11 Pro
+x-tt-logid: 0217867787477710000000000000000000000000000000075c061
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.50
+x-request-id: 0038231c-c9ba-447f-8aec-c860c3b6b387
+accept: */*
+x-ss-dp: 787976
+x-tt-trace-id: 00-045005d80dd7e685d584dc9f28b8ffff-045005d80dd7e685-01
+referer: https://trae-api-cn.mchost.guru/api/ide/v1/knowledgebase/createUserKnowledgebase
+x-helios: JWMAADQCpK5BS+00em3t+qxx3Y6m5CpsMZoS67kThZM7FaAE
+x-medusa: fhSAaor835Cqw1xRqz5IGirb4XI2TgMBkwwsZ2CAEZ43GTARXD88JpLF+WvYRR3nGwAAziI1hw69gux1x/eofObTPyphnIBZomgQBDTXSBHigXja5JmXg7+z8zm7SpvOcbm4fgUK2e0KIJhOFsG4ipQqG0k02eGkMYU04YmII4AvuBKXoNDg0E7zQXbVFZD9V5Hu8tXWc1upmj08JiwzUlL34VRDQl9OqF+i0HGiXzTSBwYyRDAeHKlYdbC4ZSTaZSZhvCJ0n5GBz5/Wivtv54iF1zD2uxIkwDnERYdhbgybswRB7c43O4fKCRUIT4iyzczmGmtaBGVxqva6Ehazmb134niBtvAJ+9ngJU0VN0xe+HlbhGFBTsqVabsttz4exXV73YS0b2q84JZBR/WhLd2RmYHGnRxFzTD9jp49gizkG4d0qatje1BN3O5iarcocwSpF00+WvIuqzy/j5Qt79Q+JPBqFvv4z2PJGL4VL9OffHyGlcWATfmmyTQv/he0jH+ba0KVpD1b23HI+EUfko1B0N1xW3Y3gbjKrPOe91U8Ztb+qN2iODQOj4jw3kaAFOS0wzX3vJMO9vLI1Dwq5NY8sJdggfUAO2q1w2/UMK6wfyHiUZHn27stLZLhzmzNoPi5GQpDY+lvIf9vbvmMAGmrtTBXnx6tbjxHnZ/Pzx8fz9/n/Y8Xh+inGirimS5O4kQjALLbfxk2/5G7j8k7jWrqXT5Y7K03v82VjXZuX7xLjcyhjcfJL3dO0LpvJ2UJ5COcaLXQBygeZfv9/7//9/7/AAA=
+x-neptune: -11|50:51:59:00:09

@@ -1,0 +1,55 @@
+CONNECT open.u-tools.cn:443 HTTP/1.1
+Host: open.u-tools.cn:443
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) uTools/7.8.0-ia32 Chrome/108.0.5359.215 Electron/22.3.27 Safari/537.36
+
+A SSLv3-compatible ClientHello handshake was found. Fiddler extracted the parameters below.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+Record Layer Version: 3.3 (TLS/1.2)
+Random: A8 EF 06 29 4B C7 F3 88 9E 78 10 56 B7 63 BF 81 A9 DA CE 55 E5 33 68 9F FF AA 92 82 FB BF 67 00
+"Time": 1991/10/25 0:07:04
+SessionID: 16 6F AF 5B 90 7B 8F B2 9A DF 50 F2 DF 13 34 58 5D B6 B4 BD 70 DB 8E 36 53 98 1B 5D AE AB E5 9B
+Extensions: 
+	grease (0x1a1a)	empty
+	server_name	open.u-tools.cn
+	extended_master_secret	empty
+	renegotiation_info	00
+	supported_groups	grease [0x9a9a], x25519 [0x1d], secp256r1 [0x17], secp384r1 [0x18]
+	ec_point_formats	uncompressed [0x0]
+	SessionTicket	empty
+	ALPN		h2, http/1.1
+	status_request	OCSP - Implicit Responder
+	signature_algs	ecdsa_secp256r1_sha256, rsa_pss_rsae_sha256, rsa_pkcs1_sha256, ecdsa_secp384r1_sha384, rsa_pss_rsae_sha384, rsa_pkcs1_sha384, rsa_pss_rsae_sha512, rsa_pkcs1_sha512
+	SignedCertTimestamp (RFC6962)	empty
+	key_share	00 29 9A 9A 00 01 00 00 1D 00 20 D0 98 73 A5 40 73 37 49 D5 65 DD DA 3F 77 B8 90 FE 84 E9 CB 3D 2F 51 C4 04 B2 44 28 C8 E1 CB 57
+	psk_key_exchange_modes	01 01
+	supported_versions	grease [0x2a2a], Tls1.3, Tls1.2
+	0x001b		02 00 02
+	0x4469		00 03 02 68 32
+	grease (0xa0a)	00
+	padding		200 null bytes
+Ciphers: 
+	[EAEA]	Unrecognized cipher - See https://www.iana.org/assignments/tls-parameters/
+	[1301]	TLS_AES_128_GCM_SHA256
+	[1302]	TLS_AES_256_GCM_SHA384
+	[1303]	TLS_CHACHA20_POLY1305_SHA256
+	[C02B]	TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+	[C02F]	TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	[C02C]	TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+	[C030]	TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	[CCA9]	TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+	[CCA8]	TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+	[C013]	TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+	[C014]	TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+	[009C]	TLS_RSA_WITH_AES_128_GCM_SHA256
+	[009D]	TLS_RSA_WITH_AES_256_GCM_SHA384
+	[002F]	TLS_RSA_WITH_AES_128_CBC_SHA
+	[0035]	TLS_RSA_WITH_AES_256_CBC_SHA
+
+Compression: 
+	[00]	NO_COMPRESSION
+
+

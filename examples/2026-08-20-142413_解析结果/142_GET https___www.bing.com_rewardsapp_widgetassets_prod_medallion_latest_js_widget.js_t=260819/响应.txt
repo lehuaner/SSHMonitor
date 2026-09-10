@@ -1,0 +1,20 @@
+HTTP/2 200
+cache-control: public, max-age=21600
+content-type: application/json
+last-modified: Wed, 19 Aug 2026 22:27:33 GMT
+vary: Accept-Encoding
+set-cookie: _C_ETH=1; domain=.bing.com; path=/; secure; httponly
+set-cookie: _C_Auth=
+set-cookie: GC=DksnssHZFsZv-cKd5LjU5hzjjiKfwRh6p4GIcWb5gz9Fx94bn32skc99zXQl20XFwoO_nJHH_kqPIBBb1GdCYQ; expires=Fri, 21 Aug 2026 06:22:24 GMT; domain=.bing.com; path=/; secure; samesite=none
+access-control-allow-origin: *
+x-ms-request-id: da004582-601e-0011-5340-30fd3f000000
+x-ms-version: 2009-09-19
+x-ms-lease-status: unlocked
+x-ms-blob-type: BlockBlob
+x-azure-ref: 20260820T062224Z-r1f9cf687b429dtdhC1CO1q9w800000010t0000000006vxn
+x-fd-int-roxy-purgeid: 82974704
+x-cache: CONFIG_NOCACHE
+accept-ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA
+x-ceto-ref: 6a869d20b2434068ba9f13e828c314b5|AFD:6a869d20b2434068ba9f13e828c314b5|2026-08-20T06:22:24.748Z
+x-msedge-ref: Ref A: B5D8B4C1ED494581AB76ECC5E7A5AE84 Ref B: BJ1EDGE0411 Ref C: 2026-08-20T06:22:24Z
+date: Thu, 20 Aug 2026 06:22:24 GMT

@@ -1,0 +1,22 @@
+POST https://mssdk.bytedance.com/web/common?ms_appid=711126&msToken=vMv3ho08Mw5d6c7g1K-ntXfUHJVySYzAWYUGu4YtfA3Rnw38moK1KXqzUKFjjrX1JDkQmW0FblXCmgOXZC37iU1Vt4xtNKKJbJXJD5zCoVKpncY7n_z-v8K7TF0BmO-DizGhKDwVJOCcjrJgNDk4yF7uheRYqEOhKIM7LJeZDNsD_TyK_EWyJO8%3D HTTP/2
+:method: POST
+:authority: mssdk.bytedance.com
+:scheme: https
+:path: /web/common?ms_appid=711126&msToken=vMv3ho08Mw5d6c7g1K-ntXfUHJVySYzAWYUGu4YtfA3Rnw38moK1KXqzUKFjjrX1JDkQmW0FblXCmgOXZC37iU1Vt4xtNKKJbJXJD5zCoVKpncY7n_z-v8K7TF0BmO-DizGhKDwVJOCcjrJgNDk4yF7uheRYqEOhKIM7LJeZDNsD_TyK_EWyJO8%3D
+content-length: 13855
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0
+sec-ch-ua: "Not=A?Brand";v="99", "Microsoft Edge";v="151", "Chromium";v="151"
+content-type: text/plain;charset=UTF-8
+sec-ch-ua-mobile: ?0
+accept: */*
+origin: https://www.trae.cn
+sec-fetch-site: cross-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+sec-fetch-storage-access: active
+referer: https://www.trae.cn/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=1, i
+cookie: ttwid=1%7CjCx-sZy8HLHdjJd80WEpFQLsiulE6qW2VkU5qwIzKvE%7C1774600969%7Cc9c40e9515538cd60966bca553a463d6b60bed4df521de0902cfa47255b6cfde

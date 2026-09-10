@@ -1,0 +1,13 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "937e10b5-6f2b-4501-b6fb-012b4f2594ad",
+  "data": {
+    "draw_uuid": "7a56fb28-5902-43bc-9947-32fa92efd508",
+    "prize_code": "积分_1",
+    "prize_name": "10 积分",
+    "prize_type": "credit",
+    "credit_amount": 10,
+    "idempotent_hit": false
+  }
+}

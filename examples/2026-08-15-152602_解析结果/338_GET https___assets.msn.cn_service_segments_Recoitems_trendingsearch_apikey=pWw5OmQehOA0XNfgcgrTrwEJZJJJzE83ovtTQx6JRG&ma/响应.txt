@@ -1,0 +1,38 @@
+HTTP/2 200
+content-type: application/json; charset=utf-8
+access-control-allow-headers: TicketType,RequestContinuationKey,AuthToken,Content-Type,x-client-activityid,ms-cv,OneSvc-Uni-Feat-Tun,signedInCookieName,muid,appid,User-Location,user-location,userauthtoken,usertickettype,sitename,s2sauthtoken,thumbprint,Authorization,Ent-Authorization,UserIdToken,DDD-TMPL,DDD-ActivityId,DDD-FeatureSet,DDD-Session-ID,Date,date,ads-referer,ads-referer,taboola-sessionId,taboola-sessionid,Akamai-Request-ID,Akamai-Server-IP,X-MSEdge-Ref,DDD-DebugId,s-xbox-token,OneWebServiceLatency,X-FD-Features,DDD-UserType,traceparent,Widgets,Muted,Velocity,DDD-Auth-Features,SoftLanding,PrefMigrated,DDD-TMPL-Removed,deviceFeatures,Server-Timing,X-1S-Digital-ID,x-ntp-cohort-prefs,x-kunlun-trace-id,x-kunlun-session-id,x-kunlun-request-id,x-kunlun-client-id
+access-control-expose-headers: TicketType,RequestContinuationKey,AuthToken,Content-Type,x-client-activityid,ms-cv,OneSvc-Uni-Feat-Tun,signedInCookieName,muid,appid,User-Location,user-location,userauthtoken,usertickettype,sitename,s2sauthtoken,thumbprint,Authorization,Ent-Authorization,UserIdToken,DDD-TMPL,DDD-ActivityId,DDD-FeatureSet,DDD-Session-ID,Date,date,ads-referer,ads-referer,taboola-sessionId,taboola-sessionid,Akamai-Request-ID,Akamai-Server-IP,X-MSEdge-Ref,DDD-DebugId,s-xbox-token,OneWebServiceLatency,X-FD-Features,DDD-UserType,traceparent,Widgets,Muted,Velocity,DDD-Auth-Features,SoftLanding,PrefMigrated,DDD-TMPL-Removed,deviceFeatures,Server-Timing,X-1S-Digital-ID,x-ntp-cohort-prefs,x-kunlun-trace-id,x-kunlun-session-id,x-kunlun-request-id,x-kunlun-client-id
+ddd-authenticatedwithjwtflow: False
+ddd-usertype: AnonymousMuid
+ddd-strategyexecutionlatency: 00:00:00.0230830
+ddd-activityid: caeac1b9-a51d-412f-b45e-0735b955e7a1
+ddd-tmpl-removed: False
+ddd-debugid: caeac1b9-a51d-412f-b45e-0735b955e7a1|2026-08-15T07:21:57.2437512Z|fabric_segments|WUS2-A|Segment_116
+ddd-auth-features: AT:NA;DID:m-3054EDDC4FE26CC70FD1FA6A4E796D18;IT:Unknown;MuidStateOrigin:MuidFromClientIDHeader
+onewebservicelatency: 23
+x-msedge-responseinfo: 23
+accept-ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA
+x-ceto-ref: 6a801395547142d9bd928db634bc976c|AFD:6a801395547142d9bd928db634bc976c|2026-08-15T07:21:57.216Z
+x-cache: CONFIG_NOCACHE
+server: TencentEdgeOne
+accept-ranges: bytes
+eo-log-uuid: 5711827465448896052
+eo-cache-status: HIT
+x-edgefunction: Phase-2-Edge-Function
+vary: Origin
+nel: {"report_to":"network-errors","max_age":604800,"success_fraction":0.001,"failure_fraction":0.1}
+report-to: {"group":"network-errors","max_age":604800,"endpoints":[{"url":"https://deff.nelreports.net/api/report?cat=msn"}]}
+cache-control: public, max-age=300
+x-as-suppresssetcookie: 1
+access-control-allow-origin: https://ntp.msn.cn
+access-control-allow-credentials: true
+access-control-allow-methods: PUT,PATCH,POST,GET,OPTIONS,DELETE
+x-cdn-ref: 93b1bc84-f47d-4949-b862-01d84acfe456 | pending | 2026-08-15T07:25:44
+x-msedge-ref: 93b1bc84-f47d-4949-b862-01d84acfe456 | pending | 2026-08-15T07:25:44
+cors-rule: One-Service-CORS
+x-nws-log-uuid: 5711827465448896052
+date: Sat, 15 Aug 2026 07:25:44 GMT
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+cdn: tencent-p2
+x-cdn: tencent
+content-length: 1065

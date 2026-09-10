@@ -1,0 +1,46 @@
+[
+  {
+    "events": [
+      {
+        "event": "common_action",
+        "params": "{\"module_id\":\"solo.auth.get-pc-auth-code-success\",\"login_trace_id\":\"9c132445-cd6f-479e-8b4e-f9d31c638f68\",\"ide_type\":\"solo\",\"plugin_version\":\"2.3.70844\",\"auth_type\":\"local\",\"device_id\":\"3798161405005257\",\"machine_id\":\"0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51\",\"url\":\"https://www.trae.cn/authorization\",\"event_index\":1786778988735}",
+        "local_time_ms": 1786778741632,
+        "is_bav": 1,
+        "ab_sdk_version": "92445595",
+        "session_id": "fdf5d97b-11e0-4219-9ef7-642bada10bd3"
+      }
+    ],
+    "user": {
+      "user_unique_id": "7623996721186293291",
+      "user_id": "1000985253380538",
+      "user_is_login": true
+    },
+    "header": {
+      "app_id": 711126,
+      "os_name": "windows",
+      "os_version": "10",
+      "device_model": "Windows NT 10.0",
+      "language": "zh-CN",
+      "region": "China-North",
+      "platform": "web",
+      "sdk_version": "5.3.5",
+      "sdk_lib": "js",
+      "timezone": 8,
+      "tz_offset": -28800,
+      "resolution": "1920x1080",
+      "browser": "Microsoft Edge",
+      "browser_version": "151.0.0.0",
+      "referrer": "",
+      "referrer_host": "",
+      "width": 1920,
+      "height": 1080,
+      "screen_width": 1920,
+      "screen_height": 1080,
+      "utm_source": "traework_client_chat_tip",
+      "tracer_data": "{\"$utm_from_url\":1}",
+      "custom": "{\"network_type\":\"4g\",\"biz_web_id\":\"7623996721186293291\",\"version\":\"1.0.0.1462\",\"env\":\"prod\",\"biz_user_id\":\"1000985253380538\",\"os\":\"Windows\",\"cpu\":\"NVIDIA x64\"}"
+    },
+    "local_time": 1786778741,
+    "verbose": 1
+  }
+]

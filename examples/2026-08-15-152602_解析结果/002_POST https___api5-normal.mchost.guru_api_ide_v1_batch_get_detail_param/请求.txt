@@ -1,0 +1,42 @@
+POST https://api5-normal.mchost.guru/api/ide/v1/batch_get_detail_param HTTP/2
+:method: POST
+:authority: api5-normal.mchost.guru
+:scheme: https
+:path: /api/ide/v1/batch_get_detail_param
+content-length: 538
+accept-encoding: gzip, deflate, br, zstd
+sec-fetch-dest: empty
+sec-fetch-mode: no-cors
+sec-fetch-site: none
+content-type: application/json
+request-traffic-type: prod
+user-agent: TraeClient/TTNet
+x-app-id: 6eefa01c-1036-4c7e-9ca5-d891f63bfcd8
+x-app-version: default
+x-app-version-code: 20260811
+x-bridge-transport: aha
+x-custom-trace-id: f09a77fa94aeda7a68013f063759a7c1
+x-device-brand: 82JW
+x-device-cpu: AMD
+x-device-id: 3798161405005257
+x-device-type: windows
+x-flow-traceparent: 04-f09a77fa94aeda7a68013f063759a7c1-65ea95445772863b-01
+x-ide-token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTAwMDk4NTI1MzM4MDUzOCIsInNvdXJjZSI6InJlZnJlc2hfdG9rZW4iLCJzb3VyY2VfaWQiOiI5VkNhV2ZMY0xjcmV4R2VrMUJoME5mT3VUTDNUZlRjdWUydEpCakpocEpvPS4xOGNiZTNmMDBhNzZmYTUxIiwidGVuYW50X2lkIjoiN28yZDg5NHA3ZHIwbzQiLCJ0eXBlIjoidXNlciJ9LCJleHAiOjE3ODc5ODE4OTcsImlhdCI6MTc4Njc3MjI5N30.cCyxkyZ0flIsfAfQmw3PudX7ZDs1AN5ED-QnHNURt9ZvRFOy2wXnGy577ynfo19_9J5BAuNcSYyGi2nhNngB_FQJtOaWAHvhk6fdHN7yN-YyVV9Yxgf3hvsIxgtpzpL6UfKKt4MMYwy-4zfA7bQ5J9HR99PTvo8CKRNs7epkmSrzA8LYtwqVzATpJzIXtMSYsUBORh8gGx6kZkgNrsGlW5EBnpRlAjfLX57hTZoNj-n9jvolwUHkoklIIS1RQM0oeky_HRidv73ZRVQ3pknTDxWPZsOHpX7QeoA6-1rP6Xk6ock5owIGF1Z3nKUNnaFjjJpo-G_mPLIrJPQkEA1RUbGnLk-eSuhF8QM_5DnJnLRpp88IBUYnVxou9_TVZvgSoHmlywPCQPRJRu2OrNwtvs2BnVV0_LnMxLfshshOzojInXoCDWfGLt8te3G1UrLaVCLBMdHPvIh7L2_f9W9ZcTtYexWEoQ5pgAwKLMaS6b13kAYpzWt9O8wfAdvuZmtPDIa3s6HFi_e8dtObq91z6_gS4xJ2nZygmw28ZznqvXC6QSXTJtlfT62gd6VrryzRlRXImY_1RjG3vHL_z0YesY-RgpxmUoHF_zZKYMZIvCBFH9-lH4bV3PBWCzFr74qiwUM3q6tFyw2NZ3ayoMZwiiPJogO9F35SlBGiYzK4Ux8
+x-ide-version: 3.3.88
+x-ide-version-code: 20260811
+x-ide-version-type: stable
+x-lgw-req-sdk-type: 3
+x-machine-id: 0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51
+x-os-version: Windows 11 Pro
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 3.3.88
+x-request-id: req_84ce3afd-03ad-43a4-a69d-0bf6d944e475
+accept: */*
+x-ss-dp: 787976
+x-tt-trace-id: 00-044f7e0d0dd7e685d584dc917559ffff-044f7e0d0dd7e685-01
+referer: https://trae-api-cn.mchost.guru/api/ide/v1/batch_get_detail_param
+x-helios: L04AAM2tUJBrstDZFhZ9T02Sq/2oajaF/y+ZbnlRPNpgVaoW
+x-medusa: WRSAaq3835CNw1xRjD5IGg3b4XJWfAMBtIwaFEBAIaI0GEeeP7tC22PBepUzbFTR7MoG8JHciQ6HzSVkuwYAfWxnP9ttFTCzEdUhnqZ3ZsQRWceRAUAv/mGGgcW4SlEU1IWAD2MRetzcZfuk1S4efjMDxi9mNQ3g5VJCIb1zDF9o8GPInhAzQ9wX+XeRhucGESGfw28XbAQXvsHu9D9esQ6VvFvmLL5k5Z7Lsaz3+ltxl8crK5pGNGTwxP+2wqik0EQKU1Z/PKXYqkjMhjiYrYea/JHxAZFZ1JO1lRbum9vIeYiE6AorG0cFBoRqz4ioZqsyADPA8EW3n5mx+Ov+ErwbsinC/F0uGZ8LIthwGVcS0bla5FOtOfBmE+2BZGhFs/w+ADh6/KswZgEDcHGh1k6QqHJs410PhLx0M8RSYR1qXzqMzapywYxa3NeW1/KWOypsiU9FQ4FL31Btfd6+gqEj/GDP2syIofuoHUYiiTcIaoHAjPd6qPpoDGpnaeyIWI2rKIF1U4POctElRRDtpmRRQjpJsTlU5SeDFitNdkMigRVVomlRrckFe2hjOYamJLZXDXbGMIhXKbfTIfKs2haPwFy//NtPBr971hFnUJ9gmWikQuBYaOXOSc782IjQ16A4xzdYaHFNuzGiR98+4048Q5+/j88fHs/f5/3PB4/pp29LzZfnoanvIwKy238ZN/+Vu4+JK41qalk8WOytP79NlY9WLk+0So3d+Vvn2denLtS6T2d1CeSjnGq10BcoHmX7//+/7/f//wAA
+x-neptune: -11|50:51:59:00:09

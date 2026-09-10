@@ -1,0 +1,21 @@
+GET https://www.workbuddy.cn/console/accounts HTTP/2
+:method: GET
+:authority: www.workbuddy.cn
+:scheme: https
+:path: /console/accounts
+sec-ch-ua-platform: "Windows"
+sec-ch-ua: "Chromium";v="152", "Not?A_Brand";v="24", "Microsoft Edge";v="152"
+sec-ch-ua-mobile: ?0
+x-device-token: v3:Aol6QHSJekB0nQuXEsvn2qMeo6BAlmdtVuYqQSn+XpDE34gzdsdJljxGVCj8ckFmTtCjFTaxVcKL5AR20+MaG/V8dMOncA/3ePdUVfXgpH/+SDHLLlkrZ0VvtIpFWFrbkma2CYz/GEXJYtHSRMDsnzVVWT9TfQ3Q2bCMblReE9Ekj4+o4zUBtGaqKEUwhgVADNSUAj1oenbk9xYVMMtY5lvV9z8NR618lkE4fJWgxl59aZClJWzqLTOb7uCF2FhGzCQvveWkCcynwxZwmhfWW3R4vqanql0yF4vq3lNednpIhsUo8BhYJBgMwBC2xp+Gue6HGW5u0YWdTRTD+0GoEktNRqnPf30UdX4nhrf+ctzxnPs60AfGpkKDWxJuSd9Tk+6Jtti3WzKNi3YqyLUJ3kSadWlEGPcrTFdpE1A+IE/+uc7ciWXVk5qo6hzau7qMm4uLtpZ7aNZyZGOptVDRSyaNk0WuhNKeh8HOBN2cvr8Tt247VHZExqKWmr7txgA+K4ZLqOWNhRdERvHrsqog9dYOwqy0vVSwNmPYPCoMpqDO#0#tFLPPcdiLb24NIXGV99RkFdzN89VIkuZDSFWxE/hijAygDSehXdYdv6JAwqf6Q9utvM+w0GhYMSEVIDTXzT5paumKCaswpQD34B0B/2DNRezj4AtPAjJwIZtj81mAe+mw3r9D5Egzg4DqKRhUvUI62V4dLpzLmIc1G+MSPIeWUnaMN5+M+boNwe9por7pIPhfWSeDU7wFCTKtzsBTyvvP7I9e56n5MVyRzKu+bTJnmU++arh0NtEVvQ3gItMMz2xaby+TMml0g3xyefmt0lrcfOpacH6BcFIfYCndhIu5BBt0706Fa3W8cYPU1E6dCb3ThUEo5TCzfM9GyT/IUPfOxo0exSc/NZ7FYGNTMBmt9FKD7oYOZ2ddCVzGsmONE02knG/54xH9Go7feFRVdA/qZ5A3kI61P93sMx6azoNo+8PZXBkSwnpBlSAgW/w5Z518Dqn/ixSETr/FTu5ONJm+A==
+traceparent: 00-e9d95453ed9cad435f781e698bcf1c9a-8d621742d415ece3-01
+x-domain: www.workbuddy.cn
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+accept: application/json, text/plain, */*
+sec-fetch-site: same-origin
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://www.workbuddy.cn/login/?platform=workbuddy&state=f63befd6-0d3c-4b77-94c1-360dc1087abd&version=5.5.3&loginSessionId=0e5ae834-d822-4dba-b788-f8dadd3ef799
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=1, i
+cookie: _gcl_au=1.1.1883296624.1787201042; sensorsdata2015jssdkcross=%7B%22distinct_id%22%3A%221a01d7c09b1385-04e9748451c05e8-4c657b58-2073600-1a01d7c09b210dd%22%2C%22first_id%22%3A%22%22%2C%22props%22%3A%7B%22%24latest_traffic_source_type%22%3A%22%E4%BB%98%E8%B4%B9%E5%B9%BF%E5%91%8A%E6%B5%81%E9%87%8F%22%2C%22%24latest_utm_medium%22%3A%22cpc%22%7D%2C%22identities%22%3A%22eyIkaWRlbnRpdHlfY29va2llX2lkIjoiMWEwMWQ3YzA5YjEzODUtMDRlOTc0ODQ1MWMwNWU4LTRjNjU3YjU4LTIwNzM2MDAtMWEwMWQ3YzA5YjIxMGRkIn0%3D%22%2C%22history_login_id%22%3A%7B%22name%22%3A%22%22%2C%22value%22%3A%22%22%7D%7D; qcloud_from=gwzcw.15291244.15291244.15291244-1788853768344; trafficParams=***%24%3Btimestamp%3D1788877466293%3Bfrom_type%3Dserver%3Btrack%3D6ee91103-5f09-42dd-9837-f7c87762256e%3B%24***; ww_device_nonce=bf4225b8eda0c04dfd823016051ef51d; tgw_l7_route=ebd8627ff586dba3367e3a4138455fc9

@@ -1,0 +1,110 @@
+HTTP/1.1 200 Connection established
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_128_GCM_SHA256
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.scorecardresearch.com
+  Simple Name: *.scorecardresearch.com
+  DNS Name: *.scorecardresearch.com
+
+[Issuer]
+  CN=Sectigo Public Server Authentication CA DV R36, O=Sectigo Limited, C=GB
+  Simple Name: Sectigo Public Server Authentication CA DV R36
+  DNS Name: Sectigo Public Server Authentication CA DV R36
+
+[Serial Number]
+  44CE6E45FA5E6758A7E2087249E6881C
+
+[Not Before]
+  2026/4/6 8:00:00
+
+[Not After]
+  2026/10/22 7:59:59
+
+[Thumbprint]
+  4862BA29DB485250ECDE9562157058A6E213BCAE
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 cc 45 82 7e d7 81 d2 92 76 78 5b 12 1d a5 bb 9d 6e 5b ff b0 bd a1 69 ab 59 2f 0e 0b b4 2c 7c 31 63 82 ef d1 69 f4 bf a1 58 7a fd 59 c0 14 57 0b 4d 5f 99 e9 b4 39 d7 8f d4 be 46 17 8e ff 83 58 a0 0c ee b9 d9 69 a6 20 c9 35 92 5a a9 91 0a 4e 53 05 1b b6 1d 2c b9 9d 02 31 45 1a 80 c7 8f 99 d7 6e 33 28 b5 0a c3 e7 b8 9f de c4 10 12 df 1e 98 48 c1 3f 1e 40 5a 2b 29 15 74 b2 83 03 c0 9a 2f 21 5e 52 ec 11 bd d2 b6 ad 4b 3e 95 ff df 12 fb 7b 5b 8b 62 88 08 fb 1a c8 eb 10 98 f6 67 7c a4 05 50 fb a3 7d 5a c2 02 dc 76 cd 58 10 3c a7 b6 22 8f 5b d9 27 c7 6b c8 e9 d0 ac 3a 40 51 da 4d 4e c1 2a 55 a7 e1 36 b7 a5 8f 2b b6 73 2e 64 fb 2d 6f f4 e7 ca 62 f4 0c 65 17 a9 f3 c4 9f 1c 18 09 36 dc 47 e0 b5 40 84 7e c3 52 b8 20 92 ea 69 8a 57 e2 ac 74 fe 2f 2d 74 96 82 82 e7 27 e1 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=68c01216180eafcef687a63257a346515dcb0727
+
+* 使用者密钥标识符(2.5.29.14):
+  64ad83d7c0f800f56b335cd2dfc91f0ea8542091
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=1.3.6.1.4.1.6449.1.2.2.7
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               https://sectigo.com/CPS
+[2]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://crt.sectigo.com/SectigoPublicServerAuthenticationCADVR36.crt
+[2]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://ocsp.sectigo.com
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.scorecardresearch.com
+DNS Name=scorecardresearch.com
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+d76d7d10d1a7f577c2c7e95fd700bff982c9335a65e1d0b3017317c0c8c56977
+‎2026‎年‎4‎月‎7‎日 5:23:13
+SHA256
+ECDSA
+3045022100e2dfc6434d059ea60e6f187e9f4fd1d219f29363e915b3d7640bd4911fa9aadc02202d92a0b2f5b9f8cc9309f97ed443e31535bae64c87062a0d70f113a54a5ff8ff
+
+v1
+c8a3c47fc7b3adb9356b013f6a7a126de33a4e43a5c646f997ad3975991dcf9a
+‎2026‎年‎4‎月‎7‎日 5:23:13
+SHA256
+ECDSA
+304502201eeb4d8f769f07ced43ef6e87278cd9e4e635fc7bf2c8ea456bfeaaab016553e022100ff7897b546cd651bd7f280c10d1aa45626b741075a2140220a1532923df2bf19
+
+v1
+6cfe501943a85ea916bc52d133e4dcc91ef1411c7d258420d173809e1818eb3a
+‎2026‎年‎4‎月‎7‎日 5:23:14
+SHA256
+ECDSA
+3045022045b089c05fcf4859117aab4815bffb621da546e88bf07d9f8d14e6226810ad0f022100e7fd875dfccc295d4cb1309b8b01166d4b08f154e87674e01c1072bca854cc83
+
+
+[SubjectAltNames]
+DNS Name=*.scorecardresearch.com
+DNS Name=scorecardresearch.com
+

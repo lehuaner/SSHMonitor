@@ -1,0 +1,29 @@
+{
+  "ResponseMetadata": {
+    "Action": "",
+    "OID": null,
+    "Region": "",
+    "RequestId": "",
+    "Service": "",
+    "Source": "",
+    "TraceID": "00000000000000000000000000000000",
+    "Version": "",
+    "WID": null
+  },
+  "Result": {
+    "AIRegion": "CN",
+    "AvatarUrl": "https://p26-passport.byteacctimg.com/img/user-avatar/assets/07379797ec877fdfe297071c64652ded_192_192.png~128x128.image",
+    "Description": "",
+    "Gender": "0",
+    "LastLoginTime": "2026-08-15T16:53:48+08:00",
+    "LastLoginType": "sms",
+    "MigrateToSG": false,
+    "NonPlainTextEmail": "",
+    "NonPlainTextMobile": "191******75",
+    "Region": "CN",
+    "RegisterTime": "2026-05-16T22:12:02.772+08:00",
+    "ScreenName": "用户3370882502",
+    "TenantID": "7o2d894p7dr0o4",
+    "UserID": "1910319278719667"
+  }
+}

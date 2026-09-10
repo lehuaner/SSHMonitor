@@ -1,0 +1,23 @@
+OPTIONS https://api.trae.com.cn/extensions/api/-/plugin/registries?product_name=lite&chat_mode=work&package_type=stable&client_version=0.1.51&os=windows HTTP/2
+:method: OPTIONS
+:authority: api.trae.com.cn
+:scheme: https
+:path: /extensions/api/-/plugin/registries?product_name=lite&chat_mode=work&package_type=stable&client_version=0.1.51&os=windows
+accept: */*
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+access-control-request-headers: content-type,x-preferenced-language
+access-control-request-method: GET
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: f8d2cf95-da88-447b-90cc-58a2866f24b0
+x-tt-trace-id: 00-1dd6e2950d945686928468a34cffffff-1dd6e2950d945686-01
+smbyttnet: 1

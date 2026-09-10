@@ -1,0 +1,87 @@
+{
+  "ev_type": "batch",
+  "list": [
+    {
+      "ev_type": "http",
+      "payload": {
+        "api": "xhr",
+        "request": {
+          "url": "https://f.clarity.ms/collect",
+          "method": "post",
+          "headers": {
+            "accept": "application/x-clarity-gzip"
+          },
+          "timestamp": 1786778748219
+        },
+        "response": {
+          "status": 200,
+          "is_custom_error": false,
+          "timestamp": 1786778749216,
+          "headers": {
+            "content-length": "7",
+            "content-type": "text/plain; charset=utf-8"
+          },
+          "timing": {
+            "name": "https://f.clarity.ms/collect",
+            "entryType": "resource",
+            "startTime": 6586.899999991059,
+            "duration": 993.1000000089407,
+            "navigationId": 7383,
+            "initiatorType": "xmlhttprequest",
+            "deliveryType": "",
+            "nextHopProtocol": "",
+            "renderBlockingStatus": "non-blocking",
+            "contentType": "text/plain",
+            "contentEncoding": "",
+            "workerStart": 0,
+            "workerRouterEvaluationStart": 0,
+            "workerCacheLookupStart": 0,
+            "workerMatchedSourceType": "",
+            "workerFinalSourceType": "",
+            "redirectStart": 0,
+            "redirectEnd": 0,
+            "fetchStart": 6586.899999991059,
+            "domainLookupStart": 0,
+            "domainLookupEnd": 0,
+            "connectStart": 0,
+            "secureConnectionStart": 0,
+            "connectEnd": 0,
+            "requestStart": 0,
+            "responseStart": 0,
+            "firstInterimResponseStart": 0,
+            "finalResponseHeadersStart": 0,
+            "responseEnd": 7580,
+            "transferSize": 0,
+            "encodedBodySize": 0,
+            "decodedBodySize": 0,
+            "responseStatus": 200,
+            "serverTiming": []
+          }
+        },
+        "duration": 997
+      },
+      "common": {
+        "bid": "trae_website_cn",
+        "user_id": "7623996721186293291",
+        "device_id": "26a0611c-f4ba-413d-a7bb-958d29ab449b",
+        "session_id": "38890dfb-8cac-4114-aae5-39cd909cbaee",
+        "release": "1.0.0.1462",
+        "env": "production",
+        "url": "https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.70844&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=1&login_trace_id=55ad23b1-7581-481d-a6a1-0d96f86703d4&auth_callback_url=http://127.0.0.1:58448/authorize&machine_id=0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51&device_id=3798161405005257&x_device_id=3798161405005257&x_machine_id=0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51&x_device_brand=82JW&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.50&x_app_type=stable&code_challenge=e4LjjO5hI9_HH0os44LAHCvFzocgeeNTWd43S5_iUHE&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=TRAE%20SOLOSetup-stable-2.3.70844",
+        "timestamp": 1786778748219,
+        "sdk_version": "1.16.8",
+        "sdk_name": "SDK_SLARDAR_WEB",
+        "pid": "/authorization",
+        "view_id": "/authorization_1786778742798",
+        "context": {
+          "deploy_region": "cn",
+          "biz_user_id": "1000985253380538",
+          "user_id": "7623996721186293291",
+          "user_is_login": "true"
+        },
+        "network_type": "4g",
+        "sample_rate": 1
+      }
+    }
+  ]
+}

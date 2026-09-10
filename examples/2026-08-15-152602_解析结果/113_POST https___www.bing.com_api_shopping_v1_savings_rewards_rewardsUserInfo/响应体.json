@@ -1,0 +1,15 @@
+{
+  "balance": 0,
+  "giveProfile": {},
+  "rebateProfile": {
+    "availableBalance": 0.0,
+    "pendingBalance": 0.0,
+    "redeemedBalance": 0.0,
+    "userCurrency": "usd",
+    "isPayoutsUnavailable": false
+  },
+  "isRewardsUser": true,
+  "isRebatesUser": true,
+  "isEligibleForCashbackEnroll": true,
+  "isAutoEnrolled": false
+}

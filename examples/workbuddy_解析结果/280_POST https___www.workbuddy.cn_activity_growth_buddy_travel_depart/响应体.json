@@ -1,0 +1,25 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "2f41fca2-8e82-49b1-be36-bc1c1dbf41cd",
+  "data": {
+    "state": "traveling",
+    "buddy_id": 6454735,
+    "record_id": 3949530,
+    "location": {
+      "id": 1,
+      "code": "coffee",
+      "name": "咖啡馆",
+      "duration_hours": 2,
+      "cover_url": ""
+    },
+    "depart_at": 1788799160,
+    "arrive_at": 1788806360,
+    "server_now": 1788799160,
+    "letter": null,
+    "use_deeplink": "",
+    "daily_limit_reached": false,
+    "duration_hours": 0,
+    "reward_credit": 0
+  }
+}

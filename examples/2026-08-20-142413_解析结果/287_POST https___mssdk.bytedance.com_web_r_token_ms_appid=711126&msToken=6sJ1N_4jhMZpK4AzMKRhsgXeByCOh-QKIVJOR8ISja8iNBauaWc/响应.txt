@@ -1,0 +1,22 @@
+HTTP/2 200
+server: Tengine
+content-type: text/plain; charset=utf-8
+content-length: 44
+date: Thu, 20 Aug 2026 06:22:26 GMT
+upstream-caught: 1787206946375692
+x-tt-logid: 20260820142226542919D1318B63E74467
+access-control-allow-credentials: true
+access-control-allow-origin: https://www.trae.cn
+access-control-allow-headers: x-mssdk-info,x-ms-req
+access-control-expose-headers: x-ms-token,x-ms-resp
+access-control-allow-methods: GET,POST,OPTIONS
+x-ms-token: l4m80VWmpV4MbNYs64_91GsleyY8pseURJt8eBFZKzfKY4WvbMRjbBTi-4ap0zn3-Lll46nCnRPCdVHcPuyZ9gNqJAGSCpetjwq-4BeLCsQDVXQSgX1vG0GnmBEoMlisxymV6z6UMzx_KORT_atTcz7I1CHuNHbPAH08qkxGdaN3mscm4g_Seg==
+set-cookie: msToken=l4m80VWmpV4MbNYs64_91GsleyY8pseURJt8eBFZKzfKY4WvbMRjbBTi-4ap0zn3-Lll46nCnRPCdVHcPuyZ9gNqJAGSCpetjwq-4BeLCsQDVXQSgX1vG0GnmBEoMlisxymV6z6UMzx_KORT_atTcz7I1CHuNHbPAH08qkxGdaN3mscm4g_Seg==; expires=Thu, 27 Aug 2026 06:22:26 GMT; domain=bytedance.com; path=/; secure
+server-timing: inner; dur=17
+x-tt-trace-host: 01207a981426127d02143837b6aace09ad779ec3869f3b72eada469ead32bba07254b57ace55ad81b8f8b377508e64d3533d2b31a436eb066ceedec1db7d08f490cb8ddc78ede3a671f004136f8f310bfd42ae2707a9a8e668fa5456818f917d25
+x-tt-trace-tag: id=03;cdn-cache=miss;type=dyn
+x-tt-trace-id: 00-260820142226542919D1318B63E74467-7C92E7BC92FDCC9A-00
+x-tt-timestamp: 1787206946.388
+via: ens-dynamic5.cn4650[156,0]
+timing-allow-origin: *
+eagleid: df6d49cb17872069462506804e

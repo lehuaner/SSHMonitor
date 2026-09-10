@@ -1,0 +1,17 @@
+HTTP/2 204
+expires: Fri, 01 Jan 1990 00:00:00 GMT
+date: Mon, 07 Sep 2026 16:38:11 GMT
+pragma: no-cache
+cache-control: no-cache, no-store, must-revalidate
+vary: Origin
+vary: X-Origin
+vary: Referer
+content-type: text/html
+server: scaffolding on HTTPServer2
+content-length: 0
+x-xss-protection: 0
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+access-control-allow-origin: https://www.workbuddy.cn
+access-control-expose-headers: date,vary,vary,vary,server,content-length
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000

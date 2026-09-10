@@ -1,0 +1,24 @@
+{
+  "codebuddy": {
+    "app_type": "codebuddy",
+    "hidden_tip": true,
+    "disable_login_register": true,
+    "hidden_logo": [
+      "app",
+      "mp"
+    ],
+    "hidden_agreement": [
+      "app",
+      "mp"
+    ],
+    "agreement_template": "已阅读并同意CodeBuddy的 <%= service %> 和 <%= privacy %>，CodeBuddy适用腾讯统一身份账号体系，方便您进行统一身份管理。",
+    "client_name": "CodeBuddy",
+    "logo_uri": "https://identity.tencent.com/public/images/logo/codebuddy.png",
+    "logo_with_text_uri": "https://identity.tencent.com/public/images/logo/codebuddy-text.png",
+    "policy_uri": "https://privacy.qq.com/document/preview/284d799a07164d09bfc7cedd0ec3e089",
+    "tos_uri": "https://cloud.tencent.com/document/product/301/106125",
+    "client_type": "codebuddy",
+    "register_uri": "https://copilot.tencent.com/admin/login-error",
+    "app_name": "CodeBuddy"
+  }
+}

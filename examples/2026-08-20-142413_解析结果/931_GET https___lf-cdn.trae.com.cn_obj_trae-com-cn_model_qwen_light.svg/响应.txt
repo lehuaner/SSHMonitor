@@ -1,0 +1,33 @@
+HTTP/2 200
+server: Tengine
+content-type: image/svg+xml
+content-length: 2117
+date: Sun, 26 Jul 2026 03:14:17 GMT
+accept-ranges: bytes
+cache-control: max-age=2592000
+x-bdcdn-cache-status: TCP_HIT
+x-kfc-cachekey: http://d-ks-origin-cache-all-lf.originalstatic.com/trae-com-cn/model/qwen_light.svg
+x-tos-hash-crc64ecma: 10161529464554515006
+x-tos-request-id: da6866c2-b2ea-4500-96fa-b8c1d7e30e76-a928393-fdbdgdc02g0g11agg42
+x-tos-response-time: Sun, 26 Jul 2026 02:57:03 GMT
+x-tos-storage-class: STANDARD
+via: fdbd:dc02:24:23a::52, cache52.l2cn1816[0,0,304-0,H], cache58.l2cn1816[0,0], cache12.cn7729[0,0,200-0,H], cache1.cn7729[1,0]
+x-request-ip: fdbd:dc03:14:11a::132
+x-tt-trace-tag: id=03;cdn-cache=hit;type=static
+x-response-cinfo: fdbd:dc03:14:11a::132
+x-response-cache: edge_hit
+server-timing: inner; dur=4
+x-tt-trace-host: 01677c5b37541c463dd6a1dd777068c745793328c803feb2e863142769f346c2bf7bbfc4b3060c4f0a0894d40ccca6ca374d22ed0546e2a7283a9e3963d1b6c8e414d78f82152ee71fbadbe2c269a5c75c
+x-tt-trace-id: 00-9c6a8d870d5926a05cc1d276324affff-9c6a8d870d5926a0-01
+x-tt-logid: 20260726111417F53704159C1B58C1D283
+etag: "284e2d675d2669d6fec2b4cff5b7b9a7"
+last-modified: Wed, 23 Jul 2025 07:47:55 GMT
+age: 2171383
+ali-swift-global-savetime: 1785035657
+x-cache: HIT TCP_MEM_HIT dirn:-2:-2
+x-swift-savetime: Wed, 19 Aug 2026 01:43:24 GMT
+x-swift-cachetime: 523853
+x-tt-supplier-id: 0_1
+access-control-allow-origin: *
+timing-allow-origin: *
+eagleid: 2497e50617872070407905435e

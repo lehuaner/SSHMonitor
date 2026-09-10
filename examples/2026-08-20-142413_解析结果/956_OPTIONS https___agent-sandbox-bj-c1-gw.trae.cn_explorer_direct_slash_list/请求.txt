@@ -1,0 +1,23 @@
+OPTIONS https://agent-sandbox-bj-c1-gw.trae.cn/explorer/direct/slash/list HTTP/2
+:method: OPTIONS
+:authority: agent-sandbox-bj-c1-gw.trae.cn
+:scheme: https
+:path: /explorer/direct/slash/list
+accept: */*
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+access-control-request-headers: authorization,x-preferenced-language,x-trae-client-type,x-trae-user-timezone
+access-control-request-method: GET
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: 861c1c70-3e37-4d37-bf48-7a498e4c0d02
+x-tt-trace-id: 00-1dd73c0b0d945686928468a56d14ffff-1dd73c0b0d945686-01
+smbyttnet: 1

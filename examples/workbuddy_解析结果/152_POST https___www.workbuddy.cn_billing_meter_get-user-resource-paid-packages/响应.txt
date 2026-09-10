@@ -1,0 +1,11 @@
+HTTP/2 200
+content-type: application/json; charset=utf-8
+set-cookie: session=; Path=/billing; Max-Age=0; Expires=Thu, 01-Jan-70 00:00:00 GMT; HttpOnly
+traceid: b9060b841e965d558ebd185c4ca5bfba
+x-request-id: 8ca3a942-c233-461d-a3f1-21565ba8b211
+x-user-id: bb1a0124-b950-4052-9904-bc45ccd68bf0
+server: APISIX/3.9.1
+content-length: 110
+date: Mon, 07 Sep 2026 16:38:56 GMT
+eo-log-uuid: 15830229871049467808
+eo-cache-status: MISS

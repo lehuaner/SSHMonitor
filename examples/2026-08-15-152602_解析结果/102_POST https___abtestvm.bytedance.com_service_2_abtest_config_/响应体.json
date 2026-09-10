@@ -1,0 +1,46 @@
+{
+  "data": {
+    "cashier_retain": {
+      "val": true,
+      "vid": "92445595"
+    },
+    "fork_chat": {
+      "val": {
+        "enable": false,
+        "enable_create_from_message": true,
+        "enable_create_from_session": true,
+        "enable_v2": true
+      },
+      "vid": "92399485"
+    },
+    "home.banner.show_work_web_link": {
+      "val": true,
+      "vid": "17835678"
+    },
+    "homepage_version": {
+      "val": "v1",
+      "vid": "92607115"
+    },
+    "past_chats": {
+      "val": {
+        "enable": true,
+        "enable_export": true,
+        "enable_reference": true,
+        "enable_solo_export": true
+      },
+      "vid": "92343922"
+    },
+    "switchLSPAndCuePopup": {
+      "val": true,
+      "vid": "92117521"
+    },
+    "trae_insights_skill": {
+      "val": {
+        "defaultInUse": false,
+        "enable": false
+      },
+      "vid": "92099605"
+    }
+  },
+  "message": "success"
+}

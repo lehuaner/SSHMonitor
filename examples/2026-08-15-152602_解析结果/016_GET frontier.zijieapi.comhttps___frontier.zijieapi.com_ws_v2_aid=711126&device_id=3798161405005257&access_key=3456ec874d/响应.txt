@@ -1,0 +1,11 @@
+HTTP/1.1 401 Unauthorized
+Connection: close
+Content-Length: 21
+Content-Type: text/plain; charset=utf-8
+Handshake-Autherrcode: -1
+Handshake-Msg: auth resp code error
+Handshake-Options: reconnect-interval=30;
+Handshake-Status: 514
+Traceparent: 00-d6542f6a2e70e06b00e09968b25dab93-64a2f7ed2d11e760-01
+X-Content-Type-Options: nosniff
+X-Frontier-Logid: 021786778731256fdbddc03001b0c040000000000000034ff868c

@@ -1,0 +1,33 @@
+HTTP/2 200
+server: Tengine
+content-type: image/svg+xml
+content-length: 5317
+date: Mon, 10 Aug 2026 08:20:43 GMT
+accept-ranges: bytes
+cache-control: max-age=2592000
+x-bdcdn-cache-status: TCP_HIT
+x-kfc-cachekey: http://d-ks-origin-cache-all-lf.originalstatic.com/trae-com-cn/model/mimo-light.svg
+x-tos-hash-crc64ecma: 5879632688080863572
+x-tos-request-id: 440046796dc4b1b66a796dc4-fdbdgdc02g24gc46gg43-a9ebe95
+x-tos-response-time: Mon, 10 Aug 2026 06:20:52 GMT
+x-tos-storage-class: STANDARD
+via: fdbd:dc02:29:b32::52, cache75.l2cn8060[0,0,304-0,H], cache18.l2cn8060[1,0], cache1.cn7729[0,0,200-0,H], cache1.cn7729[1,0]
+x-request-ip: fdbd:dc02:20:234::67
+x-tt-trace-tag: id=03;cdn-cache=hit;type=static
+x-response-cinfo: fdbd:dc02:20:234::67
+x-response-cache: edge_hit
+server-timing: inner; dur=1
+x-tt-trace-host: 01c0e2a3310aa989e988549d7443c2ddd49234978d0878f38edb2a5b2b128092d2205aa377f5510172133fa4b4542aee9806bb66683e31abd3c06bc8f3076fa1207f6344f5864d8d00d2892ed2f81cf9a257eec4e667308c7610024d25d1ad99261331e4cf8129c54c06a1d632c0db34c6
+x-tt-trace-id: 00-eac27ff60d6f56111f854d9b2db6ffff-eac27ff60d6f5611-01
+x-tt-logid: 20260810162043008768E5766E61AB1231
+etag: "dd8bf8f19758e4e907ed80ea5f81e317"
+last-modified: Thu, 11 Jun 2026 02:48:34 GMT
+age: 856998
+ali-swift-global-savetime: 1786350043
+x-cache: HIT TCP_HIT dirn:13:814753819
+x-swift-savetime: Mon, 10 Aug 2026 11:58:13 GMT
+x-swift-cachetime: 2578950
+x-tt-supplier-id: 0_1
+access-control-allow-origin: *
+timing-allow-origin: *
+eagleid: 2497e50617872070410947409e

@@ -1,0 +1,21 @@
+HTTP/2 200
+content-type: image/jpeg
+x-cache: TCP_MISS
+access-control-allow-headers: *
+access-control-allow-methods: GET, POST, OPTIONS
+access-control-allow-origin: *
+timing-allow-origin: *
+report-to: {"group":"network-errors","max_age":604800,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingth&ndcParam=nadatio"}]}
+nel: {"report_to":"network-errors","max_age":604800,"success_fraction":0.001,"failure_fraction":1}
+server-timing: mapi;desc="eastasia";dur=7.9
+x-mapi-region: eastasia
+accept-ch: Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+x-msedge-ref: Ref A: B062AD4FB6EA48609F2F93E40BC900E8 Ref B: HKG201051219062 Ref C: 2026-08-16T15:06:34Z
+server: TencentEdgeOne
+cache-control: public, max-age=2592000
+content-length: 7338
+accept-ranges: bytes
+date: Thu, 20 Aug 2026 06:22:27 GMT
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+eo-log-uuid: 1634917232766601106
+eo-cache-status: HIT

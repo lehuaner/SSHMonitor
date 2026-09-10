@@ -1,0 +1,9 @@
+HTTP/2 200
+content-type: application/json
+server: APISIX/3.9.1
+x-request-id: f6c3e75d-e8ac-48f3-81a7-6ee3f7be1f33
+x-content-type-options: nosniff
+content-length: 21
+date: Thu, 10 Sep 2026 04:01:30 GMT
+eo-log-uuid: 3285216092204745114
+eo-cache-status: MISS

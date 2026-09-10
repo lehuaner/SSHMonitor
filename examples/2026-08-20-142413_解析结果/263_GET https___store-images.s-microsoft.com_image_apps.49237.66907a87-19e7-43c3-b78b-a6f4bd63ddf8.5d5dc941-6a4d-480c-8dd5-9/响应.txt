@@ -1,0 +1,11 @@
+HTTP/2 200
+cache-control: public, max-age=7776000, s-maxage=7776000
+content-length: 9941
+content-type: image/png
+last-modified: 6/28/2024 2:47:54 AM
+accept-ranges: none
+etag: W/"AEBfZAw9Nnnwv/pX0Y8gbeluBXDjINQgMHg4REM5NzFDQjVGQzcwRUU"
+server: Microsoft-HTTPAPI/2.0
+ms-cv: 0dd0be71cfac4019b234b6026a619586
+date: Thu, 20 Aug 2026 06:22:31 GMT
+access-control-allow-origin: *

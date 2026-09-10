@@ -1,0 +1,19 @@
+{
+  "ResponseMetadata": {
+    "Action": "",
+    "Error": {
+      "Code": "10101",
+      "Data": {},
+      "Message": "无效参数：{__Message.field}.",
+      "StandardCode": "040004"
+    },
+    "OID": null,
+    "Region": "",
+    "RequestId": "",
+    "Service": "",
+    "Source": "",
+    "TraceID": "00000000000000000000000000000000",
+    "Version": "",
+    "WID": null
+  }
+}

@@ -1,0 +1,10 @@
+HTTP/1.1 101 Switching Protocols
+Upgrade: websocket
+Connection: Upgrade
+Sec-WebSocket-Accept: NTju14ANv5YATeGnsS+Z0Hun1y4=
+Sec-WebSocket-Extensions: permessage-deflate; client_no_context_takeover; server_no_context_takeover
+Date: Sat, 15 Aug 2026 07:25:38 GMT
+uWebSockets: 20
+EndTime: 15:26:04.891
+ReceivedBytes: 379
+SentBytes: 35

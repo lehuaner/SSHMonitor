@@ -1,0 +1,23 @@
+{
+  "functions": [
+    "assistant",
+    "solo_agent_lite",
+    "solo_coder",
+    "solo_agent_remote",
+    "solo_work_lite",
+    "solo_work_remote",
+    "solo_design_lite",
+    "solo_design_remote",
+    "builder"
+  ],
+  "agent_type": "solo_agent_lite",
+  "current_config_info": {
+    "config_name": "DeepSeek-V4-Flash-Official",
+    "is_custom_model": false
+  },
+  "mode_type": 0,
+  "access_type": 1,
+  "ab_force_vids": "",
+  "ab_autotest_advanced_mode": 0,
+  "show_custom_model": true
+}

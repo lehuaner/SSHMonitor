@@ -1,0 +1,6 @@
+HTTP/2 200
+content-type: application/json; charset=UTF-8
+cache-control: no-cache, must-revalidate
+retkey: 14
+logicret: 0
+strict-transport-security: max-age=0

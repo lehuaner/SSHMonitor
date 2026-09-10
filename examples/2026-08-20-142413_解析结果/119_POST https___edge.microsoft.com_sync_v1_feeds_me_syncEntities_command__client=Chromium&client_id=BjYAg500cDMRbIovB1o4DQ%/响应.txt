@@ -1,0 +1,8 @@
+HTTP/2 200
+content-type: application/octet-stream
+vary: Accept-Encoding
+ms-cv: fNCyV2eE/N6v1iwWmCMYCI.0
+x-afs-tracking: cV=fNCyV2eE/N6v1iwWmCMYCI.0;server=akswtt11600001w;cloudType=Consumer;environment=Prod_japaneast_prod-s01-061-apac-japaneast;migrationStage=NotStarted
+x-cache: CONFIG_NOCACHE
+x-msedge-ref: Ref A: 894D1901AC4C45019C6D8E3058B3AD73 Ref B: TYO601100911060 Ref C: 2026-08-20T06:22:23Z
+date: Thu, 20 Aug 2026 06:22:24 GMT

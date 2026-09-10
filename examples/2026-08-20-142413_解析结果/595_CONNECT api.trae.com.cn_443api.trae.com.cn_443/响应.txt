@@ -1,0 +1,116 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:23:29.578
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_128_GCM_SHA256
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.trae.com.cn
+  Simple Name: *.trae.com.cn
+  DNS Name: *.trae.com.cn
+
+[Issuer]
+  CN=RapidSSL TLS RSA CA G1, OU=www.digicert.com, O=DigiCert Inc, C=US
+  Simple Name: RapidSSL TLS RSA CA G1
+  DNS Name: RapidSSL TLS RSA CA G1
+
+[Serial Number]
+  0E274AA2D8C9362BB18B63692C8FCAA4
+
+[Not Before]
+  2026/1/19 8:00:00
+
+[Not After]
+  2027/1/19 7:59:59
+
+[Thumbprint]
+  87A7734C47E61754CAEB62691476A123DF0A14BC
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 ca ad d0 27 5c 35 3d 6d 74 bd 85 20 7a 2a 9b 66 7a e0 f2 c8 cf a9 4e 4e f9 98 4d 50 af 56 ad 18 8c ff d1 d6 60 86 32 9f fb e4 a2 e2 5a 36 be 5c bd 55 9d 72 de 59 72 52 62 76 e1 3c d2 f1 1d 26 93 8a b4 b4 0c 23 30 c4 99 eb c8 68 3d c4 ae d0 a4 95 f9 d4 1b 97 79 5f 4e c6 fa f9 2a e3 f3 7a ea d2 f3 48 25 56 5d 0e 51 4e f3 c6 72 11 7f ae d4 24 4c f4 b3 8d a3 37 dc bd 02 85 c2 39 69 6b 7b 60 46 fc b3 a4 7b e2 ad a0 18 cc 21 e1 a5 73 0a 67 a2 83 b0 dd 01 07 09 06 f2 8e 99 fe 32 91 b1 de b8 c7 b5 14 8c e5 ee d9 b7 74 b2 13 cd 03 99 da 91 e7 35 ee 8e af 5f 34 99 4f 0c 48 01 7d 1f 17 24 ec b8 40 92 f6 92 48 55 cf 06 8d da 1a 96 e0 83 a8 e5 fb 72 f6 2c b7 07 e5 d5 b6 ec 2c d6 94 ed 4f b8 1c 6e ea 7f 32 c3 ce 1e 88 a7 eb ee b3 90 28 04 aa 9b 2c 79 48 6c 85 bd 55 b3 e9 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=0cdb6c82490f4a670ab814ee7ac4485288eb5638
+
+* 使用者密钥标识符(2.5.29.14):
+  f268587271c1e78dd625fa4368c3546a83ae3a3d
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.trae.com.cn
+DNS Name=trae.com.cn
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://cdp.rapidssl.com/RapidSSLTLSRSACAG1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://status.rapidssl.com
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.rapidssl.com/RapidSSLTLSRSACAG1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+4c63dc98e59c1dab88f61e8a3ddeae8fab44a3377b5f9b94c3fba19cfcc1be26
+‎2026‎年‎1‎月‎20‎日 3:47:07
+SHA256
+ECDSA
+3045022100ca5503076dd8de9d4a7d31a081cb2f46bf74308d9a35af458069189218064346022014bc10b80b0b56331dc47a1ac9f96d2cb99ffaf89f564eae6c075e2ab5daf29b
+
+v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎1‎月‎20‎日 3:47:07
+SHA256
+ECDSA
+3045022045d0a79af120936d3e046778f49a49d074d17c0d5b96a8a1f4c07b8ebda769c40221008e7f47f056bd884d1489fa55bf90f5d2a477e9fcd4c2f923dcd9277903fa8a67
+
+v1
+604c9aaf7a7f775f01d406fc920dc899eb0b1c7df8c9521bfafa17773b978bc9
+‎2026‎年‎1‎月‎20‎日 3:47:07
+SHA256
+ECDSA
+3046022100bdc51b67c055779277da13c703d1515588a8769d61f46689d0254c90ff599742022100e839cfefe883e2af8c1ebaa4d8b23c4d8a23ceedbe2caf09ed1dc0d770a6f6ae
+
+
+[SubjectAltNames]
+DNS Name=*.trae.com.cn
+DNS Name=trae.com.cn
+

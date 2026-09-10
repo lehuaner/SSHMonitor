@@ -1,0 +1,21 @@
+{
+  "code": 0,
+  "data": {
+    "enable_batch_index": true,
+    "enable_disk_io_optimize": true,
+    "enable_indexing_completion_check": false,
+    "enable_interaction_graph": false,
+    "enable_periodic_init": true,
+    "enable_periodic_rate_limit_control": true,
+    "enable_v2_chunking_method": false,
+    "enable_v3_chunking_method": true,
+    "exit_when_ppid_changed": true,
+    "force_local_embedding": true,
+    "periodic_disk_occupation_metrics": true,
+    "test": false,
+    "use_embedding_db_v2": true,
+    "use_rag_context_bank": true,
+    "use_v2_ignore": true,
+    "use_v2_split_embedding_api": true
+  }
+}

@@ -1,0 +1,10 @@
+DELETE http://127.0.0.1:6613/api/v1/acp HTTP/1.1
+host: 127.0.0.1:6613
+connection: keep-alive
+Authorization: Bearer rycZyMu3ZD0Anqi1xh0lGn4EuFo7kILZUdjHFuCNf4M
+Acp-Connection-Id: cb527cf7-5d24-4798-b9fe-0a94d7b2e89f
+accept: */*
+accept-language: *
+sec-fetch-mode: cors
+user-agent: node
+accept-encoding: gzip, deflate

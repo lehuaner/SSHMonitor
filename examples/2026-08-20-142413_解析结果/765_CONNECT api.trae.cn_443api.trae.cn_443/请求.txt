@@ -1,0 +1,55 @@
+CONNECT api.trae.cn:443 HTTP/1.1
+Host: api.trae.cn:443
+Connection: keep-alive
+User-Agent: Cronet/TTNetVersion:992a646e 2026-06-12 QuicVersion:40cc763c 2025-07-01
+
+A SSLv3-compatible ClientHello handshake was found. Fiddler extracted the parameters below.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+Record Layer Version: 3.3 (TLS/1.2)
+Random: 4E BE 22 BE 0D 43 19 17 F4 2E 97 1A 17 BE 5D 5D 86 78 EB 0E 10 14 3C C1 E7 94 2D 59 91 AA 3C 12
+"Time": 2071/2/1 0:39:42
+SessionID: B2 11 9F DF 03 06 18 38 3A 03 76 D2 CD 63 0A 4E 9F 3A 1F 57 39 BB 31 95 35 7B F0 04 42 B1 96 A3
+Extensions: 
+	grease (0x7a7a)	empty
+	server_name	api.trae.cn
+	extended_master_secret	empty
+	renegotiation_info	00
+	supported_groups	grease [0x5a5a], x25519 [0x1d], secp256r1 [0x17], secp384r1 [0x18]
+	ec_point_formats	uncompressed [0x0]
+	SessionTicket	empty
+	ALPN		h2, http/1.1
+	status_request	OCSP - Implicit Responder
+	signature_algs	ecdsa_secp256r1_sha256, rsa_pss_rsae_sha256, rsa_pkcs1_sha256, ecdsa_secp384r1_sha384, rsa_pss_rsae_sha384, rsa_pkcs1_sha384, rsa_pss_rsae_sha512, rsa_pkcs1_sha512
+	SignedCertTimestamp (RFC6962)	empty
+	key_share	00 29 5A 5A 00 01 00 00 1D 00 20 54 47 C0 DB 52 13 06 0E 01 2E 41 E9 65 55 D9 D4 7E E6 0D 5B D6 04 86 F0 B8 DC EB 0E ED 40 74 34
+	psk_key_exchange_modes	01 01
+	supported_versions	grease [0x1a1a], Tls1.3, Tls1.2
+	0x001b		02 00 02
+	0x4469		00 03 02 68 32
+	grease (0x5a5a)	00
+	padding		204 null bytes
+Ciphers: 
+	[0A0A]	Unrecognized cipher - See https://www.iana.org/assignments/tls-parameters/
+	[1301]	TLS_AES_128_GCM_SHA256
+	[1302]	TLS_AES_256_GCM_SHA384
+	[1303]	TLS_CHACHA20_POLY1305_SHA256
+	[C02B]	TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+	[C02F]	TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	[C02C]	TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+	[C030]	TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	[CCA9]	TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+	[CCA8]	TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+	[C013]	TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+	[C014]	TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+	[009C]	TLS_RSA_WITH_AES_128_GCM_SHA256
+	[009D]	TLS_RSA_WITH_AES_256_GCM_SHA384
+	[002F]	TLS_RSA_WITH_AES_128_CBC_SHA
+	[0035]	TLS_RSA_WITH_AES_256_CBC_SHA
+
+Compression: 
+	[00]	NO_COMPRESSION
+
+

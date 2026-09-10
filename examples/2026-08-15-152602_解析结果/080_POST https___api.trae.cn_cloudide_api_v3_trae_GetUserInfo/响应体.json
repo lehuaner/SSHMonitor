@@ -1,0 +1,30 @@
+{
+  "ResponseMetadata": {
+    "Action": "",
+    "OID": null,
+    "Region": "",
+    "RequestId": "",
+    "Service": "",
+    "Source": "",
+    "TraceID": "00000000000000000000000000000000",
+    "Version": "",
+    "WID": null
+  },
+  "Result": {
+    "AIRegion": "CN",
+    "AuditInfo": "{\"audit_status\":2,\"is_auditing\":false,\"last_modify_time\":1732290402,\"unpass_reason\":\"\"}",
+    "AvatarUrl": "https://p9-passport.byteacctimg.com/img/user-avatar/assets/11c35f217be67876726ffb8038af8e4e_192_192.png~128x128.image",
+    "Description": "",
+    "Gender": "0",
+    "LastLoginTime": "2026-08-15T13:38:12+08:00",
+    "LastLoginType": "sms",
+    "MigrateToSG": false,
+    "NonPlainTextEmail": "",
+    "NonPlainTextMobile": "173******16",
+    "Region": "CN",
+    "RegisterTime": "2025-03-15T10:35:11.398+08:00",
+    "ScreenName": "lehuan",
+    "TenantID": "7o2d894p7dr0o4",
+    "UserID": "1000985253380538"
+  }
+}

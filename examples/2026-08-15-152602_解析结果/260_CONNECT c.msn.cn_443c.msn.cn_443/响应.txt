@@ -1,0 +1,113 @@
+HTTP/1.1 200 Connection established
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=c.msn.cn
+  Simple Name: c.msn.cn
+  DNS Name: c.msn.cn
+
+[Issuer]
+  CN=GeoTrust TLS RSA CA G1, OU=www.digicert.com, O=DigiCert Inc, C=US
+  Simple Name: GeoTrust TLS RSA CA G1
+  DNS Name: GeoTrust TLS RSA CA G1
+
+[Serial Number]
+  09DCF67A25B3FDC676DC9C2274CC929E
+
+[Not Before]
+  2026/5/22 8:00:00
+
+[Not After]
+  2026/11/23 7:59:59
+
+[Thumbprint]
+  97FD005EEF2B34FC7A078060E02DCB7F9721F5C2
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 9a f8 97 17 3c 6e f8 c0 bc 4d 3e 65 d3 ab 36 0d 14 37 c1 01 e7 9a 89 1e 56 9a e4 d8 21 90 72 4e 95 e5 b2 85 3f 5f 9b 7a 2b e0 c0 57 86 14 fe 78 8d b8 5d 1b 5a 84 9f 10 f5 be d8 09 f6 11 72 f4 bb 47 bf be 33 ca 6c 85 1c e1 c5 15 21 df d5 8d 78 11 79 96 91 ac 76 7a 2d 65 c9 8a 03 16 84 0c d4 ba bd f5 54 af 78 fb f7 33 c8 c2 cd 88 b6 a0 be 5d 94 fd 70 41 9b 60 25 84 34 91 1e f8 04 27 1c c2 a3 12 93 7d e8 28 e3 99 01 53 9d d9 61 1a e7 17 34 19 7f 48 d3 93 2a 46 7e 93 76 23 c9 25 52 ad 32 2e d8 c9 3e 26 18 36 56 80 fe f5 1b 52 3d 27 71 96 c2 fe d2 4e a7 84 fa 8c 8a 45 d9 d8 12 0e 6a 15 ac 8d a5 33 36 b0 20 ec 25 8a 61 b1 bd cc a4 1a 66 44 17 60 94 4f 71 4a ef 48 c6 6e c3 10 b4 a1 17 35 10 84 d5 1d 74 2b 05 20 c7 c7 5c 85 61 1f 1d 3a 8a e1 92 63 85 4b 73 f6 61 e9 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=944fd45d8be4a4e2a680fefdd8f900efa3be0257
+
+* 使用者密钥标识符(2.5.29.14):
+  c6df1e0cddb04368a4576b6b333b96af098a46c4
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=c.msn.cn
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+客户端身份验证 (1.3.6.1.5.5.7.3.2)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://cdp.geotrust.com/GeoTrustTLSRSACAG1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://status.geotrust.com
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.geotrust.com/GeoTrustTLSRSACAG1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+c2317e574519a345ee7f38deb29041ebc7c2215a22bf7fd5b5ad769ad90e52cd
+‎2026‎年‎5‎月‎22‎日 16:02:57
+SHA256
+ECDSA
+30440220692d2f96c5918c2421fde0cc9fed7c1d10596413b0c2d0c1822ee19adb0c4c44022073e6fe8207598adb0642c428f1de91df55d7d506b4f1fe0764e1990d7642fa0a
+
+v1
+d76d7d10d1a7f577c2c7e95fd700bff982c9335a65e1d0b3017317c0c8c56977
+‎2026‎年‎5‎月‎22‎日 16:02:57
+SHA256
+ECDSA
+3045022035f7b660c626fab52724071fe1c09013557add346006db507e5b26add34e812a022100851fa6b8960019cd62fa5b37aae855e0cfc44fbcc71a429d98ec8c75ab5bedaf
+
+v1
+944e4387faecc1ef81f3192426a8186501c7d35f3802013f72677d55372e19d8
+‎2026‎年‎5‎月‎22‎日 16:02:57
+SHA256
+ECDSA
+3045022100c92fdb2a5617c931064bb0314461eb2b296a2617ae4d50c015a6eac1558c65910220409133531c89403d12735eb533c399641de334fcee673e42ac42ca6f2883d0a7
+
+
+[SubjectAltNames]
+DNS Name=c.msn.cn
+

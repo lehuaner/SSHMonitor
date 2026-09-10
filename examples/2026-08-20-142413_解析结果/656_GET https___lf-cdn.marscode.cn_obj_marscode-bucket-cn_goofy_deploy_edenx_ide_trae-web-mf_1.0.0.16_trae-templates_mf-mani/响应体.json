@@ -1,0 +1,146 @@
+{
+  "id": "templates_mf",
+  "name": "templates_mf",
+  "metaData": {
+    "name": "templates_mf",
+    "type": "app",
+    "buildInfo": {
+      "buildVersion": "0.0.0",
+      "buildName": "@byted-solo/trae-templates"
+    },
+    "remoteEntry": {
+      "name": "static/js/templates_mf.1f8593ac.js",
+      "path": "",
+      "type": "module"
+    },
+    "types": {
+      "path": "",
+      "name": "",
+      "zip": "",
+      "api": ""
+    },
+    "globalName": "templates_mf",
+    "pluginVersion": "2.5.0",
+    "publicPath": "auto"
+  },
+  "shared": [
+    {
+      "id": "templates_mf:react-dom",
+      "name": "react-dom",
+      "version": "18.2.0",
+      "singleton": true,
+      "requiredVersion": ">=18",
+      "assets": {
+        "js": {
+          "async": [],
+          "sync": [
+            "static/js/async/5437.242ffd48.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      },
+      "fallback": ""
+    },
+    {
+      "id": "templates_mf:react",
+      "name": "react",
+      "version": "18.2.0",
+      "singleton": true,
+      "requiredVersion": ">=18",
+      "assets": {
+        "js": {
+          "async": [],
+          "sync": [
+            "static/js/async/7652.a75e42eb.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      },
+      "fallback": ""
+    }
+  ],
+  "remotes": [],
+  "exposes": [
+    {
+      "id": "templates_mf:index",
+      "name": "index",
+      "assets": {
+        "js": {
+          "sync": [
+            "static/js/async/8987.b0850a1d.js",
+            "static/js/async/__federation_expose_index.fd9a8253.js"
+          ],
+          "async": [
+            "static/js/async/3645.0d28836c.js",
+            "static/js/async/7706.de2f5c14.js",
+            "static/js/async/2528.95e708e0.js",
+            "static/js/async/626.749094fa.js",
+            "static/js/async/9056.525b4142.js",
+            "static/js/async/6271.6510a9eb.js",
+            "static/js/async/1666.dd3262b2.js",
+            "static/js/async/1176.392e3987.js",
+            "static/js/async/8944.19383621.js",
+            "static/js/async/8805.500e91b7.js",
+            "static/js/async/4430.c6cb0ffa.js",
+            "static/js/async/4554.e4a60791.js",
+            "static/js/async/6953.3d4c4824.js",
+            "static/js/async/7339.2ee5909a.js",
+            "static/js/async/2142.227fee86.js",
+            "static/js/async/6180.8bd282ee.js",
+            "static/js/async/2963.6dde183e.js",
+            "static/js/async/5476.4fcab77a.js",
+            "static/js/async/1829.9a99aff3.js",
+            "static/js/async/3268.d0a0657c.js",
+            "static/js/async/2373.650d940c.js",
+            "static/js/async/2235.2eaae425.js",
+            "static/js/async/2996.694c9629.js",
+            "static/js/async/9061.98a3ece8.js",
+            "static/js/async/2294.ea4e5689.js",
+            "static/js/async/7547.6531d5e4.js",
+            "static/js/async/7769.c9491576.js",
+            "static/js/async/6237.2fee1717.js",
+            "static/js/async/414.3b80406f.js",
+            "static/js/async/5604.a1b4331c.js",
+            "static/js/async/4018.570e8b9e.js",
+            "static/js/async/2634.408d256d.js",
+            "static/js/async/1711.69c23563.js",
+            "static/js/async/2168.f5c7cf8b.js",
+            "static/js/async/2731.b6f2d36d.js",
+            "static/js/async/3186.7e3c6261.js",
+            "static/js/async/3678.57d0dfb9.js",
+            "static/js/async/4150.3f1ee15d.js",
+            "static/js/async/5837.000e4588.js",
+            "static/js/async/3880.2cdbe419.js",
+            "static/js/async/5183.e12da033.js",
+            "static/js/async/7910.bfe6c575.js",
+            "static/js/async/9024.588f77d0.js",
+            "static/js/async/9335.e7dda072.js",
+            "static/js/async/3798.5d060af4.js",
+            "static/js/async/7168.a8e1cda5.js",
+            "static/js/async/774.5ad192fd.js",
+            "static/js/async/3508.9abd2b71.js",
+            "static/js/async/8779.09eae9ca.js",
+            "static/js/async/8680.51e41490.js",
+            "static/js/async/5271.54084535.js",
+            "static/js/async/1156.5961d4c6.js",
+            "static/js/async/2387.752c09c0.js"
+          ]
+        },
+        "css": {
+          "sync": [
+            "static/css/6713.a72b2cf1.css",
+            "static/css/async/__federation_expose_index.94c771a3.css"
+          ],
+          "async": []
+        }
+      },
+      "path": "./index"
+    }
+  ]
+}

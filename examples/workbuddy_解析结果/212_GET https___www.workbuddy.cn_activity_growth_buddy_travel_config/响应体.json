@@ -1,0 +1,234 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "3f549c78-78fd-4ee0-a50b-f132ced3f040",
+  "data": {
+    "locations": [
+      {
+        "id": 1,
+        "code": "coffee",
+        "name": "咖啡馆",
+        "description": "阳光、音乐和手冲咖啡的香气，是放空的好地方。",
+        "cover_url": "",
+        "duration_hours_min": 1,
+        "duration_hours_max": 4,
+        "reward_credit_min": 5,
+        "reward_credit_max": 10,
+        "sort": 1,
+        "preview_photos": [
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Frame%202147239930.webp",
+            "title": "街角的咖啡店招牌"
+          },
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Frame%202147239931.webp",
+            "title": "阳光洒在咖啡桌上"
+          },
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Frame%202147239932.webp",
+            "title": "窗边的小盆栽与拿铁"
+          }
+        ],
+        "traveling_photos": [
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Property%201=1.webp",
+            "title": "吧台一角"
+          },
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Property%201=2.webp",
+            "title": "姐姐的笔记"
+          },
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Property%201=3.webp",
+            "title": "黄昏街景"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "code": "mall",
+        "name": "商场店铺",
+        "description": "柜台、货架与穿梭的人流，藏着关于人的观察。",
+        "cover_url": "",
+        "duration_hours_min": 1,
+        "duration_hours_max": 4,
+        "reward_credit_min": 5,
+        "reward_credit_max": 10,
+        "sort": 2,
+        "preview_photos": [
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Frame%202147239936.webp",
+            "title": "商场中庭"
+          },
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Frame%202147239937.webp",
+            "title": "化妆品柜台"
+          },
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Frame%202147239938.webp",
+            "title": "橱窗展示"
+          }
+        ],
+        "traveling_photos": [
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Property%201=7.webp",
+            "title": "试用小样"
+          },
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Property%201=8.webp",
+            "title": "柜姐的推荐"
+          },
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Property%201=9.webp",
+            "title": "成分表"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "code": "gym",
+        "name": "健身房",
+        "description": "器械声、汗水与镜子里的自己。",
+        "cover_url": "",
+        "duration_hours_min": 1,
+        "duration_hours_max": 4,
+        "reward_credit_min": 5,
+        "reward_credit_max": 10,
+        "sort": 3,
+        "preview_photos": [
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Frame%202147239933.webp",
+            "title": "器械区"
+          },
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Frame%202147239934.webp",
+            "title": "瑜伽垫"
+          },
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Frame%202147239935.webp",
+            "title": "镜面墙"
+          }
+        ],
+        "traveling_photos": [
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Property%201=4.webp",
+            "title": "训练笔记"
+          },
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Property%201=5.webp",
+            "title": "论文速读"
+          },
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Property%201=6.webp",
+            "title": "镜面合影"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "code": "ancient_town",
+        "name": "古镇客栈",
+        "description": "木雕、月色与老房子的呼吸。",
+        "cover_url": "",
+        "duration_hours_min": 1,
+        "duration_hours_max": 4,
+        "reward_credit_min": 5,
+        "reward_credit_max": 10,
+        "sort": 4,
+        "preview_photos": [
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Frame%202147239939.webp",
+            "title": "木雕窗户"
+          },
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Frame%202147239940.webp",
+            "title": "青石板路"
+          },
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Frame%202147239941.webp",
+            "title": "灯笼夜景"
+          }
+        ],
+        "traveling_photos": [
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Property%201=10.webp",
+            "title": "茶馆一角"
+          },
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Property%201=11.webp",
+            "title": "布坊晒布"
+          },
+          {
+            "url": "https://static.workbuddy.cn/web/workbuddy/assets/night-owl-assets/Property%201=12.webp",
+            "title": "桥边夜景"
+          }
+        ]
+      }
+    ],
+    "intro_slogans": [
+      "还在一个词一个词查字典？「多语言翻译专家」拍一下秒出，比同桌学霸还快",
+      "论文啃不动？「论文速读」5 分钟给你讲明白到底在讲啥",
+      "空降新赛道两眼一抹黑？「行业研究员」10 分钟甩你 5 条内行门道",
+      "一篇论文长到劝退？「论文速读」帮你拎出 5 个观点，摸鱼就能看完",
+      "刚转行慌得一批？「行业研究员」直接甩你 5 条野路子稳住心态",
+      "邮件写得像催命又怕社死？「长文档改稿」给你 3 种语气随便挑",
+      "设计脑子空白？「设计创意」一句话帮你出图，甲方审美也拿捏",
+      "海报灵感干涸？「品牌活动宣传海报」参考图丢进来直接出成品",
+      "会开完脑子一团浆糊？「会议决议精炼看板」3 分钟理成清单",
+      "年度总结憋不出字？「年度规划汇报 PPT」框架直接给你搭好"
+    ],
+    "intro_slogan_items": [
+      {
+        "text": "还在一个词一个词查字典？「多语言翻译专家」拍一下秒出，比同桌学霸还快",
+        "prompt": "请将以下内容翻译为 ____，保持原文语气与专业术语准确",
+        "expert_id": "ex_bF3VDwO1yg6N"
+      },
+      {
+        "text": "论文啃不动？「论文速读」5 分钟给你讲明白到底在讲啥",
+        "prompt": "请速读以下论文 PDF，输出：① 一句话核心结论 ② 5 个观点 ③ 方法/数据/局限性各 1 句",
+        "expert_id": "ex_jB0dyFIQJEWa"
+      },
+      {
+        "text": "空降新赛道两眼一抹黑？「行业研究员」10 分钟甩你 5 条内行门道",
+        "prompt": "请围绕 ____行业，输出：① 市场规模与增速 ② 头部 3 家玩家及差异化 ③ 产业链上下游关键节点 ④ 近期 3 个关键事件 ⑤ 未来 12 个月趋势判断：",
+        "expert_id": "ex_Q89Vl704GHHa"
+      },
+      {
+        "text": "一篇论文长到劝退？「论文速读」帮你拎出 5 个观点，摸鱼就能看完",
+        "prompt": "请速读： ____ 输出 5 个观点 + 1 个值得引用的金句",
+        "expert_id": "ex_jB0dyFIQJEWa"
+      },
+      {
+        "text": "刚转行慌得一批？「行业研究员」直接甩你 5 条野路子稳住心态",
+        "prompt": "我刚转行进入 ____，请给我 5 个老炮才知道的\"野路子\"（行业黑话、潜规则、容易踩的坑）",
+        "expert_id": "ex_Q89Vl704GHHa"
+      },
+      {
+        "text": "邮件写得像催命又怕社死？「长文档改稿」给你 3 种语气随便挑",
+        "prompt": "请把以下邮件改写为 3 种语气版本：① 正式商务 ② 轻松友好 ③ 简短直接。每版保留核心信息",
+        "expert_id": "ex_9WJTqJnv6NTd"
+      },
+      {
+        "text": "设计脑子空白？「设计创意」一句话帮你出图，甲方审美也拿捏",
+        "prompt": "围绕 ____ 出一张视觉稿，风格： ____，主色： ____，要求：信息层级清晰，负空间充足",
+        "expert_id": "ex_z0IV2lLMQWDF"
+      },
+      {
+        "text": "海报灵感干涸？「品牌活动宣传海报」参考图丢进来直接出成品",
+        "prompt": "这是参考图，帮我做一张同款海报，活动主题 ____，主色 ____",
+        "expert_id": "ex_Xuyu0l69WTwt"
+      },
+      {
+        "text": "会开完脑子一团浆糊？「会议决议精炼看板」3 分钟理成清单",
+        "prompt": "以下是会议记录 ____，请精炼成「决议看板」：议题 / 决议 / 负责人 / 截止日期 / 风险。",
+        "expert_id": "ex_Rd3HoB9UBlZs"
+      },
+      {
+        "text": "年度总结憋不出字？「年度规划汇报 PPT」框架直接给你搭好",
+        "prompt": "请帮我把 ____ 年度总结 + 来年规划」搭一个 10 页 PPT 框架：每页 1 句话标题 + 3 个 bullet。要可讲、有数据位、有对比、有承诺：",
+        "expert_id": "ex_xagtUG00hwPD"
+      }
+    ],
+    "server_now": 1788799152
+  }
+}

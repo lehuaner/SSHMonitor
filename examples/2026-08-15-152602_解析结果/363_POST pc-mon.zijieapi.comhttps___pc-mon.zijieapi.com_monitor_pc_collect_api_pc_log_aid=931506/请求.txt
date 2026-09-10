@@ -1,0 +1,8 @@
+POST https://pc-mon.zijieapi.com/monitor_pc/collect/api/pc_log?aid=931506 HTTP/1.1
+Content-Encoding: gzip
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36
+Host: pc-mon.zijieapi.com
+Connection: Keep-Alive
+Cache-Control: no-cache
+Content-Length: 393
+Content-Type: application/octet-stream

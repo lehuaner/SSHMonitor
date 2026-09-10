@@ -1,0 +1,28 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "78ab9bdb-76dc-47b4-8f36-36a73d59c38a",
+  "data": {
+    "Packages": [
+      {
+        "PackageCode": "TCACA_code_007_nzdH5h4Nl0",
+        "CycleTotalCapacity": "7618",
+        "CycleRemainCapacity": "714.30000239",
+        "CycleUsedCapacity": "6903.69999761",
+        "CycleFrozenCapacity": "0",
+        "CapacityUnit": "credits"
+      },
+      {
+        "PackageCode": "TCACA_code_008_cfWoLwvjU4",
+        "CycleTotalCapacity": "500",
+        "CycleRemainCapacity": "0",
+        "CycleUsedCapacity": "500",
+        "CycleFrozenCapacity": "0",
+        "CapacityUnit": "credits"
+      }
+    ],
+    "SubscriptionPackageCode": "",
+    "IsPaidUser": false,
+    "IsProtectedPriceUser": false
+  }
+}

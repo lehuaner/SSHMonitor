@@ -1,0 +1,15 @@
+HTTP/2 304
+etag: "6bcc028bc99fd8527b80439ea3b126e8"
+content-type: application/json
+date: Mon, 07 Sep 2026 09:00:10 GMT
+server: tencent-cos
+vary: Origin, Access-Control-Request-Headers, Access-Control-Request-Method
+x-cos-hash-crc64ecma: 16689207680320796667
+x-cos-meta-md5: 6bcc028bc99fd8527b80439ea3b126e8
+x-cos-request-id: NmE5ZTdkMWFfNDdlZjVmMWVfMTRlNV9iOWMwMjZh
+x-cos-storage-class: MAZ_STANDARD
+x-cos-version-id: MTg0NDQ5NTUzMDY2MzY2MjU4NTg
+x-cosindex-replication-status: Complete
+x-nws-log-uuid: 11905266556339506061
+x-cache-lookup: Cache Hit
+access-control-allow-origin: *

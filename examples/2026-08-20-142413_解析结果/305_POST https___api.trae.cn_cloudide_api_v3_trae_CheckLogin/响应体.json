@@ -1,0 +1,26 @@
+{
+  "ResponseMetadata": {
+    "Action": "",
+    "OID": "2591997344352619",
+    "Region": "",
+    "RequestId": "",
+    "Service": "",
+    "Source": "",
+    "TraceID": "00000000000000000000000000000000",
+    "Version": "",
+    "WID": "7675980975822161427"
+  },
+  "Result": {
+    "AIHost": "",
+    "AIPayHost": "",
+    "AIRegion": "",
+    "ExpiredAt": 0,
+    "Host": "",
+    "IsLogin": false,
+    "MigrateToSG": false,
+    "NickNameEditStatus": "",
+    "PasswordChanged": false,
+    "Region": "",
+    "UserID": ""
+  }
+}

@@ -1,0 +1,264 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:22:23.705
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.2
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=www.bing.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US
+  Simple Name: www.bing.com
+  DNS Name: *.platform.bing.com
+
+[Issuer]
+  CN=Microsoft TLS G2 RSA CA OCSP 02, O=Microsoft Corporation, C=US
+  Simple Name: Microsoft TLS G2 RSA CA OCSP 02
+  DNS Name: Microsoft TLS G2 RSA CA OCSP 02
+
+[Serial Number]
+  410060E413A1432D8746A7FC3A00000060E413
+
+[Not Before]
+  2026/6/18 1:46:01
+
+[Not After]
+  2026/12/15 1:46:01
+
+[Thumbprint]
+  DFE584250313D836B18ADB9C289334E1689016CE
+
+[Signature Algorithm]
+  sha384RSA(1.2.840.113549.1.1.12)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 d6 e8 ce 2b 25 ec 55 68 b9 bb be 76 cc 88 43 cb 22 93 2d a6 25 b0 ec b6 9c 3b 6a db e4 15 64 f9 16 51 eb 83 51 a5 f7 2e fe cd e1 27 e8 47 b6 4e ad ca 90 0b c3 1a e5 c9 55 8b 5a 16 fe 85 88 97 19 2f 17 93 e9 04 88 9f 20 46 43 fe 19 d6 fa 7d 3a 43 bc 11 ae 7e 5d 73 ee 5e 4f 8d f6 9e 12 e0 64 a4 ea 5e 20 7a 67 dd 12 9d f8 97 56 4f 2a fe ba 77 c5 14 55 25 b2 7f 82 9a e9 94 29 34 4f 21 f4 d0 3c b3 68 e9 cc f1 63 5e c9 6e 1b 09 00 2d b4 c3 95 99 50 40 49 cb 2a e7 f2 e8 7f bb 93 09 5a f3 07 4a 78 75 b8 24 b3 bd ac a5 2e 67 10 d0 e2 e7 60 99 9a 67 f3 23 80 1f f5 f4 ee a1 07 e0 e1 eb 60 8b 16 5d 05 e8 d7 86 34 b7 60 d3 e8 bd ea 32 f8 05 e8 cb be fe f4 90 ae dd 87 b4 45 93 a6 94 c2 2a f7 4b e7 3b 12 03 01 69 f9 96 e5 9d 8b 0c 78 98 6b 49 8a 60 a8 3f a4 3c 8f 99 21 f5 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+d809553b944f7affc816196f944f85abb0f8fc5e8755260f15d12e72bb454b14
+‎2026‎年‎6‎月‎18‎日 1:56:06
+SHA256
+ECDSA
+3046022100902803bfda833fdd13f91e4069448ac494588b0443b5dbe0783a533e92829b5c022100e0f1b93bbededd705c8daf5976b8fbbcb3c8ab9357a0b86d6a6b60a620a8300f
+
+v1
+c2317e574519a345ee7f38deb29041ebc7c2215a22bf7fd5b5ad769ad90e52cd
+‎2026‎年‎6‎月‎18‎日 1:56:05
+SHA256
+ECDSA
+3046022100e84b49495d011cffff45b42318dd8369a09939055a5a9458450356c48bd439a202210085e9a6c187fadd6e183efa5a076252bdbe706d38f56bee54292d4446faa74127
+
+v1
+c8a3c47fc7b3adb9356b013f6a7a126de33a4e43a5c646f997ad3975991dcf9a
+‎2026‎年‎6‎月‎18‎日 1:56:06
+SHA256
+ECDSA
+3046022100b55bf34e4a52e1aedb0c7f5828e9ca59be8c22480d41ef1f2b4736339f146891022100df935e9589b7b92516f14ed2e9fdc7251d7838b3ee0e0fc682ae8fb05ad7408f
+
+* 应用程序策略(1.3.6.1.4.1.311.21.10):
+  [1]Application Certificate Policy:
+     Policy Identifier=服务器身份验证
+
+* 证书模板信息(1.3.6.1.4.1.311.21.7):
+  Template=1.3.6.1.4.1.311.21.8.15690651.3798470.4214446.239628.16526621.93.8020455.5050828
+Major Version Number=100
+Minor Version Number=32
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://www.microsoft.com/pkiops/certs/Microsoft TLS G2 RSA CA OCSP 02.crt (http://www.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2002.crt)
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://caissuers.microsoft.com/pkiops/certs/Microsoft TLS G2 RSA CA OCSP 02.crt (http://caissuers.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2002.crt)
+[3]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://oneocsp.microsoft.com/ocsp
+
+* 使用者密钥标识符(2.5.29.14):
+  d7ba876f35f8d238f81705777535af7f8f38b913
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.platform.bing.com
+DNS Name=*.bing.com
+DNS Name=bing.com
+DNS Name=ieonline.microsoft.com
+DNS Name=*.windowssearch.com
+DNS Name=cn.ieonline.microsoft.com
+DNS Name=*.origin.bing.com
+DNS Name=*.mm.bing.net
+DNS Name=*.api.bing.com
+DNS Name=*.cn.bing.net
+DNS Name=*.cn.bing.com
+DNS Name=ssl-api.bing.com
+DNS Name=ssl-api.bing.net
+DNS Name=*.api.bing.net
+DNS Name=*.bingapis.com
+DNS Name=bingsandbox.com
+DNS Name=feedback.microsoft.com
+DNS Name=insertmedia.bing.office.net
+DNS Name=r.bat.bing.com
+DNS Name=*.r.bat.bing.com
+DNS Name=*.dict.bing.com
+DNS Name=*.ssl.bing.com
+DNS Name=*.appex.bing.com
+DNS Name=*.platform.cn.bing.com
+DNS Name=wp.m.bing.com
+DNS Name=*.m.bing.com
+DNS Name=global.bing.com
+DNS Name=windowssearch.com
+DNS Name=search.msn.com
+DNS Name=*.bingsandbox.com
+DNS Name=*.api.tiles.ditu.live.com
+DNS Name=*.t0.tiles.ditu.live.com
+DNS Name=*.t1.tiles.ditu.live.com
+DNS Name=*.t2.tiles.ditu.live.com
+DNS Name=*.t3.tiles.ditu.live.com
+DNS Name=3d.live.com
+DNS Name=api.search.live.com
+DNS Name=beta.search.live.com
+DNS Name=cnweb.search.live.com
+DNS Name=ditu.live.com
+DNS Name=farecast.live.com
+DNS Name=image.live.com
+DNS Name=images.live.com
+DNS Name=local.live.com.au
+DNS Name=localsearch.live.com
+DNS Name=ls4d.search.live.com
+DNS Name=mail.live.com
+DNS Name=mapindia.live.com
+DNS Name=local.live.com
+DNS Name=maps.live.com
+DNS Name=maps.live.com.au
+DNS Name=mindia.live.com
+DNS Name=news.live.com
+DNS Name=origin.cnweb.search.live.com
+DNS Name=preview.local.live.com
+DNS Name=search.live.com
+DNS Name=test.maps.live.com
+DNS Name=video.live.com
+DNS Name=videos.live.com
+DNS Name=virtualearth.live.com
+DNS Name=wap.live.com
+DNS Name=webmaster.live.com
+DNS Name=www.local.live.com.au
+DNS Name=www.maps.live.com.au
+DNS Name=webmasters.live.com
+DNS Name=ecn.dev.virtualearth.net
+DNS Name=*.microsoftol.com
+DNS Name=www.bing.com
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://www.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 RSA CA OCSP 02_Partition00063.crl (http://www.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2002_Partition00063.crl)
+               URL=http://crl2.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 RSA CA OCSP 02_Partition00063.crl (http://crl2.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2002_Partition00063.crl)
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+[2]Certificate Policy:
+     Policy Identifier=1.3.6.1.4.1.311.76.509.1.1
+     [2,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.microsoft.com/pkiops/Docs/Repository.htm
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=b82f33a67c514f7f1f2dd5c8154238a4b20e8f2f
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+
+[SubjectAltNames]
+DNS Name=*.platform.bing.com
+DNS Name=*.bing.com
+DNS Name=bing.com
+DNS Name=ieonline.microsoft.com
+DNS Name=*.windowssearch.com
+DNS Name=cn.ieonline.microsoft.com
+DNS Name=*.origin.bing.com
+DNS Name=*.mm.bing.net
+DNS Name=*.api.bing.com
+DNS Name=*.cn.bing.net
+DNS Name=*.cn.bing.com
+DNS Name=ssl-api.bing.com
+DNS Name=ssl-api.bing.net
+DNS Name=*.api.bing.net
+DNS Name=*.bingapis.com
+DNS Name=bingsandbox.com
+DNS Name=feedback.microsoft.com
+DNS Name=insertmedia.bing.office.net
+DNS Name=r.bat.bing.com
+DNS Name=*.r.bat.bing.com
+DNS Name=*.dict.bing.com
+DNS Name=*.ssl.bing.com
+DNS Name=*.appex.bing.com
+DNS Name=*.platform.cn.bing.com
+DNS Name=wp.m.bing.com
+DNS Name=*.m.bing.com
+DNS Name=global.bing.com
+DNS Name=windowssearch.com
+DNS Name=search.msn.com
+DNS Name=*.bingsandbox.com
+DNS Name=*.api.tiles.ditu.live.com
+DNS Name=*.t0.tiles.ditu.live.com
+DNS Name=*.t1.tiles.ditu.live.com
+DNS Name=*.t2.tiles.ditu.live.com
+DNS Name=*.t3.tiles.ditu.live.com
+DNS Name=3d.live.com
+DNS Name=api.search.live.com
+DNS Name=beta.search.live.com
+DNS Name=cnweb.search.live.com
+DNS Name=ditu.live.com
+DNS Name=farecast.live.com
+DNS Name=image.live.com
+DNS Name=images.live.com
+DNS Name=local.live.com.au
+DNS Name=localsearch.live.com
+DNS Name=ls4d.search.live.com
+DNS Name=mail.live.com
+DNS Name=mapindia.live.com
+DNS Name=local.live.com
+DNS Name=maps.live.com
+DNS Name=maps.live.com.au
+DNS Name=mindia.live.com
+DNS Name=news.live.com
+DNS Name=origin.cnweb.search.live.com
+DNS Name=preview.local.live.com
+DNS Name=search.live.com
+DNS Name=test.maps.live.com
+DNS Name=video.live.com
+DNS Name=videos.live.com
+DNS Name=virtualearth.live.com
+DNS Name=wap.live.com
+DNS Name=webmaster.live.com
+DNS Name=www.local.live.com.au
+DNS Name=www.maps.live.com.au
+DNS Name=webmasters.live.com
+DNS Name=ecn.dev.virtualearth.net
+DNS Name=*.microsoftol.com
+DNS Name=www.bing.com
+

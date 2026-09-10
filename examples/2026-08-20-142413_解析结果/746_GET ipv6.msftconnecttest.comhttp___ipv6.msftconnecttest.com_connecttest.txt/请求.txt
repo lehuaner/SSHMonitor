@@ -1,0 +1,4 @@
+GET http://ipv6.msftconnecttest.com/connecttest.txt HTTP/1.1
+Connection: Close
+User-Agent: Microsoft NCSI
+Host: ipv6.msftconnecttest.com

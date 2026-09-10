@@ -1,0 +1,123 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 12:01:25.350
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.g.doubleclick.net
+  Simple Name: *.g.doubleclick.net
+  DNS Name: *.g.doubleclick.net
+
+[Issuer]
+  CN=WE2, O=Google Trust Services, C=US
+  Simple Name: WE2
+  DNS Name: WE2
+
+[Serial Number]
+  337C965B6B4D02A60A8068A79EC75532
+
+[Not Before]
+  2026/8/10 16:37:40
+
+[Not After]
+  2026/11/2 16:37:39
+
+[Thumbprint]
+  E64EEF988AF348C9AC5CA0B06478D23FD7596A41
+
+[Signature Algorithm]
+  sha256ECDSA(1.2.840.10045.4.3.2)
+
+[Public Key]
+  Algorithm: ECC
+  Length: 
+  Key Blob: 04 b2 ab d1 b6 92 f5 8d cf 19 ab 37 ad b1 0b c6 f3 07 d9 04 4b e3 ba cb 37 6e 2f a0 d0 9c 55 e8 51 13 fa 02 15 46 70 b9 dc d7 7e dd b4 eb ba 28 ce 34 5d 86 88 e0 08 fb 91 96 76 5e 6f 87 2b e2 89
+  Parameters: 06 08 2a 86 48 ce 3d 03 01 07
+
+[Extensions]
+* 密钥用法(2.5.29.15):
+  Digital Signature (80)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* 使用者密钥标识符(2.5.29.14):
+  f00b7ccdaf1410326e5c7d404df1ce1ced6a8751
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=75bec477ae89f644377dcfb1681f1d1aebdc3459
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://i.pki.goog/we2.crt
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.g.doubleclick.net
+DNS Name=*.invitemedia.com
+DNS Name=g.doubleclick.net
+DNS Name=googleadservices.com
+DNS Name=*.googleadservices.com
+DNS Name=googlesyndication.com
+DNS Name=*.googlesyndication.com
+DNS Name=*.safeframe.googlesyndication.com
+DNS Name=googletagservices.com
+DNS Name=*.googletagservices.com
+DNS Name=media.admob.com
+DNS Name=mediation.goog
+DNS Name=mediation-att.goog
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://c.pki.goog/we2/yK5nPhtHKQs.crl
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+d76d7d10d1a7f577c2c7e95fd700bff982c9335a65e1d0b3017317c0c8c56977
+‎2026‎年‎8‎月‎10‎日 17:37:42
+SHA256
+ECDSA
+304502207f6e8fb077b18912579daa9f0ed02114607139451c7109366df7124f1767dbb902210099d881d6c21988cab1bcfdcdd56b0198b53fe2f85103e3f286a6aa66e1890738
+
+v1
+c8a3c47fc7b3adb9356b013f6a7a126de33a4e43a5c646f997ad3975991dcf9a
+‎2026‎年‎8‎月‎10‎日 17:37:42
+SHA256
+ECDSA
+3046022100e54ed6091fb01b85315621e4a17350c41e4801fae48bbd09787faed60f6f19d2022100f8c40a6807c2d9265255389e9e727fbe7445cb14ff541447b53303f53020b40a
+
+
+[SubjectAltNames]
+DNS Name=*.g.doubleclick.net
+DNS Name=*.invitemedia.com
+DNS Name=g.doubleclick.net
+DNS Name=googleadservices.com
+DNS Name=*.googleadservices.com
+DNS Name=googlesyndication.com
+DNS Name=*.googlesyndication.com
+DNS Name=*.safeframe.googlesyndication.com
+DNS Name=googletagservices.com
+DNS Name=*.googletagservices.com
+DNS Name=media.admob.com
+DNS Name=mediation.goog
+DNS Name=mediation-att.goog
+

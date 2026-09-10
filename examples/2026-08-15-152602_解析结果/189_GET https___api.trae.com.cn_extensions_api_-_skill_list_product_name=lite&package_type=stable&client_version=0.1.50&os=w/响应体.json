@@ -1,0 +1,2803 @@
+{
+  "data": {
+    "tags": [
+      "development_tools",
+      "data_analytics",
+      "ui_design",
+      "content_creation",
+      "productivity"
+    ],
+    "skills": [
+      {
+        "skill_id": "folotoy/folotoy-ai-passport-diy",
+        "name": "folotoy-ai-passport-diy",
+        "description": "FoloToy AI Passport is FoloToy's AI Passport hardware. This Skill lets you personalize the device with DIY content by pushing images or RTTTL ringtones and checking their sync status. It first validates the content against the hardware requirements (portrait 3:4 images, up to 5 MB; RTTTL in the three-section format), then queues it through the trae-world-admin API. The attendee's Mini Program delivers the queued content to FoloToy AI Passport when connected over Bluetooth.",
+        "author": "FoloToy",
+        "icon_url": "source-icon/folotoy-ai-passport-diy.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/folotoy/0.0.1/folotoy-ai-passport-diy.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/folotoy/0.0.1/folotoy-ai-passport-diy/SKILL.md",
+        "version": "0.0.1",
+        "source": "folotoy",
+        "tags": [
+          "development_tools"
+        ],
+        "category_weight": 0,
+        "created_at": 1786708107000,
+        "updated_at": 1786708123000,
+        "language": {
+          "description_v2": {
+            "en": "FoloToy AI Passport is FoloToy's AI Passport hardware. This Skill lets you personalize the device with DIY content by pushing images or RTTTL ringtones and checking their sync status. It first validates the content against the hardware requirements (portrait 3:4 images, up to 5 MB; RTTTL in the three-section format), then queues it through the trae-world-admin API. The attendee's Mini Program delivers the queued content to FoloToy AI Passport when connected over Bluetooth.",
+            "ja": "FoloToy AI Passport は、FoloToy が提供する AI Passport ハードウェアです。この Skill を使うと、画像や RTTTL 着信音の送信、同期状態の確認など、デバイスを自分好みに DIY できます。コンテンツがハードウェアの要件（画像は縦向き 3:4、5MB 以下、RTTTL は3セクション形式）を満たしているか検証したうえで、trae-world-admin API を通じてキューに登録します。登録されたコンテンツは、来場者のミニプログラムが Bluetooth で接続した際に FoloToy AI Passport へ転送されます。",
+            "zh-cn": "FoloToy AI Passport 是 FoloToy 打造的 AI Passport 硬件。通过本 Skill，你可以对这款硬件进行个性化 DIY：推送图片或 RTTTL 铃声，并查询内容同步状态。Skill 会先校验内容是否符合硬件要求（图片须为竖向 3:4、≤5MB；RTTTL 须为三段式），再通过 trae-world-admin API 入队；当观众的小程序通过蓝牙连接设备时，内容将下发至 FoloToy AI Passport。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "liamgvchi/gc-minimal-zine-poster-v0-1",
+        "name": "gc-minimal-zine-poster-v0-1",
+        "description": "Turn themes, sentences, objects, moods, article ideas, photos, or content briefs into quiet minimal zine-style editorial poster prompts and generated images.",
+        "author": "LiamGvchi",
+        "icon_url": "source-icon/gc-minimal-zine-poster-v0-1.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/liamgvchi/0.0.1/gc-minimal-zine-poster-v0-1.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/liamgvchi/0.0.1/gc-minimal-zine-poster-v0-1/SKILL.md",
+        "version": "0.0.1",
+        "source": "liamgvchi",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1786096548000,
+        "updated_at": 1786130838000,
+        "language": {
+          "description_v2": {
+            "en": "Turn themes, sentences, objects, moods, article ideas, photos, or content briefs into quiet minimal zine-style editorial poster prompts and generated images.",
+            "ja": "テーマ、文章、オブジェクト、ムード、記事のアイデア、写真、コンテンツ概要を、静かでミニマルなジン風エディトリアルポスターのプロンプトと生成画像に変換します。",
+            "zh-cn": "将主题、句子、物件、情绪、文章创意、照片或内容简报转化为安静极简的独立杂志风编辑海报提示词与生成图片。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "volcengine/byted-interactai-guide",
+        "name": "byted-interactai-guide",
+        "description": "A best practice guide for integrating and troubleshooting Volcengine RTC InteractAI VoiceChat, covering RTC media, real-time subtitles, and the end-to-end ASR/LLM/TTS voice conversation pipeline",
+        "author": "Volcengine InteractAI",
+        "icon_url": "source-icon/byted-interactai-guide.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/volcengine/0.0.1/byted-interactai-guide.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/volcengine/0.0.1/byted-interactai-guide/SKILL.md",
+        "version": "0.0.1",
+        "source": "volcengine",
+        "tags": [
+          "development_tools"
+        ],
+        "category_weight": 0,
+        "created_at": 1786096957000,
+        "updated_at": 1786101937000,
+        "language": {
+          "description_v2": {
+            "en": "A best practice guide for integrating and troubleshooting Volcengine RTC InteractAI VoiceChat, covering RTC media, real-time subtitles, and the end-to-end ASR/LLM/TTS voice conversation pipeline",
+            "ja": "Volcengine RTC InteractAI VoiceChatの導入・トラブルシューティングに関するベストプラクティスガイド。RTCメディア、リアルタイム字幕、ASR・LLM・TTSによるエンドツーエンドの音声対話を網羅します。",
+            "zh-cn": "火山 RTC InteractAI VoiceChat 接入与排障最佳实践指南，涵盖 RTC 媒体、实时字幕及 ASR/LLM/TTS 全链路语音对话"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "douyinpay/douyinpay-merchant-onboarding",
+        "name": "douyinpay-merchant-onboarding",
+        "description": "Supports individual developers in onboarding as Douyin Pay merchants, covering the entire process of QR-code onboarding, QR-code login, payment product signing, and certificate/key configuration guidance.",
+        "author": "Douyinpay",
+        "icon_url": "source-icon/douyinpay-merchant-onboarding.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/douyinpay/0.0.1/douyinpay-merchant-onboarding.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/douyinpay/0.0.1/douyinpay-merchant-onboarding/SKILL.md",
+        "version": "0.0.1",
+        "source": "douyinpay",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1785486965000,
+        "updated_at": 1785578701000,
+        "language": {
+          "description_v2": {
+            "en": "Supports individual developers in onboarding as Douyin Pay merchants, covering the entire process of QR-code onboarding, QR-code login, payment product signing, and certificate/key configuration guidance.",
+            "ja": "個人開発者が Douyin Pay（抖音支付）加盟店として登録することをサポートし、QR コードによる登録、QR コードによるログイン、決済商品の契約、証明書・鍵の設定ガイドまでの全プロセスをカバーします。",
+            "zh-cn": "支持个人开发者入驻成为抖音支付商家，覆盖扫码入驻、扫码登录、支付产品签约、证书密钥配置指引全流程。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "trae/report-page",
+        "name": "report-page",
+        "description": "Create source-backed static HTML reports, memos, research notes, operating updates, and data interpretation pages with readable structure, tables, images, diagrams, and optional ECharts figures.",
+        "author": "TRAE",
+        "icon_url": "source-icon/report-page.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/trae/0.0.1/report-page.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/trae/0.0.1/report-page/SKILL.md",
+        "version": "0.0.1",
+        "source": "trae",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1783480649000,
+        "updated_at": 1783608050000,
+        "language": {
+          "description_v2": {
+            "en": "Create source-backed static HTML reports, memos, research notes, operating updates, and data interpretation pages with readable structure, tables, images, diagrams, and optional ECharts figures.",
+            "ja": "出典に基づく静的 HTML レポート、メモ、調査ノート、業務アップデート、データ解釈ページを作成し、読みやすい構成、表、画像、図解、必要に応じた ECharts 図表に対応します。",
+            "zh-cn": "创建有来源支撑的静态 HTML 报告、备忘录、研究笔记、经营更新和数据解读页面，支持清晰的文档结构、表格、图片、图表/流程图，以及可选 ECharts 数据图。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "trae/doc-page",
+        "name": "doc-page",
+        "description": "Create polished printable document pages for reports, forms, schedules, resumes, memos, and records, with clean A4 layout and optional PDF or DOCX export when needed.",
+        "author": "TRAE",
+        "icon_url": "source-icon/doc-page.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/trae/0.0.1/doc-page.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/trae/0.0.1/doc-page/SKILL.md",
+        "version": "0.0.1",
+        "source": "trae",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1783480649000,
+        "updated_at": 1783608049000,
+        "language": {
+          "description_v2": {
+            "en": "Create polished printable document pages for reports, forms, schedules, resumes, memos, and records, with clean A4 layout and optional PDF or DOCX export when needed.",
+            "ja": "レポート、フォーム、スケジュール、履歴書、メモ、記録文書などを、美しく印刷できる A4 ドキュメントページとして作成し、必要に応じて PDF や DOCX に書き出せます。",
+            "zh-cn": "为报告、表单、排班表、简历、备忘录和记录类材料创建精美的可打印文档页面，默认呈现清晰的 A4 版式，并可按需导出 PDF 或 DOCX。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "trae/ppt-page",
+        "name": "ppt-page",
+        "description": "Create polished scrollable HTML presentation pages from outlines, articles, screenshots, or deck content, with slide cards, captions, fullscreen review, validation, and optional PPTX/PDF export on request.",
+        "author": "TRAE",
+        "icon_url": "source-icon/ppt-page.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/trae/0.0.1/ppt-page.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/trae/0.0.1/ppt-page/SKILL.md",
+        "version": "0.0.1",
+        "source": "trae",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1783480649000,
+        "updated_at": 1783608049000,
+        "language": {
+          "description_v2": {
+            "en": "Create polished scrollable HTML presentation pages from outlines, articles, screenshots, or deck content, with slide cards, captions, fullscreen review, validation, and optional PPTX/PDF export on request.",
+            "ja": "アウトライン、記事、スクリーンショット、既存資料から、スライドカード、キャプション、全画面レビュー、検証、必要に応じた PPTX/PDF 書き出しに対応した洗練されたスクロール型 HTML プレゼンページを作成します。",
+            "zh-cn": "将大纲、文章、截图或既有演示内容制作成精美的可滚动 HTML 演示页面，支持幻灯片卡片、讲稿说明、全屏审阅、校验，并可按需导出 PPTX/PDF。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "trae/dashboard-page",
+        "name": "dashboard-page",
+        "description": "Build stable local/offline ECharts dashboards with KPI panels, time controls, auditable source modals, freshness indicators, and automation-ready daily snapshots.",
+        "author": "TRAE",
+        "icon_url": "source-icon/dashboard-page.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/trae/0.0.1/dashboard-page.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/trae/0.0.1/dashboard-page/SKILL.md",
+        "version": "0.0.1",
+        "source": "trae",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1783480649000,
+        "updated_at": 1783608049000,
+        "language": {
+          "description_v2": {
+            "en": "Build stable local/offline ECharts dashboards with KPI panels, time controls, auditable source modals, freshness indicators, and automation-ready daily snapshots.",
+            "ja": "KPI パネル、期間コントロール、監査可能なデータソースモーダル、鮮度表示、自動化向けの日次スナップショットに対応した、安定したローカル/オフライン ECharts ダッシュボードを構築します。",
+            "zh-cn": "构建稳定的本地/离线 ECharts 数据看板，包含 KPI 面板、时间控件、可审计数据来源弹窗、数据新鲜度提示，以及适合自动化写入的每日快照。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "volcengine/byted-mediakit-shared",
+        "name": "byted-mediakit-shared",
+        "description": "mediakit-cli supports audio processing, video processing, video editing, and image processing, with selected capabilities available in both cloud and local modes. It can orchestrate and complete complex media workflows from natural-language tasks.",
+        "author": "Volcano Engine AI Mediakit",
+        "icon_url": "source-icon/byted-mediakit-shared.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/volcengine/0.0.1/byted-mediakit-shared.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/volcengine/0.0.1/byted-mediakit-shared/SKILL.md",
+        "version": "0.0.1",
+        "source": "volcengine",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1783007998000,
+        "updated_at": 1783007998000,
+        "language": {
+          "description_v2": {
+            "en": "mediakit-cli supports audio processing, video processing, video editing, and image processing, with selected capabilities available in both cloud and local modes. It can orchestrate and complete complex media workflows from natural-language tasks.",
+            "ja": "mediakit-cli は音声処理、動画処理、動画編集、画像処理に対応し、一部の機能はクラウドモードとローカルモードの両方で利用できます。自然言語のタスクから複雑なメディア処理を自動的に編成して実行できます。",
+            "zh-cn": "mediakit-cli 支持音频处理、视频处理、视频剪辑和图像处理，部分能力同时支持云模式和本地模式，可通过自然语言任务自动编排并完成复杂音视频处理。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "douyin/douyin-interactive-content-publish",
+        "name": "douyin-interactive-content-publish",
+        "description": "Supports the full publishing workflow of interactive space creations on Douyin, with automatic configuration parsing and completion upon user confirmation for simplified operation.",
+        "author": "Douyin",
+        "icon_url": "source-icon/douyin-interactive-content-publish.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/douyin/0.0.1/douyin-interactive-content-publish.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/douyin/0.0.1/douyin-interactive-content-publish/SKILL.md",
+        "version": "0.0.1",
+        "source": "douyin",
+        "tags": [
+          "development_tools"
+        ],
+        "categories": [
+          "development_tools"
+        ],
+        "category_weight": 0,
+        "created_at": 1782529943000,
+        "updated_at": 1782578786000,
+        "language": {
+          "description_v2": {
+            "en": "Supports the full publishing workflow of interactive space creations on Douyin, with automatic configuration parsing and completion upon user confirmation for simplified operation.",
+            "ja": "インタラクティブスペース作品の抖音（ドウイン）公開全プロセスを支援し、設定情報を自動解析、ユーザー確認で完了、操作がより簡便になります。",
+            "zh-cn": "辅助完成互动空间作品在抖音的发布全流程，自动解析配置信息，用户确认即完成，操作更简便。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "tianyancha/天眼一下",
+        "name": "天眼一下",
+        "description": "Use the local tyc command to query Tianyancha enterprise data. Applicable for entity verification, partner/client/supplier risk assessment, shareholder and actual controller analysis, beneficial owners, relationship paths, judicial litigation, enforcement defaults, administrative penalties, business authenticity, bidding and tendering, qualifications and licenses, intellectual property, directors/supervisors/senior management, historical evolution, industry enterprise discovery, and generating brief business inquiry summaries. Complete OAuth authentication using tyc login before querying.",
+        "author": "Tianyancha",
+        "icon_url": "source-icon/天眼一下.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/tianyancha/0.0.1/天眼一下.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/tianyancha/0.0.1/天眼一下/SKILL.md",
+        "version": "0.0.1",
+        "source": "tianyancha",
+        "tags": [
+          "data_analytics"
+        ],
+        "categories": [
+          "data_analytics"
+        ],
+        "category_weight": 0,
+        "created_at": 1782223217000,
+        "updated_at": 1782223217000,
+        "language": {
+          "description_v2": {
+            "en": "Use the local tyc command to query Tianyancha enterprise data. Applicable for entity verification, partner/client/supplier risk assessment, shareholder and actual controller analysis, beneficial owners, relationship paths, judicial litigation, enforcement defaults, administrative penalties, business authenticity, bidding and tendering, qualifications and licenses, intellectual property, directors/supervisors/senior management, historical evolution, industry enterprise discovery, and generating brief business inquiry summaries. Complete OAuth authentication using tyc login before querying.",
+            "ja": "ローカルの tyc コマンドを使用して、天眼査（Tianyancha）の企業データを照会します。企業主体の確認、取引先・顧客・サプライヤーのリスク評価、株主および実質支配者の分析、受益所有者、関連関係パス、司法訴訟、執行不履行（ブラックリスト）、行政処分、経営の真実性、入札、資格・許認可、知的財産、取締役・監査役・上級管理職、沿革、業界企業の発見、および簡潔なビジネス調査サマリーの生成に適用されます。照会前に tyc login を使用して OAuth 認証を完了してください。",
+            "zh-cn": "使用本地 tyc 命令查询天眼查企业数据。适用于企业主体核验、合作方/客户/供应商风险评估、股东和实控人分析、受益所有人、关联关系路径、司法诉讼、执行失信、行政处罚、经营真实性、招投标、资质许可、知识产权、董监高、历史沿革、行业企业发现，以及生成简短商查摘要。查询前使用 tyc login 完成 OAuth 鉴权。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "intel/local-realtime-translator",
+        "name": "local-realtime-translator",
+        "description": "Real-time translation between Chinese and English based on local AI large model (Intel AIPC Platform Only)",
+        "author": "GitHub",
+        "icon_url": "source-icon/local-realtime-translator.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-realtime-translator.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-realtime-translator/SKILL.md",
+        "version": "0.0.1",
+        "source": "intel",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1782053577000,
+        "updated_at": 1782058366000,
+        "language": {
+          "description_v2": {
+            "en": "Real-time translation between Chinese and English based on local AI large model (Intel AIPC Platform Only)",
+            "ja": "ローカルAI大モデルによる中英のリアルタイム翻訳(インテルAIPCプラットフォーム専用)",
+            "zh-cn": "基于本地AI大模型完成中英的实时翻译(仅限英特尔AIPC平台)"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "intel/local-img2img",
+        "name": "local-img2img",
+        "description": "Image modification based on local AI large model (Intel AIPC Platform Only)",
+        "author": "GitHub",
+        "icon_url": "source-icon/local-img2img.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-img2img.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-img2img/SKILL.md",
+        "version": "0.0.1",
+        "source": "intel",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1782053576000,
+        "updated_at": 1782058365000,
+        "language": {
+          "description_v2": {
+            "en": "Image modification based on local AI large model (Intel AIPC Platform Only)",
+            "ja": "ローカルAI大モデルによる画像の編集(インテルAIPCプラットフォーム専用)",
+            "zh-cn": "基于本地AI大模型的图片修改(仅限英特尔AIPC平台)"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "intel/local-screenshot-qa",
+        "name": "local-screenshot-qa",
+        "description": "Image understanding and answering image-related questions based on local AI large model (Intel AIPC Platform Only)",
+        "author": "GitHub",
+        "icon_url": "source-icon/local-screenshot-qa.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-screenshot-qa.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-screenshot-qa/SKILL.md",
+        "version": "0.0.1",
+        "source": "intel",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1782053574000,
+        "updated_at": 1782058364000,
+        "language": {
+          "description_v2": {
+            "en": "Image understanding and answering image-related questions based on local AI large model (Intel AIPC Platform Only)",
+            "ja": "ローカルAI大モデルによるスクリーンショットの理解と画像に関する質問への回答(インテルAIPCプラットフォーム専用)",
+            "zh-cn": "基于本地AI大模型看懂截图、回答关于图像的问题(仅限英特尔AIPC平台)"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "intel/local-vram",
+        "name": "local-vram",
+        "description": "Adjust the maximum limit of integrated graphics shared memory (Intel AIPC Platform Only)",
+        "author": "GitHub",
+        "icon_url": "source-icon/local-vram.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-vram.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-vram/SKILL.md",
+        "version": "0.0.1",
+        "source": "intel",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1782053575000,
+        "updated_at": 1782058364000,
+        "language": {
+          "description_v2": {
+            "en": "Adjust the maximum limit of integrated graphics shared memory (Intel AIPC Platform Only)",
+            "ja": "集積グラフィックスカードの共有メモリーの最大制限の調整(インテルAIPCプラットフォーム専用)",
+            "zh-cn": "调整集成显卡共享显存最大限制(仅限英特尔AIPC平台)"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "intel/local-ocr-npu",
+        "name": "local-ocr-npu",
+        "description": "High-speed text extraction from images using local Intel NPU computing power (Support for mixing Chinese and English)",
+        "author": "GitHub",
+        "icon_url": "source-icon/local-ocr-npu.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-ocr-npu.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-ocr-npu/SKILL.md",
+        "version": "0.0.1",
+        "source": "intel",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1782053573000,
+        "updated_at": 1782058363000,
+        "language": {
+          "description_v2": {
+            "en": "High-speed text extraction from images using local Intel NPU computing power (Support for mixing Chinese and English)",
+            "ja": "ローカルのIntel NPUコンピューティングパワーを使用し、画像から高速でテキストを抽出(中英混合をサポート)",
+            "zh-cn": "使用本地Intel NPU算力，从图片中高速提取文字(支持中英文混合)"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "intel/local-mineru",
+        "name": "local-mineru",
+        "description": "Document parsing of PDFs and images based on local AI large model (Intel AIPC Platform Only)",
+        "author": "GitHub",
+        "icon_url": "source-icon/local-mineru.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-mineru.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-mineru/SKILL.md",
+        "version": "0.0.1",
+        "source": "intel",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1782053573000,
+        "updated_at": 1782058363000,
+        "language": {
+          "description_v2": {
+            "en": "Document parsing of PDFs and images based on local AI large model (Intel AIPC Platform Only)",
+            "ja": "ローカルAI大モデルによるPDFや画像のドキュメント解析(インテルAIPCプラットフォーム専用)",
+            "zh-cn": "基于本地AI大模型对PDF、图片进行文档解析(仅限英特尔AIPC平台)"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "intel/local-computer-use",
+        "name": "local-computer-use",
+        "description": "Utilize local computing power to control your Windows system (Intel AIPC Platform Only)",
+        "author": "GitHub",
+        "icon_url": "source-icon/local-computer-use.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-computer-use.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-computer-use/SKILL.md",
+        "version": "0.0.1",
+        "source": "intel",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1782053572000,
+        "updated_at": 1782058362000,
+        "language": {
+          "description_v2": {
+            "en": "Utilize local computing power to control your Windows system (Intel AIPC Platform Only)",
+            "ja": "ローカルのコンピューティングパワーを使用してWindowsシステムを操作(インテルAIPCプラットフォーム専用)",
+            "zh-cn": "帮你使用本地算力操控你的Windows系统(仅限英特尔AIPC平台)"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "intel/local-txt2img",
+        "name": "local-txt2img",
+        "description": "Text-to-image generation based on local AI large model (Intel AIPC Platform Only)",
+        "author": "GitHub",
+        "icon_url": "source-icon/local-txt2img.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-txt2img.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-txt2img/SKILL.md",
+        "version": "0.0.1",
+        "source": "intel",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1782053570000,
+        "updated_at": 1782058361000,
+        "language": {
+          "description_v2": {
+            "en": "Text-to-image generation based on local AI large model (Intel AIPC Platform Only)",
+            "ja": "ローカルAI大モデルによるテキストから画像の生成(インテルAIPCプラットフォーム専用)",
+            "zh-cn": "基于本地AI大模型的文字到图片的生成(仅限英特尔AIPC平台)"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "intel/local-tts",
+        "name": "local-tts",
+        "description": "Text-to-speech conversion with cloned accents such as Northeastern and Sichuanese dialects based on local AI large model (Intel AIPC Platform Only)",
+        "author": "GitHub",
+        "icon_url": "source-icon/local-tts.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-tts.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-tts/SKILL.md",
+        "version": "0.0.1",
+        "source": "intel",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1782053571000,
+        "updated_at": 1782058361000,
+        "language": {
+          "description_v2": {
+            "en": "Text-to-speech conversion with cloned accents such as Northeastern and Sichuanese dialects based on local AI large model (Intel AIPC Platform Only)",
+            "ja": "ローカルAI大モデルによるテキストから音声への変換、東北訛りや四川訛りなどのクローン音色に対応(インテルAIPCプラットフォーム専用)",
+            "zh-cn": "基于本地AI大模型的文字转语音，支持东北话四川话等克隆音色(仅限英特尔AIPC平台)"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "intel/local-asr",
+        "name": "local-asr",
+        "description": "Zero-cost voice-to-text translation based on local AI large model (Intel AIPC Platform Only)",
+        "author": "GitHub",
+        "icon_url": "source-icon/local-asr.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-asr.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/intel/0.0.1/local-asr/SKILL.md",
+        "version": "0.0.1",
+        "source": "intel",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1782053405000,
+        "updated_at": 1782058353000,
+        "language": {
+          "description_v2": {
+            "en": "Zero-cost voice-to-text translation based on local AI large model (Intel AIPC Platform Only)",
+            "ja": "ローカルAI大モデルによる無償の音声からテキストへの変換(インテルAIPCプラットフォーム専用)",
+            "zh-cn": "基于本地AI大模型零成本语音转文字(仅限英特尔AIPC平台)"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "iga/iga-pages",
+        "name": "iga-pages",
+        "description": "One-click deployment for frontend websites, full-stack projects, and AI Agent applications, with support for cloud publishing and shareable online preview link generation.",
+        "author": "火山引擎IGA产品",
+        "icon_url": "source-icon/iga-pages.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/iga/0.0.1/iga-pages.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/iga/0.0.1/iga-pages/SKILL.md",
+        "version": "0.0.1",
+        "source": "iga",
+        "tags": [
+          "development_tools"
+        ],
+        "categories": [
+          "development_tools"
+        ],
+        "category_weight": 0,
+        "created_at": 1781191983000,
+        "updated_at": 1781191983000,
+        "language": {
+          "description_v2": {
+            "en": "One-click deployment for frontend websites, full-stack projects, and AI Agent applications, with support for cloud publishing and shareable online preview link generation.",
+            "ja": "フロントエンドWebページ、フルスタックプロジェクト、AIエージェントアプリをワンクリックでデプロイ可能。アプリのクラウド公開に対応し、共有可能なオンラインプレビューリンクを作成できます。",
+            "zh-cn": "一键部署前端网页、全栈项目和 AI Agent 应用，支持应用云端发布与可分享的在线预览链接生成。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "byteplus/byted-bp-cdn-pagesdeploy",
+        "name": "byted-bp-cdn-pagesdeploy",
+        "description": "One-click deployment of static websites to BytePlus Edge Pages platform, supporting auto project creation, update deployment, custom domain binding, and CDN acceleration. Includes guided onboarding for new users without a BytePlus account.",
+        "author": "BytePlus CDN Pages",
+        "icon_url": "source-icon/byted-bp-cdn-pagesdeploy.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/byteplus/0.0.1/byted-bp-cdn-pagesdeploy.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/byteplus/0.0.1/byted-bp-cdn-pagesdeploy/SKILL.md",
+        "version": "0.0.1",
+        "source": "byteplus",
+        "tags": [
+          "development_tools"
+        ],
+        "categories": [
+          "development_tools"
+        ],
+        "category_weight": 0,
+        "created_at": 1781030324000,
+        "updated_at": 1781030324000,
+        "language": {
+          "description_v2": {
+            "en": "One-click deployment of static websites to BytePlus Edge Pages platform, supporting auto project creation, update deployment, custom domain binding, and CDN acceleration. Includes guided onboarding for new users without a BytePlus account.",
+            "ja": "ワンクリックで静的ウェブサイトを BytePlus Edge Pages プラットフォームにデプロイ。プロジェクトの自動作成、アップデート、独自ドメインのバインド、および CDN 加速をサポートしています。BytePlus アカウントをお持ちでない新規ユーザー向けに、わかりやすいオンボーディングガイドも用意されています。",
+            "zh-cn": "一键部署静态网站至 BytePlus Edge Pages 平台。支持项目自动创建、版本更新部署、自定义域名绑定及 CDN 全球加速。同时为暂无 BytePlus 账号的新用户提供完善的引导式上手教程。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "heygen/gsap",
+        "name": "gsap",
+        "description": "Write seek-driven GSAP animations and timelines for HyperFrames compositions, registered via window.__timelines.",
+        "author": "Heygen",
+        "icon_url": "source-icon/gsap.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/heygen/0.0.1/gsap.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/heygen/0.0.1/gsap/SKILL.md",
+        "version": "0.0.1",
+        "source": "heygen",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1780294778000,
+        "updated_at": 1780294778000,
+        "language": {
+          "description_v2": {
+            "en": "Write seek-driven GSAP animations and timelines for HyperFrames compositions, registered via window.__timelines.",
+            "ja": "HyperFrames コンポジション用にシーク駆動の GSAP アニメーションとタイムラインを作成し、window.__timelines 経由で登録します。",
+            "zh-cn": "在 HyperFrames 中编写 GSAP 动画和时间轴，所有动画通过 window.__timelines 注册，由框架统一控制 seek。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "heygen/hyperframes-registry",
+        "name": "hyperframes-registry",
+        "description": "Install and wire HyperFrames registry blocks and components into compositions using hyperframes add.",
+        "author": "Heygen",
+        "icon_url": "source-icon/hyperframes-registry.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/heygen/0.0.1/hyperframes-registry.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/heygen/0.0.1/hyperframes-registry/SKILL.md",
+        "version": "0.0.1",
+        "source": "heygen",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1780294775000,
+        "updated_at": 1780294775000,
+        "language": {
+          "description_v2": {
+            "en": "Install and wire HyperFrames registry blocks and components into compositions using hyperframes add.",
+            "ja": "hyperframes add を使用して HyperFrames レジストリのブロックとコンポーネントをコンポジションにインストール・接続します。",
+            "zh-cn": "通过 hyperframes add 安装并接入官方预制的 block 和 component，快速复用标准化视觉模块。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "heygen/hyperframes-media",
+        "name": "hyperframes-media",
+        "description": "Preprocess assets for HyperFrames compositions — generate TTS narration with Kokoro, transcribe audio with Whisper, and remove video/image backgrounds with u2net.",
+        "author": "Heygen",
+        "icon_url": "source-icon/hyperframes-media.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/heygen/0.0.1/hyperframes-media.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/heygen/0.0.1/hyperframes-media/SKILL.md",
+        "version": "0.0.1",
+        "source": "heygen",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1780294772000,
+        "updated_at": 1780294772000,
+        "language": {
+          "description_v2": {
+            "en": "Preprocess assets for HyperFrames compositions — generate TTS narration with Kokoro, transcribe audio with Whisper, and remove video/image backgrounds with u2net.",
+            "ja": "HyperFrames コンポジション用のアセット前処理 — Kokoro で TTS ナレーションを生成、Whisper で音声を文字起こし、u2net で動画・画像の背景を除去します。",
+            "zh-cn": "视频资产预处理，包括用 Kokoro 生成 TTS 旁白音频、用 Whisper 转录字幕、用 u2net 去除视频或图片背景。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "heygen/hyperframes-cli",
+        "name": "hyperframes-cli",
+        "description": "Run HyperFrames dev-loop commands — init, lint, inspect, preview, and render — to scaffold, validate, and export video compositions.",
+        "author": "Heygen",
+        "icon_url": "source-icon/hyperframes-cli.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/heygen/0.0.1/hyperframes-cli.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/heygen/0.0.1/hyperframes-cli/SKILL.md",
+        "version": "0.0.1",
+        "source": "heygen",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1780294769000,
+        "updated_at": 1780294769000,
+        "language": {
+          "description_v2": {
+            "en": "Run HyperFrames dev-loop commands — init, lint, inspect, preview, and render — to scaffold, validate, and export video compositions.",
+            "ja": "HyperFrames の開発ループコマンド（init、lint、inspect、preview、render）を実行し、ビデオコンポジションのスキャフォールド、検証、エクスポートを行います。",
+            "zh-cn": "HyperFrames 命令行工具，用于项目初始化、语法校验、预览和最终渲染导出。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "heygen/hyperframes",
+        "name": "hyperframes",
+        "description": "Author HTML-based video compositions in HyperFrames — covers timing, clips, GSAP animation, captions, transitions, audio-reactive visuals, and all rendering adapters (Three.js, Lottie, Anime.js, WebGPU, WAAPI, CSS animations).",
+        "author": "Heygen",
+        "icon_url": "source-icon/hyperframes.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/heygen/0.0.1/hyperframes.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/heygen/0.0.1/hyperframes/SKILL.md",
+        "version": "0.0.1",
+        "source": "heygen",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1780294409000,
+        "updated_at": 1780294409000,
+        "language": {
+          "description_v2": {
+            "en": "Author HTML-based video compositions in HyperFrames — covers timing, clips, GSAP animation, captions, transitions, audio-reactive visuals, and all rendering adapters (Three.js, Lottie, Anime.js, WebGPU, WAAPI, CSS animations).",
+            "ja": "HyperFrames で HTML ベースのビデオコンポジションを作成します。タイムライン、クリップ構造、GSAP アニメーション、字幕、トランジション、オーディオリアクティブビジュアル、およびすべてのレンダリングアダプター（Three.js、Lottie、Anime.js、WebGPU、WAAPI、CSS アニメーション）をカバーします。",
+            "zh-cn": "HyperFrames 核心技能，负责编写 HTML 视频 composition，涵盖时间轴、clip 结构、动画、字幕、转场、音频驱动视觉，以及所有渲染适配器（Three.js、Lottie、Anime.js、WebGPU 等）。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "openai/plugin:game-studio",
+        "name": "plugin:game-studio",
+        "description": "Design, prototype, and ship browser games with guided 2D and 3D workflows, asset pipelines, and playtesting support.",
+        "author": "OpenAI",
+        "icon_url": "source-icon/game-studio.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/openai/0.1.0/plugin:game-studio.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/openai/0.1.0/plugin:game-studio/SKILL.md",
+        "version": "0.1.0",
+        "source": "openai",
+        "tags": [
+          "plugins"
+        ],
+        "category_weight": 0,
+        "created_at": 1779592506000,
+        "updated_at": 1779611221000,
+        "language": {
+          "description_v2": {
+            "en": "Design, prototype, and ship browser games with guided 2D and 3D workflows, asset pipelines, and playtesting support.",
+            "zh-cn": "设计、原型制作和发布浏览器游戏，提供 2D 和 3D 工作流、资产管线和游戏测试支持。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "douyinpay/douyinpay-payment-integration",
+        "name": "douyinpay-payment-integration",
+        "description": "The Douyin Pay Payment Integration Skill is an end-to-end integration assistant for merchants and developers. In AI IDE and AI Agent scenarios, it supports completing Douyin Pay product selection, integration preparation, server-side and client-side SDK integration as well as key code generation via natural language. It also delivers capabilities including signature generation and verification, callback processing, error code troubleshooting, and pre-launch self-inspection.",
+        "author": "Douyin Pay",
+        "icon_url": "source-icon/douyinpay-payment-integration.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/douyinpay/0.0.1/douyinpay-payment-integration.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/douyinpay/0.0.1/douyinpay-payment-integration/SKILL.md",
+        "version": "0.0.1",
+        "source": "douyinpay",
+        "tags": [
+          "development_tools"
+        ],
+        "categories": [
+          "development_tools"
+        ],
+        "category_weight": 0,
+        "created_at": 1778471185000,
+        "updated_at": 1778471185000,
+        "language": {
+          "description_v2": {
+            "en": "The Douyin Pay Payment Integration Skill is an end-to-end integration assistant for merchants and developers. In AI IDE and AI Agent scenarios, it supports completing Douyin Pay product selection, integration preparation, server-side and client-side SDK integration as well as key code generation via natural language. It also delivers capabilities including signature generation and verification, callback processing, error code troubleshooting, and pre-launch self-inspection.",
+            "ja": "Douyin Pay Payment Integration Skill は、マーチャントおよび開発者向けに設計された、エンドツーエンドの導入支援アシスタントです。AI IDE や AI Agent の利用シーンにおいて、自然言語を通じて、Douyin Pay の製品選定、導入準備の整理、サーバーサイドおよびクライアントサイド SDK の統合、ならびに主要コードの生成を支援します。さらに、署名および署名検証、コールバック処理、エラーコードのトラブルシューティング、リリース前のセルフチェックにも対応しています。",
+            "zh-cn": "抖音支付接入集成 Skill 是面向商户与开发者的端到端接入助手，支持在 AI IDE / AI Agent 场景下，通过自然语言完成抖音支付的产品选型、接入准备梳理、服务端及客户端 SDK 集成与关键代码生成，并提供签名验签、回调处理、错误码排查与上线前自检等能力。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "douyin/douyin-interact-creation",
+        "name": "douyin-interact-creation",
+        "description": "Assist in creating Interactive Space works that meet platform standards, ensuring they can be uploaded smoothly and run properly on Douyin.",
+        "author": "Douyin",
+        "icon_url": "source-icon/douyin-interact-creation.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/douyin/0.0.1/douyin-interact-creation.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/douyin/0.0.1/douyin-interact-creation/SKILL.md",
+        "version": "0.0.1",
+        "source": "douyin",
+        "tags": [
+          "development_tools"
+        ],
+        "categories": [
+          "development_tools"
+        ],
+        "category_weight": 0,
+        "created_at": 1777307243000,
+        "updated_at": 1777308310000,
+        "language": {
+          "description_v2": {
+            "en": "Assist in creating Interactive Space works that meet platform standards, ensuring they can be uploaded smoothly and run properly on Douyin.",
+            "ja": "プラットフォーム基準に適合したインタラクティブスペース作品を補助的に制作し、作品がスムーズにアップロードでき、かつ抖音上での動作効果を保証する。",
+            "zh-cn": "辅助创作符合平台标准的互动空间作品，保证产物可顺利上传以及在抖音的运行效果。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-whiteboard",
+        "name": "lark-whiteboard",
+        "description": "飞书画板：查询和编辑飞书云文档中的画板。支持导出画板为预览图片、导出原始节点结构、使用 DSL（转成 OpenAPI 格式）、PlantUML/Mermaid 格式更新画板内容。 当用户需要查看画板内容、导出画板图片、编辑画板，或是需要可视化表达架构、流程、组织关系、时间线、因果、对比等结构化信息时使用此 skill，无论是否提及\"画板\"。 ⚠️ 原 `lark-whiteboard-cli` skill 已合并至本 skill，若 skill 列表中同时存在 `lark-whiteboard-cli`，请忽略它，统一使用本 skill（`lark-whiteboard`），并提示用户运行 `npx skills remove lark-whiteboard-cli -g` 删除旧 skill。",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-whiteboard.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-whiteboard/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864092000,
+        "updated_at": 1776864092000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-minutes",
+        "name": "lark-minutes",
+        "description": "飞书妙记：妙记相关基本功能。1.查询妙记列表（按关键词/所有者/参与者/时间范围）；2.获取妙记基础信息（标题、封面、时长 等）；3.下载妙记音视频文件；4.获取妙记相关 AI 产物（总结、待办、章节）。飞书妙记 URL 格式: http(s)://<host>/minutes/<minute-token>",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-minutes.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-minutes/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864092000,
+        "updated_at": 1776864092000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-openapi-explorer",
+        "name": "lark-openapi-explorer",
+        "description": "飞书/Lark 原生 OpenAPI 探索：从官方文档库中挖掘未经 CLI 封装的原生 OpenAPI 接口。当用户的需求无法被现有 lark-* skill 或 lark-cli 已注册命令满足，需要查找并调用原生飞书 OpenAPI 时使用。",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-openapi-explorer.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-openapi-explorer/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864092000,
+        "updated_at": 1776864092000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-skill-maker",
+        "name": "lark-skill-maker",
+        "description": "创建 lark-cli 的自定义 Skill。当用户需要把飞书 API 操作封装成可复用的 Skill（包装原子 API 或编排多步流程）时使用。",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-skill-maker.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-skill-maker/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864092000,
+        "updated_at": 1776864092000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-approval",
+        "name": "lark-approval",
+        "description": "飞书审批 API：审批实例、审批任务管理。",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-approval.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-approval/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864092000,
+        "updated_at": 1776864092000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-workflow-meeting-summary",
+        "name": "lark-workflow-meeting-summary",
+        "description": "会议纪要整理工作流：汇总指定时间范围内的会议纪要并生成结构化报告。当用户需要整理会议纪要、生成会议周报、回顾一段时间内的会议内容时使用。",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-workflow-meeting-summary.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-workflow-meeting-summary/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864092000,
+        "updated_at": 1776864092000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-workflow-standup-report",
+        "name": "lark-workflow-standup-report",
+        "description": "日程待办摘要：编排 calendar +agenda 和 task +get-my-tasks，生成指定日期的日程与未完成任务摘要。适用于了解今天/明天/本周的安排。",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-workflow-standup-report.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-workflow-standup-report/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864092000,
+        "updated_at": 1776864092000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-attendance",
+        "name": "lark-attendance",
+        "description": "飞书考勤打卡：查询自己的考勤打卡记录",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-attendance.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-attendance/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864092000,
+        "updated_at": 1776864092000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-okr",
+        "name": "lark-okr",
+        "description": "飞书 OKR：管理目标与关键结果。查看和编辑 OKR 周期、目标（Objective）、关键结果（Key Result）、对齐关系、量化指标。当用户需要查看或创建 OKR、管理目标和关键结果、查看对齐关系时使用。",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-okr.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-okr/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864092000,
+        "updated_at": 1776864092000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-slides",
+        "name": "lark-slides",
+        "description": "飞书幻灯片：以 XML 格式读取和管理 PPT 页面。创建演示文稿优先用 `+create`；XML API 主要用于读取 PPT 全文信息、创建和删除幻灯片页面。当用户需要创建 PPT、读取 PPT 内容、管理幻灯片页面时使用。",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-slides.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-slides/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864092000,
+        "updated_at": 1776864092000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-im",
+        "name": "lark-im",
+        "description": "飞书即时通讯：收发消息和管理群聊。发送和回复消息、搜索聊天记录、管理群聊成员、上传下载图片和文件（支持大文件分片下载）、管理表情回复。当用户需要发消息、查看或搜索聊天记录、下载聊天中的文件、查看群成员时使用。",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-im.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-im/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864091000,
+        "updated_at": 1776864091000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-doc",
+        "name": "lark-doc",
+        "description": "飞书云文档：创建和编辑飞书文档。从 Markdown 创建文档、获取文档内容、更新文档（追加/覆盖/替换/插入/删除）、上传和下载文档中的图片和文件、搜索云空间文档。当用户需要创建或编辑飞书文档、读取文档内容、在文档中插入图片、搜索云空间文档时使用；如果用户是想按名称或关键词先定位电子表格、报表等云空间对象，也优先使用本 skill 的 docs +search 做资源发现。",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-doc.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-doc/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864091000,
+        "updated_at": 1776864091000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-calendar",
+        "name": "lark-calendar",
+        "description": "飞书日历（calendar）：提供日历与日程（会议）的全面管理能力。核心场景包括：查看/搜索日程、创建/更新日程、管理参会人、查询忙闲状态及推荐空闲时段、查询/搜索与预定会议室。注意：涉及【预约日程/会议】或【查询/预定会议室】时，必须先读取 references/lark-calendar-schedule-meeting.md 工作流！高频操作请优先使用 Shortcuts：+agenda（快速概览今日/近期行程）、+create（创建日程并按需邀请参会人及预定会议室）、+freebusy（查询用户主日历的忙闲信息和rsvp的状态）、+rsvp（回复日程邀请）",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-calendar.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-calendar/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864091000,
+        "updated_at": 1776864091000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-drive",
+        "name": "lark-drive",
+        "description": "飞书云空间：管理云空间中的文件和文件夹。上传和下载文件、创建文件夹、复制/移动/删除文件、查看文件元数据、管理文档评论、管理文档权限、订阅用户评论变更事件、修改文件标题（docx、sheet、bitable、file、folder、wiki）；也负责把本地 Word/Markdown/Excel/CSV 导入为飞书在线云文档（docx、sheet、bitable）。当用户需要上传或下载文件、整理云空间目录、查看文件详情、管理评论、管理文档权限、修改文件标题、订阅用户评论变更事件，或要把本地文件导入成新版文档、电子表格、多维表格/Base 时使用。",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-drive.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-drive/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864091000,
+        "updated_at": 1776864091000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-sheets",
+        "name": "lark-sheets",
+        "description": "飞书电子表格：创建和操作电子表格。创建表格并写入表头和数据、读取和写入单元格、追加行数据、在已知电子表格中查找单元格内容、导出表格文件。当用户需要创建电子表格、批量读写数据、在已知表格中查找内容、导出或下载表格时使用。若用户是想按名称或关键词搜索云空间里的表格文件，请改用 lark-doc 的 docs +search 先定位资源。",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-sheets.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-sheets/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864091000,
+        "updated_at": 1776864091000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-base",
+        "name": "lark-base",
+        "description": "当需要用 lark-cli 操作飞书多维表格（Base）时调用：适用于建表、字段管理、记录读写、记录分享链接、视图配置、历史查询，以及角色/表单/仪表盘管理/工作流；也适用于把旧的 +table / +field / +record 写法改成当前命令写法。涉及字段设计、公式字段、查找引用、跨表计算、行级派生指标、数据分析需求时也必须使用本 skill。",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-base.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-base/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864091000,
+        "updated_at": 1776864091000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-task",
+        "name": "lark-task",
+        "description": "飞书任务：管理任务和清单。创建待办任务、查看和更新任务状态、拆分子任务、组织任务清单、分配协作成员。当用户需要创建待办事项、查看任务列表、跟踪任务进度、管理项目清单或给他人分配任务时使用。",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-task.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-task/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864091000,
+        "updated_at": 1776864091000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-mail",
+        "name": "lark-mail",
+        "description": "飞书邮箱 — draft, compose, send, reply, forward, read, and search emails; manage drafts, folders, labels, contacts, attachments, and mail rules. Use when user mentions 起草邮件, 写一封邮件, 拟邮件, 草稿, 发通知邮件, 发送邮件, 发邮件, 回复邮件, 转发邮件, 查看邮件, 看邮件, 读邮件, 搜索邮件, 查邮件, 收件箱, 邮件会话, 编辑草稿, 管理草稿, 下载附件, 邮件文件夹, 邮件标签, 邮件联系人, 监听新邮件, 收信规则, 邮件规则, draft, compose, send email, reply, forward, inbox, mail thread, mail rules.",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-mail.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-mail/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864091000,
+        "updated_at": 1776864091000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-contact",
+        "name": "lark-contact",
+        "description": "飞书通讯录：查询组织架构、人员信息和搜索员工。获取当前用户或指定用户的详细信息、通过关键词搜索员工（姓名/邮箱/手机号）。当用户需要查看个人信息、查找同事 open_id 或联系方式、按姓名搜索员工、查询部门结构时使用。",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-contact.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-contact/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864091000,
+        "updated_at": 1776864091000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-wiki",
+        "name": "lark-wiki",
+        "description": "飞书知识库：管理知识空间、空间成员和文档节点。创建和查询知识空间、查看和管理空间成员、管理节点层级结构、在知识库中组织文档和快捷方式。当用户需要在知识库中查找或创建文档、浏览知识空间结构、查看或管理空间成员、移动或复制节点时使用。",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-wiki.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-wiki/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864091000,
+        "updated_at": 1776864091000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-event",
+        "name": "lark-event",
+        "description": "飞书事件订阅：通过 WebSocket 长连接实时监听飞书事件（消息、通讯录变更、日历变更等），输出 NDJSON 到 stdout，支持 compact Agent 友好格式、正则路由、文件输出。当用户需要实时监听飞书事件、构建事件驱动管道时使用。",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-event.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-event/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864091000,
+        "updated_at": 1776864091000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-vc",
+        "name": "lark-vc",
+        "description": "飞书视频会议：查询会议记录、获取会议纪要产物（总结、待办、章节、逐字稿）。1. 查询已经结束的会议数量或详情时使用本技能(如历史日期｜ 昨天 | 上周 | 今天已经开过的会议等场景)，查询未开始的会议日程使用 lark-calendar 技能。2. 支持通过关键词、时间范围、组织者、参与者、会议室等筛选条件搜索会议记录。3. 获取或整理会议纪要时使用本技能。",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-vc.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-vc/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776864091000,
+        "updated_at": 1776864091000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "larksuite/cli/lark-shared",
+        "name": "lark-shared",
+        "description": "飞书/Lark CLI 共享基础：应用配置初始化、认证登录（auth login）、身份切换（--as user/bot）、权限与 scope 管理、Permission denied 错误处理、安全规则。当用户需要第一次配置(`lark-cli config init`)、使用登录授权(`lark-cli auth login`)、遇到权限不足、切换 user/bot 身份、配置 scope、或首次使用 lark-cli 时触发。",
+        "author": "Lark",
+        "icon_url": "",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-shared.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/larksuite/cli/1.0.17/lark-shared/SKILL.md",
+        "version": "1.0.17",
+        "source": "larksuite/cli",
+        "tags": [
+          "lark"
+        ],
+        "category_weight": 0,
+        "created_at": 1776863983000,
+        "updated_at": 1776863983000,
+        "pinned": 0
+      },
+      {
+        "skill_id": "Alipay/skills/Alipay",
+        "name": "alipay-payment-integration",
+        "description": "A best practice guide for integrating Alipay payment products, covering all scenarios from in-person to online payments",
+        "author": "Alipay",
+        "icon_url": "source-icon/alipay-payment-integration.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/alipay_skills/0.0.1/alipay_payment_integration.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/alipay_skills/0.0.1/alipay_payment_integration/SKILL.md",
+        "version": "0.0.1",
+        "source": "alipay_skills",
+        "tags": [
+          "development_tools"
+        ],
+        "categories": [
+          "development_tools"
+        ],
+        "category_weight": 0,
+        "created_at": 1776063167000,
+        "updated_at": 1776063167000,
+        "language": {
+          "description_v2": {
+            "en": "A best practice guide for integrating Alipay payment products, covering all scenarios from in-person to online payments.",
+            "ja": "支付宝決済商品の導入ベストプラクティスガイド。オフラインからオンラインまでの全シナリオ決済をカバーします。",
+            "zh-cn": "支付宝支付产品接入最佳实践指南，涵盖从线下到线上的全场景支付。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "obra/superpowers/brainstorming",
+        "name": "brainstorming",
+        "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
+        "author": "obra",
+        "icon_url": "source-icon/github.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/obra/superpowers/0.0.1/brainstorming.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/obra/superpowers/0.0.1/brainstorming/SKILL.md",
+        "version": "0.0.1",
+        "source": "obra/superpowers",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668697000,
+        "updated_at": 1774932716000,
+        "language": {
+          "description_v2": {
+            "en": "Explore user intent, requirements, and design before any creative work, feature building, or behavior modification.",
+            "ja": "創作、機能開発、動作変更の前に、ユーザーの意図・要件・設計を事前に整理します。",
+            "zh-cn": "在任何创作、功能开发或行为修改前，先探索用户意图、需求和设计方向。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "obra/superpowers/writing-plans",
+        "name": "writing-plans",
+        "description": "Use when you have a spec or requirements for a multi-step task, before touching code",
+        "author": "obra",
+        "icon_url": "source-icon/github.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/obra/superpowers/0.0.1/writing-plans.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/obra/superpowers/0.0.1/writing-plans/SKILL.md",
+        "version": "0.0.1",
+        "source": "obra/superpowers",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668698000,
+        "updated_at": 1774932716000,
+        "language": {
+          "description_v2": {
+            "en": "Break down specs and multi-step requirements into a structured plan before touching any code.",
+            "ja": "コードに触れる前に、仕様や複数ステップの要件を構造化されたプランに分解します。",
+            "zh-cn": "在动手写代码前，将规格和多步骤需求拆解为结构化计划。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "obra/superpowers/test-driven-development",
+        "name": "test-driven-development",
+        "description": "Use when implementing any feature or bugfix, before writing implementation code",
+        "author": "obra",
+        "icon_url": "source-icon/github.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/obra/superpowers/0.0.1/test-driven-development.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/obra/superpowers/0.0.1/test-driven-development/SKILL.md",
+        "version": "0.0.1",
+        "source": "obra/superpowers",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668698000,
+        "updated_at": 1774932716000,
+        "language": {
+          "description_v2": {
+            "en": "Establish a clear implementation approach for any feature or bugfix before writing code.",
+            "ja": "実装コードを書く前に、機能開発やバグ修正の明確な実装方針を確立します。",
+            "zh-cn": "在编写实现代码前，为功能开发或缺陷修复制定清晰的实施方案。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "obra/superpowers/executing-plans",
+        "name": "executing-plans",
+        "description": "Use when you have a written implementation plan to execute in a separate session with review checkpoints",
+        "author": "obra",
+        "icon_url": "source-icon/github.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/obra/superpowers/0.0.1/executing-plans.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/obra/superpowers/0.0.1/executing-plans/SKILL.md",
+        "version": "0.0.1",
+        "source": "obra/superpowers",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668698000,
+        "updated_at": 1774932716000,
+        "language": {
+          "description_v2": {
+            "en": "Execute a written implementation plan in a separate session with structured review checkpoints.",
+            "ja": "別セッションで書面化された実装プランをレビューチェックポイントを挟みながら実行します。",
+            "zh-cn": "在独立会话中按书面实施计划执行，并设有结构化的阶段审查节点。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "kepano/obsidian-skills/obsidian-markdown",
+        "name": "obsidian-markdown",
+        "description": "Create and edit Obsidian Flavored Markdown with wikilinks, embeds, callouts, properties, and other Obsidian-specific syntax. Use when working with .md files in Obsidian, or when the user mentions wikilinks, callouts, frontmatter, tags, embeds, or Obsidian notes.",
+        "author": "Obsidian",
+        "icon_url": "source-icon/kepano-obsidian-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/kepano/obsidian-skills/0.0.1/obsidian-markdown.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/kepano/obsidian-skills/0.0.1/obsidian-markdown/SKILL.md",
+        "version": "0.0.1",
+        "source": "kepano/obsidian-skills",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668697000,
+        "updated_at": 1774932715000,
+        "language": {
+          "description_v2": {
+            "en": "Write and edit Obsidian Flavored Markdown with wikilinks, embeds, callouts, properties, and Obsidian-specific syntax.",
+            "ja": "wikilinks、埋め込み、callout、プロパティなど Obsidian 固有の構文を含む Obsidian Flavored Markdown を作成・編集します。",
+            "zh-cn": "编写和编辑 Obsidian 风格的 Markdown，支持 wikilinks、嵌入、callout、属性等 Obsidian 专有语法。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "vercel-labs/agent-browser/agent-browser",
+        "name": "agent-browser",
+        "description": "Browser automation CLI for AI agents. Use when the user needs to interact with websites, including navigating pages, filling forms, clicking buttons, taking screenshots, extracting data, testing web apps, or automating any browser task. Triggers include requests to \"open a website\", \"fill out a form\", \"click a button\", \"take a screenshot\", \"scrape data from a page\", \"test this web app\", \"login to a site\", \"automate browser actions\", or any task requiring programmatic web interaction.",
+        "author": "Vercel",
+        "icon_url": "source-icon/vercel-labs-agent-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/vercel-labs/agent-browser/0.0.1/agent-browser.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/vercel-labs/agent-browser/0.0.1/agent-browser/SKILL.md",
+        "version": "0.0.1",
+        "source": "vercel-labs/agent-browser",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668697000,
+        "updated_at": 1774932715000,
+        "language": {
+          "description_v2": {
+            "en": "Automate browser interactions for AI agents — navigating pages, filling forms, clicking buttons, scraping data, and testing web apps via CLI.",
+            "ja": "AI エージェント向けブラウザ自動化 CLI で、ページナビゲーション、フォーム入力、ボタンクリック、データスクレイピング、Web アプリテストに対応します。",
+            "zh-cn": "为 AI Agent 提供浏览器自动化 CLI，支持页面导航、表单填写、按钮点击、数据抓取和 Web 应用测试。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "vercel-labs/agent-browser/dogfood",
+        "name": "dogfood",
+        "description": "Systematically explore and test a web application to find bugs, UX issues, and other problems. Use when asked to \"dogfood\", \"QA\", \"exploratory test\", \"find issues\", \"bug hunt\", \"test this app/site/platform\", or review the quality of a web application. Produces a structured report with full reproduction evidence -- step-by-step screenshots, repro videos, and detailed repro steps for every issue -- so findings can be handed directly to the responsible teams.",
+        "author": "Vercel",
+        "icon_url": "source-icon/vercel-labs-agent-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/vercel-labs/agent-browser/0.0.1/dogfood.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/vercel-labs/agent-browser/0.0.1/dogfood/SKILL.md",
+        "version": "0.0.1",
+        "source": "vercel-labs/agent-browser",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668697000,
+        "updated_at": 1774932715000,
+        "language": {
+          "description_v2": {
+            "en": "Systematically dogfood and QA web applications, producing structured bug reports with screenshots, repro videos, and step-by-step reproduction steps.",
+            "ja": "Web アプリケーションを体系的にドッグフーディング・QA テストし、スクリーンショット、再現動画、再現手順を含む構造化バグレポートを生成します。",
+            "zh-cn": "系统化地对 Web 应用进行内部试用和质量测试，输出含截图、复现视频和详细步骤的结构化缺陷报告。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "vercel-labs/agent-browser/electron",
+        "name": "electron",
+        "description": "Automate Electron desktop apps (VS Code, Slack, Discord, Figma, Notion, Spotify, etc.) using agent-browser via Chrome DevTools Protocol. Use when the user needs to interact with an Electron app, automate a desktop app, connect to a running app, control a native app, or test an Electron application. Triggers include \"automate Slack app\", \"control VS Code\", \"interact with Discord app\", \"test this Electron app\", \"connect to desktop app\", or any task requiring automation of a native Electron application.",
+        "author": "Vercel",
+        "icon_url": "source-icon/vercel-labs-agent-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/vercel-labs/agent-browser/0.0.1/electron.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/vercel-labs/agent-browser/0.0.1/electron/SKILL.md",
+        "version": "0.0.1",
+        "source": "vercel-labs/agent-browser",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668697000,
+        "updated_at": 1774932715000,
+        "language": {
+          "description_v2": {
+            "en": "Automate Electron desktop apps (VS Code, Slack, Discord, Figma, etc.) using agent-browser via Chrome DevTools Protocol.",
+            "ja": "Chrome DevTools Protocol 経由で agent-browser を使用し、VS Code、Slack、Discord、Figma などの Electron デスクトップアプリを自動化します。",
+            "zh-cn": "通过 Chrome DevTools Protocol 使用 agent-browser 自动化 Electron 桌面应用（VS Code、Slack、Discord、Figma 等）。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "kepano/obsidian-skills/defuddle",
+        "name": "defuddle",
+        "description": "Extract clean markdown content from web pages using Defuddle CLI, removing clutter and navigation to save tokens. Use instead of WebFetch when the user provides a URL to read or analyze, for online documentation, articles, blog posts, or any standard web page.",
+        "author": "Obsidian",
+        "icon_url": "source-icon/kepano-obsidian-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/kepano/obsidian-skills/0.0.1/defuddle.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/kepano/obsidian-skills/0.0.1/defuddle/SKILL.md",
+        "version": "0.0.1",
+        "source": "kepano/obsidian-skills",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668696000,
+        "updated_at": 1774932714000,
+        "language": {
+          "description_v2": {
+            "en": "Extract clean Markdown from web pages using Defuddle CLI, removing clutter and navigation to save tokens.",
+            "ja": "Defuddle CLI を使用してウェブページからクリーンな Markdown を抽出し、ナビゲーションや不要な要素を除去してトークンを節約します。",
+            "zh-cn": "使用 Defuddle CLI 从网页提取干净的 Markdown 内容，去除冗余元素以节省 Token。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "kepano/obsidian-skills/json-canvas",
+        "name": "json-canvas",
+        "description": "Create and edit JSON Canvas files (.canvas) with nodes, edges, groups, and connections. Use when working with .canvas files, creating visual canvases, mind maps, flowcharts, or when the user mentions Canvas files in Obsidian.",
+        "author": "Obsidian",
+        "icon_url": "source-icon/kepano-obsidian-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/kepano/obsidian-skills/0.0.1/json-canvas.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/kepano/obsidian-skills/0.0.1/json-canvas/SKILL.md",
+        "version": "0.0.1",
+        "source": "kepano/obsidian-skills",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668696000,
+        "updated_at": 1774932714000,
+        "language": {
+          "description_v2": {
+            "en": "Create and edit JSON Canvas files with nodes, edges, groups, and connections for visual canvases and mind maps.",
+            "ja": "ノード、エッジ、グループ、接続を含む JSON Canvas ファイルを作成・編集し、ビジュアルキャンバスやマインドマップを構築します。",
+            "zh-cn": "创建和编辑包含节点、边、分组和连接的 JSON Canvas 文件，用于可视化画布和思维导图。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "kepano/obsidian-skills/obsidian-bases",
+        "name": "obsidian-bases",
+        "description": "Create and edit Obsidian Bases (.base files) with views, filters, formulas, and summaries. Use when working with .base files, creating database-like views of notes, or when the user mentions Bases, table views, card views, filters, or formulas in Obsidian.",
+        "author": "Obsidian",
+        "icon_url": "source-icon/kepano-obsidian-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/kepano/obsidian-skills/0.0.1/obsidian-bases.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/kepano/obsidian-skills/0.0.1/obsidian-bases/SKILL.md",
+        "version": "0.0.1",
+        "source": "kepano/obsidian-skills",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668696000,
+        "updated_at": 1774932714000,
+        "language": {
+          "description_v2": {
+            "en": "Create and edit Obsidian Bases (.base files) with views, filters, formulas, and summaries for database-like note management.",
+            "ja": "ビュー、フィルター、数式、サマリーを備えた Obsidian Bases（.base ファイル）を作成・編集し、データベースライクなノート管理を実現します。",
+            "zh-cn": "创建和编辑 Obsidian Bases（.base 文件），支持视图、过滤、公式和摘要，实现类数据库的笔记管理。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "kepano/obsidian-skills/obsidian-cli",
+        "name": "obsidian-cli",
+        "description": "Interact with Obsidian vaults using the Obsidian CLI to read, create, search, and manage notes, tasks, properties, and more. Also supports plugin and theme development with commands to reload plugins, run JavaScript, capture errors, take screenshots, and inspect the DOM. Use when the user asks to interact with their Obsidian vault, manage notes, search vault content, perform vault operations from the command line, or develop and debug Obsidian plugins and themes.",
+        "author": "Obsidian",
+        "icon_url": "source-icon/kepano-obsidian-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/kepano/obsidian-skills/0.0.1/obsidian-cli.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/kepano/obsidian-skills/0.0.1/obsidian-cli/SKILL.md",
+        "version": "0.0.1",
+        "source": "kepano/obsidian-skills",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668696000,
+        "updated_at": 1774932714000,
+        "language": {
+          "description_v2": {
+            "en": "Interact with Obsidian vaults via CLI to read, create, search, and manage notes, tasks, and properties, with support for plugin and theme development.",
+            "ja": "CLI を使用して Obsidian Vault を操作し、ノートの読み書き・検索・タスク管理のほか、プラグインやテーマの開発・デバッグにも対応します。",
+            "zh-cn": "通过 CLI 与 Obsidian Vault 交互，支持笔记读写、搜索、任务管理，以及插件和主题的开发调试。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "makenotion/notion-cookbook/spec-to-implementation",
+        "name": "spec-to-implementation",
+        "description": "Turns product or tech specs into concrete Notion tasks that Claude code can implement. Breaks down spec pages into detailed implementation plans with clear tasks, acceptance criteria, and progress tracking to guide development from requirements to completion.",
+        "author": "Notion",
+        "icon_url": "source-icon/makenotion-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/makenotion/notion-cookbook/0.0.1/spec-to-implementation.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/makenotion/notion-cookbook/0.0.1/spec-to-implementation/SKILL.md",
+        "version": "0.0.1",
+        "source": "makenotion/notion-cookbook",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668695000,
+        "updated_at": 1774932713000,
+        "language": {
+          "description_v2": {
+            "en": "Break down product or tech specs into detailed Notion implementation tasks with acceptance criteria and progress tracking.",
+            "ja": "プロダクトや技術仕様を、受け入れ基準と進捗管理を含む詳細な Notion 実装タスクに分解します。",
+            "zh-cn": "将产品或技术规格拆解为带验收标准和进度追踪的详细 Notion 实施任务。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "makenotion/notion-cookbook/research-documentation",
+        "name": "research-documentation",
+        "description": "Searches across your Notion workspace, synthesizes findings from multiple pages, and creates comprehensive research documentation saved as new Notion pages. Turns scattered information into structured reports with proper citations and actionable insights.",
+        "author": "Notion",
+        "icon_url": "source-icon/makenotion-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/makenotion/notion-cookbook/0.0.1/research-documentation.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/makenotion/notion-cookbook/0.0.1/research-documentation/SKILL.md",
+        "version": "0.0.1",
+        "source": "makenotion/notion-cookbook",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668695000,
+        "updated_at": 1774932713000,
+        "language": {
+          "description_v2": {
+            "en": "Search across your Notion workspace, synthesize findings, and save comprehensive research reports as new Notion pages.",
+            "ja": "Notion ワークスペース全体を検索し、調査結果を統合して包括的なリサーチレポートを新しい Notion ページとして保存します。",
+            "zh-cn": "搜索整个 Notion 工作区，整合研究结果，并将综合报告保存为新的 Notion 页面。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "makenotion/notion-cookbook/meeting-intelligence",
+        "name": "meeting-intelligence",
+        "description": "Prepares meeting materials by gathering context from Notion, enriching with Claude research, and creating both an internal pre-read and external agenda saved to Notion. Helps you arrive prepared with comprehensive background and structured meeting docs.",
+        "author": "Notion",
+        "icon_url": "source-icon/makenotion-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/makenotion/notion-cookbook/0.0.1/meeting-intelligence.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/makenotion/notion-cookbook/0.0.1/meeting-intelligence/SKILL.md",
+        "version": "0.0.1",
+        "source": "makenotion/notion-cookbook",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668695000,
+        "updated_at": 1774932713000,
+        "language": {
+          "description_v2": {
+            "en": "Prepare meeting materials by gathering Notion context and research, then saving both an internal pre-read and external agenda to Notion.",
+            "ja": "Notion からコンテキストと調査内容を収集し、内部プレリードと外部アジェンダを作成して Notion に保存します。",
+            "zh-cn": "从 Notion 收集背景资料并补充研究内容，生成内部预读文档和外部议程，保存至 Notion。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "makenotion/skills/notion-cli",
+        "name": "notion-cli",
+        "description": ">-",
+        "author": "Notion",
+        "icon_url": "source-icon/makenotion-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/makenotion/skills/0.0.1/notion-cli.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/makenotion/skills/0.0.1/notion-cli/SKILL.md",
+        "version": "0.0.1",
+        "source": "makenotion/skills",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668696000,
+        "updated_at": 1774932713000,
+        "language": {
+          "description_v2": {
+            "en": "Interact with the Notion API via the ntn CLI to manage workers, upload files, create pages, and query databases.",
+            "ja": "ntn CLI を使用して Notion API を操作し、Worker 管理、ファイルアップロード、ページ作成、データベースクエリを実行します。",
+            "zh-cn": "通过 ntn CLI 调用 Notion API，管理 Worker、上传文件、创建页面和查询数据库。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "bytedance/deer-flow/data-analysis",
+        "name": "data-analysis",
+        "description": "Use this skill when the user uploads Excel (.xlsx/.xls) or CSV files and wants to perform data analysis, generate statistics, create summaries, pivot tables, SQL queries, or any form of structured data exploration. Supports multi-sheet Excel workbooks, aggregation, filtering, joins, and exporting results to CSV/JSON/Markdown.",
+        "author": "Bytedance",
+        "icon_url": "source-icon/bytedance.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/bytedance/deer-flow/0.0.1/data-analysis.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/bytedance/deer-flow/0.0.1/data-analysis/SKILL.md",
+        "version": "0.0.1",
+        "source": "bytedance/deer-flow",
+        "tags": [
+          "data_analytics"
+        ],
+        "categories": [
+          "data_analytics"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668694000,
+        "updated_at": 1774932712000,
+        "language": {
+          "description_v2": {
+            "en": "Analyze Excel and CSV files with support for multi-sheet workbooks, aggregation, filtering, joins, and export to CSV, JSON, or Markdown.",
+            "ja": "Excel・CSV ファイルを分析し、複数シート、集計、フィルタリング、結合、CSV/JSON/Markdown へのエクスポートに対応します。",
+            "zh-cn": "分析 Excel 和 CSV 文件，支持多工作表、聚合、过滤、关联查询及导出为 CSV/JSON/Markdown。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "bytedance/deer-flow/consulting-analysis",
+        "name": "consulting-analysis",
+        "description": "Use this skill when the user requests to generate, create, or write professional research reports including but not limited to market analysis, consumer insights, brand analysis, financial analysis, industry research, competitive intelligence, investment due diligence, or any consulting-grade analytical report. This skill operates in two phases — (1) generating a structured analysis framework with chapter skeleton, data query requirements, and analysis logic, and (2) after data collection by other skills, producing the final consulting-grade report with structured narratives, embedded charts, and strategic insights.",
+        "author": "Bytedance",
+        "icon_url": "source-icon/bytedance.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/bytedance/deer-flow/0.0.1/consulting-analysis.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/bytedance/deer-flow/0.0.1/consulting-analysis/SKILL.md",
+        "version": "0.0.1",
+        "source": "bytedance/deer-flow",
+        "tags": [
+          "data_analytics"
+        ],
+        "categories": [
+          "data_analytics"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668694000,
+        "updated_at": 1774932712000,
+        "language": {
+          "description_v2": {
+            "en": "Produce consulting-grade research reports in two phases: a structured analysis framework, followed by a final report with narratives, embedded charts, and strategic insights.",
+            "ja": "構造化分析フレームワークの生成と、ナラティブ・チャート・戦略的インサイトを含む最終レポート作成の2段階でコンサルティング品質のレサーチレポートを生成します。",
+            "zh-cn": "分两阶段生成咨询级研究报告：先输出结构化分析框架，再生成含叙述、图表和战略洞察的完整报告。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "shadcn-ui/ui/shadcn",
+        "name": "shadcn",
+        "description": "Manages shadcn components and projects — adding, searching, fixing, debugging, styling, and composing UI. Provides project context, component docs, and usage examples. Applies when working with shadcn/ui, component registries, presets, --preset codes, or any project with a components.json file. Also triggers for \"shadcn init\", \"create an app with --preset\", or \"switch to --preset\".",
+        "author": "shadcn",
+        "icon_url": "source-icon/shadcn-ui-ui.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/shadcn-ui/ui/0.0.1/shadcn.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/shadcn-ui/ui/0.0.1/shadcn/SKILL.md",
+        "version": "0.0.1",
+        "source": "shadcn-ui/ui",
+        "tags": [
+          "ui_design"
+        ],
+        "categories": [
+          "ui_design"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668694000,
+        "updated_at": 1774932712000,
+        "language": {
+          "description_v2": {
+            "en": "Manage shadcn/ui components and projects — adding, searching, fixing, styling, and composing UI with full component docs and usage examples.",
+            "ja": "shadcn/ui コンポーネントとプロジェクトを管理し、追加・検索・修正・スタイリング・UI 構成をコンポーネントドキュメントと使用例とともにサポートします。",
+            "zh-cn": "管理 shadcn/ui 组件与项目，支持添加、搜索、修复、样式调整和 UI 组合，提供完整组件文档和使用示例。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "makenotion/notion-cookbook/knowledge-capture",
+        "name": "knowledge-capture",
+        "description": "Transforms conversations and discussions into structured documentation pages in Notion. Captures insights, decisions, and knowledge from chat context, formats appropriately, and saves to wikis or databases with proper organization and linking for easy discovery.",
+        "author": "Notion",
+        "icon_url": "source-icon/makenotion-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/makenotion/notion-cookbook/0.0.1/knowledge-capture.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/makenotion/notion-cookbook/0.0.1/knowledge-capture/SKILL.md",
+        "version": "0.0.1",
+        "source": "makenotion/notion-cookbook",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668695000,
+        "updated_at": 1774932712000,
+        "language": {
+          "description_v2": {
+            "en": "Transform conversations and discussions into structured Notion documentation pages, saved to wikis or databases with proper organization and linking.",
+            "ja": "会話やディスカッションを構造化された Notion ドキュメントページに変換し、Wiki やデータベースに整理して保存します。",
+            "zh-cn": "将对话和讨论转化为结构化的 Notion 文档页面，并有序保存至 Wiki 或数据库，便于检索。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "bytedance/agentkit-samples/report-generator-skill",
+        "name": "report-generator-skill",
+        "description": "视频分析报告生成技能。整合分镜拆解数据和钩子分析结果，生成 Markdown 格式的专业视频分析报告。运行脚本 `python scripts/generate_report.py <breakdown_json> [hook_analysis_json]`，输出完整的 Markdown 报告，包含基本信息、前三秒钩子分析、分镜概览、BGM分析、场景分析等章节。",
+        "author": "Bytedance",
+        "icon_url": "source-icon/bytedance.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/bytedance/agentkit-samples/0.0.1/report-generator-skill.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/bytedance/agentkit-samples/0.0.1/report-generator-skill/SKILL.md",
+        "version": "0.0.1",
+        "source": "bytedance/agentkit-samples",
+        "tags": [
+          "data_analytics"
+        ],
+        "categories": [
+          "data_analytics"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668693000,
+        "updated_at": 1774932711000,
+        "language": {
+          "description_v2": {
+            "en": "Generate professional Markdown video analysis reports by integrating shot breakdown data and hook analysis results.",
+            "ja": "分鏡解析データとフック分析結果を統合し、プロフェッショナルな Markdown 形式の動画分析レポートを生成します。",
+            "zh-cn": "整合分镜拆解数据与钩子分析结果，生成专业的 Markdown 格式视频分析报告。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "bytedance/deer-flow/chart-visualization",
+        "name": "chart-visualization",
+        "description": "This skill should be used when the user wants to visualize data. It intelligently selects the most suitable chart type from 26 available options, extracts parameters based on detailed specifications, and generates a chart image using a JavaScript script.",
+        "author": "Bytedance",
+        "icon_url": "source-icon/bytedance.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/bytedance/deer-flow/0.0.1/chart-visualization.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/bytedance/deer-flow/0.0.1/chart-visualization/SKILL.md",
+        "version": "0.0.1",
+        "source": "bytedance/deer-flow",
+        "tags": [
+          "data_analytics"
+        ],
+        "categories": [
+          "data_analytics"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668694000,
+        "updated_at": 1774932711000,
+        "language": {
+          "description_v2": {
+            "en": "Intelligently select from 26 chart types to visualize data and generate chart images based on detailed specifications.",
+            "ja": "26種類のチャートから最適なものをインテリジェントに選択し、詳細な仕様に基づいてチャート画像を生成します。",
+            "zh-cn": "从 26 种图表类型中智能选择最适合的方案，根据详细规格生成图表图像。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "redis/agent-skills/redis-development",
+        "name": "redis-development",
+        "description": "Redis performance optimization and best practices. Use this skill when working with Redis data structures, Redis Query Engine (RQE), vector search with RedisVL, semantic caching with LangCache, or optimizing Redis performance.",
+        "author": "Redis",
+        "icon_url": "source-icon/redis-agent-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/redis/agent-skills/0.0.1/redis-development.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/redis/agent-skills/0.0.1/redis-development/SKILL.md",
+        "version": "0.0.1",
+        "source": "redis/agent-skills",
+        "tags": [
+          "development_tools"
+        ],
+        "categories": [
+          "development_tools"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668692000,
+        "updated_at": 1774932710000,
+        "language": {
+          "description_v2": {
+            "en": "Apply Redis best practices and performance optimization across data structures, vector search (RedisVL), semantic caching (LangCache), and the Redis Query Engine.",
+            "ja": "Redis のデータ構造、ベクトル検索（RedisVL）、セマンティックキャッシュ（LangCache）、Redis Query Engine にわたるベストプラクティスとパフォーマンス最適化を適用します。",
+            "zh-cn": "应用 Redis 最佳实践与性能优化，涵盖数据结构、向量搜索（RedisVL）、语义缓存（LangCache）和 Redis Query Engine。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "github/awesome-copilot/git-commit",
+        "name": "git-commit",
+        "description": "Execute git commit with conventional commit message analysis, intelligent staging, and message generation. Use when user asks to commit changes, create a git commit, or mentions \"/commit\". Supports: (1) Auto-detecting type and scope from changes, (2) Generating conventional commit messages from diff, (3) Interactive commit with optional type/scope/description overrides, (4) Intelligent file staging for logical grouping",
+        "author": "Github",
+        "icon_url": "source-icon/github.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/github/awesome-copilot/0.0.1/git-commit.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/github/awesome-copilot/0.0.1/git-commit/SKILL.md",
+        "version": "0.0.1",
+        "source": "github/awesome-copilot",
+        "tags": [
+          "development_tools"
+        ],
+        "categories": [
+          "development_tools"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668692000,
+        "updated_at": 1774932710000,
+        "language": {
+          "description_v2": {
+            "en": "Execute git commits with intelligent staging, auto-detected conventional commit message generation, and support for type, scope, and description overrides.",
+            "ja": "インテリジェントなステージング、従来型コミットメッセージの自動生成、タイプ・スコープ・説明のカスタマイズをサポートした Git コミットを実行します。",
+            "zh-cn": "执行 Git 提交，支持智能暂存、自动检测规范提交信息生成，以及类型、范围和描述的自定义覆盖。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "github/awesome-copilot/gh-cli",
+        "name": "gh-cli",
+        "description": "GitHub CLI (gh) comprehensive reference for repositories, issues, pull requests, Actions, projects, releases, gists, codespaces, organizations, extensions, and all GitHub operations from the command line.",
+        "author": "Github",
+        "icon_url": "source-icon/github.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/github/awesome-copilot/0.0.1/gh-cli.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/github/awesome-copilot/0.0.1/gh-cli/SKILL.md",
+        "version": "0.0.1",
+        "source": "github/awesome-copilot",
+        "tags": [
+          "development_tools"
+        ],
+        "categories": [
+          "development_tools"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668693000,
+        "updated_at": 1774932710000,
+        "language": {
+          "description_v2": {
+            "en": "A comprehensive GitHub CLI (gh) reference for managing repositories, issues, pull requests, Actions, projects, releases, and all GitHub operations from the command line.",
+            "ja": "リポジトリ、Issue、Pull Request、Actions、プロジェクト、リリースなど、あらゆる GitHub 操作をコマンドラインで行うための GitHub CLI（gh）総合リファレンスです。",
+            "zh-cn": "GitHub CLI（gh）的全面参考指南，涵盖仓库、Issue、Pull Request、Actions、项目、发布等命令行操作。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "bytedance/agentkit-samples/hook-analyzer-skill",
+        "name": "hook-analyzer-skill",
+        "description": "视频前三秒钩子分析技能。从分镜拆解结果中提取前三秒分镜数据，为钩子吸引力评估提供结构化上下文。运行脚本 `python scripts/analyze_hook_segments.py \"<breakdown_json_file>\"` 或通过 stdin 传入 JSON。输出包含前三秒分镜数量、总时长和每个分镜的详细信息（含关键帧 URL）。",
+        "author": "Bytedance",
+        "icon_url": "source-icon/bytedance.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/bytedance/agentkit-samples/0.0.1/hook-analyzer-skill.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/bytedance/agentkit-samples/0.0.1/hook-analyzer-skill/SKILL.md",
+        "version": "0.0.1",
+        "source": "bytedance/agentkit-samples",
+        "tags": [
+          "data_analytics"
+        ],
+        "categories": [
+          "data_analytics"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668693000,
+        "updated_at": 1774932710000,
+        "language": {
+          "description_v2": {
+            "en": "Extract and analyze the first three seconds of video shot breakdowns to provide structured context for hook attraction evaluation.",
+            "ja": "動画の分鏡解析結果から最初の3秒のデータを抽出し、フック魅力度評価のための構造化コンテキストを提供します。",
+            "zh-cn": "从视频分镜拆解结果中提取前三秒数据，为钩子吸引力评估提供结构化分析。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "vercel-labs/agent-skills/react-best-practices",
+        "name": "react-best-practices",
+        "description": "React and Next.js performance optimization guidelines from Vercel Engineering. This skill should be used when writing, reviewing, or refactoring React/Next.js code to ensure optimal performance patterns. Triggers on tasks involving React components, Next.js pages, data fetching, bundle optimization, or performance improvements.",
+        "author": "Vercel",
+        "icon_url": "source-icon/vercel-labs-agent-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/vercel-labs/agent-skills/0.0.1/react-best-practices.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/vercel-labs/agent-skills/0.0.1/react-best-practices/SKILL.md",
+        "version": "0.0.1",
+        "source": "vercel-labs/agent-skills",
+        "tags": [
+          "development_tools"
+        ],
+        "categories": [
+          "development_tools"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668691000,
+        "updated_at": 1774932709000,
+        "language": {
+          "description_v2": {
+            "en": "Apply Vercel Engineering's React and Next.js performance optimization guidelines when writing, reviewing, or refactoring code.",
+            "ja": "コードの作成・レビュー・リファクタリング時に、Vercel Engineering の React および Next.js パフォーマンス最適化ガイドラインを適用します。",
+            "zh-cn": "在编写、审查或重构代码时，应用 Vercel Engineering 的 React 和 Next.js 性能优化规范。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "vercel-labs/agent-skills/composition-patterns",
+        "name": "composition-patterns",
+        "description": "",
+        "author": "Vercel",
+        "icon_url": "source-icon/vercel-labs-agent-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/vercel-labs/agent-skills/0.0.1/composition-patterns.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/vercel-labs/agent-skills/0.0.1/composition-patterns/SKILL.md",
+        "version": "0.0.1",
+        "source": "vercel-labs/agent-skills",
+        "tags": [
+          "development_tools"
+        ],
+        "categories": [
+          "development_tools"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668691000,
+        "updated_at": 1774932709000,
+        "language": {
+          "description_v2": {
+            "en": "Design scalable React component architectures using composition patterns including compound components, render props, and context providers, with React 19 updates.",
+            "ja": "複合コンポーネント、render props、context provider などのコンポジションパターンを用いてスケーラブルな React コンポーネント設計を行います。React 19 の変更にも対応。",
+            "zh-cn": "使用组合模式设计可扩展的 React 组件架构，涵盖复合组件、render props 和 context，包含 React 19 更新。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "vercel-labs/agent-skills/react-native-skills",
+        "name": "react-native-skills",
+        "description": "",
+        "author": "Vercel",
+        "icon_url": "source-icon/vercel-labs-agent-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/vercel-labs/agent-skills/0.0.1/react-native-skills.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/vercel-labs/agent-skills/0.0.1/react-native-skills/SKILL.md",
+        "version": "0.0.1",
+        "source": "vercel-labs/agent-skills",
+        "tags": [
+          "development_tools"
+        ],
+        "categories": [
+          "development_tools"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668692000,
+        "updated_at": 1774932709000,
+        "language": {
+          "description_v2": {
+            "en": "Apply React Native and Expo best practices for building performant mobile apps, covering animations, list optimization, and native platform APIs.",
+            "ja": "React Native と Expo のベストプラクティスを適用して高性能なモバイルアプリを構築します。アニメーション、リスト最適化、ネイティブ API に対応。",
+            "zh-cn": "应用 React Native 和 Expo 最佳实践构建高性能移动应用，涵盖动画、列表优化和原生平台 API。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "vercel-labs/agent-skills/web-design-guidelines",
+        "name": "web-design-guidelines",
+        "description": "Review UI code for Web Interface Guidelines compliance. Use when asked to \"review my UI\", \"check accessibility\", \"audit design\", \"review UX\", or \"check my site against best practices\".",
+        "author": "Vercel",
+        "icon_url": "source-icon/vercel-labs-agent-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/vercel-labs/agent-skills/0.0.1/web-design-guidelines.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/vercel-labs/agent-skills/0.0.1/web-design-guidelines/SKILL.md",
+        "version": "0.0.1",
+        "source": "vercel-labs/agent-skills",
+        "tags": [
+          "ui_design"
+        ],
+        "categories": [
+          "ui_design"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668692000,
+        "updated_at": 1774932709000,
+        "language": {
+          "description_v2": {
+            "en": "Review UI code for compliance with Web Interface Guidelines, covering accessibility, design quality, and UX best practices.",
+            "ja": "Web インターフェースガイドラインへの準拠を確認するため、アクセシビリティ、デザイン品質、UX ベストプラクティスの観点から UI コードをレビューします。",
+            "zh-cn": "审查 UI 代码是否符合 Web 界面规范，涵盖无障碍访问、设计质量和 UX 最佳实践。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "openai/skills/slides",
+        "name": "slides",
+        "description": "Create and edit presentation slide decks (`.pptx`) with PptxGenJS, bundled layout helpers, and render/validation utilities. Use when tasks involve building a new PowerPoint deck, recreating slides from screenshots/PDFs/reference decks, modifying slide content while preserving editable output, adding charts/diagrams/visuals, or diagnosing layout issues such as overflow, overlaps, and font substitution.",
+        "author": "OpenAI",
+        "icon_url": "source-icon/openai-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/openai/skills/0.0.1/slides.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/openai/skills/0.0.1/slides/SKILL.md",
+        "version": "0.0.1",
+        "source": "openai/skills",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668690000,
+        "updated_at": 1774932708000,
+        "language": {
+          "description_v2": {
+            "en": "Build and edit PowerPoint decks (.pptx) with layout helpers and validation, supporting charts, visuals, and diagnosing overflow or overlap issues.",
+            "ja": "レイアウトヘルパーと検証ユーティリティを使用して PowerPoint デッキ（.pptx）を作成・編集し、チャート、ビジュアル、レイアウト問題の診断に対応します。",
+            "zh-cn": "使用布局辅助和验证工具构建与编辑 PowerPoint 演示文稿（.pptx），支持图表、视觉元素及布局问题诊断。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "openai/skills/screenshot",
+        "name": "screenshot",
+        "description": "Use when the user explicitly asks for a desktop or system screenshot (full screen, specific app or window, or a pixel region), or when tool-specific capture capabilities are unavailable and an OS-level capture is needed.",
+        "author": "OpenAI",
+        "icon_url": "source-icon/openai-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/openai/skills/0.0.1/screenshot.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/openai/skills/0.0.1/screenshot/SKILL.md",
+        "version": "0.0.1",
+        "source": "openai/skills",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668691000,
+        "updated_at": 1774932708000,
+        "language": {
+          "description_v2": {
+            "en": "Capture desktop or system screenshots at full screen, app window, or pixel region level when tool-specific capture is unavailable.",
+            "ja": "ツール固有のキャプチャが利用できない場合に、全画面、アプリウィンドウ、または指定領域のシステムレベルスクリーンショットを取得します。",
+            "zh-cn": "在工具级截图不可用时，对全屏、应用窗口或指定区域进行系统级截图。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "openai/skills/frontend-skill",
+        "name": "frontend-skill",
+        "description": "Use when the task asks for a visually strong landing page, website, app, prototype, demo, or game UI. This skill enforces restrained composition, image-led hierarchy, cohesive content structure, and tasteful motion while avoiding generic cards, weak branding, and UI clutter.",
+        "author": "OpenAI",
+        "icon_url": "source-icon/openai-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/openai/skills/0.0.1/frontend-skill.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/openai/skills/0.0.1/frontend-skill/SKILL.md",
+        "version": "0.0.1",
+        "source": "openai/skills",
+        "tags": [
+          "ui_design"
+        ],
+        "categories": [
+          "ui_design"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668690000,
+        "updated_at": 1774932707000,
+        "language": {
+          "description_v2": {
+            "en": "Build visually strong landing pages, apps, prototypes, and game UIs with restrained composition, image-led hierarchy, and tasteful motion.",
+            "ja": "抑制されたレイアウト、画像主導の階層、洗練されたモーションで、視覚的に力強いランディングページ・アプリ・プロトタイプ・ゲーム UI を構築します。",
+            "zh-cn": "构建视觉冲击力强的落地页、应用、原型和游戏界面，注重克制的排版、图像主导的层级和精致的动效。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "openai/skills/figma",
+        "name": "figma",
+        "description": "Use the Figma MCP server to fetch design context, screenshots, variables, and assets from Figma, and to translate Figma nodes into production code. Trigger when a task involves Figma URLs, node IDs, design-to-code implementation, or Figma MCP setup and troubleshooting.",
+        "author": "Figma",
+        "icon_url": "source-icon/figma.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/openai/skills/0.0.1/figma.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/openai/skills/0.0.1/figma/SKILL.md",
+        "version": "0.0.1",
+        "source": "openai/skills",
+        "tags": [
+          "ui_design"
+        ],
+        "categories": [
+          "ui_design"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668690000,
+        "updated_at": 1774932707000,
+        "language": {
+          "description_v2": {
+            "en": "Fetch Figma design context, screenshots, variables, and assets via MCP, and translate Figma nodes into production code.",
+            "ja": "MCP 経由で Figma のデザインコンテキスト、スクリーンショット、変数、アセットを取得し、Figma ノードをプロダクションコードに変換します。",
+            "zh-cn": "通过 MCP 获取 Figma 设计上下文、截图、变量和资源，并将 Figma 节点转译为生产代码。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "anthropics/skills/canvas-design",
+        "name": "canvas-design",
+        "description": "Create beautiful visual art in .png and .pdf documents using design philosophy. You should use this skill when the user asks to create a poster, piece of art, design, or other static piece. Create original visual designs, never copying existing artists' work to avoid copyright violations.",
+        "author": "Anthropic",
+        "icon_url": "source-icon/anthropics-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/canvas-design.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/canvas-design/SKILL.md",
+        "version": "0.0.1",
+        "source": "anthropics/skills",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668689000,
+        "updated_at": 1774932706000,
+        "language": {
+          "description_v2": {
+            "en": "Create original visual art, posters, and designs as .png or .pdf using design philosophy, without copying existing artists' work.",
+            "ja": "デザイン哲学に基づいてオリジナルのビジュアルアート、ポスター、デザインを .png または .pdf で制作します。既存アーティストの作品は複製しません。",
+            "zh-cn": "运用设计理念创作原创视觉艺术、海报和设计作品，输出为 .png 或 .pdf，不复制任何现有艺术家的作品。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "anthropics/skills/doc-coauthoring",
+        "name": "doc-coauthoring",
+        "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
+        "author": "Anthropic",
+        "icon_url": "source-icon/anthropics-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/doc-coauthoring.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/doc-coauthoring/SKILL.md",
+        "version": "0.0.1",
+        "source": "anthropics/skills",
+        "tags": [
+          "content_creation"
+        ],
+        "categories": [
+          "content_creation"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668689000,
+        "updated_at": 1774932706000,
+        "language": {
+          "description_v2": {
+            "en": "Guide users through a structured co-authoring workflow for documentation, proposals, technical specs, and decision docs.",
+            "ja": "ドキュメント、提案書、技術仕様書、意思決定ドキュメントの作成を構造化された共同執筆ワークフローでサポートします。",
+            "zh-cn": "引导用户通过结构化协作流程撰写文档、提案、技术规格和决策文档。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "anthropics/skills/internal-comms",
+        "name": "internal-comms",
+        "description": "A set of resources to help me write all kinds of internal communications, using the formats that my company likes to use. Claude should use this skill whenever asked to write some sort of internal communications (status reports, leadership updates, 3P updates, company newsletters, FAQs, incident reports, project updates, etc.).",
+        "author": "Anthropic",
+        "icon_url": "source-icon/anthropics-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/internal-comms.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/internal-comms/SKILL.md",
+        "version": "0.0.1",
+        "source": "anthropics/skills",
+        "tags": [
+          "productivity"
+        ],
+        "categories": [
+          "productivity"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668689000,
+        "updated_at": 1774932706000,
+        "language": {
+          "description_v2": {
+            "en": "Write internal communications in company-preferred formats, including status reports, leadership updates, newsletters, incident reports, and FAQs.",
+            "ja": "社内で使用する形式に沿って、ステータスレポート、リーダーシップ更新、ニュースレター、インシデントレポート、FAQ などの社内コミュニケーション資料を作成します。",
+            "zh-cn": "按公司偏好格式撰写内部沟通材料，涵盖状态报告、领导层更新、通讯、事故报告和 FAQ。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "openai/skills/security-best-practices",
+        "name": "security-best-practices",
+        "description": "Perform language and framework specific security best-practice reviews and suggest improvements. Trigger only when the user explicitly requests security best practices guidance, a security review/report, or secure-by-default coding help. Trigger only for supported languages (python, javascript/typescript, go). Do not trigger for general code review, debugging, or non-security tasks.",
+        "author": "OpenAI",
+        "icon_url": "source-icon/openai-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/openai/skills/0.0.1/security-best-practices.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/openai/skills/0.0.1/security-best-practices/SKILL.md",
+        "version": "0.0.1",
+        "source": "openai/skills",
+        "tags": [
+          "development_tools"
+        ],
+        "categories": [
+          "development_tools"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668689000,
+        "updated_at": 1774932706000,
+        "language": {
+          "description_v2": {
+            "en": "Review code for security best practices and suggest improvements, supporting Python, JavaScript/TypeScript, and Go.",
+            "ja": "Python、JavaScript/TypeScript、Go を対象にセキュリティベストプラクティスのレビューと改善提案を行います。",
+            "zh-cn": "针对 Python、JavaScript/TypeScript 和 Go 进行安全最佳实践审查并提供改进建议。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "anthropics/skills/web-artifacts-builder",
+        "name": "web-artifacts-builder",
+        "description": "Suite of tools for creating elaborate, multi-component claude.ai HTML artifacts using modern frontend web technologies (React, Tailwind CSS, shadcn/ui). Use for complex artifacts requiring state management, routing, or shadcn/ui components - not for simple single-file HTML/JSX artifacts.",
+        "author": "Anthropic",
+        "icon_url": "source-icon/anthropics-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/web-artifacts-builder.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/web-artifacts-builder/SKILL.md",
+        "version": "0.0.1",
+        "source": "anthropics/skills",
+        "tags": [
+          "development_tools"
+        ],
+        "categories": [
+          "development_tools"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668688000,
+        "updated_at": 1774932705000,
+        "language": {
+          "description_v2": {
+            "en": "Build complex, multi-component HTML artifacts using React, Tailwind CSS, and shadcn/ui for projects requiring state management or routing.",
+            "ja": "React、Tailwind CSS、shadcn/ui を使用して、状態管理やルーティングが必要な複雑なマルチコンポーネントの HTML を構築します。",
+            "zh-cn": "使用 React、Tailwind CSS 和 shadcn/ui 构建复杂的多组件 HTML，适用于需要状态管理或路由的项目。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "anthropics/skills/algorithmic-art",
+        "name": "algorithmic-art",
+        "description": "Creating algorithmic art using p5.js with seeded randomness and interactive parameter exploration. Use this when users request creating art using code, generative art, algorithmic art, flow fields, or particle systems. Create original algorithmic art rather than copying existing artists' work to avoid copyright violations.",
+        "author": "Anthropic",
+        "icon_url": "source-icon/anthropics-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/algorithmic-art.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/algorithmic-art/SKILL.md",
+        "version": "0.0.1",
+        "source": "anthropics/skills",
+        "tags": [
+          "ui_design"
+        ],
+        "categories": [
+          "ui_design"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668688000,
+        "updated_at": 1774932705000,
+        "language": {
+          "description_v2": {
+            "en": "Create original algorithmic art using p5.js with seeded randomness, interactive parameters, flow fields, and particle systems.",
+            "ja": "シード乱数、インタラクティブパラメーター、フローフィールド、パーティクルシステムを用いて p5.js でオリジナルのアルゴリズムアートを制作します。",
+            "zh-cn": "使用 p5.js 创作原创算法艺术，支持种子随机、交互参数、流场和粒子系统。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "anthropics/skills/theme-factory",
+        "name": "theme-factory",
+        "description": "Toolkit for styling artifacts with a theme. These artifacts can be slides, docs, reportings, HTML landing pages, etc. There are 10 pre-set themes with colors/fonts that you can apply to any artifact that has been creating, or can generate a new theme on-the-fly.",
+        "author": "Anthropic",
+        "icon_url": "source-icon/anthropics-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/theme-factory.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/theme-factory/SKILL.md",
+        "version": "0.0.1",
+        "source": "anthropics/skills",
+        "tags": [
+          "ui_design"
+        ],
+        "categories": [
+          "ui_design"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668688000,
+        "updated_at": 1774932705000,
+        "language": {
+          "description_v2": {
+            "en": "Apply any of 10 preset or custom on-the-fly themes with colors and fonts to slides, docs, reports, and HTML landing pages.",
+            "ja": "スライド、ドキュメント、レポート、HTML ランディングページに10種類のプリセットテーマまたはカスタムテーマを適用します。",
+            "zh-cn": "为幻灯片、文档、报告和 HTML 落地页应用 10 种预设主题或实时生成自定义主题。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "anthropics/skills/brand-guidelines",
+        "name": "brand-guidelines",
+        "description": "Applies Anthropic's official brand colors and typography to any sort of artifact that may benefit from having Anthropic's look-and-feel. Use it when brand colors or style guidelines, visual formatting, or company design standards apply.",
+        "author": "Anthropic",
+        "icon_url": "source-icon/anthropics-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/brand-guidelines.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/brand-guidelines/SKILL.md",
+        "version": "0.0.1",
+        "source": "anthropics/skills",
+        "tags": [
+          "ui_design"
+        ],
+        "categories": [
+          "ui_design"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668688000,
+        "updated_at": 1774932705000,
+        "language": {
+          "description_v2": {
+            "en": "Apply Anthropic's official brand colors and typography to any artifact to ensure consistent look-and-feel.",
+            "ja": "Anthropic の公式ブランドカラーとタイポグラフィを任意の Artifact に適用し、一貫したビジュアルスタイルを実現します。",
+            "zh-cn": "将 Anthropic 官方品牌色彩和字体规范应用于任意 Artifact，确保视觉风格一致。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "anthropics/skills/mcp-builder",
+        "name": "mcp-builder",
+        "description": "Guide for creating high-quality MCP (Model Context Protocol) servers that enable LLMs to interact with external services through well-designed tools. Use when building MCP servers to integrate external APIs or services, whether in Python (FastMCP) or Node/TypeScript (MCP SDK).",
+        "author": "Anthropic",
+        "icon_url": "source-icon/anthropics-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/mcp-builder.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/mcp-builder/SKILL.md",
+        "version": "0.0.1",
+        "source": "anthropics/skills",
+        "tags": [
+          "development_tools"
+        ],
+        "categories": [
+          "development_tools"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668687000,
+        "updated_at": 1774932704000,
+        "language": {
+          "description_v2": {
+            "en": "A guide for building high-quality MCP servers that connect LLMs to external APIs and services",
+            "ja": "LLM を外部 API やサービスに接続する高品質な MCP サーバーを構築するガイドです。",
+            "zh-cn": "构建高质量 MCP 服务器的指南，将 LLM 与外部 API 和服务连接。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "anthropics/skills/frontend-design",
+        "name": "frontend-design",
+        "description": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, artifacts, posters, or applications (examples include websites, landing pages, dashboards, React components, HTML/CSS layouts, or when styling/beautifying any web UI). Generates creative, polished code and UI design that avoids generic AI aesthetics.",
+        "author": "Anthropic",
+        "icon_url": "source-icon/anthropics-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/frontend-design.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/frontend-design/SKILL.md",
+        "version": "0.0.1",
+        "source": "anthropics/skills",
+        "tags": [
+          "development_tools",
+          "ui_design"
+        ],
+        "categories": [
+          "development_tools",
+          "ui_design"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668687000,
+        "updated_at": 1774932704000,
+        "language": {
+          "description_v2": {
+            "en": "Build distinctive, production-grade frontend interfaces with polished UI design that avoids generic AI aesthetics.",
+            "ja": "没個性なAIデザインを避けた、洗練された本番品質のフロントエンドインターフェースを構築します。",
+            "zh-cn": "构建具有独特风格、生产级质量的前端界面，避免千篇一律的 AI 审美。"
+          }
+        },
+        "pinned": 0
+      },
+      {
+        "skill_id": "anthropics/skills/webapp-testing",
+        "name": "webapp-testing",
+        "description": "Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.",
+        "author": "Anthropic",
+        "icon_url": "source-icon/anthropics-skills.svg",
+        "cdn_uri": "p11-market.byteimg.com",
+        "tos_uri": "tos-cn-i-17oceyzymr/skills",
+        "zip_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/webapp-testing.zip",
+        "skill_md_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/skills/anthropics/skills/0.0.1/webapp-testing/SKILL.md",
+        "version": "0.0.1",
+        "source": "anthropics/skills",
+        "tags": [
+          "development_tools"
+        ],
+        "categories": [
+          "development_tools"
+        ],
+        "category_weight": 0,
+        "created_at": 1774668687000,
+        "updated_at": 1774932704000,
+        "language": {
+          "description_v2": {
+            "en": "Test and debug local web applications using Playwright, with support for screenshots and browser log inspection.",
+            "ja": "Playwright を使用してローカル Web アプリをテスト・デバッグし、スクリーンショットやブラウザログの確認に対応します。",
+            "zh-cn": "使用 Playwright 对本地 Web 应用进行测试与调试，支持截图和浏览器日志查看。"
+          }
+        },
+        "pinned": 0
+      }
+    ],
+    "tag_labels": {
+      "content_creation": {
+        "en": "Content Creation",
+        "ja": "コンテンツ制作",
+        "zh-cn": "内容创作"
+      },
+      "data_analytics": {
+        "en": "Data Analysis",
+        "ja": "データ分析",
+        "zh-cn": "数据分析"
+      },
+      "development_tools": {
+        "en": "Developer Tools",
+        "ja": "開発ツール",
+        "zh-cn": "开发工具"
+      },
+      "productivity": {
+        "en": "Productivity",
+        "ja": "生産性向上",
+        "zh-cn": "效率提升"
+      },
+      "ui_design": {
+        "en": "UI Design",
+        "ja": "UIデザイン",
+        "zh-cn": "界面设计"
+      }
+    }
+  },
+  "success": "true"
+}

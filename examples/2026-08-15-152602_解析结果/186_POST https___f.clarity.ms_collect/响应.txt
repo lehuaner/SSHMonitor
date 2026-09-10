@@ -1,0 +1,7 @@
+HTTP/1.1 204 No Content
+Server: nginx
+Date: Sat, 15 Aug 2026 07:25:41 GMT
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Origin: https://www.trae.cn
+Vary: Origin
+Request-Context: appId=cid-v1:a449a586-8786-487f-a449-dc1b282a2628

@@ -1,0 +1,21 @@
+{
+  "knowledgebase_strategy_id": "938fc100e0123dc9539ae5e4fb232246_merge",
+  "user_knowledgebase_id": "5f16f4b04abb1e74e3a2f6f9724027c8-1f9e1a2f8f26a7d1985171fc13a6b29b-beb9f27af66d9e91756abbae87d2ff1e",
+  "strategy": {
+    "index_type": 1,
+    "index_strategy": {
+      "embedding_model": "codekg_bge_m3",
+      "split_method": "v3"
+    }
+  },
+  "files": [
+    {
+      "content": "{\"nodes\":[{\"id\":1,\"callFrame\":{\"functionName\":\"(root)\",\"scriptId\":\"0\",\"url\":\"\",\"lineNumber\":-1,\"columnNumber\":-1},\"hitCount\":0,\"children\":[2]},{\"id\":2,\"callFrame\":{\"functionName\":\"\",\"scriptId\":\"174\",\"url\":\"file:///c:/Users/lehuan-pc-pc/AppData/Local/Programs/TRAE%20SOLO%20CN/resources/app/out/vs/workbench/api/node/extensionHostProcess.js\",\"lineNumber\":148,\"columnNumber\":7769},\"hitCount\":0,\"children\":[3]},{\"id\":3,\"callFrame\":{\"functionName\":\"o\",\"scriptId\":\"174\",\"url\":\"file:///c:/Users/lehuan-pc-pc/AppData/Local/Programs/TRAE%20SOLO%20CN/resources/app/out/vs/workbench/api/node/extensionHostProcess.js\",\"lineNumber\":148,\"columnNumber\":8632},\"hitCount\":0,\"children\":[4]},{\"id\":4,\"callFrame\":{\"functionName\":\"XO\",\"scriptId\":\"174\",\"url\":\"file:///c:/Users/lehuan-pc-pc/AppData/Local/Programs/TRAE%20SOLO%20CN/resources/app/out/vs/workbench/api/node/extensionHostProcess.js\",\"lineNumber\":7,\"columnNumber\":6576},\"hitCount\":0,\"children\":[5]},{\"id\":5,\"callFrame\":{\"functionName\":\"\",\"scriptId\":\"174\",\"url\":\"file:///c:/Users/lehuan-pc-pc/AppData/Local/Programs/TRAE%20SOLO%20CN/resources/app/out/vs/workbench/api/node/extensionHostProcess.js\",\"lineNumber\":7,\"columnNumber\":6633},\"hitCount\":0,\"children\":[6]},{\"id\":6,\"callFrame\":{\"functionName\":\"\",\"scriptId\":\"174\",\"url\":\"file:///c:/Users/lehuan-pc-pc/AppData/Local/Programs/TRAE%20SOLO%20CN/resources/app/out/vs/workbench/api/node/extensionHostProcess.js\",\"lineNumber\":7,\"columnNumber\":6642},\"hitCount\":0,\"children\":[7]},{\"id\":7,\"callFrame\":{\"functionName\":\"o\",\"scriptId\":\"174\",\"url\":\"file:///c:/Users/lehuan-pc-pc/AppData/Local/Programs/TRAE%20SOLO%20CN/resources/app/out/vs/workbench/api/node/extensionHostProcess.js\",\"lineNumber\":148,\"columnNumber\":8674},\"hitCount\":0,\"children\":[8]},{\"id\":8,\"callFrame\":{\"functionName\":\"_Y\",\"scriptId\":\"174\",\"url\":\"file:///c:/Users/lehuan-pc-pc/AppData/Local/Programs/TRAE%20SOLO%20CN/resources/app/out/vs/workbench/api/node/extensionHostProcess.js\",\"lineNumber\":133,\"columnNumber\":13734},\"hitCount\":0,\"children\":[9]},{\"id\":9,\"callFrame\":{\"functionName\":\"WY\",\"scriptId\":\"174\",\"url\":\"file:///c:/Users/lehuan-pc-pc/AppData/Local/Programs/TRAE%20SOLO%20CN/resources/app/out/vs/workbench/api/node/extensionHostProcess.js\",\"lineNumber\":133,\"columnNumber\":14911},\"hitCount\":0,\"children\":[10,12]},{\"id\":10,\"callFrame\":{\"functionName\":\"getItemLabel\",\"scriptId\":\"174\",\"url\":\"file:///c:/Users/lehuan-pc-pc/AppData/Local/Programs/TRAE%20SOLO%20CN/resources/app/out/vs/workbench/api/node/extensionHostProcess.js\",\"lineNumber\":148,\"columnNumber\":10185},\"hitCount\":0,\"children\":[11]},{\"id\":11,\"callFrame\":{\"functionName\":\"basename\",\"scriptId\":\"174\",\"url\":\"file:///c:/Users/lehuan-pc-pc/AppData/Local/Programs/TRAE%20SOLO%20CN/resources/app/out/vs/workbench/api/node/extensionHostProcess.js\",\"lineNumber\":26,\"columnNumber\":11832},\"hitCount\":0},{\"id\":12,\"callFrame\":{\"functionName\":\"getItemPath\",\"scriptId\":\"174\",\"url\":\"file:///c:/Users/lehuan-pc-pc/AppData/Local/Programs/TRAE%20SOLO%20CN/resources/app/out/vs/workbench/api/node/extensionHostProcess.js\",\"lineNumber\":148,\"columnNumber\":10274},\"hitCount\":1,\"positionTicks\":[{\"line\":149,\"ticks\":1}]}],\"startTime\":385234180,\"endTime\":385481146,\"samples\":[8,11,12],\"timeDeltas\":[226018,12730,7483]}",
+      "file_id": "3ff2b0f760fe0b9ded3939c1d9728fe7f84aaa7e",
+      "path": "exthost-70c8d9.cpuprofile",
+      "language": "",
+      "upload_type": 1
+    }
+  ],
+  "update_scene_type": 1
+}

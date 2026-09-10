@@ -1,0 +1,22 @@
+POST https://api.trae.cn/cloudide/api/v3/trae/CheckLogin HTTP/2
+:method: POST
+:authority: api.trae.cn
+:scheme: https
+:path: /cloudide/api/v3/trae/CheckLogin
+content-length: 30
+traceparent: 03-984b3aa253d7309c35c8d91d57ca4dcf-83c442cff3b3ed79-01
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 Edg/148.0.0.0
+accept: application/json, text/plain, */*
+sec-ch-ua: "Chromium";v="148", "Microsoft Edge";v="148", "Not/A)Brand";v="99"
+content-type: application/json
+sec-ch-ua-mobile: ?0
+origin: https://www.trae.cn
+sec-fetch-site: same-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://www.trae.cn/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=1, i
+cookie: _clck=d99nj3%5E2%5Eg8r%5E0%5E2423; ttwid=1%7CPtdMQoreepBDjCw0b1WB_uaeBrfKAlJJtiH0OxXlJX4%7C1787204059%7Ccdb876bc3360583e2454ad17bed9e4d8bc4fcca23a193a9ef98dfb68d1b6e527; _uetsid=b71449109c5711f1be2e75835fe139b4|1fyqsg5|2|g8r|0|2423; _uetmsclkid=_uet31831cf35a7e12cdae5a7675ca6584ee; _uetvid=b71459309c5711f195a681961e6f964c|1bqxi7y|1787204062781|5|1|bat.bing.com/p/conversions/c/z; _clsk=dc1344%5E1787204062989%5E4%5E1%5En.clarity.ms%2Fcollect

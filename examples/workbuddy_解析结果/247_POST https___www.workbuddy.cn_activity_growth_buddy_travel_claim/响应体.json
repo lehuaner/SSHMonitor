@@ -1,0 +1,16 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "fdcd9d26-30ef-4124-b75a-6217ce13e638",
+  "data": {
+    "state": "idle",
+    "record_id": 3598524,
+    "letter": {
+      "id": 1,
+      "text": "亲爱的铲屎官：\n坐在窗边打开电脑梳理今年战略，写了三行卡住。要是有个能帮我把零散想法压成一张可讲清楚的战略页就好了——下次开会前先问它。\n\n——Buddy   来自 · 咖啡馆",
+      "guide_text": "Buddy 帮你画好了战略地图，快来看吧"
+    },
+    "reward_credit": 8,
+    "use_deeplink": "workbuddy://discover?cardId=interactive-annual-report"
+  }
+}

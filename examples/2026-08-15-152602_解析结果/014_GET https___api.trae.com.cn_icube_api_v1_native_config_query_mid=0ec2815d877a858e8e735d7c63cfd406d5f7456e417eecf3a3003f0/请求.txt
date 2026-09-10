@@ -1,0 +1,21 @@
+GET https://api.trae.com.cn/icube/api/v1/native/config/query?mid=0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51&did=3798161405005257&packageType=stable_cn&productCode=SOLO_Lite&platform=Win&branch=release_solo_win32_cn&arch=x64&appVersion=0.1.50&buildVersion=2.3.70844 HTTP/2
+:method: GET
+:authority: api.trae.com.cn
+:scheme: https
+:path: /icube/api/v1/native/config/query?mid=0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51&did=3798161405005257&packageType=stable_cn&productCode=SOLO_Lite&platform=Win&branch=release_solo_win32_cn&arch=x64&appVersion=0.1.50&buildVersion=2.3.70844
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+sec-fetch-dest: empty
+sec-fetch-mode: no-cors
+sec-fetch-site: none
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+content-type: application/json
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-request-id: fdbd11a1-fe9c-4261-83bb-9991f6d595b6
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.50
+accept: */*
+x-tt-trace-id: 00-044fca210dd7e685d584dc9d534fffff-044fca210dd7e685-01
+smbyttnet: 1

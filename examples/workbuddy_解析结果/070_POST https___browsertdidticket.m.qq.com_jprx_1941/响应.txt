@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Date: Mon, 07 Sep 2026 16:38:11 GMT
+Content-Length: 532
+Access-Control-Allow-Origin: https://www.workbuddy.cn
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Methods: GET, POST, OPTIONS
+Access-Control-Allow-Headers: DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization
+
+{"data":{"resp":{"ret":0,"msgBlock":"v2:UaoBkTT15LbOSKc1T1mroL8oeQ2fQj4MSO3DXVdHkFtqoOAod7PdUdopqDlcvLxxGYSV5+48k59adkdYPAhNy9maC+m9Dsg3DAzeKvxahS9mbY8IFEc8ioubXjOwD0ts+TrH5VolClENPMazO26hj/dri5C5JmzzpFevhq0Vlw1vXA6RN4GWr77V9s8+wso+dPH+4s/Kb3BWlPGTYLxDJlISYl18jxr9aXqdYi/9DBZKOMI98aplEfftLuRsEvXCdg9MS2JmVYdpaZ3NdE9dUgzxhXHf1fcee3Xu6+dpFpIBbS8=","token":"5nNeVCMzKOFxaWv7xeh2ZENf0g+ZS36YiAu8JpdwrMN5+Ixg/3z36pENfkaAMw0Mbn9ODA==","overtime":600,"ctrlFlags":0,"signKey":"C6202BE9063B9113834B33CF140B6304","signKeySeq":1788799091640}}}

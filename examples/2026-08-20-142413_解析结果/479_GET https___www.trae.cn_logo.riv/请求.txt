@@ -1,0 +1,18 @@
+GET https://www.trae.cn/logo.riv HTTP/2
+:method: GET
+:authority: www.trae.cn
+:scheme: https
+:path: /logo.riv
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 Edg/148.0.0.0
+sec-ch-ua: "Chromium";v="148", "Microsoft Edge";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile: ?0
+accept: */*
+sec-fetch-site: same-origin
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://www.trae.cn/login?redirect_url=https://www.trae.cn/download
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=1, i
+cookie: gfkadpd=711126,40124; _tea_utm_cache_711126={%22utm_source%22:%22bing%22%2C%22utm_medium%22:%22bing_sem%22%2C%22utm_campaign%22:%22487898715%22%2C%22utm_term%22:%22trae_bing_sem_dm_pc_cpc_pinp_solo_1%22}; s_v_web_id=verify_mt11ozcl_a2a4b7c9_25dc_b676_6dd8_0809391b1dd5; passport_auth_status_ss=ca08e1f426a4e18f442a0f69533313bd%2C; sessionid_ss=c441b78235652b1b755bcf2547079764; _clck=1yee49h%5E2%5Eg8r%5E0%5E2423; passport_auth_status=ca08e1f426a4e18f442a0f69533313bd%2C; n_mh=6F97NrsVcN6SzLG4FkeKzU_lIlWzsJnpwwpu1XD4etY; passport_mfa_token=CjhDzyClih9SscVKW%2BB6wScoiJZBoukjLyrmTwbf3m3zdPTXAJE1r2EYT71VgoXX1Dgu%2Fcy%2FM82%2FAxpKCjwAAAAAAAAAAAAAUM3u9kwtPSMFz2Ffxdl2x9fURJi8RJmWoodgojOYI1tv1xSWYD7xCWyxRRkHIZ7wSbMQsISaDhj2sdFsIAIiAQMslxP%2F; X-Cloudide-Session=Wk1lxTj--p9PBL5ylUNKOrdch3WmPXoZMTjKzxgStp4=.18cd6ac4a4b5c4cf; sid_ucp_v1=1.0.0-KGNmMTBjMzhkM2E2YjRmOWNjMTQyNDc5YzkyZGMzZjFkMzE0YWJiMDEKIAjX7fC9iKzhAhDukJrUBhjWsysgDDCx9qHQBjgCQPEHGgJscSIgYzQ0MWI3ODIzNTY1MmIxYjc1NWJjZjI1NDcwNzk3NjQ; session_tlb_tag=sttt%7C18%7CxEG3gjVlKxt1W88lRweXZP_________KrOj0O_Xk232vNmId1aXrvng0XOh0_kWzEZMtPh8Aj34%3D; is_staff_user=false; has_biz_token=false; _clsk=97nhb6%5E1787206496243%5E1%5E1%5Ej.clarity.ms%2Fcollect; __tea_cache_tokens_711126={%22_type_%22:%22default%22%2C%22user_unique_id%22:%227675972323816048182%22%2C%22timestamp%22:1787201584511}; d_ticket=71c873743cbba9107058229a98e5d07afdea5; odin_tt=574ee41858e6f48e82404d91908c62654e724c410b50f76a932dbf9f4e167c12e50a035b5cb6b95fc79b94e048b8c3f539cc602cb4a49b5e270f040f5ab656ab; passport_csrf_token=c46932115dadb81c65108e8a5bad3a1a; passport_csrf_token_default=c46932115dadb81c65108e8a5bad3a1a; sessionid=c441b78235652b1b755bcf2547079764; sid_guard=c441b78235652b1b755bcf2547079764%7C1787201646%7C5184000%7CMon%2C+19-Oct-2026+04%3A54%3A06+GMT; sid_tt=c441b78235652b1b755bcf2547079764; ssid_ucp_v1=1.0.0-KGNmMTBjMzhkM2E2YjRmOWNjMTQyNDc5YzkyZGMzZjFkMzE0YWJiMDEKIAjX7fC9iKzhAhDukJrUBhjWsysgDDCx9qHQBjgCQPEHGgJscSIgYzQ0MWI3ODIzNTY1MmIxYjc1NWJjZjI1NDcwNzk3NjQ; uid_tt=9c0c388c881b6d760e4c7d7f4c424776; uid_tt_ss=9c0c388c881b6d760e4c7d7f4c424776; ttwid=1%7CyIiT6_NrVw2KRzmlvT-RryAHEs9ei1oTXP4LH4dghe4%7C1787206982%7Cdfb5ee9325b0dd57b04b7c6e09742cd3ff7373469efa87765bd6281c8d723c05; _uetsid=07348a709c5311f19790eff7cb3d34d9|1hojqvc|2|g8r|0|2423; _uetvid=073486909c5311f1850de31a2fceca31|hzpk25|1787206496031|1|1|bat.bing.com/p/conversions/c/e; _uetmsclkid=_uet31831cf35a7e12cdae5a7675ca6584ee

@@ -1,0 +1,57 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "ddd5070a-eed6-4e8b-8dce-2252d2b333cd",
+  "data": {
+    "prizes": [
+      {
+        "prize_code": "积分_1",
+        "prize_name": "10 积分",
+        "prize_type": "credit",
+        "credit_amount": 10,
+        "probability_pct": 45,
+        "icon_url": ""
+      },
+      {
+        "prize_code": "实物奖励",
+        "prize_name": "杯子",
+        "prize_type": "physical",
+        "credit_amount": 0,
+        "probability_pct": 0.0003,
+        "icon_url": ""
+      },
+      {
+        "prize_code": "积分_2",
+        "prize_name": "100 积分",
+        "prize_type": "credit",
+        "credit_amount": 100,
+        "probability_pct": 9.997,
+        "icon_url": ""
+      },
+      {
+        "prize_code": "实物奖励_2",
+        "prize_name": "胸针",
+        "prize_type": "physical",
+        "credit_amount": 0,
+        "probability_pct": 0.0009,
+        "icon_url": ""
+      },
+      {
+        "prize_code": "积分_3",
+        "prize_name": "10 积分",
+        "prize_type": "credit",
+        "credit_amount": 10,
+        "probability_pct": 45,
+        "icon_url": ""
+      },
+      {
+        "prize_code": "实物奖励_3",
+        "prize_name": "冰箱贴",
+        "prize_type": "physical",
+        "credit_amount": 0,
+        "probability_pct": 0.0018,
+        "icon_url": ""
+      }
+    ]
+  }
+}

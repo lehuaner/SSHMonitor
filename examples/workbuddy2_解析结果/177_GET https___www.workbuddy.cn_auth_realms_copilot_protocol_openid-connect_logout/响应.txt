@@ -1,0 +1,20 @@
+HTTP/2 200
+content-type: text/html;charset=utf-8
+set-cookie: tgw_l7_route=6a42588a6336254c6fd85cf7d332f82a; Expires=Tue, 08-Sep-2026 09:06:24 GMT; Path=/; sameSite=None; Secure
+x-kc-routed-to: new
+set-cookie: AUTH_SESSION_ID=d216774f-2d02-4531-8f79-c73a817ce1a6.keycloak-clusterless-5df949fc4d-gmsxw;Version=1;Path=/auth/realms/copilot/;Secure;HttpOnly;SameSite=None
+content-language: zh-cn
+content-security-policy: frame-src 'self' open.weixin.qq.com ;frame-src 'self'; frame-ancestors 'self'; object-src 'none';
+referrer-policy: no-referrer
+strict-transport-security: max-age=31536000; includeSubDomains
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-robots-tag: none
+x-xss-protection: 1; mode=block
+server: APISIX/3.9.1
+x-request-id: 52191ba6-1144-4fb0-a456-d710a0dbbf4e
+cache-control: no-cache
+content-length: 15432
+date: Tue, 08 Sep 2026 08:06:24 GMT
+eo-log-uuid: 9023593935569480152
+eo-cache-status: MISS

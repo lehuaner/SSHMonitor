@@ -1,0 +1,8 @@
+HTTP/1.1 405 Method Not Allowed
+Server: Tengine
+Date: Sat, 15 Aug 2026 07:25:40 GMT
+Content-Type: text/html
+Content-Length: 245
+Connection: close
+Via: ens-cache15.cn4949[,0]
+EagleId: 0000000017867787401253833e

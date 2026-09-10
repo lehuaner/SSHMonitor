@@ -1,0 +1,34 @@
+HTTP/2 200
+date: Thu, 20 Aug 2026 06:23:54 GMT
+content-type: image/png
+content-length: 2488
+server: openresty
+imagex-fmt: png2png
+last-modified: Sat, 07 Mar 2026 19:10:35 GMT
+nw-nova: true
+nw-session-id: 2026030803103527395E26E67E2F5AF8AF64jlp03ot
+nw-session-trace: 2026-03-08T03:10:35.34229451+08:00 60
+x-bdcdn-cache-status: TCP_MISS
+x-imagex-extra: {"algo.succ":"resize","enc":{"h":128,"nq":75,"q":75,"w":128}}
+x-kfc-cachekey: http://5d3a87mb2n/user-avatar/assets/ff61226dd1afcabc59a91b56a2e2924e_192_192.png~128x128.image
+x-length: 2488
+x-powered-by: ImageX
+x-response-date: Sun, 08 Mar 2026 03:10:35 GMT
+x-tt-logid: 2026030803103527395E26E67E2F5AF8AF
+via: CHN-JSnanjing-CMCCZJ6-CACHE46[6],CHN-JSnanjing-CMCCZJ6-CACHE42[0,TCP_HIT,2],CHN-JSwuxi-GLOBAL2-CACHE52[26],CHN-JSwuxi-GLOBAL2-CACHE37[0,TCP_HIT,22],CHN-HEshijiazhuang-GLOBAL1-CACHE92[20],CHN-HEshijiazhuang-GLOBAL1-CACHE37[0,TCP_HIT,16],fdbd:dc01:b:133::34
+x-request-ip: fdbd:dc01:27:57::27
+x-tt-trace-tag: id=26;cdn-cache=hit;type=static
+x-response-cinfo: fdbd:dc01:27:57::27
+x-response-cache: miss
+server-timing: inner; dur=75
+x-tt-trace-host: 01fc458b80c80978ed29768ea18c76b74ed92b59f561de6825949ba0d21c27a5ae307a82399eaa3ddf042f10c97b5de4d573212a9d23d42c47f4d7c0db7366a0fb0bdbcddf6f91b813d75b96b8517d68977ade4da352848950b9ecf0a74f6aa0a311d720d32272308d455706226cb2c48f51c9201ca3c555b7857f92497938ff39
+x-tt-trace-id: 00-26030803103527395E26E67E2F5AF8AF-68A6E074928EEAEA-00
+x-response-lb: image
+x-hcs-proxy-type: 1
+x-ccdn-cachettl: 2592000
+nginx-hit: 1
+cache-control: max-age=31536000
+age: 2243782
+accept-ranges: bytes
+access-control-allow-origin: *
+x-tt-supplier-id: 0_9

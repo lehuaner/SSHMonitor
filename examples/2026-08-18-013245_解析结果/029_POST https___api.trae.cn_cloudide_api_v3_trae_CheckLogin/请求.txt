@@ -1,0 +1,25 @@
+POST https://api.trae.cn/cloudide/api/v3/trae/CheckLogin HTTP/2
+:method: POST
+:authority: api.trae.cn
+:scheme: https
+:path: /cloudide/api/v3/trae/CheckLogin
+content-length: 62
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+sec-fetch-dest: empty
+sec-fetch-mode: no-cors
+sec-fetch-site: none
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+content-type: application/json
+x-cloudide-token: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTkxMDMxOTI3ODcxOTY2NyIsInNvdXJjZSI6InJlZnJlc2hfdG9rZW4iLCJzb3VyY2VfaWQiOiJUYmpWLXFzQ2JNQXRJUGs2OFp3XzQtU1Q4LXgtc0RwVWNfb1FaOGZaMFkwPS4xOGNiZTlmMGUwMDM0OTI3IiwidGVuYW50X2lkIjoiN28yZDg5NHA3ZHIwbzQiLCJ0eXBlIjoidXNlciJ9LCJleHAiOjE3ODc5ODg0OTcsImlhdCI6MTc4Njc3ODg5N30.MHAOXaLtS0HfQTsctt1PIg7OtNhS_yT-HSaLruE_D4xjdtxD8o4ltxz0nHfFxwLWXA0Xq6ODlQniy2KSmc0_CVxaCV3ePPRBMEEFE_LbGgqa86nHHOIyrtNj-njUleYAgnbrtuZ0Upbm5omQCkDjos83CA3TBACmNfhVc0OVnSFQePAG1H2OmlBvscZtS28QirpFYHLZDEPUtiWknkFo3Cmcj6y53EtgA6ocOocAPnVVCWL4vi-KtzVC22NuT82gkpaxsQzK_cj_XghnMd-nketAACuOm_BXdTrmmZmFQHRLdr4XdW5XKMdg1wqPH44VeYQoO8FLdrLirHxyxR77GeWr_-hVKhFAk8IxamFRaxDSJCswe3TYfxF99nQEUIsbxqpFOFyxcVPs_177axG9C-6najjjBPihtB9LZF7LP5RdqBW1MIszHtGOI1HgK6_8lXYuYMQUBV7m3sEb785254V1YpTZ03apCvjkGOTJIXguAyW-b92xvu4v5ll26RLy1os2aZfQjkTjg1SrBqiGJvmfOZhPUrOrG7ZJuHoWcurdNNWtR2HSGLtGSlgVw6nlcgPYBJ9NmjQ8gfDt1QC4UABTwO9YZB8Rp0NXNZ8Qc51VTlRFyrVoyqhdbCAFhUm2meQHKSPNjTU-a4RDYTvJNrbDjRTcBy7WULLAT78IAKA
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: 7474af88-8f9f-44cb-b5ae-93ff9e56b257
+accept: */*
+x-tt-trace-id: 00-10c85bcf0dd7e685d584dc967e7fffff-10c85bcf0dd7e685-01
+x-helios: m14AAODZ9uWB4G8C9KMCFSG/4z4JM6D7beDbrH6HanfICCHD
+x-medusa: tUWDakGt3JBhkl9RYG9LGuGK4nIoGQMBR41GDACAEbc2GUiOULpVzKmjiNLGpU5C7tvwJwFFlSYGcerUdRPDUgVOWSFUQnrKkbyPCdKRWiwN6YuHslUyuZcONVcgIX1eDjFjA1duW9K/CqZbYjyK418P9itjP+rYWX9qxb/Wb3Jypm0PX//D/yV9lLEGItNwr0T+wQKSEPd5lJv2nXBwExgv9lbrHsuYY28uetiqg4b0pBILp+m9bfTzrhDGSUiqqPfzasWmClu5ELDHclz41nnTG+rUh6SC6IhS+NVj5OAOqQUVLb7Gcdi6FV9rsGcG2hZwhOlZIubyV8WAD+OgCSgdXiAV+ekzvLutCfNVpHVqhoCgCwRfDKvLX2Y32gvKxMeyPhWgNagDq2dkxTtHZ1S8bntVwzY4BW9U/G6t0GvLH+NyIEt7ThBlRACxxI87Mza3h0sJ1yq9H3nmE2niw9gNixNtTW9UorXH3eYk2/0FzwdY2eNRL6xx8pBHmBgMxfztf7lpf5wDCxLliOFHeO932pdeG8HQpW2Z+L2shnczhN0CpOfEnn5FjbuX8Yk4EjT7UxwuFIfSevZI/bjTRYOsvpA2xWXm++ydhfQguJpAiOynYrSDVFvl71/eiz9W1aHNxFaG1qCOrnlAl0QaCCmsIcD3VSlTPyxHn7/P3x8eT9/l/Y8Hj+knnJgA6yHu+TInALLbfxE3/5G7j4krjWvqWTxYrK0/v82RjXYuX7RKDZ5K9cf5H2eu1LpvJ3UJ5KOYapWQBygfZfv//7/v9///AAA=
+x-neptune: -11|50:51:59:00:09

@@ -1,0 +1,51 @@
+CONNECT copilot.tencent.com:443 HTTP/1.1
+host: copilot.tencent.com:443
+connection: close
+
+A SSLv3-compatible ClientHello handshake was found. Fiddler extracted the parameters below.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+Record Layer Version: 3.3 (TLS/1.2)
+Random: D8 67 8A DF 3E FC 37 9F CE 24 A1 12 56 27 C0 38 03 C2 FF F1 6F BC AE 2E E9 3C C4 19 BA D1 11 E8
+"Time": 2088/11/4 14:55:20
+SessionID: 85 29 9F B7 A3 78 5D FE 89 DF EF DE 04 43 AC B8 52 2A 41 E4 31 C7 F4 6F B6 E2 81 32 5D 9A DB D1
+Extensions: 
+	server_name	copilot.tencent.com
+	extended_master_secret	empty
+	renegotiation_info	00
+	supported_groups	x25519 [0x1d], secp256r1 [0x17], secp384r1 [0x18]
+	ec_point_formats	uncompressed [0x0]
+	SessionTicket	empty
+	ALPN		http/1.1
+	signature_algs	ecdsa_secp256r1_sha256, rsa_pss_rsae_sha256, rsa_pkcs1_sha256, ecdsa_secp384r1_sha384, rsa_pss_rsae_sha384, rsa_pkcs1_sha384, rsa_pss_rsae_sha512, rsa_pkcs1_sha512, rsa_pkcs1_sha1
+	key_share	00 24 00 1D 00 20 23 E4 96 DC 28 B7 08 77 3F 7D 9B 4F DF A4 E7 EE 22 6E 32 05 47 DE 9B 08 36 F9 1C 2F CE 10 19 04
+	psk_key_exchange_modes	01 01
+	supported_versions	Tls1.3, Tls1.2
+	padding		145 null bytes
+	pre_shared_key	00 26 00 20 8E 4D 00 00 4A 02 1D A8 5A 6A FB 42 A8 7D 9B 5D AA AA 80 AD 82 93 66 5A D5 D9 F6 4B EE 92 A8 94 85 8A 48 E2 00 31 30 56 B4 AE 05 95 9E 93 78 4F 9B 13 83 B4 6D 84 6E 0D 99 88 8A 4C 9E 6D 83 8B F4 15 C9 9B E8 79 9A A9 5A 86 29 D8 B2 AC EE A7 DF 22 90 5C 1D 1E 39
+Ciphers: 
+	[1301]	TLS_AES_128_GCM_SHA256
+	[1302]	TLS_AES_256_GCM_SHA384
+	[1303]	TLS_CHACHA20_POLY1305_SHA256
+	[C02F]	TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	[C02B]	TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+	[C030]	TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	[C02C]	TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+	[C027]	TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+	[CCA9]	TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+	[CCA8]	TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+	[C009]	TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+	[C013]	TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+	[C00A]	TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+	[C014]	TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+	[009C]	TLS_RSA_WITH_AES_128_GCM_SHA256
+	[009D]	TLS_RSA_WITH_AES_256_GCM_SHA384
+	[002F]	TLS_RSA_WITH_AES_128_CBC_SHA
+	[0035]	TLS_RSA_WITH_AES_256_CBC_SHA
+
+Compression: 
+	[00]	NO_COMPRESSION
+
+

@@ -1,0 +1,21 @@
+HTTP/2 200
+date: Sat, 15 Aug 2026 07:25:35 GMT
+content-type: application/json; charset=utf-8
+content-length: 21
+upstream-caught: 1786778735056497
+x-tt-logid: 20260815152535F033B9BFEB22AF07C834
+access-control-max-age: 1800
+access-control-allow-credentials: true
+access-control-allow-methods: GET, OPTIONS, HEAD, PUT, POST
+cross-origin-resource-policy: cross-origin
+cache-control: no-store, no-cache, must-revalidate
+pragma: no-cache
+expires: 0
+server-timing: cdn-cache;desc=MISS, edge;dur=2, origin;dur=47
+x-tt-trace-host: 01207a981426127d02143837b6aace09adce2809cbb0495dd214156de2a50874bbe1e30b332cc68320a7a315b54678580cc226d2641cec5180c57a48026340fb29f4d0428c743843e33b8e89bab08e7728cfb706661d4cadb09c7c1a1ce27c0bf69c1d457148dc8d987acb7107cba832323f318553bb25847bf4ee39026827ab7b
+x-tt-trace-tag: id=26;cdn-cache=miss;type=dyn
+x-tt-trace-id: 00-260815152535F033B9BFEB22AF07C834-7C097C2181A8B4D2-00
+server: TLB
+via: CHN-JSlianyungang-AREACMCC5-CACHE27[49],CHN-JSlianyungang-AREACMCC5-CACHE27[ovl,47]
+x-tt-supplier-id: 0_9
+server-timing: inner; dur=6

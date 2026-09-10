@@ -1,0 +1,1011 @@
+{
+  "request": {
+    "@os": "win",
+    "@updater": "msedge",
+    "acceptformat": "crx3,download,run,xz,zucc",
+    "apps": [
+      {
+        "appid": "ndikpojcjlepofdkaaldkinkjbeeebkl",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "720517793663c90e0dbd77cb42709bac49af733f83f73320ba89859d9b0310e0"
+          }
+        ],
+        "cohort": "rrf@0.08",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.08",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.08,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "10.34.0.84"
+      },
+      {
+        "appid": "oankkpibpaokgecfckkdkgaoafllipag",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "fa29a6d5775ff340900a65b39b02fc8b4b77d403c048d8debf22f2f5d09c61a0"
+          }
+        ],
+        "cohort": "rrf@0.21",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.21",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.21,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "6498.2025.9.4"
+      },
+      {
+        "appid": "kpfehajjjbbcifeehjgfgnabifknmdad",
+        "brand": "EPBR",
+        "cohort": "rrf@0.37",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.37",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.37,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "120.0.6050.0"
+      },
+      {
+        "appid": "ohckeflnhegojcjlcpbfpciadgikcohk",
+        "brand": "EPBR",
+        "cohort": "rrf@0.25",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.25",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.25,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "0.0.1.7"
+      },
+      {
+        "appid": "fppmbhmldokgmleojlplaaodlkibgikh",
+        "brand": "EPBR",
+        "cohort": "rrf@0.91",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.91",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.91,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "1.15.0.1"
+      },
+      {
+        "appid": "alpjnmnfbgfkmmpcfpejmmoebdndedno",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "bec8ead1da3c9600fe66bbcc0e7a9bed9a184c1be821b4d23570c6b7af7f0410"
+          }
+        ],
+        "cohort": "rrf@0.84",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.84",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.84,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "46.0.0.0"
+      },
+      {
+        "appid": "fgbafbciocncjfbbonhocjaohoknlaco",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "ef7bf9efb7c82e6847b572d7781e11fc7fd642a55ab79e42a3d3ba2f80d520f6"
+          }
+        ],
+        "cohort": "rrf@0.41",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.41",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.41,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "2026.8.3.1"
+      },
+      {
+        "appid": "laoigpblnllgcgjnjnllmfolckpjlhki",
+        "brand": "EPBR",
+        "cohort": "rrf@0.48",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.48",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.48,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "1.0.7.1652906823"
+      },
+      {
+        "appid": "mpicjakjneaggahlnmbojhjpnileolnb",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "96b9640eef0668f4d266932438731ee473f9c1186e1c64440512025567be62b7"
+          }
+        ],
+        "cohort": "rrf@0.33",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.33",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.33,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "4.0.1.32"
+      },
+      {
+        "appid": "pghocgajpebopihickglahgebcmkcekh",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "4f1384fbf5a9924759a947c162f80edcd91446146f48ac2320c31c1c2b6d7fe2"
+          }
+        ],
+        "cohort": "rrf@0.41",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.41",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.41,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "3.0.0.20"
+      },
+      {
+        "appid": "eeobbhfgfagbclfofmgbdfoicabjdbkn",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "cde4f808f038aaffece9680c0356ded00c81c4559e0a431acb45d1276425d9eb"
+          }
+        ],
+        "cohort": "rrf@0.43",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.43",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.43,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "1.0.0.12"
+      },
+      {
+        "appid": "kmkacjgmmfchkbeglfbjjeidfckbnkca",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "e51d3f4ef39e9104ec54e50dda09696dc25e190990c201a202292cc0ce740397"
+          }
+        ],
+        "cohort": "rrf@0.17",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.17",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.17,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "2026.6.5.1"
+      },
+      {
+        "appid": "ojblfafjmiikbkepnnolpgbbhejhlcim",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "7b178e210609ce91b858acfd7f2d9456ce71f6a45e773862cb3c3efa3a6ab999"
+          }
+        ],
+        "cohort": "rrf@0.79",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.79",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.79,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "4.10.3050.1"
+      },
+      {
+        "appid": "gllimckfbolmioaaihpppacjccghejen",
+        "brand": "EPBR",
+        "cohort": "rrf@0.82",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.82",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.82,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "1.2.0.0"
+      },
+      {
+        "appid": "dkjpmlmeembibieekchnelkkbmpejkak",
+        "brand": "EPBR",
+        "cohort": "rrf@0.23",
+        "emoji_locale": "zh",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.23",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.23,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "0.0.0.0"
+      },
+      {
+        "appid": "ahmaebgpfccdhgidjaidaoojjcijckba",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "07e0ad6da3d30a27962c6e09da9798ba1745856eaad71a036e2f639e93ea0b27"
+          }
+        ],
+        "cohort": "rrf@0.95",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.95",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.95,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "3.2.0.0"
+      },
+      {
+        "appid": "plbmmhnabegcabfbcejohgjpkamkddhn",
+        "brand": "EPBR",
+        "cohort": "rrf@0.91",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.91",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.91,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "3057"
+      },
+      {
+        "appid": "llmidpclgepbgbgoecnhcmgfhmfplfao",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "d79b0a389269f7011191a4f5f17a27919b6d43f34363919296e67e6c0107a6fd"
+          }
+        ],
+        "cohort": "rrf@0.39",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.39",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.39,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "2.1.114.0"
+      },
+      {
+        "appid": "ohjmcpfnpmlgfkommepbhamjmanldlae",
+        "brand": "EPBR",
+        "cohort": "rrf@0.16",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.16",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.16,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "2026.2.24.1"
+      },
+      {
+        "appid": "eodcfhpdifcaamjndfbdfbbhjkjgbion",
+        "brand": "EPBR",
+        "cohort": "rrf@0.63",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.63",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.63,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "2026.5.28.1"
+      },
+      {
+        "appid": "npbipokbgmclmkjhfjicdgnedhkocjpl",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "5f8f060b4e3100188e3dc3fd7f373f7d9056fb7d123181b130db80e75cb5e818"
+          }
+        ],
+        "cohort": "rrf@0.85",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "model_locale": "zh",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.85",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.85,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "2026.8.20.1"
+      },
+      {
+        "appid": "kieecehchjjaaepgajdhcehijkehdenm",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "4b7abf853d9b54dce31f8438c15aea88288358bd641b2de617860019ca0d85d4"
+          }
+        ],
+        "cohort": "rrf@0.97",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.97",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.97,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "2026.6.16.1"
+      },
+      {
+        "appid": "fmbfidpnnknmblionmcahabilfoageoe",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "5a8a5a5d1f948d724847c005c9875507c34e5b76e73192fc1f2d22605fd69bd7"
+          }
+        ],
+        "cohort": "rrf@0.27",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.27",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.27,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "2026.2.23.1"
+      },
+      {
+        "appid": "hjaimielcgmceiphgjjfddlgjklfpdei",
+        "brand": "EPBR",
+        "cohort": "rrf@0.21",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.21",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.21,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "1.0.0.5"
+      },
+      {
+        "appid": "jpinkpebmplndiafioikiciobeafamld",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "f081de18a604e95a175eaf4dd91b35b7f17ad4de24ee2f20eeb034c979bbcccb"
+          }
+        ],
+        "cohort": "rrf@0.39",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.39",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.39,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "2025.10.7.5"
+      },
+      {
+        "appid": "lfmeghnikdkbonehgjihjebgioakijgn",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "7e2556851d276bc7d7ee3fa5a49c23c56621a96fdaf45561279c9b3b5933b507"
+          }
+        ],
+        "cohort": "rrf@0.62",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.62",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.62,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "2.0.0.151"
+      },
+      {
+        "appid": "pbdgbpmpeenomngainidcjmopnklimmf",
+        "brand": "EPBR",
+        "cohort": "rrf@0.50",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.50",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.5,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "0.0.0.46"
+      },
+      {
+        "appid": "mkcgfaeepibomfapiapjaceihcojnphg",
+        "brand": "EPBR",
+        "cohort": "rrf@1.00",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@1.00",
+          "AppMajorVersion": "152",
+          "AppRollout": 1,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "0.0.0.0"
+      },
+      {
+        "appid": "eiihffpgcdgabdmcecnakaohbclgfbmb",
+        "brand": "EPBR",
+        "cohort": "rrf@0.56",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.56",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.56,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "2026.3.4.1"
+      },
+      {
+        "accept_locale": "ZHCN500000",
+        "appid": "njaocnahcpjeeknehofkiijbojppiiki",
+        "brand": "EPBR",
+        "cohort": "rrf@1.00",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@1.00",
+          "AppMajorVersion": "152",
+          "AppRollout": 1,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "0.0.0.0"
+      },
+      {
+        "appid": "nmcnjaceoejcjmmnabjnmfpoanaengif",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "a9592ae40712c6cfdf7d142e2563ca4ec8f696cfe53e267ad0ea630c43beaa33"
+          }
+        ],
+        "cohort": "rrf@0.09",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.09",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.09,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "2026.1.30.1"
+      },
+      {
+        "appid": "lkkdlcloifjinapabfonaibjijloebfb",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "7dc7b51766ccc0a12f7c13f5cf3adb524d6c547462d4c95f600b73bb2ac1ef3d"
+          }
+        ],
+        "cohort": "rrf@0.44",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.44",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.44,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "4.0.4.24"
+      },
+      {
+        "appid": "jcmcegpcehdchljeldgmmfbgcpnmgedo",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "94cd9465d3d32f5b115959eecd4276690cca8382b3ba0572aef0a08cbc50e58d"
+          }
+        ],
+        "cohort": "rrf@0.88",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.88",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.88,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "2026.9.9.1"
+      },
+      {
+        "appid": "cllppcmmlnkggcmljjfigkcigaajjmid",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "38b9a60260c000df8eadd64719d86020e30480df9afb893e60b5ef7d780616a5"
+          }
+        ],
+        "cohort": "rrf@0.39",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.39",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.39,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "128.18367.18366.1"
+      },
+      {
+        "appid": "gghpafdlgdjgkjfihkmbhlkmdoagjnom",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "473d9d8615557e44e3d12e0e8e4d9c1bba6aa4566b812cf08ba20f4de0fdc853"
+          }
+        ],
+        "cohort": "rrf@0.51",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.51",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.51,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "2026.8.27.1"
+      },
+      {
+        "appid": "jbfaflocpnkhbgcijpkiafdpbjkedane",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "38448ae7d29b58eea0215abd590ba55279c08a4450469b706a0307866502d53a"
+          }
+        ],
+        "cohort": "rrf@0.57",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.57",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.57,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "1.0.0.38"
+      },
+      {
+        "appid": "pdfjdcjjjegpclfiilihfkmdfndkneei",
+        "brand": "EPBR",
+        "cached_items": [
+          {
+            "sha256": "8a5ae7ba183c6349a26d5b81ca4379b1e9e147ecfdc7d3bd0e7d205410e32fb4"
+          }
+        ],
+        "cohort": "rrf@0.89",
+        "enabled": true,
+        "installdate": -1,
+        "lang": "zh-CN",
+        "ping": {
+          "r": -2
+        },
+        "targetingattributes": {
+          "AppCohort": "rrf@0.89",
+          "AppMajorVersion": "152",
+          "AppRollout": 0.89,
+          "AppVersion": "152.0.4191.66",
+          "IsInternalUser": false,
+          "Priority": false,
+          "Updater": "Omaha",
+          "UpdaterVersion": "1.3.265.7"
+        },
+        "updatecheck": {},
+        "version": "2025.7.24.0"
+      }
+    ],
+    "arch": "x64",
+    "dedup": "cr",
+    "domainjoined": false,
+    "hw": {
+      "avx": 1,
+      "physmemory": 32,
+      "sse": 1,
+      "sse2": 1,
+      "sse3": 1,
+      "sse41": 1,
+      "sse42": 1,
+      "ssse3": 1
+    },
+    "ismachine": 1,
+    "os": {
+      "arch": "x86_64",
+      "platform": "Windows",
+      "version": "10.0.26200.9278"
+    },
+    "prodversion": "152.0.4191.66",
+    "protocol": "4.0",
+    "requestid": "{85da97ff-6f2b-4179-b980-35e60e183438}",
+    "sessionid": "{dec07be8-e4e1-434f-a4df-70bd1091c306}",
+    "updaters": {
+      "autoupdatecheckenabled": true,
+      "ismachine": 1,
+      "lastchecked": 0,
+      "laststarted": 0,
+      "name": "Omaha",
+      "updatepolicy": -1,
+      "version": "1.3.265.7"
+    },
+    "updaterversion": "152.0.4191.66"
+  }
+}

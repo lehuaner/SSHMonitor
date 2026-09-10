@@ -1,0 +1,402 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:22:28.799
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=storage.live.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US
+  Simple Name: storage.live.com
+  DNS Name: storage.live.com
+
+[Issuer]
+  CN=Microsoft TLS G2 RSA CA OCSP 16, O=Microsoft Corporation, C=US
+  Simple Name: Microsoft TLS G2 RSA CA OCSP 16
+  DNS Name: Microsoft TLS G2 RSA CA OCSP 16
+
+[Serial Number]
+  55008789EF6103B661C91896080000008789EF
+
+[Not Before]
+  2026/7/25 8:30:23
+
+[Not After]
+  2027/1/21 8:30:23
+
+[Thumbprint]
+  E22C534C335C9CAC76DE8EA1884EA72721F0E804
+
+[Signature Algorithm]
+  sha384RSA(1.2.840.113549.1.1.12)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 b4 04 6d 51 58 fa a1 d3 3c e6 b2 f3 40 36 98 e0 ce df 88 bf b2 a7 33 93 8c 81 7b 6e c1 b1 77 bb 12 fe b9 14 c7 08 9c 6b da 2e ee f6 ec 6e 38 27 95 b1 7b 6e 3c 1d d2 12 7c 25 6d fd 37 ef 54 d2 70 e7 5f 40 8d bd bf 81 9d 42 41 15 8c 9d 58 05 f5 7b 84 cf 94 40 82 0b e2 0a f1 e1 69 24 e0 44 ac 2f 7a 88 ed ee ca 05 89 2b 14 c9 40 bc 07 15 33 de 09 ba 21 94 85 51 c5 e7 b5 00 22 cf bf 0e a7 46 a8 8a cf db d4 b7 b2 30 47 7c fd 49 e8 39 14 8a 27 15 b4 3b 07 8a 46 3a 31 1f c3 1c ba 66 0b d5 2f a2 71 aa cf ea 56 93 b7 46 55 7f 07 0c e6 92 6a 73 f1 a7 cb 1b 70 d4 cd 0b ff 1c da 1f 71 71 20 8e 94 74 7b 44 d8 94 ce 76 43 5d 08 ce ce 58 a6 d1 c1 a5 7d d6 90 4c 86 b5 3a bb e1 84 da b1 c9 dd 74 2e 1b fa 6f 67 30 04 b5 dc b7 b8 ae 6d 7e e0 a8 24 64 0d 02 c7 d8 63 d5 38 7f f5 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+d6d58da9d01753f36a4aa0c7574902afebc7dc2cd38cd9f764c80c89191e9f02
+‎2026‎年‎7‎月‎25‎日 8:40:27
+SHA256
+ECDSA
+304502204d3ff51c0ca119477e9dde477b2a29dce36b6b4eaaaaa9c45475d81d6a52f01a022100b009f654df93ade24d0bab2168ca36a018da16e0ad83c9d5328c149e5f1f7c48
+
+v1
+001a5d1a1c2d9375b6485578f82f71a1ae6eef397d297c8ae3157bcadee1a01e
+‎2026‎年‎7‎月‎25‎日 8:40:27
+SHA256
+ECDSA
+3045022008a8ae11e038f41b21992f206481d3e37fad7ae87feae272e54af81e59d3ca72022100e6a77e113aeb9ff4e3b1cebe355b0146e3e33b6bc416766cf57be39119ad34b7
+
+v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎7‎月‎25‎日 8:40:27
+SHA256
+ECDSA
+3045022100e187851adb56c8878580350e39571dee1fd0fdd4114d938628c98a528e11481d022014e792e01aa36006298ad4b78893aab7a7307b8e094a9f6c845674af6764f979
+
+* 应用程序策略(1.3.6.1.4.1.311.21.10):
+  [1]Application Certificate Policy:
+     Policy Identifier=服务器身份验证
+
+* 证书模板信息(1.3.6.1.4.1.311.21.7):
+  Template=1.3.6.1.4.1.311.21.8.15690651.3798470.4214446.239628.16526621.93.8020455.5050828
+Major Version Number=100
+Minor Version Number=32
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://www.microsoft.com/pkiops/certs/Microsoft TLS G2 RSA CA OCSP 16.crt (http://www.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2016.crt)
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://caissuers.microsoft.com/pkiops/certs/Microsoft TLS G2 RSA CA OCSP 16.crt (http://caissuers.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2016.crt)
+[3]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://oneocsp.microsoft.com/ocsp
+
+* 使用者密钥标识符(2.5.29.14):
+  6e2b10aaaec65a6ce8a9e9882b26cebc1807d74c
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=storage.live.com
+DNS Name=l-df.live.net
+DNS Name=l.live.net
+DNS Name=api.live.com
+DNS Name=api.live.net
+DNS Name=docs.live.net
+DNS Name=skyapi.live.net
+DNS Name=api-df.live.com
+DNS Name=api-df.live.net
+DNS Name=docs-df.live.net
+DNS Name=skyapi-df.live.net
+DNS Name=*.ra.live.com
+DNS Name=*.cobalt.df.storage.msn.com
+DNS Name=*.cobalt.df.storage.live.com
+DNS Name=*.cobalt.storage.msn.com
+DNS Name=*.df.storage.live.com
+DNS Name=*.df.storage.msn.com
+DNS Name=*.docs-df.live.net
+DNS Name=*.storage.live.com
+DNS Name=*.storage.msn.com
+DNS Name=*.users.df.storage.live.com
+DNS Name=*.users.df.storage.msn.com
+DNS Name=*.users.storage.live.com
+DNS Name=*.users.storage.msn.com
+DNS Name=*.df.policies.live.net
+DNS Name=df.policies.live.net
+DNS Name=*.df.settings.live.net
+DNS Name=df.settings.live.net
+DNS Name=*.df.livefilestore.com
+DNS Name=apis.live.net
+DNS Name=*.apis.live.net
+DNS Name=*.bay.livefilestore.com
+DNS Name=*.livefilestore.com
+DNS Name=ssw.live-int.com
+DNS Name=ssw.live.com
+DNS Name=df.storage.live.com
+DNS Name=*.sn2.df.livefilestore.com
+DNS Name=*.blu.livefilestore.com
+DNS Name=*.bn1.livefilestore.com
+DNS Name=*.cobalt.storage.live.com
+DNS Name=*.dm1.livefilestore.com
+DNS Name=*.docs.live.net
+DNS Name=*.policies.live.net
+DNS Name=*.settings.live.net
+DNS Name=*.sn2.livefilestore.com
+DNS Name=*.tuk.livefilestore.com
+DNS Name=policies.live.net
+DNS Name=storage.msn.com
+DNS Name=dev.live.com
+DNS Name=oauth.live.com
+DNS Name=*.bn1301.livefilestore.com
+DNS Name=*.bn1302.livefilestore.com
+DNS Name=*.dm2301.livefilestore.com
+DNS Name=*.dm2302.livefilestore.com
+DNS Name=skyapi.skydrive.live.com
+DNS Name=settings.live.net
+DNS Name=*.bn1303.livefilestore.com
+DNS Name=*.bn1304.livefilestore.com
+DNS Name=*.dm2303.livefilestore.com
+DNS Name=*.dm2304.livefilestore.com
+DNS Name=*.by3301.livefilestore.com
+DNS Name=*.by3302.livefilestore.com
+DNS Name=*.snt002.df.livefilestore.com
+DNS Name=*.bn1303.df.livefilestore.com
+DNS Name=*.dm2303.df.livefilestore.com
+DNS Name=skyapi.newdrive.live.com
+DNS Name=skyapi.onedrive.live.com
+DNS Name=*.files.1drv.com
+DNS Name=*.bl3301.livefilestore.com
+DNS Name=*.bl3302.livefilestore.com
+DNS Name=*.bn1391soak2.livefilestore.com
+DNS Name=*.dm2391soak2.livefilestore.com
+DNS Name=*.bn1391soak3.livefilestore.com
+DNS Name=*.dm2391soak3.livefilestore.com
+DNS Name=*.files-df.1drv.com
+DNS Name=*.api.onedrive.com
+DNS Name=df.api.onedrive.com
+DNS Name=*.df.api.onedrive.com
+DNS Name=*.s2s-storage.live.com
+DNS Name=*.s2s-policies.live.net
+DNS Name=s2s-policies.live.net
+DNS Name=s2s-settings.live.net
+DNS Name=*.s2s-settings.live.net
+DNS Name=*.config.live.net
+DNS Name=config.live.net
+DNS Name=register.mesh.com
+DNS Name=*.df.s2s-storage.live.com
+DNS Name=*.df.s2s-settings.live.net
+DNS Name=df.s2s-settings.live.net
+DNS Name=s2s-storage.live.com
+DNS Name=df.s2s-storage.live.com
+DNS Name=*.s2s.livefilestore.com
+DNS Name=*.s2s.df.livefilestore.com
+DNS Name=*.s2s-files-df.1drv.com
+DNS Name=*.df.s2s-policies.live.net
+DNS Name=df.s2s-policies.live.net
+DNS Name=*.df-config.live.net
+DNS Name=df-config.live.net
+DNS Name=*.s2s-files.1drv.com
+DNS Name=device.ra.live.com
+DNS Name=*.keymaster.p001.1drv.com
+DNS Name=*.keymaster.i001.1drv.com
+DNS Name=s2s-skyapi.live.net
+DNS Name=s2s-api.onedrive.com
+DNS Name=*.s2s-api.onedrive.com
+DNS Name=s2s-skyapi-df.live.net
+DNS Name=df.s2s-api.onedrive.com
+DNS Name=*.df.s2s-api.onedrive.com
+DNS Name=df.people.onedrive.com
+DNS Name=*.slps.live.net
+DNS Name=*.ADMINSVC.P001.1drv.com
+DNS Name=*.ADMINSVC.I001.1drv.com
+DNS Name=*.CONFIG.I001.1drv.com
+DNS Name=*.DEPLOYMGR.P001.1drv.com
+DNS Name=*.JOB.P001.1drv.com
+DNS Name=*.CAMP.I001.1drv.com
+DNS Name=*.1drv.com
+DNS Name=1drv.ms
+DNS Name=*.LPS.I001.1drv.com
+DNS Name=*.WSTCRS.I001.1drv.com
+DNS Name=*.wstlm.1drv.com
+DNS Name=sdrv.ms
+DNS Name=*.am.files.1drv.com
+DNS Name=*.db.files.1drv.com
+DNS Name=*.bl.files.1drv.com
+DNS Name=*.bn.files.1drv.com
+DNS Name=*.by.files.1drv.com
+DNS Name=*.ch.files.1drv.com
+DNS Name=*.cy.files.1drv.com
+DNS Name=*.dm.files.1drv.com
+DNS Name=*.sn.files.1drv.com
+DNS Name=d.bl3301.docs.live.net
+DNS Name=d.bl3302.docs.live.net
+DNS Name=*.API.P001.1drv.com
+DNS Name=*.gls.i001.1drv.com
+DNS Name=*.ph.files.1drv.com
+DNS Name=*.onedrive.com
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://www.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 RSA CA OCSP 16_Partition00019.crl (http://www.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2016_Partition00019.crl)
+               URL=http://crl2.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 RSA CA OCSP 16_Partition00019.crl (http://crl2.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2016_Partition00019.crl)
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+[2]Certificate Policy:
+     Policy Identifier=1.3.6.1.4.1.311.76.509.1.1
+     [2,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.microsoft.com/pkiops/Docs/Repository.htm
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=0639f056d1ed90c836a3a00f94fe6294a7e6fc37
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+
+[SubjectAltNames]
+DNS Name=storage.live.com
+DNS Name=l-df.live.net
+DNS Name=l.live.net
+DNS Name=api.live.com
+DNS Name=api.live.net
+DNS Name=docs.live.net
+DNS Name=skyapi.live.net
+DNS Name=api-df.live.com
+DNS Name=api-df.live.net
+DNS Name=docs-df.live.net
+DNS Name=skyapi-df.live.net
+DNS Name=*.ra.live.com
+DNS Name=*.cobalt.df.storage.msn.com
+DNS Name=*.cobalt.df.storage.live.com
+DNS Name=*.cobalt.storage.msn.com
+DNS Name=*.df.storage.live.com
+DNS Name=*.df.storage.msn.com
+DNS Name=*.docs-df.live.net
+DNS Name=*.storage.live.com
+DNS Name=*.storage.msn.com
+DNS Name=*.users.df.storage.live.com
+DNS Name=*.users.df.storage.msn.com
+DNS Name=*.users.storage.live.com
+DNS Name=*.users.storage.msn.com
+DNS Name=*.df.policies.live.net
+DNS Name=df.policies.live.net
+DNS Name=*.df.settings.live.net
+DNS Name=df.settings.live.net
+DNS Name=*.df.livefilestore.com
+DNS Name=apis.live.net
+DNS Name=*.apis.live.net
+DNS Name=*.bay.livefilestore.com
+DNS Name=*.livefilestore.com
+DNS Name=ssw.live-int.com
+DNS Name=ssw.live.com
+DNS Name=df.storage.live.com
+DNS Name=*.sn2.df.livefilestore.com
+DNS Name=*.blu.livefilestore.com
+DNS Name=*.bn1.livefilestore.com
+DNS Name=*.cobalt.storage.live.com
+DNS Name=*.dm1.livefilestore.com
+DNS Name=*.docs.live.net
+DNS Name=*.policies.live.net
+DNS Name=*.settings.live.net
+DNS Name=*.sn2.livefilestore.com
+DNS Name=*.tuk.livefilestore.com
+DNS Name=policies.live.net
+DNS Name=storage.msn.com
+DNS Name=dev.live.com
+DNS Name=oauth.live.com
+DNS Name=*.bn1301.livefilestore.com
+DNS Name=*.bn1302.livefilestore.com
+DNS Name=*.dm2301.livefilestore.com
+DNS Name=*.dm2302.livefilestore.com
+DNS Name=skyapi.skydrive.live.com
+DNS Name=settings.live.net
+DNS Name=*.bn1303.livefilestore.com
+DNS Name=*.bn1304.livefilestore.com
+DNS Name=*.dm2303.livefilestore.com
+DNS Name=*.dm2304.livefilestore.com
+DNS Name=*.by3301.livefilestore.com
+DNS Name=*.by3302.livefilestore.com
+DNS Name=*.snt002.df.livefilestore.com
+DNS Name=*.bn1303.df.livefilestore.com
+DNS Name=*.dm2303.df.livefilestore.com
+DNS Name=skyapi.newdrive.live.com
+DNS Name=skyapi.onedrive.live.com
+DNS Name=*.files.1drv.com
+DNS Name=*.bl3301.livefilestore.com
+DNS Name=*.bl3302.livefilestore.com
+DNS Name=*.bn1391soak2.livefilestore.com
+DNS Name=*.dm2391soak2.livefilestore.com
+DNS Name=*.bn1391soak3.livefilestore.com
+DNS Name=*.dm2391soak3.livefilestore.com
+DNS Name=*.files-df.1drv.com
+DNS Name=*.api.onedrive.com
+DNS Name=df.api.onedrive.com
+DNS Name=*.df.api.onedrive.com
+DNS Name=*.s2s-storage.live.com
+DNS Name=*.s2s-policies.live.net
+DNS Name=s2s-policies.live.net
+DNS Name=s2s-settings.live.net
+DNS Name=*.s2s-settings.live.net
+DNS Name=*.config.live.net
+DNS Name=config.live.net
+DNS Name=register.mesh.com
+DNS Name=*.df.s2s-storage.live.com
+DNS Name=*.df.s2s-settings.live.net
+DNS Name=df.s2s-settings.live.net
+DNS Name=s2s-storage.live.com
+DNS Name=df.s2s-storage.live.com
+DNS Name=*.s2s.livefilestore.com
+DNS Name=*.s2s.df.livefilestore.com
+DNS Name=*.s2s-files-df.1drv.com
+DNS Name=*.df.s2s-policies.live.net
+DNS Name=df.s2s-policies.live.net
+DNS Name=*.df-config.live.net
+DNS Name=df-config.live.net
+DNS Name=*.s2s-files.1drv.com
+DNS Name=device.ra.live.com
+DNS Name=*.keymaster.p001.1drv.com
+DNS Name=*.keymaster.i001.1drv.com
+DNS Name=s2s-skyapi.live.net
+DNS Name=s2s-api.onedrive.com
+DNS Name=*.s2s-api.onedrive.com
+DNS Name=s2s-skyapi-df.live.net
+DNS Name=df.s2s-api.onedrive.com
+DNS Name=*.df.s2s-api.onedrive.com
+DNS Name=df.people.onedrive.com
+DNS Name=*.slps.live.net
+DNS Name=*.ADMINSVC.P001.1drv.com
+DNS Name=*.ADMINSVC.I001.1drv.com
+DNS Name=*.CONFIG.I001.1drv.com
+DNS Name=*.DEPLOYMGR.P001.1drv.com
+DNS Name=*.JOB.P001.1drv.com
+DNS Name=*.CAMP.I001.1drv.com
+DNS Name=*.1drv.com
+DNS Name=1drv.ms
+DNS Name=*.LPS.I001.1drv.com
+DNS Name=*.WSTCRS.I001.1drv.com
+DNS Name=*.wstlm.1drv.com
+DNS Name=sdrv.ms
+DNS Name=*.am.files.1drv.com
+DNS Name=*.db.files.1drv.com
+DNS Name=*.bl.files.1drv.com
+DNS Name=*.bn.files.1drv.com
+DNS Name=*.by.files.1drv.com
+DNS Name=*.ch.files.1drv.com
+DNS Name=*.cy.files.1drv.com
+DNS Name=*.dm.files.1drv.com
+DNS Name=*.sn.files.1drv.com
+DNS Name=d.bl3301.docs.live.net
+DNS Name=d.bl3302.docs.live.net
+DNS Name=*.API.P001.1drv.com
+DNS Name=*.gls.i001.1drv.com
+DNS Name=*.ph.files.1drv.com
+DNS Name=*.onedrive.com
+

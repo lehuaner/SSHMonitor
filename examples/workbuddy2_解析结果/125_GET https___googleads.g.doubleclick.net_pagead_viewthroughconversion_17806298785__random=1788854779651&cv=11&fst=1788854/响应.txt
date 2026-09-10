@@ -1,0 +1,16 @@
+HTTP/2 200
+p3p: policyref="https://googleads.g.doubleclick.net/pagead/gcn_p3p_.xml", CP="CURa ADMa DEVa TAIo PSAo PSDo OUR IND UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR"
+timing-allow-origin: *
+cross-origin-resource-policy: cross-origin
+date: Tue, 08 Sep 2026 08:06:19 GMT
+pragma: no-cache
+expires: Fri, 01 Jan 1990 00:00:00 GMT
+cache-control: no-cache, must-revalidate
+content-type: text/javascript; charset=UTF-8
+x-content-type-options: nosniff
+content-disposition: attachment; filename="f.txt"
+server: cafe
+content-length: 37
+x-xss-protection: 0
+set-cookie: id=22216a0d6b0c01b3||t=1783856892|et=730|cs=002213fd480348593c37fc49cc; expires=Tue, 11-Jul-2028 11:48:12 GMT; path=/; domain=.doubleclick.net; Secure; SameSite=none
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000

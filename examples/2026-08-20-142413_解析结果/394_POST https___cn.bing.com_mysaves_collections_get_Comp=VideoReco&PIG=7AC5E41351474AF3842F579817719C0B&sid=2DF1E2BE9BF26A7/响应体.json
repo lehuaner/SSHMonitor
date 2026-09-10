@@ -1,0 +1,118 @@
+{
+  "_type": "CollectionsPage",
+  "collections": [
+    {
+      "collectionPage": {
+        "items": [
+          {
+            "content": {
+              "_type": "GenericItem",
+              "id": "/prism/edge/v1/web:o028UKSYsAoobKJqNv1TCg",
+              "url": "https://chat.openai.com/chat?__cf_chl_tk=N8Skro_.Qd9vHIL.oyBoR3aHw.3dPOiJElA2hBLejhI-1679453638-0-gaNycGzNFjs",
+              "domain": "https://chat.openai.com/chat",
+              "title": "New chat",
+              "contentId": "o028UKSYsAoobKJqNv1TCg",
+              "itemTagPath": "/prism/edge/v1/web",
+              "customData": "{\"PageUrl\":\"https://chat.openai.com/chat?__cf_chl_tk=N8Skro_.Qd9vHIL.oyBoR3aHw.3dPOiJElA2hBLejhI-1679453638-0-gaNycGzNFjs\",\"ToolTip\":\"New chat\"}"
+            },
+            "itemType": "Generic",
+            "collectionItemId": "/prism/edge/v1/web:o028UKSYsAoobKJqNv1TCg",
+            "dateModified": "2023-03-22T06:59:39.1918642Z"
+          },
+          {
+            "content": {
+              "_type": "GenericItem",
+              "id": "/prism/edge/v1/image:xiOrDyHV8aaXrCi847IkwQ.fHmczUyN8kfjG+tUAETpvQ",
+              "url": "https://www.douyin.com/?recommend=1",
+              "domain": "https://www.douyin.com/",
+              "title": "抖音-记录美好生活",
+              "contentId": "xiOrDyHV8aaXrCi847IkwQ.fHmczUyN8kfjG+tUAETpvQ",
+              "thumbnails": [
+                {
+                  "thumbnailUrl": "https://ts4.tc.mm.bing.net/th/id/OUG.CAB1C008A6CA76951B8D4E276F82ACFA?w=236&h=320&c=11&rs=1&qlt=90&bgcl=ececec&o=6&pid=PersonalBing"
+                }
+              ],
+              "itemTagPath": "/prism/edge/v1/image",
+              "customData": "{\"ToolTip\":\"抖音-记录美好生活\",\"PageUrl\":\"https://www.douyin.com/?recommend=1\",\"MediaUrl\":\"https://p3-pc-sign.douyinpic.com/tos-cn-p-0015/oQDfUFWfANv9ODqQQ8jAmopR6wEAXn9NgBB6Qa~tplv-dy-360p.jpeg?biz_tag=pcweb_cover&from=327834062&lk3s=138a59ce&s=PackSourceEnum_FEED&sc=origin_cover&se=false&x-expires=1735423200&x-signature=ftuethHNsFP5QPG9XGLtqQsQPCU%3D\"}"
+            },
+            "itemType": "Generic",
+            "collectionItemId": "/prism/edge/v1/image:xiOrDyHV8aaXrCi847IkwQ.fHmczUyN8kfjG+tUAETpvQ",
+            "dateModified": "2024-12-14T22:10:27.8999697Z"
+          },
+          {
+            "content": {
+              "_type": "GenericItem",
+              "id": "/prism/edge/v1/image:xiOrDyHV8aaXrCi847IkwQ.2XGYG9lK4rUXr2ZdrTN2pw",
+              "url": "https://www.douyin.com/?recommend=1",
+              "domain": "https://www.douyin.com/",
+              "title": "抖音-记录美好生活",
+              "contentId": "xiOrDyHV8aaXrCi847IkwQ.2XGYG9lK4rUXr2ZdrTN2pw",
+              "thumbnails": [
+                {
+                  "thumbnailUrl": "https://ts3.tc.mm.bing.net/th/id/OUG.294F229BA0632EAF3D8D841C4C150429?w=236&h=320&c=11&rs=1&qlt=90&bgcl=ececec&o=6&pid=PersonalBing"
+                }
+              ],
+              "itemTagPath": "/prism/edge/v1/image",
+              "customData": "{\"ToolTip\":\"抖音-记录美好生活\",\"PageUrl\":\"https://www.douyin.com/?recommend=1\",\"MediaUrl\":\"https://p3-pc-sign.douyinpic.com/tos-cn-p-0015c000-ce/oAQszNIIIJgOrP1eSrL8q4pveIjgwBAyGCV7Cf~tplv-dy-360p.jpeg?biz_tag=pcweb_cover&from=327834062&lk3s=138a59ce&s=PackSourceEnum_FEED&sc=origin_cover&se=false&x-expires=1736323200&x-signature=1lO2yLD4e%2BFPwq3rtIKFvaL5czg%3D\"}"
+            },
+            "itemType": "Generic",
+            "collectionItemId": "/prism/edge/v1/image:xiOrDyHV8aaXrCi847IkwQ.2XGYG9lK4rUXr2ZdrTN2pw",
+            "dateModified": "2024-12-25T08:33:09.9782675Z"
+          },
+          {
+            "content": {
+              "_type": "GenericItem",
+              "id": "/prism/edge/v1/image:xiOrDyHV8aaXrCi847IkwQ.FXLEz5daleMlPNChJuicYw",
+              "url": "https://www.douyin.com/?recommend=1",
+              "domain": "https://www.douyin.com/",
+              "title": "抖音-记录美好生活",
+              "contentId": "xiOrDyHV8aaXrCi847IkwQ.FXLEz5daleMlPNChJuicYw",
+              "thumbnails": [
+                {
+                  "thumbnailUrl": "https://ts2.tc.mm.bing.net/th/id/OUG.4812E43258742439F74CC742B5EFAAA6?w=236&h=320&c=11&rs=1&qlt=90&bgcl=ececec&o=6&pid=PersonalBing"
+                }
+              ],
+              "itemTagPath": "/prism/edge/v1/image",
+              "customData": "{\"ToolTip\":\"抖音-记录美好生活\",\"PageUrl\":\"https://www.douyin.com/?recommend=1\",\"MediaUrl\":\"https://p3-pc-sign.douyinpic.com/tos-cn-p-0015/oAyAKfnUugy9DxXQBxoEAZBNeAaFQkoHnArCtr~tplv-dy-360p.jpeg?biz_tag=pcweb_cover&from=327834062&lk3s=138a59ce&s=PackSourceEnum_FEED&sc=origin_cover&se=false&x-expires=1736326800&x-signature=DdVdmsgZppKpQew0WXAjGaDTYzs%3D\"}"
+            },
+            "itemType": "Generic",
+            "collectionItemId": "/prism/edge/v1/image:xiOrDyHV8aaXrCi847IkwQ.FXLEz5daleMlPNChJuicYw",
+            "dateModified": "2024-12-25T09:09:37.8852162Z"
+          },
+          {
+            "content": {
+              "_type": "ImageObject",
+              "webSearchUrl": "https://www.bing.com/images/search?q=&view=detailv2&id=18646A645BA1F93D81B7B0DF679F1193841308F9&ccid=m4uOfhhB&FORM=SVIM01",
+              "name": "《极品家丁》历史小说封面制作_八十元封面专区_墨星封面网",
+              "thumbnailUrl": "https://ts4.tc.mm.bing.net/th/id/OIP-C.m4uOfhhBeLOFNkYXrX58TAAAAA?o=6&pid=PersonalBing",
+              "contentUrl": "https://www.mx-fm.com/upfile/xsfm/202011/2020111442371541.jpg",
+              "hostPageUrl": "https://www.mx-fm.com/sffm/80fm/94359.html",
+              "encodingFormat": "jpeg",
+              "width": 300,
+              "height": 400,
+              "thumbnail": {
+                "width": 300,
+                "height": 400
+              },
+              "imageInsightsToken": "ccid_m4uOfhhB*mid_18646A645BA1F93D81B7B0DF679F1193841308F9*thid_OIP.m4uOfhhBeLOFNkYXrX58TAAAAA",
+              "imageId": "18646A645BA1F93D81B7B0DF679F1193841308F9"
+            },
+            "itemType": "Image",
+            "collectionItemId": "image:cid=m4uOfhhB",
+            "dateModified": "2025-12-06T10:20:29.6209085Z"
+          }
+        ]
+      },
+      "id": "36a0ce38550040b4b05594c66356f0b8",
+      "title": "chatgpt",
+      "dateModified": "2025-12-06T10:20:29.6267282Z",
+      "adultItemCount": 0,
+      "isAdult": false,
+      "genericCollectionTagPath": "",
+      "allowedItemTagPaths": [],
+      "customData": "",
+      "itemCount": 5
+    }
+  ],
+  "actualCollectionCount": 1
+}

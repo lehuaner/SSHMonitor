@@ -1,0 +1,17 @@
+OPTIONS https://mon.zijieapi.com/monitor_web/settings/browser-settings?bid=trae_website_cn&store=1 HTTP/2
+:method: OPTIONS
+:authority: mon.zijieapi.com
+:scheme: https
+:path: /monitor_web/settings/browser-settings?bid=trae_website_cn&store=1
+accept: */*
+access-control-request-method: GET
+access-control-request-headers: content-type
+origin: https://www.trae.cn
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+sec-fetch-dest: empty
+referer: https://www.trae.cn/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=1, i

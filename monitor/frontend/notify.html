@@ -1,0 +1,700 @@
+<!DOCTYPE html><html lang=zh-CN><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>通知配置 - Honor10</title>
+<script src="config.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif}
+body{background:#0b1120;color:#e2e8f0;display:flex;align-items:center;justify-content:center}
+.app{width:100%;max-width:1200px;padding:20px}
+.nav{display:flex;gap:4px;margin-bottom:20px;background:#131c31;border-radius:10px;padding:4px;border:1px solid #1e293b}
+.nav a{padding:8px 20px;border-radius:6px;text-decoration:none;color:#94a3b8;font-size:.85rem;transition:.2s}
+.nav a:hover,.nav a.active{background:#2563eb;color:#fff}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.header h1{font-size:1.4rem;font-weight:600;background:linear-gradient(135deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.card{background:#131c31;border:1px solid #1e293b;border-radius:12px;padding:16px;margin-bottom:12px}
+.card-h{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.card-h label{font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px;font-weight:500}
+.btn{padding:6px 16px;border-radius:6px;border:none;font-size:.8rem;cursor:pointer;color:#fff;transition:opacity .2s;background:#1e293b;white-space:nowrap;display:inline-flex;align-items:center;gap:4px}
+.btn:hover{opacity:.8}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-primary{background:#2563eb}
+.btn-warn{background:#d97706}
+.btn-rst{background:#059669}
+.btn-sm{padding:4px 10px;font-size:.75rem}
+textarea,input{background:#0b1120;border:1px solid #334155;border-radius:6px;padding:8px 12px;color:#e2e8f0;font-size:.85rem;outline:none;width:100%;font-family:inherit}
+textarea:focus,input:focus{border-color:#38bdf8}
+.form-row{display:grid;grid-template-columns:120px 1fr;gap:8px;align-items:center;margin-bottom:8px}
+.form-row label{font-size:.75rem;color:#94a3b8}
+.form-row input{width:100%}
+.toggle{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0}
+.toggle input{opacity:0;width:0;height:0}
+.toggle .slider{position:absolute;cursor:pointer;inset:0;background:#1e293b;border-radius:24px;transition:.3s}
+.toggle .slider:before{content:"";position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:#94a3b8;border-radius:50%;transition:.3s}
+.toggle input:checked+.slider{background:#2563eb}
+.toggle input:checked+.slider:before{transform:translateX(20px);background:#fff}
+.toggle-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.toggle-label{font-size:.85rem;color:#e2e8f0}
+.proc-list{display:flex;flex-direction:column;gap:4px;margin-top:8px}
+.proc-item{display:flex;align-items:center;gap:8px;padding:8px 12px;background:#0b1120;border-radius:6px;border:1px solid #1e293b;cursor:pointer;transition:.2s}
+.proc-item:hover{border-color:#38bdf8}
+.proc-item.checked{border-color:#22c55e;background:rgba(34,197,94,.05)}
+.proc-item input{width:auto;margin:0}
+.proc-item .cmd{font-size:.8rem;color:#e2e8f0;flex:1;word-break:break-all;font-family:monospace}
+.proc-item .desc{font-size:.65rem;color:#64748b;margin-top:2px;word-break:break-all}
+.empty{text-align:center;color:#64748b;padding:20px;font-size:.8rem}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e293b;color:#e2e8f0;padding:10px 24px;border-radius:8px;font-size:.8rem;z-index:99;transition:opacity .3s;opacity:0;pointer-events:none}
+.toast.show{opacity:1}
+.loading{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle}
+@keyframes spin{to{transform:rotate(360deg)}}
+.status{font-size:.75rem;color:#64748b;margin-top:8px;min-height:1em}
+.status.ok{color:#22c55e}
+.status.err{color:#ef4444}
+.note{font-size:.7rem;color:#64748b;margin-top:4px;line-height:1.5}
+.url-row{display:flex;gap:4px;margin-bottom:4px}
+.url-row input{flex:1}
+.candidate-tag{display:inline-flex;align-items:center;gap:2px;background:#1e293b;padding:2px 8px;border-radius:4px;font-size:.75rem}
+.candidate-tag .candidate-del{cursor:pointer;color:#ef4444;margin-left:2px;font-size:.65rem}
+.node-option{display:inline-block;padding:3px 10px;border-radius:4px;font-size:.72rem;cursor:pointer;background:#0b1120;border:1px solid #1e293b;color:#94a3b8;transition:.15s;white-space:nowrap}
+.node-option:hover{border-color:#38bdf8;color:#e2e8f0}
+.node-option.selected{border-color:#22c55e;color:#22c55e;background:rgba(34,197,94,.08)}
+.pwrap{overflow-x:auto;margin-top:8px}
+.pwrap table{width:100%;border-collapse:collapse;font-size:.75rem}
+.pwrap th,.pwrap td{padding:6px 8px;text-align:left;border-bottom:1px solid #1e293b;white-space:nowrap}
+.pwrap th{color:#64748b;font-weight:500;text-transform:uppercase;font-size:.65rem}
+.pwrap td{color:#e2e8f0;font-family:monospace}
+.node-card{background:#0b1120;border:1px solid #1e293b;border-radius:8px;margin-bottom:6px;overflow:hidden}
+.node-card-h{display:flex;align-items:center;gap:8px;padding:10px 12px;cursor:pointer;user-select:none;transition:.15s}
+.node-card-h:hover{background:#131c31}
+.node-rank{font-size:.7rem;color:#64748b;font-family:monospace;width:24px;text-align:center;flex-shrink:0}
+.node-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.node-dot.ok{background:#22c55e;box-shadow:0 0 6px #22c55e}
+.node-dot.err{background:#ef4444;box-shadow:0 0 6px #ef4444}
+.node-dot.pending{background:#d97706;box-shadow:0 0 6px #d97706}
+.node-name{font-size:.8rem;color:#e2e8f0;flex:1;word-break:break-all;font-family:monospace}
+.node-weight{font-size:.65rem;color:#a78bfa;font-family:monospace;white-space:nowrap;background:rgba(167,139,250,.1);padding:2px 6px;border-radius:4px}
+.node-delay{font-size:.7rem;color:#38bdf8;font-family:monospace;white-space:nowrap}
+.node-success-rate{font-size:.65rem;color:#64748b;white-space:nowrap}
+.node-toggle{font-size:.65rem;color:#64748b;transition:transform .2s;flex-shrink:0}
+.node-card.expanded .node-toggle{transform:rotate(90deg)}
+.node-del{font-size:.65rem;color:#64748b;cursor:pointer;padding:2px 6px;border-radius:4px;flex-shrink:0;transition:.15s;border:1px solid transparent}
+.node-del:hover{color:#ef4444;background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.3)}
+.node-card-body{display:none;padding:6px 12px 8px;border-top:1px solid #1e293b}
+.node-card.expanded .node-card-body{display:block}
+.check-entry{background:#131c31;border-radius:6px;padding:6px 10px;margin-top:4px;font-size:.72rem}
+.check-entry-time{color:#64748b;font-size:.65rem;margin-bottom:4px}
+.node-stats{display:flex;flex-wrap:wrap;gap:6px 12px;padding:6px 10px;background:#0b1120;border-radius:6px;margin-bottom:6px;border:1px solid #1e293b}
+.stat-item{font-size:.7rem;color:#64748b;white-space:nowrap}
+.stat-item b{color:#e2e8f0;font-family:monospace;font-weight:600}
+.recent-title{font-size:.7rem;color:#94a3b8;margin:6px 0 4px;padding-left:4px;border-left:2px solid #38bdf8}
+.check-url-row{display:flex;align-items:center;gap:6px;padding:2px 0;font-family:monospace}
+.check-url-status{font-size:.65rem;padding:1px 6px;border-radius:3px;font-weight:600;white-space:nowrap}
+.check-url-status.ok{background:rgba(34,197,94,.2);color:#22c55e}
+.check-url-status.fail{background:rgba(239,68,68,.2);color:#ef4444}
+.check-url-text{color:#94a3b8;flex:1;word-break:break-all;font-size:.7rem}
+.check-url-latency{color:#38bdf8;font-size:.65rem;white-space:nowrap}
+.sys-msg{padding:8px 12px;border-radius:6px;margin-bottom:6px;font-size:.75rem;text-align:center}
+.sys-msg.start{background:#1e293b;color:#94a3b8}
+.sys-msg.done{background:rgba(34,197,94,.1);color:#22c55e}
+.sys-msg.err{background:rgba(239,68,68,.1);color:#ef4444}
+.collapsible .card-body{display:none;padding-top:8px}
+.collapsible.expanded .card-body{display:block}
+.card-toggle{font-size:.7rem;color:#64748b;transition:transform .2s;display:inline-block}
+.collapsible.expanded .card-toggle{transform:rotate(90deg)}
+.card-h-left{cursor:pointer;user-select:none;display:flex;align-items:center;gap:6px;flex:1;min-width:0}
+.card-h-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.card-h-right .toggle{margin:0}
+@media(max-width:600px){.form-row{grid-template-columns:1fr;gap:4px}}
+</style>
+<div class=app>
+<div class=nav><a href=/>&#9660; 监控</a><a href=/sb/ui/ target=_blank>&#9881; Sing-box</a><a href=/subscription>&#128230; 订阅</a><a href=/notify>&#128276; 通知</a><a href=/files>&#128193; 文件</a><a href=/android>&#128241; Android</a><a href=/checkin>&#9989; 签到</a></div>
+<div class=header><h1>&#128276; 邮件通知</h1></div>
+<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
+<button class="btn btn-primary" id=saveBtn onclick=saveConfig()>&#128190; 保存全部配置</button>
+<button class="btn" id=refreshBtn onclick=loadData()>&#128259; 刷新数据</button>
+<span class=status id=status style="margin:0;flex:1;min-width:120px"></span>
+</div>
+<div class="card collapsible" id=mailCard>
+<div class=card-h>
+<div class=card-h-left onclick=toggleCard('mailCard')><label>邮件配置</label><span class=card-toggle>&#9654;</span></div>
+<span style=font-size:.7rem;color:#64748b>QQ邮箱 SMTP</span>
+</div>
+<div class=card-body>
+<div class=form-row><label>SMTP 服务器</label><input id=smtp_host placeholder="smtp.qq.com"></div>
+<div class=form-row><label>SMTP 端口</label><input id=smtp_port placeholder="465"></div>
+<div class=form-row><label>发件邮箱</label><input id=smtp_user placeholder="your@qq.com"></div>
+<div class=form-row><label>授权码</label><div style=display:flex;gap:4px><input type=password id=smtp_pass placeholder="QQ邮箱授权码（非登录密码）" style=flex:1><button class=btn id=passEditBtn onclick=editPass() style=display:none>修改</button><button class=btn id=passClearBtn onclick=clearPass() style=display:none>清除</button></div></div>
+<div class=form-row><label>收件邮箱</label><input id=to placeholder="recipient@qq.com"></div>
+<div class=note>提示: 所有通知功能共用此 SMTP 配置。每 10 分钟检测一次，掉线/恢复/异常时发送邮件。</div>
+<div style=display:flex;gap:6px;flex-wrap:wrap;margin-top:12px>
+<button class="btn btn-rst" id=testBtn onclick=sendTest()>&#9993; 发送测试邮件</button>
+</div>
+</div>
+</div>
+<div class="card collapsible" id=procCard>
+<div class=card-h>
+<div class=card-h-left onclick=toggleCard('procCard')><label>进程掉线告警</label><span class=card-toggle>&#9654;</span></div>
+<div class=card-h-right>
+<span style=font-size:.7rem;color:#64748b id=procCount>加载中...</span>
+<label class=toggle><input type=checkbox id=enabled><span class=slider></span></label>
+</div>
+</div>
+<div class=card-body>
+<div class=note>勾选需要监控的进程（多选）。请先在 <a href=/ style=color:#38bdf8>监控页面</a> 用星标(&#9733;)标记重要进程，标记后会出现在这里。</div>
+<div class=proc-list id=procList><div class=empty>加载中...</div></div>
+</div>
+</div>
+<div class="card collapsible" id=proxyCard>
+<div class=card-h>
+<div class=card-h-left onclick=toggleCard('proxyCard')><label>代理连通性检测</label><span class=card-toggle>&#9654;</span></div>
+<div class=card-h-right>
+<label class=toggle><input type=checkbox id=proxyCheckEnabled><span class=slider></span></label>
+</div>
+</div>
+<div class=card-body>
+<div class=form-row><label>检测网站</label></div>
+<div id=urlList></div>
+<div style=display:flex;gap:4px;margin-top:4px>
+<input id=addUrlInput placeholder="输入检测 URL (如 https://www.google.com)">
+<button class="btn btn-sm btn-primary" onclick=addUrl()>+ 添加</button>
+</div>
+<div style=display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px>
+<div><label style=font-size:.7rem;color:#94a3b8>重试次数</label><input id=retryCount type=number value=2 style=width:100%></div>
+<div><label style=font-size:.7rem;color:#94a3b8>重试间隔(ms)</label><input id=retryDelay type=number value=3000 style=width:100%></div>
+<div><label style=font-size:.7rem;color:#94a3b8>检测间隔(分钟)</label><input id=checkInterval type=number value=10 style=width:100%></div>
+</div>
+<div style=margin-top:8px>
+<label style=font-size:.7rem;color:#94a3b8>候选节点 <span style=color:#475569;font-weight:normal>(从下方列表点击选择)</span></label>
+<div id=candidateNodes style=display:flex;flex-wrap:wrap;gap:4px;margin-top:4px></div>
+<div id=availableNodesList style=margin-top:6px;max-height:160px;overflow-y:auto;display:flex;flex-wrap:wrap;gap:4px;background:#0b1120;border-radius:6px;padding:6px;border:1px solid #1e293b></div>
+<div style=display:flex;gap:4px;margin-top:4px>
+<button class="btn btn-sm" onclick=loadAllNodes()>&#128260; 加载订阅节点</button>
+</div>
+<div style=display:flex;gap:6px;flex-wrap:wrap;margin-top:12px>
+<button class="btn btn-warn" onclick=runProxyCheck()>&#9654; 立即检测</button>
+<button class="btn" onclick=loadProxyStatus()>&#128202; 查看状态</button>
+</div>
+<div id=proxyStatus class=status></div>
+<div id=logSection style="margin-top:12px;border-top:1px solid #1e293b;padding-top:10px">
+<div style="display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none;padding:4px 0" onclick=toggleLogSection()>
+<label style="font-size:.7rem;color:#94a3b8;letter-spacing:.5px;text-transform:uppercase;font-weight:500">检测日志</label>
+<span style=font-size:.7rem;color:#64748b id=logToggle>&#9654; 展开</span>
+</div>
+<div id=logArea style="display:none;margin-top:8px">
+<div id=logBody></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card collapsible" id=deviceCard>
+<div class=card-h>
+<div class=card-h-left onclick=toggleCard('deviceCard')><label>设备状况监控</label><span class=card-toggle>&#9654;</span></div>
+<div class=card-h-right>
+<label class=toggle><input type=checkbox id=deviceAlertsEnabled><span class=slider></span></label>
+</div>
+</div>
+<div class=card-body>
+<div style=display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px>
+<div><label style=font-size:.7rem;color:#94a3b8>电池电量低于 (%)</label><input id=batteryLow type=number value=20 style=width:100%></div>
+<div><label style=font-size:.7rem;color:#94a3b8>电池温度高于 (°C)</label><input id=batteryTempHigh type=number value=45 style=width:100%></div>
+<div><label style=font-size:.7rem;color:#94a3b8>WiFi 信号弱于 (dBm)</label><input id=wifiRssiWeak type=number value=-75 style=width:100%></div>
+<div><label style=font-size:.7rem;color:#94a3b8>磁盘使用高于 (%)</label><input id=diskUsageHigh type=number value=90 style=width:100%></div>
+<div><label style=font-size:.7rem;color:#94a3b8>CPU 使用高于 (%)</label><input id=cpuUsageHigh type=number value=90 style=width:100%></div>
+<div><label style=font-size:.7rem;color:#94a3b8>内存使用高于 (%)</label><input id=memUsageHigh type=number value=90 style=width:100%></div>
+</div>
+<div style=display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px>
+<div><label style=font-size:.7rem;color:#94a3b8>告警冷却 (分钟)</label><input id=alertCooldown type=number value=30 style=width:100%></div>
+<div style=display:flex;align-items:flex-end;gap:4px>
+<button class="btn btn-warn btn-sm" onclick=testDeviceAlerts()>&#9888; 测试告警</button>
+</div>
+</div>
+<div class=note style=margin-top:8px>每 10 分钟检测一次设备状态，低于阈值时发送告警邮件（同一告警冷却时间内不重复发送）。设为 0 可禁用对应项目。</div>
+</div>
+</div>
+</div>
+<div id=toast class=toast></div>
+<script>
+const $=id=>document.getElementById(id);
+const show=(msg,sec=3)=>{const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),sec*1000)};
+function setStatus(msg,kind){const s=$('status');s.textContent=msg||'';s.className='status'+(kind?' '+kind:'')}
+function esc(s){if(!s)return '';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function fmtTime(t){if(!t)return '-';try{return new Date(t).toLocaleString('zh-CN')}catch{return t}}
+let currentConfig={enabled:false,smtp_host:'smtp.qq.com',smtp_port:'465',smtp_user:'',smtp_pass:'',to:'',monitored_procs:[]};
+let currentUrls=['https://www.google.com'];
+let currentCandidates=[];
+let logsVisible=false;
+function renderForm(c){
+  currentConfig=c||currentConfig;
+  $('enabled').checked=!!c.enabled;
+  $('smtp_host').value=c.smtp_host||'';
+  $('smtp_port').value=c.smtp_port||'';
+  $('smtp_user').value=c.smtp_user||'';
+  const passField=$('smtp_pass');
+  if(c.smtp_pass==='***'){passField.value='******';passField.readOnly=true;passField.style.opacity='0.6';$('passEditBtn').style.display='inline-flex';$('passClearBtn').style.display='none';}
+  else{passField.value=c.smtp_pass||'';passField.readOnly=false;passField.style.opacity='1';$('passEditBtn').style.display='none';$('passClearBtn').style.display=c.smtp_pass?'inline-flex':'none';}
+  $('to').value=c.to||'';
+  $('proxyCheckEnabled').checked=!!(c.proxy_check&&c.proxy_check.enabled);
+  const pc=c.proxy_check||{};
+  if(pc.test_urls&&Array.isArray(pc.test_urls)){renderUrls(pc.test_urls)}
+  else if(pc.test_url){renderUrls([pc.test_url])}
+  else{renderUrls(['https://www.google.com'])}
+  $('retryCount').value=pc.retry_count||2;
+  $('retryDelay').value=pc.retry_delay||3000;
+  $('checkInterval').value=pc.check_interval||10;
+  renderCandidates(pc.candidate_nodes||[]);
+  // 设备状况通知
+  const da=c.device_alerts||{};
+  $('deviceAlertsEnabled').checked=!!da.enabled;
+  $('batteryLow').value=da.battery_low??20;
+  $('batteryTempHigh').value=da.battery_temp_high??45;
+  $('wifiRssiWeak').value=da.wifi_rssi_weak??-75;
+  $('diskUsageHigh').value=da.disk_usage_high??90;
+  $('cpuUsageHigh').value=da.cpu_usage_high??90;
+  $('memUsageHigh').value=da.mem_usage_high??90;
+  $('alertCooldown').value=da.cooldown??30;
+}
+function editPass(){const f=$('smtp_pass');f.readOnly=false;f.value='';f.style.opacity='1';f.focus();$('passEditBtn').style.display='none';$('passClearBtn').style.display='inline-flex';}
+function clearPass(){const f=$('smtp_pass');f.value='';f.readOnly=false;f.style.opacity='1';$('passEditBtn').style.display='none';$('passClearBtn').style.display='none';}
+function renderProcs(candidates,selected){
+  const el=$('procList');
+  const sel=new Set(selected||[]);
+  if(!candidates||!candidates.length){el.innerHTML='<div class=empty>暂无标记的进程。请先在<a href=/ style=color:#38bdf8>监控页面</a>用星标(&#9733;)标记重要进程。</div>';$('procCount').textContent='0 个';return}
+  $('procCount').textContent=candidates.length+' 个 (已选 '+sel.size+')';
+  el.innerHTML=candidates.map(p=>{
+    const checked=sel.has(p.cmd)?'checked':'';
+    const cls=sel.has(p.cmd)?'proc-item checked':'proc-item';
+    const statusColor=p.running?'#22c55e':'#ef4444';
+    const statusText=p.running?'运行中':'未运行';
+    return '<label class="'+cls+'"><input type=checkbox value="'+esc(p.cmd)+'" '+checked+' onchange=toggleProc(this)><div style=flex:1><div class=cmd>'+esc(p.cmd)+'</div><div class=desc style="color:'+statusColor+'">'+statusText+'</div></div></label>';
+  }).join('');
+}
+function toggleProc(cb){
+  const label=cb.closest('.proc-item');
+  if(cb.checked)label.classList.add('checked');else label.classList.remove('checked');
+  const count=document.querySelectorAll('#procList input:checked').length;
+  $('procCount').textContent=document.querySelectorAll('#procList input').length+' 个 (已选 '+count+')';
+}
+function renderUrls(urls){
+  if(urls)currentUrls=urls;
+  const el=$('urlList');
+  if(!currentUrls||!currentUrls.length){el.innerHTML='<span style=font-size:.75rem;color:#64748b>暂无检测网站</span>';return}
+  el.innerHTML=currentUrls.map((u,i)=>
+    '<div class=url-row><input value="'+esc(u)+'" oninput="currentUrls['+i+']=this.value"><button class="btn btn-sm" onclick="removeUrl('+i+')" style=background:#dc2626>&#10005;</button></div>'
+  ).join('');
+}
+function addUrl(){
+  const v=$('addUrlInput').value.trim();
+  if(!v)return;
+  currentUrls.push(v);
+  renderUrls();
+  $('addUrlInput').value='';
+}
+function removeUrl(i){
+  currentUrls.splice(i,1);
+  renderUrls();
+}
+function renderCandidates(nodes){
+  if(nodes)currentCandidates=nodes;
+  const el=$('candidateNodes');
+  if(!currentCandidates||!currentCandidates.length){el.innerHTML='<span style=font-size:.75rem;color:#64748b>暂无候选节点</span>';return}
+  el.innerHTML=currentCandidates.map((n,i)=>
+    '<span class=candidate-tag>'+esc(n)+'<span class=candidate-del onclick="toggleCandidate(\''+esc(n)+'\')">&#10005;</span></span>'
+  ).join('');
+}
+function toggleCandidate(name){
+  if(!name)return;
+  const idx=currentCandidates.indexOf(name);
+  if(idx>=0){currentCandidates.splice(idx,1)}else{currentCandidates.push(name)}
+  renderCandidates();
+  renderAvailableNodes();
+}
+function removeCandidate(i){
+  currentCandidates.splice(i,1);
+  renderCandidates();
+}
+function loadAllNodes(){
+  const el=$('availableNodesList');
+  el.innerHTML='<span style=color:#64748b;font-size:.75rem>加载中...</span>';
+  fetch('/api/node-status').then(r=>r.json()).then(d=>{
+    if(d.ok&&d.nodes){
+      window._allNodes=d.nodes.map(n=>n.tag).filter(Boolean);
+      renderAvailableNodes();
+    }else{
+      el.innerHTML='<span style=color:#ef4444;font-size:.75rem>加载失败</span>';
+    }
+  }).catch(()=>{
+    el.innerHTML='<span style=color:#ef4444;font-size:.75rem>网络错误</span>';
+  });
+}
+function renderAvailableNodes(){
+  const el=$('availableNodesList');
+  const all=window._allNodes||[];
+  if(!all.length){el.innerHTML='<span style=color:#64748b;font-size:.75rem>点击"加载订阅节点"获取可用节点列表</span>';return}
+  el.innerHTML=all.map(n=>{
+    const isCandidate=currentCandidates.includes(n);
+    return '<span class="node-option'+(isCandidate?' selected':'')+'" onclick="toggleCandidate(\''+esc(n)+'\')" title="'+(isCandidate?'点击移除':'点击添加候选')+'">'+esc(n)+(isCandidate?' &#10003;':'')+'</span>';
+  }).join('');
+}
+function collectConfig(){
+  const monitored=[];
+  document.querySelectorAll('#procList input:checked').forEach(cb=>monitored.push(cb.value));
+  const passField=$('smtp_pass');
+  let pass=passField.value;
+  if(passField.readOnly||pass==='******')pass='***';
+  return {
+    enabled:$('enabled').checked,
+    smtp_host:$('smtp_host').value.trim(),
+    smtp_port:$('smtp_port').value.trim(),
+    smtp_user:$('smtp_user').value.trim(),
+    smtp_pass:pass,
+    to:$('to').value.trim(),
+    monitored_procs:monitored,
+    proxy_check:{
+      enabled:$('proxyCheckEnabled').checked,
+      test_urls:currentUrls.filter(u=>u.trim()),
+      retry_count:parseInt($('retryCount').value)||2,
+      retry_delay:parseInt($('retryDelay').value)||3000,
+      check_interval:parseInt($('checkInterval').value)||10,
+      candidate_nodes:currentCandidates
+    },
+    device_alerts:{
+      enabled:$('deviceAlertsEnabled').checked,
+      battery_low:parseInt($('batteryLow').value)||0,
+      battery_temp_high:parseFloat($('batteryTempHigh').value)||0,
+      wifi_rssi_weak:parseInt($('wifiRssiWeak').value)||0,
+      disk_usage_high:parseInt($('diskUsageHigh').value)||0,
+      cpu_usage_high:parseInt($('cpuUsageHigh').value)||0,
+      mem_usage_high:parseInt($('memUsageHigh').value)||0,
+      cooldown:parseInt($('alertCooldown').value)||30,
+    }
+  };
+}
+async function saveConfig(){
+  const cfg=collectConfig();
+  const anyEnabled=cfg.enabled||(cfg.proxy_check&&cfg.proxy_check.enabled)||(cfg.device_alerts&&cfg.device_alerts.enabled);
+  if(anyEnabled){
+    if(!cfg.smtp_user||!cfg.smtp_pass||!cfg.to){show('启用任意通知功能时 SMTP 配置不能为空');return}
+    if(cfg.enabled&&cfg.monitored_procs.length===0){show('启用进程告警时请至少勾选一个监控进程');return}
+  }
+  $('saveBtn').disabled=true;
+  const oldHtml=$('saveBtn').innerHTML;
+  $('saveBtn').innerHTML='<span class=loading></span> 保存中';
+  try{
+    const r=await fetch('/api/notify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(cfg)});
+    const d=await r.json();
+    if(d.ok){show(d.msg||'已保存');setStatus('配置已保存','ok');loadData()}
+    else{show(d.error||'保存失败');setStatus(d.error||'保存失败','err')}
+  }catch(e){show('网络错误: '+e.message);setStatus('网络错误: '+e.message,'err')}
+  $('saveBtn').disabled=false;
+  $('saveBtn').innerHTML=oldHtml;
+}
+async function sendTest(){
+  const cfg=collectConfig();
+  if(!cfg.smtp_user||!cfg.smtp_pass||!cfg.to){show('请先填写 SMTP 配置并保存');return}
+  $('testBtn').disabled=true;
+  const oldHtml=$('testBtn').innerHTML;
+  $('testBtn').innerHTML='<span class=loading></span> 发送中';
+  setStatus('正在发送测试邮件...');
+  try{
+    const r=await fetch('/api/notify/test',{method:'POST'});
+    const d=await r.json();
+    if(d.ok){show(d.msg||'测试邮件已发送');setStatus('测试邮件已发送，请查收','ok')}
+    else{show(d.error||'发送失败');setStatus(d.error||'发送失败','err')}
+  }catch(e){show('网络错误: '+e.message);setStatus('网络错误: '+e.message,'err')}
+  $('testBtn').disabled=false;
+  $('testBtn').innerHTML=oldHtml;
+}
+async function testDeviceAlerts(){
+  const cfg=collectConfig();
+  if(!cfg.smtp_user||!cfg.smtp_pass||!cfg.to){show('请先填写 SMTP 配置并保存');return}
+  // 先保存当前配置，确保后端使用最新阈值
+  setStatus('保存当前阈值并触发测试告警...');
+  try{
+    const sr=await fetch('/api/notify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(cfg)});
+    const sd=await sr.json();
+    if(!sd.ok){show(sd.error||'保存失败，无法测试');setStatus(sd.error||'保存失败','err');return}
+  }catch(e){show('保存配置网络错误: '+e.message);setStatus('网络错误: '+e.message,'err');return}
+  // 触发测试告警
+  try{
+    const r=await fetch('/api/notify/test-device',{method:'POST'});
+    const d=await r.json();
+    if(d.ok){show(d.msg||'测试告警已发送');setStatus('测试告警已发送，请查收邮件','ok')}
+    else{show(d.error||'发送失败');setStatus(d.error||'发送失败','err')}
+  }catch(e){show('网络错误: '+e.message);setStatus('网络错误: '+e.message,'err')}
+}
+let proxyCheckPolling=null;
+async function runProxyCheck(){
+  const btn=document.querySelector('.btn-warn');
+  btn.disabled=true;
+  const old=btn.innerHTML;
+  btn.innerHTML='<span class=loading></span> 检测中';
+  const s=$('proxyStatus');
+  s.textContent='正在启动检测...';s.className='status';
+  // 自动展开日志区域
+  if(!logsVisible){toggleLogSection();}
+  try{
+    const r=await fetch('/api/proxy-check/run?force=1',{method:'POST'});
+    const d=await r.json();
+    if(d.ok){
+      s.textContent='检测已启动，正在轮询进度...';s.className='status ok';
+      // 开始轮询日志
+      let lastLen=0;
+      if(proxyCheckPolling)clearInterval(proxyCheckPolling);
+      proxyCheckPolling=setInterval(async()=>{
+        try{
+          const lr=await fetch('/api/proxy-check-logs');
+          const ld=await lr.json();
+          if(ld.ok&&ld.logs){
+            loadNodeWeights(); // 异步刷新权重缓存
+            renderLogs(ld.logs);
+            // 更新状态文字
+            const lastLog=ld.logs[ld.logs.length-1];
+            if(lastLog){
+              if(lastLog.node==='__error__'){
+                s.textContent='检测出错: '+(lastLog.progress||'');s.className='status err';
+                clearInterval(proxyCheckPolling);proxyCheckPolling=null;
+                btn.disabled=false;btn.innerHTML=old;
+              }else if(lastLog.node==='__done__'){
+                const realLogs=ld.logs.filter(l=>l.node!=='__start__'&&l.node!=='__error__'&&l.node!=='__done__');
+                const okN=realLogs.filter(l=>l.ok).length;
+                const totalN=realLogs.length;
+                s.textContent='检测完成: '+okN+'/'+totalN+' 节点通过';s.className='status ok';
+                clearInterval(proxyCheckPolling);proxyCheckPolling=null;
+                btn.disabled=false;btn.innerHTML=old;
+              }else if(lastLog.progress&&lastLog.node==='__start__'){
+                s.textContent=lastLog.progress;s.className='status';
+              }else if(lastLog.progress){
+                s.textContent='进度: '+lastLog.progress;s.className='status';
+              }
+            }
+          }
+        }catch{}
+      },2000);
+      // 超时保护：5分钟后停止轮询
+      setTimeout(()=>{
+        if(proxyCheckPolling){clearInterval(proxyCheckPolling);proxyCheckPolling=null;
+          s.textContent='检测超时（5分钟），请查看日志';s.className='status err';
+          btn.disabled=false;btn.innerHTML=old;
+        }
+      },300000);
+    }else{s.textContent=d.error||'启动检测失败';s.className='status err';btn.disabled=false;btn.innerHTML=old;}
+  }catch(e){s.textContent='网络错误: '+e.message;s.className='status err';btn.disabled=false;btn.innerHTML=old;}
+}
+async function loadProxyStatus(){
+  const s=$('proxyStatus');
+  s.textContent='加载中...';
+  s.className='status';
+  try{
+    const r=await fetch('/api/proxy-check/status');
+    const d=await r.json();
+    if(d.ok!==false){
+      let info='状态: '+(d.last_check?'上次检测: '+fmtTime(d.last_check):'未检测');
+      if(d.current_node)info+=', 当前节点: '+esc(d.current_node);
+      info+=', 候选: '+(d.candidate_nodes||[]).length+' 个';
+      s.textContent=info;
+      s.className='status ok';
+    }else{
+      s.textContent=d.error||'获取状态失败';
+      s.className='status err';
+    }
+  }catch(e){s.textContent='网络错误: '+e.message;s.className='status err'}
+}
+function toggleCard(id){
+  const el=$(id);
+  if(!el)return;
+  el.classList.toggle('expanded');
+}
+function toggleLogSection(){
+  logsVisible=!logsVisible;
+  $('logArea').style.display=logsVisible?'block':'none';
+  $('logToggle').innerHTML=logsVisible?'&#9660; 收起':'&#9654; 展开';
+  if(logsVisible)loadLogs();
+}
+let expandedNodes=new Set();
+let nodeWeightsCache=[];
+async function loadNodeWeights(){
+  try{
+    const r=await fetch('/api/proxy-check/weights');
+    const d=await r.json();
+    if(d.ok&&d.weights)nodeWeightsCache=d.weights;
+  }catch{}
+}
+function renderLogs(logs){
+  const el=$('logBody');
+  if(!logs||!logs.length){el.innerHTML='<div class=empty>暂无日志</div>';return}
+  // 分离系统消息和节点日志
+  const allSysMsgs=logs.filter(l=>l.node==='__start__'||l.node==='__done__'||l.node==='__error__');
+  const nodeLogs=logs.filter(l=>l.node!=='__start__'&&l.node!=='__done__'&&l.node!=='__error__');
+  // 只显示最近一次检测的系统消息（找到最后一个 __start__，取它及之后的系统消息）
+  let lastStartIdx=-1;
+  for(let i=allSysMsgs.length-1;i>=0;i--){
+    if(allSysMsgs[i].node==='__start__'){lastStartIdx=i;break}
+  }
+  const sysMsgs=lastStartIdx>=0?allSysMsgs.slice(lastStartIdx):allSysMsgs.slice(-1);
+  // 按节点分组（保持插入顺序）
+  const nodeMap=new Map();
+  for(const log of nodeLogs){
+    if(!nodeMap.has(log.node))nodeMap.set(log.node,[]);
+    nodeMap.get(log.node).push(log);
+  }
+  // 按权重排序节点（权重高的在前）
+  const weightMap=new Map();
+  for(const w of nodeWeightsCache){weightMap.set(w.node,w)}
+  const sortedNodes=[...nodeMap.entries()].sort((a,b)=>{
+    const wa=weightMap.get(a[0])?.weight??0;
+    const wb=weightMap.get(b[0])?.weight??0;
+    if(wb!==wa)return wb-wa;
+    // 权重相同：成功的在前
+    const aOk=a[1][a[1].length-1].ok?1:0;
+    const bOk=b[1][b[1].length-1].ok?1:0;
+    return bOk-aOk;
+  });
+  let html='';
+  // 渲染系统消息（只显示最近一次）
+  for(const msg of sysMsgs){
+    const cls=msg.node==='__start__'?'start':(msg.node==='__done__'?'done':'err');
+    html+='<div class="sys-msg '+cls+'">'+esc(msg.progress||'')+'</div>';
+  }
+  // 渲染节点卡片（按权重排序）
+  let rank=0;
+  for(const[nodeName,entries] of sortedNodes){
+    rank++;
+    const last=entries[entries.length-1];
+    const isExpanded=expandedNodes.has(nodeName);
+    const dotCls=last.ok?'ok':'err';
+    const w=weightMap.get(nodeName);
+    const weightText=w?('权重 '+(w.weight*100).toFixed(0)):'';
+    const delayText=last.delay?(last.delay+'ms'):'';
+    // 总计统计
+    const totalCount=entries.length;
+    const okCount=entries.filter(e=>e.ok).length;
+    const failCount=totalCount-okCount;
+    const successRate=totalCount>0?(okCount/totalCount*100).toFixed(0)+'%':'-';
+    // 平均延迟（所有成功检测的 delay 平均值）
+    const delays=entries.map(e=>e.delay).filter(d=>d&&d>0);
+    const avgDelay=delays.length>0?Math.round(delays.reduce((a,b)=>a+b,0)/delays.length):0;
+    // 最小/最大延迟
+    const minDelay=delays.length>0?Math.min(...delays):0;
+    const maxDelay=delays.length>0?Math.max(...delays):0;
+    html+='<div class="node-card'+(isExpanded?' expanded':'')+'" data-node="'+esc(nodeName)+'">';
+    html+='<div class=node-card-h>';
+    html+='<span class=node-rank>#'+rank+'</span>';
+    html+='<span class="node-dot '+dotCls+'"></span>';
+    html+='<span class=node-name>'+esc(nodeName)+'</span>';
+    if(weightText)html+='<span class=node-weight>'+weightText+'</span>';
+    if(delayText)html+='<span class=node-delay>'+delayText+'</span>';
+    html+='<span class=node-success-rate>'+successRate+' ('+totalCount+'次)</span>';
+    html+='<span class=node-del title="删除该节点的检测日志" onclick="event.stopPropagation();deleteNodeLogs(\''+esc(nodeName).replace(/'/g,"\\'")+'\')">&#128465;</span>';
+    html+='<span class=node-toggle>&#9654;</span>';
+    html+='</div>';
+    html+='<div class=node-card-body>';
+    // 总计统计区域
+    html+='<div class=node-stats>';
+    html+='<span class=stat-item>总计 <b>'+totalCount+'</b></span>';
+    html+='<span class=stat-item>成功 <b style=color:#22c55e>'+okCount+'</b></span>';
+    if(failCount>0)html+='<span class=stat-item>失败 <b style=color:#ef4444>'+failCount+'</b></span>';
+    html+='<span class=stat-item>成功率 <b>'+successRate+'</b></span>';
+    if(avgDelay>0){
+      html+='<span class=stat-item>平均 <b style=color:#38bdf8>'+avgDelay+'ms</b></span>';
+      html+='<span class=stat-item>最快 <b style=color:#22c55e>'+minDelay+'ms</b></span>';
+      html+='<span class=stat-item>最慢 <b style=color:#d97706>'+maxDelay+'ms</b></span>';
+    }
+    html+='</div>';
+    // 最近5次检测记录（倒序，最新在上）
+    const recentEntries=entries.slice(-5);
+    const showCount=Math.min(5,recentEntries.length);
+    html+='<div class=recent-title>最近 '+showCount+' 次检测</div>';
+    for(let i=recentEntries.length-1;i>=0;i--){
+      const entry=recentEntries[i];
+      html+='<div class=check-entry>';
+      html+='<div class=check-entry-time>'+esc(fmtTime(entry.timestamp))+(entry.ok?' · <span style=color:#22c55e>正常</span>':' · <span style=color:#ef4444>失败</span>')+'</div>';
+      // 渲染每个URL的结果
+      for(const r of (entry.urls||[])){
+        const u=r.url||'';
+        const isOk=r.status===200;
+        const statusCls=isOk?'ok':'fail';
+        const statusText=isOk?'200':(r.status||'0');
+        const latencyText=r.latency?(r.latency+'ms'):'';
+        // 提取域名作为显示
+        let domain=u;
+        try{domain=new URL(u).hostname;}catch{}
+        html+='<div class=check-url-row>';
+        html+='<span class="check-url-status '+statusCls+'">'+statusText+'</span>';
+        html+='<span class=check-url-text>'+esc(domain)+'</span>';
+        if(latencyText)html+='<span class=check-url-latency>'+latencyText+'</span>';
+        html+='</div>';
+      }
+      if(!entry.urls||!entry.urls.length){
+        html+='<div class=check-url-row><span class=check-url-text style=color:#64748b>无URL数据</span></div>';
+      }
+      html+='</div>';
+    }
+    html+='</div></div>';
+  }
+  el.innerHTML=html;
+}
+// 事件委托：点击节点卡片头部切换展开
+document.addEventListener('click',e=>{
+  const header=e.target.closest('.node-card-h');
+  if(!header)return;
+  const card=header.closest('.node-card');
+  if(!card)return;
+  const nodeName=card.dataset.node||'';
+  if(expandedNodes.has(nodeName)){expandedNodes.delete(nodeName);card.classList.remove('expanded')}
+  else{expandedNodes.add(nodeName);card.classList.add('expanded')}
+});
+async function deleteNodeLogs(nodeName){
+  if(!nodeName)return;
+  if(!confirm('确定删除节点「'+nodeName+'」的所有检测日志吗？\n（软删除，不会真正移除数据）'))return;
+  try{
+    const r=await fetch('/api/proxy-check-logs/delete',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({node:nodeName})});
+    const d=await r.json();
+    if(d.ok){
+      show('已删除 '+nodeName+' 的 '+d.deleted+' 条日志',2);
+      expandedNodes.delete(nodeName);
+      await loadLogs();
+    }else{
+      show(d.error||'删除失败',3);
+    }
+  }catch(e){show('网络错误: '+e.message,3)}
+}
+async function loadLogs(){
+  const el=$('logBody');
+  el.innerHTML='<div class=empty>加载中...</div>';
+  try{
+    await loadNodeWeights();
+    const r=await fetch('/api/proxy-check-logs');
+    const d=await r.json();
+    if(d.ok&&d.logs&&d.logs.length){
+      renderLogs(d.logs);
+    }else{
+      el.innerHTML='<div class=empty>'+(d.logs?'暂无日志':'暂无数据')+'</div>';
+    }
+  }catch(e){
+    el.innerHTML='<div class=empty style=color:#ef4444>加载失败</div>';
+  }
+}
+async function loadData(){
+  $('refreshBtn').disabled=true;
+  const oldHtml=$('refreshBtn').innerHTML;
+  $('refreshBtn').innerHTML='<span class=loading></span> 加载中';
+  try{
+    const r=await fetch('/api/notify');
+    const d=await r.json();
+    if(d.ok){
+      renderForm(d.config);
+      renderProcs(d.candidates,d.config.monitored_procs);
+      setStatus('配置已加载','ok');
+    }else{
+      setStatus(d.error||'加载失败','err');
+    }
+  }catch(e){setStatus('网络错误: '+e.message,'err')}
+  $('refreshBtn').disabled=false;
+  $('refreshBtn').innerHTML=oldHtml;
+}
+loadData();
+// Set active nav based on current path
+document.querySelectorAll('.nav a').forEach(a => {
+  if (a.getAttribute('href') === location.pathname) {
+    a.classList.add('active');
+  }
+});
+</script>

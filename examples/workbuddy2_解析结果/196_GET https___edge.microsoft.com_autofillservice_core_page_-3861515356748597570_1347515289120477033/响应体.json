@@ -1,0 +1,122 @@
+{
+  "formResponses": [
+    {
+      "fields": [
+        {
+          "fieldSign": "-8281785150308423333",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-7329687746762499336",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-6989802431249576648",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-5480043844585265316",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "-2991230414694182750",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "3077367628562055803",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "3874308404867593159",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "3921331970594921921",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "5344239449684597794",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "6617424521834352939",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "6733964739878154795",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "7811704810495292537",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "7857738458584655624",
+          "fieldType": 1,
+          "fieldTypes": [
+            1
+          ],
+          "crowdDecisions": {}
+        },
+        {
+          "fieldSign": "8507773676355454644",
+          "fieldType": 0,
+          "fieldTypes": [
+            0
+          ],
+          "crowdDecisions": {}
+        }
+      ],
+      "formSign": "1347515289120477033",
+      "canUploadLabels": false
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "data": {
+    "plugins": [
+      {
+        "plugin_id": "d9597732-e5da-4536-88e7-b826784b3800",
+        "name": "trae-remote-official:industry-researcher",
+        "display_name": "industry-researcher",
+        "description": "行业深度研究与产业链分析：产出行业全景、竞争格局、可比公司估值表、主题选股清单，组装为研究简报",
+        "registry": "trae-remote-official"
+      },
+      {
+        "plugin_id": "cedc9905-f229-415e-9d0e-13e29c6d9c94",
+        "name": "trae-remote-official:industry-panorama-research",
+        "display_name": "industry-panorama-research",
+        "description": "行业全景研究插件，提供宏观政策、市场规模、产业链、竞争格局与趋势机会风险的完整行业研究能力",
+        "registry": "trae-remote-official"
+      },
+      {
+        "plugin_id": "68c8bc26-ebcf-42a1-963f-ed7a5e820fa9",
+        "name": "trae-remote-official:product-lifecycle-workbench",
+        "display_name": "product-lifecycle-workbench",
+        "description": "服务于产品全链路协作场景中需要产出各类结构化文档的专业人员，核心覆盖产品、研发、设计等能角色；支持竞品研究、产品/技术文档撰写、设计风格分析、工作内容总结等场景。",
+        "registry": "trae-remote-official"
+      },
+      {
+        "plugin_id": "df143d7b-3405-4ce7-ad90-30f4d5ccdc00",
+        "name": "trae-remote-official:litigation-assistant",
+        "display_name": "案件咨询",
+        "description": "面向当事人、企业法务和律师团队的诉讼案件分析与策略规划应用，覆盖案件评估、争议焦点梳理、证据时间线构建、诉讼策略制定、判例检索及法律文书起草，帮助用户看清胜负态势并形成完整的诉讼方案。",
+        "registry": "trae-remote-official"
+      },
+      {
+        "plugin_id": "db4f882f-1b96-4abb-89fc-051cb2e77b59",
+        "name": "trae-remote-official:ecom-video-generation",
+        "display_name": "ecom-video-generation",
+        "description": "电商短视频生成专家：先写脚本、再出视频。适用于带货/种草/宣传短视频的分镜脚本、口播文案、视频prompt编写，以及静图动态化和长视频拆段。内置剪辑vs生成路径判定、7大品类卖点路由、A/B双叙事骨架。",
+        "registry": "trae-remote-official"
+      },
+      {
+        "plugin_id": "9a2783e4-0fee-4dfe-a558-bc49ad963c75",
+        "name": "trae-remote-official:web-app-development",
+        "display_name": "web-app-development",
+        "description": "用于网页应用设计、开发与调试的内部技能插件。",
+        "registry": "trae-remote-official"
+      },
+      {
+        "plugin_id": "db281781-a083-426c-b2ec-6f7ae39718e7",
+        "name": "trae-remote-official:full-link-stock-analysis",
+        "display_name": "全链路个股分析助手",
+        "description": "覆盖从实时盘面、盯盘择时、事件归因到深度研究报告的完整链路，支持 A股 / 港股 / 美股 / 基金。提供实时行情速览、异动归因、技术面研判、DCF 与可比估值、三表建模、竞争格局与产业链、首次覆盖报告、财报解读与多空推介等能力。",
+        "registry": "trae-remote-official"
+      },
+      {
+        "plugin_id": "e4e2f181-5103-40c5-a689-73c2652955b2",
+        "name": "trae-remote-official:story-craft",
+        "display_name": "story-craft",
+        "description": "为剧情故事创作打造的助手，覆盖原创小说、同人、剧本剧情与世界观构建。以【人物灵魂设定 + 反AI味文笔】为核心，写出有张力、有区分度、可长篇连载的故事\n",
+        "registry": "trae-remote-official"
+      },
+      {
+        "plugin_id": "de46dd60-8c12-49b9-a60d-d8cb4da3f2f7",
+        "name": "trae-remote-official:business-ops-analysis",
+        "display_name": "经营数据洞察引擎",
+        "description": "从业务数据中提炼经营洞察，支持周期性经营汇报与管理决策",
+        "registry": "trae-remote-official"
+      },
+      {
+        "plugin_id": "27b9d3c3-294e-4497-b3f8-ff9b84646612",
+        "name": "trae-remote-official:data-processing",
+        "display_name": "data-processing",
+        "description": "数据准备工作台，用于数据清洗、转换与预处理流程的编排与执行",
+        "registry": "trae-remote-official"
+      },
+      {
+        "plugin_id": "df05c328-ffe2-4352-bae8-8192187fb72e",
+        "name": "trae-remote-official:tencent-docs",
+        "display_name": "tencent-docs",
+        "description": "Connect the official Tencent Docs service to let TRAE manage docs, sheets, slides, and more",
+        "registry": "trae-remote-official"
+      },
+      {
+        "plugin_id": "3c321e86-42d9-4305-8113-d80d75e22d92",
+        "name": "trae-remote-official:dingtalk",
+        "display_name": "dingtalk",
+        "description": "DingTalk collaboration workflows for enterprise messaging, documents, calendars, approvals, and organization productivity.",
+        "registry": "trae-remote-official"
+      },
+      {
+        "plugin_id": "0217f089-068d-44e7-a9c1-284953a648b1",
+        "name": "trae-remote-official:tianyancha",
+        "display_name": "tianyancha",
+        "description": "天眼查 MCP 集成，支持填写 API Key 后通过天眼查企业商业信息服务查询企业工商、风险、知识产权、经营公示等数据。",
+        "registry": "trae-remote-official"
+      },
+      {
+        "plugin_id": "d46becaa-20af-46f2-9df2-6f3147f44b0a",
+        "name": "trae-remote-official:wecom",
+        "display_name": "wecom",
+        "description": "企业微信插件：消息、通讯录、会议、日程、待办、文档、在线表格、智能表格、智能文档。通过 wecom-cli 与企业微信交互。",
+        "registry": "trae-remote-official"
+      },
+      {
+        "plugin_id": "dc7c99d1-e9dc-4d69-8fb5-a90db265cad5",
+        "name": "trae-remote-official:contract-drafting",
+        "display_name": "合同起草",
+        "description": "合同起草、审查与对比分析助手，支持法条检索与合规风险评估",
+        "registry": "trae-remote-official"
+      },
+      {
+        "plugin_id": "9960031e-203c-4253-aa4e-c7dd2e8e6cc5",
+        "name": "trae-remote-official:strategic-growth-compass",
+        "display_name": "strategic-growth-compass",
+        "description": "战略增长分析与决策支持罗盘工具",
+        "registry": "trae-remote-official"
+      },
+      {
+        "plugin_id": "066e21d8-2a72-4980-923e-281dbe22dc1d",
+        "name": "trae-remote-official:omnichannel-commerce-assistant",
+        "display_name": "电商经营助手",
+        "description": "服务多平台、多渠道经营的品牌和商家，统一分析不同平台的商品结构、流量表现、转化效率、促销策略和用户运营，帮助经营者建立全域经营视角。",
+        "registry": "trae-remote-official"
+      }
+    ]
+  },
+  "success": "true"
+}

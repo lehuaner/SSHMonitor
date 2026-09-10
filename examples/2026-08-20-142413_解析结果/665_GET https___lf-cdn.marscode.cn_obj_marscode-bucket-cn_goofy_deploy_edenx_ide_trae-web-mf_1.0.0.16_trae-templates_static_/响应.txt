@@ -1,0 +1,35 @@
+HTTP/2 200
+server: Tengine
+content-type: application/javascript
+content-length: 33837
+date: Wed, 19 Aug 2026 12:10:00 GMT
+vary: Accept-Encoding
+access-control-allow-headers: *
+access-control-allow-methods: *
+access-control-allow-origin: *
+cache-control: max-age=2592000
+etag: W/"b9cfd7794340c1865d7127384de0ed9d"
+last-modified: Wed, 19 Aug 2026 12:08:15 GMT
+x-bdcdn-cache-status: TCP_HIT
+x-kfc-cachekey: http://lf-cdn.marscode.cn/marscode-bucket-cn/goofy_deploy_edenx/ide/trae-web-mf/1.0.0.16/trae-templates/static/js/templates_mf.1f8593ac.js
+x-tos-hash-crc64ecma: 5128488483648783241
+x-tos-request-id: 38fa0f859cd1e9a36a859cd1-a90a026-a2e4c4e
+x-tos-response-time: Wed, 19 Aug 2026 12:08:49 GMT
+x-tos-storage-class: STANDARD
+via: fdbd:dc02:27:309::35, cache21.l2cn8060[0,0,200-0,H], cache46.l2cn8060[1,0], ens-cache21.cn5670[0,0,200-0,H], ens-cache5.cn5670[2,0]
+x-request-ip: fdbd:dc02:20:232::224
+x-tt-trace-tag: id=03;cdn-cache=hit;type=static
+x-response-cinfo: 183.209.141.106
+x-response-cache: edge_hit
+server-timing: inner; dur=1
+x-tt-trace-host: 01ee7bef309e78eb00468aa4d5ac5994182d0af684aee06472ea827e411674cd7ca68524d77959630dca3aef3af16e6895df03fd2ee491e28822d646ace3f561a3c1644123ce01d92ce02de797077528205936eebf87f797730c114c68deed6244
+x-tt-trace-id: 00-260819201000E9A52E415DF98808877E-07E5E13A844E9055-00
+x-tt-logid: 20260819201000E9A52E415DF98808877E
+age: 65620
+ali-swift-global-savetime: 1787141400
+x-cache: HIT TCP_MEM_HIT dirn:-2:-2
+x-swift-savetime: Wed, 19 Aug 2026 12:12:40 GMT
+x-swift-cachetime: 2591840
+x-tt-supplier-id: 0_1
+timing-allow-origin: *
+eagleid: 7033781917872070207307631e

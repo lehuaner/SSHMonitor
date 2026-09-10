@@ -1,0 +1,11 @@
+HTTP/2 302
+content-type: text/html
+set-cookie: session=SDilDW--dme2z3FsJVYVEg|1789459602|VEmfX7C9o_-ZEQD0Mi_LMWumR2o6MNNsd-Moz0js5SyK3f3ec2K2wpYXAPlYgC6_9v_d4CaoNmVaDMVnXfyFsP8ffA4k_5_dAmCSg6ArKhpa-fben-2pQXGfcCmKy1WEBs9695yGd8LNKTmFwZJMfcc8W70vOavZ31QsZiIkDhRuyRqI1L1N32nWQVFbmPTMZNOMScRLFw6MYeW6fHLL5w|izN_aJpaoG5GAyGQA2IqmjAndgc; Path=/; SameSite=Lax; HttpOnly; Max-Age=604800; Expires=Tue, 15-Sep-26 08:06:42 GMT
+location: https://www.workbuddy.cn/auth/realms/copilot/protocol/openid-connect/auth?state=7dcb7327682ba1201ba744e4f8ace932&redirect_uri=https%3A%2F%2Fwww.workbuddy.cn%2Fconsole%2Faccounts%2F.apisix%2Fredirect&client_id=console&scope=openid%20offline_access&response_type=code
+server: APISIX/3.9.1
+x-request-id: 321f791b-031e-4d66-99f0-83a7be190630
+cache-control: no-cache, no-store, max-age=0
+content-length: 217
+date: Tue, 08 Sep 2026 08:06:42 GMT
+eo-log-uuid: 15303957804386618487
+eo-cache-status: MISS

@@ -1,0 +1,18 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "0627e7fa-6a80-4514-9021-0d3d74af01f7",
+  "data": {
+    "userInfos": {
+      "8b3cb381-9ebc-4813-92d9-9e5880528465": {
+        "userInfo": {
+          "nickName": "乐幻",
+          "id": "8b3cb381-9ebc-4813-92d9-9e5880528465",
+          "name": "乐幻",
+          "avatar": "",
+          "accountType": 0
+        }
+      }
+    }
+  }
+}

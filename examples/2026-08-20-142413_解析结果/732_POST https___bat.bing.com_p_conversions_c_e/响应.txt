@@ -1,0 +1,11 @@
+HTTP/2 200
+content-type: text/plain; charset=utf-8
+vary: Origin
+access-control-allow-credentials: true
+access-control-allow-origin: https://www.trae.cn
+strict-transport-security: max-age=63072000; includeSubDomains; preload
+request-context: appId=cid-v1:a449a586-8786-487f-a449-dc1b282a2628
+x-cache: CONFIG_NOCACHE
+accept-ch: Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+x-msedge-ref: Ref A: D1694E8733FD4CB3A7FD1CA6F5721AF8 Ref B: TYO201151006040 Ref C: 2026-08-20T06:23:47Z
+date: Thu, 20 Aug 2026 06:23:46 GMT

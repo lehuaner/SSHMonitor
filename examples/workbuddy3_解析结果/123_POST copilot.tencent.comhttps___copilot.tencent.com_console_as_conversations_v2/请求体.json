@@ -1,0 +1,25 @@
+{
+  "type": "local",
+  "sessionId": "018c095f-af83-423b-99ff-dc2463a75675",
+  "name": "优化历史图擦除后背景纯度",
+  "conversationOrigin": "legacy_workbuddy_local",
+  "workDir": "D:\\Code\\Project\\Python\\TextPatch",
+  "isPlayground": 0,
+  "createdAtMs": 1788158423688,
+  "updatedAtMs": 1788171022842,
+  "lastActivityAtMs": 1788171022842,
+  "clientContext": {
+    "localStatus": "active",
+    "hostId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "sessionKind": "manual",
+    "model": "",
+    "sourceMode": "",
+    "permissionMode": "",
+    "expert": {
+      "id": "",
+      "locale": "",
+      "runtimeIdentity": "",
+      "marketplace": ""
+    }
+  }
+}

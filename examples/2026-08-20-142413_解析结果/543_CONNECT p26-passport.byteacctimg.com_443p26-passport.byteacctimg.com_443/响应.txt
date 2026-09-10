@@ -1,0 +1,116 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:23:03.664
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.byteacctimg.com
+  Simple Name: *.byteacctimg.com
+  DNS Name: *.byteacctimg.com
+
+[Issuer]
+  CN=RapidSSL TLS RSA CA G1, OU=www.digicert.com, O=DigiCert Inc, C=US
+  Simple Name: RapidSSL TLS RSA CA G1
+  DNS Name: RapidSSL TLS RSA CA G1
+
+[Serial Number]
+  022C96421FB6187A6EC15C5D8A50430A
+
+[Not Before]
+  2026/1/19 8:00:00
+
+[Not After]
+  2027/1/19 7:59:59
+
+[Thumbprint]
+  F6BF3ED7C3D65B0B77F2D7C560DC5420E96BC7B7
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 c8 c8 a2 94 b7 ca a7 aa 80 ce 60 38 69 01 fa 84 c3 7a 1d 04 50 31 5f 58 bd 8a 24 95 37 20 05 a8 b4 70 7c 96 cc 79 bd 26 b2 10 bc 9e 73 78 79 d6 ba f6 bd 1f 96 d0 3c 86 3d ba d2 7d 76 31 23 70 b8 b1 36 ae 18 f6 0e b1 1c 9e 27 b4 a6 f2 0d 75 23 e4 c2 42 ec d5 24 c4 cb 3e 39 3a c0 6a 52 9f 48 b9 fb 4b 9c c4 ee 79 07 c3 1e a3 19 1c ca dc 37 60 0a cf 94 dc 31 d6 68 2c 4c 26 13 ae 87 60 d8 f8 9b 73 87 c2 0c 37 11 72 5f 28 02 9d 4a 9b 24 86 25 aa 26 64 52 e4 e0 58 c7 68 8f e3 c8 e1 c8 c2 2c 43 a4 7c 12 3e f9 63 8f 4f 50 9c 74 7c ac f3 aa c8 d6 7c 03 08 0d c6 40 40 1b 39 31 20 2c 04 91 4c 83 14 5a 7d 0f 10 da aa 11 6b 03 cc c4 6d 2c bf 03 30 48 ce 53 3b 4e 9d e8 b4 2e d6 8f 1c cf 29 89 b9 f6 76 06 01 f9 f6 5c e2 be 53 8f 3e 4b 62 b7 53 ca 2b 6d d2 c0 5b 8e d9 7c 35 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=0cdb6c82490f4a670ab814ee7ac4485288eb5638
+
+* 使用者密钥标识符(2.5.29.14):
+  4b5c477d4f2e6fa7f512a753d7974db05a029afe
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.byteacctimg.com
+DNS Name=byteacctimg.com
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://cdp.rapidssl.com/RapidSSLTLSRSACAG1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://status.rapidssl.com
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.rapidssl.com/RapidSSLTLSRSACAG1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+4c63dc98e59c1dab88f61e8a3ddeae8fab44a3377b5f9b94c3fba19cfcc1be26
+‎2026‎年‎1‎月‎20‎日 0:57:28
+SHA256
+ECDSA
+304602210093f7c2235fad5ab1755c9009f6104bdd6e1124515631858656bea62e7c778b6b0221009137e83d0b0600a3c8710af1234f0b5f71e9469d7a51e68c38f61e04cc0dcd8e
+
+v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎1‎月‎20‎日 0:57:28
+SHA256
+ECDSA
+3045022009a2f31dd59988ed0bfa7e34a33f03a20585e69c35f66734c012c112f22a7abb022100f4f9ec26e5460ea7b7bad31f20931b0f5b76a74e77ab5b9fb96f53cc318f1aea
+
+v1
+a2810018734e176e1d47e09540f381ba546697cd63a84350716eb8094edaf10d
+‎2026‎年‎1‎月‎20‎日 0:57:28
+SHA256
+ECDSA
+304402200395acdb6a93d8808c0cae8fb1037a826c668cc465014666a2ac8aaf66c5424c02204feae156e9f865a2c233537b9934a55ae1500d4e3a175f33a85788249e35c2f4
+
+
+[SubjectAltNames]
+DNS Name=*.byteacctimg.com
+DNS Name=byteacctimg.com
+

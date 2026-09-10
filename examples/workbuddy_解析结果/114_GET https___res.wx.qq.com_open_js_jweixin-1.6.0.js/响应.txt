@@ -1,0 +1,12 @@
+HTTP/2 200
+content-type: application/x-javascript
+cache-control: must-revalidate, max-age=31536000
+age: 3070689
+content-length: 4385
+accept-ranges: bytes
+x-nws-log-uuid: 14330346627247303127
+server: Lego Server
+date: Mon, 07 Sep 2026 16:38:55 GMT
+x-cache-lookup: Cache Hit
+vary: Origin
+access-control-allow-origin: *

@@ -1,0 +1,564 @@
+<!DOCTYPE html><html lang=zh-CN><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Honor10 监控</title>
+<script src="config.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif}
+body{background:#0b1120;color:#e2e8f0;display:flex;align-items:center;justify-content:center}
+.app{width:100%;max-width:1200px;padding:20px}
+.nav{display:flex;gap:4px;margin-bottom:20px;background:#131c31;border-radius:10px;padding:4px;border:1px solid #1e293b}
+.nav a{padding:8px 20px;border-radius:6px;text-decoration:none;color:#94a3b8;font-size:.85rem;transition:.2s}
+.nav a:hover,.nav a.active{background:#2563eb;color:#fff}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.header h1{font-size:1.4rem;font-weight:600;background:linear-gradient(135deg,#38bdf8,#818cf8);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.header .meta{font-size:.8rem;color:#64748b}
+.badge{display:inline-flex;align-items:center;gap:4px;background:#1e293b;padding:4px 12px;border-radius:20px;font-size:.75rem;color:#94a3b8}
+.badge .dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.grid{display:grid;gap:12px;margin-bottom:12px}
+.grid-4{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
+.grid-4 .card{height:136px;display:flex;flex-direction:column;overflow:hidden}
+.grid-4 .card-h{min-height:50px;flex:0 0 auto}
+.grid-4 .card-h .val{font-size:1.3rem}
+.grid-4 .card-h .sub{font-size:.65rem}
+.card{background:#131c31;border:1px solid #1e293b;border-radius:12px;padding:16px;transition:border-color .3s;margin-bottom:12px}
+.card:last-child{margin-bottom:0}
+.card-h{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.card-h label{font-size:.72rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px;font-weight:500}
+.card-h .val{font-size:1.5rem;font-weight:700;line-height:1}
+.card-h .sub{font-size:.75rem;color:#64748b;margin-top:2px}
+.progress{height:4px;background:#1e293b;border-radius:2px;margin-top:8px;overflow:hidden}
+.progress div{height:100%;border-radius:2px;transition:width .6s ease,background .6s ease}
+.pwrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.85rem}
+th{color:#64748b;font-weight:500;padding:5px 8px;text-align:left;border-bottom:1px solid #1e293b;white-space:nowrap}
+td{padding:5px 8px;border-bottom:1px solid #131c31;font-family:ui-monospace,monospace;font-size:.85rem;white-space:nowrap}
+tr:hover td{background:rgba(56,189,248,.03)}
+.right{text-align:right}
+.flex{display:flex;align-items:center;gap:6px}
+.sb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:6px;margin-top:6px}
+.sb-stat{text-align:center;padding:6px;background:#0b1120;border-radius:8px}
+.sb-stat .num{font-size:1.2rem;font-weight:600}
+.sb-stat .lbl{font-size:.65rem;color:#64748b;margin-top:2px}
+.ctrl{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.btn{padding:5px 14px;border-radius:6px;border:none;font-size:.78rem;cursor:pointer;color:#fff;transition:opacity .2s;background:#1e293b;white-space:nowrap;display:inline-flex;align-items:center;gap:3px}
+.btn:hover{opacity:.8}
+.btn-xs{padding:3px 10px;font-size:.72rem;border-radius:4px;height:auto;line-height:1.4}
+.btn-primary{background:#2563eb;color:#fff}
+.btn-warn{background:#d97706}
+.btn-kill{background:#7c3aed;color:#fff}
+.btn-rst{background:#059669;color:#fff}
+.svc-tag{display:inline-block;font-size:.7rem;padding:1px 6px;border-radius:3px;margin-left:4px;background:rgba(5,150,105,.15);color:#34d399}
+.proc-actions{display:flex;gap:3px;align-items:center;justify-content:flex-end;flex-wrap:nowrap}
+.traffic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px}
+.traffic-item{text-align:center;padding:8px 6px;background:#0b1120;border-radius:6px;height:48px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.traffic-item .num{font-size:.95rem;font-weight:600;font-family:monospace;line-height:1.1;min-height:1.1em}
+.traffic-item .lbl{font-size:.6rem;color:#64748b;margin-top:2px}
+.traffic-row{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;grid-column:1/-1}
+.avg-toggle{margin-top:6px;padding:6px 10px;background:#0b1120;border:1px solid #1e293b;border-radius:6px;cursor:pointer;user-select:none;transition:.15s;font-size:.72rem;color:#64748b}
+.avg-toggle:hover{border-color:#38bdf8;color:#94a3b8}
+.avg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:6px}
+.avg-grid .traffic-item{background:#131c31;border:1px dashed #334155;height:auto;padding:6px}
+.avg-grid .traffic-item .num{font-size:.85rem;color:#a78bfa}
+.avg-unit{font-size:.55rem;color:#475569;margin-top:1px;text-align:center}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e293b;color:#e2e8f0;padding:10px 24px;border-radius:8px;font-size:.85rem;z-index:99;transition:opacity .3s;opacity:0;pointer-events:none}
+.toast.show{opacity:1}
+.tabs{display:flex;gap:2px;margin-bottom:8px;flex-wrap:wrap}
+.tab{padding:5px 14px;border-radius:6px;border:1px solid #1e293b;background:transparent;color:#64748b;font-size:.78rem;cursor:pointer;transition:.2s}
+.tab:hover{border-color:#38bdf8;color:#e2e8f0}
+.tab.active{background:#2563eb;border-color:#2563eb;color:#fff}
+.chart-wrap{height:50px;margin-top:4px;overflow:hidden}
+.bar{display:flex;align-items:flex-end;gap:2px;height:100%}
+.bar div{flex:1;min-width:2px;border-radius:1px 1px 0 0;transition:height .3s;background:#38bdf8}
+.chart-box{display:grid;grid-template-columns:48px 1fr;gap:2px 4px;margin-top:8px}
+.chart-y{display:flex;flex-direction:column;justify-content:space-between;text-align:right;font-size:.6rem;color:#64748b;font-family:monospace;padding:0 4px 0 0}
+.chart-area{position:relative;background:#0b1120;border-radius:4px;border:1px solid #1e293b;overflow:hidden;padding:0;height:220px}
+.chart-x{display:flex;justify-content:space-between;font-size:.55rem;color:#475569;font-family:monospace;grid-column:2;padding:2px 4px 0}
+.section-title{font-size:.78rem;text-transform:uppercase;color:#64748b;margin-bottom:6px;font-weight:500}
+.note{font-size:.7rem;color:#64748b;line-height:1.5}
+.node-delay{font-size:.7rem;font-weight:600;font-family:monospace;padding:2px 8px;border-radius:4px;white-space:nowrap}
+.node-delay.ok{background:rgba(34,197,94,.12);color:#22c55e}
+.node-delay.warn{background:rgba(245,158,11,.12);color:#f59e0b}
+.node-delay.fail{background:rgba(239,68,68,.12);color:#ef4444}
+.node-delay.unknown{background:rgba(100,116,139,.12);color:#64748b}
+.node-status-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:6px;padding:8px 10px;background:#0b1120;border-radius:8px;border:1px solid #1e293b}
+.node-status-row .name{font-size:.85rem;font-weight:500;color:#e2e8f0;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.node-status-row .traffic{font-size:.65rem;color:#64748b;font-family:monospace}
+.spark{display:flex;align-items:flex-end;gap:1px;height:36px}
+.spark div{flex:1;min-width:2px;border-radius:1px 1px 0 0;transition:height .3s}
+.conn-row{cursor:pointer}
+.conn-detail{display:none;background:#0b1120;padding:6px 10px;border-radius:6px;margin:2px 0;font-size:.7rem;color:#94a3b8;font-family:monospace}
+.conn-detail.show{display:block}
+@media(max-width:600px){.grid-4{grid-template-columns:1fr 1fr}.header h1{font-size:1.1rem}}
+</style>
+<div class=app>
+<div class=nav><a href=/>▼ 监控</a><a href=/sb/ui/ target=_blank>⚙ Sing-box</a><a href=/subscription>📦 订阅</a><a href=/notify>🔔 通知</a><a href=/files>📁 文件</a><a href=/android>📱 Android</a><a href=/checkin>✅ 签到</a></div>
+<div class=header><div class=flex><h1>♦ Honor10</h1><div class=badge><span class=dot></span><span id=statusText>在线</span></div></div><div class=meta id=headerMeta>加载中...</div></div>
+
+<div class="grid grid-4">
+<div class=card><div class=card-h><label>CPU</label><div><div class=val id=cpuVal>--%</div><div class=sub id=cpuSub>-- 核</div></div></div><div class=progress><div id=cpuBar style=width:0%></div></div></div>
+<div class=card><div class=card-h><label>内存</label><div><div class=val id=memVal>--MB</div><div class=sub id=memSub>可用 --MB</div></div></div><div class=progress><div id=memBar style=width:0%></div></div><div class=chart-wrap style=height:28px;margin-top:6px><div class=bar id=memSpark></div></div></div>
+<div class=card><div class=card-h><label>Swap</label><div><div class=val id=swapVal>--MB</div><div class=sub id=swapSub>-- / --MB</div></div></div><div class=progress><div id=swapBar style=width:0%></div></div></div>
+<div class=card><div class=card-h><label>磁盘</label><div><div class=val id=diskVal>--</div><div class=sub id=diskSub>-- / --</div></div></div><div class=progress><div id=diskBar style=width:0%></div></div><div style=display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:6px><div style=text-align:center><div style=font-size:.6rem;color:#64748b>系统</div><div style=font-size:.72rem;font-weight:600;color:#94a3b8 id=diskSys>--</div></div><div style=text-align:center><div style=font-size:.6rem;color:#64748b>Termux</div><div style=font-size:.72rem;font-weight:600;color:#a78bfa id=diskTermux>--</div></div><div style=text-align:center><div style=font-size:.6rem;color:#64748b>用户</div><div style=font-size:.72rem;font-weight:600;color:#38bdf8 id=diskUser>--</div></div><div style=text-align:center><div style=font-size:.6rem;color:#64748b>可用</div><div style=font-size:.72rem;font-weight:600;color:#22c55e id=diskAvail>--</div></div></div></div>
+  </div>
+
+<div class=card>
+<div class=card-h><label>系统信息</label></div>
+<div style=display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-top:8px>
+<div><div style=font-size:.65rem;color:#64748b>运行时间</div><div style=font-size:1rem;font-weight:600 id=uptimeVal>--</div></div>
+<div><div style=font-size:.65rem;color:#64748b>Android 全局负载 (1/5/15分)</div><div style=font-size:.9rem;font-weight:600;font-family:monospace id=loadVal>--</div><div style=font-size:.6rem;color:#475569;margin-top:2px id=loadNote>含系统进程</div></div>
+<div><div style=font-size:.65rem;color:#64748b>Termux CPU 占用</div><div style=font-size:1rem;font-weight:600 id=termuxCpuVal>--</div><div style=font-size:.6rem;color:#475569;margin-top:2px id=termuxCpuNote>--</div></div>
+<div><div style=font-size:.65rem;color:#64748b>进程总数</div><div style=font-size:1rem;font-weight:600 id=procStat>--</div></div>
+<div><div style=font-size:.65rem;color:#64748b>今日请求</div><div style=font-size:1rem;font-weight:600 id=reqVal>--</div></div>
+</div>
+</div>
+
+<div class=card>
+<div class=card-h><label>设备状态</label><span style=font-size:.7rem;color:#64748b id=deviceStatus>--</span></div>
+<div style=display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;margin-top:8px>
+<div><div style=font-size:.65rem;color:#64748b>电池电量</div><div style=font-size:1rem;font-weight:600 id=battVal>--</div><div style=height:4px;background:#1e293b;border-radius:2px;margin-top:4px><div id=battBar style=height:100%;border-radius:2px;transition:.3s></div></div></div>
+<div><div style=font-size:.65rem;color:#64748b>电池温度</div><div style=font-size:1rem;font-weight:600 id=battTemp>--</div></div>
+<div><div style=font-size:.65rem;color:#64748b>电池状态</div><div style=font-size:.85rem;font-weight:600 id=battStatus>--</div></div>
+<div><div style=font-size:.65rem;color:#64748b>WiFi 信号</div><div style=font-size:1rem;font-weight:600 id=wifiRssi>--</div></div>
+<div><div style=font-size:.65rem;color:#64748b>WiFi 速率</div><div style=font-size:1rem;font-weight:600 id=wifiSpeed>--</div></div>
+</div>
+</div>
+
+<div class=card style=padding-bottom:20px>
+<div class=card-h><label>流量曲线</label><span style=font-size:.72rem;color:#64748b id=trafTotal>总计: --</span></div>
+<div class=tabs style=margin-bottom:4px>
+<span class="tab active" data-mode=time onclick=switchMode('time')>分时</span>
+<span class=tab data-mode=day onclick=switchMode('day')>分日</span>
+</div>
+<div class=tabs id=trafTabs>
+<span class="tab active" data-m=10>10分</span>
+<span class=tab data-m=30>30分</span>
+<span class=tab data-m=60>1时</span>
+<span class=tab data-m=120>2时</span>
+<span class=tab data-m=180>3时</span>
+<span class=tab data-m=720>12时</span>
+<span class=tab data-m=1440>24时</span>
+</div>
+<div class=tabs id=dayTabs style=display:none>
+<span class="tab active" data-d=day>天</span>
+<span class=tab data-d=week>周</span>
+<span class=tab data-d=month>月</span>
+<span class=tab data-d=year>年</span>
+</div>
+<div class=traffic-grid id=trafGrid></div>
+<div class=avg-toggle id=avgToggle onclick=toggleAvg()><span id=avgToggleText>&#9654; 平均流量</span></div>
+<div class=avg-grid id=avgGrid style=display:none></div>
+<div class=chart-box>
+  <div class=chart-y><span id=trafYmax></span><span id=trafYmid></span><span>0</span></div>
+  <div class=chart-area><canvas id=trafChart></canvas><canvas id=trafChartBar style=display:none></canvas></div>
+ </div>
+</div>
+
+<div class=card>
+<div class=card-h><label>Sing-box</label><div style=text-align:right><div class=val style=font-size:1rem;font-weight:600 id=sbVer>--</div></div></div>
+<div class=sb-grid>
+<div class=sb-stat><div class=num id=sbConns>0</div><div class=lbl>连接</div></div>
+<div class=sb-stat><div class=num id=sbDl>0MB</div><div class=lbl>下载</div></div>
+<div class=sb-stat><div class=num id=sbUl>0MB</div><div class=lbl>上传</div></div>
+<div class=sb-stat><div class=num id=sbDlSpeed>0B/s</div><div class=lbl>下载速度</div></div>
+<div class=sb-stat><div class=num id=sbUlSpeed>0B/s</div><div class=lbl>上传速度</div></div>
+</div>
+<div id=sbNodeStatus style="margin-top:8px;display:none">
+<div class=section-title>当前节点</div>
+<div class=node-status-row>
+<span class=name id=sbNodeName>加载中...</span>
+<span id=sbNodeDelay class="node-delay unknown">--</span>
+<span class=traffic id=sbNodeTraffic></span>
+</div>
+</div>
+<div id=sbProxySection style="margin-top:8px;display:none">
+<div class=section-title>代理节点</div>
+<div id=sbProxyList style="display:flex;flex-wrap:wrap;gap:4px"></div>
+</div>
+</div>
+
+<div class=card>
+<div class=card-h><label>服务控制</label><span id=watchdogStatus style=font-size:.72rem></span></div>
+<div class=ctrl style=margin-top:8px>
+<button class="btn btn-primary" onclick=act("restart-singbox")>重启 Sing-box</button>
+<button class="btn btn-primary" onclick=act("restart-tunnel")>重启隧道</button>
+<button class="btn btn-primary" onclick=act("restart-proxy")>重启转发</button>
+<button class="btn btn-rst" onclick=act("restart-watchdog") id=watchdogBtn style=display:none>重启 Watchdog</button>
+<button class="btn" onclick=openServiceRules()>⚙ 服务规则</button>
+</div>
+</div>
+
+<div class=card>
+<div class=card-h><label>当前连接详情</label><span style=font-size:.7rem;color:#64748b id=connCount>0</span></div>
+<div class=tabs id=connTabs>
+<span class="tab active" data-f=all>全部</span>
+<span class=tab data-f=proxy>代理</span>
+<span class=tab data-f=direct>直连</span>
+</div>
+<div class=pwrap><table><thead><tr><th>目标</th><th>协议</th><th>规则</th><th style=text-align:right>下载</th><th style=text-align:right>上传</th><th style=text-align:right>DL/s</th><th style=text-align:right>UL/s</th></tr></thead>
+<tbody id=connBody></tbody></table></div>
+</div>
+
+<div class=card><div class=card-h><label>所有进程</label><span style=font-size:.78rem;color:#64748b id=procCount>0</span></div>
+<div class=pwrap><table><thead><tr><th>PID</th><th style=width:48px>CPU%</th><th style=width:56px>内存%</th><th style=width:60px;text-align:right>内存</th><th>运行</th><th>命令</th><th style=width:128px>操作</th></tr></thead>
+<tbody id=procBody></tbody></table></div></div>
+
+<div style=text-align:right;font-size:.75rem;color:#334155;margin-top:8px>更新于 <span id=updateTime>--</span></div>
+</div>
+<!-- 服务规则管理弹窗 -->
+<div id=srModal style="display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:100;align-items:center;justify-content:center">
+<div style="background:#131c31;border:1px solid #1e293b;border-radius:12px;padding:20px;width:90%;max-width:500px;max-height:80vh;overflow-y:auto">
+<div class=card-h><label>服务规则管理</label><span style=font-size:.72rem;color:#64748b;cursor:pointer onclick=closeServiceRules()>✕ 关闭</span></div>
+<div class=note style=margin:6px 0>添加自定义服务识别规则。进程命令包含"匹配词"时，会显示绿色标签和重启按钮。"重启命令"中可用 $HOME 代表主目录。</div>
+<div id=srBuiltin style="margin:8px 0"><div class=section-title>内置规则（不可删除）</div><div id=srBuiltinList></div></div>
+<div style="margin:12px 0"><div class=section-title>自定义规则</div><div id=srCustomList></div></div>
+<div style="border-top:1px solid #1e293b;padding-top:10px;margin-top:10px">
+<div class=section-title>添加新规则</div>
+<div style="display:grid;gap:6px;margin-top:6px">
+<input id=srMatch placeholder="匹配词（如 watchdog.sh）" style="background:#0b1120;border:1px solid #1e293b;border-radius:6px;padding:6px 10px;color:#e2e8f0;font-size:.8rem">
+<input id=srLabel placeholder="显示名称（如 Watchdog，留空默认'重启'）" style="background:#0b1120;border:1px solid #1e293b;border-radius:6px;padding:6px 10px;color:#e2e8f0;font-size:.8rem">
+<input id=srCmd placeholder="重启命令（如 pkill -f xxx; setsid bash $HOME/xxx.sh &）" style="background:#0b1120;border:1px solid #1e293b;border-radius:6px;padding:6px 10px;color:#e2e8f0;font-size:.8rem">
+<button class="btn btn-primary" onclick=addServiceRule() style=margin-top:4px>+ 添加规则</button>
+</div></div>
+</div></div>
+<div id=toast class=toast></div>
+<script src=https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js></script>
+<script>
+const $=id=>document.getElementById(id);
+const show=(msg,sec=3)=>{const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),sec*1000)};
+async function act(a){try{const r=await fetch('/action?cmd='+a);const d=await r.json();show(d.msg)}catch(e){show('操作失败')}}
+async function killP(pid){if(!confirm('终止进程 '+pid+' ？'))return;try{const r=await fetch('/action?cmd=kill&pid='+pid);const d=await r.json();show(d.msg)}catch(e){show('操作失败')}}
+function fmtBytes(b){if(!b||b==0)return'0B';if(b<1024)return b+'B';if(b<1048576)return(b/1024).toFixed(1)+'KB';if(b<1073741824)return(b/1048576).toFixed(1)+'MB';return(b/1073741824).toFixed(2)+'GB'}
+function fmtSpeed(b){if(!b||b==0)return'0';if(b<1024)return b.toFixed(1);if(b<1048576)return(b/1024).toFixed(1);return(b/1048576).toFixed(1)}
+function fmtBytesSec(b){return fmtSpeed(b)+(b<1024?'B/s':b<1048576?'KB/s':'MB/s')}
+let lastData=null;
+let currentTraffic='10m';
+let currentMode='time';
+let currentDayPeriod='day';
+let connFilter='all';
+let markedSet=new Set();
+let nodeStatusMap={};
+let nodeStatusTimer=null;
+async function loadNodeStatus(){
+  try{const r=await fetch('/api/node-status');const d=await r.json();if(d.ok&&d.nodes){nodeStatusMap={};for(const n of d.nodes)nodeStatusMap[n.tag]=n}if(lastData)renderNodeStatus(lastData)}catch{}
+  if(nodeStatusTimer)clearTimeout(nodeStatusTimer);nodeStatusTimer=setTimeout(loadNodeStatus,3600000);
+}
+function renderNodeStatus(d){
+  const section=document.getElementById('sbNodeStatus');const proxies=d.sb.proxies||{};let selectedNode='';
+  for(const[name,p]of Object.entries(proxies)){if(p.now&&p.type==='Selector'){selectedNode=p.now;break}}
+  if(!selectedNode){section.style.display='none';return}
+  section.style.display='block';const ns=nodeStatusMap[selectedNode];
+  const nameEl=document.getElementById('sbNodeName');const delayEl=document.getElementById('sbNodeDelay');const trafEl=document.getElementById('sbNodeTraffic');
+  nameEl.textContent=selectedNode.replace(/^[^_]+_/, '');
+  if(ns){
+    if(ns.delay>0){const cls=ns.delay<200?'ok':(ns.delay<500?'warn':'fail');delayEl.className='node-delay '+cls;delayEl.textContent=ns.delay+'ms'}
+    else{delayEl.className='node-delay fail';delayEl.textContent='\u2717 超时'}
+    if(ns.download>0||ns.upload>0||ns.conns>0){trafEl.innerHTML=(ns.conns>0?'<b>'+ns.conns+'</b>连接 ':'')+'<b>\u2193</b>'+fmtBytes(ns.download)+' <b>\u2191</b>'+fmtBytes(ns.upload)}
+    else{trafEl.innerHTML='<span style=color:#475569>无流量</span>'}
+  }else{delayEl.className='node-delay unknown';delayEl.textContent='未测试';trafEl.innerHTML=''}
+}
+async function loadMarked(){try{const r=await fetch('/api/marked-procs');const d=await r.json();if(d.ok){markedSet=new Set(d.marked||[])}}catch{}}
+async function toggleMark(kw){if(!kw)return;try{const r=await fetch('/api/marked-procs',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({keyword:kw})});const d=await r.json();if(d.ok){markedSet=new Set(d.marked||[]);if(lastData)update(lastData);show(d.isMarked?'已标记: '+kw:'已取消: '+kw)}}catch(e){show('操作失败')}}
+// ====== 服务规则管理 ======
+async function openServiceRules(){
+  $('srModal').style.display='flex';
+  try{
+    const r=await fetch('/api/service-rules');const d=await r.json();
+    if(d.ok){
+      $('srBuiltinList').innerHTML=d.builtin.map(r=>'<div style="padding:4px 8px;background:#0b1120;border-radius:4px;margin-bottom:3px;font-size:.72rem"><span style=color:#34d399>'+esc(r.label)+'</span> <span style=color:#64748b>匹配:</span> <span style=color:#94a3b8;font-family:monospace>'+esc(r.match)+'</span></div>').join('');
+      renderCustomRules(d.custom||[]);
+    }
+  }catch(e){show('加载失败')}
+}
+function renderCustomRules(rules){
+  if(!rules.length){$('srCustomList').innerHTML='<div style="color:#64748b;font-size:.72rem;padding:6px">暂无自定义规则</div>';return}
+  $('srCustomList').innerHTML=rules.map(r=>'<div style="padding:6px 8px;background:#0b1120;border-radius:4px;margin-bottom:4px"><div style="display:flex;justify-content:space-between;align-items:center"><div><span style=color:#34d399;font-size:.72rem>'+esc(r.label)+'</span> <span style=color:#64748b;font-size:.7rem>匹配:</span> <span style=color:#94a3b8;font-family:monospace;font-size:.7rem>'+esc(r.match)+'</span></div><button class="btn btn-xs btn-kill" onclick=delServiceRule("'+esc(r.action)+'")>删除</button></div><div style="color:#475569;font-size:.65rem;font-family:monospace;margin-top:2px;word-break:break-all">'+esc(r.cmd)+'</div></div>').join('');
+}
+function closeServiceRules(){$('srModal').style.display='none'}
+async function addServiceRule(){
+  const match=$('srMatch').value.trim();const label=$('srLabel').value.trim();const cmd=$('srCmd').value.trim();
+  if(!match||!cmd){show('请填写匹配词和重启命令');return}
+  try{
+    const r=await fetch('/api/service-rules',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({match,label,cmd})});
+    const d=await r.json();
+    if(d.ok){show(d.msg);$('srMatch').value='';$('srLabel').value='';$('srCmd').value='';renderCustomRules(d.rules||[]);}
+    else{show(d.error||'添加失败')}
+  }catch(e){show('操作失败')}
+}
+async function delServiceRule(action){
+  if(!confirm('删除此规则？'))return;
+  try{
+    const r=await fetch('/api/service-rules?action='+encodeURIComponent(action),{method:'DELETE'});
+    const d=await r.json();
+    if(d.ok){show(d.msg);renderCustomRules(d.rules||[]);}
+    else{show(d.error||'删除失败')}
+  }catch(e){show('操作失败')}
+}
+// 事件委托：统一处理进程操作按钮点击，避免 inline onclick 的转义问题
+document.getElementById('procBody').addEventListener('click',e=>{
+  const btn=e.target.closest('button[data-act]');if(!btn)return;
+  const act2=btn.dataset.act;
+  if(act2==='mark'){toggleMark(btn.dataset.kw||'');}
+  else if(act2==='svc'){act(btn.dataset.svc||'');}
+  else if(act2==='kill'){const pid=parseInt(btn.dataset.pid);if(pid)killP(pid);}
+});
+let pendingAnimate=false;
+function switchMode(mode){currentMode=mode;chartDirtyHash='';document.querySelectorAll('[data-mode]').forEach(t=>t.classList.toggle('active',t.dataset.mode===mode));document.getElementById('trafTabs').style.display=mode==='time'?'':'none';document.getElementById('dayTabs').style.display=mode==='day'?'':'none';document.getElementById('trafChart').style.display=mode==='time'?'':'none';document.getElementById('trafChartBar').style.display=mode==='day'?'':'none';if(lastData){pendingAnimate=true;renderTraffic(lastData);}}
+document.getElementById('trafTabs').addEventListener('click',e=>{const tab=e.target.closest('.tab');if(!tab)return;if(tab.classList.contains('active'))return;document.querySelectorAll('#trafTabs .tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');currentTraffic=tab.dataset.m;chartDirtyHash='';if(lastData){pendingAnimate=true;renderTraffic(lastData);}});
+document.getElementById('dayTabs').addEventListener('click',e=>{const tab=e.target.closest('.tab');if(!tab)return;if(tab.classList.contains('active'))return;document.querySelectorAll('#dayTabs .tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');currentDayPeriod=tab.dataset.d;chartDirtyHash='';if(lastData){pendingAnimate=true;renderTraffic(lastData);}});
+document.getElementById('connTabs').addEventListener('click',e=>{const tab=e.target.closest('.tab');if(!tab)return;document.querySelectorAll('#connTabs .tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');connFilter=tab.dataset.f;if(lastData)renderConns(lastData)});
+function renderTraffic(d){if(currentMode==='time')renderTrafficTime(d);else renderTrafficDay(d);renderAvg(d)}
+// 6格流量网格 HTML（代理下载/上传/总计 + 总计下载/上传/总计）
+function trafficGridHtml(data){
+  return '<div class="traffic-row"><div class="traffic-item"><div class="num">'+fmtBytes(data.proxyDownload)+'</div><div class="lbl">代理下载</div></div><div class="traffic-item"><div class="num">'+fmtBytes(data.proxyUpload)+'</div><div class="lbl">代理上传</div></div><div class="traffic-item"><div class="num">'+fmtBytes(data.proxyTotal)+'</div><div class="lbl">代理总计</div></div></div><div class="traffic-row"><div class="traffic-item"><div class="num">'+fmtBytes(data.download)+'</div><div class="lbl">总计下载</div></div><div class="traffic-item"><div class="num">'+fmtBytes(data.upload)+'</div><div class="lbl">总计上传</div></div><div class="traffic-item"><div class="num">'+fmtBytes(data.total)+'</div><div class="lbl">总计流量</div></div></div>';
+}
+function renderTrafficTime(d){
+  const minToKey={'10':'10m','30':'30m','60':'1h','120':'2h','180':'3h','720':'12h','1440':'24h'};
+  const t=d.trafficTime;const key=minToKey[currentTraffic]||'10m';
+  const data=t[key]||{proxyDownload:0,proxyUpload:0,proxyTotal:0,download:0,upload:0,total:0};
+  document.getElementById('trafGrid').innerHTML=trafficGridHtml(data);
+  document.getElementById('trafTotal').textContent='总计: '+fmtBytes(data.total);updateChartForPeriod(d);
+}
+function renderTrafficDay(d){
+  const td=d.trafficDay;const period=currentDayPeriod;const data=td[period]||[];
+  // 聚合所有采样段
+  const agg={download:0,upload:0,proxyDownload:0,proxyUpload:0,proxyTotal:0,total:0};
+  for(const v of data){
+    agg.download+=v.download||0;
+    agg.upload+=v.upload||0;
+    agg.proxyDownload+=v.proxyDownload||0;
+    agg.proxyUpload+=v.proxyUpload||0;
+    agg.total+=v.total||v.value||0;
+  }
+  agg.proxyTotal=agg.proxyDownload+agg.proxyUpload;
+  // 兼容旧数据：若无分类字段，download 用 value，upload/proxy 为 0
+  if(agg.download===0&&data.length){agg.download=data.reduce((s,v)=>s+(v.value||0),0);agg.total=agg.download;}
+  document.getElementById('trafGrid').innerHTML=trafficGridHtml(agg);
+  document.getElementById('trafTotal').textContent='总计: '+fmtBytes(agg.total);
+  updateDayChart(d,period);
+}
+// 平均流量折叠状态
+let avgVisible=false;
+function toggleAvg(){
+  avgVisible=!avgVisible;
+  document.getElementById('avgGrid').style.display=avgVisible?'':'none';
+  document.getElementById('avgToggleText').innerHTML=(avgVisible?'&#9660;':'&#9654;')+' 平均流量';
+  if(lastData)renderAvg(lastData);
+}
+// 根据分时分钟数计算平均单位
+function getTimeAvgUnit(minutes){
+  if(minutes<=30)return{unit:'每分钟',divisor:minutes};
+  if(minutes<=180)return{unit:'每10分钟',divisor:Math.ceil(minutes/10)};
+  return{unit:'每小时',divisor:Math.ceil(minutes/60)};
+}
+// 根据分日周期计算平均单位
+function getDayAvgUnit(period){
+  const map={day:'每天',week:'每周',month:'每月',year:'每年'};
+  return{unit:map[period]||'每天',divisor:null};
+}
+function renderAvg(d){
+  if(!avgVisible)return;
+  let data,unit,divisor;
+  if(currentMode==='time'){
+    const minToKey={'10':'10m','30':'30m','60':'1h','120':'2h','180':'3h','720':'12h','1440':'24h'};
+    const t=d.trafficTime;const key=minToKey[currentTraffic]||'10m';
+    const raw=t[key]||{proxyDownload:0,proxyUpload:0,proxyTotal:0,download:0,upload:0,total:0};
+    const au=getTimeAvgUnit(parseInt(currentTraffic)||10);
+    unit=au.unit;divisor=au.divisor;
+    data={
+      proxyDownload:raw.proxyDownload/divisor,
+      proxyUpload:raw.proxyUpload/divisor,
+      proxyTotal:raw.proxyTotal/divisor,
+      download:raw.download/divisor,
+      upload:raw.upload/divisor,
+      total:raw.total/divisor,
+    };
+  }else{
+    const td=d.trafficDay;const period=currentDayPeriod;const arr=td[period]||[];
+    const au=getDayAvgUnit(period);
+    unit=au.unit;divisor=arr.length||1;
+    const sum={download:0,upload:0,proxyDownload:0,proxyUpload:0,proxyTotal:0,total:0};
+    for(const v of arr){
+      sum.download+=v.download||0;sum.upload+=v.upload||0;
+      sum.proxyDownload+=v.proxyDownload||0;sum.proxyUpload+=v.proxyUpload||0;
+      sum.total+=v.total||v.value||0;
+    }
+    if(sum.download===0&&arr.length){sum.download=arr.reduce((s,v)=>s+(v.value||0),0);sum.total=sum.download;}
+    data={
+      proxyDownload:sum.proxyDownload/divisor,
+      proxyUpload:sum.proxyUpload/divisor,
+      proxyTotal:(sum.proxyDownload+sum.proxyUpload)/divisor,
+      download:sum.download/divisor,
+      upload:sum.upload/divisor,
+      total:sum.total/divisor,
+    };
+  }
+  document.getElementById('avgGrid').innerHTML='<div class="traffic-row"><div class="traffic-item"><div class="num">'+fmtBytes(data.proxyDownload)+'</div><div class="lbl">代理下载</div></div><div class="traffic-item"><div class="num">'+fmtBytes(data.proxyUpload)+'</div><div class="lbl">代理上传</div></div><div class="traffic-item"><div class="num">'+fmtBytes(data.proxyTotal)+'</div><div class="lbl">代理总计</div></div></div><div class="traffic-row"><div class="traffic-item"><div class="num">'+fmtBytes(data.download)+'</div><div class="lbl">总计下载</div></div><div class="traffic-item"><div class="num">'+fmtBytes(data.upload)+'</div><div class="lbl">总计上传</div></div><div class="traffic-item"><div class="num">'+fmtBytes(data.total)+'</div><div class="lbl">总计流量</div></div></div><div class="avg-unit" style="grid-column:1/-1">单位: '+unit+'</div>';
+}
+let trafChartInstance=null;let chartDirtyHash='';
+// 6条曲线的可见性状态（默认全显示）
+let datasetVisible={proxyDownload:true,proxyUpload:true,proxyTotal:false,totalDownload:true,totalUpload:true,totalAll:false};
+// 6条曲线配置
+const TRAFFIC_DATASETS=[
+  {key:'proxyDownload',label:'代理下载',color:'#38bdf8',bg:'rgba(56,189,248,0.08)'},
+  {key:'proxyUpload',label:'代理上传',color:'#f59e0b',bg:'rgba(245,158,11,0.08)'},
+  {key:'proxyTotal',label:'代理总计',color:'#a78bfa',bg:'rgba(167,139,250,0.08)'},
+  {key:'totalDownload',label:'总计下载',color:'#22c55e',bg:'rgba(34,197,94,0.08)'},
+  {key:'totalUpload',label:'总计上传',color:'#ef4444',bg:'rgba(239,68,68,0.08)'},
+  {key:'totalAll',label:'总计流量',color:'#eab308',bg:'rgba(234,179,8,0.08)'},
+];
+// 生成完整时间轴：根据时段分钟数生成固定数量的桶（即使无数据补0）
+function buildTimeBuckets(minutes){
+  // 点数规则：按分钟数生成对应点数，让X轴覆盖完整时段
+  // 10分→10点(1分/点)，30分→15点(2分/点)，1时→12点(5分/点)，
+  // 2时→12点(10分/点)，3时→12点(15分/点)，12时→12点(1时/点)，24时→24点(1时/点)
+  let points=12;
+  if(minutes<=10)points=10;
+  else if(minutes<=30)points=15;
+  else if(minutes>=1440)points=24; // 24小时显示24个点（每小时1点）
+  const stepMs=minutes*60*1000/points;
+  const now=Date.now();
+  // 对齐到整分钟边界（避免每秒抖动）
+  const alignedNow=Math.floor(now/60000)*60000;
+  const buckets=[];
+  for(let i=points-1;i>=0;i--){
+    const end=alignedNow-i*stepMs;
+    const start=end-stepMs;
+    buckets.push({start,end});
+  }
+  return buckets;
+}
+// 根据时间桶从 trafficMinute 聚合数据
+function aggregateBucket(bucket,trafficMinute){
+  const result={proxyDownload:0,proxyUpload:0,proxyTotal:0,totalDownload:0,totalUpload:0,totalAll:0};
+  for(const[k,v]of Object.entries(trafficMinute||{})){
+    const t=new Date(k+':00Z').getTime();
+    if(t>=bucket.start&&t<bucket.end){
+      const pd=v.proxyDownload||0,pu=v.proxyUpload||0;
+      const td=v.download||0,tu=v.upload||0;
+      result.proxyDownload+=pd;
+      result.proxyUpload+=pu;
+      result.proxyTotal+=pd+pu;
+      result.totalDownload+=td;
+      result.totalUpload+=tu;
+      result.totalAll+=td+tu;
+    }
+  }
+  return result;
+}
+function formatTimeLabel(ts,minutes){
+  const d=new Date(ts);
+  const hh=String(d.getHours()).padStart(2,'0');
+  const mm=String(d.getMinutes()).padStart(2,'0');
+  if(minutes>=720)return hh+':00';
+  if(minutes>=120)return hh+':'+mm;
+  return hh+':'+mm;
+}
+function updateChartForPeriod(d){
+  if(!trafChartInstance){
+    const ctx=document.getElementById('trafChart').getContext('2d');
+    const datasets=TRAFFIC_DATASETS.map(ds=>({
+      label:ds.label,data:[],borderColor:ds.color,backgroundColor:ds.bg,
+      borderWidth:2,pointRadius:0,pointHoverRadius:4,fill:true,tension:0.3,
+      hidden:!datasetVisible[ds.key],
+    }));
+    trafChartInstance=new Chart(ctx,{type:'line',data:{labels:[],datasets},
+      options:{responsive:true,maintainAspectRatio:false,animation:{duration:800,easing:'easeOutQuart',delay:(ctx)=>{if(ctx.type==='data'&&ctx.mode==='default')return ctx.index*40;return 0}},
+        plugins:{legend:{display:true,position:'top',labels:{color:'#94a3b8',font:{size:10},boxWidth:12,padding:6,usePointStyle:true,pointStyle:'rectRounded'}},
+          tooltip:{enabled:true,mode:'index',intersect:false,backgroundColor:'#1e293b',titleColor:'#94a3b8',bodyColor:'#e2e8f0',borderColor:'#334155',borderWidth:1,padding:8,cornerRadius:6,callbacks:{label(ctx){return ctx.dataset.label+': '+fmtBytes(ctx.raw||0)}}}},
+        scales:{x:{display:true,grid:{display:false},ticks:{color:'#475569',font:{size:8},maxRotation:0,autoSkip:false}},
+          y:{display:false,grid:{display:false},min:0,beginAtZero:true}},
+        interaction:{mode:'index',intersect:false},hover:{mode:'index',intersect:false}}});
+    // 图例点击切换显示/隐藏
+    trafChartInstance.options.plugins.legend.onClick=(e,item,legend)=>{
+      const idx=item.datasetIndex;
+      const ds=TRAFFIC_DATASETS[idx];
+      datasetVisible[ds.key]=!datasetVisible[ds.key];
+      legend.chart.data.datasets[idx].hidden=!datasetVisible[ds.key];
+      legend.chart.update('none');
+    };
+  }
+  const periodMin=parseInt(currentTraffic)||60;
+  const buckets=buildTimeBuckets(periodMin);
+  const labels=buckets.map(b=>formatTimeLabel(b.end,periodMin));
+  // 每个桶聚合数据
+  const seriesData={};
+  for(const key of['proxyDownload','proxyUpload','proxyTotal','totalDownload','totalUpload','totalAll']){
+    seriesData[key]=buckets.map(b=>aggregateBucket(b,d.trafficMinute)[key]);
+  }
+  const hash=currentTraffic+'_'+seriesData.totalDownload.join(',')+'_'+seriesData.totalUpload.join(',');
+  if(hash===chartDirtyHash&&!pendingAnimate&&trafChartInstance)return;
+  chartDirtyHash=hash;
+  // 计算 Y 轴最大值（仅显示可见曲线的最大值）
+  let maxVal=0;
+  TRAFFIC_DATASETS.forEach((ds,i)=>{
+    if(datasetVisible[ds.key]){
+      maxVal=Math.max(maxVal,...seriesData[ds.key]);
+    }
+  });
+  document.getElementById('trafYmax').textContent=fmtBytes(maxVal||0);
+  document.getElementById('trafYmid').textContent=fmtBytes(Math.round((maxVal||0)/2));
+  trafChartInstance.data.labels=labels;
+  TRAFFIC_DATASETS.forEach((ds,i)=>{
+    trafChartInstance.data.datasets[i].data=seriesData[ds.key];
+    trafChartInstance.data.datasets[i].hidden=!datasetVisible[ds.key];
+  });
+  if(pendingAnimate){trafChartInstance.reset();trafChartInstance.update();pendingAnimate=false}
+  else{trafChartInstance.update('none');}
+}
+let dayChartInstance=null;
+function updateDayChart(d,period){const data=d.trafficDay[period]||[];if(!data.length)return;const labels=data.map(v=>{if(period==='year')return v.label.slice(0,4);if(period==='month')return v.label.slice(5,7)+'月';if(period==='week')return v.label.slice(5,10);return v.label.slice(5,10)});const values=data.map(v=>v.value);const max=Math.max(...values,1);document.getElementById('trafYmax').textContent=fmtBytes(max);document.getElementById('trafYmid').textContent=fmtBytes(Math.round(max/2));const ctx=document.getElementById('trafChartBar').getContext('2d');if(!dayChartInstance){dayChartInstance=new Chart(ctx,{type:'bar',data:{labels,datasets:[{data:values,backgroundColor:'rgba(56,189,248,0.5)',borderColor:'#38bdf8',borderWidth:1,borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,animation:{duration:800,easing:'easeOutQuart',delay:(ctx)=>{if(ctx.type==='data'&&ctx.mode==='default')return ctx.index*30;return 0}},plugins:{legend:{display:false},tooltip:{enabled:true,backgroundColor:'#1e293b',titleColor:'#94a3b8',bodyColor:'#e2e8f0',borderColor:'#334155',borderWidth:1,padding:8,cornerRadius:6,callbacks:{label(i){return'流量: '+fmtBytes(i.raw||0)}}}},scales:{x:{display:true,grid:{display:false},ticks:{color:'#475569',font:{size:8},maxRotation:0,autoSkip:false}},y:{display:false,grid:{display:false},beginAtZero:true}}}});pendingAnimate=false}else{dayChartInstance.data.labels=labels;dayChartInstance.data.datasets[0].data=values;if(pendingAnimate){dayChartInstance.reset();dayChartInstance.update();pendingAnimate=false}else{dayChartInstance.update('none')}}}
+function renderConns(d){const conns=d.sb.connectionsDetail||[];const filtered=connFilter==='all'?conns:connFilter==='proxy'?conns.filter(c=>c.rule!=='direct'):conns.filter(c=>c.rule==='direct');document.getElementById('connCount').textContent=filtered.length+' / '+conns.length;if(!conns.length){document.getElementById('connBody').innerHTML='<tr><td colspan=7 style=color:#64748b;text-align:center;padding:12px>暂无活跃连接</td></tr>';return}if(!filtered.length){document.getElementById('connBody').innerHTML='<tr><td colspan=7 style=color:#64748b;text-align:center;padding:12px>无匹配的连接</td></tr>';return}document.getElementById('connBody').innerHTML=filtered.map(c=>'<tr class=conn-row onclick=this.nextElementSibling.classList.toggle("show")><td>'+esc(c.host)+'</td><td>'+c.network+'/'+c.type+'</td><td>'+c.rule+'</td><td class=right>'+fmtBytes(c.dl)+'</td><td class=right>'+fmtBytes(c.ul)+'</td><td class=right>'+fmtBytesSec(c.dlSpeed)+'</td><td class=right>'+fmtBytesSec(c.ulSpeed)+'</td></tr><tr class=conn-detail><td colspan=7>规则详情: '+esc(c.rulePayload||'-')+' | 链路: '+esc(c.chains)+'</td></tr>').join('')}
+function renderProxies(proxies){const el=document.getElementById('sbProxyList');const section=document.getElementById('sbProxySection');const entries=Object.entries(proxies||{});if(!entries.length){section.style.display='none';return}section.style.display='block';el.innerHTML=entries.map(([name,p])=>{const now=p.now||'';const tp=p.type||'';if(!now&&tp!=='Selector'&&tp!=='URLTest'&&tp!=='Fallback')return'';return'<div style="padding:4px 8px;background:#0b1120;border-radius:4px;font-size:.65rem;border:1px solid #1e293b;min-width:80px"><div style="color:#94a3b8;font-size:.55rem">'+esc(name)+'</div><div style="color:#38bdf8;font-weight:500;font-size:.75rem">'+esc(now||'--')+'</div>'+(tp?'<div style="color:#64748b;font-size:.55rem;margin-top:1px">'+esc(tp)+'</div>':'')+'</div>'}).filter(Boolean).join('')}
+function renderSpark(data,totalMem){const el=document.getElementById('memSpark');if(!data||data.length<2){el.innerHTML='<span style=color:#64748b;font-size:.65rem>采集中...</span>';return}const max=Math.max(...data,1);const pctMax=totalMem?Math.round(totalMem*0.6):max;el.innerHTML=data.slice(-60).map(v=>{const pct=totalMem?Math.round((totalMem-v)/totalMem*100):0;const col=pct>85?'#ef4444':pct>70?'#eab308':'#22c55e';return'<div style=height:'+Math.max(2,Math.round(v/pctMax*24))+'px;background:'+col+'>'}).join('')}
+function renderDevice(d){
+  const dev=d.device||{};const batt=dev.battery;const wifi=dev.wifi;
+  if(!batt){$('battVal').textContent='--';$('battTemp').textContent='--';$('battStatus').textContent='--';$('deviceStatus').textContent='Termux:API 未安装';return}
+  // 电池电量
+  const pct=batt.percentage||0;
+  $('battVal').textContent=pct+'%';
+  $('battVal').style.color=pct<20?'#ef4444':pct<40?'#eab308':'#22c55e';
+  const battBar=$('battBar');
+  battBar.style.width=pct+'%';
+  battBar.style.background=pct<20?'#ef4444':pct<40?'#eab308':'#22c55e';
+  // 电池温度
+  const temp=batt.temperature||0;
+  $('battTemp').textContent=temp+'°C';
+  $('battTemp').style.color=temp>45?'#ef4444':temp>40?'#eab308':'#22c55e';
+  // 电池状态
+  const statusMap={DISCHARGING:'放电中',CHARGING:'充电中',FULL:'已充满',NOT_CHARGING:'未充电'};
+  const pluggedMap={UNPLUGGED:'',AC:'AC电源',USB:'USB',WIRELESS:'无线'};
+  let statusText=statusMap[batt.status]||batt.status||'--';
+  if(batt.plugged&&batt.plugged!=='UNPLUGGED')statusText+=' ('+(pluggedMap[batt.plugged]||batt.plugged)+')';
+  $('battStatus').textContent=statusText;
+  $('battStatus').style.color=batt.status==='CHARGING'?'#22c55e':batt.status==='FULL'?'#38bdf8':'#e2e8f0';
+  // WiFi 信号
+  if(wifi){
+    const rssi=wifi.rssi||0;
+    const rssiQ=rssi>-50?'优秀':rssi>-60?'良好':rssi>-70?'一般':'较差';
+    const rssiCol=rssi>-60?'#22c55e':rssi>-70?'#eab308':'#ef4444';
+    $('wifiRssi').textContent=rssi+'dBm';
+    $('wifiRssi').style.color=rssiCol;
+    $('wifiSpeed').textContent=(wifi.linkSpeed||0)+'Mbps';
+    $('deviceStatus').textContent='WiFi '+rssiQ+' · '+(wifi.ip||'--');
+  }else{
+    $('wifiRssi').textContent='--';$('wifiSpeed').textContent='--';
+    $('deviceStatus').textContent='WiFi 未连接';
+  }
+}
+function update(d){lastData=d;document.getElementById('headerMeta').textContent='\u2191 '+d.uptime+' | '+d.procs.total+' 进程 | '+(new Date(d.ts).toLocaleTimeString('zh-CN'));document.getElementById('statusText').textContent='在线';const cC=d.cpu.usage>80?'#ef4444':d.cpu.usage>50?'#eab308':'#22c55e';document.getElementById('cpuVal').textContent=d.cpu.usage+'%';document.getElementById('cpuSub').textContent=d.cpu.cores+' 核';document.getElementById('cpuVal').style.color=cC;document.getElementById('cpuBar').style.cssText='width:'+d.cpu.usage+'%;background:'+cC;const mP=d.mem.total?Math.round((d.mem.total-d.mem.avail)/d.mem.total*100):0;document.getElementById('memVal').textContent=(d.mem.total-d.mem.avail)+'MB';document.getElementById('memSub').textContent='可用 '+d.mem.avail+'MB / 总计 '+d.mem.total+'MB';document.getElementById('memVal').style.color=mP>85?'#ef4444':mP>65?'#eab308':'#22c55e';document.getElementById('memBar').style.cssText='width:'+mP+'%;background:'+(mP>85?'#ef4444':mP>65?'#eab308':'#22c55e');const sP=d.mem.swapT?Math.round(d.mem.swapU/d.mem.swapT*100):0;document.getElementById('swapVal').textContent=d.mem.swapU+'MB';document.getElementById('swapSub').textContent=d.mem.swapU+' / '+d.mem.swapT+'MB';document.getElementById('swapBar').style.cssText='width:'+sP+'%;background:'+(sP>60?'#ef4444':'#eab308');document.getElementById('diskVal').textContent=(d.disk.dataPart&&d.disk.dataPart.pct)||d.disk.pct;document.getElementById('diskSub').textContent=((d.disk.dataPart&&d.disk.dataPart.used)||d.disk.used)+' / '+((d.disk.dataPart&&d.disk.dataPart.total)||d.disk.total);const diskPct=parseInt((d.disk.dataPart&&d.disk.dataPart.pct)||d.disk.pct)||0;document.getElementById('diskBar').style.cssText='width:'+diskPct+'%;background:'+(diskPct>85?'#ef4444':diskPct>65?'#eab308':'#22c55e');document.getElementById('diskSys').textContent=d.disk.used||'--';document.getElementById('diskTermux').textContent=d.disk.termux||'--';document.getElementById('diskUser').textContent=d.disk.userUsed||'--';document.getElementById('diskAvail').textContent=(d.disk.dataPart&&d.disk.dataPart.avail)||d.disk.avail||'--';document.getElementById('uptimeVal').textContent=d.uptime;document.getElementById('loadVal').textContent=d.load;const loadNums=(d.load||'').split(',').map(s=>parseFloat(s.trim()));const cores=d.cpu.cores||4;const loadRel=loadNums.map(n=>(n/cores*100).toFixed(0)+'%').join(' / ');const loadHigh=loadNums[0]>cores;document.getElementById('loadVal').style.color=loadHigh?'#eab308':'#22c55e';document.getElementById('loadNote').textContent='相对 '+cores+' 核: '+loadRel+(loadHigh?' (过载)':'');document.getElementById('termuxCpuVal').textContent=d.cpu.usage+'%';document.getElementById('termuxCpuVal').style.color=d.cpu.usage>80?'#ef4444':d.cpu.usage>50?'#eab308':'#22c55e';document.getElementById('termuxCpuNote').textContent='仅 Termux 进程 (CPU 总和 '+d.cpu.cpuSum.toFixed(1)+'%)';document.getElementById('reqVal').textContent=d.requests.today||0;document.getElementById('procStat').textContent=d.procs.total+' 进程';document.getElementById('sbVer').textContent=d.sb.version||'离线';document.getElementById('sbVer').style.color=d.sb.version?'#22c55e':'#ef4444';document.getElementById('sbConns').textContent=d.sb.connections;document.getElementById('sbDl').textContent=d.sb.dl+'MB';document.getElementById('sbUl').textContent=d.sb.ul+'MB';document.getElementById('sbDlSpeed').textContent=fmtBytesSec(d.sb.downloadSpeed);document.getElementById('sbUlSpeed').textContent=fmtBytesSec(d.sb.uploadSpeed);renderTraffic(d);renderConns(d);renderProxies(d.sb.proxies);renderNodeStatus(d);renderDevice(d);if(d.history&&d.history.mem)renderSpark(d.history.mem,d.mem.total);if(d.watchdog){const ws=$('watchdogStatus');const wb=$('watchdogBtn');if(d.watchdog.running){ws.textContent='Watchdog: 运行中';ws.style.color='#22c55e';wb.style.display='none';}else{ws.textContent='Watchdog: 未运行';ws.style.color='#ef4444';wb.style.display='inline-flex';}}document.getElementById('procBody').innerHTML=d.procs.list.map(p=>{const isMarked=markedSet.has(p.kw);const starColor=isMarked?'#fbbf24':'#475569';const starTitle=isMarked?'取消标记':'标记为重要';return'<tr><td>'+p.pid+'</td><td>'+p.cpu+'</td><td>'+p.memPct+'%</td><td class=right>'+p.rssMb+'MB</td><td style=color:#64748b>'+esc(p.age)+'</td><td>'+esc(p.cmd)+(p.svc?'<span class=svc-tag>'+esc(p.svc.replace('restart-',''))+'</span>':'')+'</td><td><div class=proc-actions><button class="btn btn-xs" data-act=mark data-kw="'+esc(p.kw)+'" style="background:transparent;color:'+starColor+'" title="'+starTitle+'">'+(isMarked?'\u2605':'\u2606')+'</button>'+(p.svc?'<button class="btn btn-xs btn-rst" data-act=svc data-svc="'+esc(p.svc)+'" title=重启>\u21bb</button>':'<button class="btn btn-xs" style="visibility:hidden" disabled>\u21bb</button>')+'<button class="btn btn-xs btn-kill" data-act=kill data-pid="'+p.pid+'" title=停止>\u2715</button></div></td></tr>'}).join('');document.getElementById('procCount').textContent=d.procs.total;document.getElementById('updateTime').textContent=new Date(d.ts).toLocaleString('zh-CN')}
+function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+loadMarked().then(()=>{
+  // 使用轮询替代 SSE（Cloudflare Pages Functions 不支持 text/event-stream 流式代理）
+  let pollTimer=null;
+  async function poll(){
+    try{
+      const r=await fetch('/api');
+      const d=await r.json();
+      if(d&&!d.error)update(d);
+    }catch(e){}
+    if(pollTimer)clearTimeout(pollTimer);
+    pollTimer=setTimeout(poll,3000);
+  }
+  poll();
+});
+loadNodeStatus();
+</script>

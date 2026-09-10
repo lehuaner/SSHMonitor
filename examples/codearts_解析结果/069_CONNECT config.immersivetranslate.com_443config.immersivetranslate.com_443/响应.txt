@@ -1,0 +1,99 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 17:15:30.019
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=config.immersivetranslate.com
+  Simple Name: config.immersivetranslate.com
+  DNS Name: config.immersivetranslate.com
+
+[Issuer]
+  CN=WE1, O=Google Trust Services, C=US
+  Simple Name: WE1
+  DNS Name: WE1
+
+[Serial Number]
+  5A333D1D19AE91B60EA32200D5E8F858
+
+[Not Before]
+  2026/8/29 18:04:38
+
+[Not After]
+  2026/11/27 19:04:33
+
+[Thumbprint]
+  BCFFFF8CB8D77B6C716A10B2BDD93C187ECD3270
+
+[Signature Algorithm]
+  sha256ECDSA(1.2.840.10045.4.3.2)
+
+[Public Key]
+  Algorithm: ECC
+  Length: 
+  Key Blob: 04 0b b3 db 0f fe d7 25 b0 c6 62 66 db 31 09 57 a2 6b 32 a7 b8 f6 4f ef 6c 64 95 ee 9b e6 91 45 c1 b1 00 0f bf b1 43 d7 f3 a1 f3 65 49 61 1d a8 77 48 53 f5 2e 97 b2 d0 9d 9f 3f 18 fa 7f 60 a9 e1
+  Parameters: 06 08 2a 86 48 ce 3d 03 01 07
+
+[Extensions]
+* 密钥用法(2.5.29.15):
+  Digital Signature (80)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* 使用者密钥标识符(2.5.29.14):
+  a0f0a386accbfcb97afd69bc0139a72cd9db66d8
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=9077923567c4ffa8cca9e67bd980797bcc93f938
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://i.pki.goog/we1.crt
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=config.immersivetranslate.com
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://c.pki.goog/we1/uiQA8isVPuM.crl
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+d76d7d10d1a7f577c2c7e95fd700bff982c9335a65e1d0b3017317c0c8c56977
+‎2026‎年‎8‎月‎29‎日 19:04:39
+SHA256
+ECDSA
+3045022100a33d26dee071b8c25af6734366704f6cabc8f187ebf1a5370d5fe071e0a7575c022017caf6d679ff8921d5957877524f6777513040ff13211d240e0baa59a7d1ab75
+
+v1
+c2317e574519a345ee7f38deb29041ebc7c2215a22bf7fd5b5ad769ad90e52cd
+‎2026‎年‎8‎月‎29‎日 19:04:39
+SHA256
+ECDSA
+3044022043a32325c3c4c48b3e2221cf56fa0458bd51845181c50f0c3376beca3ad63c55022005d75c5a3dc8afce7186a7659806f026e17d420db5da00a34eac512a2ce69c0b
+
+
+[SubjectAltNames]
+DNS Name=config.immersivetranslate.com
+

@@ -1,0 +1,33 @@
+HTTP/2 200
+server: Tengine
+content-type: application/x-msdos-program
+content-length: 427654720
+date: Wed, 19 Aug 2026 06:32:01 GMT
+accept-ranges: bytes
+cache-control: max-age=2592000
+etag: "fdaf52d66e7be6dd554e57cbdfda8f6e"
+last-modified: Tue, 18 Aug 2026 18:29:08 GMT
+x-bdcdn-cache-status: TCP_HIT
+x-kfc-cachekey: http://d-ks-origin-cache-all-lf.originalstatic.com/trae-com-cn/pkg/app/releases/stable/2.3.73734/win32/TraeWork_CN-Setup-x64.exe
+x-tos-hash-crc64ecma: 17177282847624455508
+x-tos-request-id: c18bf890-3696-4b9f-83cd-d8a2e9af2ed9-fdbdgdc02g2agb1egg19-a2e4c4b
+x-tos-response-time: Wed, 19 Aug 2026 06:31:52 GMT
+x-tos-storage-class: STANDARD
+via: n159-217-077, cache28.l2cn1816[0,0,200-0,H], cache41.l2cn1816[1,0], cache12.cn7729[0,0,200-0,H], cache1.cn7729[2,0]
+x-request-ip: fdbd:dc01:26:267::156
+x-tt-trace-tag: id=03;cdn-cache=hit;type=static
+x-response-cinfo: fdbd:dc01:26:267::156
+x-response-cache: edge_hit
+server-timing: inner; dur=3
+x-tt-trace-host: 0109a9c6ff320c55c0412087c2219d48e4593deb38aad7723885d6956d252facb442d5a0c2c554c7f7d12b5bbae5ba03b8540b235584ca921613e4eb8d6cb47063e7e225a01f2d5bbce0acea70b38a4f9bb51620cf1b9f3cb7f6486425162027b030f78b4f8f6ba67a7d34b630c09d2dfc
+x-tt-trace-id: 00-18b830990da45638e3434f4f59d8ffff-18b830990da45638-01
+x-tt-logid: 2026081914320158DC545E0A1C9925BB59
+age: 85921
+ali-swift-global-savetime: 1787121121
+x-cache: HIT TCP_MEM_HIT dirn:-2:-2
+x-swift-savetime: Wed, 19 Aug 2026 07:19:23 GMT
+x-swift-cachetime: 2589158
+x-tt-supplier-id: 0_1
+access-control-allow-origin: *
+timing-allow-origin: *
+eagleid: 2497e50617872070420815902e

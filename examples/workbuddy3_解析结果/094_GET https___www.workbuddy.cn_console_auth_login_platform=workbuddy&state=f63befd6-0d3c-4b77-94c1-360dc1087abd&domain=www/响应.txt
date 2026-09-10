@@ -1,0 +1,14 @@
+HTTP/2 302
+content-type: text/html; charset=utf-8
+set-cookie: session=; Path=/console; Max-Age=0; Expires=Thu, 01-Jan-70 00:00:00 GMT; HttpOnly
+location: https://www.workbuddy.cn/login?force_login_type=&platform=workbuddy&state=f63befd6-0d3c-4b77-94c1-360dc1087abd
+traceid: d06090ca379d09b29e37dacac9566e2e
+x-request-id: 239df3ba-ec02-4e69-969a-042b8331d100
+server: APISIX/3.9.1
+x-content-type-options: nosniff
+set-cookie: session_2=; Path=/console; Max-Age=0; Expires=Thu, 01-Jan-70 00:00:00 GMT; HttpOnly
+cache-control: no-store
+content-length: 141
+date: Thu, 10 Sep 2026 04:01:26 GMT
+eo-log-uuid: 3921029028338418931
+eo-cache-status: MISS

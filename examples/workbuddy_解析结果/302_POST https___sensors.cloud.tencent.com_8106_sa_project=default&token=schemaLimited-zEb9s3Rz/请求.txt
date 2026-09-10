@@ -1,0 +1,22 @@
+POST https://sensors.cloud.tencent.com:8106/sa?project=default&token=schemaLimited-zEb9s3Rz HTTP/2
+:method: POST
+:authority: sensors.cloud.tencent.com:8106
+:scheme: https
+:path: /sa?project=default&token=schemaLimited-zEb9s3Rz
+content-length: 2314
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+sec-ch-ua: "Chromium";v="152", "Not?A_Brand";v="24", "Microsoft Edge";v="152"
+content-type: text/plain;charset=UTF-8
+sec-ch-ua-mobile: ?0
+accept: */*
+origin: https://www.workbuddy.cn
+sec-fetch-site: cross-site
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+sec-fetch-storage-access: active
+referer: https://www.workbuddy.cn/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=4, i
+cookie: language=zh; loginType=wx; qcloud_from=qcloud.inside.group-1788359801833; qcstats_seo_keywords=%E5%93%81%E7%89%8C%E8%AF%8D-%E5%93%81%E7%89%8C%E8%AF%8D-%E7%99%BB%E5%BD%95; qcmainCSRFToken=rJgdsdv3OMe; intl=

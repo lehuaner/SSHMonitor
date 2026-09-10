@@ -1,0 +1,33 @@
+[
+  {
+    "server_time": 1787207033,
+    "caller": "",
+    "user": {
+      "user_unique_id": "2609589533558410",
+      "user_id": "1554024524166871",
+      "device_id": "2609589533558410",
+      "user_is_login": true
+    },
+    "header": {
+      "custom": "{\"icube_uid\":\"1554024524166871\",\"user_id\":\"1554024524166871\",\"biz_user_id\":\"1554024524166871\",\"user_is_login\":true,\"user_unique_id\":\"2609589533558410\",\"device_id\":\"2609589533558410\",\"local_device_id\":\"aha-7f12c0855ac2ffa28d075411615cee7d\",\"is_special_uuid\":false,\"machine_id\":\"cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b\",\"arch\":\"x64\",\"system\":\"win32\",\"scope\":\"marscode\",\"build_version\":\"2.3.71801\",\"vscode_version\":\"1.107.1\",\"tenant\":\"marscode\",\"region\":\"CN\",\"aiRegion\":\"CN\",\"quality\":\"stable\",\"build_time\":\"2026-08-14T10:40:39.642Z\",\"icube_main_uid\":\"d8b1556e-3a4e-4750-a840-0cd889b6ad29\",\"app_version\":\"0.1.51\",\"os_name\":\"windows\",\"os_version\":\"Windows 11 Pro\",\"os_release\":\"10.0.26200\",\"platform\":\"electron\",\"device_model\":\"VMware20,1\",\"device_manufacturer\":\"VMware, Inc.\",\"cpu\":\"AMD\",\"cpu_brand\":\"AMD Ryzen 5 5600H with Radeon Graphics\",\"cpu_speed\":3.294,\"memory\":19732910080,\"language\":\"en\",\"app_language\":\"en\",\"channel_name\":\"common\",\"process_type\":0,\"privacy_mode\":\"off\",\"aha_version\":\"39.2.7-release.1.49.0\",\"store_country_code\":\"\",\"store_country_code_src\":\"did\",\"store_region\":\"CN\",\"product_code\":\"SOLO_Lite\",\"solo_lite_app_slim_enabled\":\"1\"}",
+      "app_id": 932204,
+      "platform": "electron",
+      "os_name": "windows",
+      "tz_offset": -28800,
+      "sdk_version": "3.0.12",
+      "app_version": "0.1.51",
+      "os_version": "Windows 11 Pro",
+      "device_model": "VMware20,1",
+      "language": "en",
+      "app_language": "en"
+    },
+    "events": [
+      {
+        "event": "icube_login_success",
+        "params": "{\"provider\":\"marscode\",\"duration\":8068}",
+        "time": 1787207033
+      }
+    ],
+    "verbose": 1
+  }
+]

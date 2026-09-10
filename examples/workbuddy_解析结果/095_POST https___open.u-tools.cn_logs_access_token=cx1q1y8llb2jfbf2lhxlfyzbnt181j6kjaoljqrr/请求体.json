@@ -1,0 +1,23 @@
+[
+  {
+    "event": "main.show.hotkey",
+    "@timestamp": "2026-09-07T16:37:22.216Z",
+    "machineId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "nid": "bf9d310d03d118c7a818d3402f171cf2",
+    "platform": "win32",
+    "arch": "ia32",
+    "appVersion": "7.8.0-ia32",
+    "osRelease": "10.0.26200"
+  },
+  {
+    "way": "recent",
+    "event": "native.open",
+    "@timestamp": "2026-09-07T16:37:27.290Z",
+    "machineId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "nid": "bf9d310d03d118c7a818d3402f171cf2",
+    "platform": "win32",
+    "arch": "ia32",
+    "appVersion": "7.8.0-ia32",
+    "osRelease": "10.0.26200"
+  }
+]

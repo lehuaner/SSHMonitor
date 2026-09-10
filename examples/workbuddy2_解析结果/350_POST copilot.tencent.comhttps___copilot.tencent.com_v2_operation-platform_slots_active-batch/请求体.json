@@ -1,0 +1,13 @@
+{
+  "platform": "client",
+  "slot_keys": [
+    "home",
+    "home_growth",
+    "avatar_top",
+    "menu_signin",
+    "menu_growth",
+    "codebuddy"
+  ],
+  "version": "5.5.3",
+  "lang": "zh"
+}

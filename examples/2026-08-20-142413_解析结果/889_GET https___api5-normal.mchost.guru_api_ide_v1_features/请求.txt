@@ -1,0 +1,33 @@
+GET https://api5-normal.mchost.guru/api/ide/v1/features HTTP/2
+:method: GET
+:authority: api5-normal.mchost.guru
+:scheme: https
+:path: /api/ide/v1/features
+accept-encoding: gzip, deflate, br, zstd
+authorization: Cloud-IDE-JWT eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTU1NDAyNDUyNDE2Njg3MSIsInNvdXJjZSI6InJlZnJlc2hfdG9rZW4iLCJzb3VyY2VfaWQiOiJKVFZhR3k0aXR0YmlZNUpXdWJHUU9fX1JWeWo4UmdNX1kzcGdtY2k5UVUwPS4xOGNkNmY1M2JlM2I5NjhiIiwidGVuYW50X2lkIjoiN28yZDg5NHA3ZHIwbzQiLCJ0eXBlIjoidXNlciJ9LCJleHAiOjE3ODg0MTY2MzIsImlhdCI6MTc4NzIwNzAzMn0.ibWFhfXYgm7p8Ut42q6-Cv5wVdzLJL7h-SejWlJNqgOj8tPbZTIFP2sdYJqaHIl1IrtvSNpvpkjDPQWE7A5p7nQHZ3vuEjEOqdlfRqORUOuh-dmR7v2uebd-Fhv1eWAvKo30pIrV5Op5J-82UJMlH2N8AQqAGC8e_jt7375WlVGAJFWI0u164rJJqgVRNjlpudZDlgkCvCxKoXdHjfdOeUxdM7ZJNEJPoA5HSAdSsrDiY29ap8YaZpz3YyYWnrin5IgtFsgStlTewWV5n87R5RRAyEXsduiE3OxVeUpMhSoc7dbzlmi40fmffrQ_Uut5r1n4qMVTUu-NWuT4FvRW94aCy0TrC0NcZhr7h7F7eG3bPX6eURTC_UejvSAWitQI0vj4Dp6l5PJIzCpum5iAIgF05jNy0AsiZjfF3POY26tJDKnA45QnoPRDVof5073kvgMi_xw3GGIF7EkQ9qQMim_1GhKTs-_gx9KtYVyGlkSgdhbvzNC5qHR1B1uNi4a4_hWj1-Ui71xJnhVn7Hy9G5HeqYCU7PHT0hfiBGuONn1RZB8S_JFMRsWAc_sAAVZDT5di1Ms4tMZ7kR456829kLEideUzle0t1U-DnUFB7k_7QCYp46JjulTqvIReUAyRUAedDUpRs6BJttscYDrwhxNRju_L6_FLvSwEzlJ78a0
+sec-fetch-dest: empty
+sec-fetch-mode: no-cors
+sec-fetch-site: none
+user-agent: go-resty/2.16.5 (https://github.com/go-resty/resty)
+x-app-id: 6eefa01c-1036-4c7e-9ca5-d891f63bfcd8
+x-ckg-user-id: 1554024524166871
+x-device-brand: VMware20,1
+x-device-cpu: AMD
+x-device-id: 2609589533558410
+x-device-type: windows
+x-machine-id: cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b
+x-os-version: Windows 11 Pro
+x-tt-logid: -
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: b4668d2f-c653-4f62-9117-d59f0c9c8ded
+accept: */*
+x-ss-dp: 787976
+x-tt-trace-id: 00-1dd7334b0d945686928468a20e35ffff-1dd7334b0d945686-01
+referer: https://trae-api-cn.mchost.guru/api/ide/v1/features
+x-helios: 8GYAALtv30KFja4eSHpVud4fLAiYIHa8vtPlyanFiPFjX6mX
+x-medusa: fp2Gaop12ZCqSlpRq7dOGipS53JfbAMBdw1YV0DAIaY3mXOK6uytDX61uk7fIno4Guxk7EVmZNzwfnt7cv0vsWf3B+K8Se+NaxYqUAX8Y5ZH7rF0TpZnsba5w7CqH2x/9/NxyBoMXSsgb6Y0M0XBxD9neIrfGDYsLv2Yy99aNp8fhhufFVcmwFaKaWcmzMOnJKSXQSD0y73nufJkbtlLf9NJPiV+hP9dNHS/UQppQnZKLwp/2n3reUM/ctSVu+1FRlgBtUnGunSwm4CgBhfg7ElUR8/2a3YyYsakP6FgncDRqlO0HRz2gDAvbqA9Hk2ItdypsQHqGrSEqNqmHY6tCaOGTaoRri7H8gG6nzKk5Zaxu2+L9fHVr0BNESml6Z8skb6cTqJYgFZN3mdmGfVDTv7qN6zWZLesOs4DsJQhtADb2KGoNfdzjKXy/PrPk5tWeiPsTPb6iKPbt9+Wdh2AAgx0L9zuaMDVMzWKS47ROjDULYfzb3kJrRRCBDbf/OU76DE4sb+JUU7tJT1DDHjZtv1FiArRHi8o5a+pD68wLivGbi6jmftiF3i3leAG6xUicjCQ+6tym6jJ1FdLOaxv64TcUTMA75jLa5HAPDaHoVQCvW+c29QKr+vn4ZeOeKQqrjASvtHuNW6X6bUyZ4uq7c4sR52fj88XH8/f5d3PB4fop5yaAOsx7viyJwKS238RNn+Vu6/JK4Vq6l08WOy9N75NlY12Lk+8Sw3MqdunyX+m7tC4Tyd1CeWjmGiV0BcoHuX//9+/7/f+/wAA
+x-neptune: -11|50:51:59:00:09

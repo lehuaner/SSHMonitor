@@ -1,0 +1,15 @@
+HTTP/2 200
+last-modified: Thu, 16 Jul 2026 06:49:46 GMT
+etag: "1d4bd88aa9c96ce0dc1ea9ae5b4e4861"
+content-type: image/webp
+date: Mon, 20 Jul 2026 03:03:47 GMT
+server: tencent-cos
+vary: Origin, Access-Control-Request-Headers, Access-Control-Request-Method
+x-cos-hash-crc64ecma: 16472090969701094155
+x-cos-request-id: NmE1ZDkwMTNfNjg5MWY2MDlfODMwY19hMjMxYTY1
+x-cos-version-id: MTg0NDQ5NTk4ODkxMjI5ODM0MDI
+content-length: 116510
+accept-ranges: bytes
+x-nws-log-uuid: 7804987670942724006
+x-cache-lookup: Cache Hit
+access-control-allow-origin: *

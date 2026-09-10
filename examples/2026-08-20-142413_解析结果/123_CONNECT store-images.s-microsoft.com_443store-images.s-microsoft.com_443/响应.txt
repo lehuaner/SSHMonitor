@@ -1,0 +1,134 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:22:23.227
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=store-images.microsoft.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US
+  Simple Name: store-images.microsoft.com
+  DNS Name: musicimage.xboxlive.com
+
+[Issuer]
+  CN=Microsoft TLS G2 ECC CA OCSP 02, O=Microsoft Corporation, C=US
+  Simple Name: Microsoft TLS G2 ECC CA OCSP 02
+  DNS Name: Microsoft TLS G2 ECC CA OCSP 02
+
+[Serial Number]
+  570004B4E488B35303DA9A346300000004B4E4
+
+[Not Before]
+  2026/7/31 1:24:28
+
+[Not After]
+  2027/2/14 1:24:28
+
+[Thumbprint]
+  27284C569DCD67D2A389A097E89C010382ECE773
+
+[Signature Algorithm]
+  sha384ECDSA(1.2.840.10045.4.3.3)
+
+[Public Key]
+  Algorithm: ECC
+  Length: 
+  Key Blob: 04 25 a3 56 dd 98 7e 07 78 21 7e 76 5f 79 2b ff 1f 79 5f 6b 3e e9 24 89 88 1b a8 e9 ae 4d a6 84 1c a7 65 47 37 88 ad 4c 2a 1b 42 66 ad 16 b2 73 1b b4 d3 05 f1 04 e4 6f 58 72 36 b3 e2 74 64 45 c4
+  Parameters: 06 08 2a 86 48 ce 3d 03 01 07
+
+[Extensions]
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+d6d58da9d01753f36a4aa0c7574902afebc7dc2cd38cd9f764c80c89191e9f02
+‎2026‎年‎7‎月‎31‎日 1:34:33
+SHA256
+ECDSA
+304402207177af5be75961e78720f0f2f89d36b9364296b8dd4d65f66b582c573948152002203c6d0bc4c1f2bd784b34f37e53b53c0ac13e50af36ff5cfcf293f0938740bc75
+
+v1
+001a5d1a1c2d9375b6485578f82f71a1ae6eef397d297c8ae3157bcadee1a01e
+‎2026‎年‎7‎月‎31‎日 1:34:33
+SHA256
+ECDSA
+3045022020dab43c9497a0bd048dc2398c1e7c321881610c7109398d5c72df8622a0fb1f02210081a28d45945a8e526180be6552703529e6414c69cbd857e321fe72e28fc635bd
+
+v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎7‎月‎31‎日 1:34:33
+SHA256
+ECDSA
+3045022100f3fd52445b334c6b88f8e1a10ed819622c7e15b5d75a6134659c0103e912c0f502202b24593c22152039dc865bee660e27a997b6b2dfd48cfe839ca343414541836d
+
+* 应用程序策略(1.3.6.1.4.1.311.21.10):
+  [1]Application Certificate Policy:
+     Policy Identifier=服务器身份验证
+
+* 证书模板信息(1.3.6.1.4.1.311.21.7):
+  Template=1.3.6.1.4.1.311.21.8.15690651.3798470.4214446.239628.16526621.93.2977488.11009782
+Major Version Number=0
+Minor Version Number=1
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://www.microsoft.com/pkiops/certs/Microsoft TLS G2 ECC CA OCSP 02.crt (http://www.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20ECC%20CA%20OCSP%2002.crt)
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://caissuers.microsoft.com/pkiops/certs/Microsoft TLS G2 ECC CA OCSP 02.crt (http://caissuers.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20ECC%20CA%20OCSP%2002.crt)
+[3]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://oneocsp.microsoft.com/ocsp
+
+* 使用者密钥标识符(2.5.29.14):
+  1c9dfaae87e9940cb105bc0d2147ab728ef0305e
+
+* 密钥用法(2.5.29.15):
+  Digital Signature (80)
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=musicimage.xboxlive.com
+DNS Name=store-images.microsoft.com
+DNS Name=store-images.s-microsoft.com
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://www.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 ECC CA OCSP 02_Partition00072.crl (http://www.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20ECC%20CA%20OCSP%2002_Partition00072.crl)
+               URL=http://crl2.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 ECC CA OCSP 02_Partition00072.crl (http://crl2.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20ECC%20CA%20OCSP%2002_Partition00072.crl)
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+[2]Certificate Policy:
+     Policy Identifier=1.3.6.1.4.1.311.76.509.1.1
+     [2,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.microsoft.com/pkiops/Docs/Repository.htm
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=e51fc46a0936e2afe1646ebdfc6be9edc5d02a74
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+
+[SubjectAltNames]
+DNS Name=musicimage.xboxlive.com
+DNS Name=store-images.microsoft.com
+DNS Name=store-images.s-microsoft.com
+

@@ -1,0 +1,18 @@
+GET https://www.trae.cn/api/tcc/commerce?key=errorMessageConfig HTTP/2
+:method: GET
+:authority: www.trae.cn
+:scheme: https
+:path: /api/tcc/commerce?key=errorMessageConfig
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 Edg/148.0.0.0
+accept: application/json,*/*;q=0.8
+sec-ch-ua: "Chromium";v="148", "Microsoft Edge";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile: ?0
+sec-fetch-site: same-origin
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://www.trae.cn/login?redirect_url=https://www.trae.cn/download
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=1, i
+cookie: gfkadpd=711126,40124; __tea_cache_tokens_711126={%22_type_%22:%22default%22%2C%22user_unique_id%22:%227675980975822161427%22%2C%22timestamp%22:1787203597263}; _clck=d99nj3%5E2%5Eg8r%5E0%5E2423; _tea_utm_cache_711126={%22utm_source%22:%22bing%22%2C%22utm_medium%22:%22bing_sem%22%2C%22utm_campaign%22:%22487898715%22%2C%22utm_term%22:%22trae_bing_sem_dm_pc_cpc_pinp_solo_1%22}; ttwid=1%7CPtdMQoreepBDjCw0b1WB_uaeBrfKAlJJtiH0OxXlJX4%7C1787204059%7Ccdb876bc3360583e2454ad17bed9e4d8bc4fcca23a193a9ef98dfb68d1b6e527; _uetsid=b71449109c5711f1be2e75835fe139b4|1fyqsg5|2|g8r|0|2423; _uetmsclkid=_uet31831cf35a7e12cdae5a7675ca6584ee; _uetvid=b71459309c5711f195a681961e6f964c|1bqxi7y|1787204062781|5|1|bat.bing.com/p/conversions/c/z; _clsk=dc1344%5E1787204062989%5E4%5E1%5En.clarity.ms%2Fcollect

@@ -1,0 +1,44 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "d4347018-ba83-4a07-b72d-3acc7a493684",
+  "data": {
+    "Response": {
+      "PriceInfos": [
+        {
+          "Price": 5000,
+          "TotalCost": 5000,
+          "TimeUnit": "m",
+          "TimeSpan": 1,
+          "GoodsNum": 1,
+          "ProductCode": "p_tcaca",
+          "SubProductCode": "sp_tcaca_codebuddyide_creditplan",
+          "PartDetail": "{\"sv_tcaca_subscribe_idecreditplansubscribtion\":{\"pid\":\"1053697\",\"price\":5000,\"priceId\":\"333535\",\"value\":1,\"priceModel\":\"linear\",\"priceDetail\":[{\"singlePrice\":50,\"usedAmount\":1,\"cost\":50,\"low\":0,\"high\":0}],\"billingItemCode\":\"v_tcaca_subscribe\",\"subBillingItemCode\":\"sv_tcaca_subscribe_idecreditplansubscribtion\",\"hasInsuredPrice\":false,\"totalCost\":5000,\"realTotalCost\":5000,\"policy\":100,\"policyDetail\":{\"total\":100,\"user\":100,\"common\":100,\"activity\":100,\"billRuleUser\":100,\"discountType\":\"empty\",\"dimensionality\":\"empty\",\"otherDiscount\":[],\"extraDiscount\":[],\"multiplyResult\":[],\"backupDiscount\":[]}},\"sv_tcaca_subscribe_custom_credits\":{\"pid\":\"1061105\",\"price\":0,\"priceId\":0,\"value\":0,\"priceModel\":\"linear\",\"priceDetail\":[{\"singlePrice\":0,\"usedAmount\":0,\"cost\":0,\"low\":0,\"high\":0}],\"billingItemCode\":\"v_tcaca_subscribe\",\"subBillingItemCode\":\"sv_tcaca_subscribe_custom_credits\",\"hasInsuredPrice\":false,\"totalCost\":0,\"realTotalCost\":0,\"policy\":100,\"policyDetail\":{\"total\":100,\"user\":100,\"common\":100,\"activity\":100,\"discountType\":\"empty\",\"otherDiscount\":[],\"extraDiscount\":[],\"multiplyResult\":[],\"backupDiscount\":[]}},\"sv_tcaca_subscribe_youth_credits\":{\"pid\":\"1059462\",\"price\":0,\"priceId\":0,\"value\":0,\"priceModel\":\"linear\",\"priceDetail\":[{\"singlePrice\":0,\"usedAmount\":0,\"cost\":0,\"low\":0,\"high\":0}],\"billingItemCode\":\"v_tcaca_subscribe\",\"subBillingItemCode\":\"sv_tcaca_subscribe_youth_credits\",\"hasInsuredPrice\":false,\"totalCost\":0,\"realTotalCost\":0,\"policy\":100,\"policyDetail\":{\"total\":100,\"user\":100,\"common\":100,\"activity\":100,\"discountType\":\"empty\",\"otherDiscount\":[],\"extraDiscount\":[],\"multiplyResult\":[],\"backupDiscount\":[]}}}",
+          "Policy": 100,
+          "RealTotalCost": 5000,
+          "RefundDetail": "",
+          "RefundPayer": "",
+          "TaxRate": 0,
+          "Formula": "",
+          "HasUserPrice": false,
+          "Currency": "CNY",
+          "HighPrecisionPrice": {
+            "PriceHigh": "5000",
+            "TotalCostHigh": "5000",
+            "RealTotalCostHigh": "5000"
+          },
+          "PolicyDetail": "{\"total\":100,\"user\":100,\"common\":100}",
+          "New": "",
+          "Old": "",
+          "Refund": "",
+          "AmountUnit": "pent",
+          "PayerMode": "self",
+          "Action": "prePurchase",
+          "RefTaxDeal": "",
+          "FormulaList": ""
+        }
+      ],
+      "RequestId": "1550704e-49ed-4aff-9376-b052c79b3887"
+    }
+  }
+}

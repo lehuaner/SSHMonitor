@@ -1,0 +1,23 @@
+GET https://codearts.huaweicloud.com/portal/snap-manager/v1/users/user-license/0d2a3a0dae80f58a1f92c0000c3a3de6?_=1788858921427 HTTP/2
+:method: GET
+:authority: codearts.huaweicloud.com
+:scheme: https
+:path: /portal/snap-manager/v1/users/user-license/0d2a3a0dae80f58a1f92c0000c3a3de6?_=1788858921427
+language: zh-cn
+sec-ch-ua-platform: "Windows"
+sec-ch-ua: "Chromium";v="152", "Not?A_Brand";v="24", "Microsoft Edge";v="152"
+cftk: 4H4S-HCUU-C7LO-75CZ-IYAA-H7TD-ZMU6-5954
+sec-ch-ua-mobile: ?0
+x-language: zh-cn
+x-requested-with: XMLHttpRequest
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+accept: application/json, text/plain, */*
+content-type: application/json
+sec-fetch-site: same-origin
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://codearts.huaweicloud.com/portal/settings/personal-usage?locale=zh-cn
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=1, i
+cookie: _frid=d5b02ea98111446d918d4d8995614324; cbc-sid=204938a7380f3812114134aa69c8d3a31bc5e922f5355d0e2af5899159c59960e7dba5e6814a379537b0; vk=38316b85-c4ee-436f-83cd-36c936da02e9; Hm_lvt_e7a90fbb918d40aec64d1170a5ca608f=1788857953; Hm_lpvt_e7a90fbb918d40aec64d1170a5ca608f=1788857953; HMACCOUNT=C00FE92DF3DDC83D; SessionID=2b10621c-8e74-4f9b-8691-7ead1bfd5d7c; ad_sc=baidu; ad_mdm=se-cpc-op; ad_cmp=; ad_ctt=; ad_tm=CodeArts; ad_adp=AdPlace102521; cf=baidu; LastAdSource=baidu; _fr_ssid=4967ca24d12f4680896f663b79104e3d; HWWAFSESTIME=1788857989548; HWWAFSESID=1aca17326d4f823e8d; locale=zh-cn; user_tag=0d2a3a0dae80f58a1f92c0000c3a3de6; domain_tag=0d2a3a0cc500f3060f0dc00096bca220; popup_max_time=60; masked_phone=173****7416; masked_user=l***uan; masked_domain=l***uan; usite=cn; x-framework-ob=; devclouddevuibjJ_SESSION_ID=c1c9d571add87a4cee495e9db803e7ffef3cd41506031c78; devclouddevuibjagencyID=0d2a3a0dae80f58a1f92c0000c3a3de6; devclouddevuibjtcftk=4H4S-HCUU-C7LO-75CZ-IYAA-H7TD-ZMU6-5954; SID=Set2; browserCheckResult=A; cfLatestRecordTimestamp=1788858867118; ua=0d2a3a0cc500f3060f0dc00096bca220; le_huan_le_huan_cfProjectName=cn-north-4

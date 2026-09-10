@@ -1,0 +1,10 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "a3ad1a73-9c3d-4e3a-8de2-885249b87d96",
+  "data": {
+    "hasMultipleIdentity": false,
+    "uid": "8b3cb381-9ebc-4813-92d9-9e5880528465",
+    "enterpriseId": ""
+  }
+}

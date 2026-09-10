@@ -1,0 +1,10 @@
+HTTP/2 200
+content-type: application/json; charset=utf-8
+traceid: 455d4df8a507dd4ddf098fb3d5b828c9
+x-request-id: dda593da-b2be-44f3-854e-0ec34a9e0b58
+server: APISIX/3.9.1
+vary: Origin
+content-length: 72
+date: Mon, 07 Sep 2026 16:39:33 GMT
+eo-log-uuid: 9707271944578976613
+eo-cache-status: MISS

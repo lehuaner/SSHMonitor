@@ -1,0 +1,26 @@
+GET https://lf-cdn.trae.com.cn/obj/trae-com-cn/model/mimo-dark.svg HTTP/2
+:method: GET
+:authority: lf-cdn.trae.com.cn
+:scheme: https
+:path: /obj/trae-com-cn/model/mimo-dark.svg
+accept: */*
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+if-modified-since: Thu, 11 Jun 2026 02:48:32 GMT
+if-none-match: "ae84063505596baa9c8f6912d5fa98da"
+origin: vscode-file://vscode-app
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+sec-ch-ua: "Not_A Brand";v="99", "Chromium";v="142"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.50
+x-request-id: e96a1ad9-cbb0-429d-9ced-9746f4998094
+x-tt-trace-id: 00-044fefe20dd7e685d584dc99b639ffff-044fefe20dd7e685-01
+smbyttnet: 1

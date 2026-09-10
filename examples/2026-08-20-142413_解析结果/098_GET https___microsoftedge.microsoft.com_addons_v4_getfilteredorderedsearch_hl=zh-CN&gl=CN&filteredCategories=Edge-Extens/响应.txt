@@ -1,0 +1,13 @@
+HTTP/2 200
+cache-control: max-age=0, no-cache, no-store, must-revalidate
+content-type: application/json; charset=utf-8
+vary: Accept-Encoding
+x-falcon-ref: Ref A: 4E99D722ABD24FAEADDD84DA81B4A8B0 Ref B: SC-KORS-M82QN_AKS-GEN10-32917737-VMSS00000C_FABRICROUTER-AZUREGLOBALPRIVATE-7B6F57BCF4-2LQBM Ref C: 2026-08-20T06:22:22Z
+x-falcon-routerstatuscode: SuccessfullyForwarded (200)
+ms-cv: 96fdb6e8-7afd-463f-b8a2-0eebf33baf52
+x-content-type-options: nosniff
+strict-transport-security: max-age=31536000; includeSubDomains
+content-security-policy: script-src 'strict-dynamic' 'nonce-u1+5jH+q/+lDA+7KFB6VwFFZPF4Dp1C2xDFg/dsSKx8=' 'unsafe-inline';object-src 'self';base-uri 'self';require-trusted-types-for 'script';trusted-types fast-html dompurify 1DSScriptURL MeControlScriptURL @azure/ms-rest-js#xml.browser lit-html npsTrustedTypePolicy default 'allow-duplicates'
+x-cache: CONFIG_NOCACHE
+x-msedge-ref: Ref A: 4E99D722ABD24FAEADDD84DA81B4A8B0 Ref B: SG2EDGE3005 Ref C: 2026-08-20T06:22:22Z
+date: Thu, 20 Aug 2026 06:22:22 GMT

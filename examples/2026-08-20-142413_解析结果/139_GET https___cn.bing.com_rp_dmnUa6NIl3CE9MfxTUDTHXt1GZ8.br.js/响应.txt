@@ -1,0 +1,20 @@
+HTTP/2 200
+cache-control: public, max-age=31536000, no-transform, immutable
+content-length: 715
+content-type: text/javascript; charset=utf-8
+last-modified: Tue, 21 Jul 2026 01:43:58 GMT
+etag: 0x8DEE6C98876D65B
+x-cache: TCP_HIT
+access-control-allow-origin: *
+timing-allow-origin: *
+cross-origin-resource-policy: cross-origin
+nel: {"report_to":"network-errors","max_age":604800,"success_fraction":0.001,"failure_fraction":1.0}
+report-to: {"group":"network-errors","max_age":604800,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingaot"}]}
+x-ms-request-id: 72a9f6d4-001e-0021-27fd-2dc45d000000
+x-ms-version: 2009-09-19
+x-ms-lease-status: unlocked
+x-ms-blob-type: BlockBlob
+x-ceto-ref: 6a8288250d294ff69190d76bb73e7cc4|AFD:6a8288250d294ff69190d76bb73e7cc4|2026-08-17T04:03:49.233Z
+accept-ch: Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+x-msedge-ref: Ref A: 882FD5C8F8804A69B637684CEDB0F3E7 Ref B: BJ1EDGE1106 Ref C: 2026-08-20T06:22:24Z
+date: Thu, 20 Aug 2026 06:22:23 GMT

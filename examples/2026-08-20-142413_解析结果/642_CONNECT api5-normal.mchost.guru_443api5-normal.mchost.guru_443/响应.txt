@@ -1,0 +1,116 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:23:38.923
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.mchost.guru
+  Simple Name: *.mchost.guru
+  DNS Name: *.mchost.guru
+
+[Issuer]
+  CN=RapidSSL TLS RSA CA G1, OU=www.digicert.com, O=DigiCert Inc, C=US
+  Simple Name: RapidSSL TLS RSA CA G1
+  DNS Name: RapidSSL TLS RSA CA G1
+
+[Serial Number]
+  01505C5405D7684EF61BEAF932910326
+
+[Not Before]
+  2026/1/19 8:00:00
+
+[Not After]
+  2027/1/19 7:59:59
+
+[Thumbprint]
+  C7E7FFC88D99729F06D4ABB26C4BD3C765460C73
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 b4 79 68 3f 4e fe f9 d8 53 73 5e ea c2 60 32 4c c9 21 17 e6 11 94 cd b5 23 95 15 82 31 60 34 7a 07 75 c2 9e bd b3 17 16 38 0f 7f d2 fc d9 60 85 1b 20 21 51 be ae 9f 53 71 df 87 12 a7 68 ea 2a 00 f6 25 86 6a bd ce 38 0a 47 60 aa c9 46 24 79 01 31 cd f5 a2 1d 17 8e e2 2c de dd 26 1a 78 6d 8e 03 d4 e5 c6 3d d1 be 21 c7 86 b6 ca 96 2a 93 1d 0b 3a c0 2a be 23 08 ff 13 5c 2e b1 14 40 ba 96 e4 e2 f0 83 46 56 d9 5a 9c aa ab 67 a1 c0 c4 87 32 fe 1e ab e1 44 a5 62 6e 98 e5 45 ba ed 75 6d f1 8a 7d ac 7f 37 f9 a9 e7 c7 5f 54 86 5d 5d 2e 98 a5 5b d1 89 7a b2 30 11 44 c9 34 c6 b7 64 52 52 fc 8f f3 81 a3 a0 4e a4 e1 4c 93 fa 46 89 0a a3 aa 61 31 cf 1c 5a 5a 47 76 81 29 17 07 1b 8d 05 38 6c da 73 8d d2 61 14 88 39 bf 99 78 14 6f 5f 7d 75 c4 d5 69 52 65 aa 50 39 71 c4 ce 0f 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=0cdb6c82490f4a670ab814ee7ac4485288eb5638
+
+* 使用者密钥标识符(2.5.29.14):
+  7f27ebb399289b5a0dd72300c060b5d4f278e1d1
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.mchost.guru
+DNS Name=mchost.guru
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://cdp.rapidssl.com/RapidSSLTLSRSACAG1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://status.rapidssl.com
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.rapidssl.com/RapidSSLTLSRSACAG1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+4c63dc98e59c1dab88f61e8a3ddeae8fab44a3377b5f9b94c3fba19cfcc1be26
+‎2026‎年‎1‎月‎19‎日 22:49:55
+SHA256
+ECDSA
+30450220725958b78a0c2fb3d2112b3918890a1d894d1b4245d09954de112a8e20a631f3022100a98e805911a3f124ed61baffffad5da0c6158c9c88e459492c3dc8313e42b832
+
+v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎1‎月‎19‎日 22:49:55
+SHA256
+ECDSA
+3046022100e735437b529e0693e25d34b01117b5e80d3fef2d567b65fd057c46c8418936170221009764b11548e03d6d78dbb18736074a2983543c751d4e786a6f2298d09951ea87
+
+v1
+604c9aaf7a7f775f01d406fc920dc899eb0b1c7df8c9521bfafa17773b978bc9
+‎2026‎年‎1‎月‎19‎日 22:49:55
+SHA256
+ECDSA
+30450221009bb388c2f0b8c09aa671291da510be8cc66eba0ceda6f90cf170307303189e310220432198d1271bcbfe22197984e6782093c8c482f3004dddb0b92a71cdc7aefe2f
+
+
+[SubjectAltNames]
+DNS Name=*.mchost.guru
+DNS Name=mchost.guru
+

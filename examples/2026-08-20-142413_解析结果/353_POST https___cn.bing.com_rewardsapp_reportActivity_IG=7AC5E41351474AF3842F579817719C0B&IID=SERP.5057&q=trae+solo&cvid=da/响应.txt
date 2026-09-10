@@ -1,0 +1,25 @@
+HTTP/2 200
+cache-control: no-cache
+pragma: no-cache
+content-length: 1369
+content-type: text/html; charset=utf-8
+expires: -1
+vary: Accept-Encoding
+p3p: CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+set-cookie: _C_ETH=1; domain=.bing.com; path=/; secure; httponly
+set-cookie: _C_Auth=
+set-cookie: GC=DksnssHZFsZv-cKd5LjU5hzjjiKfwRh6p4GIcWb5gz9wl80Deb-pmLp71VvD4i2poPq3LEs9MLiNv7LwPijDdg; expires=Fri, 21 Aug 2026 06:22:29 GMT; domain=.bing.com; path=/; secure; samesite=none
+set-cookie: SNRHOP=I=&TS=; domain=.bing.com; path=/; secure; SameSite=None
+set-cookie: _RwBf=r=143700797E2F9D4AD&mta=0&ispd=3&rc=23479&rb=23479&rg=0&pc=23479&mtu=0&rbb=0.0&clo=0&v=3&l=2026-08-19T07:00:00.0000000Z&lft=0001-01-01T00:00:00.0000000&aof=0&ard=0001-01-01T00:00:00.0000000&rwdbt=-62135539200&rwflt=1705246875&rwaul2=0&g=newLevel3&o=16&p=bingcopilotwaitlist&c=MY00IA&t=6686&s=2023-02-13T17:02:08.3410469+00:00&ts=2026-08-20T06:22:29.3453019+00:00&rwred=0&wls=2&wlb=0&wle=0&ccp=2&cpt=0&lka=0&lkt=0&aad=0&TH=&cid=3008&gb=2025w17_c&e=Ok086NZleXIYTlRrm4CCH2CDQgjw8q2R7ehs6O-dVL8Mc618cnm1TKp2ChW-wjteTZfLTjUeUcNmncyH3zoI0g&A=; domain=.bing.com; expires=Fri, 20-Aug-2027 06:22:29 GMT; path=/; secure; SameSite=None
+set-cookie: _Rwho=u=d&ts=2026-08-20; domain=.bing.com; path=/; secure; HttpOnly; SameSite=None
+set-cookie: _SS=SID=2DF1E2BE9BF26A7232F0F5059A946BF3&PC=U531&R=23479&RB=23479&GB=0&RG=0&RP=23479; domain=.bing.com; path=/; secure; SameSite=None
+x-eventid: 6a869d25f4674ff79f2096c0578a7dfb
+accept-ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, ECT, Sec-CH-Prefers-Color-Scheme, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA
+useragentreductionoptout: A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+permissions-policy: unload=()
+content-security-policy: script-src https: 'strict-dynamic' 'report-sample' 'wasm-unsafe-eval' 'nonce-xQC5NwLxTDyXaKE735TMm8Q/YrVAlDI6jD94hJTehj0='; base-uri 'self';report-to csp-endpoint
+report-to: {"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}
+x-ceto-ref: 6a869d25f4674ff79f2096c0578a7dfb|AFD:6a869d25f4674ff79f2096c0578a7dfb|2026-08-20T06:22:29.201Z
+x-cache: CONFIG_NOCACHE
+x-msedge-ref: Ref A: 53060C51B4DC42B1A89C09F39A23083C Ref B: BJ1EDGE1106 Ref C: 2026-08-20T06:22:29Z
+date: Thu, 20 Aug 2026 06:22:28 GMT

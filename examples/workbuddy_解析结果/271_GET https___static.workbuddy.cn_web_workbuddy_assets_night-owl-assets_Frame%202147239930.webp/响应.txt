@@ -1,0 +1,12 @@
+HTTP/2 304
+etag: "a30faa1f8516f54badc44a398327fc9d"
+content-type: image/webp
+date: Sun, 19 Jul 2026 10:01:22 GMT
+server: tencent-cos
+vary: Origin, Access-Control-Request-Headers, Access-Control-Request-Method
+x-cos-hash-crc64ecma: 1933122177341912439
+x-cos-request-id: NmE1Y2EwNzJfMTJiZDAzMDlfOGIyZl8xMzlmYzQ5MA==
+x-cos-version-id: MTg0NDQ5NTk4ODkxODc3MDk5OTc
+x-nws-log-uuid: 2200197557462390278
+x-cache-lookup: Cache Hit
+access-control-allow-origin: *

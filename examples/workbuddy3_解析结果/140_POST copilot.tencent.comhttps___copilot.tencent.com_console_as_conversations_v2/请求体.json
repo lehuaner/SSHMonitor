@@ -1,0 +1,25 @@
+{
+  "type": "local",
+  "sessionId": "fc1032d0-a3ee-4fe8-8980-5f8afd01bbd8",
+  "name": "调试 rembq 脚本的包元数据错误",
+  "conversationOrigin": "legacy_workbuddy_local",
+  "workDir": "D:\\Tools\\Rembg",
+  "isPlayground": 0,
+  "createdAtMs": 1787684577098,
+  "updatedAtMs": 1787684956528,
+  "lastActivityAtMs": 1787684956528,
+  "clientContext": {
+    "localStatus": "active",
+    "hostId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "sessionKind": "manual",
+    "model": "",
+    "sourceMode": "",
+    "permissionMode": "",
+    "expert": {
+      "id": "",
+      "locale": "",
+      "runtimeIdentity": "",
+      "marketplace": ""
+    }
+  }
+}

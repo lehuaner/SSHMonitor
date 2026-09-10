@@ -1,0 +1,10 @@
+HTTP/2 200
+cache-control: private,max-age=1800
+content-type: application/javascript; charset=utf-8
+vary: Accept-Encoding
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+cross-origin-resource-policy: cross-origin
+x-cache: CONFIG_NOCACHE
+accept-ch: Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+x-msedge-ref: Ref A: CC4E7B3B6E414D868CF9973C2C20FC9C Ref B: TYO201151006060 Ref C: 2026-08-15T07:25:37Z
+date: Sat, 15 Aug 2026 07:25:36 GMT

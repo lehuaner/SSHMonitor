@@ -1,0 +1,8 @@
+GET http://1d.tlu.dl.delivery.mp.microsoft.com/filestreamingservice/files/7a57d90f-d62a-4b48-9e49-d58511d51aa2?P1=1788799561&P2=404&P3=2&P4=cHoz9mMU%2fDBmgMZyQwzONPCINAey6GcB1fuNp0JK5JoLwWEY7FnABpcaZaUzhCqwFMQJGRn5jJimaTw1YMgHCw%3d%3d HTTP/1.1
+Connection: Keep-Alive
+Accept: */*
+Range: bytes=5242880-5878318
+User-Agent: Microsoft-Delivery-Optimization/10.1
+MS-CV: X861yFk+D0qPHYJx.1.2.1.0.0.11.1.1.2.33.1.1
+Content-Length: 0
+Host: 1d.tlu.dl.delivery.mp.microsoft.com

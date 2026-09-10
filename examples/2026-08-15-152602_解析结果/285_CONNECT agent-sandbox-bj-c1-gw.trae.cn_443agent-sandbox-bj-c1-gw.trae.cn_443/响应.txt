@@ -1,0 +1,114 @@
+HTTP/1.1 200 Connection established
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.2
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.agent-sandbox-bj-c1-gw.trae.cn
+  Simple Name: *.agent-sandbox-bj-c1-gw.trae.cn
+  DNS Name: *.agent-sandbox-bj-c1-gw.trae.cn
+
+[Issuer]
+  CN=RapidSSL TLS RSA CA G1, OU=www.digicert.com, O=DigiCert Inc, C=US
+  Simple Name: RapidSSL TLS RSA CA G1
+  DNS Name: RapidSSL TLS RSA CA G1
+
+[Serial Number]
+  0862D0D5D1A5DE3AE68D000F350B525A
+
+[Not Before]
+  2026/3/25 8:00:00
+
+[Not After]
+  2026/10/10 7:59:59
+
+[Thumbprint]
+  95D160352F4A84A00D7594916B5AEF31AC10FD82
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 d6 9e 93 86 d0 ed c3 df d3 55 fe 81 06 58 18 bb 4a 72 27 7f a4 4a 0a 32 27 91 20 dd ef e7 50 ad bf 1e fd cf b3 7a b6 12 e1 d4 93 cd 8a b5 b5 62 67 55 c0 a6 5b b9 cf 51 c4 9a a8 a4 9b eb 0f af 86 3f 49 3d 19 78 ef 47 9c e0 96 38 d0 07 b9 be bf a5 29 66 35 bf 27 db 68 9a 54 30 bf 6e 82 fc 93 56 b2 02 69 02 52 d7 c5 04 cc 3a 4b 12 b7 d2 c4 a0 50 d0 fa d3 5f 08 a6 1d 4a 7d 0e d3 44 24 f7 91 1f 78 31 62 47 fb b1 ef 06 e8 d3 34 f9 60 ec 56 f9 af 0b 97 74 1b ba a3 10 8f 21 8c bd 26 ba 5f 52 5f 48 34 b1 c7 6d d5 a3 d0 aa b2 b4 65 c1 a4 d6 cb ef 03 1f 74 07 89 fd 74 27 34 ba 46 98 fd 69 57 02 fb 99 5d 73 97 aa 9e bc 7d ea 81 be 04 5e 98 6c 1c e7 1a bf 2b c1 35 5e ca d1 c0 19 e9 0c b6 ba 1f 3c 08 91 36 24 2a 05 8d 00 33 d3 32 f4 c0 09 16 75 17 81 7b 4f 6f 58 2a 6d fd 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=0cdb6c82490f4a670ab814ee7ac4485288eb5638
+
+* 使用者密钥标识符(2.5.29.14):
+  288f4074869f31dc2e419872a5bd991b5b96c3a5
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.agent-sandbox-bj-c1-gw.trae.cn
+DNS Name=agent-sandbox-bj-c1-gw.trae.cn
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://cdp.rapidssl.com/RapidSSLTLSRSACAG1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://status.rapidssl.com
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.rapidssl.com/RapidSSLTLSRSACAG1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+c2317e574519a345ee7f38deb29041ebc7c2215a22bf7fd5b5ad769ad90e52cd
+‎2026‎年‎3‎月‎25‎日 16:52:10
+SHA256
+ECDSA
+304502204469a0f591589933d6a14cf75f42a79e03d745ef756254504c65308ce0fe456f022100b00eb7ec5c82c996bdfe7e13362fd2591d786873c568124cbd6f4de4484f0ae9
+
+v1
+d76d7d10d1a7f577c2c7e95fd700bff982c9335a65e1d0b3017317c0c8c56977
+‎2026‎年‎3‎月‎25‎日 16:52:10
+SHA256
+ECDSA
+3045022044eaa42c571e97514c2c3ef70e50142bb03a4ae6ec1d12259f27a41d749ba7f4022100d6f9b6f91e608a251435ad9b9aef1e6a40b588ddf666ab73c71adba34f6c8ef4
+
+v1
+944e4387faecc1ef81f3192426a8186501c7d35f3802013f72677d55372e19d8
+‎2026‎年‎3‎月‎25‎日 16:52:10
+SHA256
+ECDSA
+304402204584f588243bc0bebfca15b3f082b51aa96496f0dbae0fa808e1b8e0604355d30220579374022fe979dab1dccabfb0ad028b132a6e467406b2f6bef8789ccf731b8c
+
+
+[SubjectAltNames]
+DNS Name=*.agent-sandbox-bj-c1-gw.trae.cn
+DNS Name=agent-sandbox-bj-c1-gw.trae.cn
+

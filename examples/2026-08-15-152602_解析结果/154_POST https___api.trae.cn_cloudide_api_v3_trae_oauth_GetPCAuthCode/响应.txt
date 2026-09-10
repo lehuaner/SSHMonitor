@@ -1,0 +1,20 @@
+HTTP/2 200
+server: volc-dcdn
+content-type: application/json
+date: Sat, 15 Aug 2026 07:25:40 GMT
+x-tt-agw-login: 1
+access-control-allow-credentials: true
+access-control-expose-headers: *
+access-control-allow-origin: https://www.trae.cn
+vary: Origin, Accept-Encoding
+x-tt-logid: 2026081515254080E1AEFDA7F7FC30C4BB
+server-timing: inner; dur=47, cdn-cache;desc=MISS, origin;dur=79, edge;dur=0, tt_agw; dur=40
+strict-transport-security: max-age=31536000; includeSubDomains
+x-tt-trace-host: 01207a981426127d02143837b6aace09ad40aef03e25b7f26bc85b7cbe79d792da8075f8ec32d82863cb2766c5ef17a0976aa3d57b9641f008cfa40f2d0a37606550e5fce6c68611a26877719a1b43673740e92d5bedf2edabc5abfcf38973e1262a12f4da77db2914815a0c45d6c399a6
+x-tt-trace-tag: id=5
+x-tt-trace-id: 00-26081515254080E1AEFDA7F7FC30C4BB-41CD50B66F75CECF-00
+x-tt-timestamp: 1786778740.075
+via: n61-236-238.jslianyungang-mp01-cm-bm.Creative
+x-request-ip: 183.209.141.106
+x-dsa-trace-id: 1786778740fea3a8ae1c3950e94810567dbe88c0b2
+x-dsa-origin-status: 200

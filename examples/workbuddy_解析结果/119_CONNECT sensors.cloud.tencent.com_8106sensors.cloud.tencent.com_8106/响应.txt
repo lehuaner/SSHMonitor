@@ -1,0 +1,121 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 00:38:56.748
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.2
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=sensors.cloud.tencent.com, O=Tencent Technology (Shenzhen) Company Limited, L=Shenzhen, S=Guangdong, C=CN
+  Simple Name: sensors.cloud.tencent.com
+  DNS Name: sensors.cloud.tencent.cn
+
+[Issuer]
+  CN=GlobalSign Atlas R3 OV TLS CA 2026 Q2, O=GlobalSign nv-sa, C=BE
+  Simple Name: GlobalSign Atlas R3 OV TLS CA 2026 Q2
+  DNS Name: GlobalSign Atlas R3 OV TLS CA 2026 Q2
+
+[Serial Number]
+  01E07A66A609ABFF5F6C9A0238EA7395
+
+[Not Before]
+  2026/5/24 18:10:21
+
+[Not After]
+  2026/12/9 18:10:20
+
+[Thumbprint]
+  0065B1973792CCE921C87F5BCFBA77B91DD3A0D9
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 cb c8 29 28 67 70 a4 e9 49 6b 58 0b a9 d2 f8 b8 ff 8a 6c db 08 de 6d 9b 7c f3 8f fb a6 c7 75 e5 ed 0b 64 34 bd 4c d3 06 49 cf a1 8c 78 1a 2f fe 5f 3b 56 9f 96 1f f2 8e dd 25 1d 95 ee 3c a8 23 f0 ab 2d dc ed 9a 38 5d c7 77 7d b7 1c 34 32 2b fc bc 74 3f d8 5d 8e d3 01 0b 1f 64 58 d1 98 5b b2 18 bc 0b e1 cf 02 87 83 86 42 43 5f 22 05 e2 38 46 41 6e d6 2b 2f dc 37 85 89 ac 0d f9 e6 36 83 3a fe 65 0e 6b 84 24 7e 37 6c 21 d3 c3 59 26 de 2f 62 27 bc c5 2a 15 23 2d f1 2c 39 de 97 f2 0f 95 a3 56 97 6d 0c 7d 83 d6 90 24 4b a6 fc 75 1a 51 c3 c9 80 cf 7a 13 fc 69 cd 70 7d 27 d4 b0 25 59 35 a1 97 ff c8 3d 6a 99 25 14 54 d2 4d b4 67 87 54 b5 61 bd f0 b0 ae 67 82 98 0b ad e7 70 11 8a fb 85 e2 e1 05 f1 e5 1e e7 53 0e aa d7 ef 2c f1 6c c2 ab b4 3c 07 ff a4 9c 07 e4 16 21 73 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 使用者可选名称(2.5.29.17):
+  DNS Name=sensors.cloud.tencent.cn
+DNS Name=sensors.cloud.tencent.com.cn
+DNS Name=sensors.cloud.tencent.com
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+客户端身份验证 (1.3.6.1.5.5.7.3.2)
+
+* 使用者密钥标识符(2.5.29.14):
+  219857ce7a4cf9733cab672bd30323ec3387e3bf
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+[2]Certificate Policy:
+     Policy Identifier=1.3.6.1.4.1.4146.10.1.2
+     [2,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               https://www.globalsign.com/repository/
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://ocsp.globalsign.com/ca/gsatlasr3ovtlsca2026q2
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://secure.globalsign.com/cacert/gsatlasr3ovtlsca2026q2.crt
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=911c6d0deb54f58e556ebd1650244b8240ae31ef
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl.globalsign.com/ca/gsatlasr3ovtlsca2026q2.crl
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+d76d7d10d1a7f577c2c7e95fd700bff982c9335a65e1d0b3017317c0c8c56977
+‎2026‎年‎5‎月‎24‎日 18:10:44
+SHA256
+ECDSA
+30460221009c46c5dbc0c2fb3ef465feb020f8270a930dc63cebad5c2643c867e3e39a150e022100df7d322e74fdd7eb542b7f65dc0a9544a808a21bfaebaf6d4cb39e373c6b43f8
+
+v1
+944e4387faecc1ef81f3192426a8186501c7d35f3802013f72677d55372e19d8
+‎2026‎年‎5‎月‎24‎日 18:10:45
+SHA256
+ECDSA
+30440220299c7d05257acbff75409796c9be5c0b981dc501dc53e361d8eb2aaf0e6ff5ae02203275f4a07f933633715eb2c14d7fcadfac71d167a8731cbd45929c3b48c28ca9
+
+v1
+af67883b57b04edd8fa6d97ef62ea8eb810ac77160f0245e55d60c2fe785873a
+‎2026‎年‎5‎月‎24‎日 18:10:45
+SHA256
+ECDSA
+3044022056d093d5302e90bd4caa461879ac13ff76592dee592e1c873ef811c1d589971e022079f86226f8771a61a39999dd0a0bac93b84c743705039aeeed19470781e6a43f
+
+
+[SubjectAltNames]
+DNS Name=sensors.cloud.tencent.cn
+DNS Name=sensors.cloud.tencent.com.cn
+DNS Name=sensors.cloud.tencent.com
+

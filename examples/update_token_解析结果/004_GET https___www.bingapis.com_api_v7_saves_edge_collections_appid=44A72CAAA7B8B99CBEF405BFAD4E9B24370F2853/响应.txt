@@ -1,0 +1,30 @@
+HTTP/2 200
+cache-control: private, max-age=0
+content-length: 317
+content-type: application/json
+expires: Sat, 15 Aug 2026 17:41:28 GMT
+vary: User-Agent
+p3p: CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+set-cookie: MUID=06AD6D0EFAEB690921F5787FFBA868C6; domain=.bingapis.com; expires=Thu, 09-Sep-2027 17:42:28 GMT; path=/; secure; SameSite=None
+set-cookie: MUIDB=06AD6D0EFAEB690921F5787FFBA868C6; expires=Thu, 09-Sep-2027 17:42:28 GMT; path=/; HttpOnly
+set-cookie: _EDGE_S=F=1&SID=053DD53F8AE96E313858C2898B3B6F9A; domain=.bingapis.com; path=/; HttpOnly
+set-cookie: _EDGE_V=1; domain=.bingapis.com; expires=Thu, 09-Sep-2027 17:42:28 GMT; path=/; HttpOnly
+set-cookie: USRLOC=HS=1; domain=.bingapis.com; expires=Tue, 15-Aug-2028 17:42:28 GMT; path=/; secure; HttpOnly; SameSite=None
+set-cookie: SRCHD=AF=NOFORM; domain=.bingapis.com; expires=Tue, 15-Aug-2028 17:42:28 GMT; path=/; secure; SameSite=None
+set-cookie: SRCHUID=V=2&GUID=B1B24E28C2814A1DB7C97158F3C2C796&dmnchg=1; domain=.bingapis.com; expires=Tue, 15-Aug-2028 17:42:28 GMT; path=/; secure; SameSite=None
+set-cookie: SRCHUSR=DOB=20260815; domain=.bingapis.com; expires=Tue, 15-Aug-2028 17:42:28 GMT; path=/; secure; SameSite=None
+set-cookie: SRCHHPGUSR=SRCHLANG=zh-Hans; domain=.bingapis.com; expires=Tue, 15-Aug-2028 17:42:28 GMT; path=/; secure; SameSite=None
+set-cookie: _SS=SID=053DD53F8AE96E313858C2898B3B6F9A; domain=.bingapis.com; path=/; secure; SameSite=None
+x-eventid: 6a80a50475eb40838d6672db9db30524
+useragentreductionoptout: A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+permissions-policy: unload=()
+content-security-policy: script-src https: 'strict-dynamic' 'report-sample' 'wasm-unsafe-eval' 'nonce-Jz0l+5g/CwuT7bk8p1dV/NTHST5U0vOR5sXlyNe44NQ='; base-uri 'self';report-to csp-endpoint
+report-to: {"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}
+bingapis-traceid: 6a80a50475eb40838d6672db9db30524
+bingapis-sessionid: B1B24E28C2814A1DB7C97158F3C2C796
+x-display-context: full
+x-search-responseinfo: InternalResponseTime=28,MSDatacenter=PUSE01
+x-cache: CONFIG_NOCACHE
+accept-ch: Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+x-msedge-ref: Ref A: 9FEFABA60DFF45FB9AA36882AC4543C8 Ref B: TYO601100905031 Ref C: 2026-08-15T17:42:28Z
+date: Sat, 15 Aug 2026 17:42:27 GMT

@@ -1,0 +1,272 @@
+{
+  "resourceSpans": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "service.name",
+            "value": {
+              "stringValue": "login-frontend"
+            }
+          },
+          {
+            "key": "telemetry.sdk.language",
+            "value": {
+              "stringValue": "webjs"
+            }
+          },
+          {
+            "key": "telemetry.sdk.name",
+            "value": {
+              "stringValue": "opentelemetry"
+            }
+          },
+          {
+            "key": "telemetry.sdk.version",
+            "value": {
+              "stringValue": "1.29.0"
+            }
+          },
+          {
+            "key": "service.version",
+            "value": {
+              "stringValue": "5.5.3"
+            }
+          },
+          {
+            "key": "target",
+            "value": {
+              "stringValue": "ElectronApp.WorkBuddy.Desktop"
+            }
+          },
+          {
+            "key": "type",
+            "value": {
+              "stringValue": "resource"
+            }
+          },
+          {
+            "key": "env_name",
+            "value": {
+              "stringValue": "production"
+            }
+          },
+          {
+            "key": "instance",
+            "value": {
+              "stringValue": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0-1788799091654"
+            }
+          },
+          {
+            "key": "namespace",
+            "value": {
+              "stringValue": "Production"
+            }
+          },
+          {
+            "key": "container_name",
+            "value": {
+              "stringValue": "genie.ElectronApp.WorkBuddy.Desktop"
+            }
+          },
+          {
+            "key": "ideType",
+            "value": {
+              "stringValue": "web-login"
+            }
+          },
+          {
+            "key": "os",
+            "value": {
+              "stringValue": "Windows"
+            }
+          }
+        ],
+        "droppedAttributesCount": 0
+      },
+      "scopeSpans": [
+        {
+          "scope": {
+            "name": "workbuddy.agent"
+          },
+          "spans": [
+            {
+              "traceId": "61350475eb5648ebb6dd85fbe53db93e",
+              "spanId": "be32da894b0b077f",
+              "name": "web.login.page_load",
+              "kind": 1,
+              "startTimeUnixNano": "1788799091658000000",
+              "endTimeUnixNano": "1788799091956900000",
+              "attributes": [
+                {
+                  "key": "loginSessionId",
+                  "value": {
+                    "stringValue": "61350475-eb56-48eb-b6dd-85fbe53db93e"
+                  }
+                },
+                {
+                  "key": "result",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            },
+            {
+              "traceId": "61350475eb5648ebb6dd85fbe53db93e",
+              "spanId": "e7ab8dd38f94000a",
+              "name": "web.login.accounts_ready",
+              "kind": 1,
+              "startTimeUnixNano": "1788799092541000000",
+              "endTimeUnixNano": "1788799092541000000",
+              "attributes": [
+                {
+                  "key": "loginSessionId",
+                  "value": {
+                    "stringValue": "61350475-eb56-48eb-b6dd-85fbe53db93e"
+                  }
+                },
+                {
+                  "key": "account_count",
+                  "value": {
+                    "intValue": 1
+                  }
+                },
+                {
+                  "key": "auto_selected",
+                  "value": {
+                    "stringValue": "true"
+                  }
+                },
+                {
+                  "key": "result",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            },
+            {
+              "traceId": "61350475eb5648ebb6dd85fbe53db93e",
+              "spanId": "32324e8ca13ed581",
+              "name": "web.login.done",
+              "kind": 1,
+              "startTimeUnixNano": "1788799095204000000",
+              "endTimeUnixNano": "1788799095529000000",
+              "attributes": [
+                {
+                  "key": "loginSessionId",
+                  "value": {
+                    "stringValue": "61350475-eb56-48eb-b6dd-85fbe53db93e"
+                  }
+                },
+                {
+                  "key": "account_type",
+                  "value": {
+                    "stringValue": "personal"
+                  }
+                },
+                {
+                  "key": "enterprise_id",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "login_method",
+                  "value": {
+                    "stringValue": "wechat"
+                  }
+                },
+                {
+                  "key": "path",
+                  "value": {
+                    "stringValue": "plugin"
+                  }
+                },
+                {
+                  "key": "result",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            },
+            {
+              "traceId": "61350475eb5648ebb6dd85fbe53db93e",
+              "spanId": "1ff21fb35d4ec313",
+              "name": "web.login.choose_account",
+              "kind": 1,
+              "startTimeUnixNano": "1788799094562000000",
+              "endTimeUnixNano": "1788799095528700000",
+              "attributes": [
+                {
+                  "key": "loginSessionId",
+                  "value": {
+                    "stringValue": "61350475-eb56-48eb-b6dd-85fbe53db93e"
+                  }
+                },
+                {
+                  "key": "account_type",
+                  "value": {
+                    "stringValue": "personal"
+                  }
+                },
+                {
+                  "key": "enterprise_id",
+                  "value": {
+                    "stringValue": ""
+                  }
+                },
+                {
+                  "key": "platform",
+                  "value": {
+                    "stringValue": "workbuddy"
+                  }
+                },
+                {
+                  "key": "result",
+                  "value": {
+                    "stringValue": "success"
+                  }
+                }
+              ],
+              "droppedAttributesCount": 0,
+              "events": [],
+              "droppedEventsCount": 0,
+              "status": {
+                "code": 0
+              },
+              "links": [],
+              "droppedLinksCount": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

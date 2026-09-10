@@ -1,0 +1,28 @@
+HTTP/2 200
+cache-control: private, max-age=0
+content-type: text/html; charset=utf-8
+expires: Thu, 20 Aug 2026 06:21:20 GMT
+vary: User-Agent,Accept-Encoding
+p3p: CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+set-cookie: SNRHOP=I=&TS=; domain=.bing.com; path=/; secure; SameSite=None
+set-cookie: MUIDB=1813F96507B063203380EE0D061D628F; expires=Tue, 14-Sep-2027 06:22:20 GMT; path=/; HttpOnly
+set-cookie: __Host-XY=CfDJ8A8rLfEh4ZdMhJ19YNJ4FtQoGLpoJ1AVvzEPoUFTkOHS_2-7YPkTHMtKLneQ39InKey96L7S-UaULRKq9CFwWRFzRy7A1T_qBx6cdWA2n_KbDlKU4PBu-2KcUJ1jZmwLvd8Pzo1XT7DfSl1YH2OJBjLReq9e2cbyXBYHTulCLOX4pqzlscJ_v4_K8ziQWD8YV26Tq5YbPqq8QMtQOs9xhXvXcHD2PGOd3uoXvlbxbg1OHy1jqF_nQdlAII1Xft2ZEw; expires=Fri, 21-Aug-2026 13:22:20 GMT; path=/; secure; HttpOnly; SameSite=Lax
+set-cookie: _SS=SID=2DF1E2BE9BF26A7232F0F5059A946BF3&PC=U531; domain=.bing.com; path=/; secure; SameSite=None
+set-cookie: SRCHS=PC=U531; domain=.bing.com; path=/; secure; SameSite=None
+set-cookie: WLS=C=e68bb90d8118dd39&N=%e7%84%95%e7%84%b6; domain=.bing.com; path=/; secure; SameSite=None
+x-eventid: 6a869d1c73874529bea04686208e370d
+accept-ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, ECT, Sec-CH-Prefers-Color-Scheme, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA
+useragentreductionoptout: A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+strict-transport-security: max-age=31536000; includeSubDomains; preload
+permissions-policy: unload=()
+content-security-policy: script-src https: 'strict-dynamic' 'report-sample' 'wasm-unsafe-eval' 'nonce-XpteK5+jH4/OaPyANgBZggfU/qf1YAZL3DYbx9k+d8k='; base-uri 'self';report-to csp-endpoint
+report-to: {"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}
+report-to: {"group":"network-errors","max_age":604800,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingserp&ndcParam=QUZE"}]}
+report-to: {"group":"crossorigin-errors","max_age":604800,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingserp"}]}
+x-display-context: full
+nel: {"report_to":"network-errors","max_age":604800,"success_fraction":0.01,"failure_fraction":1.0,"include_subdomains":true}
+cross-origin-embedder-policy-report-only: 'require-corp; report-to=\"crossorigin-errors\"'
+cross-origin-opener-policy-report-only: 'same-origin; report-to=\"crossorigin-errors\"'
+x-cache: CONFIG_NOCACHE
+x-msedge-ref: Ref A: 413610A92DB64D46AB02ECEEBFA1FA50 Ref B: BJ1EDGE1106 Ref C: 2026-08-20T06:22:20Z
+date: Thu, 20 Aug 2026 06:22:19 GMT

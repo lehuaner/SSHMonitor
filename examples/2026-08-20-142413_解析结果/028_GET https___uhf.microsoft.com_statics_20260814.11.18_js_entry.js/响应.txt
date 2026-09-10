@@ -1,0 +1,11 @@
+HTTP/2 200
+content-type: application/javascript
+last-modified: Fri, 14 Aug 2026 12:13:13 GMT
+etag: W/"0x8DEF9FD69D9F2CA"
+x-ms-request-id: 2d01d17f-b01e-003c-13b9-2f8f5c000000
+x-ms-version: 2018-03-28
+access-control-allow-origin: *
+x-azure-ref: 20260819T090559Z-17cddf78c94c8mbxhC1HKG6bsg0000000eh000000000am18
+content-length: 9196
+date: Thu, 20 Aug 2026 06:22:21 GMT
+vary: Accept-Encoding

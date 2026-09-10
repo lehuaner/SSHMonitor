@@ -1,0 +1,22 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "044caf4f7c714fa791e85d15fc351a3f",
+  "data": {
+    "total": 0,
+    "server_time": 1789012931208,
+    "poll_interval": 30,
+    "pending_popup": 0,
+    "unicast_total": 0,
+    "broadcast_total": 0,
+    "identity": {
+      "uid": "bb1a0124-b950-4052-9904-bc45ccd68bf0",
+      "tenant_id": "personal",
+      "product_code": "workbuddy"
+    },
+    "degraded": false,
+    "degraded_parts": [
+      "pending_popup"
+    ]
+  }
+}

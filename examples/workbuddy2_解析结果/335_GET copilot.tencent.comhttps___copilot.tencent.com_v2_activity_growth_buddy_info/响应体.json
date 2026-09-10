@@ -1,0 +1,9 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "d28084e8-ec71-4e0d-bb4d-7f68a325cf14",
+  "data": {
+    "buddy": null,
+    "poll_interval_seconds": 60
+  }
+}

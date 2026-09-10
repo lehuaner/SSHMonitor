@@ -1,0 +1,25 @@
+{
+  "type": "local",
+  "sessionId": "7c1c9982-e2da-431c-8b0b-b60232503bea",
+  "name": "添加测试图后右侧预览未更新",
+  "conversationOrigin": "legacy_workbuddy_local",
+  "workDir": "D:\\Code\\Project\\Python\\ExtractRole",
+  "isPlayground": 0,
+  "createdAtMs": 1787485612607,
+  "updatedAtMs": 1787663006967,
+  "lastActivityAtMs": 1787663006967,
+  "clientContext": {
+    "localStatus": "active",
+    "hostId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "sessionKind": "manual",
+    "model": "",
+    "sourceMode": "",
+    "permissionMode": "",
+    "expert": {
+      "id": "",
+      "locale": "",
+      "runtimeIdentity": "",
+      "marketplace": ""
+    }
+  }
+}

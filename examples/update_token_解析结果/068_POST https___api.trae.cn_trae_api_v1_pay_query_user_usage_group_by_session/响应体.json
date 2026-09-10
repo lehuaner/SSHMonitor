@@ -1,0 +1,445 @@
+{
+  "total": 202,
+  "user_usage_group_by_sessions": [
+    {
+      "amount_float": 5.0512,
+      "cost_money_float": 0.12628,
+      "credits_float": 5.0512,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 244992,
+        "cache_write_token": 0,
+        "input_token": 331318,
+        "output_token": 21382
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a80888974c23c83efbd241a",
+      "usage_source": 2,
+      "usage_time": 1786808499,
+      "use_max_mode": false,
+      "user_input_preview": "我即使等待前端返回”已收藏“后，再不刷新"
+    },
+    {
+      "amount_float": 0.2344,
+      "cost_money_float": 0.00586,
+      "credits_float": 0.2344,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 195328,
+        "cache_write_token": 0,
+        "input_token": 198663,
+        "output_token": 404
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a80861a74c23c83efbd2408",
+      "usage_source": 2,
+      "usage_time": 1786807835,
+      "use_max_mode": false,
+      "user_input_preview": "部署worker，前后端不用部署"
+    },
+    {
+      "amount_float": 13.4716,
+      "cost_money_float": 0.33679,
+      "credits_float": 13.4716,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 3721728,
+        "cache_write_token": 0,
+        "input_token": 3898629,
+        "output_token": 44628
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a80833b74c23c83efbd2372",
+      "usage_source": 2,
+      "usage_time": 1786807112,
+      "use_max_mode": false,
+      "user_input_preview": "修复图库内有些卡片 收藏后 没办法在筛选"
+    },
+    {
+      "amount_float": 63.9772,
+      "cost_money_float": 1.59943,
+      "credits_float": 63.9772,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 23067904,
+        "cache_write_token": 0,
+        "input_token": 23917245,
+        "output_token": 163569
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a80778774c23c83efbd1fc5",
+      "usage_source": 2,
+      "usage_time": 1786804163,
+      "use_max_mode": false,
+      "user_input_preview": "为什么图库页面在触屏模式下，我点击多选，"
+    },
+    {
+      "amount_float": 3.1104,
+      "cost_money_float": 0.07776,
+      "credits_float": 3.1104,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 1944320,
+        "cache_write_token": 0,
+        "input_token": 1983153,
+        "output_token": 11357
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a8074a874c23c83efbd1f13",
+      "usage_source": 2,
+      "usage_time": 1786803464,
+      "use_max_mode": false,
+      "user_input_preview": "修复图库中筛选时，会将失败的数据也算到筛"
+    },
+    {
+      "amount_float": 0.1032,
+      "cost_money_float": 0.00258,
+      "credits_float": 0.1032,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 62464,
+        "cache_write_token": 0,
+        "input_token": 63032,
+        "output_token": 748
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a80737374c23c83efbd1ebf",
+      "usage_source": 2,
+      "usage_time": 1786803148,
+      "use_max_mode": false,
+      "user_input_preview": "哦，不是这个原因，我刚刚录屏了，然后看到"
+    },
+    {
+      "amount_float": 0.7836,
+      "cost_money_float": 0.01959,
+      "credits_float": 0.7836,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 287488,
+        "cache_write_token": 0,
+        "input_token": 297968,
+        "output_token": 3523
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a80725474c23c83efbd1e6d",
+      "usage_source": 2,
+      "usage_time": 1786802846,
+      "use_max_mode": false,
+      "user_input_preview": "哦，还有一个原因，比如说我现在是窄屏模式"
+    },
+    {
+      "amount_float": 0.2424,
+      "cost_money_float": 0.00606,
+      "credits_float": 0.2424,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 157696,
+        "cache_write_token": 0,
+        "input_token": 160854,
+        "output_token": 789
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a80715a74c23c83efbd1e2b",
+      "usage_source": 2,
+      "usage_time": 1786802582,
+      "use_max_mode": false,
+      "user_input_preview": "把之前那个谈谈的动画去掉，就是到了之后一"
+    },
+    {
+      "amount_float": 7.5156,
+      "cost_money_float": 0.18789,
+      "credits_float": 7.5156,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 674048,
+        "cache_write_token": 0,
+        "input_token": 744225,
+        "output_token": 18497
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a806f7974c23c83efbd1dd7",
+      "usage_source": 2,
+      "usage_time": 1786802127,
+      "use_max_mode": false,
+      "user_input_preview": "挺好挺好，但是我其实做这么多就是为了解决"
+    },
+    {
+      "amount_float": 0.2916,
+      "cost_money_float": 0.00729,
+      "credits_float": 0.2916,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 205824,
+        "cache_write_token": 0,
+        "input_token": 208472,
+        "output_token": 1443
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a806ec074c23c83efbd1dad",
+      "usage_source": 2,
+      "usage_time": 1786801903,
+      "use_max_mode": false,
+      "user_input_preview": "切换时每个卡片的缩放动画可以再弹一点吗？"
+    },
+    {
+      "amount_float": 1.2636,
+      "cost_money_float": 0.03159,
+      "credits_float": 1.2636,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 389120,
+        "cache_write_token": 0,
+        "input_token": 400790,
+        "output_token": 8674
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a806dd974c23c83efbd1d5d",
+      "usage_source": 2,
+      "usage_time": 1786801748,
+      "use_max_mode": false,
+      "user_input_preview": "你能找到视觉上在切换时，卡片或者图片会被"
+    },
+    {
+      "amount_float": 1.0068,
+      "cost_money_float": 0.02517,
+      "credits_float": 1.0068,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 350976,
+        "cache_write_token": 0,
+        "input_token": 360824,
+        "output_token": 6436
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a806ce674c23c83efbd1d20",
+      "usage_source": 2,
+      "usage_time": 1786801458,
+      "use_max_mode": false,
+      "user_input_preview": "？怎么一直存在了"
+    },
+    {
+      "amount_float": 0.7996,
+      "cost_money_float": 0.01999,
+      "credits_float": 0.7996,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 410112,
+        "cache_write_token": 0,
+        "input_token": 417634,
+        "output_token": 4599
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a806c5a74c23c83efbd1d08",
+      "usage_source": 2,
+      "usage_time": 1786801274,
+      "use_max_mode": false,
+      "user_input_preview": "为什么切换时我逐帧查看，按钮还是会在卡片"
+    },
+    {
+      "amount_float": 0.7168,
+      "cost_money_float": 0.01792,
+      "credits_float": 0.7168,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 378112,
+        "cache_write_token": 0,
+        "input_token": 385250,
+        "output_token": 3873
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a806b3d74c23c83efbd1cde",
+      "usage_source": 2,
+      "usage_time": 1786800997,
+      "use_max_mode": false,
+      "user_input_preview": "不要有消失动画了，直接卸载"
+    },
+    {
+      "amount_float": 1.3928,
+      "cost_money_float": 0.03482,
+      "credits_float": 1.3928,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 330240,
+        "cache_write_token": 0,
+        "input_token": 343918,
+        "output_token": 9655
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a806a3f74c23c83efbd1cc6",
+      "usage_source": 2,
+      "usage_time": 1786800724,
+      "use_max_mode": false,
+      "user_input_preview": "我希望完全消失不见后再执行布局切换的动画"
+    },
+    {
+      "amount_float": 7.888,
+      "cost_money_float": 0.1972,
+      "credits_float": 7.888,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 783360,
+        "cache_write_token": 0,
+        "input_token": 889621,
+        "output_token": 13671
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a80691d74c23c83efbd1c93",
+      "usage_source": 2,
+      "usage_time": 1786800439,
+      "use_max_mode": false,
+      "user_input_preview": "改一下吧，当前还是效果不好，切换的时候我"
+    },
+    {
+      "amount_float": 0.1272,
+      "cost_money_float": 0.00318,
+      "credits_float": 0.1272,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 205312,
+        "cache_write_token": 0,
+        "input_token": 206327,
+        "output_token": 122
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a8068c474c23c83efbd1c84",
+      "usage_source": 2,
+      "usage_time": 1786800335,
+      "use_max_mode": false,
+      "user_input_preview": "关闭5714，我自己有5713"
+    },
+    {
+      "amount_float": 11.5156,
+      "cost_money_float": 0.28789,
+      "credits_float": 11.5156,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 1291776,
+        "cache_write_token": 0,
+        "input_token": 1404358,
+        "output_token": 80923
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a8065fe74c23c83efbd1c42",
+      "usage_source": 2,
+      "usage_time": 1786799619,
+      "use_max_mode": false,
+      "user_input_preview": "当前每张卡片右上角的收藏按钮和删除按钮，"
+    },
+    {
+      "amount_float": 8.2328,
+      "cost_money_float": 0.20582,
+      "credits_float": 8.2328,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 1075456,
+        "cache_write_token": 0,
+        "input_token": 1188909,
+        "output_token": 18274
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a80643874c23c83efbd1c0c",
+      "usage_source": 2,
+      "usage_time": 1786799164,
+      "use_max_mode": false,
+      "user_input_preview": "不错不错，确实没跳变了，看看还有没有优化"
+    },
+    {
+      "amount_float": 6.5812,
+      "cost_money_float": 0.16453,
+      "credits_float": 6.5812,
+      "dollar_float": 0,
+      "extra_info": {
+        "cache_read_token": 1308416,
+        "cache_write_token": 0,
+        "input_token": 1438455,
+        "output_token": 14126
+      },
+      "mode": "",
+      "model_name": "DeepSeek-V4-Flash 正式版",
+      "product_type_list": [
+        2
+      ],
+      "session_id": "6a80630d74c23c83efbd1bd6",
+      "usage_source": 2,
+      "usage_time": 1786798866,
+      "use_max_mode": false,
+      "user_input_preview": "你的新的设计还是有问题的，当滚动到下边时"
+    }
+  ]
+}

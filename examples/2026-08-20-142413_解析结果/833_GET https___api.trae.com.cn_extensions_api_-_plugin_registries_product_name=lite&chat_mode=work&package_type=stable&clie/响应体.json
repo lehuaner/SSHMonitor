@@ -1,0 +1,13 @@
+{
+  "data": {
+    "registries": [
+      {
+        "id": "trae-remote-official",
+        "registry": "trae-remote-official",
+        "display_name": "TRAE 官方市场",
+        "description": ""
+      }
+    ]
+  },
+  "success": "true"
+}

@@ -1,0 +1,48 @@
+[
+  {
+    "events": [
+      {
+        "event": "common_action",
+        "params": "{\"module_id\":\"solo.auth.get-pc-auth-code-success\",\"login_trace_id\":\"f2e9b1fa-73f1-48dd-b666-74055079f95d\",\"ide_type\":\"solo\",\"plugin_version\":\"2.3.71801\",\"auth_type\":\"local\",\"device_id\":\"2609589533558410\",\"machine_id\":\"cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b\",\"url\":\"https://www.trae.cn/authorization\",\"event_index\":1787207126261}",
+        "local_time_ms": 1787207031084,
+        "is_bav": 1,
+        "session_id": "1a42d621-1937-42f8-94dc-f637d39d8f08"
+      }
+    ],
+    "user": {
+      "user_unique_id": "7675972323816048182",
+      "user_id": "1554024524166871",
+      "user_is_login": true
+    },
+    "header": {
+      "app_id": 711126,
+      "os_name": "windows",
+      "os_version": "10",
+      "device_model": "Windows NT 10.0",
+      "language": "zh-CN",
+      "region": "China-North",
+      "platform": "web",
+      "sdk_version": "5.3.5",
+      "sdk_lib": "js",
+      "timezone": 8,
+      "tz_offset": -28800,
+      "resolution": "1199x822",
+      "browser": "Microsoft Edge",
+      "browser_version": "148.0.0.0",
+      "referrer": "",
+      "referrer_host": "",
+      "width": 1199,
+      "height": 822,
+      "screen_width": 1199,
+      "screen_height": 822,
+      "utm_term": "trae_bing_sem_dm_pc_cpc_pinp_solo_1",
+      "utm_source": "bing",
+      "utm_medium": "bing_sem",
+      "utm_campaign": "487898715",
+      "tracer_data": "{\"$utm_from_url\":1}",
+      "custom": "{\"network_type\":\"4g\",\"biz_web_id\":\"7675972323816048182\",\"version\":\"1.0.0.1511\",\"env\":\"prod\",\"biz_user_id\":\"1554024524166871\",\"os\":\"Windows\",\"cpu\":\"Unknown\"}"
+    },
+    "local_time": 1787207031,
+    "verbose": 1
+  }
+]

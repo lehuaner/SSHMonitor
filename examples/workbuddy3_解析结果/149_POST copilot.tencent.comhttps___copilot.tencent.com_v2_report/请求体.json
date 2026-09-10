@@ -1,0 +1,31 @@
+[
+  {
+    "eventCode": "plugin_status",
+    "timestamp": 1789012902710,
+    "reportDelay": 2003,
+    "status": "info",
+    "text": "pluginStart",
+    "isInterval": false,
+    "timezone": "Asia/Shanghai",
+    "qimei36": "54087800e7eca71a288568e430001de1910b",
+    "userId": "bb1a0124-b950-4052-9904-bc45ccd68bf0",
+    "username": "19154975875",
+    "userNickname": "19154975875",
+    "product": "SaaS",
+    "releaseDate": 1788443875561,
+    "commit": "104760a280d1710d375d024bc87a03f08d97c590",
+    "os": "win32",
+    "arch": "x64",
+    "osVersion": "10.0.26200",
+    "cpuModel": "AMD Ryzen 5 5600H with Radeon Graphics         ",
+    "cpuCores": 12,
+    "memorySize": 32,
+    "extName": "workbuddy-desktop",
+    "extVersion": "5.5.3",
+    "ideName": "WorkBuddy",
+    "ideType": "WorkBuddy",
+    "machineId": "cc1c7f5f-e20c-4685-bb26-c13638b06696",
+    "sessionId": "2dfd95da-0403-4992-91dd-3b84653dc169",
+    "ideVersion": "5.5.3"
+  }
+]

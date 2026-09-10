@@ -1,0 +1,22 @@
+POST https://mon.zijieapi.com/monitor_browser/collect/batch/?biz_id=solo_pc HTTP/2
+:method: POST
+:authority: mon.zijieapi.com
+:scheme: https
+:path: /monitor_browser/collect/batch/?biz_id=solo_pc
+content-length: 2578
+authority: https://mon.zijieapi.com
+accept: */*
+accept-language: zh-CN
+content-type: application/json
+origin: vscode-file://vscode-app
+sec-ch-ua: "Not.A/Brand";v="8", "Chromium";v="114"
+sec-ch-ua-mobile: ?0
+sec-fetch-dest: empty
+sec-fetch-mode: "cors"
+sec-fetch-site: none
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36
+x-bridge-transport: aha
+x-request-id: req_a1f22ddc-911a-42b2-996e-66761b610924
+referer: https://mon.zijieapi.com/monitor_browser/collect/batch/?biz_id=solo_pc
+accept-encoding: gzip, deflate, br, zstd
+priority: u=1

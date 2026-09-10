@@ -1,0 +1,32 @@
+{
+  "data": {
+    "items": [
+      {
+        "id": "14",
+        "sceneId": "ppt",
+        "displayText": "根据公司资料制作一份品牌与业务介绍 PPT",
+        "prompt": "根据公司资料制作一份品牌与业务介绍 PPT"
+      },
+      {
+        "id": "101",
+        "sceneId": "content_creation",
+        "displayText": "把这份产品说明改写成易懂的使用教程和常见问题",
+        "prompt": "把这份产品说明改写成易懂的使用教程和常见问题"
+      },
+      {
+        "id": "98",
+        "sceneId": "content_creation",
+        "displayText": "把这份专业报告改写成普通读者愿意看的科普文章",
+        "prompt": "把这份专业报告改写成普通读者愿意看的科普文章"
+      },
+      {
+        "id": "131",
+        "sceneId": "business_growth",
+        "displayText": "分析现有客户数据，划分核心人群并制定运营策略",
+        "prompt": "分析现有客户数据，划分核心人群并制定运营策略"
+      }
+    ]
+  },
+  "success": true,
+  "logId": "202608201423422FDAEC31472A6D13106A"
+}

@@ -1,0 +1,145 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 16:06:19.431
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.google-analytics.com
+  Simple Name: *.google-analytics.com
+  DNS Name: *.google-analytics.com
+
+[Issuer]
+  CN=WE2, O=Google Trust Services, C=US
+  Simple Name: WE2
+  DNS Name: WE2
+
+[Serial Number]
+  00DFC7E14F1A905C1E127281782E35EA27
+
+[Not Before]
+  2026/8/10 16:37:41
+
+[Not After]
+  2026/11/2 16:37:40
+
+[Thumbprint]
+  DCE6389B82DB202119E795FC30E0F0F4BCCA9A1C
+
+[Signature Algorithm]
+  sha256ECDSA(1.2.840.10045.4.3.2)
+
+[Public Key]
+  Algorithm: ECC
+  Length: 
+  Key Blob: 04 75 65 8f 45 2e 8e ab 2e e9 8d 51 34 72 35 ca 4a fa d7 e8 d6 6d c9 f2 71 25 d7 d8 57 ad 80 82 b1 36 ee 24 b3 b7 e7 b9 80 94 71 ed 1c 11 14 7d 85 71 b7 91 d0 7b 78 49 f7 f5 73 94 fd 22 7f 53 7e
+  Parameters: 06 08 2a 86 48 ce 3d 03 01 07
+
+[Extensions]
+* 密钥用法(2.5.29.15):
+  Digital Signature (80)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* 使用者密钥标识符(2.5.29.14):
+  dc5f6ffe8ec2e741a38b82f84efe9376348ff0fc
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=75bec477ae89f644377dcfb1681f1d1aebdc3459
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://i.pki.goog/we2.crt
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.google-analytics.com
+DNS Name=region1.app-measurement.com
+DNS Name=app-measurement.com
+DNS Name=region1.att.app-measurement.com
+DNS Name=att.app-measurement.com
+DNS Name=region1.analytics.app-measurement.com
+DNS Name=analytics.app-measurement.com
+DNS Name=region1.app-analytics-services-att.com
+DNS Name=app-analytics-services-att.com
+DNS Name=region1.app-analytics-services.com
+DNS Name=app-analytics-services.com
+DNS Name=google-analytics.com
+DNS Name=region1.google-analytics.com
+DNS Name=ssl.google-analytics.com
+DNS Name=www.google-analytics.com
+DNS Name=region1.analytics.google.com
+DNS Name=googletagmanager.com
+DNS Name=www.googletagmanager.com
+DNS Name=urchin.com
+DNS Name=service.urchin.com
+DNS Name=fps.goog
+DNS Name=*.fps.goog
+DNS Name=googleoptimize.com
+DNS Name=www.googleoptimize.com
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://c.pki.goog/we2/dTM3-0hpWfE.crl
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+af67883b57b04edd8fa6d97ef62ea8eb810ac77160f0245e55d60c2fe785873a
+‎2026‎年‎8‎月‎10‎日 17:37:42
+SHA256
+ECDSA
+3045022100fcfef1526f915c5d215fb487b03d50f429ac004ac51c42b9f949df647c691fba02204507fb2cd1df4c76949a39a24439b0ce56f3ae654cc6b1d2a23da145a8cd1f1f
+
+v1
+d809553b944f7affc816196f944f85abb0f8fc5e8755260f15d12e72bb454b14
+‎2026‎年‎8‎月‎10‎日 17:37:42
+SHA256
+ECDSA
+3045022100a22c1da1db96556c987a82394e739cc0b5e20eeb4bb6bde4abedad12c9aabf52022061ea57c71c60ca895d33aa0ba2219fc0539d5f97a581e3626b53f3bc13db74ab
+
+
+[SubjectAltNames]
+DNS Name=*.google-analytics.com
+DNS Name=region1.app-measurement.com
+DNS Name=app-measurement.com
+DNS Name=region1.att.app-measurement.com
+DNS Name=att.app-measurement.com
+DNS Name=region1.analytics.app-measurement.com
+DNS Name=analytics.app-measurement.com
+DNS Name=region1.app-analytics-services-att.com
+DNS Name=app-analytics-services-att.com
+DNS Name=region1.app-analytics-services.com
+DNS Name=app-analytics-services.com
+DNS Name=google-analytics.com
+DNS Name=region1.google-analytics.com
+DNS Name=ssl.google-analytics.com
+DNS Name=www.google-analytics.com
+DNS Name=region1.analytics.google.com
+DNS Name=googletagmanager.com
+DNS Name=www.googletagmanager.com
+DNS Name=urchin.com
+DNS Name=service.urchin.com
+DNS Name=fps.goog
+DNS Name=*.fps.goog
+DNS Name=googleoptimize.com
+DNS Name=www.googleoptimize.com
+

@@ -1,0 +1,25 @@
+{
+  "channel": "109137",
+  "platform": 4,
+  "events": [
+    {
+      "id": "EId_TId_Init_Start",
+      "content": "{\"t\":1787485557314,\"ret\":0,\"msg\":\"\"}"
+    },
+    {
+      "id": "EId_TId_Init_End",
+      "content": "{\"t\":1787485557320,\"ret\":0,\"msg\":\"\",\"dur\":6}"
+    },
+    {
+      "id": "EId_TId_GTt_Start",
+      "content": "{\"t\":1787485557325,\"ret\":0,\"msg\":\"\"}"
+    },
+    {
+      "id": "EId_TId_GTt_End",
+      "content": "{\"t\":1787485557325,\"ret\":0,\"msg\":\"\",\"dur\":11}"
+    }
+  ],
+  "buildno": 200707,
+  "uuid": "5319609db6a4489482260a1d866be13a",
+  "seq": "224b5e22-29b9-4c60-bc27-cc5c7d80a6d4"
+}

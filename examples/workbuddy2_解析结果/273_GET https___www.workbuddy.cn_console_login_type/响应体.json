@@ -1,0 +1,11 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "59b48d7f-1c38-40b5-ade6-a70b60572244",
+  "data": {
+    "loginType": "login",
+    "userId": "8b3cb381-9ebc-4813-92d9-9e5880528465",
+    "nickName": "乐幻",
+    "bindTencentCloudAccount": true
+  }
+}

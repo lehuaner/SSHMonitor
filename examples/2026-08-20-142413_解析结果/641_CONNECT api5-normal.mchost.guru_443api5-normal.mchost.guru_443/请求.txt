@@ -1,0 +1,55 @@
+CONNECT api5-normal.mchost.guru:443 HTTP/1.1
+Host: api5-normal.mchost.guru:443
+Connection: keep-alive
+User-Agent: Cronet/TTNetVersion:992a646e 2026-06-12 QuicVersion:40cc763c 2025-07-01
+
+A SSLv3-compatible ClientHello handshake was found. Fiddler extracted the parameters below.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+Record Layer Version: 3.3 (TLS/1.2)
+Random: B3 CA 09 82 D7 B4 E7 A5 5A 4B 96 44 DC 0A 8D 5A 3F BE 34 7B 72 1C CA 4E D2 B6 E6 26 F9 19 36 A2
+"Time": 2039/2/19 6:09:55
+SessionID: 44 50 C0 DA 16 63 35 DF 67 66 49 6B A1 78 C3 31 5F 6B A4 D5 B6 2F 97 A8 EE CE F7 74 75 A6 16 95
+Extensions: 
+	grease (0xfafa)	empty
+	server_name	api5-normal.mchost.guru
+	extended_master_secret	empty
+	renegotiation_info	00
+	supported_groups	grease [0x5a5a], x25519 [0x1d], secp256r1 [0x17], secp384r1 [0x18]
+	ec_point_formats	uncompressed [0x0]
+	SessionTicket	empty
+	ALPN		h2, http/1.1
+	status_request	OCSP - Implicit Responder
+	signature_algs	ecdsa_secp256r1_sha256, rsa_pss_rsae_sha256, rsa_pkcs1_sha256, ecdsa_secp384r1_sha384, rsa_pss_rsae_sha384, rsa_pkcs1_sha384, rsa_pss_rsae_sha512, rsa_pkcs1_sha512
+	SignedCertTimestamp (RFC6962)	empty
+	key_share	00 29 5A 5A 00 01 00 00 1D 00 20 C6 1E EC F3 9F 80 03 89 E5 37 8A CB 94 EC 5B 95 38 50 CC D1 64 F1 27 DA 66 CC 5B A9 57 37 99 35
+	psk_key_exchange_modes	01 01
+	supported_versions	grease [0x7a7a], Tls1.3, Tls1.2
+	0x001b		02 00 02
+	0x4469		00 03 02 68 32
+	grease (0xbaba)	00
+	padding		192 null bytes
+Ciphers: 
+	[8A8A]	Unrecognized cipher - See https://www.iana.org/assignments/tls-parameters/
+	[1301]	TLS_AES_128_GCM_SHA256
+	[1302]	TLS_AES_256_GCM_SHA384
+	[1303]	TLS_CHACHA20_POLY1305_SHA256
+	[C02B]	TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+	[C02F]	TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	[C02C]	TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+	[C030]	TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	[CCA9]	TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+	[CCA8]	TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+	[C013]	TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+	[C014]	TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+	[009C]	TLS_RSA_WITH_AES_128_GCM_SHA256
+	[009D]	TLS_RSA_WITH_AES_256_GCM_SHA384
+	[002F]	TLS_RSA_WITH_AES_128_CBC_SHA
+	[0035]	TLS_RSA_WITH_AES_256_CBC_SHA
+
+Compression: 
+	[00]	NO_COMPRESSION
+
+

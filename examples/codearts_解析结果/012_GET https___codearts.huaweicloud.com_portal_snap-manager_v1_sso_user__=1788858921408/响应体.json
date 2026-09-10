@@ -1,0 +1,18 @@
+{
+  "id": null,
+  "name": null,
+  "email": null,
+  "department": null,
+  "enterprise_id": null,
+  "nick_name": null,
+  "user_type": null,
+  "card_id": null,
+  "creator": null,
+  "create_time": null,
+  "modify_time": null,
+  "description": null,
+  "person_id": null,
+  "active": null,
+  "forbidden": null,
+  "expire_time": null
+}

@@ -1,0 +1,150 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:22:19.773
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.2
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=unistore.www.microsoft.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US
+  Simple Name: unistore.www.microsoft.com
+  DNS Name: *.store-services-int.microsoft.com
+
+[Issuer]
+  CN=Microsoft TLS G2 RSA CA OCSP 10, O=Microsoft Corporation, C=US
+  Simple Name: Microsoft TLS G2 RSA CA OCSP 10
+  DNS Name: Microsoft TLS G2 RSA CA OCSP 10
+
+[Serial Number]
+  490003792D1E33A4E923CF404100000003792D
+
+[Not Before]
+  2026/1/23 4:16:44
+
+[Not After]
+  2027/1/18 4:16:44
+
+[Thumbprint]
+  7558193E0A184EBBE67325B8E755C4B3FDF42A5D
+
+[Signature Algorithm]
+  sha384RSA(1.2.840.113549.1.1.12)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 d8 22 a2 43 7e 6d 9c 7d ba 82 5b bf e5 f8 82 d3 da e5 e8 eb b2 4d eb 51 20 29 88 02 a6 b5 95 0b bf 99 b8 a0 82 3f d6 3d f9 f4 a1 51 af 19 70 39 d7 57 ec c7 9d 1a 56 7d 13 e2 5b a0 7b 3d bf e6 45 7b 1c a2 4c 0f 58 fb 2e 20 dc c5 9f 4b 8c 9a d9 9a c5 89 e4 c3 95 5f 81 67 e0 06 b8 96 b3 44 76 41 0e b4 6e de 09 b3 21 08 3b bd 7f 7a cc 83 08 2a 31 ad 16 77 69 9f 8a 6d 73 88 28 d2 43 c8 c6 57 24 d1 bd 27 dd a7 54 d0 71 29 d4 20 75 8d de 50 3c 7b 74 9e 3c 6b 18 ec 97 1d f4 9e 8c 65 ef 1c d6 0a 90 9f 72 ad 3b c5 0f 35 b0 72 28 7e ab fa 24 a1 43 81 06 ad dd 81 e6 8b f2 c2 80 32 9b 21 ab 33 cf 10 7d 8f c1 f9 1f b8 a4 54 df 50 4b 27 a1 cf 2e 4f a2 7d 79 96 e4 94 11 f1 d6 cc a6 d3 75 3b e6 ad 4a f8 57 18 4f f5 96 f9 11 04 da 91 18 e3 75 26 fb 41 f9 eb 27 f5 57 36 79 f1 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+d6d58da9d01753f36a4aa0c7574902afebc7dc2cd38cd9f764c80c89191e9f02
+‎2026‎年‎1‎月‎23‎日 4:26:48
+SHA256
+ECDSA
+3044022071cdae2a8bafaaefbc516d4cb15e3d388976aeb38c6623c3246c013546f56ec20220194965d5ec09425089e56fc2e9456e4ea062b861734dbbf00cd7759269419512
+
+v1
+604c9aaf7a7f775f01d406fc920dc899eb0b1c7df8c9521bfafa17773b978bc9
+‎2026‎年‎1‎月‎23‎日 4:26:48
+SHA256
+ECDSA
+3045022100d0bce953d972a9d42b362f2621e86ceb8d7814e45957a0305b0d98189823340702202c24c61c2811afbd541433c200ea81c438be9c13400af007c769b26fecc7aaca
+
+v1
+44c2bd0ce9140e64a5c94a01930a5aa1bb35970e00ee111689682a1c44d7b566
+‎2026‎年‎1‎月‎23‎日 4:26:48
+SHA256
+ECDSA
+3046022100d113aa7bb00c55ac608a02befa1085e432302cd4c3c66cfae94db1e37eb0535b0221008ca894bfe86708abdf7c7803c8126debdf0381b76b3ca0a06c16423350b21465
+
+* 应用程序策略(1.3.6.1.4.1.311.21.10):
+  [1]Application Certificate Policy:
+     Policy Identifier=服务器身份验证
+
+* 证书模板信息(1.3.6.1.4.1.311.21.7):
+  Template=1.3.6.1.4.1.311.21.8.15690651.3798470.4214446.239628.16526621.93.2977488.11009781
+Major Version Number=100
+Minor Version Number=33
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://www.microsoft.com/pkiops/certs/Microsoft TLS G2 RSA CA OCSP 10.crt (http://www.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2010.crt)
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://caissuers.microsoft.com/pkiops/certs/Microsoft TLS G2 RSA CA OCSP 10.crt (http://caissuers.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2010.crt)
+[3]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://oneocsp.microsoft.com/ocsp
+
+* 使用者密钥标识符(2.5.29.14):
+  34dec0b36d97178991e002231019dde0b5b4aa89
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.store-services-int.microsoft.com
+DNS Name=*.store-services.microsoft.com
+DNS Name=mediastore-ppe.www.microsoft.com
+DNS Name=mediastore.www.microsoft.com
+DNS Name=share.microsoft.com
+DNS Name=uhf.microsoft.com
+DNS Name=uniblends.www.microsoft.com
+DNS Name=unistore-int.www.microsoft.com
+DNS Name=unistore-ppe.www.microsoft.com
+DNS Name=unistore.www.microsoft.com
+DNS Name=unistoreshellservice.www.microsoft.com
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://www.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 RSA CA OCSP 10_Partition00076.crl (http://www.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2010_Partition00076.crl)
+               URL=http://crl2.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 RSA CA OCSP 10_Partition00076.crl (http://crl2.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2010_Partition00076.crl)
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=1.3.6.1.4.1.311.76.509.1.1
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.microsoft.com/pkiops/Docs/Repository.htm
+[2]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=d04c83d18e712e3d34b1ff9b792c8e74d4e27806
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+
+[SubjectAltNames]
+DNS Name=*.store-services-int.microsoft.com
+DNS Name=*.store-services.microsoft.com
+DNS Name=mediastore-ppe.www.microsoft.com
+DNS Name=mediastore.www.microsoft.com
+DNS Name=share.microsoft.com
+DNS Name=uhf.microsoft.com
+DNS Name=uniblends.www.microsoft.com
+DNS Name=unistore-int.www.microsoft.com
+DNS Name=unistore-ppe.www.microsoft.com
+DNS Name=unistore.www.microsoft.com
+DNS Name=unistoreshellservice.www.microsoft.com
+

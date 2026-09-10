@@ -1,0 +1,3 @@
+CONNECT login.live.com:443 HTTP/1.1
+Host: login.live.com:443
+User-Agent: MSAWindows/55 (OS 10.0.26200.0.0 ge_release; IDK 10.0.26100.8737 ge_release; Cfg 16.000.29325.00; Test 0)

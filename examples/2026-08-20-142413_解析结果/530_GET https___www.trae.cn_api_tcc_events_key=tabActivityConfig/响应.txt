@@ -1,0 +1,22 @@
+HTTP/2 200
+server: Tengine
+content-type: text/plain; charset=utf-8
+date: Thu, 20 Aug 2026 06:23:04 GMT
+vary: Accept-Encoding
+x-bytefaas-execution-duration: 4.77
+x-bytefaas-request-id: 202608201423048EE47B1B36B87F0415D9
+x-ggw-asgw-psm: goofy.deploy.ggw.asgw.2001.2505528
+x-ggw-config-version: 13488011
+x-gw-dst-psm: goofy_server.cn.2505528
+x-powered-by: Goofy Node
+x-tt-logid: 202608201423048EE47B1B36B87F0415D9
+strict-transport-security: max-age=31536000; includeSubDomains
+server-timing: inner; dur=12
+x-tt-trace-host: 01207a981426127d02143837b6aace09adb85486c9dac9148ef2dc5f825105ebeb048b3b9de8024b17c517f0a9f2496626311afb65085f7f39d589e94db804775ca16e53de441212a0a1aa4e06bd1bc65a9d9a5ef85be8da38d4b4420d0d9232e230d788257fcfaedffe9fc17dac54cbc4
+x-tt-trace-tag: id=03;cdn-cache=miss;type=dyn
+x-tt-trace-id: 00-2608201423048EE47B1B36B87F0415D9-3DD2B24CAEDF30E0-00
+x-country-geonameid: 1814991
+server-timing: cdn-cache;desc=MISS,edge;dur=0,origin;dur=45
+via: cache6.cn7995[45,0]
+timing-allow-origin: *
+eagleid: 7014551a17872069841236155e

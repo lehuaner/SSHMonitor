@@ -1,0 +1,162 @@
+{
+  "gray_decision_oneid": {
+    "code": 0,
+    "msg": "OK",
+    "requestId": "4e37d4ed-a844-4b90-989a-fd9046f035c5",
+    "data": {
+      "enabled": true,
+      "reason": "full_rollout",
+      "ip": "112.23.190.214"
+    }
+  },
+  "/activity/growth/streak": {
+    "code": 0,
+    "msg": "OK",
+    "requestId": "a207dd16-1ebd-4e90-87a8-c9a8deeaec1d",
+    "data": {
+      "streak": {
+        "days": 8,
+        "month_total_days": 8,
+        "month_consumed_days": 0,
+        "next_tier": "14d",
+        "next_tier_remaining": 6,
+        "makeup_dates": []
+      },
+      "makeup_cards": {
+        "balance": 1,
+        "max": 4
+      },
+      "redemption_status": {
+        "tier_7d_count": 1,
+        "tier_14d_count": 0,
+        "tier_28d_count": 0,
+        "tier_7d_status": "claimed",
+        "tier_14d_status": "locked",
+        "tier_28d_status": "locked",
+        "remaining_days": 8,
+        "tiers": [
+          {
+            "tier": "7d",
+            "days": 7,
+            "credit": 0,
+            "energy": 2,
+            "cards": 1,
+            "chances": 1
+          },
+          {
+            "tier": "14d",
+            "days": 14,
+            "credit": 50,
+            "energy": 3,
+            "cards": 1,
+            "chances": 1
+          },
+          {
+            "tier": "28d",
+            "days": 28,
+            "credit": 150,
+            "energy": 5,
+            "cards": 1,
+            "chances": 1
+          }
+        ]
+      },
+      "timezone": "Asia/Shanghai",
+      "launch_date": "2026-06-17"
+    }
+  },
+  "/activity/growth/energy": {
+    "code": 0,
+    "msg": "OK",
+    "requestId": "4bc359fe-6227-4857-b0f0-338c2e1d77f3",
+    "data": {
+      "balance": 10,
+      "total_consumed": 60,
+      "total_earned": 70
+    }
+  },
+  "/activity/growth/redeem/summary": {
+    "code": 0,
+    "msg": "OK",
+    "requestId": "5f35178e-2041-490b-85dd-4e5551d2ec42",
+    "data": {
+      "starter_count": 1,
+      "advanced_count": 0,
+      "legendary_count": 0,
+      "starter_status": "claimed",
+      "advanced_status": "locked",
+      "legendary_status": "locked",
+      "total_consumed": 0,
+      "remaining_days": 8,
+      "month_total_days": 8
+    }
+  },
+  "/activity/growth/buddy/travel/status": {
+    "code": 0,
+    "msg": "OK",
+    "requestId": "5772e2ee-fdf9-4fb6-a90d-594c7e5db276",
+    "data": {
+      "state": "traveling",
+      "buddy_id": 6454735,
+      "record_id": 3949530,
+      "location": {
+        "id": 1,
+        "code": "coffee",
+        "name": "咖啡馆",
+        "duration_hours": 2,
+        "cover_url": ""
+      },
+      "depart_at": 1788799160,
+      "arrive_at": 1788806360,
+      "server_now": 1788800678,
+      "letter": null,
+      "use_deeplink": "",
+      "daily_limit_reached": true,
+      "duration_hours": 2,
+      "reward_credit": 10
+    }
+  },
+  "/v2/activity/growth/profile": {
+    "code": 0,
+    "msg": "OK",
+    "requestId": "f862e155-7ab4-49b8-abcd-232526efc2c5",
+    "data": {
+      "completed": 13,
+      "first_visit": false,
+      "level": 13,
+      "level_icon": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/workbuddy/assets/badge-assets/badge-07.png",
+      "level_name": "",
+      "max_level": false,
+      "total": 16
+    }
+  },
+  "/activity/growth/lottery/summary": {
+    "code": 0,
+    "msg": "OK",
+    "requestId": "9bf86538-19f2-4d4b-a7e7-114d350ff021",
+    "data": {
+      "chances": 0,
+      "module": {
+        "enabled": true
+      }
+    }
+  },
+  "heatmap_sample": {
+    "total_cells": 365,
+    "first": {
+      "date": "2025-09-09",
+      "score": 0,
+      "has_new_buddy": false
+    },
+    "last": {
+      "date": "2026-09-08",
+      "score": 18,
+      "has_new_buddy": false
+    },
+    "nonzero_count": 19
+  },
+  "trae_checkin_status_probe": {
+    "http": 200,
+    "body": "{\"checked_in\":false,\"code\":1001,\"enable\":false,\"message\":\"We're sorry, but we are not able to authenticate you. If you continue to experience issues, please contact our support team for assistance.\"}"
+  }
+}

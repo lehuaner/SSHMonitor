@@ -1,0 +1,56 @@
+CONNECT frontier.zijieapi.com:443 HTTP/1.1
+Host: frontier.zijieapi.com:443
+Connection: keep-alive
+User-Agent: Cronet/TTNetVersion:992a646e 2026-06-12 QuicVersion:40cc763c 2025-07-01
+
+A SSLv3-compatible ClientHello handshake was found. Fiddler extracted the parameters below.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+Record Layer Version: 3.3 (TLS/1.2)
+Random: 4B 13 8B E0 82 9A 8B D8 9B 61 74 4A 32 1B 04 10 7B 84 27 71 F9 9A FA 42 5C F6 A3 CA 83 BD B8 20
+"Time": 2089/5/18 7:27:07
+SessionID: F1 D9 44 F9 7F 3F AD 12 C1 36 60 D6 22 0A B8 E1 B6 D4 DE C4 25 48 6A E8 82 7E DD 18 E9 DC 2B 71
+Extensions: 
+	grease (0xeaea)	empty
+	server_name	frontier.zijieapi.com
+	extended_master_secret	empty
+	renegotiation_info	00
+	supported_groups	grease [0x8a8a], x25519 [0x1d], secp256r1 [0x17], secp384r1 [0x18]
+	ec_point_formats	uncompressed [0x0]
+	SessionTicket	empty
+	ALPN		http/1.1
+	status_request	OCSP - Implicit Responder
+	signature_algs	ecdsa_secp256r1_sha256, rsa_pss_rsae_sha256, rsa_pkcs1_sha256, ecdsa_secp384r1_sha384, rsa_pss_rsae_sha384, rsa_pkcs1_sha384, rsa_pss_rsae_sha512, rsa_pkcs1_sha512
+	SignedCertTimestamp (RFC6962)	empty
+	key_share	00 29 8A 8A 00 01 00 00 1D 00 20 01 32 70 A8 78 A4 00 48 FC 70 13 1E 3A E2 19 C2 C7 50 61 32 A3 E9 A0 32 BD B5 10 7F 4C B9 10 4A
+	psk_key_exchange_modes	01 01
+	supported_versions	grease [0x2a2a], Tls1.3, Tls1.2
+	0x001b		02 00 02
+	0x4469		00 03 02 68 32
+	grease (0xdada)	00
+	padding		102 null bytes
+	pre_shared_key	00 26 00 20 63 3D 00 00 1D BB 22 DD 6A E3 94 4F 78 67 AE 99 C4 4E 70 78 00 A5 00 A4 4D 96 B9 C1 F5 FD 4B 2C 9C FD 60 CF 00 31 30 E2 26 FA A7 6A 3D 0B 82 F9 F7 C1 17 4B 70 5B FB 31 A1 B9 78 25 C8 8D D4 3D EB EF 99 3D 84 54 3D 2B 0F F4 E5 66 D6 07 D3 72 84 54 BA D6 F5 86 E4
+Ciphers: 
+	[9A9A]	Unrecognized cipher - See https://www.iana.org/assignments/tls-parameters/
+	[1301]	TLS_AES_128_GCM_SHA256
+	[1302]	TLS_AES_256_GCM_SHA384
+	[1303]	TLS_CHACHA20_POLY1305_SHA256
+	[C02B]	TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+	[C02F]	TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	[C02C]	TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+	[C030]	TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	[CCA9]	TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+	[CCA8]	TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+	[C013]	TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+	[C014]	TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+	[009C]	TLS_RSA_WITH_AES_128_GCM_SHA256
+	[009D]	TLS_RSA_WITH_AES_256_GCM_SHA384
+	[002F]	TLS_RSA_WITH_AES_128_CBC_SHA
+	[0035]	TLS_RSA_WITH_AES_256_CBC_SHA
+
+Compression: 
+	[00]	NO_COMPRESSION
+
+

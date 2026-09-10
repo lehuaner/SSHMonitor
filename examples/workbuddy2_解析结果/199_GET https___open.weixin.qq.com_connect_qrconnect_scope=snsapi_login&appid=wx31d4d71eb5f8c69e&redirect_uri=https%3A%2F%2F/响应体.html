@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>微信登录</title>
+		<meta charset="utf-8">		
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+		<link href="https://res.wx.qq.com/a/wx_fed/assets/res/NTI4MWU5.ico" rel="Shortcut Icon">
+
+    <!-- iframe & 客户端嵌入 -->
+    <!--style-->
+
+    <script>
+      window.pageStartTime = new Date().getTime();
+    </script>
+
+    <!-- 独立页面 -->
+    <!-- 由于文件打包问题，暂时无法按需引入css，所以需要指定独立的命名空间
+      页面-独立页面：.web_qrcode_type_page_self
+      页面-webview内嵌：.web_qrcode_type_page_embedded
+      iframe：.web_qrcode_type_iframe
+    -->
+    <link rel="stylesheet" href="https://res.wx.qq.com/t/wx_fed/weui-source/res/2.6.21/weui.min.css">
+    <!--style-->
+    <!--[if IE]>
+      <style>
+        .weui-vertical-helper{
+          height:100%;
+        }
+        .web_qrcode_wrp{
+          margin-top:-100px;
+        }
+        .web_qrcode_type_page_self .web_qrcode_app{
+          vertical-align:middle;
+          margin-top:-.2em;
+        }
+      </style>
+    <![endif]-->
+    <!--[if lt IE 9]>
+      <style>
+        .web_qrcode_type_page_self .web_qrcode_tips_logo{
+          background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAERlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAGKADAAQAAAABAAAAGAAAAADiNXWtAAAEgklEQVRIDX1WW2hcVRRd596bmWSSTDKJIRk12ERF/ahIjBLTD0XwQRHRqiCFoogVHxT0oyj6oeBHWyNYUSooJR9+iFJRtAqFCCokCq0Wkqo1kpKQ2iQS0zwmmUdm7nXtfe+5TaatOzl377PP3ms/ziMxiCgx+9LWynplbwDTDwRZqusAYxAEytSMIgyHcCErO8anskD9jDFmxPXMQKnjnTFrAvfsi7uCiv8RHZLqLI4kw5+AP8IvRQGDE5A52IixVdG4zu7K1Qc/NolpZu5XjnMpWZ1gHOwi/xCI2P9XYNFz3Ns8gu8lUFJcbJ6Wa0B+LL7oVRfia+Za5YYKrC1NkoLt0WNb4EfqKgSZtrtpdHktmC4v4iyHzVpihLK0SWZCVQBAvwTI2nXtKY1aTAqvZ7ZjZ30vMm4q9OV3xS9gcOVnvLU0hNnK8kUVhPCyZyFx/7LGPbPHZxCrw1211+PzjqfR5PAQXYYk0PaZQ/ipOEmLTU3jPAyjrsbxHfhBeBTZxy1uCz5tf0rB5ys5HMn9qnb2cyR3Ev9S3+jU4pvsc7jWa402SIJwaKcjLrLvO44eA5lw7Gt9EK1uveJ9snICj88OYq68rPNz5SXOD+OzKGiaFe5J30k/OsoeyuBvzClLLcYdf0HUSnPd+xmgQeVSUMbE+jxuSnREq8DvpRl0ehkcXR3DQmUNi34eg8sjmCqfV5tL3QvZ5PgUJE1NDJYw3iZwWThTmsdXuVE8ke5D1mtS29da7sd5Btu/cAzvL/2Aol+O8aQ4R7eE5clRPVmYjgNUC0Orp5EP1vFKy30xuLWRk3ag7WF8zX1xZUsjPGmf7oGRKjgOLnxnfTbxvF/C0OofeKyxR/X3TL+Lb3OnVD5RmELv5D5UAh9319/ABO4Ne89VSd41z/e+Ie+J0J+lOTSYJO5Idevcfr5fG0e714gbk+F+1JsEemuvQdqtRYpyxknhlrpONW9wkji8OKxy2CJmrrsvnKW9/M8XOLoyqgb2s+YX0eGGPRfdI+keXFXTrMvNbM+u5j5riq6aK2I8eUY8XZFQlijLSTowfww/ro6jO9FGIwedNRn0pbqs1WX58fxkGEAs2DZPeh/DSyC264HJ97DM26pNlEV28Eqemp1Nt6Oj5kIlgrGRlip5vDr3JQFDRKnAocingt9IKVzB6SnBhYTPrC/hoalD+K1wLlRWfeUO7Jj6AKcKf4cZCySxPfa9yAT14bF/XIQLhd8L/Jf8FHr+ehOPNt2K3rotuC7Zhlne9IXyKp7M9ON0cUaTsf5MrGASo89OMHp4bML3lymHp0qrsrqqjG0CYimJyPskR3UtKMWWvGQTvAcYlvJkyCmyXN8UMaXOkq5xYu11/+gnPFcp8CKWVJagmmLgDDsw/oAxDttElRhHXGQFt5yBdC3i1s5ytZdcxF44TBGm8rZTuvnDMSp2U1MUtRqoIHIkqCNlqUZk4TKELN8oB8QipmBrJbKWGH1mK8qQv8/b6JpluvwPI3BkLSa7H9EeibOE4UsgJ1H/baHfCC/OgCbOtf8A30ktk6ag05kAAAAASUVORK5CYII=");
+        }
+        .web_qrcode_type_page_self .web_qrcode_msg_icon_success{
+          background-image: url("data:image/png;base64,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");
+        }
+        .web_qrcode_type_page_self .web_qrcode_msg_icon_error{
+          background-image: url("data:image/png;base64,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");
+        }
+        .web_qrcode_refresh_btn.web_qrcode_refresh_btn{
+          width:38px;
+          height:38px;
+          margin-top:-19px;
+          margin-left:-19px;
+        }
+        .web_qrcode_refresh_icon.web_qrcode_refresh_icon{
+          background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACYAAAAmBAMAAABaE/SdAAAAMFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABaPxwLAAAAEHRSTlMAjBJ7RoNoCVc1Iz1yGixP4pDsqAAAARZJREFUKM9jwAfYFTDFaowwxQ4KYyp0FMRUyCKIoZBrRyC6QpVAQUE0hSVAISCYgCTEdFBQ8ESjoAiyMmVBUXcmQ0EHBgYlmBCQ+x0oLgJkGcOMZANy2cHKigUToGITQVxHEbAjJaFihmIgrgOImSgMEeITFILbpii4AExzgAyBG90AppmR3MopGACmCwUVEK6HmrNQEMn5grIQMWEkMUMpMHVRFFmdFNT+AkRMQc1jFXwAF+OD2ssm+AFEobiVWzAc4Q+oW9kD5eFijTA3OMI9wg0Pax7BOCAJcb4BzEOBgg5QZaJwb14VFAY5hytRMBZuMq+hoHD3TGCsC19A+EhDEAKSkGNzGVgoCzVxaH47nLGdgXIAAM7JK5fOrXo0AAAAAElFTkSuQmCC");
+        }
+        .web_qrcode_img_mask{
+          filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#DDFFFFFF', endColorstr='#DDFFFFFF');
+        }
+      </style>
+    <![endif]-->
+	<link rel="stylesheet" href="//res.wx.qq.com/t/wx_fed/mp/connect/res/static/css/d2996fda982777b296a54da0555285b9.css"/></head>
+	<body>
+    <!-- 独立页面 -->
+    <div id="tpl_for_page" class="web_qrcode_area" style="display: none;">
+      <span class="web_qrcode_wrp">
+        <!-- 默认 -->
+        <div class="web_qrcode_initial_context js_status js_wx_default_tip">
+          <div class="web_qrcode_tips js_web_qrcode_tips_normal"><i class="web_qrcode_tips_logo"></i>使用微信扫一扫登录</div>
+          <div class="web_qrcode_tips js_web_qrcode_tips_fast" style="display:none;"><i class="web_qrcode_tips_logo"></i>使用微信快捷登录</div>
+          <div class="web_qrcode_app_wrp">
+            「<strong class="web_qrcode_app">WorkBuddy</strong>」
+          </div>
+
+          <!-- 普通登录 -->
+          <div class="js_normal_login web_qrcode_img_area">
+            <div class="web_qrcode_img_wrp">
+              <img class="js_qrcode_img web_qrcode_img" src="/connect/qrcode/0414WVys0yGw100W"/>
+              <button style="display:none" type="button" class="weui-btn_reset web_qrcode_refresh_btn js_refresh_qrcode" title="刷新"><i class="web_qrcode_refresh_icon"></i></button>
+              <i style="display:none" class="weui-loading js_refresh_qrcode_loading web_qrcode_refresh_loading"></i>
+              <div style="display:none" class="web_qrcode_img_mask js_refresh_qrcode_mask"></div>
+            </div>
+            <div class="web_qrcode_switch_wrp js_switchToFast_wrp" style="display:none;">
+              <button type="button" class="weui-btn_reset weui-link js_switchToFast web_qrcode_switch">快捷登录</button>
+            </div>
+          </div>
+
+          <!-- 快捷登录 -->
+          <div class="js_quick_login" style="display: none;">
+            <div class="qlogin_mod">
+              <img src="https://res.wx.qq.com/t/fed_upload/937b4aa0-2cc5-42ec-81d7-e641da427fff/avatar_default.svg" alt="" class="js_quick_login_avatar qlogin_user_avatar">
+              <div class="js_quick_login_nickname qlogin_user_nickname">('微信用户')</div>
+              <button class="weui-btn weui-btn_primary js_quick_login_btn qlogin_btn" type="button">微信快捷登录</button>
+              <div class="qlogin_msg js_quick_login_msg" style="display:none;">登录中...</div>
+              <div class="web_qrcode_switch_wrp js_switchToNormal_wrp">
+                <button type="button" class="weui-btn_reset weui-link js_switchToNormal web_qrcode_switch">使用其他头像、昵称或账号</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 扫码成功 -->
+        <div class="web_qrcode_msg js_status js_wx_after_scan" style="display:none">
+          <i class="web_qrcode_msg_icon web_qrcode_msg_icon_success"></i>
+          <h1 class="web_qrcode_msg_title">扫描成功</h1>
+          <p class="web_qrcode_msg_desc">在微信中轻触允许即可登录</p>
+        </div>
+
+        <!-- 取消登录 -->
+        <div class="web_qrcode_msg js_status js_wx_after_cancel" style="display:none">
+          <i class="web_qrcode_msg_icon web_qrcode_msg_icon_error"></i>
+          <h1 class="web_qrcode_msg_title">你已取消此次登录</h1>
+          <div class="web_qrcode_msg_opr">
+            <a href="javascript:;" class="weui-btn weui-btn_primary js_web_qrcode_reload">重试</a>
+          </div>
+        </div>
+      </span>
+      <span class="weui-vertical-helper"></span>
+    </div>
+
+    <!-- iframe、内嵌webview -->
+		<div id="tpl_for_iframe" class="web_qrcode_panel_area" style="display: none;">
+
+      <!-- 普通登录 -->
+      <div class="js_normal_login web_qrcode_panel_normal_login">
+        <!-- 旧版UI -->
+        <div class="old-template" id="tpl_old_iframe">
+          <div class="main impowerBox">
+            <div class="loginPanel normalPanel">
+              <div class="title">微信登录</div>
+              <div class="waiting panelContent">
+                <div class="wrp_code">
+                  <img class="qrcode lightBorder js_qrcode_img" src="/connect/qrcode/0414WVys0yGw100W">
+                </div>
+                <div class="info">
+                  <div class="status status_browser js_status js_wx_default_tip" id="wx_default_tip">
+                    <p>使用微信扫一扫登录</p>
+                    <p>“WorkBuddy”</p>
+                  </div>
+                  <div class="status status_succ js_status js_wx_after_scan" style="display:none" id="wx_after_scan">
+                    <i class="status_icon icon38_msg succ"></i>
+                    <div class="status_txt">
+                      <h4>扫描成功</h4>
+                      <p>在微信中轻触允许即可登录</p>
+                    </div>
+                  </div>
+                  <div class="status status_fail js_status js_wx_after_cancel" style="display:none" id="wx_after_cancel">
+                    <i class="status_icon icon38_msg warn"></i>
+                    <div class="status_txt">
+                      <h4>你已取消此次登录</h4>
+                      <p>你可再次扫描登录，或关闭窗口</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="web_qrcode_switch_wrp js_switchToFast_wrp" style="display:none">
+                <button type="button" class="weui-btn_reset weui-link js_switchToFast web_qrcode_switch">快捷登录</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 2024年版UI -->
+        <div class="web_qrcode_panel_wrp" id="tpl_iframe" style="display:none;">
+          <div class="web_qrcode_panel">
+            <div class="web_qrcode_initial_context js_status js_wx_default_tip">
+              <div class="web_qrcode_img_wrp">
+                <img class="js_qrcode_img web_qrcode_img" src="/connect/qrcode/0414WVys0yGw100W"/>
+                <button style="display:none" type="button" class="weui-btn_reset web_qrcode_refresh_btn js_refresh_qrcode" title="刷新"><i class="web_qrcode_refresh_icon"></i></button>
+                <i style="display:none" class="weui-loading js_refresh_qrcode_loading web_qrcode_refresh_loading"></i>
+                <div style="display:none" class="web_qrcode_img_mask js_refresh_qrcode_mask"></div>
+              </div>
+            </div>
+            <div class="web_qrcode_msg web_qrcode_msg_success js_status js_wx_after_scan" style="display:none">
+              <div class="web_qrcode_msg_icon_area">
+                <i class="web_qrcode_msg_icon web_qrcode_msg_icon_success"></i>
+              </div>
+              <div class="web_qrcode_msg_text_area">
+                <h4 class="web_qrcode_msg_title">扫描成功</h4>
+                <p class="web_qrcode_msg_desc">在微信中轻触允许即可登录</p>
+              </div>
+            </div>
+            <div class="web_qrcode_msg web_qrcode_msg_error js_status js_wx_after_cancel" style="display:none">
+              <div class="web_qrcode_msg_icon_area">
+                <i class="web_qrcode_msg_icon web_qrcode_msg_icon_error"></i>
+              </div>
+              <div class="web_qrcode_msg_text_area">
+                <h4 class="web_qrcode_msg_title">你已取消此次登录</h4>
+                <p class="web_qrcode_msg_desc">你可<a class="weui-link js_web_qrcode_reload" href="javascript:;">再次登录</a>，或关闭窗口</p>
+              </div>
+            </div>
+            <span class="weui-vertical-helper"></span>
+          </div>
+          <div class="web_qrcode_switch_wrp js_switchToFast_wrp" style="display:none">
+            <button type="button" class="weui-btn_reset weui-link js_switchToFast web_qrcode_switch">快捷登录</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 快捷登录 -->
+      <div class="js_quick_login web_qrcode_panel_quick_login" style="display: none;">
+        <div class="qlogin_mod">
+          <img src="https://res.wx.qq.com/t/fed_upload/937b4aa0-2cc5-42ec-81d7-e641da427fff/avatar_default.svg" alt="" class="js_quick_login_avatar qlogin_user_avatar">
+          <div class="js_quick_login_nickname qlogin_user_nickname">微信用户</div>
+          <button class="weui-btn weui-btn_primary js_quick_login_btn qlogin_btn" type="button">微信快捷登录</button>
+          <div class="qlogin_msg js_quick_login_msg" style="display:none;">登录中...</div>
+          <div class="web_qrcode_switch_wrp js_switchToNormal_wrp">
+            <button type="button" class="weui-btn_reset weui-link js_switchToNormal web_qrcode_switch">使用其他头像、昵称或账号</button>
+          </div>
+        </div>
+      </div>
+		</div>
+
+    <div class="qlogin_authorize_mask weui-mask_transparent" id="quick_login_authorize_mask"></div>
+
+    <div role="alert" class="qlogin_toast" id="quick_login_success_toast">
+      <div class="weui-mask_transparent"></div>
+      <div class="weui-toast">
+        <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+        <p class="weui-toast__content">已允许</p>
+      </div>
+    </div>
+
+    <div role="alert" class="qlogin_toast" id="quick_login_fail_toast">
+      <div class="weui-mask_transparent"></div>
+      <div class="weui-toast">
+        <i class="weui-icon-close weui-icon_toast"></i>
+        <p class="weui-toast__content">已拒绝</p>
+      </div>
+    </div>
+
+    <div role="alert" class="qlogin_toast" id="quick_login_multi_auth_fail_toast">
+      <div class="weui-mask_transparent"></div>
+      <div class="weui-toast">
+        <i class="weui-icon-info-circle weui-icon_toast" style="color: currentColor;"></i>
+        <p class="weui-toast__content">已拒绝使用你的微信身份运行</p>
+      </div>
+    </div>
+
+    <div role="alert" class="qlogin_toast" id="quick_login_error_toast">
+      <div class="weui-mask_transparent"></div>
+      <div class="weui-toast__wrp">
+        <div class="weui-toast weui-toast_text">
+          <p class="weui-toast__content">系统错误，请刷新重试</p>
+        </div>
+      </div>
+    </div>
+
+    <div role="alert" class="qlogin_toast" id="quick_login_unsupport_toast">
+      <div class="weui-mask_transparent"></div>
+      <div class="weui-toast__wrp">
+        <div class="weui-toast weui-toast_text">
+          <p class="weui-toast__content">此应用仅支持扫一扫登录</p>
+        </div>
+      </div>
+    </div>
+
+    <div role="alert" class="qlogin_toast" id="quick_login_timeout_toast">
+      <div class="weui-mask_transparent"></div>
+      <div class="weui-toast">
+        <i class="weui-icon-warn weui-icon_toast"></i>
+        <p class="weui-toast__content" id="quick_login_error_msg">登录超时</p>
+      </div>
+    </div>
+
+    <div role="alert" class="qlogin_toast" id="quick_login_loading_toast">
+      <div class="weui-mask_transparent"></div>
+      <div class="weui-toast">
+        <span class="weui-loading weui-icon_toast"></span>
+        <p class="weui-toast__content">正在加载</p>
+      </div>
+    </div>
+
+		<script src="https://res.wx.qq.com/t/wx_fed/cdn_libs/res/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+      // @cunjin 下面的变量是给开发者工具用的，inline到html里面，一定不能删掉
+      var fordevtool = "https://long.open.weixin.qq.com/connect/l/qrconnect?uuid=0414WVys0yGw100W"
+      // console.log('devtool use', fordevtool)
+    </script>
+    <script>
+      var usenewdomain = '1' * 1 || 0;
+    </script>
+    <!--script-->
+    <!--script-->
+    <!--script-->
+    <!--script-->
+	<script>!function(e){function t(o){if(n[o])return n[o].exports;var i=n[o]={exports:{},id:o,loaded:!1};return e[o].call(i.exports,i,i.exports,t),i.loaded=!0,i.exports}var n={};return t.m=e,t.c=n,t.p="//res.wx.qq.com/t/wx_fed/mp/connect/res",t(0)}([function(e,t,n){e.exports=n(9)+n(10)+n(11)+n(12)},,,function(e,t){},,,,function(e,t){},,function(module,exports){"object"!=typeof JSON&&(JSON={}),function(){"use strict";function f(e){return e<10?"0"+e:e}function this_value(){return this.valueOf()}function quote(e){return rx_escapable.lastIndex=0,rx_escapable.test(e)?'"'+e.replace(rx_escapable,function(e){var t=meta[e];return"string"==typeof t?t:"\\u"+("0000"+e.charCodeAt(0).toString(16)).slice(-4)})+'"':'"'+e+'"'}function str(e,t){var n,o,i,s,c,r=gap,a=t[e];switch(a&&"object"==typeof a&&"function"==typeof a.toJSON&&(a=a.toJSON(e)),"function"==typeof rep&&(a=rep.call(t,e,a)),typeof a){case"string":return quote(a);case"number":return isFinite(a)?String(a):"null";case"boolean":case"null":return String(a);case"object":if(!a)return"null";if(gap+=indent,c=[],"[object Array]"===Object.prototype.toString.apply(a)){for(s=a.length,n=0;n<s;n+=1)c[n]=str(n,a)||"null";return i=0===c.length?"[]":gap?"[\n"+gap+c.join(",\n"+gap)+"\n"+r+"]":"["+c.join(",")+"]",gap=r,i}if(rep&&"object"==typeof rep)for(s=rep.length,n=0;n<s;n+=1)"string"==typeof rep[n]&&(o=rep[n],i=str(o,a),i&&c.push(quote(o)+(gap?": ":":")+i));else for(o in a)Object.prototype.hasOwnProperty.call(a,o)&&(i=str(o,a),i&&c.push(quote(o)+(gap?": ":":")+i));return i=0===c.length?"{}":gap?"{\n"+gap+c.join(",\n"+gap)+"\n"+r+"}":"{"+c.join(",")+"}",gap=r,i}}var rx_one=/^[\],:{}\s]*$/,rx_two=/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g,rx_three=/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g,rx_four=/(?:^|:|,)(?:\s*\[)+/g,rx_escapable=/[\\"\u0000-\u001f\u007f-\u009f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,rx_dangerous=/[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g;"function"!=typeof Date.prototype.toJSON&&(Date.prototype.toJSON=function(){return isFinite(this.valueOf())?this.getUTCFullYear()+"-"+f(this.getUTCMonth()+1)+"-"+f(this.getUTCDate())+"T"+f(this.getUTCHours())+":"+f(this.getUTCMinutes())+":"+f(this.getUTCSeconds())+"Z":null},Boolean.prototype.toJSON=this_value,Number.prototype.toJSON=this_value,String.prototype.toJSON=this_value);var gap,indent,meta,rep;"function"!=typeof JSON.stringify&&(meta={"\b":"\\b","\t":"\\t","\n":"\\n","\f":"\\f","\r":"\\r",'"':'\\"',"\\":"\\\\"},JSON.stringify=function(e,t,n){var o;if(gap="",indent="","number"==typeof n)for(o=0;o<n;o+=1)indent+=" ";else"string"==typeof n&&(indent=n);if(rep=t,t&&"function"!=typeof t&&("object"!=typeof t||"number"!=typeof t.length))throw new Error("JSON.stringify");return str("",{"":e})}),"function"!=typeof JSON.parse&&(JSON.parse=function(text,reviver){function walk(e,t){var n,o,i=e[t];if(i&&"object"==typeof i)for(n in i)Object.prototype.hasOwnProperty.call(i,n)&&(o=walk(i,n),void 0!==o?i[n]=o:delete i[n]);return reviver.call(e,t,i)}var j;if(text=String(text),rx_dangerous.lastIndex=0,rx_dangerous.test(text)&&(text=text.replace(rx_dangerous,function(e){return"\\u"+("0000"+e.charCodeAt(0).toString(16)).slice(-4)})),rx_one.test(text.replace(rx_two,"@").replace(rx_three,"]").replace(rx_four,"")))return j=eval("("+text+")"),"function"==typeof reviver?walk({"":j},""):j;throw new SyntaxError("JSON.parse")})}()},function(e,t){function n(e,t){for(var n=new Array,o=0;o<e.length;o++)if("&"==e.charAt(o)){var i=[3,4,5,9],s=0;for(var c in i){var r=i[c];if(o+r<=e.length){var a=e.substr(o,r).toLowerCase();if(t[a]){n.push(t[a]),o=o+r-1,s=1;break}}}0==s&&n.push(e.charAt(o))}else n.push(e.charAt(o));return n.join("")}function o(){for(var e=new Object,t="'\"<>`script:daex/hml;bs64,",o=0;o<t.length;o++){for(var i=t.charAt(o),s=i.charCodeAt(),c=s,r=s.toString(16),a=0;a<7-s.toString().length;a++)c="0"+c;e["&#"+s+";"]=i,e["&#"+c]=i,e["&#x"+r]=i}e["&lt"]="<",e["&gt"]=">",e["&quot"]='"';var l=location.href,d=document.referrer;l=decodeURIComponent(n(l,e)),d=decodeURIComponent(n(d,e));var _=new RegExp("['\"<>`]|script:|data:text/html;base64,");if(_.test(l)||_.test(d)){var u="1.3",A="http://zyjc.sec.qq.com/dom",p=new Image;p.src=A+"?v="+u+"&u="+encodeURIComponent(l)+"&r="+encodeURIComponent(d),l=l.replace(/['\"<>`]|script:/gi,""),l=l.replace(/data:text\/html;base64,/gi,"data:text/plain;base64,"),location.href=l}}o()},function(e,t){!function(){function e(e){var t,n=document.head||jQuery("head")[0]||document.documentElement;t=document.createElement("script"),t.async=!0,t.src=e.url;var o=e.timeout||3e4,i=setTimeout(function(){t&&(t.onload=t.onreadystatechange=null,t.onerror=null),t.parentNode&&t.parentNode.removeChild(t),t=null,e.error&&e.error(new Error("Script load timeout after "+o+" ms"))},o);t.onload=t.onreadystatechange=function(n){t.readyState&&!/loaded|complete/.test(t.readyState)||(clearTimeout(i),t.onload=t.onreadystatechange=null,t.parentNode&&t.parentNode.removeChild(t),t=null,e.success&&e.success(n))},t.onerror=function(t){clearTimeout(i),e.error&&e.error(t)},n.insertBefore(t,n.firstChild)}var t=navigator.userAgent.indexOf("MSIE")!==-1||navigator.userAgent.indexOf("Trident/")!==-1;window.loadScript=t?jQuery.ajax:e}(window)},function(e,t){!function(){function e(e){var t=document.location.search?document.location.search.substring(1):document.location.hash.substring(1);if(t){if(null==e)return decodeURIComponent(t);for(var n=t.split("&"),o=0;o<n.length;o++){var i=n[o].split("=");if(i[0]===e)return decodeURIComponent(i[1]||"")}}return""}function t(e,t){t||(t=window.location.href),e=e.replace(/[\[\]]/g,"\\</body>");var n=new RegExp("[?&]"+e+"(=([^&#]*)|&|#|$)"),o=n.exec(t);return o?o[2]?decodeURIComponent(o[2].replace(/\+/g," ")):"":null}function n(e){var t=document.location.search||document.location.hash;if(t){if("?"===t[0]&&(t=t.slice(1)),null===e)return decodeURIComponent(t);for(var n=t.split("&"),o=0,i=n.length;o<i;o++){var s=n[o].split("=");if(s[0]===e)return!0}}return!1}function o(n,o,i){Math.random()>=1-(Number(i)||.1)&&((new Image).src="https://support.weixin.qq.com/cgi-bin/mmsupportmeshnodelogicsvr-bin/cube?biz=3512&label=connect.qrconnect&"+n+"="+o+"&msg="+e("appid")+"&idx1="+e("scope")+"&idx2="+encodeURIComponent(encodeURIComponent(t("redirect_uri"))))}function i(e){var t=document.getElementsByTagName("head")[0];if(t&&("auto"===e||"dark"===e||"light"===e)){var n=document.createElement("meta");n.name="color-scheme",n.content="auto"===e?"light dark":e,t.appendChild(n)}}function s(){F=!0,c()}function c(){v&&1!==E||T?$(".js_qrcode_img").attr("src","https://res.wx.qq.com/t/fed_upload/46a73b115c002aa8d49ae255da18c592/qrcode_expired.jpg"):($(".js_refresh_qrcode").show(),$(".js_refresh_qrcode_mask").show())}function r(e){loadScript({type:"GET",url:U+"/connect/l/qrconnect?uuid="+G+(e?"&last="+e:""),dataType:"script",cache:!1,timeout:3e4,success:function(){o("action","connect_qrconnect_longpull_success",.01);var e=window.wx_errcode;switch(e){case 405:o("action","connect_qrconnect_longpull_success_405",.01);var t="https://www.workbuddy.cn/auth/realms/copilot/broker/weixinwebchat/endpoint";if(t=t.replace(/&amp;/g,"&"),t+=(t.indexOf("?")>-1?"&":"?")+"code="+wx_code+"&state=ee62641b-30ba-4ef7-9c20-6a3d9fa90202",console.log("扫码redirect_uri: ",t),v)if("true"!==N&&"false"!==N)try{document.domain="qq.com";var n=window.top.location.host.toLowerCase();n&&(window.location=t)}catch(e){window.top.location=t}else if("true"===N)try{window.location=t}catch(e){window.top.location=t}else window.top.location=t;else window.location=t;break;case 404:o("action","connect_qrconnect_longpull_success_404",.01),jQuery(".js_status").hide(),jQuery(".js_qr_img").hide(),jQuery(".js_wx_after_scan").show(),setTimeout(r,100,e);
+break;case 403:o("action","connect_qrconnect_longpull_success_403",.01),jQuery(".js_status").hide(),jQuery(".js_qr_img").hide(),jQuery(".js_wx_after_cancel").show(),setTimeout(r,2e3,e);break;case 402:o("action","connect_qrconnect_longpull_success_402",.01),s();break;case 500:o("action","connect_qrconnect_longpull_success_500",.01),setTimeout(function(){window.location.reload()},200);break;case 408:o("action","connect_qrconnect_longpull_success_408",.01),z&&0!==R||setTimeout(r,2e3);break;default:o("action","connect_qrconnect_longpull_success_others",.01)}},error:function(){s(),o("action","connect_qrconnect_longpull_error",.01);var e=window.wx_errcode;408==e?o("action","connect_qrconnect_longpull_error_408",.01):o("action","connect_qrconnect_longpull_error_others",.01)}})}function a(e,t){var n,o,i=screen.width,s=screen.height,c=window.outerWidth||document.documentElement.clientWidth||document.body.clientWidth,r=window.outerHeight||document.documentElement.clientHeight||document.body.clientHeight,a=window.screenX||window.screenLeft||0,l=window.screenY||window.screenTop||0,d=window.screen.availLeft||0,_=window.screen.availTop||0;return window.top!=window?void 0===window.screen.availLeft?(n=a+c/2-e/2,o=l+r/2-t/2,console.log("availLeft undefined && centerX: ",n)):(n=i/2-e/2+d,o=s/2-t/2+_,console.log("centerX: ",n)):(n=a+c/2,o=l+r/2,n=0===d?Math.min(Math.max(n-e/2,0),i+d-e):Math.min(Math.max(n-e/2,d),i+d-e),o=0===_?Math.min(Math.max(o-t/2,0),s+_-t):Math.min(Math.max(o-t/2,_),s+_-t)),{x:n,y:o}}function l(e,t,n,o,i,s,c){return c||(c=jQuery.Deferred()),0===e.length?($(".js_quick_login").hide(),$(".js_normal_login").show(),$(".js_switchToFast_wrp").hide(),$(".js_web_qrcode_tips_fast").hide(),$(".js_web_qrcode_tips_normal").show(),z=!1,console.log("所有端口均无法连接"),c.resolve(),c.promise()):(console.log("当前port: ",e[0]),$.ajax({url:"https://localhost.weixin.qq.com:"+e[0]+t,type:n,cache:!1,contentType:"application/json",data:JSON.stringify(o),success:function(t){i&&i(t),c.resolve(t,e[0])},error:function(r,a,d){console.log("端口"+e[0]+"连接失败，尝试下一个端口"),e.length>1?l(e.slice(1),t,n,o,i,s,c):(s&&s(),c.resolve(!1))}}),c.promise())}function d(n){return console.log("checklogin post redirect_uri",t("redirect_uri")),l(n,"/api/check-login","POST",{apiname:"qrconnectchecklogin",jsdata:{appid:e("appid"),scope:e("scope"),redirect_uri:t("redirect_uri"),state:t("state")||""}},function(e){o("action","connect_qrconnect_checkLogin_succ",1)},function(){o("action","connect_qrconnect_checkLogin_fail",1)})}function _(e){var t=e.errcode;switch(t){case 10057:console.log("此应用仅支持扫一扫登录"),$("#quick_login_unsupport_toast").fadeIn(300,function(){var e=this;setTimeout(function(){$(e).fadeOut(300)},1e3)}),o("action","connect_qrconnect_fastLogin_fail_unsupport",1)}return!(0!==t||!L)}function u(e,t){if(e){var n=JSON.parse(e);return console.log("登录状态检查成功",n),J=t,console.log("连通port: ",J),Y=n.jsdata&&n.jsdata.authorize_uuid||"",_(n)}return!1}function A(e,t){if(t)var n=JSON.parse(t);e?(o("action","connect_qrconnect_fastLogin_show",1),$(".js_quick_login").show(),$(".js_normal_login").hide(),$(".js_switchToFast_wrp").show(),$(".js_web_qrcode_tips_fast").show(),$(".js_web_qrcode_tips_normal").hide(),$(".js_quick_login_nickname").text(n.jsdata&&n.jsdata.nickname||""),$(".js_quick_login_avatar").attr("src",n.jsdata&&n.jsdata.headimgurl||"https://res.wx.qq.com/t/fed_upload/937b4aa0-2cc5-42ec-81d7-e641da427fff/avatar_default.svg")):($(".js_quick_login").hide(),$(".js_normal_login").show(),$(".js_switchToFast_wrp").hide(),$(".js_web_qrcode_tips_fast").hide(),$(".js_web_qrcode_tips_normal").show())}function p(e,t){for(var n=!1,o=0,i=0;i<e.length;i++)!function(i){e[i].then(function(i,s){n||(console.log("before handle, fastLogin: ",z),z=u(i,s),console.log("after handle, fastLogin: ",z),z&&(n=!0,A(!0,i),t()),o++,n||o!==e.length||(A(!1,!1),t()))})}(i)}function g(e,t){for(var n=[],o=0;o<e.length;o++)n.push(d([e[o]]));p(n,t)}function w(){R=0,$(".js_quick_login").hide(),$(".js_normal_login").show(),$(".js_switchToFast_wrp").show(),$(".js_web_qrcode_tips_fast").hide(),$(".js_web_qrcode_tips_normal").show(),setTimeout(r,100)}function f(){R=1,$("#quick_login_loading_toast").fadeIn(300),console.log("连通port: ",J),g([J],function(){console.log("switchToQuickLogin, fastLogin: ",z),$("#quick_login_loading_toast").fadeOut(300),z||setTimeout(r,1e3)})}function m(){var e=jQuery.Deferred(),t=window.location.href.replace(/#.*$/,"")+"&f=xml&"+(new Date).getTime();return jQuery.ajax({url:t,type:"GET",dataType:"xml",cache:!1,success:function(t){$(".js_refresh_qrcode_loading").hide(),$(".js_refresh_qrcode_mask").hide(),G=jQuery(t).find("uuid").text(),$(".js_qrcode_img").attr("src","/connect/qrcode/"+G),setTimeout(r,2e3),e.resolve()},error:function(t,n,o){$(".js_refresh_qrcode_loading").hide(),$(".js_refresh_qrcode_mask").hide(),$("#quick_login_error_toast").fadeIn(300,function(){var e=this;setTimeout(function(){$(e).fadeOut(300)},1e3)}),console.log("qrcode img error: ",n,o),e.resolve()}}),e.promise()}function h(e,t){if(window.parent&&window.postMessage){var n={type:e,status:t};window.parent.postMessage(JSON.stringify(n),"*")}}function q(){function t(e){var t=63637,n=118,o=119,i=e;img=new Image,img.src="https://support.weixin.qq.com/cgi-bin/mmsupport-bin/reportforweb?rid="+t+"&rkey="+n+"&rvalue=1",img=new Image,img.src="https://support.weixin.qq.com/cgi-bin/mmsupport-bin/reportforweb?rid="+t+"&rkey="+o+"&rvalue="+i}function n(t){function n(){return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,function(e){var t=16*Math.random()|0,n="x"===e?t:3&t|8;return n.toString(16)})}var o=window.location.origin+window.location.pathname,i=n(),s=navigator.userAgent,c=Math.floor(Date.now()/1e3),r={biz_id:8565,biz:8565,time:c,group_key:"common.support",module_name:"mmbizconnect",ua:s,type:"custom",action:"qrcodeLoaded",status:"ok",duration:t||0,aid:i,page:o,idx1:e("scope")||"",idx2:e("appid")||""};$.ajax({url:"https://support.weixin.qq.com/cgi-bin/mmsupportmeshnodelogicsvr-bin/cube",type:"POST",data:r})}function o(e){var o=e.duration||0;o&&Math.random()>=.99&&(n(o),t(o))}var i=!1;$(".js_qrcode_img").each(function(){function t(){if(n.off("load",t),!i&&this.src.indexOf("open.weixin.qq.com/connect/qrcode")>-1){h("status","wxQRcodeReady");var s=Number(e("ts"))||window.pageStartTime||0,c=s?Date.now()-s:0;console.log("qrcode loaded， duration: ",c),o({duration:c}),i=!0}}var n=$(this);n.on("load",t),this.complete&&0!==this.naturalWidth&&0!==this.width&&t.call(this)})}function b(){var e=jQuery.Deferred();return setTimeout(function(){e.resolve()},1e3),jQuery(window).load(function(){e.resolve()}),e.promise()}"undefined"==typeof console?console={log:function(){},error:function(){}}:("undefined"==typeof console.log&&(console.log=function(){}),"undefined"==typeof console.error&&(console.error=function(){})),jQuery(".js_web_qrcode_reload").click(function(){window.location.reload()});var v=window.top!=window,y=n("self_redirect")||n("style")||n("href")||n("oldstyle"),j=parseInt(e("styletype"),10),x=NaN,k="data:text/css;base64,Ym9keXtiYWNrZ3JvdW5kOiAjZmZmICFpbXBvcnRhbnR9LmltcG93ZXJCb3ggLmluZm8ge2Rpc3BsYXk6IG5vbmV9LmltcG93ZXJCb3ggLnRpdGxlIHtkaXNwbGF5OiBub25lfS5pbXBvd2VyQm94IC5xcmNvZGUge3dpZHRoOiAyMTBweDtib3JkZXI6IG5vbmU7bWFyZ2luLXRvcDogMH0ud3JwX2NvZGUge2hlaWdodDogMjEwcHg7b3ZlcmZsb3c6IGhpZGRlbn0=",E=parseInt(t("stylelite"),10),T=!1,C=t("color_scheme");if(1!==j&&0!==j&&1===x&&(j=0),1!==E&&1!==j&&0!==j&&k){T=!0,o("action","connect_qrconnect_css_href");var Q=document.createElement("link");Q.rel="stylesheet",Q.href=k.replace(new RegExp("javascript:","gi"),""),document.getElementsByTagName("head")[0].appendChild(Q)}if(1===E&&(jQuery("#tpl_old_iframe").hide(),jQuery("#tpl_iframe").show()),v){o("action","connect_qrconnect_iframe"),document.body.className+=" web_qrcode_type_iframe","auto"===C?(i(C),document.body.className+=" auto_color_scheme"):"dark"===C?(i(C),document.body.setAttribute("data-weui-theme","dark")):"light"===C&&(i(C),document.body.setAttribute("data-weui-theme","light"));var O="white";"white"!=O&&(document.body.style.color="#373737"),jQuery("#tpl_for_iframe").show()}else{o("action","connect_qrconnect_page"),document.getElementsByClassName||(document.getElementsByClassName=function(e){for(var t=[],n=new RegExp("(^| )"+e+"( |$)"),o=document.getElementsByTagName("*"),i=0,s=o.length;i<s;i++)n.test(o[i].className)&&t.push(o[i]);return t});for(var B=document.getElementsByClassName("status"),D=0,S=B.length;D<S;++D){var I=B[D];I.className=I.className+" normal"}y?(o("action","connect_qrconnect_page_embedded"),document.body.className+=" web_qrcode_type_page_embedded",document.body.style.backgroundColor="#333333",document.body.style.padding="50px",jQuery("#tpl_for_iframe").show()):(o("action","connect_qrconnect_page_self"),i("auto"),document.body.className+=" web_qrcode_type_page_self",jQuery("#tpl_for_page").show())}var U=window.usenewdomain?"https://lp.open.weixin.qq.com":"https://long.open.weixin.qq.com",N=t("self_redirect"),G="0414WVys0yGw100W",F=!1,M=!1,V=360,K=263,R=-1,z=!1,L=0!==parseInt(t("fast_login"),10);console.log("fast_login: ",t("fast_login")),console.log("fastLogin_enabled: ",L);var Y,J,Z,W=[14013,14014,14015,13013,13014,13015];$(".js_quick_login_btn").click(function(){o("action","connect_qrconnect_fastLogin_click",1);var n=a(V,K);$(".js_quick_login_btn").prop("disabled",!0),console.log("发起authorize请求，port=",J),console.log("authorize post redirect_uri",t("redirect_uri")),$.ajax({url:"https://localhost.weixin.qq.com:"+J+"/api/authorize",type:"POST",cache:!1,contentType:"application/json",data:JSON.stringify({apiname:"qrconnectfastauthorize",jsdata:{data:JSON.stringify({x:n.x,y:n.y}),appid:e("appid"),scope:e("scope"),redirect_uri:t("redirect_uri"),state:t("state")||"",authorize_uuid:Y}}),success:function(t){function n(){if(v)if("true"!==N&&"false"!==N)try{document.domain="qq.com";var e=window.top.location.host.toLowerCase();e&&(window.location=i.jsdata.redirect_url)}catch(e){window.top.location=i.jsdata.redirect_url}else if("true"===N)try{window.location=i.jsdata.redirect_url}catch(e){window.top.location=i.jsdata.redirect_url}else window.top.location=i.jsdata.redirect_url;else window.location=i.jsdata.redirect_url}$(".js_quick_login_btn").prop("disabled",!1),console.log("服务器返回:",t);var i=JSON.parse(t);console.log("json:",i),Z=i.errcode,console.log("code:",Z);var s=e("scope").indexOf(",")!==-1;switch(Z){case 0:console.log("允许登录"),$(".js_quick_login_btn").hide(),$(".js_switchToNormal_wrp").hide(),$(".js_quick_login_msg").show();var c=i.jsdata.scope_auth_info_list||[],r=c.every(function(e){return 0!==e.auth_state}),a=null;s&&!r&&(a="#quick_login_multi_auth_fail_toast"),null===a?setTimeout(n,1e3):$(a).fadeIn(300,function(){var e=this;setTimeout(function(){$(e).fadeOut(300),n()},1e3)}),o("action","connect_qrconnect_fastLogin_succ",1);break;case 10050:console.log("拒绝登录"),w();var a="#quick_login_fail_toast";s&&(a="#quick_login_multi_auth_fail_toast"),$(a).fadeIn(300,function(){var e=this;setTimeout(function(){$(e).fadeOut(300)},1e3)}),o("action","connect_qrconnect_fastLogin_reject",1);break;case 10046:console.log("登录超时，authorize_uuid已过期"),$("#quick_login_timeout_toast").fadeIn(300,function(){var e=this;setTimeout(function(){$(e).fadeOut(300,function(){window.location.reload()})},1e3)}),o("action","connect_qrconnect_fastLogin_fail_timeout",1);break;default:w(),jQuery(".js_switchToFast_wrp").hide(),o("action","connect_qrconnect_fastLogin_fail_default",1)}},error:function(e){console.error("authorize req error",e),w(),jQuery(".js_switchToFast_wrp").hide(),o("action","connect_qrconnect_fastLogin_fail_request",1)}})}),$(".js_switchToFast").click(function(){f(),o("action","connect_qrconnect_switchto_fast",1)}),$(".js_switchToNormal").click(function(){w(),o("action","connect_qrconnect_switchto_normal",1)}),$(".js_refresh_qrcode").click(function(){o("action","connect_qrconnect_refresh_qrcode_btn",1),$(".js_refresh_qrcode").hide(),$(".js_refresh_qrcode_loading").show(),m().then(function(){F=!1})}),$(".js_qrcode_img").click(function(){F&&(o("action","connect_qrconnect_refresh_qrcode_img",1),m().then(function(){F=!1})),M&&window.location.reload()}),$(".js_qrcode_img").on("error",function(){o("action","connect_qrconnect_qrcode_img_error",1),M=!0,$(this).attr("src","https://res.wx.qq.com/t/fed_upload/46a73b115c002aa8d49ae255da18c592/qrcode_expired.jpg")}),q();var P,X;b().then(function(){o("action","connect_qrconnect_ready"),h("status","wxReady"),setTimeout(r,100),L&&(P=Date.now(),X=new Date(P),console.log("checklogin请求发起: "+X.toString()),g(W,function(){console.log("fastLogin: ",z);var e=Date.now(),t=new Date(e),n=e-P;console.log("请求结束: "+t.toString()),console.log("请求时长: "+n+" ms")}))})}()}]);</script></body>
+</html>

@@ -1,0 +1,9 @@
+HTTP/2 200
+date: Mon, 07 Sep 2026 16:39:19 GMT
+content-type: text/plain
+content-length: 98
+alt-svc: h3=":443"; ma=2592000, h3-29=":443"; ma=2592000, h3-27=":443"; ma=2592000, h3-Q050=":443"; ma=2592000, h3-Q046=":443"; ma=2592000, h3-Q043=":443"; ma=2592000, h3-Q039=":443"; ma=2592000, quic=":443"; ma=2592000; v="39,43,46"
+access-control-max-age: 600
+access-control-allow-origin: *
+access-control-allow-methods: POST
+access-control-allow-headers: x-requested-with,content-type

@@ -1,0 +1,20 @@
+GET https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.73734/win32/latest_x64_cn?t=1k0eteg14 HTTP/2
+:method: GET
+:authority: lf-cdn.trae.com.cn
+:scheme: https
+:path: /obj/trae-com-cn/pkg/app/releases/stable/2.3.73734/win32/latest_x64_cn?t=1k0eteg14
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+sec-fetch-dest: empty
+sec-fetch-mode: no-cors
+sec-fetch-site: none
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36
+x-lgw-req-sdk-type: 3
+package-type: stable_cn
+x-lscbd-aid: 787976
+x-lscbd-platform: windows
+app-version: 0.1.51
+x-request-id: 49cb0135-b247-466b-a4ae-a9ff17f753c0
+accept: */*
+x-tt-trace-id: 00-1dd741d70d945686928468a3ab21ffff-1dd741d70d945686-01
+smbyttnet: 1

@@ -1,0 +1,10 @@
+HTTP/1.1 307 Temporary Redirect
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,POST,PUT,DELETE,OPTIONS
+Access-Control-Allow-Headers: x-jwt-token
+Content-Type: charset=UTF-8
+Location: https://www.trae.cn/authorization?login_version=1&auth_from=solo&login_channel=native_ide&plugin_version=2.3.71801&auth_type=local&client_id=en1oxy7wnw8j9n&redirect=1&login_trace_id=5569403b-9717-4129-9f42-41f0125cffac&auth_callback_url=http://127.0.0.1:55812/authorize&machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&device_id=2609589533558410&x_device_id=2609589533558410&x_machine_id=cab0e72fd2c56271ac3e7d98bd8d9f097b0fc2121172fe1f8ebaacc7b081863b&x_device_brand=VMware20%2C1&x_device_type=windows&x_os_version=Windows%2011%20Pro&x_env=&x_app_version=0.1.51&x_app_type=stable&code_challenge=eu_YGvbOxhBnmj_L8d8CJL5ZYM-F8-utIvuOIFYgO84&code_challenge_method=S256&hide_saas_login=true&channel_name=common&click_id=CN-Setup-x64
+Date: Thu, 20 Aug 2026 06:23:51 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked

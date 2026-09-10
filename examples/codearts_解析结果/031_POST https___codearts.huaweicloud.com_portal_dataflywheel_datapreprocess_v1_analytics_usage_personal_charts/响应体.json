@@ -1,0 +1,222 @@
+{
+  "code": 200,
+  "data": {
+    "series": [
+      {
+        "name": "TOKEN_TOTAL",
+        "xDimension": "DATE_DAY",
+        "yDimension": null,
+        "valueType": "COUNT",
+        "cells": [
+          {
+            "xLabel": "2026-09-02",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-03",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-04",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-05",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-06",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-07",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-08",
+            "yLabel": null,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "name": "TOKEN_INPUT",
+        "xDimension": "DATE_DAY",
+        "yDimension": null,
+        "valueType": "COUNT",
+        "cells": [
+          {
+            "xLabel": "2026-09-02",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-03",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-04",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-05",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-06",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-07",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-08",
+            "yLabel": null,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "name": "TOKEN_OUTPUT",
+        "xDimension": "DATE_DAY",
+        "yDimension": null,
+        "valueType": "COUNT",
+        "cells": [
+          {
+            "xLabel": "2026-09-02",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-03",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-04",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-05",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-06",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-07",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-08",
+            "yLabel": null,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "name": "TOKEN_CACHE_HIT",
+        "xDimension": "DATE_DAY",
+        "yDimension": null,
+        "valueType": "COUNT",
+        "cells": [
+          {
+            "xLabel": "2026-09-02",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-03",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-04",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-05",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-06",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-07",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-08",
+            "yLabel": null,
+            "value": 0
+          }
+        ]
+      },
+      {
+        "name": "TOTAL_CREDITS",
+        "xDimension": "DATE_DAY",
+        "yDimension": null,
+        "valueType": "COUNT",
+        "cells": [
+          {
+            "xLabel": "2026-09-02",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-03",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-04",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-05",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-06",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-07",
+            "yLabel": null,
+            "value": 0
+          },
+          {
+            "xLabel": "2026-09-08",
+            "yLabel": null,
+            "value": 0
+          }
+        ]
+      }
+    ]
+  }
+}

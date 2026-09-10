@@ -1,0 +1,33 @@
+HTTP/2 200
+server: Tengine
+content-type: image/svg+xml
+content-length: 1526
+date: Fri, 24 Jul 2026 11:12:27 GMT
+accept-ranges: bytes
+cache-control: max-age=2592000
+x-bdcdn-cache-status: TCP_MISS
+x-kfc-cachekey: http://d-ks-origin-cache-all-lf.originalstatic.com/trae-com-cn/model/kimi-v2-light.svg
+x-tos-hash-crc64ecma: 2757397101297703798
+x-tos-request-id: 47a73c30-c50f-4f7a-93ff-c68915bffd71-fdbdgdc02g24gc46gg47-a92e963
+x-tos-response-time: Fri, 24 Jul 2026 11:12:27 GMT
+x-tos-storage-class: STANDARD
+via: fdbd:dc02:29:928::38, cache7.l2cn2647[0,0,200-0,H], cache5.l2cn2647[1,0], cache1.cn7729[0,0,200-0,H], cache1.cn7729[0,0]
+x-request-ip: fdbd:dc01:26:523::136
+x-tt-trace-tag: id=03;cdn-cache=hit;type=static
+x-response-cinfo: fdbd:dc01:26:523::136
+x-response-cache: miss
+server-timing: inner; dur=46
+x-tt-trace-host: 01ec4ebf3feba0347a59bb3cff0ea3135f1920bca53645c905be337b5e72018144ef4c9c5ba0660518cda459905ea54c7fd3834819a088fda76d6f591f771b76f2f4c8e013a308c7b45f833fe50be84089551cd3ce3f28f88a9fbce8daa6cd421b6c6d096554b74160e9e9bf4368d5f0be
+x-tt-trace-id: 00-93d3a1cd0d7e96fe8d4254987658ffff-93d3a1cd0d7e96fe-01
+x-tt-logid: 20260724191227C0B51B3C834F641DC12B
+etag: "55353faa45c4d951cefbd4b77dd6fe2f"
+last-modified: Tue, 29 Jul 2025 03:28:35 GMT
+age: 2315493
+ali-swift-global-savetime: 1784891547
+x-cache: HIT TCP_MEM_HIT dirn:-2:-2
+x-swift-savetime: Mon, 27 Jul 2026 23:54:08 GMT
+x-swift-cachetime: 2287099
+x-tt-supplier-id: 0_1
+access-control-allow-origin: *
+timing-allow-origin: *
+eagleid: 2497e50617872070407485163e

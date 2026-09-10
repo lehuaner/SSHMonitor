@@ -1,0 +1,20 @@
+HTTP/2 200
+cache-control: public, max-age=31536000
+content-length: 248
+content-type: application/x-javascript; charset=utf-8
+last-modified: Mon, 14 Oct 2024 12:39:00 GMT
+vary: Accept-Encoding
+x-cache: TCP_HIT
+access-control-allow-headers: *
+access-control-allow-origin: *
+x-eventid: 6a849dc7faef4eba807713f50ad4b198
+x-fd-browserdata-mismatch: name=safari,ismobile=0,family=safari,mode=unknown,majorversion=605,minorversion=1,analysissegment=Safari,analysissubsegment=Safari.605-name=safari,ismobile=0,family=safari,mode=unknown,majorversion=26,minorversion=3,analysissegment=safari,analysissubsegment=safari.26
+useragentreductionoptout: A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+permissions-policy: unload=()
+content-security-policy: script-src https: 'strict-dynamic' 'report-sample' 'wasm-unsafe-eval' 'nonce-oPDWh3rKk6SdGMLfavZJPMC1TFLUuF9I1Z8Kz5hqiFE='; base-uri 'self';
+timing-allow-origin: *
+cross-origin-resource-policy: cross-origin
+nel: {"report_to":"network-errors","max_age":604800,"success_fraction":0.001,"failure_fraction":0.75}
+report-to: {"group":"network-errors","max_age":604800,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingrms"}]}
+x-msedge-ref: Ref A: 51CA9156ABB74F7783F4ECD993BE1D12 Ref B: BJ1EDGE0516 Ref C: 2026-08-20T06:22:25Z
+date: Thu, 20 Aug 2026 06:22:24 GMT

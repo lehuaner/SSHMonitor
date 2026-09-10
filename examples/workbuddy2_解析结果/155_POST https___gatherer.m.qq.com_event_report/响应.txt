@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Date: Tue, 08 Sep 2026 08:06:21 GMT
+Content-Type: application/json
+Content-Length: 9
+X-Content-Type-Options: nosniff
+Access-Control-Allow-Origin: https://www.workbuddy.cn
+Access-Control-Allow-Credentials: true
+Access-Control-Allow-Headers: DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,access_token,biz,content-type,d-ua,fcgi-sign,origincstime,requestid,utype,traceparent,tracestate
+Access-Control-Allow-Methods: POST, OPTIONS
+Access-Control-Expose-Headers: Fcgi-Errormsg,Fcgi-Ret,Fcgi-Srtime,Fcgi-Sstime,Fcgi-Error,traceparent,tracestate

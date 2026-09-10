@@ -1,0 +1,15 @@
+GET http://127.0.0.1:55812/authorize?isRedirect=true&scope=solo&authCodeInfo=%7B%22AuthCode%22%3A%22GOOH928BDaNE19g8l5HKmJ9Ad5Ffr3EThYFCadKtLLM%22%2C%22ExpireAt%22%3A1787207631830%2C%22ExpireDuration%22%3A600000%7D&loginTraceID=f2e9b1fa-73f1-48dd-b666-74055079f95d&host=https%3A%2F%2Fapi.trae.com.cn&userRegion=cn&userInfo=%7B%22AIRegion%22%3A%22CN%22%2C%22AvatarUrl%22%3A%22https%3A%2F%2Fp26-passport.byteacctimg.com%2Fimg%2Fuser-avatar%2Fassets%2Fff61226dd1afcabc59a91b56a2e2924e_192_192.png%7E128x128.image%22%2C%22Description%22%3A%22%22%2C%22Gender%22%3A%220%22%2C%22LastLoginTime%22%3A%222026-08-20T14%3A23%3A47%2B08%3A00%22%2C%22LastLoginType%22%3A%22sms%22%2C%22MigrateToSG%22%3Afalse%2C%22NonPlainTextEmail%22%3A%22%22%2C%22NonPlainTextMobile%22%3A%22198******75%22%2C%22Region%22%3A%22CN%22%2C%22RegisterTime%22%3A%222026-05-18T23%3A26%3A44.663%2B08%3A00%22%2C%22ScreenName%22%3A%22%E7%94%A8%E6%88%B743724061517%22%2C%22TenantID%22%3A%227o2d894p7dr0o4%22%2C%22UserID%22%3A%221554024524166871%22%7D HTTP/1.1
+Host: 127.0.0.1:55812
+Connection: keep-alive
+sec-ch-ua: "Chromium";v="148", "Microsoft Edge";v="148", "Not/A)Brand";v="99"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36 Edg/148.0.0.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+Sec-Fetch-Site: cross-site
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Encoding: gzip, deflate, br, zstd
+Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4

@@ -1,0 +1,19 @@
+{
+  "ResponseMetadata": {
+    "Action": "",
+    "OID": null,
+    "Region": "",
+    "RequestId": "",
+    "Service": "",
+    "Source": "",
+    "TraceID": "00000000000000000000000000000000",
+    "Version": "",
+    "WID": null
+  },
+  "Result": {
+    "ExpiredAt": "2026-08-15T23:25:44.431019205+08:00",
+    "TenantID": "7o2d894p7dr0o4",
+    "Token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiMTAwMDk4NTI1MzM4MDUzOCIsInNvdXJjZSI6InNlc3Npb24iLCJzb3VyY2VfaWQiOiJ1QmRTZk5DZWRQY244VWJuWkhYUDVTel9MWjJKUXhsbHhsT0tfZl9KS0xrPS4xOGNiZTljYjdjYjdkYTc5IiwidGVuYW50X2lkIjoiN28yZDg5NHA3ZHIwbzQiLCJ0eXBlIjoidXNlciJ9LCJleHAiOjE3ODY4MDc1NDQsImlhdCI6MTc4Njc3ODc0NH0.Oq4i1Rfn5cCRmCc8nbU1FlqxpQMC6GQC-K2_pA8FNBRQhWST3GMaKg_rMwQF_OujgIxL-k8EqXLQwIx6ZZBtTSfbqGY7m6rAIaBuMbuSLfmv2Ak1QcnXBB3PvfM4sysSNSTcTgJq7WKDK4QhZx5xwjotrI7JEXS6UDBQ_O-ZLfKzWpKNVVqsdKq56ZLbf6rXl32hv_gTGQq951q5VJUEIoDxnhGz_kBKAStJr4pktUik3CKXu9UuLnZtj2_ghoIl8TqwTsEM5taTg2LFzTWLCFxh0IljKhrketOmH1-QoyA-XyCIG95E-0hn-nG_Kn4mHfXfyZzPjSiY_crUE5XV8gxnqkssbjNGpm-hZ3N-_ZXF13m7cRCTaujYwwjL4pUa8VxoMU5mJelL2A4_6kDo_KW3eHc4aGXJD_i1bY5QM-XLHRcBUqS_v_V_9ymjBAAaHr-wQDsF3ntOUOCOvOmNkLRdoHcFywpbLK0V9qzq-X3ZnEF3l99p1IVoo_gQFFBaj6sdGhkEckrOmbaTjcnA6wRgy_UiIvGBhYiXHqUzrfz6VK6X4tdWEAtvU5s-A5ppjRxUkPgSV4ggH_YeXj5geDZNeKtwca27DdYa36THYauEfabkcCvjcpEXgOrzNSTpnFGIFRK5CfkMOkbLlJRfgpTwzuU_hl6TFW6RvbdUNps",
+    "UserID": "1000985253380538"
+  }
+}

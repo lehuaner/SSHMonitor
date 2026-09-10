@@ -1,0 +1,7 @@
+HTTP/1.1 200 OK
+Date: Tue, 08 Sep 2026 08:06:22 GMT
+Content-Length: 0
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET,POST
+Access-Control-Allow-Headers: Content-Type,Origin,Referer,Authorization
+Access-Control-Allow-Credentials: true

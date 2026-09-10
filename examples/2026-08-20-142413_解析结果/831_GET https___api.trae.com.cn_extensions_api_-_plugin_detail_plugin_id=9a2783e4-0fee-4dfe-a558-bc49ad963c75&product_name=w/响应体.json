@@ -1,0 +1,58 @@
+{
+  "data": {
+    "plugin": {
+      "plugin_id": "9a2783e4-0fee-4dfe-a558-bc49ad963c75",
+      "name": "trae-remote-official:web-app-development",
+      "origin_plugin_name": "web-app-development",
+      "display_name": "web-app-development",
+      "description": "用于网页应用设计、开发与调试的内部技能插件。",
+      "i18n": {
+        "description": {
+          "en": "A production-grade UI/UX toolkit for creating distinctive, usable, accessible frontend interfaces.",
+          "ja": "独自性が高く実用的なフロントエンド UI を作るための本番品質 UI/UX ツールセット。",
+          "zh-cn": "高品质 UI/UX 设计工具集，帮助生成独特、生产级的前端界面，覆盖视觉风格、布局排版、动效交互、质量保障与设计系统，系统化对抗泛 AI 审美。"
+        },
+        "display_name": {
+          "en": "UICraft",
+          "ja": "フロントエンドデザインツール",
+          "zh-cn": "前端设计工具集"
+        }
+      },
+      "author": "Trae",
+      "cdn_uri": "p11-market.byteimg.com",
+      "tos_uri": "tos-cn-i-17oceyzymr/plugins",
+      "version": "0.1.1",
+      "source": "INTERNAL_UPLOAD",
+      "registry": "trae-remote-official",
+      "publisher_type": "THIRD_PARTY",
+      "local_available": true,
+      "cloud_available": true,
+      "categories": [
+        "Featured",
+        "development_tools",
+        "ui_design"
+      ],
+      "category_weight": 25,
+      "created_at": 1785343322000,
+      "updated_at": 1785343322000,
+      "pinned": 0,
+      "status": "PUBLISHED",
+      "visibility": "PUBLIC",
+      "is_deleted": false,
+      "icon_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1/9a2783e4-0fee-4dfe-a558-bc49ad963c75/icons/1dcefd8b-65a9-4bd7-a59e-a9302d8ca1e3.svg",
+      "recommended": true,
+      "default_installed": false,
+      "user_control_policy": "{\"default_enabled\": true, \"tag_theme_color\": \"--viz-viz-series-violet\", \"plugin_toggleable\": true, \"locked_capabilities\": [], \"plugin_uninstallable\": true, \"capability_toggleable\": true, \"show_in_home_available_plugins\": true}"
+    },
+    "changelog": "",
+    "download_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1001/9a2783e4-0fee-4dfe-a558-bc49ad963c75/0.1.1/package.zip",
+    "manifest_json": "{\n  \"name\": \"web-app-development\",\n  \"version\": \"0.1.1\",\n  \"description\": \"用于网页应用设计、开发与调试的内部技能插件。\",\n  \"author\": {\n    \"name\": \"Trae\"\n  },\n  \"license\": \"UNLICENSED\",\n  \"keywords\": [\n    \"web-app-development\",\n    \"internal\",\n    \"skills\"\n  ],\n  \"skills\": \"./skills/\",\n  \"interface\": {\n    \"displayName\": \"web-app-development\",\n    \"shortDescription\": \"用于网页应用设计、开发与调试的内部技能插件。\",\n    \"longDescription\": \"用于网页应用设计、开发与调试的内部技能插件。\",\n    \"developerName\": \"Trae\",\n    \"category\": \"Developer Tools\",\n    \"capabilities\": [\n      \"Interactive\",\n      \"Read\",\n      \"Write\"\n    ],\n    \"defaultPrompt\": [\n      \"Use web-app-development to complete this task.\"\n    ],\n    \"brandColor\": \"#FFFFFF\",\n    \"composerIcon\": \"./assets/icon.svg\",\n    \"logo\": \"./assets/icon.svg\",\n    \"screenshots\": []\n  }\n}\n",
+    "connector_json": "",
+    "mcp_servers_json": "",
+    "skills_json": "[{\"content_sha256\":\"512a98595d2a1c0b0be39f69da82a91ea3bc5425f52a644b3e5a16f002aeac1a\",\"description\":\"Create, improve, audit, and polish distinctive production-grade web interfaces, including marketing/landing pages and personal portfolio sites. Use for UI or frontend design, responsive layouts, typography, color, motion, UX copy, accessibility, performance, design-system alignment, onboarding, edge cases, or visual review of HTML/CSS/JavaScript and component-based web applications. Trigger for requests such as 界面设计、前端美化、响应式、动效、配色、排版、设计评审、无障碍、性能优化、设计系统、空状态、落地页/营销页、个人作品集网站和上线打磨. Do not trigger for backend-only work or frontend tasks with no interface-quality concern.\",\"file_info\":\"plugins/1001/9a2783e4-0fee-4dfe-a558-bc49ad963c75/0.1.1/skills/uicraft/SKILL.md\",\"id\":\"uicraft\",\"name\":\"uicraft\",\"path\":\"web-app-development/skills/uicraft/SKILL.md\"}]",
+    "icon_url": "https://p11-market.byteimg.com/tos-cn-i-17oceyzymr/plugins/1/9a2783e4-0fee-4dfe-a558-bc49ad963c75/icons/1dcefd8b-65a9-4bd7-a59e-a9302d8ca1e3.svg",
+    "checksum": "fbccb01d6b9156602a83ab351769a6ea10f4c5c4f041b18bf82192c5df485b10",
+    "file_size": 158722
+  },
+  "success": "true"
+}

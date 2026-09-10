@@ -1,0 +1,12 @@
+HTTP/2 200
+content-type: application/json; charset=utf-8
+set-cookie: tgw_l7_route=719007e6c16c690222bf3983ff63b84e; Expires=Tue, 08-Sep-2026 09:06:51 GMT; Path=/; sameSite=None; Secure
+set-cookie: session=; Path=/console; Max-Age=0; Expires=Thu, 01-Jan-70 00:00:00 GMT; HttpOnly
+traceid: 7e3698e8caa4071f33984f6f0a000a64
+x-request-id: 9d3bd010-9713-4255-a797-69c9940c0f9e
+x-user-id: 8b3cb381-9ebc-4813-92d9-9e5880528465
+server: APISIX/3.9.1
+content-length: 604
+date: Tue, 08 Sep 2026 08:06:51 GMT
+eo-log-uuid: 8534342324351084269
+eo-cache-status: MISS

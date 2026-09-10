@@ -1,0 +1,225 @@
+HTTP/1.1 200 Connection established
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.google.com
+  Simple Name: *.google.com
+  DNS Name: *.google.com
+
+[Issuer]
+  CN=WE2, O=Google Trust Services, C=US
+  Simple Name: WE2
+  DNS Name: WE2
+
+[Serial Number]
+  00C447FCDDFBF5D37C1233DD71E6323EED
+
+[Not Before]
+  2026/7/21 2:06:16
+
+[Not After]
+  2026/10/13 2:06:15
+
+[Thumbprint]
+  64809AB1D7B29AC656E191F34713AA168B69FCA0
+
+[Signature Algorithm]
+  sha256ECDSA(1.2.840.10045.4.3.2)
+
+[Public Key]
+  Algorithm: ECC
+  Length: 
+  Key Blob: 04 a3 33 7c 69 25 3d 9d ed c9 d8 ff d6 ff ce dd 5d b1 a9 7e a5 e3 23 f7 b0 93 14 04 2e 14 89 d1 be 82 2b 48 25 dd 10 91 9a 6c be ad b5 7e 77 39 89 90 48 21 63 72 74 ab 68 5a dd f7 d2 51 54 b4 52
+  Parameters: 06 08 2a 86 48 ce 3d 03 01 07
+
+[Extensions]
+* 密钥用法(2.5.29.15):
+  Digital Signature (80)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* 使用者密钥标识符(2.5.29.14):
+  d047f39ecdb7157f1cc80adbf99d9b7ae95babf6
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=75bec477ae89f644377dcfb1681f1d1aebdc3459
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://i.pki.goog/we2.crt
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.google.com
+DNS Name=*.appengine.google.com
+DNS Name=*.bdn.dev
+DNS Name=*.origin-test.bdn.dev
+DNS Name=*.cloud.google.com
+DNS Name=*.crowdsource.google.com
+DNS Name=*.datacompute.google.com
+DNS Name=*.google.ca
+DNS Name=*.google.cl
+DNS Name=*.google.co.in
+DNS Name=*.google.co.jp
+DNS Name=*.google.co.uk
+DNS Name=*.google.com.ar
+DNS Name=*.google.com.au
+DNS Name=*.google.com.br
+DNS Name=*.google.com.co
+DNS Name=*.google.com.mx
+DNS Name=*.google.com.tr
+DNS Name=*.google.com.vn
+DNS Name=*.google.de
+DNS Name=*.google.es
+DNS Name=*.google.fr
+DNS Name=*.google.hu
+DNS Name=*.google.it
+DNS Name=*.google.nl
+DNS Name=*.google.pl
+DNS Name=*.google.pt
+DNS Name=*.gemini.cloud.google.com
+DNS Name=*.gstatic.com
+DNS Name=*.metric.gstatic.com
+DNS Name=*.gvt1.com
+DNS Name=*.gcpcdn.gvt1.com
+DNS Name=*.gvt2.com
+DNS Name=*.gcp.gvt2.com
+DNS Name=*.url.google.com
+DNS Name=*.youtube-nocookie.com
+DNS Name=*.ytimg.com
+DNS Name=ai.android
+DNS Name=android.com
+DNS Name=*.android.com
+DNS Name=*.flash.android.com
+DNS Name=g.co
+DNS Name=*.g.co
+DNS Name=goo.gl
+DNS Name=www.goo.gl
+DNS Name=google-analytics.com
+DNS Name=*.google-analytics.com
+DNS Name=google.com
+DNS Name=googlecommerce.com
+DNS Name=*.googlecommerce.com
+DNS Name=urchin.com
+DNS Name=*.urchin.com
+DNS Name=youtu.be
+DNS Name=youtube.com
+DNS Name=*.youtube.com
+DNS Name=music.youtube.com
+DNS Name=*.music.youtube.com
+DNS Name=youtubeeducation.com
+DNS Name=*.youtubeeducation.com
+DNS Name=youtubekids.com
+DNS Name=*.youtubekids.com
+DNS Name=yt.be
+DNS Name=*.yt.be
+DNS Name=android.clients.google.com
+DNS Name=*.aistudio.google.com
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://c.pki.goog/we2/64OUIVzpZV4.crl
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+d809553b944f7affc816196f944f85abb0f8fc5e8755260f15d12e72bb454b14
+‎2026‎年‎7‎月‎21‎日 3:06:18
+SHA256
+ECDSA
+3044022035058a357dfe59696d7f1bf1aec01e6f159b2d0c1e289d1255609367c560ece4022007207ea8122ded0fad7c0ca13ae501384afd02bc81e8648b913ed86731f9b826
+
+v1
+af67883b57b04edd8fa6d97ef62ea8eb810ac77160f0245e55d60c2fe785873a
+‎2026‎年‎7‎月‎21‎日 3:06:18
+SHA256
+ECDSA
+3045022100bcce205479a12a57e9500727a7f753843d1147f3095fb5909b06470c4c49bd8302207055b66f06130f95cb0ecdb6011099471a68a325a51d3d50066f8be6b6f168bb
+
+
+[SubjectAltNames]
+DNS Name=*.google.com
+DNS Name=*.appengine.google.com
+DNS Name=*.bdn.dev
+DNS Name=*.origin-test.bdn.dev
+DNS Name=*.cloud.google.com
+DNS Name=*.crowdsource.google.com
+DNS Name=*.datacompute.google.com
+DNS Name=*.google.ca
+DNS Name=*.google.cl
+DNS Name=*.google.co.in
+DNS Name=*.google.co.jp
+DNS Name=*.google.co.uk
+DNS Name=*.google.com.ar
+DNS Name=*.google.com.au
+DNS Name=*.google.com.br
+DNS Name=*.google.com.co
+DNS Name=*.google.com.mx
+DNS Name=*.google.com.tr
+DNS Name=*.google.com.vn
+DNS Name=*.google.de
+DNS Name=*.google.es
+DNS Name=*.google.fr
+DNS Name=*.google.hu
+DNS Name=*.google.it
+DNS Name=*.google.nl
+DNS Name=*.google.pl
+DNS Name=*.google.pt
+DNS Name=*.gemini.cloud.google.com
+DNS Name=*.gstatic.com
+DNS Name=*.metric.gstatic.com
+DNS Name=*.gvt1.com
+DNS Name=*.gcpcdn.gvt1.com
+DNS Name=*.gvt2.com
+DNS Name=*.gcp.gvt2.com
+DNS Name=*.url.google.com
+DNS Name=*.youtube-nocookie.com
+DNS Name=*.ytimg.com
+DNS Name=ai.android
+DNS Name=android.com
+DNS Name=*.android.com
+DNS Name=*.flash.android.com
+DNS Name=g.co
+DNS Name=*.g.co
+DNS Name=goo.gl
+DNS Name=www.goo.gl
+DNS Name=google-analytics.com
+DNS Name=*.google-analytics.com
+DNS Name=google.com
+DNS Name=googlecommerce.com
+DNS Name=*.googlecommerce.com
+DNS Name=urchin.com
+DNS Name=*.urchin.com
+DNS Name=youtu.be
+DNS Name=youtube.com
+DNS Name=*.youtube.com
+DNS Name=music.youtube.com
+DNS Name=*.music.youtube.com
+DNS Name=youtubeeducation.com
+DNS Name=*.youtubeeducation.com
+DNS Name=youtubekids.com
+DNS Name=*.youtubekids.com
+DNS Name=yt.be
+DNS Name=*.yt.be
+DNS Name=android.clients.google.com
+DNS Name=*.aistudio.google.com
+

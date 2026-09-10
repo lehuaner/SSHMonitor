@@ -1,0 +1,50 @@
+{
+  "err_code": 0,
+  "err_message": "success",
+  "data": {
+    "needUpdate": true,
+    "appVersion": "0.1.52",
+    "manifest": {
+      "win32": {
+        "version": "2.3.73734",
+        "urls": [
+          {
+            "region": "cn",
+            "url": "https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.73734/win32",
+            "x64": "https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.73734/win32/TraeWork_CN-Setup-x64.exe"
+          },
+          {
+            "region": "sg",
+            "url": "https://lf-cdn.trae.ai/obj/trae-ai-sg/pkg/app/releases/stable/2.3.73734/win32",
+            "x64": "https://lf-cdn.trae.ai/obj/trae-ai-sg/pkg/app/releases/stable/2.3.73734/win32/TraeWork_CN-Setup-x64.exe"
+          },
+          {
+            "region": "va",
+            "url": "https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.73734/win32",
+            "x64": "https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.73734/win32/TraeWork_CN-Setup-x64.exe"
+          }
+        ],
+        "extra": {
+          "uploadDate": 1787076466755
+        },
+        "download": [
+          {
+            "region": "cn",
+            "x64": "https://lf-cdn.trae.com.cn/obj/trae-com-cn/pkg/app/releases/stable/2.3.73734/win32/TraeWork_CN-Setup-x64.exe"
+          },
+          {
+            "region": "sg",
+            "x64": "https://lf-cdn.trae.ai/obj/trae-ai-sg/pkg/app/releases/stable/2.3.73734/win32/TraeWork_CN-Setup-x64.exe"
+          },
+          {
+            "region": "va",
+            "x64": "https://lf-cdn.trae.ai/obj/trae-ai-us/pkg/app/releases/stable/2.3.73734/win32/TraeWork_CN-Setup-x64.exe"
+          }
+        ],
+        "branch": "release_solo_win32_cn"
+      }
+    },
+    "forceUpdate": 0
+  },
+  "logId": "2026082014240177E5D515152A9EA6B96B"
+}
