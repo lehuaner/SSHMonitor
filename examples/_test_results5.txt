@@ -1,0 +1,74 @@
+================================================================================
+WorkBuddy web 侧收尾验证（凭证来源 workbuddy3_解析结果/090）
+================================================================================
+
+[A] 凭证形态定位：哪一个 cookie 组合是必需的？
+  GET   /activity/growth/streak                        -> HTTP 401
+        <html>
+<head><title>401 Authorization Required</title></head>
+<body>
+<center><h1>401 Authorization Required</h1></center>
+<hr><center>openresty</center>
+<p><em>Powered by <a href="https://apisix.apache.org/">APISIX</a>.</em><
+  GET   /activity/growth/streak                        -> HTTP 401
+        <html>
+<head><title>401 Authorization Required</title></head>
+<body>
+<center><h1>401 Authorization Required</h1></center>
+<hr><center>openresty</center>
+<p><em>Powered by <a href="https://apisix.apache.org/">APISIX</a>.</em><
+  GET   /activity/growth/streak                        -> HTTP 401
+        <html>
+<head><title>401 Authorization Required</title></head>
+<body>
+<center><h1>401 Authorization Required</h1></center>
+<hr><center>openresty</center>
+<p><em>Powered by <a href="https://apisix.apache.org/">APISIX</a>.</em><
+  GET   /activity/growth/streak                        -> HTTP 401
+        <html>
+<head><title>401 Authorization Required</title></head>
+<body>
+<center><h1>401 Authorization Required</h1></center>
+<hr><center>openresty</center>
+<p><em>Powered by <a href="https://apisix.apache.org/">APISIX</a>.</em><
+  GET   /activity/growth/streak                        -> HTTP 200
+        {"code": 0, "msg": "OK", "requestId": "d732b774-f020-4ccf-bcc7-c09cff0215fe", "data": {"streak": {"days": 0, "month_total_days": 8, "month_consumed_days": 0, "next_tier": "14d", "next_tier_remaining": 6, "makeup_dates": []}, "make
+  GET   /activity/growth/streak                        -> HTTP 200
+        {"code": 0, "msg": "OK", "requestId": "be7e2a9c-6b8e-4e50-9e7e-afb20d3a1b5c", "data": {"streak": {"days": 0, "month_total_days": 8, "month_consumed_days": 0, "next_tier": "14d", "next_tier_remaining": 6, "makeup_dates": []}, "make
+
+[B] growth 只读接口复核（旧文档 §6 结论是否仍成立）
+  GET   /activity/growth/streak                        -> HTTP 200
+        {"code": 0, "msg": "OK", "requestId": "c923736c-d7de-4c21-a65a-7e0ade36550e", "data": {"streak": {"days": 0, "month_total_days": 8, "month_consumed_days": 0, "next_tier": "14d", "next_tier_remaining": 6, "makeup_dates": []}, "make
+        note: 连续签到核心
+  GET   /activity/growth/energy                        -> HTTP 200
+        {"code": 0, "msg": "OK", "requestId": "c324c160-38ed-4287-b693-0581a92db713", "data": {"balance": 0, "total_consumed": 70, "total_earned": 70}}
+        note: 能量余额
+  GET   /activity/growth/redeem/summary                -> HTTP 200
+        {"code": 0, "msg": "OK", "requestId": "d4882a44-64cd-4675-ad97-7e1d17fac9cd", "data": {"starter_count": 1, "advanced_count": 0, "legendary_count": 0, "starter_status": "claimed", "advanced_status": "locked", "legendary_status": "l
+        note: 档位领取状态
+  GET   /v2/activity/growth/profile                    -> HTTP 200
+        {"code": 0, "msg": "OK", "requestId": "3cb7a51d-7bef-4d39-b6ef-9db2a95b2920", "data": {"completed": 13, "first_visit": false, "level": 13, "level_icon": "https://acc-1258344699.cos.accelerate.myqcloud.com/web/workbuddy/assets/badg
+        note: 成长档案
+  GET   /activity/growth/lottery/chances               -> HTTP 200
+        {"code": 0, "msg": "OK", "requestId": "6cf8300e-379a-470e-bc9b-2957ad08c075", "data": {"balance": 0}}
+        note: 抽奖机会
+
+[C] 旧文档猜测路径的真实返回（带有效凭证，排除鉴权干扰）
+  POST  /activity/growth/checkin                       -> HTTP 404
+        404 page not found
+        note: 旧文档推测的每日签到路径
+  POST  /activity/growth/sign                          -> HTTP 404
+        404 page not found
+        note: 旧文档推测的备选路径
+
+[D] daily-checkin 真实路径挂到 www 域（验证是否域内特有）
+  POST  /v2/billing/meter/checkin-activity-status      -> HTTP 200
+        {"code": 0, "msg": "OK", "requestId": "c40f045a-93f6-4fd4-9037-f35c3be42a9b", "data": {"active": true, "today_checked_in": true, "streak_days": 9, "daily_credit": 100, "today_credit": 100, "is_streak_day": false, "next_streak_day"
+        note: 真实读接口在 copilot.tencent.com
+  POST  /v2/billing/meter/daily-checkin                -> HTTP 400
+        {"code": 10001, "msg": "今天已签到，请明天再来", "requestId": "502ff071-4797-4d73-9fa4-c8ab84d2ffc5"}
+        note: 真实写接口在 copilot.tencent.com
+
+================================================================================
+HTTP 200 用例: 8 / 15
+================================================================================

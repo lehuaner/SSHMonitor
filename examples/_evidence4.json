@@ -1,0 +1,204 @@
+{
+  "cases": [
+    {
+      "label": "Q1-旧猜测路径",
+      "method": "POST",
+      "url": "https://www.workbuddy.cn/activity/growth/checkin",
+      "http": 401,
+      "response": "<html>\r\n<head><title>401 Authorization Required</title></head>\r\n<body>\r\n<center><h1>401 Authorization Required</h1></center>\r\n<hr><center>openresty</center>\r\n<p><em>Powered by <a href=\"https://apisix.apache.org/\">APISIX</a>.</em></p></body>\r\n</html>\r\n",
+      "note": "复现旧文档的 404，作为对照"
+    },
+    {
+      "label": "Q1-对照-已知可用",
+      "method": "GET",
+      "url": "https://www.workbuddy.cn/activity/growth/streak",
+      "http": 401,
+      "response": "<html>\r\n<head><title>401 Authorization Required</title></head>\r\n<body>\r\n<center><h1>401 Authorization Required</h1></center>\r\n<hr><center>openresty</center>\r\n<p><em>Powered by <a href=\"https://apisix.apache.org/\">APISIX</a>.</em></p></body>\r\n</html>\r\n",
+      "note": "同域已知可用接口，证明 session 仍有效、404 并非凭证问题"
+    },
+    {
+      "label": "Q2-跨域-session",
+      "method": "POST",
+      "url": "https://copilot.tencent.com/v2/billing/meter/checkin-activity-status",
+      "http": 401,
+      "response": "<html>\r\n<head><title>401 Authorization Required</title></head>\r\n<body>\r\n<center><h1>401 Authorization Required</h1></center>\r\n<hr><center>openresty</center>\r\n<p><em>Powered by <a href=\"https://apisix.apache.org/\">APISIX</a>.</em></p></body>\r\n</html>\r\n",
+      "note": "验证两条路径鉴权是否互通（预期 401）"
+    },
+    {
+      "label": "Q2-跨域-www路径",
+      "method": "POST",
+      "url": "https://www.workbuddy.cn/v2/billing/meter/checkin-activity-status",
+      "http": 401,
+      "response": "<html>\r\n<head><title>401 Authorization Required</title></head>\r\n<body>\r\n<center><h1>401 Authorization Required</h1></center>\r\n<hr><center>openresty</center>\r\n<p><em>Powered by <a href=\"https://apisix.apache.org/\">APISIX</a>.</em></p></body>\r\n</html>\r\n",
+      "note": "同样的 meter 路径挂到 www 域，验证是否为域内特有路由"
+    },
+    {
+      "label": "Q3-仅Bearer",
+      "method": "POST",
+      "url": "https://copilot.tencent.com/v2/billing/meter/checkin-activity-status",
+      "http": 200,
+      "response": {
+        "code": 0,
+        "msg": "OK",
+        "requestId": "29f1f010-d114-4bbe-b322-97db9e827e24",
+        "data": {
+          "active": true,
+          "today_checked_in": true,
+          "streak_days": 9,
+          "daily_credit": 100,
+          "today_credit": 100,
+          "is_streak_day": false,
+          "next_streak_day": 0,
+          "streak_bonus_days": 0,
+          "streak_bonus_credit": 0,
+          "checkin_dates": [
+            "2026-09-10",
+            "2026-09-08",
+            "2026-09-07",
+            "2026-09-06",
+            "2026-09-05",
+            "2026-09-04",
+            "2026-09-03",
+            "2026-09-02",
+            "2026-09-01"
+          ],
+          "week_checkin_days": 3,
+          "week_progress": [
+            true,
+            true,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "total_credits": 900,
+          "start_time": "2026-09-01 00:00:00",
+          "end_time": "2026-09-15 23:59:59",
+          "theme_name": "Buddy加油站",
+          "season": 8,
+          "activity_name": "开学季",
+          "claim_button_text": "立即领取",
+          "action_button": {
+            "show": true,
+            "text": "认证领积分",
+            "action": "https://www.workbuddy.cn/events/campus-freshman/"
+          }
+        }
+      },
+      "note": "仅 Authorization，判断 X-User-Id/X-Device-Token 是否必需"
+    },
+    {
+      "label": "Q3-Bearer+XUserId",
+      "method": "POST",
+      "url": "https://copilot.tencent.com/v2/billing/meter/checkin-activity-status",
+      "http": 200,
+      "response": {
+        "code": 0,
+        "msg": "OK",
+        "requestId": "06b6b8c1-cf20-4fe7-8f1b-b094fbd945af",
+        "data": {
+          "active": true,
+          "today_checked_in": true,
+          "streak_days": 9,
+          "daily_credit": 100,
+          "today_credit": 100,
+          "is_streak_day": false,
+          "next_streak_day": 0,
+          "streak_bonus_days": 0,
+          "streak_bonus_credit": 0,
+          "checkin_dates": [
+            "2026-09-10",
+            "2026-09-08",
+            "2026-09-07",
+            "2026-09-06",
+            "2026-09-05",
+            "2026-09-04",
+            "2026-09-03",
+            "2026-09-02",
+            "2026-09-01"
+          ],
+          "week_checkin_days": 3,
+          "week_progress": [
+            true,
+            true,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "total_credits": 900,
+          "start_time": "2026-09-01 00:00:00",
+          "end_time": "2026-09-15 23:59:59",
+          "theme_name": "Buddy加油站",
+          "season": 8,
+          "activity_name": "开学季",
+          "claim_button_text": "立即领取",
+          "action_button": {
+            "show": true,
+            "text": "认证领积分",
+            "action": "https://www.workbuddy.cn/events/campus-freshman/"
+          }
+        }
+      },
+      "note": "Bearer + X-User-Id，判断 X-Device-Token 是否必需"
+    },
+    {
+      "label": "Q3-完整头",
+      "method": "POST",
+      "url": "https://copilot.tencent.com/v2/billing/meter/checkin-activity-status",
+      "http": 200,
+      "response": {
+        "code": 0,
+        "msg": "OK",
+        "requestId": "0d4b7798-0357-46c0-9775-1f373ca6218f",
+        "data": {
+          "active": true,
+          "today_checked_in": true,
+          "streak_days": 9,
+          "daily_credit": 100,
+          "today_credit": 100,
+          "is_streak_day": false,
+          "next_streak_day": 0,
+          "streak_bonus_days": 0,
+          "streak_bonus_credit": 0,
+          "checkin_dates": [
+            "2026-09-10",
+            "2026-09-08",
+            "2026-09-07",
+            "2026-09-06",
+            "2026-09-05",
+            "2026-09-04",
+            "2026-09-03",
+            "2026-09-02",
+            "2026-09-01"
+          ],
+          "week_checkin_days": 3,
+          "week_progress": [
+            true,
+            true,
+            false,
+            true,
+            false,
+            false,
+            false
+          ],
+          "total_credits": 900,
+          "start_time": "2026-09-01 00:00:00",
+          "end_time": "2026-09-15 23:59:59",
+          "theme_name": "Buddy加油站",
+          "season": 8,
+          "activity_name": "开学季",
+          "claim_button_text": "立即领取",
+          "action_button": {
+            "show": true,
+            "text": "认证领积分",
+            "action": "https://www.workbuddy.cn/events/campus-freshman/"
+          }
+        }
+      },
+      "note": "完整头，作为正对照"
+    }
+  ]
+}

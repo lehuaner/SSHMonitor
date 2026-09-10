@@ -1,0 +1,71 @@
+{
+  "cases": [
+    {
+      "label": "负向-无Cookie",
+      "method": "GET",
+      "url": "https://codearts.huaweicloud.com/portal/snap-manager/v1/credit/has-claimed?_=1789014447066",
+      "http": 200,
+      "ms": 234,
+      "session_expired": true,
+      "hw_ajax_redirect": "https://auth.huaweicloud.com/authui/login?service=",
+      "response": "",
+      "note": "验证 Cookie 鉴权确实生效"
+    },
+    {
+      "label": "has-claimed",
+      "method": "GET",
+      "url": "https://codearts.huaweicloud.com/portal/snap-manager/v1/credit/has-claimed?_=1789014447301",
+      "http": 200,
+      "ms": 211,
+      "session_expired": true,
+      "hw_ajax_redirect": "https://auth.huaweicloud.com/authui/login?service=",
+      "response": "",
+      "note": "今日是否已领取每日签到积分"
+    },
+    {
+      "label": "package_overview",
+      "method": "GET",
+      "url": "https://codearts.huaweicloud.com/portal/snap-manager/v1/package_overview?_=1789014447513",
+      "http": 200,
+      "ms": 251,
+      "session_expired": true,
+      "hw_ajax_redirect": "https://auth.huaweicloud.com/authui/login?service=",
+      "response": "",
+      "note": "积分包总览（可用额度来源）"
+    },
+    {
+      "label": "rest/me",
+      "method": "GET",
+      "url": "https://codearts.huaweicloud.com/portal/rest/me?_=1789014447765",
+      "http": 200,
+      "ms": 218,
+      "session_expired": true,
+      "hw_ajax_redirect": "https://auth.huaweicloud.com/authui/login?service=",
+      "response": "",
+      "note": "当前用户身份与角色"
+    },
+    {
+      "label": "package_info",
+      "method": "GET",
+      "url": "https://codearts.huaweicloud.com/portal/snap-manager/v1/package_info?_=1789014447983",
+      "http": 200,
+      "ms": 202,
+      "session_expired": true,
+      "hw_ajax_redirect": "https://auth.huaweicloud.com/authui/login?service=",
+      "response": "",
+      "note": "套餐信息"
+    }
+  ],
+  "summary": {
+    "session_expired": true,
+    "live_claim_skipped": true,
+    "capture_evidence": {
+      "has_claimed_before": false,
+      "claim_request": {
+        "credit_type": "daily_bonus"
+      },
+      "claim_response": true,
+      "has_claimed_after": true
+    }
+  }
+}

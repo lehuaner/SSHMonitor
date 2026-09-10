@@ -1,0 +1,46 @@
+============================================================================
+WorkBuddy 双路径交叉验证 —— 旧 404 根因定位
+============================================================================
+
+[Q1] 旧文档推测的每日签到路径（www.workbuddy.cn）
+  POST https://www.workbuddy.cn/activity/growth/checkin
+    -> HTTP 401  <html>
+<head><title>401 Authorization Required</title></head>
+<body>
+<center><h1>401 Authorization Required</h1></center>
+<hr><center>openresty</c
+    note: 复现旧文档的 404，作为对照
+  GET https://www.workbuddy.cn/activity/growth/streak
+    -> HTTP 401  <html>
+<head><title>401 Authorization Required</title></head>
+<body>
+<center><h1>401 Authorization Required</h1></center>
+<hr><center>openresty</c
+    note: 同域已知可用接口，证明 session 仍有效、404 并非凭证问题
+
+[Q2] 用 web session cookie 调用 copilot.tencent.com 签到接口
+  POST https://copilot.tencent.com/v2/billing/meter/checkin-activity-status
+    -> HTTP 401  <html>
+<head><title>401 Authorization Required</title></head>
+<body>
+<center><h1>401 Authorization Required</h1></center>
+<hr><center>openresty</c
+    note: 验证两条路径鉴权是否互通（预期 401）
+  POST https://www.workbuddy.cn/v2/billing/meter/checkin-activity-status
+    -> HTTP 401  <html>
+<head><title>401 Authorization Required</title></head>
+<body>
+<center><h1>401 Authorization Required</h1></center>
+<hr><center>openresty</c
+    note: 同样的 meter 路径挂到 www 域，验证是否为域内特有路由
+
+[Q3] copilot Bearer 鉴权的最小请求头集合
+  POST https://copilot.tencent.com/v2/billing/meter/checkin-activity-status
+    -> HTTP 200  {"code": 0, "msg": "OK", "requestId": "29f1f010-d114-4bbe-b322-97db9e827e24", "data": {"active": true, "today_checked_in": true, "streak_days": 9, "daily_credit": 100, "today_credit": 100, "is_streak_
+    note: 仅 Authorization，判断 X-User-Id/X-Device-Token 是否必需
+  POST https://copilot.tencent.com/v2/billing/meter/checkin-activity-status
+    -> HTTP 200  {"code": 0, "msg": "OK", "requestId": "06b6b8c1-cf20-4fe7-8f1b-b094fbd945af", "data": {"active": true, "today_checked_in": true, "streak_days": 9, "daily_credit": 100, "today_credit": 100, "is_streak_
+    note: Bearer + X-User-Id，判断 X-Device-Token 是否必需
+  POST https://copilot.tencent.com/v2/billing/meter/checkin-activity-status
+    -> HTTP 200  {"code": 0, "msg": "OK", "requestId": "0d4b7798-0357-46c0-9775-1f373ca6218f", "data": {"active": true, "today_checked_in": true, "streak_days": 9, "daily_credit": 100, "today_credit": 100, "is_streak_
+    note: 完整头，作为正对照

@@ -1,0 +1,31 @@
+==========================================================================
+WorkBuddy 签到链路实测 —— 遗留接口 daily-checkin 验证
+凭证来源: workbuddy3_解析结果/182_..._daily-checkin/请求.txt
+==========================================================================
+[NOAUTH] POST /v2/billing/meter/checkin-activity-status  -> HTTP 401
+   raw : <html>
+<head><title>401 Authorization Required</title></head>
+<body>
+<center><h1>401 Authorization Required</h1></center>
+<hr><center>openresty</center>
+<p><em>Powered by <a href="https://apisix.apache.org/">APISIX</a>.</em></p></body>
+</html>
+
+   note: 验证鉴权确实生效
+[AUTH] POST /v2/billing/meter/checkin-activity-status  -> HTTP 200
+   resp: {"code": 0, "msg": "OK", "requestId": "364c0485-a960-45d5-ba7d-30581e393ae9", "data": {"active": true, "today_checked_in": true, "streak_days": 9, "daily_credit": 100, "today_credit": 100, "is_streak_day": false, "next_streak_day": 0, "streak_bonus_days": 0, "streak_bonus_credit": 0, "checkin_dates": ["2026-09-10", "2026-09-08", "2026-09-07", "2026-09-06", "2026-09-05", "2026-09-04", "2026-09-03", "2026-09-02", "2026-09-01"], "week_checkin_days": 3, "week_progress": [true, true, false, true, false, false, false], "total_credits": 900, "start_time": "2026-09-01 00:00:00", "end_time": "2026-09-15 23:59:59", "theme_name": "Buddy加油站", "season": 8, "activity_name": "开学季", "claim_button_text": "立即领取", "action_button": {"show": true, "text": "认证领积分", "action": "https://www.workbuddy.cn/events/campus-freshman/"}}}
+   note: 读取当日签到活动全量状态
+[AUTH] POST /v2/billing/meter/daily-checkin  -> HTTP 400
+   resp: {"code": 10001, "msg": "今天已签到，请明天再来", "requestId": "3a9ba004-8c7a-4f6b-970e-bfec507817d0"}
+   note: 当日已签，重复调用用于验证幂等性，不会重复发放
+[AUTH] POST /v2/billing/meter/checkin-activity-status  -> HTTP 200
+   resp: {"code": 0, "msg": "OK", "requestId": "80ef2d9b-d903-492d-917e-3b86405478c4", "data": {"active": true, "today_checked_in": true, "streak_days": 9, "daily_credit": 100, "today_credit": 100, "is_streak_day": false, "next_streak_day": 0, "streak_bonus_days": 0, "streak_bonus_credit": 0, "checkin_dates": ["2026-09-10", "2026-09-08", "2026-09-07", "2026-09-06", "2026-09-05", "2026-09-04", "2026-09-03", "2026-09-02", "2026-09-01"], "week_checkin_days": 3, "week_progress": [true, true, false, true, false, false, false], "total_credits": 900, "start_time": "2026-09-01 00:00:00", "end_time": "2026-09-15 23:59:59", "theme_name": "Buddy加油站", "season": 8, "activity_name": "开学季", "claim_button_text": "立即领取", "action_button": {"show": true, "text": "认证领积分", "action": "https://www.workbuddy.cn/events/campus-freshman/"}}}
+   note: 与签到前比对，确认未重复发放
+--------------------------------------------------------------------------
+判定：
+  · 鉴权生效 / 读接口可用 : PASS
+  · 幂等性(total_credits/streak_days 不变): PASS
+      before: streak_days=9, total_credits=900, today_checked_in=True
+      after : streak_days=9, total_credits=900, today_checked_in=True
+  · HTTP 码: status=200, daily-checkin=400, status2=200
+==========================================================================

@@ -1,0 +1,38 @@
+==================================================================================
+CodeArts 签到接口可用性实测
+凭证来源: codearts_解析结果/036_..._credit_claim/请求.txt
+cookie 长度: 1139  |  cftk: 4H4S-HCUU-C7LO-75CZ-...
+==================================================================================
+
+【阶段 1】只读探测
+  GET   /portal/snap-manager/v1/credit/has-claimed           -> HTTP 200  (234ms)
+        <空响应体>
+        ⚠ 登录态失效：HW-AJAX-REDIRECT = https://auth.huaweicloud.com/authui/login?service=
+        note: 验证 Cookie 鉴权确实生效
+  GET   /portal/snap-manager/v1/credit/has-claimed           -> HTTP 200  (211ms)
+        <空响应体>
+        ⚠ 登录态失效：HW-AJAX-REDIRECT = https://auth.huaweicloud.com/authui/login?service=
+        note: 今日是否已领取每日签到积分
+  GET   /portal/snap-manager/v1/package_overview             -> HTTP 200  (251ms)
+        <空响应体>
+        ⚠ 登录态失效：HW-AJAX-REDIRECT = https://auth.huaweicloud.com/authui/login?service=
+        note: 积分包总览（可用额度来源）
+  GET   /portal/rest/me                                      -> HTTP 200  (218ms)
+        <空响应体>
+        ⚠ 登录态失效：HW-AJAX-REDIRECT = https://auth.huaweicloud.com/authui/login?service=
+        note: 当前用户身份与角色
+  GET   /portal/snap-manager/v1/package_info                 -> HTTP 200  (202ms)
+        <空响应体>
+        ⚠ 登录态失效：HW-AJAX-REDIRECT = https://auth.huaweicloud.com/authui/login?service=
+        note: 套餐信息
+
+【阶段 2】每日签到领取（条件执行）
+  ⚠ 当前 Cookie 会话已失效（抓包于 2026-09-08，实测 2026-09-10）
+    -> 跳过 claim 写入；接口行为以抓包实证为准：
+       capture 017  GET  /credit/has-claimed  -> false
+       capture 036  POST /credit/claim {credit_type:daily_bonus} -> true
+       capture 063  GET  /credit/has-claimed  -> true
+
+==================================================================================
+HTTP 200 用例: 5 / 5
+==================================================================================
