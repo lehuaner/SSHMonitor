@@ -1,10 +1,11 @@
 # 新增 CodeArts（码道 Agent）checkin 平台 · 开发文档
 
-> 产出：接口清单与字段定义 / 展示面板 Provider 数据结构 / 交互流程 / 改造清单 / 关键接口可用性实测
-> 输入源：`examples/codearts_解析结果`（HTTP 抓包解析，86 条，主域 `codearts.huaweicloud.com`）
-> 原始抓包：`examples/codearts.saz`（560KB，2026-09-08 09:15 GMT 采集，Edge 152 / Windows）
+> 产出：接口清单与字段定义 / 展示面板 Provider 数据结构 / 交互流程 / **登录与设备验证** / 改造清单 / 关键接口可用性实测
+> 输入源：`examples/codearts_解析结果`（86 条）、`examples/codearts2_解析结果`（257 条，含完整登录链路）
+> 原始抓包：`examples/codearts.saz`（2026-09-08 09:15 GMT）、`examples/codearts2.saz`（2026-09-10 04:37 GMT），Edge 152 / Windows
+> 参考实现：`D:/Code/Project/Python/HWCloud/cloud_space_huawei`（同作者华为云空间项目，含设备验证流程）
 > 姊妹文档：`checkin平台全流程方案.md`（WorkBuddy 侧，同构设计，可对照阅读）
-> 实测日期：2026-09-10 ｜ 文档版本：v1.0
+> 实测日期：2026-09-10 ｜ 文档版本：**v1.1**（新增 §1.8 登录与设备验证、§6.6 登录链路实测、§8 交付物）
 
 ---
 
@@ -68,6 +69,10 @@ CodeArts **纯 Cookie 会话 + WAF 令牌**，无 Bearer / 无 OAuth 头：
 | 无 | 无 `Authorization`、无 CSRF token（`_`/时间戳查询参数仅为缓存击穿） |
 
 > **注意**：`user_tag` 与 `domain_tag` 分别对应 `userId` 与 `domainId`（见 §2.6 `rest/me`），可用于快速识别账号身份。
+>
+> **★凭证怎么来**：CodeArts **无长效凭证、无 refresh 接口**，Cookie 会话寿命仅小时~天级。
+> 因此 Provider 必须实现「重新登录」——账号密码登录 + 新设备验证的完整协议见 **§1.8**，
+> 参考实现 `examples/codearts_login.py`。登录成功后 `cftk` 头直接取 cookie `devclouddevuibjtcftk`（实测两者恒等）。
 
 ### 1.4 全局常量
 - `regionId = "cn-north-4"`（华北-北京四）
@@ -100,6 +105,107 @@ HW-AJAX-REDIRECT: https://auth.huaweicloud.com/authui/login?service=
 
 ### 1.7 查询参数约定
 所有 GET 接口带 `?_=<unix_ms>`（缓存击穿）。**必带**，否则可能命中 CDN 缓存；值可用当前毫秒时间戳。
+
+### 1.8 ★★ 会话获取：账号密码登录 + 新设备验证（已实现）
+
+> 这一节解决**本项目最大的工程问题**：CodeArts 没有长效凭证，Cookie 小时~天级就失效，
+> 且失效时静默返回 HTTP 200（§1.6）。因此 Provider 必须能**自己重新登录**，而不是依赖一次抓包。
+>
+> 实现见 `examples/codearts_login.py`（纯标准库，无第三方依赖）。
+> 设计参考了同作者的华为云空间项目 `cloud_space_huawei/auth.py`（已跑通的设备验证流程），
+> 并按 codearts2 抓包校准了全部常量与端点前缀。
+
+#### 1.8.1 完整链路（9 步）
+
+| # | 方法 | 端点 | 作用 / 产出 |
+|---|---|---|---|
+| ① | GET | `auth.huaweicloud.com/authui/login.html?service=…` | 建立 WAF 会话（`HWWAFSESID` / `Site`） |
+| ② | GET | `auth.huaweicloud.com/authui/getSDKBaseInfo?flowType=unionLogin&service=…` | ★ **引导入口**：返回 `pageToken` / `pageTokenKey` / `state` / `localStorageID` / `hwidConfig`（内含 clientID、loginChannel、cookieVersion） |
+| ③ | POST | `id1…/UnifiedIDMPortal/ajaxHandler/login/jsRemoteLogin` | 预热。**固定返回 `10006003`（Can't get loginSiteID）**，属正常 |
+| ④ | POST | `id1…/UnifiedIDMPortal/ajaxHandler/common/dev` | 上报设备指纹 `fp` → 返回 `sid`（= `hwid_cas_sid`，**设备信任令牌**） |
+| ⑤ | POST | `id1…/UnifiedIDMPortal/ajaxHandler/common/analysisHealth` | 健康上报（服务端状态机要求） |
+| ⑥ | POST | `id1…/UnifiedIDMPortal/ajaxHandler/login/getLoginIdsByPwd` | 账号识别 → `accountInfoList`（`anonymousAccount` / `serial` / `countryCode`） |
+| ⑦ | POST | `id1…/UnifiedIDMPortal/ajaxHandler/login/unionLoginByPwd` | 密码登录 → `callbackURL` + `needPopTrust` |
+| ⑧ | — | `/CAS/portal/authIdentify.html` → `/CAS/IDM_W/ajaxHandler/{cloudIframeAuthIdentify/getPageInfo, cloudAuthLogin, updateTrustBrowser}` | **仅当 `needPopTrust=true`**（新设备）才走；见 §1.8.4 |
+| ⑨ | — | `callbackURL` → `…/oauth2/v3/authorize` → `oauth2/ajax/getLoginWay` → `CAS/remoteLogin` → `oauth2/v3/loginCallback` → `oauth2/ajax/login` → `authui/casLogin` → `authui/login` → `codearts…/personal-usage?ticket=ST-…` | OAuth 换票 → 落地业务会话 cookie |
+
+#### 1.8.2 关键常量（来自抓包，与旧版 CAS 不同）
+
+| 常量 | CodeArts（码道） | 备注 |
+|---|---|---|
+| `clientID` | **`103493351`** | 云空间项目是 `4805300` |
+| `reqClientType` | **`88`** | 云空间项目是 `1` |
+| `loginChannel` | **`88000000`** | 云空间项目是 `1000002` |
+| `cVersion` | `UP_CAS_6.26.2.100_blue` | 从 `getSDKBaseInfo` 的 `hwidConfig.cookieVersion` 动态取 |
+| `service` | `https://auth.huaweicloud.com/authui/casLogin?service=<业务页 URL-encoded>` | OAuth 的 `redirect_uri` 即为它 |
+| `scope` | `https://www.huawei.com/auth/account/unified.profile+…/risk.idstate+LoginState` | 三段，`+` 分隔 |
+| 登录 ajax 前缀 | **`/UnifiedIDMPortal/ajaxHandler`** | 新版 |
+| 设备验证 ajax 前缀 | **`/CAS/IDM_W/ajaxHandler`** | ★ 与登录阶段**不同前缀**，见 §1.8.4 |
+
+#### 1.8.3 设备指纹 `fp` 算法（★已逐字节验证）
+
+```
+serialized = "&".join(f"{encodeURIComponent(k)}={encodeURIComponent(v)}" for k, v in sorted(fields))
+body       = serialized + "&cs=" + SHA1(serialized)
+fp         = Base64( XOR(body) )            # XOR 密钥初值 211，每步 key ← 该步产出的密文字节
+```
+字段（按 key 升序，**空值也要保留**）：
+`bsh, bsw, canvas, devs, ep, epl, epls, ett, etz, fonts, ips, nacn, nan, nce, nlg, npf, sah, saw, sh, sw, webgl`
+
+**实测结论（4 条，均为现场复现）**：
+
+| 结论 | 证据 |
+|---|---|
+| `cs` 必须是 **SHA1**，用 MD5（云空间旧版算法）→ 服务端 200 但 `sid` 返回**空串** | 对照实验 F |
+| 服务端**不校验** `canvas`/`webgl`/`fonts`/`ep`/`epls` 的真实性——全部替换为伪造 SHA1 值，只要 `cs` 正确，照样签发 `sid` | 对照实验 C/D/E |
+| 因此 **纯 Python 生成指纹即可，无需 Playwright** | 本模块 `build_fp()` |
+| 用抓包里的真实 `fp` 逐字节重建成功（XOR + 字段排序 + 百分号编码风格全部一致） | `python codearts_login.py selftest` |
+
+> 注：XOR 的"加密"与"解密"是**两个不同函数**（都按**密文字节**滚动 key），不互为自反；
+> 且 XOR 输出必须用 `latin-1` 编码后再 Base64，用 `utf-8` 会破坏字节序列（会把长度从 744 撑到 928 并被服务端判为非法）。
+
+#### 1.8.4 新设备验证（`needPopTrust = true`）
+
+`unionLoginByPwd` 返回 `needPopTrust: true` 时（本机非受信设备），必须补做：
+
+```
+GET  /CAS/portal/authIdentify.html?loginUrl=…&service=…&reqClientType=88&loginChannel=88000000&…
+POST /CAS/IDM_W/ajaxHandler/common/getBaseSwitchInfo
+POST /CAS/IDM_W/ajaxHandler/cloudIframeAuthIdentify/getPageInfo   # pageName=cloudIframeAuthIdentify
+POST /CAS/IDM_W/ajaxHandler/common/dev                            # 用 authIdentify 页的 pageToken
+POST /CAS/IDM_W/ajaxHandler/common/analysisHealth                 # currentUri=/CAS/portal/authIdentify.html
+      ↓ 从 getPageInfo 的 localInfo.errorDesc.authCodeSentList 取验证设备列表
+      ↓（服务端此时已向默认设备发送验证码）
+POST /CAS/IDM_W/ajaxHandler/cloudAuthLogin      { twoStepVerifyCode, verifyAccountType, verifyUserAccount }
+POST /CAS/IDM_W/ajaxHandler/updateTrustBrowser  { operType: 2, trustBrowser: 1 }
+      ↓ 用 cloudAuthLogin 返回的新 callbackURL 重走 §1.8.1 第 ⑨ 步
+```
+
+**端点前缀的实测依据**：`authIdentify.html` 页面加载的 `/CAS/jsconfig/hwidConfig.js` 里
+`ajaxServer = "CAS"`，经 `moduleNameMap` 映射为 `CAS/IDM_W`；而登录页的
+`/UnifiedIDMPortal/jsconfig/hwidConfig.js` 中 `ajaxServer = "UnifiedIDMPortal"`。
+现场对照请求确认：同名单在 `/UnifiedIDMPortal/ajaxHandler/` 下 **404**，在 `/CAS/IDM_W/ajaxHandler/` 下返回结构化 JSON。
+
+**已现场验证**：按上述参数调用 `cloudIframeAuthIdentify/getPageInfo` 返回 **`isSuccess: 1`**（含 `pageToken`/`pageTokenKey`/`localInfo.flowID`），证明参数集被服务端接受。
+
+#### 1.8.5 `hwid_cas_sid` —— 免验证的持久化关键（★务必保存）
+
+| 行为 | 实测结果 |
+|---|---|
+| 请求带已有 `hwid_cas_sid` | 服务端**原样回显**，并写入 `Domain=id1.cloud.huawei.com; Max-Age=315360000`（**10 年**）的 cookie |
+| 请求不带 | 服务端每次会话**新签发**一个 `sid`（同一会话内幂等，跨会话不同） |
+
+⇒ Provider 只要把 `hwid_cas_sid` 随会话一起持久化，**后续重登自带受信设备身份，不会再触发设备验证**。
+`examples/codearts_login.py` 已将其写入会话文件（`--session`，默认 `.codearts_session.json`）。
+
+#### 1.8.6 落地得到的业务会话 cookie
+
+| Cookie | 来源 | 用途 |
+|---|---|---|
+| `devclouddevuibjJ_SESSION_ID` | 第 ⑨ 步跟到 `codearts…/personal-usage?ticket=ST-…` | 业务会话主凭据 |
+| `devclouddevuibjagencyID` | 同上 | 租户/代理标识（= `domainId`） |
+| `devclouddevuibjtcftk` | 第 ⑨ 步最后再访问一次干净页 | ★ **WAF 令牌**，同时作为请求头 `cftk` 发送（实测两者恒等） |
+| `user_tag` / `domain_tag` / `cbc-sid` / `vk` / `ua` / `HWWAFSESID` | `authui/casLogin` 环节 | 辅助 |
 
 ---
 
@@ -388,13 +494,48 @@ interface CheckinSnapshot {
 ```ts
 interface CheckinProvider {
   meta: CheckinProviderMeta;
-  establishSession(): Promise<Session>;              // CodeArts 仅需导入 Cookie jar（含 cftk）
+  establishSession(): Promise<Session>;              // ★见下：账号密码登录 + 新设备验证
   getStatus(session: Session): Promise<CheckinSnapshot>;
   checkIn(session: Session): Promise<CheckinResult>; // ★先 has-claimed，再 claim
   claim(session: Session, tier?: string): Promise<ClaimResult>; // 不适用（无档位），抛 NotImplemented
   poll(session: Session, intervalMs: number): void;
 }
 ```
+
+#### `establishSession()` 实现要点（★本项目核心）
+CodeArts 无长效凭证 → 必须能**自动重新登录**（协议见 §1.8，参考实现 `examples/codearts_login.py`）：
+
+```ts
+async establishSession(saved?: Session): Promise<Session> {
+  // 1) 复用已保存会话：把 cookies + hwid_cas_sid 灌回 jar
+  //    ★ hwid_cas_sid 是受信设备令牌（10 年），带上它能跳过设备验证
+  if (saved) restore(saved);
+
+  // 2) 仅当「本地已有会话」时才先探活，避免无谓登录
+  if (saved && await this.probe()) return saved;      // probe: 看 HW-AJAX-REDIRECT 头
+
+  // 3) 走账号密码登录（§1.8.1 九步），拿到业务 cookie
+  const r = await login(account, password, saved);
+  if (r.needVerify) {
+    const vr = await sendVerifyCode();                // getPageInfo → authCodeSentList
+    const code = await askUser(vr.devices);           // ← 唯一需要人工介入的环节
+    await verifyDevice(code);                         // cloudAuthLogin + updateTrustBrowser + 重走 OAuth
+  }
+  await save({ cookies, hwid_cas_sid });              // ★ 必须把 hwid_cas_sid 一起存
+  return session;
+}
+```
+
+**失败/降级分支**：
+
+| 场景 | 处理 |
+|---|---|
+| `getLoginIdsByPwd` → `10000400` | 账号或密码错误，**终止**（继续调用 `unionLoginByPwd` 只会得到 `10000600`，见 §6.6） |
+| `getLoginIdsByPwd` → `10000201` | 需要图片验证码，当前实现未接入 → 提示用户改用浏览器登录后导出 cookie |
+| `unionLoginByPwd` → `needPopTrust: true` | 走设备验证；若用户无法提供验证码，降级为"提示手动登录" |
+| `common/dev` 返回 `sid` 为空串 | 指纹非法（`cs` 不对/编码错），见 §1.8.3 |
+| 业务 cookie 三缺一 | 登录未完成，报错并保留已获取的 `hwid_cas_sid` 供下次重试 |
+
 
 #### `checkIn()` 实现要点（★与 WorkBuddy 的差异）
 ```ts
@@ -515,27 +656,95 @@ capture 008  GET  /portal/rest/me                                             �
 
 ### 6.5 结论与风险
 - ✅ **端点与字段已确证**：`has-claimed` / `claim` 的路径、方法、请求体、响应形态（裸布尔）全部由抓包实证，Provider 可据此实现。
-- ⚠️ **本次未能完成真机实测**：抓包 Cookie 已于 2 天内失效，`claim` 写入被安全策略跳过。**建议补一次实测**（详见 §8）。
+- ✅ **登录链路已可自动化**：`examples/codearts_login.py` 已完成账号密码登录 + 新设备验证，见 §6.6。
+- ⚠️ **本次未能完成签到真机实测**：抓包 Cookie 已于 2 天内失效，`claim` 写入被安全策略跳过。**建议补一次实测**（详见 §7）。
 - ⚠️ **★最高优先级风险**：登录态失效**不改 HTTP 状态码**（见 §1.6）。任何「只看 `resp.status === 200` 判成功」的代码在 CodeArts 上都会静默失败。
 - ⚠️ **响应信封五种混用**（§1.1），且 `countDownInfos`/`countDownTips`/`orderList` 是**字符串化 JSON**，需二次解析。
 - ⚠️ **`claim` 不返回发放积分数量**，需另查 `package_overview` 才能确认入账。
-- ⚠️ **凭证寿命短**：Cookie 会话约小时~天级，Provider 必须实现失效探测与重新登录引导（无法静默刷新，无 refresh 接口）。
 - ⚠️ **无连续签到体系**：面板需为 CodeArts 隐藏「连续天数环 / 热力图 / 补签卡 / 抽奖」等 WorkBuddy 专属卡片。
+- ⚠️ **账号密码登录需要人工介入**：新设备需在受信设备上收验证码；图片验证码（`10000201`）未接入。
+
+### 6.6 登录链路实测（2026-09-10 现场复现）
+
+对 `examples/codearts_login.py` 的每一环做了真实联网验证（**除账号密码本身外，其余全部验证通过**）：
+
+| 步骤 | 验证方式 | 结果 |
+|---|---|---|
+| ① 引导 + ② `getSDKBaseInfo` | 真实请求 | ✅ `isSuccess=1`，取到 `pageToken`/`state`/`cVersion=UP_CAS_6.26.2.100_blue` |
+| ③ `jsRemoteLogin` | 真实请求 | ✅ **误差码与服务端一字不差复现**：`10006003 Can't get loginSiteID` |
+| ④ `common/dev`（纯 Python fp） | 真实请求 | ✅ `isSuccess=1`，签发真实 `sid`（64 字符） |
+| ⑤ `analysisHealth` | 真实请求 | ✅ `isSuccess=1` |
+| ⑥ `getLoginIdsByPwd` | 用**不存在的账号**（不触碰真实账号） | ✅ 抵达账号校验后端：`10000400 / chkHwidAccount / 70002003` |
+| ⑦ `unionLoginByPwd` | 同上 | ⚠️ 返回 `10000600 Current page has expired`（见下"归因结论"） |
+| ⑧ `cloudIframeAuthIdentify/getPageInfo` | 真实请求（带完整参数） | ✅ **`isSuccess=1`**，返回有效 `pageToken`/`pageTokenKey`/`localInfo.flowID` → 参数集被服务端接受 |
+| ⑧ 端点前缀 | 对照请求 | ✅ 同名单在 `/UnifiedIDMPortal/ajaxHandler/` 下 **404**，在 `/CAS/IDM_W/ajaxHandler/` 下正常 |
+| fp 算法 | 与抓包逐字节对拍 | ✅ `python codearts_login.py selftest` 全部通过 |
+
+**⑦ 的归因结论（重要）**：
+对 `unionLoginByPwd` 做了 10 组参数扫描（去掉 `hwid_cas_sid`、换用抓包旧 `sid`、跳过 ⑥、
+重新 bootstrap 换新 `pageToken`、重复 ③ 预热、`opType=1`、补 `jsRemoteLogin` 风格字段、
+去掉设备字段、置空 `service`），**全部返回同一个 `10000600`** ⇒ **与参数无关，是服务端页面状态机的问题**。
+
+结合抓包顺序（④⑤⑥ 全部成功 → ⑦ 才成功）可以判定：
+**`unionLoginByPwd` 要求当前 pageToken 已处于"账号识别成功"状态**，而用假账号时 ⑥ 必然失败，
+页面状态无法推进。⇒ 这一步**只能在真实账号下才能跑到**，不是本实现的缺陷。
+
+> 因此：请用真实账号跑一次
+> ```bash
+> cd examples
+> python codearts_login.py login --account 173xxxxxxxx --password '***'
+> ```
+> 预期：若本机为受信设备 → 直接成功；若为新设备 → 打印验证设备列表并提示输入验证码。
 
 ---
 
 ## 7. 待确认 / 后续
 
-1. **补一次真机实测（★首要）**：重新抓包（或导出浏览器 Cookie）后运行
+1. **用真实账号跑通登录（★首要）**：
    ```bash
-   cd examples && python codearts_test.py
+   cd examples
+   python codearts_login.py login --account 173xxxxxxxx --password '***'
    ```
-   重点确认：① `claim` 重复调用的返回（`false` 还是错误码）；② 失效 Cookie 的准确寿命；③ `has-claimed=false` 时 `claim` 的真实响应头。
-2. **`claim` 的幂等语义**：目前只能靠客户端「先读后写」规避；若服务端对重复调用返回 `false`，Provider 应把 `false` 映射为 `alreadyCheckedIn` 而非失败。
-3. **每日积分数量**：`daily_bonus` 每次发放多少积分？接口未返回，需对比领取前后 `package_overview.package_credit_remain` 差值补齐。
-4. **是否存在连续签到/累计奖励**：CodeArts 抓包中未出现任何 streak/连续签到字段，**初步判断不存在**；可访问页面确认有无未触发的隐藏接口。
-5. **是否与 WorkBuddy 双 Provider 并列展示**：统一 `CheckinProvider` 契约已就绪，CodeArts 需处理大量 `null` 字段。
-6. **Cookie 的获取方式**：CodeArts 无类似 `client-login` 的 code 换 session 流程，凭证只能从浏览器导出。若要支持多账号自动签到，需评估华为云 IAM 的长期凭证（AK/SK）是否可用于该 Portal API（当前抓包中**未使用** AK/SK 签名）。
+   重点确认：① 本机是否被判定为新设备（`needPopTrust`）；② 若为新设备，验证设备列表
+   （`authCodeSentList`）里 `name` / `accountType` 的实际取值；③ ⑨ 步落地后三个业务
+   cookie 是否齐全。跑通后即可接着实测签到：
+   ```bash
+   python codearts_test.py --session .codearts_session.json
+   ```
+2. **补一次签到真机实测**：确认 ① `claim` 重复调用的返回（`false` 还是错误码）；
+   ② 失效 Cookie 的准确寿命；③ `has-claimed=false` 时 `claim` 的真实响应头。
+3. **`claim` 的幂等语义**：目前只能靠客户端「先读后写」规避；若服务端对重复调用返回 `false`，Provider 应把 `false` 映射为 `alreadyCheckedIn` 而非失败。
+4. **每日积分数量**：`daily_bonus` 每次发放多少积分？接口未返回，需对比领取前后 `package_overview.package_credit_remain` 差值补齐。
+5. **是否存在连续签到/累计奖励**：CodeArts 抓包中未出现任何 streak/连续签到字段，**初步判断不存在**；可访问页面确认有无未触发的隐藏接口。
+6. **是否与 WorkBuddy 双 Provider 并列展示**：统一 `CheckinProvider` 契约已就绪，CodeArts 需处理大量 `null` 字段。
+7. **图片验证码（`10000201`）**：新设备/风控场景下 `getLoginIdsByPwd` 可能要求网易易盾图片验证码
+   （`hwidConfig.csCaptchaUrl` / `cscSceneId=login` / `displayCaptchaType=1`）。当前实现只做报错提示，
+   未接入识别。若触发频率高，可考虑：接 Playwright 走真实浏览器登录，或复用 `cloud_space_huawei`
+   项目的 `_get_image_verify_code()`（若该版本仍走传统图形码）。
+8. **`hwmeta` 风控字段**：抓包中 `unionLoginByPwd` 带一个长 base64 的 `hwmeta`（JS 运行时生成），
+   本实现默认传空串。由 §6.6 的参数扫描可知它**不是** `10000600` 的成因，但真实账号登录时是否
+   需要它尚未验证——若真实登录报风控错误，优先怀疑此项。
+
+---
+
+## 8. 交付物
+
+| 文件 | 说明 |
+|---|---|
+| `examples/codearts_login.py` | ★ 登录模块（账号密码 + 新设备验证 + fp 生成 + 会话持久化 + 探活） |
+| `examples/codearts_test.py` | 签到接口实测脚本，`--session` 可直接消费上者产出的会话 |
+| `examples/.codearts_session.json`（运行时生成，已 gitignore） | 会话 + `hwid_cas_sid`（设备信任令牌，10 年） |
+
+```bash
+# 0) 离线自检（不联网）
+python examples/codearts_login.py selftest
+
+# 1) 登录（首次新设备需输入验证码）
+python examples/codearts_login.py login --account 173xxxxxxxx --password '***'
+
+# 2) 用新鲜会话实测签到接口
+python examples/codearts_test.py --session examples/.codearts_session.json
+```
 
 ---
 
@@ -564,3 +773,35 @@ capture 008  GET  /portal/rest/me                                             �
 | 19 | GET | `/portal/nps-website/api/get_commit_date?surveyId=…` | NPS 问卷（无关） |
 | — | POST | `furiondata.myhuaweicloud.com/furiondataserver/{fr,api/pages}` | 埋点（忽略） |
 | — | GET | `furiondata.myhuaweicloud.com/furiondataserver/{check,checkStyle}` | 埋点（忽略） |
+
+### 附.2 登录 / 设备验证端点速查表（§1.8 实现）
+
+前缀变量：
+`NEW = https://id1.cloud.huawei.com/UnifiedIDMPortal/ajaxHandler`
+`CAS = https://id1.cloud.huawei.com/CAS/IDM_W/ajaxHandler`
+（**同名 handler 在 `NEW` 与 `CAS` 下不可互换**，实测见 §1.8.4）
+
+| 阶段 | Method | URL | 关键参数 / 产出 |
+|---|---|---|---|
+| ② | GET | `https://auth.huaweicloud.com/authui/getSDKBaseInfo?flowType=unionLogin&service=…` | → `pageToken` / `pageTokenKey` / `state` / `localStorageID` / `hwidConfig` |
+| ③ | POST | `NEW/login/jsRemoteLogin` | `pageToken,pageTokenKey,state,loginUrl,service,themeName,jsSiteID,scope,client_id,access_type,regionCode,localStorageID` → 固定 `10006003` |
+| ④ | POST | `NEW/common/dev` | `+fp`（可选 `hwid_cas_sid`,`localStorageID`）→ `sid` |
+| ⑤ | POST | `NEW/common/analysisHealth` | `operType=1000, message=<JSON>, illnessType=0` |
+| ⑥ | POST | `NEW/login/getLoginIdsByPwd` | `+userAccount(0086+手机号),password` → `accountInfoList` |
+| ⑦ | POST | `NEW/login/unionLoginByPwd` | `+service,bsAcctService,hwmeta,opType=0,scope,access_type,anonymousLoginID,registerCountry,serial` → `callbackURL`,`needPopTrust` |
+| ⑧ | GET | `https://id1.cloud.huawei.com/CAS/portal/authIdentify.html` | 新设备时的验证页 |
+| ⑧ | POST | `CAS/common/getBaseSwitchInfo` | — |
+| ⑧ | POST | `CAS/cloudIframeAuthIdentify/getPageInfo` | `pageName=cloudIframeAuthIdentify, interfaceName=…/getPageInfo, urlParam=…` → `pageToken`,`localInfo.errorDesc.authCodeSentList` |
+| ⑧ | POST | `CAS/common/dev` / `CAS/common/analysisHealth` | 用 ⑧ 的 pageToken；`currentUri=/CAS/portal/authIdentify.html` |
+| ⑧ | POST | `CAS/cloudAuthLogin` | `twoStepVerifyCode, verifyAccountType, verifyUserAccount` → 新 `callbackURL` |
+| ⑧ | POST | `CAS/updateTrustBrowser` | `operType=2, trustBrowser=1` |
+| ⑨ | POST | `https://oauth-login1.cloud.huawei.com/oauth2/ajax/getLoginWay` | body = authorize URL **全部查询参数** → `signatureInfo`,`loginInteractInfo.cas.casLoginRedirectUrl` |
+| ⑨ | GET | `<casLoginRedirectUrl>` | 302 → `oauth2/v3/loginCallback?…` |
+| ⑨ | GET | `<loginCallback>` | 建立 OAuth ticket 状态（**不可跳过**） |
+| ⑨ | POST | `https://oauth-login1.cloud.huawei.com/oauth2/ajax/login` | `signatureInfo` 全字段 + `ticket,siteID,countryCode` → `code` |
+| ⑨ | GET | `<code>` → `authui/casLogin` → `authui/login` → `codearts…?ticket=ST-…` | ⇒ `devclouddevuibjJ_SESSION_ID`,`devclouddevuibjagencyID`,`user_tag`,`domain_tag` |
+| ⑨ | GET | `codearts…/portal/settings/personal-usage?locale=zh-cn` | ⇒ `devclouddevuibjtcftk`（= 请求头 `cftk`） |
+
+> 公共请求头：`Content-Type: application/x-www-form-urlencoded`、`Origin: https://auth.huaweicloud.com`、
+> `Referer: https://auth.huaweicloud.com/`；URL 追加 `?reflushCode=<随机小数>&cVersion=<cookieVersion>`。
+

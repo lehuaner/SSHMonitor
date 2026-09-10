@@ -11,6 +11,15 @@ codearts_test.py —— CodeArts（码道 / CodeArts Agent）签到接口可用�
 
 鉴权形态：纯 Cookie + cftk 头（华为云 WAF / APISIX 前置），无 Bearer。
 
+凭证来源（二选一）：
+  1. 抓包模板（默认）—— 从 codearts_解析结果/036_..._credit_claim/请求.txt 读 cookie/cftk
+  2. 实时登录会话 —— `--session .codearts_session.json`
+     由 codearts_login.py 生成（账号密码登录 + 新设备验证），cookie 是新鲜的
+     ```bash
+     python codearts_login.py login --account 173xxxx --password '***'
+     python codearts_test.py --session .codearts_session.json
+     ```
+
 安全性：
   · 阶段 1 全部只读（has-claimed / package_overview / rest/me）
   · 阶段 2 仅在「has-claimed = false」时才调用 claim —— 这是每日一次的可重复动作，
@@ -19,6 +28,7 @@ codearts_test.py —— CodeArts（码道 / CodeArts Agent）签到接口可用�
 输出：examples/_test_results_codearts.txt 、 examples/_evidence_codearts.json
 """
 
+import argparse
 import json
 import os
 import re
@@ -58,6 +68,25 @@ def parse_headers(path):
 H = parse_headers(TEMPLATE)
 COOKIE = H.get("cookie", "")
 CFTK = H.get("cftk", "")
+CRED_SOURCE = "capture(2026-09-08)"
+
+
+def use_session(path):
+    """用 codearts_login.py 产出的会话文件替换抓包凭证。
+
+    会话文件里的 cookie 是刚登录得到的新鲜值；`cftk` 头取 cookie
+    `devclouddevuibjtcftk`（实测两者恒等）。
+    """
+    global COOKIE, CFTK, CRED_SOURCE
+    with open(path, encoding="utf-8") as fh:
+        sess = json.load(fh)
+    cks = sess.get("cookies", {})
+    COOKIE = "; ".join("%s=%s" % (k, v) for k, v in cks.items() if v)
+    CFTK = cks.get("devclouddevuibjtcftk", "")
+    age = int(time.time()) - int(sess.get("savedAt", 0))
+    CRED_SOURCE = "session(%s，%d 秒前登录)" % (os.path.basename(path), age)
+    return sess
+
 
 
 def call(label, method, path, body=None, note="", use_cookie=True):
@@ -131,8 +160,8 @@ def main():
 
     log.append("=" * 82)
     log.append("CodeArts 签到接口可用性实测")
-    log.append(f"凭证来源: codearts_解析结果/036_..._credit_claim/请求.txt")
-    log.append(f"cookie 长度: {len(COOKIE)}  |  cftk: {CFTK[:20]}...")
+    log.append(f"凭证来源: {CRED_SOURCE}")
+    log.append(f"cookie 长度: {len(COOKIE)}  |  cftk: {(CFTK or '<无>')[:20]}...")
     log.append("=" * 82)
 
     # ---- 阶段 1：只读 ---------------------------------------------------
@@ -203,4 +232,10 @@ def main():
 
 
 if __name__ == "__main__":
+    ap = argparse.ArgumentParser(description="CodeArts 签到接口可用性实测")
+    ap.add_argument("--session", default=None,
+                    help="用 codearts_login.py 生成的会话文件替代抓包凭证（推荐）")
+    args = ap.parse_args()
+    if args.session:
+        use_session(args.session)
     sys.exit(main())

@@ -10,6 +10,11 @@
 # Cloudflare API Token 说明与明文
 cloudflaretoken
 cloudflaretoken.txt
+# 登录会话（含 cookie 与设备信任令牌 hwid_cas_sid，等同账号凭证）
+.codearts_session.json
+**/.codearts_session.json
+# 临时探测脚本（一次性验证用，验证完即删）
+**/_probe_*.py
 *.token
 *.pem
 *.key
@@ -24,6 +29,11 @@ cloudflaretoken.txt
 # --------------------------------------------------------------------------
 examples/**/*.saz
 *.saz
+
+# ★ codearts2 抓包（2026-09-10）的登录请求体里含【明文账号密码】，
+#   以及有效期内的会话 cookie —— 严禁提交。
+#   如需版本化该抓包证据，请先脱敏（把 password= 值替换为 ***）再放行。
+examples/codearts2_解析结果/
 
 # --------------------------------------------------------------------------
 # 3. 抓包解析结果中的静态资源响应体
