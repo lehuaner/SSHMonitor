@@ -25,6 +25,8 @@ export function getProviderSchemas() {
     id: p.id,
     name: p.name,
     capabilities: p.capabilities || [],
+    // ★「账号名称」输入框的占位提示由各 provider 自己给（不同平台的命名习惯不同）
+    namePlaceholder: p.namePlaceholder || null,
     configSchema: p.configSchema || [],
   }));
 }

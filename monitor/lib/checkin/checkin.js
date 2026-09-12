@@ -197,6 +197,11 @@ export class CheckinClient {
 
   /**
    * 查询账户全部权益包（含各包积分额度与已用量），并从中提取每日签到记录。
+   *
+   * ★start_time / end_time 是上游原样给的 epoch 秒（实测：签到包 start→end 恰为 31 天，
+   *   如 checkin_20260814 → start 1786745857 / end 1789424257）。
+   *   这里一并把 endMs（epoch 毫秒）带上，供「积分过期提醒」直接消费，避免下游再猜单位。
+   *
    * @returns {Promise<{total:number, packs:Array, checkins:Array}>}
    */
   async totalCredits() {
@@ -206,6 +211,8 @@ export class CheckinClient {
       const info = p.entitlement_base_info || {};
       const limit = info.quota?.credits_limit;
       const used = p.usage?.credits_amount ?? 0;
+      const startSec = Number(info.start_time) || null;
+      const endSec = Number(info.end_time) || null;
       const pack = {
         desc: p.display_desc,
         group: p.group_name,
@@ -213,6 +220,10 @@ export class CheckinClient {
         used,
         // 无 credits_limit 的包（如订阅）不计入积分
         remaining: limit == null ? null : limit - used,
+        // ★到期时间：积分过期提醒的数据源（endMs 为 null 表示该包无到期概念）
+        startTime: startSec,
+        endTime: endSec,
+        endMs: endSec && endSec > 0 ? endSec * 1000 : null,
       };
       // 每日签到记录：entitlement_id 形如 checkin_YYYYMMDD_<userId>
       const m = /^checkin_(\d{8})(?:_|$)/.exec(info.entitlement_id || '');

@@ -7,40 +7,8 @@
  *   - 把 CheckinClient 抛出的错误归一化分类（invalid=凭证无效 / transient=临时失败）
  */
 import { CheckinClient, decodeJwtClaims, parseSidGuardExpiry, deriveDevice } from '../checkin/checkin.js';
-
-// 常见时区（下拉候选，可自定义）
-const TIMEZONES = [
-  ['Asia/Shanghai', '中国 上海 (Asia/Shanghai)'],
-  ['Asia/Hong_Kong', '中国 香港 (Asia/Hong_Kong)'],
-  ['Asia/Taipei', '中国 台湾 (Asia/Taipei)'],
-  ['Asia/Tokyo', '日本 东京 (Asia/Tokyo)'],
-  ['Asia/Seoul', '韩国 首尔 (Asia/Seoul)'],
-  ['Asia/Singapore', '新加坡 (Asia/Singapore)'],
-  ['Asia/Kolkata', '印度 (Asia/Kolkata)'],
-  ['Asia/Dubai', '阿联酋 迪拜 (Asia/Dubai)'],
-  ['Europe/London', '英国 伦敦 (Europe/London)'],
-  ['Europe/Paris', '法国 巴黎 (Europe/Paris)'],
-  ['Europe/Berlin', '德国 柏林 (Europe/Berlin)'],
-  ['America/New_York', '美国 纽约 (America/New_York)'],
-  ['America/Chicago', '美国 芝加哥 (America/Chicago)'],
-  ['America/Los_Angeles', '美国 洛杉矶 (America/Los_Angeles)'],
-  ['America/Toronto', '加拿大 多伦多 (America/Toronto)'],
-  ['Australia/Sydney', '澳大利亚 悉尼 (Australia/Sydney)'],
-  ['Pacific/Auckland', '新西兰 奥克兰 (Pacific/Auckland)'],
-  ['UTC', 'UTC 协调世界时'],
-];
-
-// 签到时间（下拉候选，每小时一个）
-const TIMES = Array.from({ length: 24 }, (_, h) => {
-  const hh = String(h).padStart(2, '0');
-  return [hh + ':00', hh + ':00'];
-});
-
-// 连续失败告警阈值（下拉候选）
-const THRESHOLDS = [1, 2, 3, 5, 10].map((v) => [String(v), String(v) + ' 次']);
-
-// Cookie 到期提前通知天数（下拉候选）
-const EXPIRY_DAYS = [1, 2, 3, 5, 7, 14].map((v) => [String(v), String(v) + ' 天前']);
+// 三个平台共用的表单常量与「积分过期提醒」配置片段
+import { TIMEZONES, TIMES, THRESHOLDS, EXPIRY_DAYS, creditExpirySchema } from './common.js';
 
 // JWT 剩余有效期低于该值时用 Cookie 换新 token
 const TOKEN_MIN_REMAINING_MS = 60 * 60 * 1000;
@@ -105,7 +73,17 @@ async function buildClient(task) {
 export default {
   id: 'trae',
   name: 'Trae',
-  capabilities: ['checkin', 'credits', 'credentialTest', 'status', 'totalCredits', 'sessionProbe'],
+  capabilities: ['checkin', 'credits', 'credentialTest', 'status', 'totalCredits', 'sessionProbe', 'usage', 'packages'],
+  // 会话巡检 / 「改凭证即解除失效」都按这个声明取键（不声明会回落 cookie/token，
+  // 但显式写出来才与 WorkBuddy/CodeArts 一致，也被自检覆盖）
+  sessionCredentialKeys: ['cookie'],
+  // ★用量能力声明：Trae 会话明细（usageGroupBySession）的 extra_info 含 input_token/output_token
+  usageMeta: {
+    tokens: true,
+    tokenNote: null,
+  },
+  // 「新增账号 → 名称」输入框的占位提示（各平台命名习惯不同）
+  namePlaceholder: '例：Trae 主账号',
   configSchema: [
     { key: 'cookie', label: 'Cookie (网页登录凭证)', type: 'password', required: true,
       placeholder: '粘贴浏览器请求头 cookie: 后的整段原值',
@@ -129,6 +107,7 @@ export default {
     { key: 'cookieExpiryNotifyDays', label: 'Cookie 到期前何时通知', type: 'select', default: 1,
       options: EXPIRY_DAYS.map(([v, l]) => ({ value: v, label: l })) },
     { key: 'notifyOnSuccess', label: '成功也发通知', type: 'toggle', default: false },
+    ...creditExpirySchema(),
   ],
 
   /** 执行一次签到，返回结构化结果 */
@@ -186,6 +165,50 @@ export default {
       const client = await buildClient(task);
       const tc = await client.totalCredits();
       return { ok: true, total: tc.total, packs: tc.packs, checkins: tc.checkins };
+    } catch (err) {
+      throw classify(err);
+    }
+  },
+
+  /**
+   * 权益包明细（面板「权益包」浮层 + 积分过期提醒 的数据源）。
+   *
+   * ★完全复用 getTotalCredits()（底层是同一个 user_current_entitlement_list 端点），
+   *   只是把 packs 映射成各平台统一的 { packageName, remain, size, used, cycleStart, cycleEnd, cycleEndMs }。
+   *   Trae 的 start_time / end_time 是 epoch 秒，cycleEndMs 直接给毫秒，下游无需再猜单位。
+   */
+  async getPackages(task) {
+    try {
+      // 走 buildClient（含 Cookie→JWT 自动刷新），不打 this，避免调用方未绑定 this 时炸掉
+      const client = await buildClient(task);
+      const tc = await client.totalCredits();
+      const packs = tc.packs || [];
+      const list = packs.map((p) => ({
+        kind: /^checkin_/i.test(String(p.desc || '')) ? 'credit' : 'credit',
+        packageCode: p.desc || p.group || 'trae',
+        packageName: [p.group, p.desc].filter(Boolean).join(' · ') || '权益包',
+        remain: p.remaining == null ? 0 : p.remaining,
+        size: p.limit == null ? null : p.limit,
+        used: p.used || 0,
+        unit: 'credits',
+        // 展示用：本地时间串（下游只按天聚合，精度够用）
+        cycleStart: p.startTime ? new Date(p.startTime * 1000).toISOString().slice(0, 10) : '',
+        cycleEnd: p.endTime ? new Date(p.endTime * 1000).toISOString().slice(0, 10) : '',
+        // ★归一后的到期毫秒（积分过期提醒直接读这个）
+        cycleEndMs: p.endMs || null,
+      }));
+      return {
+        ok: true,
+        total: tc.total,
+        capacity: null,
+        used: null,
+        list,
+        free: list.length,
+        paid: 0,
+        perPackage: true,
+        source: 'user_current_entitlement_list',
+        summary: list.map((x) => ({ code: x.packageName, total: x.size, remain: x.remain, used: x.used })),
+      };
     } catch (err) {
       throw classify(err);
     }
