@@ -55,6 +55,8 @@ input:focus,select:focus{border-color:#38bdf8}
 .log-day.fail{background:rgba(239,68,68,.18);color:#ef4444}
 .log-day.invalid{background:rgba(217,119,6,.18);color:#f59e0b}
 .log-day.skip{background:#1e293b;color:#475569}
+/* 远端签到记录（平台侧历史）：本机未跑过，但平台确认当天签过 → 与「本机成功」用不同色区分 */
+.log-day.remote{background:linear-gradient(135deg,#0369a1,#0ea5e9);color:#fff;border:1px solid #38bdf8;box-shadow:0 0 6px rgba(14,165,233,.35)}
 .log-day .d{font-size:.6rem;font-weight:600}
 .log-day .v{font-size:.5rem}
 .log-day.ok .v{font-weight:800;font-size:.62rem}
@@ -93,6 +95,14 @@ input:focus,select:focus{border-color:#38bdf8}
 .modal-close:hover{color:#ef4444}
 .field-toggle{display:flex;align-items:center;justify-content:space-between;padding:6px 0}
 .field-toggle label{font-size:.75rem;color:#94a3b8}
+/* 配置分组折叠（如「积分过期提醒」）：schema 里带 group 的字段会被收进同一个 details */
+.cfg-group{border:1px solid #1e293b;border-radius:8px;margin:10px 0;background:#0f172a}
+.cfg-group>summary{cursor:pointer;list-style:none;padding:9px 12px;font-size:.78rem;font-weight:600;color:#cbd5e1;display:flex;align-items:center;gap:6px}
+.cfg-group>summary::-webkit-details-marker{display:none}
+.cfg-group>summary::before{content:"▸";color:#64748b;transition:transform .15s}
+.cfg-group[open]>summary::before{content:"▾"}
+.cfg-group>summary:hover{color:#e2e8f0}
+.cfg-group-body{padding:2px 12px 10px}
 @media(max-width:600px){.form-row{grid-template-columns:1fr;gap:4px}}
 </style>
 <div class=app>
@@ -111,7 +121,11 @@ input:focus,select:focus{border-color:#38bdf8}
 <!-- 图表浮层 -->
 <div class=overlay id=chartsOverlay onclick="if(event.target===this)closeCharts()">
 <div class=modal style=max-width:920px>
-<div class=modal-h><label id=chartsTitle>📈 Trae 消耗统计</label><span class=modal-close onclick=closeCharts()>✕</span></div>
+<div class=modal-h><label id=chartsTitle>📈 消耗统计</label><span class=modal-close onclick=closeCharts()>✕</span></div>
+<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px">
+  <label style="font-size:.75rem;color:#94a3b8">平台</label>
+  <div id=chartsProv style="display:flex;gap:4px;flex-wrap:wrap"></div>
+</div>
 <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:8px">
   <label style="font-size:.75rem;color:#94a3b8">账号</label>
   <select id=chartsAccount onchange="renderCharts();renderStats()" style="width:auto;padding:4px 8px;font-size:.75rem"></select>
@@ -120,8 +134,9 @@ input:focus,select:focus{border-color:#38bdf8}
   <button class="btn btn-sm" id=chartsUnitBtn onclick=toggleUnit() title="切换 积分 / Token">积分</button>
   <button class="btn btn-sm btn-primary" onclick=loadData()>↻ 刷新</button>
 </div>
+<div id=dataNote style="display:none;font-size:.72rem;line-height:1.5;padding:6px 10px;border-radius:6px;margin-bottom:8px"></div>
 <div class=card style="border:1px solid #1e293b;margin-bottom:10px">
-  <div class=card-h><label>📊 积分消耗统计</label>
+  <div class=card-h><label id=statsTitle>📊 积分消耗统计</label>
     <div style="display:flex;gap:8px;align-items:center">
       <select id=statsFilter onchange=renderStats() style="width:auto;padding:4px 8px;font-size:.75rem">
         <option value=total>总消耗</option>
@@ -144,7 +159,7 @@ input:focus,select:focus{border-color:#38bdf8}
 <div class=modal>
 <div class=modal-h><label id=modalTitle>新增账号</label><span class=modal-close onclick=closeModal()>✕</span></div>
 <div class=form-row><label>Provider</label><select id=f_provider onchange=renderFields()></select></div>
-<div class=form-row><label>名称</label><input id=f_name placeholder="例：Trae 主账号"></div>
+<div class=form-row><label>名称</label><input id=f_name placeholder="例：账号名称"></div>
 <div id=f_fields></div>
 <div class=field-toggle><label>启用计划</label><label class=toggle><input type=checkbox id=f_enabled checked><span class=slider></span></label></div>
 <div style="display:flex;gap:8px;margin-top:14px">
@@ -193,6 +208,7 @@ async function loadData(){
   autoCheck();
 }
 function provName(id){const p=providers.find(x=>x.id===id);return p?p.name:id;}
+function provCaps(id){const p=providers.find(x=>x.id===id);return (p&&p.capabilities)||[];}
 // 图表按钮：显示当前账号所属 provider 名，点击打开图表浮层
 function updateChartsBtn(){
   const btn=$('#chartsBtn');
@@ -219,6 +235,13 @@ function render(){
     const todayCheck=t.todayCheckedIn===true?'今日已签':(t.todayCheckedIn===false?'今日未签':'今日未检测');
     const todayCls=t.todayCheckedIn===true?'ok':(t.todayCheckedIn===false?'warn':'');
     const reward=t.lastResult==='success'?'':'';
+    // 设备验证按钮：仅对声明了 verifyCode 能力的 provider 显示
+    // （单独成串再插入，避免在外层模板字符串里嵌套反引号）
+    const verifyBtn=provCaps(t.providerId).includes('verifyCode')
+      ?`<button class="btn btn-sm" onclick=verifyCode('${t.id}')>📱 设备验证</button>`:'';
+    // 权益包按钮：仅对声明了 packages 能力（有真实权益包端点）的 provider 显示
+    const pkgBtn=provCaps(t.providerId).includes('packages')
+      ?`<button class="btn btn-sm" onclick=togglePackages('${t.id}',this)>💎 权益包</button>`:'';
     card.innerHTML=
       `<div class=task-h>
         <span class=task-name>${esc(t.name)}</span>
@@ -241,7 +264,9 @@ function render(){
         <button class="btn btn-sm btn-primary" onclick=runOne('${t.id}')>▶ 立即签到</button>
         <button class="btn btn-sm" onclick=checkToday('${t.id}')>☑ 检测签到</button>
         <button class="btn btn-sm" onclick=testCred('${t.id}')>d 测试凭证</button>
+        ${verifyBtn}
         <button class="btn btn-sm" onclick=getTotalCredits('${t.id}')>◈ 查总积分</button>
+        ${pkgBtn}
         <button class="btn btn-sm" onclick=toggleLog('${t.id}',this)>📅 近30天</button>
         <button class="btn btn-sm" onclick=toggleUsage('${t.id}',this)>◈ 积分消耗明细</button>
         <button class="btn btn-sm" onclick=openModal('${t.id}')>✎ 编辑</button>
@@ -249,6 +274,7 @@ function render(){
         <label class="toggle" style=margin-left:auto><input type=checkbox ${t.enabled?'checked':''} onclick=toggleEnable('${t.id}',this.checked)><span class=slider></span></label>
       </div>
       <div class=log-block id=log_${t.id}></div>
+      <div class=usage-block id=pkg_${t.id}></div>
       <div class=usage-block id=usage_${t.id}></div>`;
     box.appendChild(card);
   }
@@ -284,45 +310,149 @@ function accNetDaily(a){return isToken()?a.netDailyAvgTokens:a.netDailyAvgConsum
 function accNetMonth(a){return isToken()?a.netMonthlyAvgTokens:a.netMonthlyAvgConsumption;}
 function mNetDaily(m){return isToken()?m.netDailyTokens:m.netDailyConsumption;}
 function mNetMonth(m){return isToken()?m.netMonthlyTokens:m.netMonthlyConsumption;}
+// ====== 平台（provider）切换 ======
+let chartsProvider='';   // '' = 全部平台
+function scopedAccounts(){return ((stats&&stats.accounts)||[]).filter(a=>!chartsProvider||a.providerId===chartsProvider);}
+function viewTotal(){
+  if(!stats)return null;
+  if(!chartsProvider)return stats.total||null;
+  const g=((stats.byProvider)||[]).find(p=>p.providerId===chartsProvider);
+  return g?g.total:null;
+}
+function viewLabel(){return chartsProvider?provName(chartsProvider):'全部平台';}
+function srcShort(a){
+  if(!a.sourceLabel)return '—';
+  return a.sourceLabel.replace(/（.*$/,'').replace(/\s*接口$/,'');
+}
+function srcBadge(a){
+  if(!a.sourceLabel)return '';
+  const tip=esc(a.sourceLabel)+(a.note?'\n'+esc(a.note):'');
+  return `<span class=tag style="font-size:.62rem" title="${tip}">${a.source==='remote'?'🛰':'📄'} ${esc(srcShort(a))}</span>`;
+}
+function renderProvSwitch(){
+  const box=$('#chartsProv');if(!box)return;
+  const ids=[...new Set(((stats&&stats.accounts)||[]).map(a=>a.providerId).filter(Boolean))];
+  if(chartsProvider&&!ids.includes(chartsProvider))chartsProvider='';   // 平台已无数据 → 回到全部
+  const cur=chartsProvider;
+  let html=`<button class="btn btn-sm ${!cur?'btn-primary':''}" onclick="setChartsProv('')">全部平台</button>`;
+  html+=ids.map(id=>`<button class="btn btn-sm ${cur===id?'btn-primary':''}" onclick="setChartsProv('${esc(id)}')">${esc(provName(id))}</button>`).join('');
+  box.innerHTML=html;
+  $('#chartsTitle').textContent='📈 '+viewLabel()+' 消耗统计';
+}
+function setChartsProv(id){
+  chartsProvider=id;
+  const sel=$('#chartsAccount');if(sel)sel.value='';   // 切换平台后回到「总」
+  renderStats();renderCharts();
+}
+// ====== 数据可用性提示（★不把「没有数据」伪装成 0）======
+// 账号的 tokenSupported===false ⇒ 该平台用量接口根本不返回 token 原始数据，
+// 此时 Token 视图下应显示「—」并给出具体原因，而不是 0。
+function hasNoToken(a){return isToken()&&!!a&&a.tokenSupported===false;}
+function vAcc(a,v){return hasNoToken(a)?'—':fmtVal(v);}
+function tokTip(a){return hasNoToken(a)?` title="${esc(a.tokenNote||'该平台用量接口不返回 token 明细')}"`:' ';}
+/** 当前视图内「不提供 token 原始数据」的平台（去重，附原因） */
+function noTokenProviders(accs){
+  const m=new Map();
+  for(const a of (accs||[])){
+    if(a.tokenSupported===false){
+      const k=a.providerId||a.id;
+      if(!m.has(k))m.set(k,{name:a.providerName||provName(a.providerId)||k,note:a.tokenNote||null});
+    }
+  }
+  return [...m.values()];
+}
+function renderDataNote(accs){
+  const box=$('#dataNote');if(!box)return;
+  const miss=noTokenProviders(accs);
+  const items=[];
+  if(miss.length){
+    const names=miss.map(x=>esc(x.name)).join('、');
+    const notes=[...new Set(miss.map(x=>x.note).filter(Boolean))].map(esc).join('；');
+    items.push({
+      warn:isToken(),
+      html:`${isToken()?'🚫':'ℹ️'} <b>${names}</b> 平台不提供 token 原始数据${notes?'：'+notes:'。'}`
+        +(isToken()?' Token 视图下该平台显示为 <b>—</b>（未采集到原始数据，不等于消耗为 0）；积分数据完整可用。':''),
+    });
+  }
+  // 区间汇总（部分平台提供：CodeArts stats）
+  const sums=(accs||[]).filter(a=>a.summary).map(a=>({name:a.name,ds:a.summary}));
+  for(const s of sums){
+    const d=s.ds||{},r=d.range||{};
+    const parts=[];
+    if(d.tokens!=null)parts.push(`Token ${Math.round(d.tokens).toLocaleString()}`);
+    if(d.tokensDailyAvg!=null)parts.push(`日均 ${Math.round(d.tokensDailyAvg).toLocaleString()}`);
+    if(d.cacheHitTokens!=null)parts.push(`缓存命中 ${Math.round(d.cacheHitTokens).toLocaleString()}`);
+    if(d.requests!=null)parts.push(`请求 ${d.requests}`);
+    if(d.activeDays!=null)parts.push(`活跃 ${d.activeDays} 天`);
+    if(parts.length)items.push({warn:false,html:`🛰 <b>${esc(s.name)}</b> 近 ${r.days||'?'} 天区间汇总 <span style="color:#64748b">（${esc(r.start||'')} ~ ${esc(r.end||'')} · ${esc(d.source||'远端接口')}）</span>：${parts.join(' · ')}`});
+  }
+  if(!items.length){box.style.display='none';box.innerHTML='';return;}
+  box.style.display='';
+  box.style.background='#0b1120';
+  box.style.border='1px solid '+(items.some(i=>i.warn)?'#78350f':'#1e293b');
+  box.innerHTML=items.map(i=>`<div style="color:${i.warn?'#fbbf24':'#94a3b8'}">${i.html}</div>`).join('');
+}
 function renderStats(){
-  if(!stats||!stats.accounts||!stats.accounts.length){
-    $('#statsTotal').innerHTML='<div style=color:#64748b;font-size:.78rem>暂无消耗数据，点击「↻ 更新」拉取已过去日期的实际消耗并落库。</div>';
+  renderProvSwitch();
+  const accs=scopedAccounts();
+  const total=viewTotal();
+  const allT=(stats&&stats.total)||null;
+  const ttl=$('#statsTitle');if(ttl)ttl.textContent='📊 '+(isToken()?'Token':'积分')+'消耗统计';
+  renderDataNote(accs);
+  if(!total||!accs.length){
+    $('#statsTotal').innerHTML=`<div style=color:#64748b;font-size:.78rem>${esc(viewLabel())}：暂无消耗数据，点击「↻ 更新」拉取已过去日期的实际消耗并落库。</div>`;
     $('#statsBreakdown').innerHTML='';
     return;
   }
-  const total=stats.total||{};
   const mode=$('#statsFilter').value;
   const tYear=isToken()?total.tokensYearTotal:total.yearTotal;
   const tMonth=isToken()?total.tokensMonthTotal:total.monthTotal;
   const tAvg=isToken()?total.avgDailyTokens:total.avgDailyConsumption;
   const tNetDaily=isToken()?total.netDailyAvgTokens:total.netDailyAvgConsumption;
   const tNetMonth=isToken()?total.netMonthlyAvgTokens:total.netMonthlyAvgConsumption;
+  const allYear=allT?(isToken()?allT.tokensYearTotal:allT.yearTotal):null;
+  const allMonth=allT?(isToken()?allT.tokensMonthTotal:allT.monthTotal):null;
+  // 当前视图内所有账号都不提供 token 原始数据 → 数值显示「—」，原因由上方提示条说明
+  const allNoTok=isToken()&&accs.length>0&&accs.every(a=>a.tokenSupported===false);
+  const noTokTip=allNoTok?' title="'+esc([...new Set(accs.map(a=>a.tokenNote).filter(Boolean))].join('；'))+'"':'';
+  const fmtT=v=>allNoTok?'—':fmtVal(v);
+  // ★「全部平台 年/月合计」对照格：仅在切到具体平台视图时才有意义；
+  //   选「全部平台」时它本身就等于上面的年/月总，属于重复展示 → 隐藏。
+  const crossCell=chartsProvider
+    ? `<div style="border-left:1px solid #1e293b;padding-left:16px"><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">全部平台 年 / 月合计（对照）</div><div style="font-size:1.3rem;font-weight:700;color:#38bdf8">${fmtVal(allYear)} <span style="font-size:.8rem;color:#64748b">/</span> ${fmtVal(allMonth)} ${unitSuffix()}</div></div>`
+    : '';
   $('#statsTotal').innerHTML=
-    `<div><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">年${isToken()?'Token':'积分'}总</div><div style="font-size:1.3rem;font-weight:700;color:#f59e0b">${fmtVal(tYear)} ${unitSuffix()}</div></div>
-     <div><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">月${isToken()?'Token':'积分'}总</div><div style="font-size:1.3rem;font-weight:700;color:#e2e8f0">${fmtVal(tMonth)} ${unitSuffix()}</div></div>
-     <div><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">平均每日总消耗</div><div style="font-size:1.3rem;font-weight:700;color:#38bdf8">${fmtVal(tAvg)} ${unitSuffix()}</div></div>
-     <div><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">净日均</div><div style="font-size:1.3rem;font-weight:700;color:#22c55e">${fmtVal(tNetDaily)} ${unitSuffix()}</div></div>
-     <div><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">净月均</div><div style="font-size:1.3rem;font-weight:700;color:#a78bfa">${fmtVal(tNetMonth)} ${unitSuffix()}</div></div>
-     <div><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">预估可用天数(总)</div><div style="font-size:1.3rem;font-weight:700;color:#fbbf24">${fmtEst(total.estimatedDays)}</div></div>
-     <div><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">预估可用天数(总·近10天)</div><div style="font-size:1.3rem;font-weight:700;color:#fbbf24">${fmtEst(total.estimatedDays10d)}</div></div>`;
-  const rows=stats.accounts.map(a=>{
+    `<div><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">${esc(viewLabel())} 账号数</div><div style="font-size:1.3rem;font-weight:700;color:#94a3b8">${accs.length}</div></div>
+     <div${noTokTip}><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">年${isToken()?'Token':'积分'}总</div><div style="font-size:1.3rem;font-weight:700;color:#f59e0b">${fmtT(tYear)} ${unitSuffix()}</div></div>
+     <div${noTokTip}><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">月${isToken()?'Token':'积分'}总</div><div style="font-size:1.3rem;font-weight:700;color:#e2e8f0">${fmtT(tMonth)} ${unitSuffix()}</div></div>
+     <div${noTokTip}><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">平均每日总消耗</div><div style="font-size:1.3rem;font-weight:700;color:#38bdf8">${fmtT(tAvg)} ${unitSuffix()}</div></div>
+     <div${noTokTip}><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">净日均</div><div style="font-size:1.3rem;font-weight:700;color:#22c55e">${fmtT(tNetDaily)} ${unitSuffix()}</div></div>
+     <div${noTokTip}><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">净月均</div><div style="font-size:1.3rem;font-weight:700;color:#a78bfa">${fmtT(tNetMonth)} ${unitSuffix()}</div></div>
+     <div><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">预估可用天数</div><div style="font-size:1.3rem;font-weight:700;color:#fbbf24">${fmtEst(total.estimatedDays)}</div></div>
+     <div><div style="font-size:.65rem;text-transform:uppercase;color:#64748b;letter-spacing:.5px">预估可用天数(近10天)</div><div style="font-size:1.3rem;font-weight:700;color:#fbbf24">${fmtEst(total.estimatedDays10d)}</div></div>
+     ${crossCell}`;
+  const scope=`<div style="font-size:.68rem;color:#64748b;margin:2px 0 4px">当前视图 <b style=color:#94a3b8>${esc(viewLabel())}</b> · ${accs.length} 个账号 · 消耗数据均取自各平台真实服务器端点</div>`;
+  const rows=accs.map(a=>{
     if(mode==='model'){
       const ms=(a.models&&a.models.length)?a.models.map(m=>
         `<div style="display:flex;justify-content:space-between;gap:8px;padding:2px 0;font-size:.75rem">
           <span style=color:#38bdf8>${esc(m.model)}</span>
-          <span style=white-space:nowrap>年 <b style=color:#f59e0b>${fmtVal(mYear(m))}</b> · 月 <b style=color:#e2e8f0>${fmtVal(mMonth(m))}</b> · 净日均 <b style=color:#22c55e>${fmtVal(mNetDaily(m))}</b> · 净月均 <b style=color:#a78bfa>${fmtVal(mNetMonth(m))}</b></span>
+          <span style=white-space:nowrap>年 <b style=color:#f59e0b>${vAcc(a,mYear(m))}</b> · 月 <b style=color:#e2e8f0>${vAcc(a,mMonth(m))}</b> · 净日均 <b style=color:#22c55e>${vAcc(a,mNetDaily(m))}</b> · 净月均 <b style=color:#a78bfa>${vAcc(a,mNetMonth(m))}</b></span>
         </div>`).join(''):'<div style=color:#64748b;font-size:.75rem>暂无数据</div>';
+      const rng=a.modelsFromRange?' <span style="color:#64748b;font-size:.68rem">（模型为区间累计，上游不提供「日期×模型」矩阵）</span>':'';
+      const nt=hasNoToken(a)?' <span style="color:#fbbf24;font-size:.68rem" title="'+esc(a.tokenNote||'')+'">（该平台不提供 token 原始数据）</span>':'';
       return `<div style="padding:6px 0;border-bottom:1px solid #1e293b;font-size:.78rem">
-        <div style="display:flex;justify-content:space-between;gap:8px;font-weight:600"><span>${esc(a.name)}</span><span style=white-space:nowrap>年 <b style=color:#f59e0b>${fmtVal(accYear(a))}</b> · 月 <b style=color:#e2e8f0>${fmtVal(accMonth(a))}</b> · 净日均 <b style=color:#22c55e>${fmtVal(accNetDaily(a))}</b> · 净月均 <b style=color:#a78bfa>${fmtVal(accNetMonth(a))}</b> · 预估 <b style=color:#fbbf24>${fmtEst(a.estimatedDays)}</b> <span style=color:#64748b>(近10天 <b style=color:#fbbf24>${fmtEst(a.estimatedDays10d)}</b>)</span></span></div>
+        <div style="display:flex;justify-content:space-between;gap:8px;font-weight:600"><span>${esc(a.name)} ${srcBadge(a)}${rng}${nt}</span><span${tokTip(a)} style=white-space:nowrap>年 <b style=color:#f59e0b>${vAcc(a,accYear(a))}</b> · 月 <b style=color:#e2e8f0>${vAcc(a,accMonth(a))}</b> · 净日均 <b style=color:#22c55e>${vAcc(a,accNetDaily(a))}</b> · 净月均 <b style=color:#a78bfa>${vAcc(a,accNetMonth(a))}</b> · 预估 <b style=color:#fbbf24>${fmtEst(a.estimatedDays)}</b> <span style=color:#64748b>(近10天 <b style=color:#fbbf24>${fmtEst(a.estimatedDays10d)}</b>)</span></span></div>
         <div style=margin-top:4px>${ms}</div>
       </div>`;
     }
+    const nt=hasNoToken(a)?' <span style="color:#fbbf24;font-size:.68rem" title="'+esc(a.tokenNote||'')+'">（该平台不提供 token 原始数据）</span>':'';
     return `<div style="display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid #1e293b;font-size:.78rem">
-      <span>${esc(a.name)}</span>
-      <span style=white-space:nowrap>年 <b style=color:#f59e0b>${fmtVal(accYear(a))}</b> · 月 <b style=color:#e2e8f0>${fmtVal(accMonth(a))}</b> · 平均 <b style=color:#94a3b8>${fmtVal(accAvg(a))}</b> · 净日均 <b style=color:#22c55e>${fmtVal(accNetDaily(a))}</b> · 净月均 <b style=color:#a78bfa>${fmtVal(accNetMonth(a))}</b> · 预估 <b style=color:#fbbf24>${fmtEst(a.estimatedDays)}</b> <span style=color:#64748b>(近10天 <b style=color:#fbbf24>${fmtEst(a.estimatedDays10d)}</b>)</span></span>
+      <span>${esc(a.name)} ${srcBadge(a)}${nt}</span>
+      <span${tokTip(a)} style=white-space:nowrap>年 <b style=color:#f59e0b>${vAcc(a,accYear(a))}</b> · 月 <b style=color:#e2e8f0>${vAcc(a,accMonth(a))}</b> · 平均 <b style=color:#94a3b8>${vAcc(a,accAvg(a))}</b> · 净日均 <b style=color:#22c55e>${vAcc(a,accNetDaily(a))}</b> · 净月均 <b style=color:#a78bfa>${vAcc(a,accNetMonth(a))}</b> · 预估 <b style=color:#fbbf24>${fmtEst(a.estimatedDays)}</b> <span style=color:#64748b>(近10天 <b style=color:#fbbf24>${fmtEst(a.estimatedDays10d)}</b>)</span></span>
     </div>`;
   }).join('');
-  $('#statsBreakdown').innerHTML=rows;
+  $('#statsBreakdown').innerHTML=scope+rows;
 }
 async function refreshStats(){
   toast('⏳ 更新统计中…');
@@ -345,38 +475,60 @@ function openModal(id){
   renderFields(t);
   $('#overlay').classList.add('show');
 }
+// 「名称」占位提示随 Provider 变化（provider 未声明 namePlaceholder 时用通用兜底）
+function syncNamePlaceholder(){
+  const p=providers.find(x=>x.id===$('#f_provider').value);
+  const el=$('#f_name');if(!el)return;
+  el.placeholder=(p&&p.namePlaceholder)||(p?('例：'+p.name+' 主账号'):'例：账号名称');
+}
 function renderFields(task){
   const p=providers.find(x=>x.id===$('#f_provider').value);
   const box=$('#f_fields');box.innerHTML='';
+  syncNamePlaceholder();
   if(!p)return;
+  // 带 group 的连续字段收进同一个可折叠区块（如「积分过期提醒」），其余照旧平铺。
+  // ★保持原有顺序：分组出现在该组第一个字段所在的位置。
+  const groups=[];let curGroup=null;
   for(const f of p.configSchema||[]){
-    // 取值：编辑时用已存值，否则用 schema 默认值（新增时也要回填默认）
-    const cur=task?(task.config[f.key]??f.default):(f.default);
-    if(f.type==='toggle'){
-      const tv=cur===undefined?false:cur;
-      box.insertAdjacentHTML('beforeend',`<div class=field-toggle><label>${esc(f.label)}</label><label class=toggle><input type=checkbox data-k="${f.key}" ${tv?'checked':''}><span class=slider></span></label></div>`);
-    }else if(f.type==='select'){
-      const opts=f.options||[];
-      const isCustom=cur!==undefined&&!opts.some(o=>String(o.value)===String(cur));
-      const optHtml=opts.map(o=>`<option value="${esc(o.value)}" ${String(o.value)===String(cur)?'selected':''}>${esc(o.label)}</option>`).join('');
-      const customSel=isCustom?' selected':'';
-      const customIn=isCustom?`<input type="text" data-k="${f.key}_custom" placeholder="自定义值" value="${esc(cur)}">`:'';
-      box.insertAdjacentHTML('beforeend',
-        `<div class=form-row><label>${esc(f.label)}${f.required?' *':''}</label>
-          <select data-k="${f.key}" onchange=onSelectChange(this)>${optHtml}<option value="__custom__"${customSel}>自定义…</option></select>
-          <span data-custom="${f.key}" style="grid-column:2">${customIn}</span>
-        </div>`);
-    }else{
-      const isPwd=f.type==='password';
-      const oldVal=isPwd&&task?(task.config[f.key]??''):'';
-      const ph=isPwd&&task?'留空则不修改（当前已掩码）':(f.placeholder||'');
-      let val='';
-      if(isPwd&&task&&oldVal){ val=maskToken(oldVal); }
-      else if(!isPwd){ val=(cur===undefined?'':cur); }
-      const hintTxt=f.hint?`<div class=field-hint>${esc(f.hint)}</div>`:'';
-      box.insertAdjacentHTML('beforeend',`<div class=form-row><label>${esc(f.label)}${f.required?' *':''}</label><input type="${f.type||'text'}" data-k="${f.key}" value="${esc(val)}" placeholder="${esc(ph)}">${hintTxt}</div>`);
-    }
+    if(f.group){
+      if(!curGroup||curGroup.title!==f.group){curGroup={title:f.group,items:[]};groups.push(curGroup);}
+      curGroup.items.push(f);
+    }else{curGroup=null;groups.push({title:null,items:[f]});}
   }
+  for(const g of groups){
+    const html=g.items.map(f=>fieldHtml(f,task)).join('');
+    // 默认折叠：不带 open 属性
+    if(g.title)box.insertAdjacentHTML('beforeend',`<details class=cfg-group><summary>${esc(g.title)}</summary><div class=cfg-group-body>${html}</div></details>`);
+    else box.insertAdjacentHTML('beforeend',html);
+  }
+}
+// 单个字段的 HTML（从 renderFields 里抽出，供分组/平铺两种布局复用）
+function fieldHtml(f,task){
+  // 取值：编辑时用已存值，否则用 schema 默认值（新增时也要回填默认）
+  const cur=task?(task.config[f.key]??f.default):(f.default);
+  if(f.type==='toggle'){
+    const tv=cur===undefined?false:cur;
+    return `<div class=field-toggle><label>${esc(f.label)}</label><label class=toggle><input type=checkbox data-k="${f.key}" ${tv?'checked':''}><span class=slider></span></label></div>`;
+  }
+  if(f.type==='select'){
+    const opts=f.options||[];
+    const isCustom=cur!==undefined&&!opts.some(o=>String(o.value)===String(cur));
+    const optHtml=opts.map(o=>`<option value="${esc(o.value)}" ${String(o.value)===String(cur)?'selected':''}>${esc(o.label)}</option>`).join('');
+    const customSel=isCustom?' selected':'';
+    const customIn=isCustom?`<input type="text" data-k="${f.key}_custom" placeholder="自定义值" value="${esc(cur)}">`:'';
+    return `<div class=form-row><label>${esc(f.label)}${f.required?' *':''}</label>
+        <select data-k="${f.key}" onchange=onSelectChange(this)>${optHtml}<option value="__custom__"${customSel}>自定义…</option></select>
+        <span data-custom="${f.key}" style="grid-column:2">${customIn}</span>
+      </div>`;
+  }
+  const isPwd=f.type==='password';
+  const oldVal=isPwd&&task?(task.config[f.key]??''):'';
+  const ph=isPwd&&task?'留空则不修改（当前已掩码）':(f.placeholder||'');
+  let val='';
+  if(isPwd&&task&&oldVal){ val=maskToken(oldVal); }
+  else if(!isPwd){ val=(cur===undefined?'':cur); }
+  const hintTxt=f.hint?`<div class=field-hint>${esc(f.hint)}</div>`:'';
+  return `<div class=form-row><label>${esc(f.label)}${f.required?' *':''}</label><input type="${f.type||'text'}" data-k="${f.key}" value="${esc(val)}" placeholder="${esc(ph)}">${hintTxt}</div>`;
 }
 // select 切换为"自定义…"时显示输入框
 function onSelectChange(sel){
@@ -456,6 +608,22 @@ async function refreshTotal(id){const r=await api('/api/checkin/credits/total?id
 async function getTotalCredits(id){toast('⏳ 查询总积分中…');const r=await api('/api/checkin/credits/total?id='+id);toast(r.ok?`✅ 总积分: ${fmtCredits(r.total)}`:'❌ 查总积分失败: '+(r.error||'未知错误'));loadData();}
 async function checkToday(id){toast('⏳ 检测中…');const r=await api('/api/checkin/status?id='+id);if(!r.ok){toast('❌ 检测失败: '+(r.error||'未知错误'));loadData();return;}toast(r.checked_in?`✅ 今日已签到，积分 ${r.credits??'未知'}`:`今日未签到，积分 ${r.credits??'未知'}`);loadData();}
 
+// 设备验证码：先尝试登录（设备已受信则免验证），需要时下发验证码并让用户输入
+// 仅对声明了 verifyCode 能力的 provider 显示（如 CodeArts 的新设备二次验证）
+async function verifyCode(id){
+  toast('⏳ 正在登录并尝试下发验证码…');
+  const r=await api('/api/checkin/verify-code/request?id='+id,{method:'POST'});
+  if(!r.ok){toast('❌ '+(r.error||'获取验证码失败'));loadData();return;}
+  if(r.alreadyTrusted){toast('✅ '+(r.message||'设备已受信，无需验证码'));loadData();return;}
+  const devs=(r.authDevices||[]).map(d=>d.name).filter(Boolean).join('、');
+  const code=prompt(`验证码已下发至：${devs||'已绑定设备'}\n请输入收到的 6 位数字验证码：`);
+  if(!code)return;
+  toast('⏳ 校验中…');
+  const s=await api('/api/checkin/verify-code/submit?id='+id,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code.trim()})});
+  toast(s.ok?('✅ '+(s.message||'设备验证通过')):('❌ '+(s.error||'验证失败')));
+  loadData();
+}
+
 // 进入页面后对每个账号做"今日首次检测"：当天已检/已签则后端跳过
 async function autoCheck(){
   const r=await api('/api/checkin/auto-check');
@@ -478,17 +646,28 @@ async function toggleLog(id,btn){
     block.dataset.loaded='1';
     const r=await api('/api/checkin/logs?taskId='+id);
     const logs=r.logs||[];
-    let html='<div style="font-size:.7rem;color:#64748b;margin-bottom:4px">近30天签到记录</div><div class=log-grid>';
+    const nLocal=logs.filter(L=>L.source!=='remote').length;
+    const nRemote=logs.length-nLocal;
+    let sub='近30天签到记录';
+    if(nRemote)sub+=` · <span style="color:#38bdf8">其中 ${nRemote} 天为本机未运行、由平台远端记录补回</span>`;
+    if(r.hasRemoteApi&&!nRemote&&r.remoteError)sub+=` · <span style="color:#f59e0b">远端历史获取失败：${esc(r.remoteError)}</span>`;
+    if(!r.hasRemoteApi)sub+=' · <span style="color:#64748b">该平台无远端签到历史接口，仅显示本机运行记录</span>';
+    let html=`<div style="font-size:.7rem;color:#64748b;margin-bottom:4px">${sub}</div>`;
+    html+='<div class=log-grid>';
     for(let i=29;i>=0;i--){
       const d=new Date();d.setDate(d.getDate()-i);
       const p=n=>String(n).padStart(2,'0');
       const ds=`${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`;
       const log=logs.find(L=>L.date===ds);
-      let cls='skip',v='·';
-      if(log){cls=log.status==='success'?'ok':log.status;v=log.status==='success'?'✓':(log.status==='invalid'?'!':'✗');}
-      html+=`<div class="log-day ${cls}" title="${ds} ${log?log.status:''}${log&&log.reward?' +'+log.reward:''}"><span class=d>${p(d.getMonth()+1)}/${p(d.getDate())}</span><span class=v>${v}</span></div>`;
+      let cls='skip',v='·',tip=ds+' 未签到';
+      if(log){
+        if(log.source==='remote'){cls='remote';v='✓';tip=`${ds} 已签到（平台远端记录${log.sourceLabel?' · '+log.sourceLabel:''}${log.reward?' +'+log.reward:''}）`;}
+        else {cls=log.status==='success'?'ok':log.status;v=log.status==='success'?'✓':(log.status==='invalid'?'!':'✗');tip=`${ds} ${log.status}（本机记录）${log.reward?' +'+log.reward:''}`;}
+      }
+      html+=`<div class="log-day ${cls}" title="${esc(tip)}"><span class=d>${p(d.getMonth()+1)}/${p(d.getDate())}</span><span class=v>${v}</span></div>`;
     }
     html+='</div>';
+    html+='<div class=cal-legend style="margin-top:6px">图例 <i style="background:linear-gradient(135deg,#059669,#10b981)"></i>本机签到成功 <i style="background:linear-gradient(135deg,#0369a1,#0ea5e9)"></i>平台远端记录 <i style="background:rgba(239,68,68,.18);border:1px solid #ef4444"></i>失败 <i style="background:rgba(217,119,6,.18);border:1px solid #f59e0b"></i>凭证失效 <i style="background:#1e293b;border:1px solid #334155"></i>未签到</div>';
     block.innerHTML=html;
   }
 }
@@ -503,6 +682,32 @@ function dateToSec(str){
   const d=new Date(str+'T00:00:00');
   return Math.floor(d.getTime()/1000);
 }
+/** 降级视图：provider 无会话级明细接口时，展示落库的逐日明细（同源真实端点，粒度到日） */
+function renderDailyDetail(r,block,stVal,enVal){
+  const bodyEl=block.querySelector('.u-body');
+  const days=(r.days||[]).filter(d=>d.date>=stVal&&d.date<=enVal);
+  const src=(r.sourceLabel||'')+(r.note?' · '+r.note:'');
+  const noteHtml=r.note?'<br><span style="color:#f59e0b">'+esc(r.note)+'</span>':'';
+  const head='<div style="font-size:.7rem;color:#64748b;margin-bottom:4px">'
+    +(r.source==='remote'?'🛰 真实远端端点':'📄 本地记录')+' · '+esc(r.sourceLabel||'—')+noteHtml+'</div>';
+  if(!days.length){bodyEl.innerHTML=head+'<div class=usage-empty>该时段暂无消耗记录</div>';return;}
+  const cred=days.reduce((s,d)=>s+(d.consumption||0),0);
+  const tok=days.reduce((s,d)=>s+(d.tokens||0),0);
+  let html=head+`<div class=usage-summ><span>天数 <b>${days.length}</b></span><span>共消耗 <b>${cred.toFixed(2)}</b> 分</span><span>共 <b>${Math.round(tok).toLocaleString()}</b> tok</span></div>`;
+  for(const d of days){
+    const ms=Object.entries(d.models||{}).map(([m,v])=>`${esc(m)} ${(v.consumption||0).toFixed(2)}`).join(' · ')||'—';
+    html+=`<div class=usage-row>
+      <span class=um>${esc(d.date)}</span>
+      <span class=ut>${ms}</span>
+      <span class=uc>${(d.consumption||0).toFixed(2)}分</span>
+      <span class=up title="${esc(src)}"></span>
+      <span class=usk>${d.tokens?Math.round(d.tokens).toLocaleString()+' tok':'—'}</span>
+    </div>`;
+  }
+  const ml=(r.models||[]).map(m=>`${esc(m.model)}：${fmtVal(m.consumption)} 分 / ${m.tokens?Math.round(m.tokens).toLocaleString()+' tok':'—'}`).join('　');
+  if(ml)html+=`<div style="font-size:.7rem;color:#94a3b8;margin-top:6px">模型累计：${ml}${r.modelsFromRange?' <span style="color:#64748b">（上游不提供逐日模型归属）</span>':''}</div>`;
+  bodyEl.innerHTML=html;
+}
 async function loadUsage(id,block){
   const stI=block.querySelector('.u-start'),enI=block.querySelector('.u-end');
   const st=dateToSec(stI.value),en=dateToSec(enI.value)+86400-1;
@@ -515,6 +720,8 @@ async function loadUsage(id,block){
     const body=JSON.stringify({start_time:st,end_time:en,page_size:pageSize,page_num:pageNum,usage_type:[7]});
     const r=await api('/api/checkin/usage?id='+id,{method:'POST',headers:{'Content-Type':'application/json'},body});
     if(!r.ok){bodyEl.innerHTML='<div class=usage-empty>查询失败: '+(r.error||'未知错误')+'</div>';return;}
+    // provider 无会话级接口 → 降级为落库逐日明细
+    if(r.fallback==='daily'){renderDailyDetail(r,block,stI.value,enI.value);return;}
     const data=r.data||{};
     const list=data.user_usage_group_by_sessions||[];
     all.push(...list);
@@ -553,12 +760,51 @@ async function toggleUsage(id,btn){
     loadUsage(id,block);
   }
 }
-// ====== 消耗图表（每日柱状图 + 每日日历热力图，支持按 账号/模型 筛选） ======
+// ====== 权益包（真实端点：WorkBuddy free/paid-packages、CodeArts package/overview） ======
+function pkgBar(p){
+  const size=Number(p.size)||0, remain=Number(p.remain)||0;
+  if(!size)return '';
+  const pct=Math.max(0,Math.min(100,remain/size*100));
+  const col=pct>50?'#22c55e':(pct>15?'#f59e0b':'#ef4444');
+  return `<span style="display:inline-block;width:90px;height:6px;background:#1e293b;border-radius:3px;vertical-align:middle">
+    <i style="display:block;width:${pct.toFixed(1)}%;height:100%;background:${col};border-radius:3px"></i></span>`;
+}
+async function togglePackages(id,btn){
+  const block=document.querySelector('#pkg_'+id);
+  const show=!block.classList.contains('show');
+  btn.textContent=show?'💎 收起权益包':'💎 权益包';
+  block.classList.toggle('show',show);
+  if(show&&!block.dataset.loaded){
+    block.dataset.loaded='1';
+    block.innerHTML='<div style="font-size:.75rem;color:#64748b"><span class=loading></span> 查询权益包…</div>';
+    const r=await api('/api/checkin/packages?id='+id);
+    if(!r.ok||!r.data){block.innerHTML='<div class=usage-empty>查询失败: '+esc(r.error||'未知错误')+'</div>';return;}
+    const d=r.data;
+    let html=`<div class=usage-summ>
+      <span>可用 <b>${Number(d.total||0).toFixed(2)}</b> 分</span>
+      ${d.capacity!=null?`<span>总配额 <b>${Number(d.capacity).toFixed(2)}</b></span>`:''}
+      ${d.used!=null?`<span>已用 <b>${Number(d.used).toFixed(2)}</b></span>`:''}
+      <span>免费包 <b>${d.free||0}</b> · 付费包 <b>${d.paid||0}</b></span>
+      ${d.specCode?`<span>规格 <b>${esc(d.specCode)}</b></span>`:''}</div>`;
+    for(const p of (d.list||[])){
+      html+=`<div class=usage-row>
+        <span class=um title="${esc(p.packageName||p.packageCode)}">${esc(p.packageName||p.packageCode)}</span>
+        <span class=up style=flex:0.6>${pkgBar(p)}</span>
+        <span class=uc>${Number(p.remain||0).toFixed(2)} / ${Number(p.size||0).toFixed(2)}</span>
+        <span class=usk>${p.cycleEnd?('至 '+esc(String(p.cycleEnd).slice(0,10))):''}</span>
+      </div>`;
+    }
+    if(!(d.list||[]).length)html+='<div class=usage-empty>该账号暂无可展示的权益包明细</div>';
+    block.innerHTML=html;
+  }
+}
+// ====== 消耗图表（每日柱状图 + 每日日历热力图，支持按 平台/账号/模型 筛选） ======
 let barChart=null;
-// 取当前账号/总的每日序列，统一为 {date,total,models}
+// 取当前账号/当前平台总 的每日序列，统一为 {date,total,models}
 function chartSeries(accountId){
   if(!accountId){
-    return ((stats.total&&stats.total.byDate)||[]).map(d=>({date:d.date,total:d.consumption||0,tokens:d.tokens||0,models:d.models||{}}));
+    const t=viewTotal();
+    return ((t&&t.byDate)||[]).map(d=>({date:d.date,total:d.consumption||0,tokens:d.tokens||0,models:d.models||{}}));
   }
   const acc=(stats.accounts||[]).find(a=>a.id===accountId);
   return (acc&&acc.days)?acc.days:[];
@@ -597,10 +843,11 @@ function renderBar(labels,data){
     barChart.update();
   }
 }
-// 每月消耗序列（总/账号），统一为 {month,total,tokens,models}
+// 每月消耗序列（当前平台总/账号），统一为 {month,total,tokens,models}
 function monthSeries(accountId){
   if(!accountId){
-    return ((stats.total&&stats.total.months)||[]).map(m=>({month:m.month,total:m.total||0,tokens:m.tokens||0,models:m.models||{}}));
+    const t=viewTotal();
+    return ((t&&t.months)||[]).map(m=>({month:m.month,total:m.total||0,tokens:m.tokens||0,models:m.models||{}}));
   }
   const acc=(stats.accounts||[]).find(a=>a.id===accountId);
   if(!acc||!acc.days)return [];
@@ -650,18 +897,24 @@ function renderMonthBar(labels,data){
   }
 }
 function renderCharts(){
-  if(!stats||!stats.total||!stats.total.byDate){
-    $('#chartBar').innerHTML='<div style="color:#64748b;font-size:.78rem;padding:8px 0">暂无消耗数据。</div>';
+  const vt=viewTotal();
+  if(!stats||!vt||!vt.byDate){
+    const miss0=noTokenProviders(scopedAccounts());
+    const extra=(isToken()&&miss0.length)
+      ? '（'+miss0.map(x=>esc(x.name)).join('、')+' 的用量接口不返回 token 原始数据：'
+        +esc([...new Set(miss0.map(x=>x.note).filter(Boolean))].join('；')||'该平台只提供积分与请求条数')+'）'
+      : '';
+    $('#chartBar').innerHTML='<div style="color:#64748b;font-size:.78rem;padding:8px 0">'+esc(viewLabel())+' 暂无消耗数据'+extra+'。</div>';
     $('#chartMonthly').innerHTML='';
     $('#chartCalendar').innerHTML='';
-    $('#chartHint').textContent='';
+    $('#chartHint').innerHTML='';
     return;
   }
-  // 账号选择器：总 + 各账号
+  // 账号选择器：当前平台总 + 该平台下各账号
   const accSel=$('#chartsAccount');
   const accCur=accSel.value;
-  const accs=stats.accounts||[];
-  accSel.innerHTML='<option value="">总</option>'+accs.map(a=>`<option value="${esc(a.id)}">${esc(a.name)}</option>`).join('');
+  const accs=scopedAccounts();
+  accSel.innerHTML=`<option value="">总（${esc(viewLabel())}）</option>`+accs.map(a=>`<option value="${esc(a.id)}">${esc(a.name)}</option>`).join('');
   if(accs.some(a=>a.id===accCur))accSel.value=accCur;
 
   // 根据账号取每日序列
@@ -695,7 +948,15 @@ function renderCharts(){
 
   // 每日日历热力图
   $('#chartCalendar').innerHTML=renderCalendar(dayMap,mSel.value);
-  $('#chartHint').textContent='上方为每日消耗柱状图与每月消耗柱状图；下方日历颜色越深表示当日消耗越高。数据由「每日消耗统计」自动落库，缺失日期在访问本页时自动补齐。';
+  // ★Token 视图 + 视图内平台不提供 token 原始数据 → 明确说明「图为什么是空的」
+  const miss=noTokenProviders(accs);
+  const missTxt=(isToken()&&miss.length)
+    ? '⚠️ '+miss.map(x=>x.name).join('、')+' 的用量接口不返回 token 明细'
+      +([...new Set(miss.map(x=>x.note).filter(Boolean))].length?'（'+[...new Set(miss.map(x=>x.note).filter(Boolean))].join('；')+'）':'')
+      +'，故上图该平台的 Token 柱状图恒为 0 —— 这是「上游没有原始数据」，不是「消耗为 0」。切回「积分」可看该平台的真实消耗。'
+    : '';
+  $('#chartHint').innerHTML=(missTxt?`<div style="color:#fbbf24;margin-bottom:4px">${esc(missTxt)}</div>`:'')
+    +'上方为每日消耗柱状图与每月消耗柱状图；下方日历颜色越深表示当日消耗越高。数据由「每日消耗统计」自动落库，缺失日期在访问本页时自动补齐；消耗明细来自各平台真实服务器端点（Trae 按会话、WorkBuddy 按请求、CodeArts 用量分析接口）。';
 }
 function heatColor(v,max){
   if(!v)return '#0b1120';

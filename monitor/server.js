@@ -12,15 +12,21 @@ import { mailConfig, markedProcs, resetProcStatus, sendMail, checkProcs, checkPr
 import { readLogTail, writeLog } from './lib/logger.js';
 import { registerProvider, getProviderSchemas, getProvider } from './lib/providers/index.js';
 import traeProvider from './lib/providers/trae.js';
-import { addTask, updateTask, deleteTask, runTaskNow, runAllNow, testCredential, getCredits, loadTasks, startAllTasks, startCookieExpiryWatcher, checkStatusForTask, autoCheckToday, getTotalCreditsForTask } from './lib/tasks/index.js';
+import workbuddyProvider from './lib/providers/workbuddy.js';
+import codeartsProvider from './lib/providers/codearts.js';
+import { addTask, updateTask, deleteTask, runTaskNow, runAllNow, testCredential, getCredits, loadTasks, saveTasks, startAllTasks, startCookieExpiryWatcher, checkStatusForTask, autoCheckToday, getTotalCreditsForTask, checkCreditExpiryNow } from './lib/tasks/index.js';
+// 积分过期提醒：批次预览（只读）+ 手动立即检查
+import { fetchCreditExpiryBatches } from './lib/checkin/credit-expiry.js';
 import { getLogs } from './lib/checkin-log.js';
-import { recordSnapshot, updateUsageStats, getUsageStats, getUsageStatsWithEstimates, startDailySnapshot, removeTaskStats } from './lib/checkin-stats.js';
+import { recordSnapshot, updateUsageStats, getUsageStats, getUsageStatsWithEstimates, getTaskUsageDetail, startDailySnapshot, removeTaskStats } from './lib/checkin-stats.js';
 
 // ====== Init ======
 initRecorder();
 
 // 注册签到 Provider 并启动定时调度
 registerProvider(traeProvider);
+registerProvider(workbuddyProvider);
+registerProvider(codeartsProvider);
 setTimeout(() => { try { startAllTasks(); } catch (e) { console.error('start checkin tasks:', e); } }, 5000);
 setTimeout(() => { try { startCookieExpiryWatcher(); } catch (e) { console.error('start cookie expiry watcher:', e); } }, 5000);
 
@@ -867,10 +873,54 @@ const server = createServer(async (q, r) => {
     }
 
     // GET /api/checkin/logs?days=&taskId= - 30 天日志
+    // ★合并两个来源：
+    //   1) 本地 checkin_logs.json —— 本部署真正执行过的签到（含失败/凭证失效状态）
+    //   2) provider.getCheckinHistory —— 平台侧的逐日签到历史（WorkBuddy checkin_dates、
+    //      CodeArts 每日签到赠送包 createdTime）
+    //   只有 (1) 会在「新接入账号 / 换机 / 重装」时缺历史，表现为「平台明明连签好几天，
+    //   日历却只有一天」，因此用 (2) 补齐本地没有的日期（标记 source=remote 以便区分）。
     if (url.pathname === '/api/checkin/logs' && q.method === 'GET') {
       const days = parseInt(url.searchParams.get('days') || '30', 10);
       const taskId = url.searchParams.get('taskId') || undefined;
-      send(200, JSON.stringify({ ok: true, logs: getLogs({ days, taskId }) }));
+      const local = getLogs({ days, taskId }).map((l) => ({ ...l, source: 'local' }));
+      let remote = [];
+      let hasRemoteApi = false;
+      let remoteError = null;
+      let remoteLabel = null;
+      const tasks = loadTasks();
+      const task = taskId ? tasks.find((t) => t.id === taskId) : null;
+      if (task) {
+        const provider = getProvider(task.providerId);
+        if (provider && typeof provider.getCheckinHistory === 'function') {
+          hasRemoteApi = true;
+          try {
+            remote = (await provider.getCheckinHistory(task, { days })) || [];
+            remoteLabel = remote.length ? remote[0].source : null;
+            saveTasks(tasks); // 期间可能刷新了会话（cookies / hwid_cas_sid）
+          } catch (e) {
+            remoteError = e.message || String(e);
+          }
+        }
+      }
+      const have = new Set(local.map((l) => l.date));
+      const merged = local.concat(
+        remote.filter((r) => r && r.date && !have.has(r.date)).map((r) => ({
+          taskId: taskId || null,
+          providerId: task ? task.providerId : '',
+          date: r.date,
+          status: 'success',
+          credits: r.credits ?? null,
+          reward: r.credits ?? null,
+          error: null,
+          source: 'remote',
+          sourceLabel: r.source || null,
+        }))
+      ).sort((a, b) => (a.date < b.date ? -1 : 1));
+      send(200, JSON.stringify({
+        ok: true, logs: merged,
+        localCount: local.length, remoteCount: merged.length - local.length,
+        hasRemoteApi, remoteError, remoteLabel,
+      }));
       return;
     }
 
@@ -885,13 +935,22 @@ const server = createServer(async (q, r) => {
 
     // POST /api/checkin/usage?id= - 原样转发按会话分组的积分消耗记录
     // 请求体原样透传给上游（start_time/end_time/page_size/page_num/usage_type 等由调用方提供），不做任何整理或默认注入
+    // ★provider 没有会话级明细接口时（如 CodeArts 只提供聚合分析），降级返回落库的逐日明细
+    //   （数据同样来自真实远端端点，只是粒度到「日」而非「请求」），前端据此渲染降级表格。
     if (url.pathname === '/api/checkin/usage' && q.method === 'POST') {
       const id = url.searchParams.get('id') || '';
       const task = loadTasks().find((t) => t.id === id);
       if (!task) { send(404, JSON.stringify({ ok: false, error: '账号不存在' })); return; }
       const provider = getProvider(task.providerId);
       if (!provider || typeof provider.getUsage !== 'function') {
-        send(501, JSON.stringify({ ok: false, error: '该账号的 provider 不支持用量查询' }));
+        const detail = getTaskUsageDetail(id);
+        if (detail) {
+          send(200, JSON.stringify({
+            ok: true, fallback: 'daily', reason: 'provider_no_session_api', ...detail,
+          }));
+        } else {
+          send(501, JSON.stringify({ ok: false, error: '该账号的 provider 不支持用量查询，且暂无已落库的逐日数据' }));
+        }
         return;
       }
       let body = ''; await new Promise(res => { q.on('data', d => body += d); q.on('end', res); });
@@ -903,6 +962,132 @@ const server = createServer(async (q, r) => {
       } catch (e) {
         send(200, JSON.stringify({ ok: false, error: e.message }));
       }
+      return;
+    }
+
+    // GET /api/checkin/packages?id= - 权益包明细（免费/付费包、剩余/总量/周期）
+    // 目前 WorkBuddy（get-user-resource-free/paid-packages）与 CodeArts（package/overview）支持
+    if (url.pathname === '/api/checkin/packages' && q.method === 'GET') {
+      const id = url.searchParams.get('id') || '';
+      const tasks = loadTasks();
+      const task = tasks.find((t) => t.id === id);
+      if (!task) { send(404, JSON.stringify({ ok: false, error: '账号不存在' })); return; }
+      const provider = getProvider(task.providerId);
+      if (!provider || typeof provider.getPackages !== 'function') {
+        send(501, JSON.stringify({ ok: false, error: '该 provider 不支持权益包查询' }));
+        return;
+      }
+      try {
+        const res = await provider.getPackages(task);
+        saveTasks(tasks); // provider 可能刷新了会话状态（hwid_cas_sid / cookie）
+        send(200, JSON.stringify({ ok: true, data: res }));
+      } catch (e) {
+        send(200, JSON.stringify({ ok: false, error: e.message }));
+      }
+      return;
+    }
+
+    // GET /api/checkin/credit-expiry?id= - 积分过期批次预览（只读远端，不发信）
+    //   返回按「到期自然日」聚合的批次 + 当前提醒设置，便于在编辑页配置后立刻核对效果。
+    if (url.pathname === '/api/checkin/credit-expiry' && q.method === 'GET') {
+      const id = url.searchParams.get('id') || '';
+      const tasks = loadTasks();
+      const task = tasks.find((t) => t.id === id);
+      if (!task) { send(404, JSON.stringify({ ok: false, error: '账号不存在' })); return; }
+      try {
+        const res = await fetchCreditExpiryBatches(task);
+        saveTasks(tasks); // provider 可能刷新了会话状态
+        send(200, JSON.stringify({
+          ok: true,
+          data: {
+            batches: res.batches.map((b) => ({
+              date: b.key, expireAt: b.expireAtMs, amount: b.amount,
+              packs: b.packs.map((p) => ({ name: p.name, remain: p.remain })),
+            })),
+            source: res.source,
+            state: task.creditExpiryState || {},
+          },
+        }));
+      } catch (e) {
+        send(200, JSON.stringify({ ok: false, error: e.message, kind: e.kind }));
+      }
+      return;
+    }
+
+    // POST /api/checkin/credit-expiry/check?id= - 立即跑一次积分过期检查（会真的发信）
+    if (url.pathname === '/api/checkin/credit-expiry/check' && q.method === 'POST') {
+      const id = url.searchParams.get('id') || '';
+      try {
+        const res = await checkCreditExpiryNow(id);
+        send(200, JSON.stringify(res));
+      } catch (e) {
+        send(200, JSON.stringify({ ok: false, error: e.message }));
+      }
+      return;
+    }
+
+    // ====== 设备验证码（CodeArts 等需要新设备二次验证的 provider）======
+    // POST /api/checkin/verify-code/request?id= - 「获取验证码」
+    //   先尝试登录：设备已受信（hwid_cas_sid 有效）则直接返回无需验证；
+    //   否则下发验证码并返回可选设备列表。会顺带把登录中刷新的 hwid_cas_sid/cookie 落盘。
+    if (url.pathname === '/api/checkin/verify-code/request' && q.method === 'POST') {
+      const id = url.searchParams.get('id') || '';
+      const tasks = loadTasks();
+      const task = tasks.find((t) => t.id === id);
+      if (!task) { send(404, JSON.stringify({ ok: false, error: '账号不存在' })); return; }
+      const provider = getProvider(task.providerId);
+      if (!provider || typeof provider.requestVerifyCode !== 'function') {
+        send(501, JSON.stringify({ ok: false, error: '该 provider 不支持设备验证码' }));
+        return;
+      }
+      try {
+        const res = await provider.requestVerifyCode(task);
+        saveTasks(tasks);
+        send(200, JSON.stringify(res));
+      } catch (e) {
+        saveTasks(tasks);
+        send(200, JSON.stringify({ ok: false, error: e.message }));
+      }
+      return;
+    }
+
+    // POST /api/checkin/verify-code/submit?id= - 「提交验证码」，body: { code, deviceIndex? }
+    if (url.pathname === '/api/checkin/verify-code/submit' && q.method === 'POST') {
+      const id = url.searchParams.get('id') || '';
+      let body = ''; await new Promise(res => { q.on('data', d => body += d); q.on('end', res); });
+      let input = {};
+      try { input = JSON.parse(body || '{}'); } catch { input = {}; }
+      const code = String(input.code || '').trim();
+      if (!code) { send(400, JSON.stringify({ ok: false, error: '缺少验证码 code' })); return; }
+      const tasks = loadTasks();
+      const task = tasks.find((t) => t.id === id);
+      if (!task) { send(404, JSON.stringify({ ok: false, error: '账号不存在' })); return; }
+      const provider = getProvider(task.providerId);
+      if (!provider || typeof provider.submitVerifyCode !== 'function') {
+        send(501, JSON.stringify({ ok: false, error: '该 provider 不支持设备验证码' }));
+        return;
+      }
+      try {
+        const res = await provider.submitVerifyCode(task, code, Number(input.deviceIndex) || 0);
+        saveTasks(tasks);
+        send(200, JSON.stringify(res));
+      } catch (e) {
+        saveTasks(tasks);
+        send(200, JSON.stringify({ ok: false, error: e.message }));
+      }
+      return;
+    }
+
+    // POST /api/checkin/verify-code/cancel?id= - 放弃本次设备验证
+    if (url.pathname === '/api/checkin/verify-code/cancel' && q.method === 'POST') {
+      const id = url.searchParams.get('id') || '';
+      const task = loadTasks().find((t) => t.id === id);
+      const provider = task ? getProvider(task.providerId) : null;
+      if (!task || !provider || typeof provider.cancelVerifyCode !== 'function') {
+        send(200, JSON.stringify({ ok: false, error: '该 provider 不支持设备验证码' }));
+        return;
+      }
+      send(200, JSON.stringify(provider.cancelVerifyCode(task)));
       return;
     }
 

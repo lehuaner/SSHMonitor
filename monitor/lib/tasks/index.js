@@ -9,6 +9,8 @@ import { loadJSON, saveJSON, DATA_DIR } from '../utils.js';
 import { sendMail } from '../notify.js';
 import { getProvider } from '../providers/index.js';
 import { startScheduler, nextTriggerMs } from '../checkin/scheduler.js';
+// ★积分过期提醒：调度器由本模块起停（它自己不反向 import 本文件，避免循环依赖）
+import { startCreditExpiryScheduler, runCreditExpiryCheck } from '../checkin/credit-expiry.js';
 import { appendLog } from '../checkin-log.js';
 
 const TASKS_FILE = DATA_DIR + '/checkin_tasks.json';
@@ -17,7 +19,10 @@ const TASKS_FILE = DATA_DIR + '/checkin_tasks.json';
 // 避免连续重试刷新窗口；手动「立即签到」仍可强制尝试。
 const THROTTLE_BACKOFF_MS = 20 * 60 * 1000;
 
-const timers = new Map(); // taskId -> { stop }
+// taskId -> { checkin: handle, expiry: handle|null }
+// ★一个任务两套调度：签到（config.time）与积分过期提醒（config.creditExpiryNotifyTime），
+//   两者时间可不同，故各自独立排期；expiry 未启用时为 null。
+const timers = new Map();
 
 export function loadTasks() {
   return loadJSON(TASKS_FILE, []);
@@ -28,6 +33,17 @@ export function saveTasks(tasks) {
 
 export function getTasks() {
   return loadTasks();
+}
+
+/**
+ * 该 Provider 的「可探活凭证」配置键。
+ * Provider 可选声明 sessionCredentialKeys（Trae/WorkBuddy=cookie/token；CodeArts=hwidCasSid/cookies）；
+ * 未声明时回落 Trae 时代的 cookie/token，保证旧行为不变。
+ */
+function providerCredKeys(providerId) {
+  const p = getProvider(providerId);
+  const keys = p && Array.isArray(p.sessionCredentialKeys) ? p.sessionCredentialKeys : ['cookie', 'token'];
+  return [...new Set([...keys, 'cookie', 'token'])];
 }
 
 function todayStr(ts = Date.now()) {
@@ -118,11 +134,11 @@ export async function executeTaskCheckin(task) {
   }
 }
 
-/** 启动单个任务的定时调度 */
+/** 启动单个任务的定时调度（签到 + 积分过期提醒两套） */
 export function startTask(task) {
   stopTask(task.id);
   if (!task.enabled || task.credentialInvalid) return;
-  const sched = startScheduler({
+  const checkin = startScheduler({
     timeStr: task.config.time,
     timezone: task.config.timezone,
     onTick: async () => {
@@ -132,15 +148,36 @@ export function startTask(task) {
       saveTasks(getTasks().map((t) => (t.id === task.id ? task : t)));
     },
   });
-  timers.set(task.id, sched);
+  // 积分过期提醒：未按账号时区到点触发；未启用时 startCreditExpiryScheduler 返回 null
+  let expiry = null;
+  try {
+    expiry = startCreditExpiryScheduler(task, { persist: persistTask });
+  } catch (e) {
+    console.error('start credit expiry scheduler:', e && e.message);
+  }
+  timers.set(task.id, { checkin, expiry });
 }
 
 export function stopTask(taskId) {
-  const sched = timers.get(taskId);
-  if (sched) {
-    try { sched.stop(); } catch {}
+  const handles = timers.get(taskId);
+  if (handles) {
+    for (const h of Object.values(handles)) {
+      if (h && typeof h.stop === 'function') { try { h.stop(); } catch {} }
+    }
     timers.delete(taskId);
   }
+}
+
+/**
+ * 手动跑一次某账号的积分过期检查（供 API 调试/立即检查用），忽略「当天时刻未到」限制。
+ * @returns {Promise<object>}
+ */
+export async function checkCreditExpiryNow(id) {
+  const task = getTasks().find((t) => t.id === id);
+  if (!task) return { ok: false, error: '任务不存在' };
+  const res = await runCreditExpiryCheck(task, { persist: persistTask, ignoreTime: true });
+  persistTask(task);
+  return { ok: true, ...res };
 }
 
 /** 启动全部启用任务 */
@@ -180,6 +217,8 @@ export function addTask(input) {
     cookieExpiresAt: null,
     cookieProbedAt: 0,
     notifiedCookieExpiry: null,
+    // 积分过期提醒的已发记录：{ [到期自然日 'YYYY-MM-DD']: { count, lastDay, lastSentAt, amount } }
+    creditExpiryState: {},
   };
   tasks.push(task);
   saveTasks(tasks);
@@ -195,7 +234,9 @@ export function updateTask(id, patch) {
   if (patch.config !== undefined) Object.assign(task.config, patch.config);
   if (patch.enabled !== undefined) task.enabled = patch.enabled;
   // 凭证更新后重置无效/失败状态，让任务自动恢复
-  if (patch.config && (patch.config.cookie !== undefined || patch.config.token !== undefined)) {
+  // 凭证键按 Provider 声明取（Trae/WorkBuddy=cookie/token；CodeArts=hwidCasSid/cookies），
+  // 否则改了 CodeArts 的 hwid_cas_sid 也不会解除 credentialInvalid，任务会被一直跳过。
+  if (patch.config && providerCredKeys(task.providerId).some((k) => patch.config[k] !== undefined)) {
     task.credentialInvalid = false;
     task.failCount = 0;
     task.notifiedInvalid = false;
@@ -213,6 +254,12 @@ export function updateTask(id, patch) {
     delete task.config.token;
     task.tokenExpiredAt = null;
     task.credentialInvalid = false;
+  }
+  // 改了「提前几天 / 最多几次」→ 清空已发记录，让新设置从零开始计数。
+  // （否则旧批次的 count 已达上限，用户调大次数也不会立刻补发。）
+  if (patch.config
+    && (patch.config.creditExpiryNotifyDays !== undefined || patch.config.creditExpiryMaxReminders !== undefined)) {
+    task.creditExpiryState = {};
   }
   saveTasks(tasks);
   resyncTask(task);
@@ -381,17 +428,19 @@ function fmtBeijing(ts) {
   }
 }
 
-function persistTask(task) {
+export function persistTask(task) {
   saveTasks(getTasks().map((t) => (t.id === task.id ? task : t)));
 }
 
 async function checkCookieExpiryOnce() {
   const today = todayStr();
   for (const task of getTasks()) {
-    if (!task.enabled || !task.config || !task.config.cookie) continue;
+    if (!task.enabled || !task.config) continue;
     if (task.config.cookieExpiryNotify === false) continue;
     const provider = getProvider(task.providerId);
     if (!provider || typeof provider.probeSession !== 'function') continue;
+    // 该 provider 有哪些「可探活凭证」配置键（见 providerCredKeys）
+    if (!providerCredKeys(task.providerId).some((k) => task.config[k])) continue;
 
     // 探测 Cookie 会话有效期（CheckLogin 会话 ~14 天滑动续期，取 sid_guard 静态值兜底）
     if (!task.cookieExpiresAt || Date.now() - (task.cookieProbedAt || 0) > COOKIE_PROBE_TTL_MS) {
@@ -423,18 +472,19 @@ async function checkCookieExpiryOnce() {
     task.notifiedCookieExpiry = today;
     persistTask(task);
     const expStr = fmtBeijing(task.cookieExpiresAt);
+    const platName = (getProvider(task.providerId) || {}).name || '账号';
     if (daysLeft <= 0) {
       await sendMail(
-        `[告警] ${task.name} Cookie 已失效`,
-        `账号 ${task.name} 的 Trae Cookie 已失效（探测时间 ${expStr}），自动刷新 JWT 将无法进行。\n` +
-        `请重新登录 www.trae.cn 抓取新 Cookie，并在签到页编辑该账号更新。`
+        `[告警] ${task.name} 凭证已失效`,
+        `账号 ${task.name} 的 ${platName} 凭证已失效（探测时间 ${expStr}），自动签到将无法进行。\n` +
+        `请重新登录后导出新的凭证，并在签到页编辑该账号更新。`
       );
     } else {
       await sendMail(
-        `[提醒] ${task.name} Cookie 将于 ${daysLeft} 天后到期`,
-        `账号 ${task.name} 的 Trae Cookie 预计到期时间：${expStr}，剩余约 ${daysLeft} 天。\n` +
-        `请在此期间重新登录 www.trae.cn 抓取新 Cookie 并更新账号配置，` +
-        `否则到期后签到将失败。\n\n如不想收到此提醒，可在账号编辑页关闭「Cookie 到期提前邮件通知」。`
+        `[提醒] ${task.name} 凭证将于 ${daysLeft} 天后到期`,
+        `账号 ${task.name} 的 ${platName} 凭证预计到期时间：${expStr}，剩余约 ${daysLeft} 天。\n` +
+        `请在此期间重新登录后导出新的凭证并更新账号配置，` +
+        `否则到期后签到将失败。\n\n如不想收到此提醒，可在账号编辑页关闭「凭证到期提前邮件通知」。`
       );
     }
   }
