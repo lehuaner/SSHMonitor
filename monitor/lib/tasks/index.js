@@ -442,20 +442,24 @@ async function checkCookieExpiryOnce() {
     // 该 provider 有哪些「可探活凭证」配置键（见 providerCredKeys）
     if (!providerCredKeys(task.providerId).some((k) => task.config[k])) continue;
 
-    // 探测 Cookie 会话有效期（CheckLogin 会话 ~14 天滑动续期，取 sid_guard 静态值兜底）
+    // 探测会话有效性（CodeArts 业务 cookie 为会话态、hwid_cas_sid 为长期令牌，
+    //   probeSession 恒返回 expiresAt:null —— 只能靠 isLogin 判定有效与否）
     if (!task.cookieExpiresAt || Date.now() - (task.cookieProbedAt || 0) > COOKIE_PROBE_TTL_MS) {
       try {
         const r = await provider.probeSession(task);
-        if (r.isLogin && r.expiresAt) {
-          task.cookieExpiresAt = r.expiresAt;
-        } else if (r.isLogin === false) {
-          task.cookieExpiresAt = Date.now(); // 会话已失效，视为立即到期
+        if (r.isLogin) {
+          // 凭证有效：有明确到期时间就更新，没有（CodeArts 恒 null）就清除旧值，
+          //   避免之前误判写入的 cookieExpiresAt 残留 → 每天重复发"凭证已失效"邮件
+          task.cookieExpiresAt = r.expiresAt || null;
+        } else {
+          // 凭证无效：视为立即到期（当天就会走通知分支）
+          task.cookieExpiresAt = Date.now();
         }
         task.cookieProbedAt = Date.now();
         persistTask(task);
       } catch (err) {
         if (err.kind === 'invalid') {
-          // Cookie 已被服务端拒绝：视为已到期（当天就会走通知分支）
+          // 凭证已被服务端拒绝：视为已到期（当天就会走通知分支）
           task.cookieExpiresAt = Date.now();
           task.cookieProbedAt = Date.now();
           persistTask(task);
