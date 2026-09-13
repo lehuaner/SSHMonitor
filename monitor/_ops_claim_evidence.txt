@@ -1,0 +1,31 @@
+# CodeArts 每日签到迁移到运营活动接口 —— 证据摘录（2026-09-12）
+
+## 1) 前端版本变更（旧→新）
+抓包时: CodeArtsAgentPortal/126.8.310
+当前  : CodeArtsAgentPortal/126.9.107
+
+## 2) 新前端 bundle 里的签到调用链（关键片段）
+const edc=()=>{var e;return((e=window==null?void 0:window.service_cf3_config)==null?void 0:e.basePath)||"/portal"}
+IZn="PORTAL"
+lpc=(e=IZn)=>ya.get({url:"/promptcenter/v1/ops/delivery",params:{channel:e}})
+spc=e=>ya.post({url:"/promptcenter/v1/ops/claim",body:e})
+spc({campaignId:se,channel:IZn})
+npc={DAILY_CLAIM:"DAILY_CLAIM",STUDENT_CERTIFIED:"STUDENT_CERTIFIED",INVITE_USER:"INVITE_USER",USER_LOGIN:"USER_LOGIN"}
+
+旧接口在新 bundle 中出现次数（0 = 已被前端弃用）:
+  credit/claim : 0
+  has-claimed  : 0
+
+## 3) 实测（2026-09-12 00:16~00:20 CST）
+GET  /portal/promptcenter/v1/ops/delivery?channel=PORTAL
+  -> 200 {"code":0,...items:[{"campaignId":1,"type":"USER_LOGIN","claimable":true,"status":"ELIGIBLE","pendingTotalAmount":1000.00,
+        "extra":{"startTime":"2026-09-08T16:00:00Z","endTime":"2026-12-30T16:00:00Z","triggerMode":"MANUAL_CLAIM"}}]}
+POST /portal/promptcenter/v1/ops/claim  {"campaignId":1,"channel":"PORTAL"}
+  -> 200 {"code":0,"data":{"id":5517,"status":"CLAIMED","totalAmount":1000.00,"claimedAt":"2026-09-11T16:19:50Z","expireAt":"2026-10-11T16:19:50Z","pointBucket":"GENERAL"}}
+
+旧接口同一时刻（凭证有效）:
+GET  /portal/snap-manager/v1/credit/has-claimed -> 200 len=0  ct=(none) hwAjax=(none)
+POST /portal/snap-manager/v1/credit/claim      -> 200 len=0  ct=(none) hwAjax=(none)
+对照 GET /portal/snap-manager/v1/package/overview -> 200 len=1113 ct=application/json 余额 8355.28
+
+领取后余额: 8355.28 -> 9355.28 (+1000, 分钟级延迟到账)

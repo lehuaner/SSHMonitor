@@ -1,10 +1,12 @@
 # 新增 checkin（签到）平台 · 全流程方案
 
 > 产出：接口清单与字段定义 / 展示面板 Provider 数据结构 / 1:1 参考 Trae 的交互流程 / 改造清单 / 关键接口可用性实测
-> 输入源：`examples/workbuddy_解析结果`（web 抓包）、`examples/workbuddy3_解析结果`（桌面端抓包，2026-09-10）
+> 输入源：`examples/workbuddy_解析结果`（web 抓包）、`examples/workbuddy3_解析结果`（桌面端抓包，2026-09-10）、`examples/workbuddy4_解析结果`（个人用量页抓包，2026-09-10）、**`examples/workbuddy5_解析结果`（含桌面端登录握手全链路，2026-09-10，★v1.7 新增）**
 > 参考流：`examples/2026-08-15-152602_解析结果`（Trae 原生「每日签到 + 积分」API + OAuth/Passport 认证链路）
-> 实测日期：2026-09-08（首轮）／2026-09-10（★遗留项收尾）
-> 文档版本：**v1.2** — ①**结清遗留项**：每日签到打卡的真实端点已确认（`POST /v2/billing/meter/daily-checkin`，位于 `copilot.tencent.com`，非 `www` 域）；②修正 web 侧凭证形态（需 `session`+`session_2` 成对）；③补 `checkin-activity-status` 全量状态接口；④新增 §7「遗留项收尾实测」
+> 实测日期：2026-09-08（首轮）／2026-09-10（★遗留项收尾 + 代码落地）／2026-09-10 14:40（★v1.5：用量/余额端点修正 + 多平台统计落地）
+> 文档版本：**v1.7** — ★★**纠正 v1.6 §12 的错误结论**：WorkBuddy **存在 cookie → Bearer 换票机制**，并已实装为 `authMode: 'auto'`（只填 Cookie 即自动换出 60 天 Bearer，**用户无需再抓包**）。换票链路 = `POST /v2/plugin/auth/state`（无鉴权）+ `POST www.workbuddy.cn/console/login/enterprise?state=`（带站点 Cookie）；实测边界：最小凭证 `session`+`session_2`、**会话绑定登录时 UA**、可重复换但**有速率限制**、refreshToken 暂不可兑换。详见 §12
+> 上一版：**v1.6** — ①★**签到历史补齐**：`/api/checkin/logs` 改为「本地运行记录 ∪ 平台侧签到历史」（新契约 `provider.getCheckinHistory`；CodeArts 从权益包的 `每日签到赠送包 createdTime` 反推、WorkBuddy 用 `checkin_dates`），解决「平台侧连签 3 天、日历只显示 1 天」；②★**Token 无原始数据显式归因**（`usageMeta.tokens=false` → 面板显示 `—` + 具体原因，不再显示 0）；③「全部平台」视图不再重复展示全局合计格；④新增账号的「名称」占位随 Provider 变化；⑤CodeArts 权益包升级为**逐包明细**端点 + 新增「近30天区间汇总」提示；详见 §11
+> 上一版：v1.4 —— ①★**新增关键坑：APISIX 校验 `User-Agent`**（同一 cookie 换 UA 即 401→200），并据此**纠正 v1.3 的「抓包会话已吊销」误判**；②Provider 的 UA 改为可配置项 + 默认取登录浏览器值；③补 WorkBuddy **真实端到端实测**（签到 +100、幂等复查，本地与远端双跑）；④§9.3 字段表 / §1.5 / §7.2 同步更新
 
 ---
 
@@ -55,6 +57,12 @@ Trae 的签到类接口（`trae/api/v2/*`）返回简化信封：
 
 ### 1.5 关键坑（实测确认）
 - WorkBuddy 几乎所有 growth/billing 响应都会 `set-cookie: session=; Max-Age=0` **主动清 session**；请求里携带的才是有效 session，**切勿用响应 cookie 覆盖本地 session**。
+- ★★ **APISIX 前置网关会校验 `User-Agent`**（2026-09-10 实测，v1.4 新增）：**同一份 cookie**，
+  - UA = `…Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0` → **全部 HTTP 401**（`401 Authorization Required`，HTML 体）
+  - UA = `…Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0`（登录浏览器真实版本）→ **全部 HTTP 200**
+
+  ⇒ 401 **未必是会话失效**。若「刚复制的新 cookie 也 401」，先换 UA 再判断，
+  且 Provider 必须把 UA 做成可配置项、默认取登录浏览器抓包值。
 - ★**双 cookie**：web 侧必须同时携带 `session` + `session_2`，缺一即 401（v1.2 实测，见 §7.2）。
 - ★**时间戳不可信**：`session` 的 expiry 段只是上限；logout / 任何一次新登录都会即时吊销而不改时间戳。有效性必须**实探**。
 - ★**两个 streak 语义不同**：严格连续 vs 活动累计，勿混用（见 §7.2 坑 3）。
@@ -570,6 +578,11 @@ POST https://api.trae.cn/trae/api/v2/ug/checkin_credits/status
    |---|---|---|
    | `growth/streak.streak.days` | **严格连续**签到天数（断一天归零） | `0`（09-09 漏签） |
    | `meter/checkin-activity-status.streak_days` | **活动期内累计**签到天数 | `9` |
+4. ★★ **UA 不匹配会被网关判成 401**（v1.4 新增，纠正了此前「会话已吊销」的误判）。
+   - 现象：同一份 cookie，UA 用 `Edg/151` → 401；用登录浏览器的 `Edg/152` → 200。
+   - 误判代价：v1.3 曾据此把 `workbuddy3` 抓包会话判为「已被服务端吊销」。
+     v1.4 复核：**该会话配抓包 UA 至今仍返回 200**（`streak.days=0`，会话有效，只是当天没签）。
+   - 落地：Provider 的 UA 必须可配置，默认取登录浏览器值（见 §9.3）。
 
 ### 7.3 旧 404 的根因（修正记录）
 | 项 | 旧结论（v1.1） | 新结论（v1.2） |
@@ -608,3 +621,517 @@ python codearts_test.py   # CodeArts（见另一份文档）
 3. `redeem` 的幂等 `client_token` 边界（重复提交同一 token）仍建议以独立测试账号补一轮验证。`daily-checkin` 已实测幂等，无需 token。
 4. 是否将 Trae 与 WorkBuddy 双 Provider 在面板并列展示（统一 `CheckinProvider` 契约已就绪）。
 5. ✅ **已结清（v1.2）**：`examples/workbuddy3_解析结果`（桌面客户端 `copilot.tencent.com`，222 条）已捕获并实测每日签到链路 —— `POST /v2/billing/meter/daily-checkin` 与 `POST /v2/billing/meter/checkin-activity-status`。旧文档 §2.2-3 的遗留项关闭。**新增待办**：桌面端 JWT（`copilot.tencent.com/auth/realms/copilot`）的自动刷新流程未在抓包中出现，若要用作长期无头凭证，需确认 refresh_token 换取方式。
+
+---
+
+## 9. ★ v1.3 落地实现（2026-09-10）
+
+> 本章把 §1–§7 的协议结论落成**可运行代码**，并在远端 Termux 完成部署验证。
+
+### 9.1 落地形态（与 §5「假设 TS 项目」的差异）
+
+实际面板不是 TS 项目，而是运行在 Honor 10（Termux / Android，Node v24）上的**零依赖 ESM Node 服务** `honor10-monitor`，因此 §5 的 `providers/workbuddy/*.ts` 多文件清单**不适用**。实际落地为一个 Provider 单文件：
+
+| 文件 | 作用 | 行数 |
+|---|---|---|
+| `monitor/lib/providers/index.js` | Provider 注册中心（已有，未改） | 30 |
+| `monitor/lib/providers/trae.js` | Trae 参考实现（已有） | 231 |
+| **`monitor/lib/providers/workbuddy.js`** | ★ 本次新增：WorkBuddy Provider | 约 340 |
+| **`monitor/lib/providers/codearts.js`** | ★ 本次新增：CodeArts Provider（薄包装） | 约 300 |
+| **`monitor/lib/checkin/codearts.js`** | ★ 本次新增：CodeArts 客户端（登录链 + 业务接口，零依赖） | 约 860 |
+| `monitor/server.js` | 注册 3 个 Provider + 3 条验证码路由 | +约 70 行 |
+| `monitor/lib/tasks/index.js` | 会话巡检门控通用化 + 告警文案通用化 | +约 15 行 |
+| `monitor/frontend/checkin.html` | 「📱 设备验证」按钮（仅 verifyCode 能力显示） | +约 25 行 |
+
+零依赖约束：只用 `node:crypto` / `node:https` / 内置 `fetch`，**不引入任何 npm 包**（手机端不做 `npm install`）。
+
+### 9.2 Provider 契约实现（对齐 §3.4）
+
+| 契约方法 | WorkBuddy 实现 | CodeArts 实现 |
+|---|---|---|
+| `checkin(task)` | 先读 `checkin-activity-status`；已签直接返回；未签 POST `daily-checkin`；`code:10001` → `alreadyCheckedIn=true` | 探活 → `has-claimed` → `claim` → 用 `package/overview` 前后余额差算当日所得 |
+| `getCredits(task)` | `total_credits`（活动累计积分） | `all_credit_package.package_credit_remain` |
+| `checkCredential(task)` | 状态接口可读即有效 | 签到状态可读即有效 |
+| `checkStatus(task)` | `{checked_in, credits}` | `{checked_in, credits}` |
+| `getTotalCredits(task)` | 主值 + 能量余额 + 累计天数 | 主值 + basic/bonus 分项 |
+| `probeSession(task)` | bearer 解 JWT `exp`；web 解 `session` 第二段（仅提醒） | 实探；`expiresAt=null`（时效不可解析） |
+| `requestVerifyCode(task)` / `submitVerifyCode(task, code)` | —（不需要） | ★保留：设备未受信时才需要 |
+| `sessionCredentialKeys` | `['cookie','token']` | `['hwidCasSid','cookies']` |
+
+> `sessionCredentialKeys` 是本次新增的**可选声明**：`lib/tasks/index.js` 的会话巡检原本硬编码 `task.config.cookie`，现改为按 Provider 声明取键，Trae 行为不变（默认 `['cookie']`），CodeArts 才能被纳入巡检。
+
+### 9.3 WorkBuddy Provider configSchema（10 字段）
+
+| key | 类型 | 默认 | 说明 |
+|---|---|---|---|
+| `authMode` | select | `web` | `web`（双 cookie）/ `bearer`（JWT，寿命 60d，推荐服务端） |
+| `cookie` | password | — | **`session` + `session_2` 必须成对** |
+| `token` | password | — | Keycloak JWT（Bearer 模式） |
+| `baseUrl` | select | `https://www.workbuddy.cn` | 或 `https://copilot.tencent.com`（同一后端） |
+| ★`userAgent` | text | 登录浏览器的 UA（默认 `…Chrome/152…Edg/152.0.0.0`） | **APISIX 会校验 UA**，与登录浏览器不一致直接 401（见 §1.5 / §7.2 坑 4） |
+| `time` / `timezone` | select | `09:00` / `Asia/Shanghai` | 定时 |
+| `failThreshold` | select | 3 | 连续失败告警阈值 |
+| `cookieExpiryNotify` | toggle | true | 凭证到期提醒 |
+| `cookieExpiryNotifyDays` | select | 1 | 提前几天提醒 |
+| `notifyOnSuccess` | toggle | false | 成功也发通知 |
+
+**§7.2 三个坑在代码中的落地**：
+1. `session` 时间戳不可信 → `probeSession()` **实探** `GET /activity/growth/streak`（401 才算失效），时间戳只用于「到期提醒」。
+2. 双 cookie 成对 → `authMode=web` 时凭整段 cookie 字符串发送，不做拆解、不做重组。
+3. ★**绝不接受响应 cookie**：所有请求都是「从配置读凭证 → 发送」，**没有任何 `set-cookie` 回写路径**（上游会主动 `session=; Max-Age=0`，一旦回写就会把自己的会话搞没）。
+4. 两个 streak 语义 → `checkin-activity-status.streak_days` 作为主展示（活动累计），严格连续天数留给 `growth/streak` 备查。
+
+### 9.4 新增 API 路由（server.js）
+
+| Method | Path | 说明 |
+|---|---|---|
+| POST | `/api/checkin/verify-code/request?id=` | 先尝试登录：设备已受信则返回 `alreadyTrusted`，否则下发验证码并返回 `authDevices[]` |
+| POST | `/api/checkin/verify-code/submit?id=` | body `{code, deviceIndex}` → 校验 → 信任本机 → 落会话 |
+| POST | `/api/checkin/verify-code/cancel?id=` | 丢弃本次验证会话（TTL 10 分钟） |
+
+两条路由都支持任意 Provider：只要该 Provider 实现了 `requestVerifyCode`/`submitVerifyCode` 即可（能力位 `verifyCode`），前端按钮据此自动显隐。
+
+### 9.5 验证结果
+
+**本地自检（`monitor/_selftest_providers.mjs`）：22/22 通过**
+```
+=== 1. 静态契约 ===         两个 Provider 的 id/name/configSchema/capabilities 映射全部一致；
+                            注册表可见 workbuddy、codearts
+=== 2. WorkBuddy 逻辑分支（mock fetch）===
+  ✓ A 已签: alreadyCheckedIn=true credits=900，且未调用 daily-checkin（省一次写请求）
+  ✓ B 首签: reward=100 credits=900（800 + 100 回查）
+  ✓ C 10001: 识别为已签到（非错误）
+  ✓ D 401: 归一化为 kind=invalid
+  ✓ E 缺凭证: kind=invalid
+  ✓ F web 探活: expiresAt=2026-09-14T16:38:55Z（session 第二段）
+  ✓ F bearer 探活: expiresAt=2026-11-09T04:01:26Z（JWT exp，≈60 天，与 §7.4 实测一致）
+  ✓ G 总积分: 附加请求失败时降级为 null，主值不受影响
+```
+
+**远端部署（Termux Honor 10，Node v24.18.0）**：`deploy-remote.sh` 重启成功（runit），`/api/checkin/providers` 返回 3 个 Provider：
+```
+trae     | Trae                 | 6 caps | 10 fields
+workbuddy| WorkBuddy 成长签到   | 6 caps | 10 fields
+codearts | CodeArts 码道        | 7 caps | 11 fields
+```
+
+**★真实账号端到端（CodeArts，2026-09-10 现场）**：
+```
+POST /api/checkin/test?id=<codearts任务>     → {"ok":true,"total":7355.28,"valid":true}
+GET  /api/checkin/status?id=<codearts任务>   → {"ok":true,"checked_in":true,"credits":7355.28}
+GET  /api/checkin/credits/total?id=<codearts任务>
+     → {"ok":true,"total":7355.28,"packs":{"basic":500,"bonus":6855.28}}
+POST /api/checkin/run?id=<codearts任务>      → {"ok":true,"alreadyCheckedIn":true,"credits":7355.28,"reward":null}
+```
+说明：当日已领 → 幂等返回 `alreadyCheckedIn=true`；余额 7355.28 = 基础包 500 + 赠送包 6855.28，与 CodeArts 后台一致。
+
+**★WorkBuddy 真实端到端（2026-09-10 下午，用户提供的 web 凭证）**：
+```
+[本地直连]
+checkStatus    → {"ok":true,"checked_in":false,"credits":200}       ← 今日未签
+checkin        → {"ok":true,"alreadyCheckedIn":false,"credits":300,"reward":100}   ★ +100 真实入账
+checkStatus    → {"ok":true,"checked_in":true,"credits":300}
+复跑 checkin   → {"ok":true,"alreadyCheckedIn":true,"credits":300,"reward":null}    ← 幂等
+
+[远端 Termux 服务，同上凭证]
+POST /api/checkin/test  → {"ok":true,"total":300,"valid":true}
+GET  /api/checkin/status→ {"ok":true,"checked_in":true,"credits":300}
+GET  …/credits/total    → total=300, energy=3, streakDays=3, checkins=["2026-09-10","2026-09-09","2026-09-08"]
+POST /api/checkin/run   → {"ok":true,"alreadyCheckedIn":true,"credits":300,"reward":null}
+```
+完整状态样本（`checkin-activity-status` 实测）：
+```json
+{"active":true,"season":8,"activity_name":"开学季","theme_name":"Buddy加油站",
+ "today_checked_in":true,"streak_days":3,"total_credits":300,"daily_credit":100,"today_credit":100,
+ "checkin_dates":["2026-09-10","2026-09-09","2026-09-08"],"week_checkin_days":3,
+ "week_progress":[false,true,true,true,false,false,false],
+ "start_time":"2026-09-01 00:00:00","end_time":"2026-09-15 23:59:59",
+ "claim_button_text":"立即领取",
+ "action_button":{"show":true,"text":"认证领积分","action":"…/events/campus-freshman/"}}
+```
+> ★**结论修正（v1.4）**：v1.3 记录的「抓包会话已被服务端吊销」是**误判** —— 真因是 UA 不匹配（§1.5 / §7.2 坑 4）。
+> 旧抓包会话配抓包 UA 至今仍 200。WorkBuddy 侧现已**真实跑通签到（+100）与幂等复查**，无需再等凭证。
+
+### 9.6 复现命令
+```bash
+# 本地（Windows / 任意 Node ≥18）
+node monitor/_selftest_providers.mjs        # 22 项自检
+node --check monitor/lib/providers/workbuddy.js
+node --check monitor/lib/providers/codearts.js
+
+# 远端（Termux）
+cd $HOME/monitor && bash deploy-remote.sh
+curl -s http://127.0.0.1:3081/api/checkin/providers
+```
+
+---
+
+## 10. ★ v1.5 落地实现（2026-09-10 14:40）：真实余额 / 真实用量 / 多平台统计
+
+### 10.1 本次要回答的四个问题
+
+| # | 用户问题 | 结论 |
+|---|---|---|
+| Q1 | 新增两个平台的「近30天」是不是没有远程端点验证？ | **一半对**。「📅 近30天」按钮走的是**本地日志**（`checkin_logs.json`，由真实签到运行写入，数据真实但非远端查询）；**远端逐日验证**由另一个按钮「◈ 积分消耗明细」提供，本次已让两个新平台都具备真实远端来源 |
+| Q2 | WorkBuddy 积分只显示 300，不是 1700 左右 | **确认是 bug**：用错了字段（活动累计 ≠ 账户余额）。已改用真实余额端点，实测 1702~1722 |
+| Q3 | 数据面板只显示 Trae，缺 provider 切换与总统计 | **确认是架构缺口**：`checkin-stats.js` 只认 `getUsage`，且前端无平台维度。本次三者全补 |
+| Q4 | 继续审计哪些端点没有真实服务器端点 | 见 **§10.3 端点真伪审计表**（已逐条实测） |
+
+### 10.2 根因与修复
+
+| 问题 | 根因 | 修复 |
+|---|---|---|
+| 积分 300 ≠ 1700 | `getCredits/getTotalCredits` 取 `checkin-activity-status.total_credits`（签到活动**累计发放**积分：3 天 × 100 = 300），与账户可用余额无关 | 新增 `fetchBalance()` 走 `POST /billing/meter/get-user-resource-summary`，主值 = `Σ Packages[].CycleRemainCapacity`；`total_credits` 降级为附属字段 `activityCredits` |
+| 面板只有 Trae | `updateUsageStats()` 里 `if (typeof provider.getUsage !== 'function') { noSupport++; continue; }`，只有 Trae 实现了 `getUsage` | ①WorkBuddy 补 `getUsage`（真实远端）②CodeArts 补 `getDailyUsage`（真实远端聚合）③`checkin-stats` 支持两种口径并把来源写进落库 |
+| 无 provider 切换/总计 | 前端只有「账号」下拉，无平台维度 | `getUsageStats()` 新增 `byProvider`（复用同一 `buildTotal()` 算法，避免口径漂移）；前端加平台切换按钮组 + 「全部平台年/月合计」格 |
+| WorkBuddy 逐日全为 0 | `get-user-request-usage` **只保留近 30 天**，起点早于窗口会**静默返回空列表**（HTTP 200 / code 0，不报错） | `fetchUsage()` 把起点收敛到近 30 天（`MAX_LOOKBACK_DAYS = 30`）；落库版本号 bump 到 v4 强制重拉 |
+
+### 10.3 ★ 端点真伪审计表（核心产物）
+
+> 判定口径：**🛰 真实远端** = 本次实测从厂商服务器拿到当前账号的真实数据；**📄 本地记录** = 本机文件，内容可能源自真实运行/真实端点，但本身不是远端查询。
+
+#### WorkBuddy
+
+| 端点 | 用途 | 性质 | 实测（2026-09-10） |
+|---|---|---|---|
+| `POST /v2/billing/meter/checkin-activity-status` | 签到活动状态 | 🛰 真实远端 | code 0，today_checked_in=true，total_credits=300 |
+| `POST /v2/billing/meter/daily-checkin` | 每日签到（写） | 🛰 真实远端 | code 0，credit=+100 |
+| `POST /billing/meter/get-user-resource-summary` | ★**账户可用余额** | 🛰 真实远端 | 1722.11 / 配额 6900（2 个包） |
+| `POST /billing/meter/get-user-request-usage` | ★**逐请求消耗明细** | 🛰 真实远端 | 近 30 天 total=242 条 |
+| `POST /billing/meter/get-user-resource-free-packages` | 免费权益包明细 | 🛰 真实远端 | 17 个资源实例（含包名/周期） |
+| `POST /billing/meter/get-user-resource-paid-packages` | 付费权益包明细 | 🛰 真实远端 | 0 条（未购买） |
+| `POST /billing/meter/compensation-status` | 补偿包领取状态 | 🛰 真实远端（只读） | claimed=true, credit_num=1000 |
+| `POST /billing/meter/check-gift-claimed` | 礼包领取状态 | 🛰 真实远端（只读） | claimed=true, credit_num=1500 |
+| `GET /activity/growth/streak` | 连续签到 | 🛰 真实远端 | streak_days=3 |
+| `GET /activity/growth/energy` | 能量余额 | 🛰 真实远端 | balance=3 |
+| `checkin_dates` + `daily_credit` | 签到记录（日期→积分） | 派生字段 | 由上面的真实端点响应折算 |
+
+#### CodeArts
+
+| 端点 | 用途 | 性质 | 实测 |
+|---|---|---|---|
+| `GET  /portal/snap-manager/v1/credit/has-claimed` | 今日是否已领 | 🛰 真实远端 | 裸布尔 |
+| `POST /portal/snap-manager/v1/credit/claim` | 领取积分（写） | 🛰 真实远端 | 裸布尔 true |
+| `GET  /portal/snap-manager/v1/package/overview` | 余额 / 分项 | 🛰 真实远端 | 7355.28 / 7500 |
+| `GET  /portal/snap-manager/v1/package/info` | 套餐规格 | 🛰 真实远端 | codearts.agent.individual.trial |
+| `POST .../analytics/usage/personal/charts` | ★**逐日 + 按模型用量** | 🛰 真实远端 | DATE_DAY 30 格；09-09=144.72 |
+| `POST .../analytics/usage/personal/stats` | 区间汇总指标 | 🛰 真实远端 | TOTAL_CREDITS=144.72 |
+| `POST .../analytics/usage/personal/heatmap` | 用量热力图 | 🛰 真实远端 | 31 格 |
+| ⚠️ 会话级（逐请求）明细 | — | **不存在** | 只有日粒度 + 区间模型粒度，没有 `日期×模型` 矩阵 |
+
+#### Trae（参照系）
+
+| 端点 | 用途 | 性质 |
+|---|---|---|
+| 按会话用量 `user_usage_group_by_sessions` | 逐日消耗（含 token 明细） | 🛰 真实远端 |
+| 权益包列表 | 余额分项 | 🛰 真实远端 |
+
+#### 本地记录（明确**不是**远端端点）
+
+| 位置 | 内容 | 说明 |
+|---|---|---|
+| `GET /api/checkin/logs`（📅 近30天按钮） | 签到结果日志 | 📄 本地 `checkin_logs.json`，由**真实签到运行**写入 → 数据真实，但不是远端查询 |
+| `data/checkin_stats.json` | 每日 00:00 余额快照 | 📄 本地，快照值取自真实余额端点 |
+| `data/checkin_usage_stats.json` | 逐日消耗落库 | 📄 本地缓存，**源为各平台真实远端端点**，供面板快速读取 |
+
+### 10.4 `get-user-request-usage` 的三个坑（v1.5 实测补齐）
+
+1. **参数类型**：`startTime`/`endTime` 必须是 `"YYYY-MM-DD HH:mm:ss"` **字符串**。
+   传 epoch 毫秒（数字或数字字符串）→ `code 10001 json: cannot unmarshal number into Go struct field GetUserUsageReq.startTime of type string`。
+2. **键名**：分页键是 `pageNum`（**不是** `pageNumber`）。用错键名**不报错**，静默返回 `total: 0, data: []` —— 极易误判为「这个账号没有用量」。
+3. **保留窗口**：**只保留近 30 天**。实测同一 cookie、同一账号：
+
+   | 查询区间 | 返回 |
+   |---|---|
+   | `2026-09-01` ~ `2026-09-09` | total=101（有数据） |
+   | `2026-08-01` ~ `2026-09-09` | total=0（**静默空**，HTTP 200 / code 0） |
+   | `2026-06-01` ~ `2026-09-09` | total=0（静默空） |
+
+   ⇒ Provider 侧把起点收敛到 `now - 30d`。**不收敛的话，逐日统计会整段落 0 并写进落库**（本次真实踩到：WorkBuddy 年度消耗落成 0，修正后为 964.94）。
+
+### 10.5 统计数据落库口径（`lib/checkin-stats.js`）
+
+取数优先级（**全部优先真实远端端点，绝不用本地记录顶替**）：
+
+```
+provider.getDailyUsage(task, {startSec, endSec})   → 平台直接给逐日聚合（CodeArts 用量分析）
+  ↓ 无则
+provider.getUsage(task, {start_time, end_time, …}) → 按会话/按请求明细，本地按日聚合（Trae / WorkBuddy）
+  ↓ 无则
+计入 noSupport（面板不展示该账号）—— ★不塞本地记录充数
+```
+
+- Trae 的参数契约是基准（`start_time/end_time` 为 epoch 秒 + `usage_type:[7]`）；WorkBuddy 在自己的 `getUsage` 里把 epoch 翻译成日期字符串，对上保持同一契约。
+- 落库版本 `TOKEN_VERSION = 4`；不匹配即强制全量重拉（用于修正历史错误口径）。
+- 落库每条账号记录新增：`providerId` / `providerName` / `source` / `sourceLabel` / `note` / `modelTotals`（区间模型累计，用于「无逐日模型归属」的平台）。
+- `getUsageStats()` 返回新增 `byProvider[]`，每项含该平台的 `total`（与全局 total 同一算法 `buildTotal()`）。
+
+### 10.6 新增 / 变更的 API 路由
+
+| 路由 | 变更 |
+|---|---|
+| `GET /api/checkin/stats` | 返回值新增 `byProvider[]`；账号新增 `source/sourceLabel/note/providerId/modelsFromRange` |
+| `POST /api/checkin/usage?id=` | provider 无 `getUsage` 时不再 501，改为 **降级返回落库逐日明细**：`{ok, fallback:'daily', reason:'provider_no_session_api', days, models, sourceLabel, note}` |
+| `GET /api/checkin/packages?id=` | ★新增：权益包明细（WorkBuddy `free/paid-packages`、CodeArts `package/overview`） |
+
+### 10.7 前端面板变化（`frontend/checkin.html`）
+
+1. **平台切换按钮组**（全部平台 / Trae / WorkBuddy / CodeArts）——切换后账号下拉、柱状图、月柱状图、日历热力图全部按该平台重算。
+2. **总计**：统计块第一格显示当前视图账号数；末格「**全部平台 年 / 月合计**」常驻，切换平台时也能看到全局数。
+3. **数据来源徽标**：每个账号行标注 `🛰 来源接口`（远端）或 `📄`（本地），悬停显示完整来源与注意事项。
+4. **权益包按钮** `💎 权益包`：仅对声明了 `packages` 能力的 provider 显示，展示进度条 + 剩余/总量 + 周期截止。
+5. **消耗明细降级视图**：provider 无会话接口时，渲染落库逐日表（日期 / 模型 / 积分 / token）+ 模型区间累计说明。
+
+### 10.8 验证结果（真实链路，非 mock）
+
+```
+# 本地自检：35 项全绿（新增 H 组 4 项：用量入参类型/键名、出参映射、token 不臆造；I 组 2 项：PackageCodes 必填）
+自检结果：通过 35，失败 0
+
+# 远端 /api/checkin/stats（5 个账号，101 天）
+byProvider: [('codearts', 1, 144.72, 1730038),
+             ('trae',     3, 14561.79, 2105309435),
+             ('workbuddy',1, 964.94, 0)]
+TOTAL year = 15671.45
+
+# 远端 /api/checkin/usage（WorkBuddy，真实逐请求明细）
+ok=True total=242   首条: 1789022340 deepseek-v4.1-flash 14.12
+
+# 远端 /api/checkin/usage（CodeArts，降级逐日）
+fallback=daily  source=remote  sourceLabel=CodeArts 用量分析接口
+days[0] = 2026-09-09 144.72  模型={"GLM-5.2":144.72}
+
+# 远端 /api/checkin/packages
+WorkBuddy: total=1702.06 free=17 paid=0
+CodeArts : total=7355.28 spec=codearts.agent.individual.trial
+```
+
+### 10.9 复现命令
+
+```bash
+# 本地（Windows / 任意 Node ≥18）
+node monitor/_selftest_providers.mjs        # 35 项自检（含真实只读探活）
+node --check monitor/lib/providers/workbuddy.js
+node --check monitor/lib/checkin-stats.js
+
+# 远端（Termux）
+cd $HOME/monitor && bash deploy-remote.sh
+curl -s http://127.0.0.1:3081/api/checkin/stats | python3 -m json.tool | head -40
+curl -s -X POST "http://127.0.0.1:3081/api/checkin/usage?id=<taskId>" \
+     -H 'Content-Type: application/json' \
+     -d '{"start_time":0,"end_time":9999999999,"page_size":50,"page_num":1}'
+curl -s "http://127.0.0.1:3081/api/checkin/packages?id=<taskId>"
+```
+
+### 10.10 遗留 / 已知限制
+
+- **WorkBuddy 用量不返回 token 数**（只有 `credit`）→ 面板在该平台 token 列恒为 0 / 「—」，**不臆造**。
+- **CodeArts 无会话级明细**，且 analytics 不提供 `日期×模型` 矩阵 → 只有当「区间内单模型」或「单消耗日」时才做逐日模型归属，否则只给区间模型累计并显式标注。
+- **只有 `getUsage` / `getDailyUsage` 的 provider 会进入消耗统计**；都不支持的平台计入 `noSupport`，面板不展示（而不是拿本地记录占位）。
+- `lib/checkin-stats.js` 的 `getStats()`（旧「快照差分」口径）已无调用方，保留但不再进入面板。
+
+
+---
+
+## 11. ★ v1.6 落地实现（2026-09-10 15:40）：签到历史补齐 / Token 无数据归因 / 名称占位
+
+> 输入：用户三问 —— ①「CodeArts 权益包里有每日签到数据，但『近30天』还是只有一天」；②「新增账号时名称 placeholder 没有随 provider 变」；③「WorkBuddy Bearer token 到底怎么获取，能不能用 cookie 换」
+> 新增抓包证据：`examples/codearts3_解析结果`
+
+### 11.1 CodeArts「近30天」只有一天 —— 根因与修复
+
+**根因**：`checkin_logs.json` 只记录**本部署真正执行过签到的那几天**。CodeArts 账号是 09-08 接入的，
+但监控只在 09-10 落了一条记录 → 日历 30 格里只有 1 个 ✓。而平台侧其实连签了 3 天
+（权益包里躺着 3 个 `每日签到赠送包`，`createdTime` 分别是 09-08 / 09-09 / 09-10）。
+
+**修复：`/api/checkin/logs` 改成「本地运行记录 ∪ 平台侧签到历史」**
+
+| 平台 | 远端签到历史数据源 | 实测结果 |
+|---|---|---|
+| CodeArts | `POST /portal/snap-manager/v1/package/credit/page` → 过滤 `resourceSpec` 含 `bonus.daily_login`，`createdTime` 即签到日、`creditAmount` 即当日发放 | 3 天：09-08 / 09-09 / 09-10（各 1000） |
+| WorkBuddy | `checkin-activity-status.checkin_dates` + `daily_credit`（与「预估可用天数」同源） | 3 天：09-08 / 09-09 / 09-10（各 100） |
+| Trae | 无远端签到历史接口 → 返回 `hasRemoteApi=false`，前端标注「仅显示本机运行记录」 | 28 天（全部本机） |
+
+- 新契约：`provider.getCheckinHistory(task,{days}) -> [{date, credits, source}]`（**可选**，未实现的平台自动降级）
+- 合并策略：远端只补本地**没有**的日期，标记 `source:'remote'`；本地记录永远优先（含失败/凭证失效状态）
+- 前端：新增 `.log-day.remote` 蓝色样式 + 图例（本机成功 / 平台远端记录 / 失败 / 凭证失效 / 未签到），
+  并在标题栏显示「其中 N 天为本机未运行、由平台远端记录补回」；无远端接口的平台显式说明
+
+**实测（生产域名 `/api/checkin/logs?taskId=<codearts>`）**：
+`localCount=1, remoteCount=2, remoteLabel="codearts 权益包明细(每日签到包)"` → 日历 3 天 ✓
+
+### 11.2 新增/确认的 CodeArts 端点（`examples/codearts3_解析结果`）
+
+| 端点 | 说明 | 用途 |
+|---|---|---|
+| `POST /portal/snap-manager/v1/package/credit/page` | ★**逐包明细**（单层信封，无 code 包裹）：`{list:[{packageType,resourceSpec,creditAmount,creditUsed,createdTime,expiredTime}],total}` | 权益包浮层数据源（升级）+ 签到历史 |
+| `GET /portal/dataflywheel/.../analytics/filters/options?startDate=&endDate=&isPersonal=true` | 筛选项（teams/models/serviceFunctions/dataLastUpdateTime） | 证实「近 N 天」= 日期参数 |
+| `POST /portal/dataflywheel/.../analytics/usage/personal/stats` | 区间汇总：`TOTAL_CREDITS/TOKEN_TOTAL/TOKEN_DAILY_AVG/REQUEST_COUNT/ACTIVE_DAYS/TOKEN_CACHE_HIT` | 「近30天区间汇总」提示条 |
+
+**★关于「CodeArts 有没有『近30天』端点」**：
+没有名为「近30天」的独立端点，但**所有用量端点都是日期区间参数化的** ——
+`{startDate,endDate}` 设成 30 天就是「近30天」（抓包里 heatmap 甚至一次性拉了整年
+`2025-09-10 ~ 2026-09-10`）。真正缺的是**逐请求/逐会话明细**端点（所以「积分消耗明细」
+只能降级到逐日）。实测 30 天区间汇总：`2026-08-12 ~ 2026-09-10 → token=1,730,038,
+日均=57,667.93（=总量/30）, 请求=1, 活跃=1 天, 缓存命中=1,206,400`。
+
+### 11.3 Token 无原始数据 → 显式归因（不再显示 0）
+
+- Provider 新增**用量能力声明** `usageMeta = { tokens: boolean, tokenNote: string|null }`：
+  - `workbuddy`: `tokens:false` + 说明「`get-user-request-usage` 只返回积分/请求条数/模型/时间，不返回 token 明细」
+  - `trae` / `codearts`: `tokens:true`
+- `checkin-stats` 把它落到 `checkin_usage_stats.json` 的 `accounts[].usageMeta`，
+  并在 `getUsageStats()` 输出 `tokenSupported` / `tokenNote`（账号级 + `byProvider[]` 平台级）
+- 前端：Token 视图下该类账号的值显示 **`—` + 悬停原因**，统计卡顶部弹出琥珀色说明条
+  （「**WorkBuddy 平台不提供 token 原始数据：…** Token 视图下显示为 —（未采集到原始数据，
+  不等于消耗为 0）；积分数据完整可用」）；图表区同样给出「图为什么是空的」说明
+- 顺带把 CodeArts 30 天区间汇总渲染成 🛰 提示条（Token / 日均 / 缓存命中 / 请求数 / 活跃天数）
+
+### 11.4 全部平台视图不再重复展示「全部平台合计」
+
+选「全部平台」时，`total` 本身就是全局合计，右侧那颗「全部平台 年/月合计」格子是重复信息 → **隐藏**；
+只有切到具体平台视图时才显示，并改名为「**全部平台 年 / 月合计（对照）**」。
+
+### 11.5 新增账号的名称占位随 Provider 变化
+
+- Provider 新增可选字段 `namePlaceholder`（`getProviderSchemas()` 透出）：
+  `trae → 例：Trae 主账号`、`workbuddy → 例：WorkBuddy 成长签到 · 乐幻`、`codearts → 例：CodeArts 码道 · 17327137416`
+- 前端 `syncNamePlaceholder()` 在打开弹窗与切换 Provider（`renderFields`）时同步刷新；
+  Provider 未声明时兜底 `例：<provider.name> 主账号`
+
+### 11.6 验证结果
+
+- 本地自检 `monitor/_selftest_providers.mjs`：**35 通过 / 0 失败**，新增两项真实探活输出：
+  - `WorkBuddy 远端签到历史（checkin_dates）: 3 天 → 2026-09-08(100), 09-09(100), 09-10(100)`
+  - `CodeArts 远端签到历史（每日签到赠送包 createdTime）: 3 天 → 2026-09-08, 09-09, 09-10`
+  - `CodeArts 权益包: ... perPackage=true（赠送包·每日签到赠送包:1000 ×3 / 赠送包·新订阅赠送包:3855.28 / 基础包·个人体验版基础包:500）`
+- 生产域名实测：`/api/checkin/logs?taskId=<codearts>` 返回 3 天（2 天 `source=remote`）；
+  `/api/checkin/providers` 三个平台的 `namePlaceholder` 均正确；前端新函数全部命中
+
+### 11.7 复现命令
+
+```bash
+# 签到历史（合并本地 + 远端）
+curl -s "http://127.0.0.1:3081/api/checkin/logs?taskId=<taskId>"
+# 区间汇总（近30天）
+curl -s "http://127.0.0.1:3081/api/checkin/stats?force=1" | node -e "..."   # 看 accounts[].summary
+```
+
+---
+
+## 12. ★ WorkBuddy Bearer Token 溯源（2026-09-10）：能不能用 cookie 换？
+
+> 用户问：「确定 workbuddy bearer token 如何获取 —— 这个 token 只能抓包，但抓包很麻烦，希望能用 cookie 换；如果确定换不了，告诉我，我再去抓包。」
+> 证据来源：`examples/workbuddy_解析结果`、`workbuddy2_解析结果`（桌面端会话）、`workbuddy3/4`，以及线上 web/usercenter 前端 bundle 反查。
+
+### 12.1 Bearer 到底是什么（已解码）
+
+桌面端请求头里那串 `eyJ...` 是 **Keycloak access token**（RS256，`kid=myfEzp783Ki_JCx8Vnc3X_ix6jZrb6Cf5OMkGZMPI3s`）：
+
+| 字段 | 值 |
+|---|---|
+| `iss` | `https://copilot.tencent.com/auth/realms/copilot` |
+| `azp`（client_id） | `console` |
+| `aud` | `account` |
+| `scope` | `profile offline_access email` |
+| `sub` / `preferred_username` | `8b3cb381-…` / `17327137416` |
+| `realm_access.roles` | `default-roles` / **`offline_access`** / `uma_authorization` |
+| 有效期 | `exp - iat = 5,184,000s` = **60 天** |
+
+调用方的额外约定：请求带 `x-domain: copilot.tencent.com`、`x-user-id: <sub>`。
+
+### 12.2 ★结论更正：站点 cookie **可以**换到 Bearer（v1.7，2026-09-10）
+
+> ⚠️ **本节推翻了 v1.6 的结论。** 当时（`workbuddy_/2/3/4_解析结果`）判定「不存在换票端点」，
+> 是因为那 4 份抓包里**没有覆盖「桌面端首次登录/扫码登录」这一步**——换票端点只在
+> **登录握手阶段**出现。补抓 `workbuddy5_解析结果`（含完整登录链路）后找到并**实测通过**。
+
+**换票链路（两条请求，全部实测 2026-09-10）**
+
+```
+① 申请 state（完全无需鉴权）
+   POST https://copilot.tencent.com/v2/plugin/auth/state?platform=workbuddy
+   头：X-No-Authorization: true / X-Domain: copilot.tencent.com / X-Product: SaaS
+   体：{}
+   → { code:0, data:{ state:"23a892d8-…", authUrl:"https://www.workbuddy.cn/login?platform=workbuddy&state=…" } }
+
+② 用站点 Cookie 换票（★打 www.workbuddy.cn，Cookie 属于该域）
+   POST https://www.workbuddy.cn/console/login/enterprise?state=<state>
+   头：x-domain: www.workbuddy.cn / x-product-code: workbuddy / cookie: session=…; session_2=…
+   → { code:0, data:{
+        accessToken: "eyJhbGciOi…",          // 就是桌面端那串 Bearer（Keycloak access token）
+        expiresIn: 5184000,                   // 60 天
+        refreshToken: "eyJhbGciOiJIUzUxMi…",  // 90 天（见 12.5，暂不可用）
+        refreshExpiresIn: 7776000,
+        tokenType: "Bearer" } }
+```
+
+客户端侧的完整时序（`workbuddy5` 抓包编号）：
+`005` 申请 state → 打开 `authUrl` 登录页 → `041/054/060` 轮询
+`GET /v2/plugin/auth/token?state=…`（返回 `code:11217 login ing...`）→ `061` 换票命中 →
+`069` 轮询也拿到 token → `072/074` 后续请求开始带 `Authorization: Bearer`。
+
+**实测边界条件（都是踩过的坑）**
+
+| 项 | 实测结果 |
+|---|---|
+| 最小凭证 | Cookie 里的 **`session` + `session_2` 两项**；只给一项或不给 → **401** |
+| **User-Agent** | 站点会话**绑定登录时的 UA**：换一个同样合法的完整 Chrome UA（非登录时那个）→ **401**；用登录浏览器的 UA → **200**。`accept` 头无关 |
+| 可重复性 | **可重复换票**（非一次性）。但**有速率限制**：短时间连换 ~8 次后开始 401，等 45~60 秒即恢复 ⇒ 换出的 token 必须缓存，只在临期时才再换 |
+| 鉴权域 | 换出的 Bearer 在 `www.workbuddy.cn` 与 `copilot.tencent.com` **都可直接用**（实测均 200，返回体逐字段一致） |
+| 空请求体 | `POST /console/login/enterprise` 不需要请求体；`x-device-token` **非必需** |
+
+### 12.3 落地实现：`authMode: 'auto'`（Provider 已上线）
+
+`monitor/lib/providers/workbuddy.js` 新增第三种鉴权形态（与 Trae 的 `resolveToken` 同构）：
+
+| authMode | 行为 |
+|---|---|
+| **`auto`（新默认，推荐）** | 有 Cookie → 换 Bearer 后用 Bearer；token 剩余 < 6h 才再换；**换票失败自动回落 Cookie 直连**，签到不中断 |
+| `web` | 始终 Cookie 直连（旧行为，保持不变） |
+| `bearer` | 始终用手填 token |
+
+关键实现点：
+- 换出的 `accessToken` 回写 `task.config.token`，到期时间回写 `task.tokenExpiredAt`（随 `saveTasks` 落盘）。
+- 模块级 `exchangeCooldown`（60s）：换票失败后进入冷却，避免同一轮签到里每个请求都去撞限流（不入 tasks JSON）。
+- 编辑账号改 Cookie 时，`updateTask` 已有的 `delete task.config.token` 逻辑会强制重换，不会沿用旧账号 token。
+- 换票 401 的错误信息里直接列出三种成因（UA 不一致 / 缺 session / 换票过频），便于自查。
+
+**收益**：用户只需粘贴一次 Cookie（**无需抓包**），即可获得 **60 天**的 Bearer；
+需要人工维护的仍是 Cookie（名义 7 天，到期前邮件提醒），而 Bearer 由它自动派生。
+
+### 12.4 关于 refreshToken：暂时用不了（已实测）
+
+`refreshToken` 是标准 Keycloak offline token（`typ:Offline`、`azp:console`、
+`aud=https://copilot.tencent.com/auth/realms/copilot`、`scope` 含 `offline_access`），
+但直接兑换被拒：
+
+```
+POST https://copilot.tencent.com/auth/realms/copilot/protocol/openid-connect/token
+     grant_type=refresh_token & client_id=console & refresh_token=<rt>
+→ 401 unauthorized_client  （不带 client_id 同样 401 invalid_client）
+   client_id=account-console → 400 invalid_grant
+        "Invalid refresh token. Token client and authorized client don't match"
+```
+⇒ `client_id=console` 这个 client 未开放 `refresh_token` 直连授权；`account-console` 这个 client
+虽允许 refresh 授权但签发方不匹配。**续期只能靠「Cookie 再换一次」**，故 Cookie 才是需要人工维护的凭证。
+
+### 12.5 已排除的做法（保留）
+
+- ❌ 把 `KEYCLOAK_IDENTITY` 直接当 Bearer 用（`typ:JWT` 的 SSO 身份令牌，`aud`/用途不同）
+- ❌ 用 `session`/`session_2` 调 `/protocol/openid-connect/token`（Keycloak 不认站点会话）
+- ❌ `/console/validate/refresh-token`：只返回 `{code:0,msg:"OK"}` 并**清空** `session`/`session_2` cookie，不签发任何令牌
+- ❌ 从 web 控制台前端 bundle 找换票端点（755 KB bundle 里无 `Authorization`/`access_token`）
+  —— 这条推理当时导向了错误结论：换票发生在**桌面客户端登录握手**，不在 web 控制台里
+
+### 12.6 复现脚本
+
+- `monitor/_probe_wb_token_exchange.mjs` —— 用抓包里的 Cookie 跑一遍 ①②，打印换出的 token 有效期
+- `monitor/_probe_wb_auto_mode.mjs` —— 端到端验证 auto 模式（换票 / 缓存复用 / web 对照 / probeSession）
+- `monitor/_probe_wb_auto_remote.mjs` —— 手机端同款验证（读线上任务副本，不落盘）
+
+### 12.7 备选路线（不再需要，留档）
+
+**API Key**：`https://www.workbuddy.cn/profile/keys`，接口 `GET/POST /console/api/client/v1/api-keys`
+（有效期可选 7 天 / 30 天 / 1 年 / 永久）。只读实测 `HTTP 200, code=0, total=1, items=[]`。
+⚠️ 未验证能否用于 `/v2/billing/meter/*`；创建 Key 属写操作，未经用户同意不做。
