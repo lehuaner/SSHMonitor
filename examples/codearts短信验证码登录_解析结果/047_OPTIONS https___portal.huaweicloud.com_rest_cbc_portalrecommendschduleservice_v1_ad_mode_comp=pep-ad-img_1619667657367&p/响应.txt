@@ -1,0 +1,22 @@
+HTTP/2 200
+date: Sat, 12 Sep 2026 07:47:09 GMT
+server: CloudWAF
+set-cookie: HWWAFSESTIME=1789199225343; path=/
+set-cookie: HWWAFSESID=1e0dc187c317aa3b770; path=/
+x-request-id: 087cd917-9072-4731-bc18-cafa036fd800
+alt-svc: h3=":443";ma=86400
+access-control-allow-credentials: true
+access-control-max-age: 86400
+vary: Origin
+access-control-allow-headers: cache-control,pragma
+access-control-allow-methods: GET,POST,PUT,DELETE
+access-control-allow-origin: https://auth.huaweicloud.com
+x-envoy-upstream-service-time: 0
+strict-transport-security: max-age=31536000; includeSubdomains;
+x-content-type-options: nosniff
+x-download-options: noopen
+x-xss-protection: 1; mode=block
+cache-control: no-cache, no-store, must-revalidate
+pragma: no-cache
+via: CHN-AHhefei-CMCC6-CACHE2[48],CHN-AHhefei-CMCC6-CACHE2[ovl,47],CHN-HElangfang-GLOBAL6-CACHE44[ovl,23]
+dl-from: HWCDN

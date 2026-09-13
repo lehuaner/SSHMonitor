@@ -15,6 +15,10 @@ cloudflaretoken.txt
 **/.codearts_session.json
 # 临时探测脚本（一次性验证用，验证完即删）
 **/_probe_*.py
+# 探测过程的中间产物（含短信验证码 / 原始响应，可能含凭证）
+examples/_code.txt
+examples/_*_debug.json
+examples/_*_probe.json
 *.token
 *.pem
 *.key
@@ -110,3 +114,16 @@ desktop.ini
 *.tmp
 *.bak
 *_tmp/
+monitor/_codearts_task_payload.json
+# WorkBuddy 真实凭证与诊断脚本（含会话，禁止入库）
+monitor/_wb_cookie*.txt
+monitor/_wb_*.mjs
+monitor/_wb_task_payload.json
+# 一次性端点探测脚本（结论已沉淀进 *_平台全流程方案.md，脚本本身不复用）
+monitor/_ca_*.mjs
+monitor/_probe*.mjs
+# 自检脚本保留入库：monitor/_selftest_providers.mjs（provider 契约回归用）
+# 根目录临时抓包/传输产物
+/_xfer/
+/cap_*.txt
+/_remote_now_checkin.js

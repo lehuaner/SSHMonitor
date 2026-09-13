@@ -1,0 +1,7 @@
+GET http://ctldl.windowsupdate.com/msdownload/update/v3/static/trustedr/en/authrootstl.cab?5a3a3c3f93f4cac4 HTTP/1.1
+Connection: Keep-Alive
+Accept: */*
+If-Modified-Since: Thu, 27 Aug 2026 19:41:42 GMT
+If-None-Match: "756128165c36dd1:0"
+User-Agent: Microsoft-CryptoAPI/10.0
+Host: ctldl.windowsupdate.com

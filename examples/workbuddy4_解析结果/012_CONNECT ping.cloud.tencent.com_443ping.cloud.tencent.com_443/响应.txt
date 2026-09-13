@@ -1,0 +1,139 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:38:19.710
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=cloud.tencent.com, O=Tencent Technology (Shenzhen) Company Limited, L=Shenzhen, S=Guangdong Province, C=CN
+  Simple Name: cloud.tencent.com
+  DNS Name: cloud.tencent.com
+
+[Issuer]
+  CN=DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1, O="DigiCert, Inc.", C=US
+  Simple Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+  DNS Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+
+[Serial Number]
+  0C54B3FCD3CFB1ABCEFB1CDE5C469C50
+
+[Not Before]
+  2026/6/8 8:00:00
+
+[Not After]
+  2026/12/24 7:59:59
+
+[Thumbprint]
+  80E3E6B7A879A4BAF753350955DB58F0CF7128A0
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 a3 6b ba d3 a3 ec 48 d8 1f 77 90 2f c8 8a 15 d3 c7 6d 54 88 89 98 81 1b 9c e4 bd 87 68 72 59 fd ee 3b 77 a7 6d 51 f0 70 25 c4 08 7c 28 bd 20 0c ea c1 33 22 26 ba 16 80 0e 85 48 13 8c 93 8c 07 85 b5 b6 2d 62 b3 d2 05 27 65 27 22 92 7b ba f6 62 eb d7 54 5e cf ce 3e 86 7a b2 84 3b 7e 73 c7 4f 1f ce f5 3a f4 fc 9c 2b a2 0a da 16 09 df e5 3d fa a9 13 65 fe a5 40 c6 ff f5 34 16 29 55 80 ab 5a b6 4b c7 7d ba 09 b5 12 57 c4 9f 27 3f 06 43 58 43 64 a2 65 ce 72 97 5a 15 ee fc 34 45 5c d8 cb 92 58 29 21 18 47 0f d3 26 cf 35 ef 10 81 ef 70 de 1e ae 65 65 24 cf 21 b4 6e 0a ff 40 d7 ba 0a b4 76 3c 9f fa 19 31 26 52 fb 7d 6a da 58 fc ee 58 7a 1c 79 07 46 2f 48 ac d5 53 42 37 12 a1 ce 0b f7 d3 d1 c7 18 40 91 4e 2a de 1f 88 e5 b3 fb cf 86 bc ad d1 73 45 e5 92 66 01 48 b2 49 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=2b2316811b47898a907aece832d46c8e72f9ce25
+
+* 使用者密钥标识符(2.5.29.14):
+  9167b8e56c077bacfe52e4c0c38ffc32555d3877
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=cloud.tencent.com
+DNS Name=*.cloud.tencent.cn
+DNS Name=*.cloud.tencent.com
+DNS Name=*.cloud.tencent.com.cn
+DNS Name=*.qcloud.com
+DNS Name=*.qcloud.qq.com
+DNS Name=cloud.tencent.cn
+DNS Name=cloud.tencent.com.cn
+DNS Name=qcloud.com
+DNS Name=qcloud.qq.com
+DNS Name=yun.tencent.cn
+DNS Name=yun.tencent.com
+DNS Name=yun.tencent.com.cn
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+客户端身份验证 (1.3.6.1.5.5.7.3.2)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://ocsp.digicert.cn
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+c2317e574519a345ee7f38deb29041ebc7c2215a22bf7fd5b5ad769ad90e52cd
+‎2026‎年‎6‎月‎8‎日 14:29:40
+SHA256
+ECDSA
+3044022052d5065632017d56d74f2474413b4a8a5a13fe2229346717492f1b02026a1ec5022046b832c5c9c61af425024af3888cc226efea307052e7648bf9543fc00982971f
+
+v1
+d809553b944f7affc816196f944f85abb0f8fc5e8755260f15d12e72bb454b14
+‎2026‎年‎6‎月‎8‎日 14:29:40
+SHA256
+ECDSA
+3046022100d2326117df3ddb76b054b14cc602f26374aa22f4b49bdfc2b515ad3cff6b43d2022100f8bf97bea536fa8abe108d0ecfd20154ec67a9db3c9bf9852fa0f03a03e041f5
+
+v1
+944e4387faecc1ef81f3192426a8186501c7d35f3802013f72677d55372e19d8
+‎2026‎年‎6‎月‎8‎日 14:29:40
+SHA256
+ECDSA
+304502201470fd3e67416245201f5157ca9df3b37b1bacc98017202527a028fb4c3bfd39022100bac5cc39d3d9f9f3135813f20480d3aa6c8db88f36315b051975b47106ae02f5
+
+
+[SubjectAltNames]
+DNS Name=cloud.tencent.com
+DNS Name=*.cloud.tencent.cn
+DNS Name=*.cloud.tencent.com
+DNS Name=*.cloud.tencent.com.cn
+DNS Name=*.qcloud.com
+DNS Name=*.qcloud.qq.com
+DNS Name=cloud.tencent.cn
+DNS Name=cloud.tencent.com.cn
+DNS Name=qcloud.com
+DNS Name=qcloud.qq.com
+DNS Name=yun.tencent.cn
+DNS Name=yun.tencent.com
+DNS Name=yun.tencent.com.cn
+

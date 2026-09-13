@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Expires"
+          content="0">
+    <meta http-equiv="Pragma"
+          content="no-store">
+    <meta http-equiv="Cache-control"
+          content="no-store">
+    <meta http-equiv="Cache"
+          content="no-store">
+    <script>
+        window.isEmbeddedPage = function() {
+            return window.top !== window.self;
+        };
+        window.isEmbeddedLogin = function() {
+            try { return window.isEmbeddedPage() && sessionStorage.getItem('miniLogin') === 'true'; } catch (e) { return false; }
+        };
+        const hasMiniLoginHash = function() {
+            return location.hash.includes('miniLogin');
+        };
+        if (window.isEmbeddedPage() && hasMiniLoginHash()) {
+            try { sessionStorage.setItem('miniLogin', 'true'); } catch (e) { /* sessionStorage unavailable */ }
+            document.documentElement.classList.add('mini-login-adaptor');
+        } else if (window.isEmbeddedLogin()) {
+            document.documentElement.classList.add('mini-login-adaptor');
+        } else {
+            try { sessionStorage.removeItem('miniLogin'); } catch (e) { /* sessionStorage unavailable */ }
+        }
+    </script>
+    <script type="text/javascript"
+            id="deviceDetectScript"
+            errorInfo=""></script>
+    <!-- portal_base_css -->
+</head>
+
+<body>
+    <div id="loading">
+        <!-- <img src="~custom/images/loading_big.gif"> -->
+    </div>
+    <div id="banner">
+        <div class="widthLimit"
+             ui-view="banner">
+        </div>
+    </div>
+    <div id="content">
+        <div class="widthLimit"
+             ui-view="content"></div>
+    </div>
+    <div id="footer">
+        <div class="widthLimit"
+             ui-view="footer">
+        </div>
+    </div>
+    <span id="loginServerErrorMsg"
+          style="display:none;"></span>
+    <script> 
+      window.LOGIN_CONFIG = {
+        AUTH_DOMAIN: window.location.host,
+        auth_domain_pre: 'auth',
+        auth_domain_base: 'huaweicloud.com',
+        dual_domian_name_test: 'console.ulanqab.huawei.cn',
+        furion_platform_url: 'https://res.hc-cdn.com/FurionSdkStatic/3.6.49/furion-cdn.min.js',
+        switch_zhengwuyunzhuanqu: 'false'.toLowerCase() === 'true',
+        switch_federation_login: 'true'.toLowerCase() === 'true',
+        GRAPHICS_VERIFYCODE: 'true'.toLowerCase() === 'true',
+        policyChangeDetailUrl: 'https://www.huaweicloud.com/declaration/sa_cua_computing_cd.html',
+        policyChangeDetailUrlIntl: 'https://www.huaweicloud.com/intl/en-us/declaration-sg/sa-cua-ud.html',
+        HW_CAPTCHA: 'true'.toLowerCase() === 'true',
+        HW_CAPTCHA_APP_ID: 'hwsiamcaptcha',
+        HW_CAPTCHA_BUSINESS_ID: 'hwsiamcaptcha',
+        HW_CAPTCHA_VERIFY_TYPE: '2',
+        u2f_rp_id: '',
+        hwid_modify_url_web: '',
+        hwid_modify_url_web_intl: '',
+      }
+      
+      window.replaceDomain = function(url) {
+            if (!window.LOGIN_CONFIG.auth_domain_pre.length
+                  || !window.LOGIN_CONFIG.auth_domain_base.length || !url) {
+                  return url;
+            }
+
+            const hostname = window.location.hostname;
+
+            if (hostname === window.LOGIN_CONFIG.auth_domain_pre + '.' + window.LOGIN_CONFIG.auth_domain_base) {
+                  return url;
+            }
+
+            let replaceHost = '';
+            if (hostname.indexOf(window.LOGIN_CONFIG.auth_domain_pre) === 0) {
+                  replaceHost = hostname.substring(window.LOGIN_CONFIG.auth_domain_pre.length+1);
+            }
+
+            if (replaceHost.length && url.indexOf(window.LOGIN_CONFIG.auth_domain_base) !== -1) {
+                  return url.replace(window.LOGIN_CONFIG.auth_domain_base, replaceHost);
+            }
+
+            return url;
+      }
+
+
+        
+        if(window.LOGIN_CONFIG.auth_domain_base === 'ulanqab.huawei.com') {
+            const hostname = window.location.hostname;
+            if(hostname !== window.LOGIN_CONFIG.auth_domain_pre + '.' + window.LOGIN_CONFIG.auth_domain_base) {
+                window.CDN_DOMAIN = 'https://console-static.huaweicloud.com/static/authui/20260904092259/'.replace('console-static.ulanqab.huawei.com', window.LOGIN_CONFIG.dual_domian_name_test)
+            } else {
+                window.CDN_DOMAIN = window.replaceDomain('https://console-static.huaweicloud.com/static/authui/20260904092259/')
+            }    
+        } else {
+            window.CDN_DOMAIN = window.replaceDomain('https://console-static.huaweicloud.com/static/authui/20260904092259/')
+        }
+           
+        const faviconHref = window.CDN_DOMAIN + 'favicon.ico'
+        const cssHref = window.CDN_DOMAIN + 'app.css'
+        const jsSrcListStr = 'vendor.bundle.js,app.bundle.js'  
+        function loadScript(url, callback){
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            if(script.onload){
+                script.onload = callback;
+            }else{
+                script.onreadystatechange = function(){
+                    if(script.readyState == 'loaded' || script.readyState =='complete'){
+                        script.onreadystatechange = null;
+                        callback();
+                    }
+                }
+            }
+            script.async = false
+            script.src = url;
+            document.getElementsByTagName('body')[0].appendChild(script);
+        }
+        function loadStyle(url, isIcon){
+            var link = document.createElement('link');
+            link.rel = isIcon ? 'shortcut icon' : 'stylesheet';
+            link.href = url;
+            document.getElementsByTagName('head')[0].appendChild(link);
+        }
+        loadStyle(faviconHref, true)
+        loadStyle(cssHref)
+        jsSrcListStr.split(',').forEach(item =>{
+            let _item = window.CDN_DOMAIN + item
+            loadScript(_item)
+        })
+
+        // 对接Furion平台
+        !function(x, n) {
+            const reg = /^https?:\/\//i;
+            if(!window.LOGIN_CONFIG.furion_platform_url || !reg.test(window.LOGIN_CONFIG.furion_platform_url) ) {
+                return
+            }
+            window[n] = window[n] || {};
+            window[n].config = {
+                "appId": "9DC02862382C48ADA6CE442E04EAF6AD",
+                "setting": "perf,jsTrack,api,uba,longtask,rtti,crash,resource",
+                "crossOriginApi": false,
+                "hashMode": true,
+                "closeReportFMP": true,
+                "smartJsErr": true,
+                "sendResource": true,
+                "option": {
+                    "api": {
+                        "headers": []
+                    },
+                    "whiteScreen": {
+                        "rootElements": [
+                            "html",
+                            "body",
+                            "#app",
+                            "#root"
+                        ]
+                    }
+                }
+            }
+            let o = document.createElement('script');
+            o.src = x, o.async = !0;
+            let d = document.body.firstChild;
+            document.body.insertBefore(o, d);
+        }(window.LOGIN_CONFIG.furion_platform_url, '__fr');
+        
+      </script>
+</body>
+</html>

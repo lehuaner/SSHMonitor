@@ -1,0 +1,32 @@
+{
+  "accountInfoList": [
+    {
+      "anonymousAccount": "l****an",
+      "anonymousEncryption": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJkaWQiOiIwZDJhM2EwY2M1MDBmMzA2MGYwZGMwMDA5NmJjYTIyMCIsImNhdCI6MTc4OTE0NDE0MjkzOSwidHlwZSI6IjIifQ.M-k0i5WG3OBem1gr_3DQ8l3jPsHo5RxgQhXDte9ru7-ioAwGhVroJDLEzGAJY6ZiFtcUa4JxB8SRSPnduYRNbA",
+      "countryCode": "CN",
+      "freezeStatus": "UNFREEZE",
+      "innerUID": "0d2a3a0cc500f3060f0dc00096bca220",
+      "inputAccountType": 2,
+      "labelInfo": {
+        "domainID": "0d2a3a0cc500f3060f0dc00096bca220",
+        "isEnableHwCloud": true,
+        "isLastLogin": true,
+        "isNotMigrateHwCloudAccount": false,
+        "isOverseasAccount": false,
+        "loginTime": 1789024230304,
+        "verifiedFlag": 1
+      },
+      "loginID": "l****an",
+      "loginSecLevel": 1,
+      "serial": 0,
+      "siteID": 1,
+      "srcAcctType": 0,
+      "thirdAcctTypes": [
+        7,
+        22
+      ]
+    }
+  ],
+  "isSuccess": 1,
+  "localStorageID": "CEeeicBSxNCCcBhRjNvrkDGlDqJaSLLX0sXB1GMpMcibQZT4"
+}

@@ -1,0 +1,4 @@
+CONNECT 127.0.0.1:46681 HTTP/1.1
+Host: 127.0.0.1:46681
+Proxy-Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0

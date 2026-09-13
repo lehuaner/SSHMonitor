@@ -1,0 +1,12 @@
+HTTP/2 200
+content-type: application/json; charset=utf-8
+set-cookie: session=; Path=/space; Max-Age=0; Expires=Thu, 01-Jan-70 00:00:00 GMT; HttpOnly
+traceid: c6ffe36c188b72dd2928630cf9090e6c
+x-request-id: a3ad3475-a8af-4754-b968-991370b58312
+x-user-id: 8b3cb381-9ebc-4813-92d9-9e5880528465
+server: APISIX/3.9.1
+x-content-type-options: nosniff
+content-length: 109
+date: Thu, 10 Sep 2026 08:00:08 GMT
+eo-log-uuid: 17938320223884275215
+eo-cache-status: MISS

@@ -1,0 +1,16 @@
+GET https://static.workbuddy.cn/workbuddy/playbook/cases/doc-api-reference/scenario-cover.png HTTP/2
+:method: GET
+:authority: static.workbuddy.cn
+:scheme: https
+:path: /workbuddy/playbook/cases/doc-api-reference/scenario-cover.png
+cache-control: max-age=0
+if-modified-since: Mon, 31 Aug 2026 05:24:27 GMT
+if-none-match: "9ae5823933815ec8746e17415272be9e"
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) WorkBuddy/5.5.3 Chrome/138.0.7204.251 Electron/37.10.3 Safari/537.36
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+priority: u=4, i
+cookie: qcloud_from=qcloud.directEnter.www.workbuddy.cn-1787211613852

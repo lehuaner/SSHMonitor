@@ -1,0 +1,16 @@
+HTTP/2 200
+server: CloudWAF
+date: Fri, 11 Sep 2026 16:29:30 GMT
+content-type: text/html;charset=UTF-8
+set-cookie: BENSESSCC_TAG=Direct; path=/
+x-iam-trace-id: auth_cn-north-4_null_1804d890ad464f5fa8dfc21ecdb39e72
+expires: Thu, 01 Jan 1970 00:00:00 GMT
+strict-transport-security: max-age=31536000; includeSubdomains;
+x-content-type-options: nosniff
+x-download-options: noopen
+x-xss-protection: 1; mode=block
+cache-control: no-cache, no-store, must-revalidate
+pragma: no-cache
+access-control-allow-origin: https://console.huaweicloud.com
+access-control-allow-methods: GET
+access-control-allow-credentials: true

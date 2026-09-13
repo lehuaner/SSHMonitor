@@ -1,0 +1,791 @@
+{
+  "resourceMetrics": [
+    {
+      "resource": {
+        "attributes": [
+          {
+            "key": "target",
+            "value": {
+              "stringValue": "ElectronApp.WorkBuddy.Desktop"
+            }
+          },
+          {
+            "key": "type",
+            "value": {
+              "stringValue": "resource"
+            }
+          },
+          {
+            "key": "env_name",
+            "value": {
+              "stringValue": "formal"
+            }
+          },
+          {
+            "key": "instance",
+            "value": {
+              "stringValue": "desktop-1788877360404"
+            }
+          },
+          {
+            "key": "namespace",
+            "value": {
+              "stringValue": "Production"
+            }
+          },
+          {
+            "key": "version",
+            "value": {
+              "stringValue": "5.5.3"
+            }
+          },
+          {
+            "key": "container_name",
+            "value": {
+              "stringValue": "genie.ElectronApp.WorkBuddy.Desktop"
+            }
+          },
+          {
+            "key": "ideType",
+            "value": {
+              "stringValue": "workbuddy-desktop"
+            }
+          },
+          {
+            "key": "ideVersion",
+            "value": {
+              "stringValue": "5.5.3"
+            }
+          },
+          {
+            "key": "os",
+            "value": {
+              "stringValue": "win32-x64"
+            }
+          },
+          {
+            "key": "ext1",
+            "value": {
+              "stringValue": "desktop"
+            }
+          }
+        ]
+      },
+      "scopeMetrics": [
+        {
+          "scope": {
+            "name": "Custom_wb.metrics",
+            "version": "1.0.0"
+          },
+          "metrics": [
+            {
+              "name": "ch_credentials_latency_ms",
+              "description": "",
+              "unit": "ms",
+              "histogram": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1789027215566000000",
+                    "count": "6",
+                    "sum": 1645,
+                    "bucketCounts": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "4",
+                      "1",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0"
+                    ],
+                    "explicitBounds": [
+                      1,
+                      2,
+                      5,
+                      10,
+                      20,
+                      50,
+                      100,
+                      200,
+                      500,
+                      1000,
+                      2000,
+                      5000,
+                      10000,
+                      20000,
+                      30000
+                    ],
+                    "attributes": [
+                      {
+                        "key": "clientType",
+                        "value": {
+                          "stringValue": "desktop"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "aggregationTemporality": 1
+              }
+            },
+            {
+              "name": "ch_sdk_connect_total",
+              "description": "",
+              "unit": "",
+              "sum": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1789027188218000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "phase",
+                        "value": {
+                          "stringValue": "initial"
+                        }
+                      },
+                      {
+                        "key": "outcome",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789027212494000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "phase",
+                        "value": {
+                          "stringValue": "initial"
+                        }
+                      },
+                      {
+                        "key": "outcome",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789027213224000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "phase",
+                        "value": {
+                          "stringValue": "initial"
+                        }
+                      },
+                      {
+                        "key": "outcome",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789027213916000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "phase",
+                        "value": {
+                          "stringValue": "initial"
+                        }
+                      },
+                      {
+                        "key": "outcome",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789027214824000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "phase",
+                        "value": {
+                          "stringValue": "initial"
+                        }
+                      },
+                      {
+                        "key": "outcome",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789027215639000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "phase",
+                        "value": {
+                          "stringValue": "initial"
+                        }
+                      },
+                      {
+                        "key": "outcome",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "aggregationTemporality": 1,
+                "isMonotonic": true
+              }
+            },
+            {
+              "name": "ch_sdk_connect_latency_ms",
+              "description": "",
+              "unit": "ms",
+              "histogram": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1789027215639000000",
+                    "count": "6",
+                    "sum": 578,
+                    "bucketCounts": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "3",
+                      "3",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0"
+                    ],
+                    "explicitBounds": [
+                      1,
+                      2,
+                      5,
+                      10,
+                      20,
+                      50,
+                      100,
+                      200,
+                      500,
+                      1000,
+                      2000,
+                      5000,
+                      10000,
+                      20000,
+                      30000
+                    ],
+                    "attributes": [
+                      {
+                        "key": "phase",
+                        "value": {
+                          "stringValue": "initial"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "aggregationTemporality": 1
+              }
+            },
+            {
+              "name": "ch_sdk_presence_interval_source_total",
+              "description": "",
+              "unit": "",
+              "sum": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1789027188228000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "source",
+                        "value": {
+                          "stringValue": "credentials"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789027212500000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "source",
+                        "value": {
+                          "stringValue": "credentials"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789027213233000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "source",
+                        "value": {
+                          "stringValue": "credentials"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789027213924000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "source",
+                        "value": {
+                          "stringValue": "credentials"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789027214833000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "source",
+                        "value": {
+                          "stringValue": "credentials"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789027215647000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "source",
+                        "value": {
+                          "stringValue": "credentials"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "aggregationTemporality": 1,
+                "isMonotonic": true
+              }
+            },
+            {
+              "name": "ch_sdk_device_status_resync_total",
+              "description": "",
+              "unit": "",
+              "sum": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1789027188863000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "trigger",
+                        "value": {
+                          "stringValue": "subscribed"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789027215719000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "trigger",
+                        "value": {
+                          "stringValue": "subscribed"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "aggregationTemporality": 1,
+                "isMonotonic": true
+              }
+            },
+            {
+              "name": "ch_sdk_device_presence_query_ms",
+              "description": "",
+              "unit": "",
+              "histogram": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1789027215778000000",
+                    "count": "2",
+                    "sum": 160,
+                    "bucketCounts": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "1",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0"
+                    ],
+                    "explicitBounds": [
+                      1,
+                      2,
+                      5,
+                      10,
+                      20,
+                      50,
+                      100,
+                      200,
+                      500,
+                      1000,
+                      2000,
+                      5000,
+                      10000,
+                      20000,
+                      30000
+                    ],
+                    "attributes": [
+                      {
+                        "key": "source",
+                        "value": {
+                          "stringValue": "cf_sub"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "aggregationTemporality": 1
+              }
+            },
+            {
+              "name": "ch_sdk_disconnected_total",
+              "description": "",
+              "unit": "",
+              "sum": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1789027195617000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "reason",
+                        "value": {
+                          "stringValue": "user_close"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789027212517000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "reason",
+                        "value": {
+                          "stringValue": "user_close"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789027213246000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "reason",
+                        "value": {
+                          "stringValue": "user_close"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789027213940000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "reason",
+                        "value": {
+                          "stringValue": "user_close"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789027214850000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "reason",
+                        "value": {
+                          "stringValue": "user_close"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "aggregationTemporality": 1,
+                "isMonotonic": true
+              }
+            },
+            {
+              "name": "ch_sdk_envelope_size_bytes",
+              "description": "",
+              "unit": "",
+              "histogram": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1789027214853000000",
+                    "count": "5",
+                    "sum": 780,
+                    "bucketCounts": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "5",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0"
+                    ],
+                    "explicitBounds": [
+                      1,
+                      2,
+                      5,
+                      10,
+                      20,
+                      50,
+                      100,
+                      200,
+                      500,
+                      1000,
+                      2000,
+                      5000,
+                      10000,
+                      20000,
+                      30000
+                    ],
+                    "attributes": [
+                      {
+                        "key": "direction",
+                        "value": {
+                          "stringValue": "publish"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "aggregationTemporality": 1
+              }
+            },
+            {
+              "name": "ch_sdk_send_latency_ms",
+              "description": "",
+              "unit": "ms",
+              "histogram": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1789027215028000000",
+                    "count": "5",
+                    "sum": 923,
+                    "bucketCounts": [
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "4",
+                      "1",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0",
+                      "0"
+                    ],
+                    "explicitBounds": [
+                      1,
+                      2,
+                      5,
+                      10,
+                      20,
+                      50,
+                      100,
+                      200,
+                      500,
+                      1000,
+                      2000,
+                      5000,
+                      10000,
+                      20000,
+                      30000
+                    ],
+                    "attributes": [
+                      {
+                        "key": "clientType",
+                        "value": {
+                          "stringValue": "desktop"
+                        }
+                      },
+                      {
+                        "key": "channelScope",
+                        "value": {
+                          "stringValue": "user"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "aggregationTemporality": 1
+              }
+            },
+            {
+              "name": "ch_sdk_publish_total",
+              "description": "",
+              "unit": "",
+              "sum": {
+                "dataPoints": [
+                  {
+                    "timeUnixNano": "1789027196018000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "channelScope",
+                        "value": {
+                          "stringValue": "user"
+                        }
+                      },
+                      {
+                        "key": "outcome",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789027212826000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "channelScope",
+                        "value": {
+                          "stringValue": "user"
+                        }
+                      },
+                      {
+                        "key": "outcome",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789027213436000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "channelScope",
+                        "value": {
+                          "stringValue": "user"
+                        }
+                      },
+                      {
+                        "key": "outcome",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789027214141000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "channelScope",
+                        "value": {
+                          "stringValue": "user"
+                        }
+                      },
+                      {
+                        "key": "outcome",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "timeUnixNano": "1789027215028000000",
+                    "asDouble": 1,
+                    "attributes": [
+                      {
+                        "key": "channelScope",
+                        "value": {
+                          "stringValue": "user"
+                        }
+                      },
+                      {
+                        "key": "outcome",
+                        "value": {
+                          "stringValue": "success"
+                        }
+                      }
+                    ]
+                  }
+                ],
+                "aggregationTemporality": 1,
+                "isMonotonic": true
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

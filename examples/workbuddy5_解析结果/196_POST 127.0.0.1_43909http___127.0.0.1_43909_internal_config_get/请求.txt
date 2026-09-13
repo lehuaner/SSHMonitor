@@ -1,0 +1,10 @@
+POST http://127.0.0.1:43909/internal/config/get HTTP/1.1
+host: 127.0.0.1:43909
+connection: keep-alive
+Content-Type: application/json
+accept: */*
+accept-language: *
+sec-fetch-mode: cors
+user-agent: node
+accept-encoding: gzip, deflate
+content-length: 33

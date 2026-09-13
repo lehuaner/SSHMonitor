@@ -1,0 +1,10 @@
+HTTP/2 200
+server: CloudWAF
+date: Fri, 11 Sep 2026 16:29:37 GMT
+content-type: text/html; charset=utf-8
+set-cookie: BENSESSCC_TAG=Direct; path=/
+last-modified: Thu, 10 Sep 2026 18:10:34 GMT
+etag: W/"6aa2f29a-e3"
+accept-ranges: bytes
+set-cookie: Site=mainland;path=/
+content-encoding: gzip

@@ -1,0 +1,7 @@
+{
+  "errorCode": "10002080",
+  "errorDesc": "{\"authCodeSentList\":[{\"accountType\":2,\"name\":\"191******75\",\"sent\":0}],\"riskFlag\":\"001000000011100001000010000\",\"extInfo\":\"C76E533420E1343DFBB0B80AA0AD2679:455A4DBB910AC671B9ED86E2FE30F9B08B21FEAF3E515FDA8F12D25D0D1E19859ACD7F9921A9B90BCFFB01904DA9B1803D16E208264447B04043A365F5957C13\"}",
+  "extErrorDesc": "{\"errorCode\":\"70002080\",\"interfaceName\":\"loginHwid\",\"orgErrorCode\":\"70002080\",\"orgErrorDesc\":\"{\\\"authCodeSentList\\\":[{\\\"accountType\\\":2,\\\"name\\\":\\\"191******75\\\",\\\"sent\\\":0}],\\\"riskFlag\\\":\\\"001000000011100001000010000\\\"}\"}",
+  "isSuccess": 0,
+  "logID": "13326"
+}

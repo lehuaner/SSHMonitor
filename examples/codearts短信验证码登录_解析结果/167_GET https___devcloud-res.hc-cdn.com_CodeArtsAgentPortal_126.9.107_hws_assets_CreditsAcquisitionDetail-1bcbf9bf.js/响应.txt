@@ -1,0 +1,23 @@
+HTTP/2 200
+date: Sat, 12 Sep 2026 07:47:32 GMT
+content-type: text/javascript
+server: openresty
+cloudservicediscount: CDN
+x-obs-request-id: 000001A08FFBAC326BF30B667C7D15FC
+access-control-allow-origin: *
+access-control-allow-methods: GET
+access-control-allow-headers: *
+access-control-max-age: 3000
+access-control-expose-headers: Content-Length, Content-Type, Connection, Date, ETag, Server, x-amz-delete-marker, x-amz-id-2, x-amz-request-id, x-amz-version-id, x-amz-server-side-encryption-customer-key, x-amz-server-side-encryption-customer-algorithm, X-Log, X-Reqid, Accept-Ranges, Cache-Control, Last-Modified
+access-control-allow-credentials: true
+etag: W/"5c20f7da8a20decadd9507e95854a159"
+last-modified: Fri, 11 Sep 2026 10:12:35 GMT
+x-obs-id-2: 36AAAQAAEAABAAAQAAEAABAAAQAAEAABAAAaI=AAAAAAAAAAAAAAAAAAAAAAAAAA
+x-ccdn-expires: 2519603
+via: CHN-JSyangzhou-CMCC16-CACHE2[13],CHN-JSyangzhou-CMCC16-CACHE8[0,TCP_HIT,2],CHN-JSwuxi-GLOBAL2-CACHE5[4],CHN-JSwuxi-GLOBAL2-CACHE29[0,TCP_HIT,3],CHN-HElangfang-GLOBAL6-CACHE41[11],CHN-HElangfang-GLOBAL6-CACHE45[0,TCP_HIT,7]
+x-hcs-proxy-type: 1
+x-ccdn-cachettl: 2592000
+nginx-hit: 1
+age: 72397
+cache-control: max-age=2592000,s-maxage=3600
+content-encoding: gzip

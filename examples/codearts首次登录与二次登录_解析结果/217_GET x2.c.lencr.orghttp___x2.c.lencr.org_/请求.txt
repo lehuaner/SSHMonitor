@@ -1,0 +1,8 @@
+GET http://x2.c.lencr.org/ HTTP/1.1
+Cache-Control: max-age = 3600
+Connection: Keep-Alive
+Accept: */*
+If-Modified-Since: Wed, 13 May 2026 23:14:58 GMT
+If-None-Match: "6a0505f2-163"
+User-Agent: Microsoft-CryptoAPI/10.0
+Host: x2.c.lencr.org

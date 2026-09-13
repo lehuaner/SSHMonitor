@@ -1,0 +1,130 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 15:46:58.083
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.2
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=edge.microsoft.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US
+  Simple Name: edge.microsoft.com
+  DNS Name: edge.microsoft.com
+
+[Issuer]
+  CN=Microsoft TLS G2 RSA CA OCSP 16, O=Microsoft Corporation, C=US
+  Simple Name: Microsoft TLS G2 RSA CA OCSP 16
+  DNS Name: Microsoft TLS G2 RSA CA OCSP 16
+
+[Serial Number]
+  5500BF42E49DECD07D6CC34931000000BF42E4
+
+[Not Before]
+  2026/8/28 10:33:24
+
+[Not After]
+  2027/2/24 10:33:24
+
+[Thumbprint]
+  BF9E2293227DC51A21499137C2A573E0C1828AF6
+
+[Signature Algorithm]
+  sha384RSA(1.2.840.113549.1.1.12)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 e5 41 ca 0d d8 d6 bf 96 d1 bf 41 5a 84 d9 0d eb c3 17 e6 e5 7a 05 94 c8 8e 27 2a 12 d4 03 8d b3 03 0b 69 4d 0f f2 5f 47 ee 17 42 b4 c8 17 ce d5 05 b2 e9 30 da 04 91 b2 98 ff 1b 99 f9 57 69 33 b8 c6 8c d3 ba 44 19 cf c3 6f 4c 28 e4 55 83 83 88 8a 34 42 eb fb 04 e3 ac 83 59 84 55 e7 f0 b6 b2 91 e2 a1 f8 9b d6 4a f8 b2 3f 29 dc c5 a9 36 24 1d 63 00 6c 9c 87 ef 77 2e f1 0e fd 4b 6c d7 ca ad 84 3f ba 84 b3 51 b3 49 7c be 85 40 00 11 32 2d 2c d6 80 67 4d 21 00 27 0e bf 71 7c 6f d3 fe 70 ed 7f d7 56 d0 36 e6 b6 9b c4 10 31 6d e9 ee fe 2a 8e dd 46 04 a1 4a a7 67 68 4d 51 36 c6 51 a4 a7 64 d4 b0 09 f3 ca 22 0e 84 eb 3d a7 ed 45 af 5d d7 0a b8 58 04 80 13 d6 2a 11 87 4a 3c e0 25 c6 28 b2 30 d3 40 3d 34 52 d4 94 3c ac dd 7e 99 76 c4 e0 8b 6a b0 46 5c c5 8e af 44 fc 7d 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+d6d58da9d01753f36a4aa0c7574902afebc7dc2cd38cd9f764c80c89191e9f02
+‎2026‎年‎8‎月‎28‎日 10:43:28
+SHA256
+ECDSA
+3045022065cc29c773e081c288a6da30536a7433432f9c45aaf83916c9a0afbb18e9638f02210085ccb5b794915f634c65c6981bbe46b4114e63ba6a18867c8550f41b0aacfe3b
+
+v1
+001a5d1a1c2d9375b6485578f82f71a1ae6eef397d297c8ae3157bcadee1a01e
+‎2026‎年‎8‎月‎28‎日 10:43:29
+SHA256
+ECDSA
+30450220276aef50afd57f925d1059801a0a026ad895a417565333a623cec2f40568bcc102210091343fbcb3be9b164d591dcfa5867014c9ec2cd8d302d833fd54e9978dc5ab79
+
+v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎8‎月‎28‎日 10:43:29
+SHA256
+ECDSA
+3046022100baa4866dd35ed063f0602b5e797968788b51bef11084cf28df3c7cf2beda23f3022100bc8737850a3a6ebb6781dbbbb839407d9b63d638a44c2a57c24cde59bf89000a
+
+* 应用程序策略(1.3.6.1.4.1.311.21.10):
+  [1]Application Certificate Policy:
+     Policy Identifier=服务器身份验证
+
+* 证书模板信息(1.3.6.1.4.1.311.21.7):
+  Template=1.3.6.1.4.1.311.21.8.15690651.3798470.4214446.239628.16526621.93.8020455.5050828
+Major Version Number=100
+Minor Version Number=32
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://www.microsoft.com/pkiops/certs/Microsoft TLS G2 RSA CA OCSP 16.crt (http://www.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2016.crt)
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://caissuers.microsoft.com/pkiops/certs/Microsoft TLS G2 RSA CA OCSP 16.crt (http://caissuers.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2016.crt)
+[3]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://oneocsp.microsoft.com/ocsp
+
+* 使用者密钥标识符(2.5.29.14):
+  2af8f13f6913a013c240965ccb10e786475a1499
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=edge.microsoft.com
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://www.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 RSA CA OCSP 16_Partition00043.crl (http://www.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2016_Partition00043.crl)
+               URL=http://crl2.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 RSA CA OCSP 16_Partition00043.crl (http://crl2.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2016_Partition00043.crl)
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+[2]Certificate Policy:
+     Policy Identifier=1.3.6.1.4.1.311.76.509.1.1
+     [2,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.microsoft.com/pkiops/Docs/Repository.htm
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=0639f056d1ed90c836a3a00f94fe6294a7e6fc37
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+
+[SubjectAltNames]
+DNS Name=edge.microsoft.com
+

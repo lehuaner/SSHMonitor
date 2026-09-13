@@ -1,0 +1,20 @@
+GET https://ping.cloud.tencent.com/trafficCollect.php?expKey=stayTime&expValue=2338983&uin=&ul=https%3A%2F%2Fwww.workbuddy.cn%2Fprofile%2Fplans-usage&referer=&fromSource=gwzcw.15291244.15291244.15291244&visitId=a4f93ee3da7817fa60a852b85dd63a44&landingpage=https%3A%2F%2Fwww.workbuddy.cn%2Fprofile%2Fgrowth-center%3Futm_medium%3Dcpc%26utm_id%3Dgwzcw.15291244.15291244.15291244&language=&lastLoginType=&_ga=&pageTitle=WorkBuddy%20-%20%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83&from=&from_column=&type=OfficialNetworkTraffic&t=1789022299612 HTTP/2
+:method: GET
+:authority: ping.cloud.tencent.com
+:scheme: https
+:path: /trafficCollect.php?expKey=stayTime&expValue=2338983&uin=&ul=https%3A%2F%2Fwww.workbuddy.cn%2Fprofile%2Fplans-usage&referer=&fromSource=gwzcw.15291244.15291244.15291244&visitId=a4f93ee3da7817fa60a852b85dd63a44&landingpage=https%3A%2F%2Fwww.workbuddy.cn%2Fprofile%2Fgrowth-center%3Futm_medium%3Dcpc%26utm_id%3Dgwzcw.15291244.15291244.15291244&language=&lastLoginType=&_ga=&pageTitle=WorkBuddy%20-%20%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83&from=&from_column=&type=OfficialNetworkTraffic&t=1789022299612
+sec-ch-ua-platform: "Windows"
+cache-control: max-age=0
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+sec-ch-ua: "Chromium";v="152", "Not?A_Brand";v="24", "Microsoft Edge";v="152"
+sec-ch-ua-mobile: ?0
+accept: */*
+sec-fetch-site: cross-site
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+sec-fetch-storage-access: active
+referer: https://www.workbuddy.cn/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=4, i
+cookie: language=zh; loginType=wx; qcloud_from=qcloud.inside.group-1788359801833; qcstats_seo_keywords=%E5%93%81%E7%89%8C%E8%AF%8D-%E5%93%81%E7%89%8C%E8%AF%8D-%E7%99%BB%E5%BD%95; qcmainCSRFToken=BkyxkrPTkFGl; intl=

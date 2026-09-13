@@ -1,0 +1,11 @@
+HTTP/2 200
+server: nginx
+content-type: application/json
+vary: Accept-Encoding
+cache-control: no-cache, private
+date: Sat, 12 Sep 2026 07:47:09 GMT
+x-ratelimit-limit: 600
+x-ratelimit-remaining: 599
+access-control-allow-methods: GET, POST, OPTIONS, PUT, DELETE
+access-control-allow-headers: DNT,x-flags-devmode,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization
+content-encoding: br

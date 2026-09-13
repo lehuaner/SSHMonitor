@@ -1,0 +1,24 @@
+POST https://edge.microsoft.com/passwordbreachservice/v1/passwords/breach/prequery HTTP/2
+:method: POST
+:authority: edge.microsoft.com
+:scheme: https
+:path: /passwordbreachservice/v1/passwords/breach/prequery
+content-length: 242
+authorization: Bearer eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2Q0JDLUhTNTEyIiwia2lkIjoiRUJ6UDFWUWxaZ1FzdUFpeTgtU0MyMDNGODhEbENMblpWWFEwM2dPeXIyMCIsInppcCI6IkRFRiJ9..M6JuVS6vME46J5is6JWKug.pZCPQFIV_ll99Nkkl3mx-xNwwR21rKxsLyuxCc72HpgtEmt0Mc-EbcJaClmyxPV0oM9wXfv_zE8poBfAOb1up_lKTW5nbVSitw_-QvI_lnFsYRS2oocgF0psuz49OtYmLUntDlapQTA6TcJ9NGIYggXu1Ca4xgXkR3DcHihjP67KQPi8fCJTJ3GRlrY8N-65tK1P7pJ93GuSB3Dg2wn23tOX2xP3F5EWxJ-yVsxdBGJ0soGA4-u9IMAIcyZu7_2UAh4Tf7v7_pEV3poxt81gGOwKZJqm5xyQ2H3d2s2NnrUv6N5KsYZ3g__9rLVuGF19sNaznOvtzYXysLPuQ3L_nj8RwDRuivEMySGUyvbjKOTk8tuHxb3YPzV18F9csxSYAnrIN2XRSK5Vk5lZ7o7QFg2Xw4GbPcW-cVTZDOfT_88HRSRyTw26wP85S89WDCt0i9uVNZYwREXTif-iQZ4CLrrUsk4JF_bpjFK_2tE5ZcNFpw7D7s4c1CejldtQdF4TVgXhsMRLlOG8JkPzNipdTvYdbkJY2Y1KaYiaL9V66ZhMfdaEQv8KE2k2VXiDwDYCLEcXIrVp2CKPoi6xI20Ja7BsaUDW0-BEZSXPA_vc5vVzWRshlDKaR615G5lIx52O7NSZ3b2j6Webo2CvjkpDIYEnTAAqxqpQ9wv2gt-dad44UDJNd5csy_QxMmIP9QX5PgRQCU-lh2hcw8Gf-PN0zshTZWggyNhKs8nnPN62liYcIVp615pPGo7DFDonuUnhYe8rI6UANsW807i3e0R9REwYYKWiIEABIw07aPszoCdYHnadG1QaJ6yDSQrafp6WD5UPa9NxpgUXzmpgWl9x1-t-Zv8kOpn44kkmBvO-6h5vYOx6eMennI6uue8VMea4OOqzU-Uph4P8ZpZFrGP4BRnLhn42OW7U1j1v5TFkhK0Qfz1T6xK1q3xTJKUV2toxk3ZJlBQHxqOWZ1s4-g2wXg-Bhb2Xzxu7McFSlZ55HTF46A9fXBeAK024QMp-JMx2fznWI3ABOg6v4zeuV3gqhrWVrERJ9XW8b2GLYLy16Xd37z_bBCm3vpmO1ehJ745RWCvkriiG3H3XArp9AUYNIj0GWT1g5M2H-ERbBUGeDjeiXrrVOJxigY2fPt-F7xZbWL7F8S5CQaSEu7WIHOOJbi2MYqjYUmHTVLYKF3aotFTlbu19DeLWygdZziD7e0QcGxK2RhfAxPzu1u7rL1O4nwlBulcSuzBTzPhA-bzAbQLKVCCd3GS9LONHoWrxoGMhD35LXVWOfPULW9bs_DLwl50mynTv_JrcfSSQDvj00AnaTm4GntI4SJ9c3A8PJiAECbmKwyiFn7-AsBIXbDQDzSmDLwozgZU1eLy7HNwT68th8wYsTN1CS2p_BVk-Jwt5Ixfv6TTaDu0gv1Bq1qPNEKaxnNyNQ8d8PgDbmNqzqQ3GskY-oAWWqpn7dat4qNH0hFnNWhDG-IckzO3H-jIw_HgPiHXYzvheN-WZ5LImAPmdD0P1RuNcPTTk8L9TFnsJ.ho2Rwt2qPhhcnecMyd6mXbX09MRZsfNWDPGK6Hq71FI
+trigger: store-changes
+subversion: 3
+numofcreds: 1
+content-type: application/json
+sec-mesh-client-edge-version: 152.0.4191.66
+sec-mesh-client-edge-channel: stable
+sec-mesh-client-os: Windows
+sec-mesh-client-os-version: 10.0.26200
+sec-mesh-client-arch: x86_64
+sec-mesh-client-webview: 0
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=4, i

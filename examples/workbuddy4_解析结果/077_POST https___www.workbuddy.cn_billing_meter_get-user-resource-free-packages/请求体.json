@@ -1,0 +1,16 @@
+{
+  "PageNumber": 1,
+  "PageSize": 200,
+  "Status": [
+    0
+  ],
+  "SlicePeriodStartTime": "2026-09-10 00:00:00",
+  "SlicePeriodEndTime": "2026-09-10 23:59:59",
+  "PackageCodes": [
+    "TCACA_code_008_cfWoLwvjU4",
+    "TCACA_code_007_nzdH5h4Nl0",
+    "TCACA_code_028_NtpWi0jzXs",
+    "TCACA_code_029_6wCGEWquYy",
+    "TCACA_code_030_BjSt89qTvr"
+  ]
+}

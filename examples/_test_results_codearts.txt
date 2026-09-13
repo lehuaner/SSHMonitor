@@ -1,37 +1,29 @@
 ==================================================================================
 CodeArts 签到接口可用性实测
-凭证来源: capture(2026-09-08)
-cookie 长度: 1139  |  cftk: 4H4S-HCUU-C7LO-75CZ-...
+凭证来源: session(.codearts_session.json，958 秒前登录)
+cookie 长度: 1918  |  cftk: RPS9-U6I7-JD73-Y0Y3-...
 ==================================================================================
 
 【阶段 1】只读探测
-  GET   /portal/snap-manager/v1/credit/has-claimed           -> HTTP 200  (300ms)
+  GET   /portal/snap-manager/v1/credit/has-claimed           -> HTTP 200  (280ms)
         <空响应体>
         ⚠ 登录态失效：HW-AJAX-REDIRECT = https://auth.huaweicloud.com/authui/login?service=
         note: 验证 Cookie 鉴权确实生效
-  GET   /portal/snap-manager/v1/credit/has-claimed           -> HTTP 200  (201ms)
-        <空响应体>
-        ⚠ 登录态失效：HW-AJAX-REDIRECT = https://auth.huaweicloud.com/authui/login?service=
+  GET   /portal/snap-manager/v1/credit/has-claimed           -> HTTP 200  (261ms)
+        true
         note: 今日是否已领取每日签到积分
-  GET   /portal/snap-manager/v1/package_overview             -> HTTP 200  (215ms)
-        <空响应体>
-        ⚠ 登录态失效：HW-AJAX-REDIRECT = https://auth.huaweicloud.com/authui/login?service=
+  GET   /portal/snap-manager/v1/package/overview             -> HTTP 200  (299ms)
+        {"all_credit_package": {"package_credit_amount": 7500.0, "package_credit_used": 144.72, "package_credit_remain": 7355.28, "package_credit_user_amount": 7500.0, "package_credit_user_used": 144.72, "package_credit_user_remain": 7355.28, "expiring_credit_amount":
         note: 积分包总览（可用额度来源）
-  GET   /portal/rest/me                                      -> HTTP 200  (213ms)
-        <空响应体>
-        ⚠ 登录态失效：HW-AJAX-REDIRECT = https://auth.huaweicloud.com/authui/login?service=
+  GET   /portal/rest/me                                      -> HTTP 200  (238ms)
+        {"projectId": "0d2a3bba3a00f2ab2fcbc000fba927b8", "domainId": "0d2a3a0cc500f3060f0dc00096bca220", "domainName": "le_huan", "id": "0d2a3a0dae80f58a1f92c0000c3a3de6", "userId": "0d2a3a0dae80f58a1f92c0000c3a3de6", "name": "le_huan", "userName": "le_huan", "region
         note: 当前用户身份与角色
-  GET   /portal/snap-manager/v1/package_info                 -> HTTP 200  (225ms)
-        <空响应体>
-        ⚠ 登录态失效：HW-AJAX-REDIRECT = https://auth.huaweicloud.com/authui/login?service=
+  GET   /portal/snap-manager/v1/package/info                 -> HTTP 200  (253ms)
+        {"enable": true, "resource_id": "fa64939fc6ae40fd9c80edac79e6b444", "spec_code": "codearts.agent.individual.trial", "status": "normal"}
         note: 套餐信息
 
 【阶段 2】每日签到领取（条件执行）
-  ⚠ 当前 Cookie 会话已失效（抓包于 2026-09-08，实测 2026-09-10）
-    -> 跳过 claim 写入；接口行为以抓包实证为准：
-       capture 017  GET  /credit/has-claimed  -> false
-       capture 036  POST /credit/claim {credit_type:daily_bonus} -> true
-       capture 063  GET  /credit/has-claimed  -> true
+  has-claimed=True -> 今日已领取，跳过写入（幂等安全）
 
 ==================================================================================
 HTTP 200 用例: 5 / 5

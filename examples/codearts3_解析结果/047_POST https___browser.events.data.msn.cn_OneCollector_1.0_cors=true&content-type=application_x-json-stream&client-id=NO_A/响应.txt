@@ -1,0 +1,13 @@
+HTTP/2 204
+server: Microsoft-HTTPAPI/2.0
+strict-transport-security: max-age=31536000
+p3p: CP="ALL IND DSP COR ADM CONo CUR CUSo IVAo IVDo PSA PSD TAI TELo OUR SAMo CNT COM INT NAV ONL PHY PRE PUR UNI"
+time-delta-millis: -1467
+access-control-allow-headers: Strict-Transport-Security,P3P,Set-Cookie,Connection,time-delta-millis
+access-control-allow-methods: POST
+access-control-allow-credentials: true
+access-control-allow-origin: https://ntp.msn.cn
+access-control-expose-headers: time-delta-millis
+set-cookie: MC1=GUID%3D8cd20f1e98274d9ca7de9e07615e3583%26HASH%3D8cd2%26LV%3D202601%26V%3D4%26LU%3D1768151253076; expires=Fri, 10 Sep 2027 07:10:24 GMT; domain=.microsoft.com; path=/; secure; samesite=none
+set-cookie: MS0=72db692fe3864e74a0edf60b113dfd7a; expires=Thu, 10 Sep 2026 07:40:24 GMT; domain=.microsoft.com; path=/; secure; samesite=none
+date: Thu, 10 Sep 2026 07:10:24 GMT

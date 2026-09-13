@@ -1,0 +1,133 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:38:20.373
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=cloud.tencent.com, O=Shenzhen Tencent Computer Systems Company Limited, L=Shenzhen, S=Guangdong, C=CN
+  Simple Name: cloud.tencent.com
+  DNS Name: cloud.tencent.cn
+
+[Issuer]
+  CN=GlobalSign Atlas R3 OV TLS CA 2026 Q1, O=GlobalSign nv-sa, C=BE
+  Simple Name: GlobalSign Atlas R3 OV TLS CA 2026 Q1
+  DNS Name: GlobalSign Atlas R3 OV TLS CA 2026 Q1
+
+[Serial Number]
+  011E09827A937B3C810BB2EA7B481275
+
+[Not Before]
+  2026/4/14 12:04:42
+
+[Not After]
+  2026/10/30 12:04:41
+
+[Thumbprint]
+  FC89FB0FEF3EFD8B8C61F7192E6B06DD4CDB69B8
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 ba 70 02 58 b4 41 a5 36 f1 65 48 a0 b6 1c a8 99 45 79 09 0e 0f cd de 0c e9 23 c2 22 0f ff a5 67 19 48 3f 24 33 b3 71 91 b4 07 2e ff 58 7f 14 d6 e5 b7 66 73 9e e0 da a5 44 b6 f6 a7 50 25 d9 27 03 aa 28 ea 29 ee d0 be 6b a4 36 bb 98 00 5f 03 22 18 b5 06 e1 86 b8 0a c7 d9 72 af 46 60 84 7b 92 d2 90 f0 4b 05 82 31 11 4a 84 f6 18 ac a2 16 57 c8 80 bd 96 54 d8 3e f2 cc 31 21 00 f0 1b 0a ad 87 42 ab f6 b0 08 87 88 04 23 d8 9e fc ee 10 79 bf c4 88 be 2d 97 72 ed 23 d7 c2 22 9a fa ef a6 da fa 14 bd 4c 27 0e 90 99 5c 4e 24 b2 8e 64 3f 84 9e d5 32 d6 1e e8 35 74 44 76 3c 46 13 9a 57 3b f4 bb c0 47 16 fb e4 c8 6d 17 5e 29 90 4b f5 25 cf 08 fb 4c 15 72 4b 1c a9 d3 93 dd e2 b4 eb 8f 2f ea e2 31 f3 24 34 8e 12 34 f1 61 04 d2 b6 2c 94 9c 99 03 f8 55 59 ad 86 d1 2c d2 d1 2f 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 使用者可选名称(2.5.29.17):
+  DNS Name=cloud.tencent.cn
+DNS Name=cloud.tencent.com.cn
+DNS Name=www.cloud.tencent.cn
+DNS Name=www.cloud.tencent.com
+DNS Name=www.cloud.tencent.com.cn
+DNS Name=yun.tencent.cn
+DNS Name=yun.tencent.com
+DNS Name=yun.tencent.com.cn
+DNS Name=cloud.tencent.com
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+客户端身份验证 (1.3.6.1.5.5.7.3.2)
+
+* 使用者密钥标识符(2.5.29.14):
+  3506b8ef983247e2055dd59c7bbff13636d43156
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+[2]Certificate Policy:
+     Policy Identifier=1.3.6.1.4.1.4146.10.1.2
+     [2,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               https://www.globalsign.com/repository/
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://ocsp.globalsign.com/ca/gsatlasr3ovtlsca2026q1
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://secure.globalsign.com/cacert/gsatlasr3ovtlsca2026q1.crt
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=eac4b5fe8e8d6a6a6fa3ebf1ba2c5afcdaed556c
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl.globalsign.com/ca/gsatlasr3ovtlsca2026q1.crl
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+c2317e574519a345ee7f38deb29041ebc7c2215a22bf7fd5b5ad769ad90e52cd
+‎2026‎年‎4‎月‎14‎日 12:04:51
+SHA256
+ECDSA
+3045022100dfeca354a04b1f377072521ceb268664c707db84405d4c2dca664e729d5cc83402207d11809fede4b54fe34c0cee3c0d3ecb44521ef3b593906d811540cce1c42f05
+
+v1
+c8a3c47fc7b3adb9356b013f6a7a126de33a4e43a5c646f997ad3975991dcf9a
+‎2026‎年‎4‎月‎14‎日 12:04:51
+SHA256
+ECDSA
+304402206287d5684986a4a6e832f301eb32010eb3f7dbac2a2dbcb51fc00fbb08733b2902200949dffa1704800818c75fa5176c602a3e7543a640301963e4f37c9697f092d2
+
+v1
+d76d7d10d1a7f577c2c7e95fd700bff982c9335a65e1d0b3017317c0c8c56977
+‎2026‎年‎4‎月‎14‎日 12:04:51
+SHA256
+ECDSA
+3046022100dbfabc5a2909762236424879aa8811ebefd2d98df8da9d34a36b8c380347bd69022100ccfa488025a39dec29d8b711f379bb3422d3393445077ef8c6720c558c42d9c2
+
+
+[SubjectAltNames]
+DNS Name=cloud.tencent.cn
+DNS Name=cloud.tencent.com.cn
+DNS Name=www.cloud.tencent.cn
+DNS Name=www.cloud.tencent.com
+DNS Name=www.cloud.tencent.com.cn
+DNS Name=yun.tencent.cn
+DNS Name=yun.tencent.com
+DNS Name=yun.tencent.com.cn
+DNS Name=cloud.tencent.com
+

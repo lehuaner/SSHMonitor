@@ -1,0 +1,19 @@
+GET https://auth.huaweicloud.com/authui/login?service=https%3A%2F%2Fcodearts.huaweicloud.com%2Fportal%2Fsettings%2Fpersonal-usage%3Flocale%3Dzh-cn HTTP/2
+:method: GET
+:authority: auth.huaweicloud.com
+:scheme: https
+:path: /authui/login?service=https%3A%2F%2Fcodearts.huaweicloud.com%2Fportal%2Fsettings%2Fpersonal-usage%3Flocale%3Dzh-cn
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+sec-fetch-site: cross-site
+sec-fetch-mode: navigate
+sec-fetch-dest: document
+sec-ch-ua: "Chromium";v="152", "Not?A_Brand";v="24", "Microsoft Edge";v="152"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+referer: https://oauth-login1.cloud.huawei.com/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=0, i
+cookie: auth_cdn=cdn_cookie_on; SSOTGC=TGTX--1880604374-8558733-9323505051c92b705f264f034612816b698666292764042bfbc0f45394d2ebfb-sso; last.login.type=account; rememberPromptMFA_1880604374_nPOjgkce2OHCgBSCSYqRSFdce0OPkUux=1; tiny_language=zh; accountType=personal; _frid=d5b02ea98111446d918d4d8995614324; cbc-sid=204938a7380f3812114134aa69c8d3a31bc5e922f5355d0e2af5899159c59960e7dba5e6814a379537b0; vk=38316b85-c4ee-436f-83cd-36c936da02e9; Hm_lvt_e7a90fbb918d40aec64d1170a5ca608f=1788857953; HW_refts_id1_cloud_huawei_com_auth_huaweicloud_com=1788857992650; HW_id_id1_cloud_huawei_com_auth_huaweicloud_com=6e1372d62a244e708056d03297c6ec92; HW_idts_id1_cloud_huawei_com_auth_huaweicloud_com=1788857992651; xyt_nmk=true; ua=0d2a3a0cc500f3060f0dc00096bca220; le_huan_le_huan_cfProjectName=cn-north-4; HW_idvc_id1_cloud_huawei_com_auth_huaweicloud_com=2; HWWAFSESID=e9e3a735e8a40cb1e9; HWWAFSESTIME=1789024224739; locale=zh-cn; _fr_ssid=765130cba33141e69f2f8ddfbca5224a; login-sdk-info=authui_login_sdkurl_info:b81c84a2164e4189a9e28af50a1c418c; SessionID=07d02be5-d7cd-451c-bd0a-a8f89a048b66; ad_sc=; ad_mdm=; ad_cmp=; ad_ctt=; ad_tm=; ad_adp=; cf=Direct; HW_viewts_id1_cloud_huawei_com_auth_huaweicloud_com=1789024230085; cbc-sid=204938a7380f3812114134aa69c8d3a31bc5e922f5355d0e2af5899159c59960e7dba5e6814a379537b0; SSOJTC=JTC--1880604374-8558733-eyJraWQiOiJNREJmWjJ4dlltRnNYekl3TnpBMSIsImFsZyI6IlJTMjU2IiwidHlwIjoiSldUIn0.eyJ1dHkiOiJsb2NhbFVzZXIiLCJjYXQiOjE3ODkwMjQyMzAsInVpZCI6IjBkMmEzYTBkYWU4MGY1OGExZjkyYzAwMDBjM2EzZGU2IiwiZGlkIjoiMGQyYTNhMGNjNTAwZjMwNjBmMGRjMDAwOTZiY2EyMjAiLCJyaWQiOiJjbi1ub3J0aC00IiwiY2lwIjoiMTEyLjIzLjE5MC4yMTQiLCJjcGsiOiJsZV9odWFuX2xlX2h1YW5fY2ZQcm9qZWN0TmFtZSIsImV4dCI6Int9In0.nNd1VEUDnTN-e9hHfsGAt8cG7HvWem6ssx2perzxVdn918PbdUZFh3iRUdg_wvEEp5CfealO1-NeHu-ZK_QAshTu_Ioyt8VnKQftTpHKhOfgC0G2Zd6QgRZfbrzrNugRHb6tjQ09SJi4cBUcBERB1mxc64SWYdnnMnmFQSwq2vCiAm5iLbaXLappcSCeuvC28Cw1qg3BmYWcjsnth49jqs_WeAEkcD47_H_woiMzGCpKT8HCLyfsU4wnXbk-6qrVQtFd_OOj2YkC-aDDQL6ScDuxrKEI6W-2ey9d5l5e7GexHv4FpHZcRp-_aQO29o2_OsxCE7hOPABBkS7w6SKWfw; user_tag=0d2a3a0dae80f58a1f92c0000c3a3de6; domain_tag=0d2a3a0cc500f3060f0dc00096bca220; popup_max_time=60; masked_phone=173****7416; masked_user=l***uan; masked_domain=l***uan; usite=cn; x-framework-ob=; tjbdsb_76ea438906e1fed663ca807029cc7fd230937b944a4779c66347c7e77ada53ed=1

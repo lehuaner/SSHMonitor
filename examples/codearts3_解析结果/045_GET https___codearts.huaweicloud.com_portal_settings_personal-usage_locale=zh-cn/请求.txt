@@ -1,0 +1,19 @@
+GET https://codearts.huaweicloud.com/portal/settings/personal-usage?locale=zh-cn HTTP/2
+:method: GET
+:authority: codearts.huaweicloud.com
+:scheme: https
+:path: /portal/settings/personal-usage?locale=zh-cn
+sec-ch-ua: "Chromium";v="152", "Not?A_Brand";v="24", "Microsoft Edge";v="152"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+upgrade-insecure-requests: 1
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+sec-fetch-site: none
+sec-fetch-mode: navigate
+sec-fetch-user: ?1
+sec-fetch-dest: document
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=0, i
+cookie: _frid=d5b02ea98111446d918d4d8995614324; cbc-sid=204938a7380f3812114134aa69c8d3a31bc5e922f5355d0e2af5899159c59960e7dba5e6814a379537b0; vk=38316b85-c4ee-436f-83cd-36c936da02e9; Hm_lvt_e7a90fbb918d40aec64d1170a5ca608f=1788857953; ua=0d2a3a0cc500f3060f0dc00096bca220; le_huan_le_huan_cfProjectName=cn-north-4; locale=zh-cn

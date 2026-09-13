@@ -1,0 +1,175 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 15:47:11.121
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.2
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=petalsearch.com, O="Huawei Software Technologies Co., Ltd.", L=Nanjing, S=Jiangsu, C=CN
+  Simple Name: petalsearch.com
+  DNS Name: petalsearch.com
+
+[Issuer]
+  CN=GlobalSign RSA OV SSL CA 2018, O=GlobalSign nv-sa, C=BE
+  Simple Name: GlobalSign RSA OV SSL CA 2018
+  DNS Name: GlobalSign RSA OV SSL CA 2018
+
+[Serial Number]
+  6C422C6BE0FBEFB2058E6E93
+
+[Not Before]
+  2026/6/16 16:21:22
+
+[Not After]
+  2027/1/1 16:21:22
+
+[Thumbprint]
+  C5546F63369D52B90AA227A469B6F234DFB65960
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 3072
+  Key Blob: 30 82 01 8a 02 82 01 81 00 ab ab c7 81 03 6f 0c 68 8c 82 13 62 45 df 71 b8 3e 9b f8 08 4e 2a da e4 11 d8 c3 e4 3e 3f 4c 24 e0 fe cb c8 86 18 e3 77 37 5c 20 bd 5a 6c 84 54 bf fc 75 09 98 04 52 2a fe 17 30 92 84 b3 e8 20 6c e4 bd fe 63 2e 88 c4 4b 22 b9 88 31 34 99 f4 b2 5c c5 f0 0a 0a 85 bf 2d 7e 1a 38 73 c6 59 e3 30 68 4d d6 f0 66 5e c6 01 ac 14 30 ed 98 e2 64 28 f3 be 22 46 35 6c a1 6e 35 4a 52 23 e1 bb 73 fb 93 51 bc c5 6d 6e 3a 15 fb 42 71 69 aa 3b 51 73 ad 24 d4 b5 24 b9 85 62 e0 22 cd d8 83 b7 13 95 56 61 24 3a 18 36 02 fe eb 7c 52 0f 59 b7 91 64 f7 03 e9 5c bc 8b bd b4 20 5c a0 0d 7b 24 e6 a8 4b 7e 66 4f 4b 06 d0 14 02 b8 00 33 b3 61 a5 0a 7e 83 4b 8d b8 31 2c 03 2d ca 70 4f f5 6f 4f 66 8b 7e ea 49 c9 9e 3c ac d8 f3 ac 1b d8 13 99 f5 18 d6 1a f8 d5 c0 b1 bc 7f 00 1d 42 78 06 5a af ad 12 db 6d 38 41 28 17 08 d1 ec da 0b a4 0e cd c4 18 f7 63 00 ce 85 9b 42 66 59 ac b4 ae 4a 89 47 6a 04 04 b4 9e 03 b0 86 f3 da 90 c2 bd ae 0f d2 5f 36 15 20 11 43 6b 31 2d 27 84 b9 10 c8 c8 86 df c3 6b f2 8d 8f ff 5a fe 05 98 ac f4 9c 14 a0 63 25 58 ce 22 06 3f b7 b0 3c 75 ac 60 ae 45 f8 1d 33 89 00 2a fd f7 ef ed d5 1f e3 1c 53 3b 42 c5 d8 9f c3 45 c6 4e 70 ad ac 51 e0 9d 79 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://secure.globalsign.com/cacert/gsrsaovsslca2018.crt
+[2]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://ocsp.globalsign.com/gsrsaovsslca2018
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=1.3.6.1.4.1.4146.1.20
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               https://www.globalsign.com/repository/
+[2]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl.globalsign.com/gsrsaovsslca2018.crl
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=petalsearch.com
+DNS Name=petalsearch.com.cn
+DNS Name=bizconnect.huawei.ru
+DNS Name=drru.bizconnect.huawei.ru
+DNS Name=pic-drcn.ai.dbankcloud.cn
+DNS Name=*.ai.dbankcloud.com
+DNS Name=*.bizconnect.huawei.com
+DNS Name=*.cloud.huawei.com
+DNS Name=*.cloud.huawei.com.cn
+DNS Name=*.cp.dbankedge.net
+DNS Name=*.cp.dbankedge.cn
+DNS Name=*.data.dbankcloud.cn
+DNS Name=*.data.dbankcloud.com
+DNS Name=*.data.hicloud.com
+DNS Name=*.dbankcloud.cn
+DNS Name=*.dbankcloud.com
+DNS Name=*.dt.dbankcloud.cn
+DNS Name=*.dt.dbankcloud.com
+DNS Name=*.dt.dbankcloud.ru
+DNS Name=*.dt.hicloud.com
+DNS Name=*.emui.dbankcloud.com
+DNS Name=*.hicloud.com
+DNS Name=*.huawei.com
+DNS Name=*.petalsearch.com
+DNS Name=*.petalsearch.com.cn
+DNS Name=*.petalsearch.ru
+DNS Name=*.platform.dbankcloud.cn
+DNS Name=*.platform.dbankcloud.com
+DNS Name=*.platform.dbankcloud.ru
+DNS Name=*.platform.hicloud.com
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+客户端身份验证 (1.3.6.1.5.5.7.3.2)
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=f8ef7ff2cd7867a8de6f8f248d88f1870302b3eb
+
+* 使用者密钥标识符(2.5.29.14):
+  0f26c77e86889b65f3440f0d82ec55ef135a4334
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎6‎月‎16‎日 16:21:28
+SHA256
+ECDSA
+30450220223742554068b1d319be928c6aca21dfd89ce3565e22a54d92fccb186b75bb34022100ef596d9c098c53dd1028966afa1cf67fe94bb58dbf5d6910a5498c1aa7fd587f
+
+v1
+4c63dc98e59c1dab88f61e8a3ddeae8fab44a3377b5f9b94c3fba19cfcc1be26
+‎2026‎年‎6‎月‎16‎日 16:21:28
+SHA256
+ECDSA
+3046022100ec05a65477ee81f8b347e6dd2343323b22b93712f30b7d16671789f3a6ddd3e9022100f4259cfdb64915badde53c47230da4eaf8b4ec7127399822e369c801e0ed8291
+
+v1
+604c9aaf7a7f775f01d406fc920dc899eb0b1c7df8c9521bfafa17773b978bc9
+‎2026‎年‎6‎月‎16‎日 16:21:28
+SHA256
+ECDSA
+304402203ba024787da0e3a34b0861e6fa9c6f5600a2c6b6a09c125099e80aa46ee6b68a02201e8436129d19e27912a8c65d25ecf7492a59251cad846b094855c13a94f08c28
+
+
+[SubjectAltNames]
+DNS Name=petalsearch.com
+DNS Name=petalsearch.com.cn
+DNS Name=bizconnect.huawei.ru
+DNS Name=drru.bizconnect.huawei.ru
+DNS Name=pic-drcn.ai.dbankcloud.cn
+DNS Name=*.ai.dbankcloud.com
+DNS Name=*.bizconnect.huawei.com
+DNS Name=*.cloud.huawei.com
+DNS Name=*.cloud.huawei.com.cn
+DNS Name=*.cp.dbankedge.net
+DNS Name=*.cp.dbankedge.cn
+DNS Name=*.data.dbankcloud.cn
+DNS Name=*.data.dbankcloud.com
+DNS Name=*.data.hicloud.com
+DNS Name=*.dbankcloud.cn
+DNS Name=*.dbankcloud.com
+DNS Name=*.dt.dbankcloud.cn
+DNS Name=*.dt.dbankcloud.com
+DNS Name=*.dt.dbankcloud.ru
+DNS Name=*.dt.hicloud.com
+DNS Name=*.emui.dbankcloud.com
+DNS Name=*.hicloud.com
+DNS Name=*.huawei.com
+DNS Name=*.petalsearch.com
+DNS Name=*.petalsearch.com.cn
+DNS Name=*.petalsearch.ru
+DNS Name=*.platform.dbankcloud.cn
+DNS Name=*.platform.dbankcloud.com
+DNS Name=*.platform.dbankcloud.ru
+DNS Name=*.platform.hicloud.com
+

@@ -1,0 +1,26 @@
+HTTP/2 200
+date: Fri, 11 Sep 2026 16:28:59 GMT
+content-type: application/json;charset=UTF-8
+server: CloudWAF
+set-cookie: HWWAFSESID=cda1ca6e1df3280ec8; path=/
+set-cookie: HWWAFSESTIME=1789144138550; path=/
+lubanops-gtrace-id: v-7774621-1789144139024-5004523
+lubanops-nenv-id: 2290996
+x-envoy-upstream-service-time: 112
+destination-cluster: outbound_forward#portal.huaweicloud.com#55581#bc18455338328a0cf8a45ea1026b299aaa174ffa00b38b2eaf9cc0be6546457c
+header-match-policy-id: 34067
+x-request-id: dd7719be-6d75-4f2f-bc81-6834b1527a42
+alt-svc: h3=":443";ma=86400
+access-control-allow-origin: https://auth.huaweicloud.com
+access-control-allow-credentials: true
+access-control-max-age: 86400
+vary: Origin
+access-control-expose-headers: wise_traceid,lubanops-gtrace-id,lubanops-ntrace-id,attachment-fileName
+strict-transport-security: max-age=31536000; includeSubdomains;
+x-content-type-options: nosniff
+x-download-options: noopen
+x-xss-protection: 1; mode=block
+cache-control: no-cache, no-store, must-revalidate
+pragma: no-cache
+via: CHN-AHhefei-CMCC6-CACHE1[220],CHN-AHhefei-CMCC6-CACHE1[ovl,219],CHN-HElangfang-GLOBAL6-CACHE24[ovl,128]
+dl-from: HWCDN

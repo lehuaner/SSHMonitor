@@ -1,0 +1,12 @@
+{
+  "startDate": "2026-09-04",
+  "endDate": "2026-09-10",
+  "metrics": [
+    "TOKEN_TOTAL",
+    "TOKEN_INPUT",
+    "TOKEN_OUTPUT",
+    "TOKEN_CACHE_HIT",
+    "TOTAL_CREDITS"
+  ],
+  "xDimension": "DATE_DAY"
+}

@@ -1,0 +1,4 @@
+HEAD https://static.workbuddy.cn/connectors-config-v2/connectors-config.zip HTTP/1.1
+User-Agent: WorkBuddy-ConnectorService
+Host: static.workbuddy.cn
+Connection: keep-alive

@@ -1,0 +1,27 @@
+HTTP/2 304
+etag: 0x8DF0EBDDBB4F250
+content-type: application/javascript
+content-md5: Aa2OcCCpgHGTMwq5g6yxWQ==
+server: Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
+x-ms-request-id: c4afb947-c01e-0076-70a8-4041a1000000
+x-ms-version: 2009-09-19
+x-ms-lease-status: unlocked
+x-ms-blob-type: BlockBlob
+eo-log-uuid: 3644383765183966047
+eo-cache-status: HIT
+x-edgefunction: Phase-2-Edge-Function
+vary: Origin
+nel: {"report_to":"network-errors","max_age":604800,"success_fraction":0.001,"failure_fraction":0.1}
+report-to: {"group":"network-errors","max_age":604800,"endpoints":[{"url":"https://deff.nelreports.net/api/report?cat=msn"}]}
+service-worker-allowed: /
+x-as-suppresssetcookie: 1
+cache-control: no-cache
+access-control-allow-origin: https://ntp.msn.cn
+access-control-allow-credentials: true
+cors-rule: Set-ACAO
+content-encoding: br
+x-nws-log-uuid: 3644383765183966047
+date: Thu, 10 Sep 2026 07:10:34 GMT
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+cdn: tencent-p2
+x-cdn: tencent

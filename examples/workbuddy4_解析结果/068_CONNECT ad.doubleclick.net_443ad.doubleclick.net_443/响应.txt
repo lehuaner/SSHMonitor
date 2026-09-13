@@ -1,0 +1,123 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:38:20.924
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.doubleclick.net
+  Simple Name: *.doubleclick.net
+  DNS Name: *.doubleclick.net
+
+[Issuer]
+  CN=WE2, O=Google Trust Services, C=US
+  Simple Name: WE2
+  DNS Name: WE2
+
+[Serial Number]
+  00F5A71398E22DA23812639E7593470F42
+
+[Not Before]
+  2026/8/10 16:37:39
+
+[Not After]
+  2026/11/2 16:37:38
+
+[Thumbprint]
+  6EC23CD177C95A72380091F90DAACDAC202C8DFE
+
+[Signature Algorithm]
+  sha256ECDSA(1.2.840.10045.4.3.2)
+
+[Public Key]
+  Algorithm: ECC
+  Length: 
+  Key Blob: 04 2b 4d b5 78 8a 39 56 11 59 24 da fb c4 53 e7 6e 2c 13 a1 32 3d 5b 04 06 0d 21 e7 07 f6 a8 93 5a 87 6f f2 70 43 ac a0 73 c6 a7 08 4f 90 72 a1 b1 87 97 c2 d2 bf 0b 98 16 ba 95 f2 da 10 98 f1 6d
+  Parameters: 06 08 2a 86 48 ce 3d 03 01 07
+
+[Extensions]
+* 密钥用法(2.5.29.15):
+  Digital Signature (80)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* 使用者密钥标识符(2.5.29.14):
+  4381f4efa96f9d798f6c7b78215c46fb92d79e7f
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=75bec477ae89f644377dcfb1681f1d1aebdc3459
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://i.pki.goog/we2.crt
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.doubleclick.net
+DNS Name=*.2mdn.net
+DNS Name=*.au.doubleclick.net
+DNS Name=*.cc-dt.com
+DNS Name=*.de.doubleclick.net
+DNS Name=doubleclick.com
+DNS Name=*.doubleclick.com
+DNS Name=*.fls.doubleclick.net
+DNS Name=*.fr.doubleclick.net
+DNS Name=*.jp.doubleclick.net
+DNS Name=*.uk.doubleclick.net
+DNS Name=ad.mo.doubleclick.net
+DNS Name=doubleclick.net
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://c.pki.goog/we2/xuzt3PU9F_w.crl
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+d76d7d10d1a7f577c2c7e95fd700bff982c9335a65e1d0b3017317c0c8c56977
+‎2026‎年‎8‎月‎10‎日 17:37:40
+SHA256
+ECDSA
+304502203445a21d13d66e989af6939f9537d9dc7d54a233d3d739e5106ad53cb2c3e580022100de66f79d68f629848cb354a1b9e494bbb3ddfbdf201678108e99d3a6a46ee3ba
+
+v1
+c8a3c47fc7b3adb9356b013f6a7a126de33a4e43a5c646f997ad3975991dcf9a
+‎2026‎年‎8‎月‎10‎日 17:37:40
+SHA256
+ECDSA
+3045022100ef4be925a358dfbd3e92ed2656ba478962e52605847f1a63341a38b2e9fd58cd022075eb244f1d6d6a5e23572c10970652c3f96fd78e7bc8ad478f6bd3f21ca4305a
+
+
+[SubjectAltNames]
+DNS Name=*.doubleclick.net
+DNS Name=*.2mdn.net
+DNS Name=*.au.doubleclick.net
+DNS Name=*.cc-dt.com
+DNS Name=*.de.doubleclick.net
+DNS Name=doubleclick.com
+DNS Name=*.doubleclick.com
+DNS Name=*.fls.doubleclick.net
+DNS Name=*.fr.doubleclick.net
+DNS Name=*.jp.doubleclick.net
+DNS Name=*.uk.doubleclick.net
+DNS Name=ad.mo.doubleclick.net
+DNS Name=doubleclick.net
+

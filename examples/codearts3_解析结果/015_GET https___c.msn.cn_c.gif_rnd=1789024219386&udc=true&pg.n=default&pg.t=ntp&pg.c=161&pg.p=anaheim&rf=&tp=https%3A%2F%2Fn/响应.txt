@@ -1,0 +1,11 @@
+HTTP/2 302
+date: Thu, 10 Sep 2026 07:10:18 GMT
+content-length: 0
+location: https://c.bing.com/c.gif?rnd=1789024219386&udc=true&pg.n=default&pg.t=ntp&pg.c=161&pg.p=anaheim&rf=&tp=https%3A%2F%2Fntp.msn.cn%2Fedge%2Fntp%3Flocale%3Dzh-CN%26title%3D%25E6%2596%25B0%25E5%25BB%25BA%25E6%25A0%2587%25E7%25AD%25BE%25E9%25A1%25B5%26dsp%3D1%26sp%3D%25E5%25BF%2585%25E5%25BA%2594%26feed_dis%3Doff%26en_widget_reg%3Dfalse%26prerender%3D1%26PC%3DCNNDDB%26adppc%3DEdgeStart%26ocid%3Dmsedgntp&cvs=Browser&di=340&st.dpt=&st.sdpt=antp&subcvs=homepage&lng=zh-cn&rid=6aa25114e32d4847a41097c586f0fbb3&activityId=6aa25114e32d4847a41097c586f0fbb3&d.imd=false&scr=1920x1080&anoncknm=app_anon&issso=&aadState=0&CtsSyncId=3E35BC3BD81B4BF3B52E8B4E2B0B4A00&RedC=c.msn.cn&MXFR=06AD6D0EFAEB690921F5787FFBA868C6
+cache-control: private, no-cache, proxy-revalidate, no-store
+pragma: no-cache
+x-powered-by: ASP.NET
+p3p: CP="BUS CUR CONo FIN IVDo ONL OUR PHY SAMo TELo"
+set-cookie: SM=T; domain=c.msn.cn; path=/; SameSite=None; Secure;
+x-azure-ref: 20260910T071018Z-15559d97d99fqlm4hC1SEL3e9c0000000gd000000000dsq8
+x-cache: CONFIG_NOCACHE

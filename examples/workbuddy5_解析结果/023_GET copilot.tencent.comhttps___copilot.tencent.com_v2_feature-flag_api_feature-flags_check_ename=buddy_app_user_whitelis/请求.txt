@@ -1,0 +1,9 @@
+GET https://copilot.tencent.com/v2/feature-flag/api/feature-flags/check?ename=buddy_app_user_whitelist HTTP/1.1
+host: copilot.tencent.com
+connection: keep-alive
+Content-Type: application/json
+Accept: application/json
+accept-language: *
+sec-fetch-mode: cors
+user-agent: node
+accept-encoding: br, gzip, deflate

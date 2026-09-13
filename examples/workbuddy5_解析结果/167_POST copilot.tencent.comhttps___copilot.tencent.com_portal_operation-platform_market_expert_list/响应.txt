@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Set-Cookie: tgw_l7_route=94c5a6da7f304ceea7d27d5f48a47c3b; Expires=Thu, 10-Sep-2026 09:00:10 GMT; Path=/; sameSite=None; Secure
+Set-Cookie: session=; Path=/portal; Max-Age=0; Expires=Thu, 01-Jan-70 00:00:00 GMT; HttpOnly
+Traceid: eac1f3122c8e45fdbe9be0dfc733af4c
+X-Request-Id: eac1f3122c8e45fdbe9be0dfc733af4c
+X-Trace-Id: eac1f3122c8e45fdbe9be0dfc733af4c
+Server: APISIX/3.9.1
+X-Content-Type-Options: nosniff
+Transfer-Encoding: chunked
+Connection: keep-alive
+Date: Thu, 10 Sep 2026 08:00:10 GMT
+EO-LOG-UUID: 3135611671268995333
+EO-Cache-Status: MISS

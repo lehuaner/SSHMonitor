@@ -1,0 +1,26 @@
+HTTP/2 302
+server: CloudWAF
+date: Fri, 11 Sep 2026 16:29:20 GMT
+location: https://auth.huaweicloud.com/authui/login?service=https%3A%2F%2Fcodearts.huaweicloud.com%2Fportal%2Fsettings%2Fpersonal-usage%3Flocale%3Dzh-cn
+x-iam-trace-id: auth_cn-north-4_null_8902e7f3e71d4607b8f1f6c4085137a8
+set-cookie: SSOJTC=JTC--1880604374-93967775-eyJraWQiOiJNREJmWjJ4dlltRnNYekl3TnpBMiIsImFsZyI6IlJTMjU2IiwidHlwIjoiSldUIn0.eyJ1dHkiOiJsb2NhbFVzZXIiLCJjYXQiOjE3ODkxNDQxNjAsInVpZCI6IjBkMmEzYTBkYWU4MGY1OGExZjkyYzAwMDBjM2EzZGU2IiwiZGlkIjoiMGQyYTNhMGNjNTAwZjMwNjBmMGRjMDAwOTZiY2EyMjAiLCJyaWQiOiJjbi1ub3J0aC00IiwiY2lwIjoiMTEyLjIzLjE5MC4yMTQiLCJjcGsiOiJsZV9odWFuX2xlX2h1YW5fY2ZQcm9qZWN0TmFtZSIsImV4dCI6Int9In0.YbR1ToqRcl35Sm6pdKMpKobZGzXKJneaISJfTo7oVoFK0eWTJYMQ9kvKTxGJVwhCa1AHZqDiZll8dPOA4rYaKucWja36ydOdJO_OfSPaXlbvvBmtm932N0SjuEygVq6V_OJqmC3y-WV-t3a_zaaozNRiLZrhQCktF1iiF0NUb8EnmCghcq-8it0s1LD2Z87DO2Ep0sCFMAXVNhxXmYCYKPjlNnTESY8pSfyuev9D-NLWA4AnE-dX0tNInn20Ptyt0Ow7m0h15LduQfGcAJhLC_P55OuKj0q_NOM9cmt82yVm8Pf-DFfnYYDbDHTZMt3tSpmjhmnYC08_HL1lZIB7wg; Domain=auth.huaweicloud.com; Path=/; secure; SameSite=None; Secure; HttpOnly
+set-cookie: SSOTGC=TGTX--1880604374-93967775-4ac41092458bb71ee6ffff83ca7f5c42caf85f9bbf29c916a3121e83ecabb66d-sso; Path=/authui/; secure; SameSite=None; Secure; HttpOnly
+set-cookie: user_tag=0d2a3a0dae80f58a1f92c0000c3a3de6; Domain=huaweicloud.com; Path=/; secure; SameSite=None; Secure; HttpOnly
+set-cookie: domain_tag=0d2a3a0cc500f3060f0dc00096bca220; Domain=huaweicloud.com; Path=/; secure; SameSite=None; Secure; HttpOnly
+set-cookie: popup_max_time=60; Domain=huaweicloud.com; Path=/; secure; SameSite=None; Secure
+set-cookie: xyt_nmk=true; Max-Age=2592000; Expires=Sun, 11 Oct 2026 16:29:20 GMT; Path=/; secure; SameSite=None; Secure; HttpOnly
+set-cookie: masked_phone=173****7416; Domain=huaweicloud.com; Path=/; secure; SameSite=None; Secure; HttpOnly
+set-cookie: masked_user=l***uan; Domain=huaweicloud.com; Path=/; secure; SameSite=None; Secure; HttpOnly
+set-cookie: masked_domain=l***uan; Domain=huaweicloud.com; Path=/; secure; SameSite=None; Secure; HttpOnly
+set-cookie: usite=cn; Domain=huaweicloud.com; Path=/; secure; SameSite=None; Secure
+set-cookie: x-framework-ob=; Domain=huaweicloud.com; Path=/; secure; SameSite=None; Secure
+set-cookie: tjbdsb_76ea438906e1fed663ca807029cc7fd230937b944a4779c66347c7e77ada53ed=1; Domain=auth.huaweicloud.com; Path=/; secure; SameSite=None; Secure; HttpOnly
+strict-transport-security: max-age=31536000; includeSubdomains;
+x-content-type-options: nosniff
+x-download-options: noopen
+x-xss-protection: 1; mode=block
+cache-control: no-cache, no-store, must-revalidate
+pragma: no-cache
+access-control-allow-origin: https://console.huaweicloud.com
+access-control-allow-methods: GET
+access-control-allow-credentials: true

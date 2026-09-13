@@ -1,0 +1,17 @@
+HTTP/2 200
+date: Sat, 12 Sep 2026 07:47:08 GMT
+content-type: font/woff
+content-length: 70236
+server: openresty
+last-modified: Thu, 10 Sep 2026 18:10:34 GMT
+etag: "6aa2f29a-1125c"
+expires: Thu, 17 Sep 2026 18:10:35 GMT
+access-control-allow-origin: *
+via: CHN-JSsuzhou-CMCCZJ2-CACHE19[3],CHN-JSsuzhou-CMCCZJ2-CACHE2[0,TCP_HIT,0],CHN-JSnanjing-GLOBALZJ1-CACHE176[547],CHN-JSnanjing-GLOBALZJ1-CACHE160[540,TCP_MISS,544],CHN-BJ-GLOBALZJ2-CACHE48[479],CHN-BJ-GLOBALZJ2-CACHE160[465,TCP_MISS,475],CHN-HElangfang-GLOBAL6-CACHE108[453],CHN-HElangfang-GLOBAL6-CACHE44[0,TCP_HIT,451],CHN-HAzhengzhou-GLOBAL3-CACHE57[342],CHN-HAzhengzhou-GLOBAL3-CACHE35[319,TCP_MISS,323]
+x-hcs-proxy-type: 1
+x-ccdn-cachettl: 2592000
+nginx-hit: 1
+age: 135393
+cache-control: max-age=604800
+cache-control: public
+accept-ranges: bytes

@@ -1,0 +1,18 @@
+HTTP/2 200
+server: CloudWAF
+date: Thu, 10 Sep 2026 07:10:24 GMT
+content-type: text/html;charset=UTF-8
+set-cookie: HWWAFSESID=e9e3a735e8a40cb1e9; path=/
+set-cookie: HWWAFSESTIME=1789024224739; path=/
+x-iam-trace-id: auth_cn-north-4_null_754f6c6dd33f41efbf2c9d8a691aee61
+expires: Thu, 01 Jan 1970 00:00:00 GMT
+set-cookie: auth_cdn=cdn_cookie_on; Path=/authui/; secure; SameSite=None; Secure; HttpOnly
+strict-transport-security: max-age=31536000; includeSubdomains;
+x-content-type-options: nosniff
+x-download-options: noopen
+x-xss-protection: 1; mode=block
+cache-control: no-cache, no-store, must-revalidate
+pragma: no-cache
+access-control-allow-origin: https://console.huaweicloud.com
+access-control-allow-methods: GET
+access-control-allow-credentials: true

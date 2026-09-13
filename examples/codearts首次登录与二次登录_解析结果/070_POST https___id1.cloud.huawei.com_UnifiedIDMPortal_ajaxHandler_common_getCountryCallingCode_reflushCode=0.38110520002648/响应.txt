@@ -1,0 +1,20 @@
+HTTP/1.1 200 OK
+Date: Fri, 11 Sep 2026 16:29:00 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 197
+Access-Control-Allow-Origin: https://auth.huaweicloud.com
+Access-Control-Allow-Credentials: true
+Pragma: No-cache
+Cache-Control: no-store,no-cache
+X-Content-Type-Options: nosniff
+Pragma: no-cache
+P3P: CP=" OTI DSP COR IVA OUR IND COM "
+Strict-Transport-Security: max-age 16070400; includeSubDomains
+Cache-Control: no-store
+Content-Security-Policy: default-src 'self' *.huawei.com *.cloud.huawei.com *.huaweicloud.com *.cloud.huawei.com.cn *.consumer.huawei.com *.platform.hicloud.com *.platform.dbankcloud.com *.platform.dbankcloud.cn *.vmall.com *.hicloud.com *.hihonor.com *.emui.com *.geetest.com *.dbankcdn.com *.dbankcdn.cn *.dbankcloud.cn *.dbankcloud.com *.163.com https://metrics-drcn.dt.hicloud.com:6447 https://cstaticdun.126.net https://cstaticdun1.126.net https://cstaticdun-v6.126.net https://cstaticdun1-v6.126.net https://acstatic-dun.126.net https://necaptcha1.nosdn.127.net https://acstatic-dun-v6.126.net *.127.net *.163yun.com *.qlogo.cn *.weibo.com 'unsafe-inline' 'unsafe-eval' blob: data:; script-src 'self' *.huawei.com *.cloud.huawei.com *.cloud.huawei.com.cn *.consumer.huawei.com *.platform.hicloud.com *.platform.dbankcloud.com *.platform.dbankcloud.cn *.vmall.com *.hicloud.com *.hihonor.com *.emui.com *.geetest.com *.dbankcdn.com *.dbankcdn.cn *.dbankcloud.cn *.dbankcloud.com *.163.com https://metrics-drcn.dt.hicloud.com:6447 https://cstaticdun.126.net https://cstaticdun1.126.net https://cstaticdun-v6.126.net https://cstaticdun1-v6.126.net https://acstatic-dun.126.net https://necaptcha1.nosdn.127.net https://acstatic-dun-v6.126.net *.127.net *.163yun.com *.qlogo.cn *.weibo.com 'unsafe-inline' 'unsafe-eval' blob:; object-src 'none'; img-src 'self' *.huawei.com *.cloud.huawei.com *.cloud.huawei.com.cn *.consumer.huawei.com *.platform.hicloud.com *.platform.dbankcloud.com *.platform.dbankcloud.cn *.vmall.com *.hicloud.com *.hihonor.com *.emui.com *.geetest.com *.dbankcdn.com *.dbankcdn.cn *.dbankcloud.cn *.dbankcloud.com *.163.com https://metrics-drcn.dt.hicloud.com:6447 https://cstaticdun.126.net https://cstaticdun1.126.net https://cstaticdun-v6.126.net https://cstaticdun1-v6.126.net https://acstatic-dun.126.net https://necaptcha1.nosdn.127.net https://acstatic-dun-v6.126.net *.127.net *.163yun.com *.qlogo.cn *.weibo.com data: blob:;
+X-XSS-Protection: 1
+Expires: 0
+Set-Cookie: CAS_THEME_NAME=lightred;Domain=id1.cloud.huawei.com;Path=/;Secure;HttpOnly;SameSite=None
+Set-Cookie: JSESSIONID=A0EEB1AD637B4CE2D58AB5B5BB20FB4709F0CAA18C0FEB155DD2A39F61D75292A7777086F1B5F44A8BF624D3D8FD8CE3;Path=/UnifiedIDMPortal;Secure;HttpOnly;SameSite=None
+Set-Cookie: VERSION_NO=UP_CAS_6.26.2.100_blue;Domain=id1.cloud.huawei.com;Path=/;Secure;HttpOnly;SameSite=None
+Server: elb

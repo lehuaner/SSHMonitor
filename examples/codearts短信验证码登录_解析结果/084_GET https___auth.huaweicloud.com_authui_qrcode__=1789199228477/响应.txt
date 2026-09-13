@@ -1,0 +1,14 @@
+HTTP/2 200
+server: CloudWAF
+date: Sat, 12 Sep 2026 07:47:10 GMT
+content-type: application/json
+x-iam-trace-id: auth_cn-north-4_null_5c2115899366496c83d668720df90b6f
+strict-transport-security: max-age=31536000; includeSubdomains;
+x-content-type-options: nosniff
+x-download-options: noopen
+x-xss-protection: 1; mode=block
+cache-control: no-cache, no-store, must-revalidate
+pragma: no-cache
+access-control-allow-origin: https://console.huaweicloud.com
+access-control-allow-methods: GET
+access-control-allow-credentials: true

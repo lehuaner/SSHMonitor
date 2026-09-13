@@ -1,0 +1,28 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "74fef848-61c1-4287-9930-fffc61b8b170",
+  "data": {
+    "userInfos": {
+      "37cb9311-ab56-4608-b1bc-8f8f3bec2f04": {
+        "userInfo": {
+          "nickName": "vickymzzhou",
+          "id": "37cb9311-ab56-4608-b1bc-8f8f3bec2f04",
+          "name": "vickymzzhou",
+          "avatar": "",
+          "accountType": 0,
+          "displayName": "vickymzzhou(周敏子)"
+        }
+      },
+      "8b3cb381-9ebc-4813-92d9-9e5880528465": {
+        "userInfo": {
+          "nickName": "乐幻",
+          "id": "8b3cb381-9ebc-4813-92d9-9e5880528465",
+          "name": "乐幻",
+          "avatar": "",
+          "accountType": 0
+        }
+      }
+    }
+  }
+}

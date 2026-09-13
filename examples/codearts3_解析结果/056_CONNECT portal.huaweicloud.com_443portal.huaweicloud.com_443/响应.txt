@@ -1,0 +1,119 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 15:10:27.026
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.huaweicloud.com, O="Huawei Software Technologies Co., Ltd.", L=Nanjing, S=Jiangsu, C=CN
+  Simple Name: *.huaweicloud.com
+  DNS Name: *.huaweicloud.com
+
+[Issuer]
+  CN=GlobalSign RSA OV SSL CA 2018, O=GlobalSign nv-sa, C=BE
+  Simple Name: GlobalSign RSA OV SSL CA 2018
+  DNS Name: GlobalSign RSA OV SSL CA 2018
+
+[Serial Number]
+  6E4FADA125D11D1AC43180D0
+
+[Not Before]
+  2026/2/26 8:51:17
+
+[Not After]
+  2027/3/30 8:51:16
+
+[Thumbprint]
+  EC86F0B17A69B2923493DEDE3BA7883B58869377
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 3072
+  Key Blob: 30 82 01 8a 02 82 01 81 00 c9 cb 02 3c cc 3f 5f 57 8a ac 1a b4 be 42 43 7d cd bf e6 d4 40 d7 8b 99 25 34 28 07 e6 33 9d d3 7a 0c de 41 ed 5f ae cf 69 6b 48 09 e5 df 08 2f 46 8d 88 05 b1 bd 6a 4b 68 a9 8e ec 81 ab 87 66 76 98 84 d2 38 39 ba 07 11 1c c1 53 ce 96 4c a2 67 a4 23 94 3b 37 75 e6 7f 99 6e 54 82 8b 14 00 55 61 86 12 e4 83 28 0a 51 8e fe 3a a7 2e ee d4 f7 3c ab df 2f e8 7f f3 97 6f bb d4 1d bc 28 46 5b ea 11 34 67 c3 6a a2 60 2f 2d d0 e8 55 19 ae 84 53 6d 20 54 42 32 32 b0 7b 45 84 b0 5d 27 d4 9c 33 80 bf 91 5d 14 d3 46 05 ff 9d 17 d3 b3 8e 3e a4 ca 30 9b 38 f3 bf f4 a7 3c 87 03 e6 2c 93 59 73 52 31 e0 15 15 37 04 70 7d 30 9c f1 d0 a7 b7 f9 2e 9f 66 87 27 8a c5 42 1e 5b 2f 5d ee 40 5e 2c 9f db cb 89 99 93 34 a4 a6 a5 85 1f 7b d6 36 59 fa 99 ff 27 7f 4f b1 00 f6 80 59 05 cb 3d c9 4f d1 f3 70 32 6d c9 99 db 63 0b 29 dd ca df 9e e9 07 d2 47 ab 59 eb 9c 23 a8 39 65 55 a7 28 f0 0e 5b 89 36 9b b6 d4 70 4d 0d 08 6f b7 7e 89 dd 61 f5 ab 3d 24 3c be 1a 1d 62 1f 33 49 4d 21 49 fe 96 7f 52 04 4f 35 be 95 e3 a3 f4 c5 f9 b8 66 e7 ec 6c 57 9e 8f d7 41 87 11 45 d0 94 ce 39 26 5c 93 c2 f5 a3 86 62 90 96 b6 0f 25 dd 5f c5 3c ae 1e d6 1a cc d2 23 d1 99 b2 3a 56 3b b5 ed 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://secure.globalsign.com/cacert/gsrsaovsslca2018.crt
+[2]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://ocsp.globalsign.com/gsrsaovsslca2018
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=1.3.6.1.4.1.4146.1.20
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               https://www.globalsign.com/repository/
+[2]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl.globalsign.com/gsrsaovsslca2018.crl
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.huaweicloud.com
+DNS Name=huaweicloud.com
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+客户端身份验证 (1.3.6.1.5.5.7.3.2)
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=f8ef7ff2cd7867a8de6f8f248d88f1870302b3eb
+
+* 使用者密钥标识符(2.5.29.14):
+  b341c764916eca82b107ac72ba42fe01ddcb30f1
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎2‎月‎26‎日 8:51:21
+SHA256
+ECDSA
+3046022100fb5824aa72192c2228c2575e7a2846039233ce609eb3d0fd74e6b8fb78ff6dae022100932f30991d03e514b15a4004cfbfdd1b2aab92c53a050f77b58867a51368cc32
+
+v1
+4c63dc98e59c1dab88f61e8a3ddeae8fab44a3377b5f9b94c3fba19cfcc1be26
+‎2026‎年‎2‎月‎26‎日 8:51:20
+SHA256
+ECDSA
+3045022100bf88b969ed0686441b45ba4c620294ab413d99ffd873900a590af23b6582dc8e02204c98058515bcfd90c86f299761ceb63a51f438f22554c1aa2a967bddc0829402
+
+v1
+604c9aaf7a7f775f01d406fc920dc899eb0b1c7df8c9521bfafa17773b978bc9
+‎2026‎年‎2‎月‎26‎日 8:51:21
+SHA256
+ECDSA
+3046022100802522163d9934fa52f3ac7ab57396ff60229f403ad0b26dd35581da69dbda33022100c840daa0994f6361403cecde181fad1c78b5bdc6d43a14e9d0aebe96d3dcd2f5
+
+
+[SubjectAltNames]
+DNS Name=*.huaweicloud.com
+DNS Name=huaweicloud.com
+

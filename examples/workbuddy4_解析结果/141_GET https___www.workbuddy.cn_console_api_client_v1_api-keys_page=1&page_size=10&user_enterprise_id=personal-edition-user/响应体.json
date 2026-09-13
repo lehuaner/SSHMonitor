@@ -1,0 +1,11 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "62283759-7d15-42ce-a962-677059c540e3",
+  "data": {
+    "items": [],
+    "total": 1,
+    "page": 1,
+    "page_size": 10
+  }
+}

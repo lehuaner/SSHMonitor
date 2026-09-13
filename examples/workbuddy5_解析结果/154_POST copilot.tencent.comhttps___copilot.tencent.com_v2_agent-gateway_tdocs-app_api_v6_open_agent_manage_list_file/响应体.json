@@ -1,0 +1,5 @@
+{
+  "code": 17009,
+  "msg": "Connector \"tdocs-app\" is not authorized for the current user or project. Authorize the connector first, or include X-Project-Id when using project-level credentials.",
+  "requestId": "ec12e690-7286-4594-a40a-9a2c060fd45c"
+}

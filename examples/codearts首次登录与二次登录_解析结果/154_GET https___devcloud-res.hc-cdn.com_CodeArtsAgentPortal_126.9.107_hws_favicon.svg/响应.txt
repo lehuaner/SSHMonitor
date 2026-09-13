@@ -1,0 +1,20 @@
+HTTP/2 200
+date: Fri, 11 Sep 2026 16:29:22 GMT
+content-type: image/svg+xml
+content-length: 104551
+server: openresty
+cloudservicediscount: CDN
+x-obs-request-id: 000001A08FFBA8BC63C40F1F6A7276C1
+etag: "7adf1909ccf2e1b13435a5cf349143ac"
+last-modified: Fri, 11 Sep 2026 10:12:34 GMT
+x-obs-id-2: 36AAAQAAEAABAAAQAAEAABAAAQAAEAABAAAaI=AAAAAAAAAAAAAAAAAAAAAAAAAA
+x-obs-qos-delay-time: 6
+x-ccdn-expires: 2574298
+via: CHN-JSlianyungang-AREACMCC3-CACHE3[10],CHN-JSlianyungang-AREACMCC3-CACHE32[0,TCP_HIT,7],CHN-JSwuxi-GLOBAL2-CACHE110[15],CHN-JSwuxi-GLOBAL2-CACHE32[0,TCP_HIT,12],CHN-HElangfang-GLOBAL6-CACHE127[27],CHN-HElangfang-GLOBAL6-CACHE36[0,TCP_HIT,26]
+x-hcs-proxy-type: 1
+x-ccdn-cachettl: 2592000
+nginx-hit: 1
+age: 17702
+cache-control: max-age=2592000,s-maxage=3600
+accept-ranges: bytes
+access-control-allow-origin: *

@@ -1,0 +1,29 @@
+HTTP/2 200
+last-modified: Tue, 19 Nov 2019 20:58:17 GMT
+etag: "b1a1d42024fa6e32ed87f61fd9507274:1574197118.459201"
+content-type: image/x-icon
+server: AkamaiNetStorage
+akamai-request-bc: [a=2.17.103.229,b=1122251859,c=g,n=IT_25_MILANO,o=20940],[c=c,n=IT_25_MILANO,o=20940],[a=16,c=o]
+server-timing: clientrtt; dur=259, clienttt; dur=414, origin; dur=0, cdntime; dur=414, wpo;dur=0,1s;dur=0
+akamai-cache-status: Miss from child, Miss from parent
+akamai-server-ip: 2.17.103.229
+akamai-request-id: 42e43453
+timing-allow-origin: *
+akamai-grn: 0.e5671102.1786455462.42e43453
+accept-ranges: bytes
+eo-log-uuid: 3950020332303379069
+eo-cache-status: HIT
+x-edgefunction: Phase-2-Edge-Function
+vary: Origin
+nel: {"report_to":"network-errors","max_age":604800,"success_fraction":0.001,"failure_fraction":0.1}
+report-to: {"group":"network-errors","max_age":604800,"endpoints":[{"url":"https://deff.nelreports.net/api/report?cat=msn"}]}
+cache-control: public, max-age=31536000
+access-control-allow-origin: https://ntp.msn.cn
+access-control-allow-credentials: true
+cors-rule: Set-ACAO
+content-length: 64126
+x-nws-log-uuid: 3950020332303379069
+date: Thu, 10 Sep 2026 07:10:32 GMT
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+cdn: tencent-p2
+x-cdn: tencent

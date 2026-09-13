@@ -1,0 +1,117 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 15:46:36.483
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.bytegecko.com
+  Simple Name: *.bytegecko.com
+  DNS Name: *.bytegecko.com
+
+[Issuer]
+  CN=RapidSSL TLS RSA CA G1, OU=www.digicert.com, O=DigiCert Inc, C=US
+  Simple Name: RapidSSL TLS RSA CA G1
+  DNS Name: RapidSSL TLS RSA CA G1
+
+[Serial Number]
+  0D7912F244DA640C80286F39AACCAA47
+
+[Not Before]
+  2026/7/28 8:00:00
+
+[Not After]
+  2027/2/12 7:59:59
+
+[Thumbprint]
+  9524475A0D105D2CAC57E8019AFA940C1C5A2BF1
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 ca ab 8a c8 f2 cc d6 7b 6a 9b 7e 62 8b 3e 6a 34 97 58 b8 9f 75 ad 66 df 9d 3f ca 93 49 8e 83 f9 82 5f cd 5a 60 59 4b df 6d 2e 94 ba 7e f9 3c 82 0f 58 f9 00 38 d4 be 52 0d fd 8a 4e a2 af 05 aa 8c 80 c6 e8 d8 5b 3d 23 e5 da f6 f4 eb 0a ab 82 14 25 85 d5 d7 5e 20 8e eb 8a 75 75 28 86 33 b7 ae 85 ab 65 10 4f 40 62 09 1f 56 91 e2 83 22 9e 2b af 25 e7 77 2c f6 a8 2b a2 5c 89 7c e0 e5 5f 74 af a3 0d 83 c5 fd f1 95 cf 1c aa 29 a0 9d 20 c1 9b 0c 3e b3 8c 68 e5 65 12 84 38 fd 73 a7 85 4f 1d 54 9b 4f 85 d4 31 cd 4d 7a 60 a2 17 aa 3d c4 6a 41 f0 6f c9 56 84 b5 ea a0 12 23 70 d8 42 07 ac 26 03 86 fd dc 4f 07 f9 3c 2d 47 91 43 96 27 9b 8d 96 88 db e2 84 fe 5d fa 11 f6 3c f6 b3 b0 85 11 c2 2d 98 86 c5 38 10 ff fe d7 50 98 dc 48 56 5e 6d e2 df a7 32 39 39 bf a9 27 f1 36 35 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=0cdb6c82490f4a670ab814ee7ac4485288eb5638
+
+* 使用者密钥标识符(2.5.29.14):
+  e15bf23e043f6cd4a859bd674664957439aceebd
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.bytegecko.com
+DNS Name=bytegecko.com
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+客户端身份验证 (1.3.6.1.5.5.7.3.2)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://cdp.rapidssl.com/RapidSSLTLSRSACAG1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://status.rapidssl.com
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.rapidssl.com/RapidSSLTLSRSACAG1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+4c63dc98e59c1dab88f61e8a3ddeae8fab44a3377b5f9b94c3fba19cfcc1be26
+‎2026‎年‎7‎月‎28‎日 20:43:47
+SHA256
+ECDSA
+3046022100e5acc18c6c6f9fecf92e76177db2975a35a926e50a5b921b92e5c78659176af3022100bb9118a0a620c84e0690919ee4c741c2bae86d56aa6f916f614653a0abc6a8bb
+
+v1
+44c2bd0ce9140e64a5c94a01930a5aa1bb35970e00ee111689682a1c44d7b566
+‎2026‎年‎7‎月‎28‎日 20:43:47
+SHA256
+ECDSA
+3044022060d303314799c2967ee6a2678b80e1bf0dbd99c8558145dd114c7a4ad8c50433022008997e4ec5eaa44721bf5a85f81f397d2c47000862a5df87af0d133fa6ffe8de
+
+v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎7‎月‎28‎日 20:43:47
+SHA256
+ECDSA
+3046022100b56eba5ee5512e22bc445f2604ccfab05cc09bc2bb52cb2fcad72292cc9f43950221009ec6771aae97b41ad03ddbfddb686dbdaf7e05fd3537f17156243b67e0d3a631
+
+
+[SubjectAltNames]
+DNS Name=*.bytegecko.com
+DNS Name=bytegecko.com
+

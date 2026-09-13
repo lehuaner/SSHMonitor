@@ -1,0 +1,25 @@
+HTTP/1.1 302
+Date: Thu, 10 Sep 2026 07:10:30 GMT
+Server: openresty
+lubanops-gtrace-id: v-122505-1789024230553-10628162
+lubanops-nenv-id: 75958
+X-ConsoleFrame-Flag: J-CF2
+Stream-Tag: staticB
+Endpoint: CodeArtsAgentPortal
+Region-ID: cn-north-4
+Rf: cf2
+Set-Cookie: devclouddevuibjJ_SESSION_ID=edc77dec7298c8bedbb8c039d4c4a74c66f5ea80267d269b; Domain=codearts.huaweicloud.com; Path=/; Secure; HttpOnly
+Set-Cookie: devclouddevuibjagencyID=0d2a3a0dae80f58a1f92c0000c3a3de6; Domain=codearts.huaweicloud.com; Path=/; Secure
+Location: https://codearts.huaweicloud.com/portal/settings/personal-usage?locale=zh-cn
+Strict-Transport-Security: max-age=31536000; includeSubdomains;
+X-Content-Type-Options: nosniff
+X-Download-Options: noopen
+X-XSS-Protection: 1; mode=block
+Cache-Control: no-cache, no-store, must-revalidate
+Pragma: no-cache
+X-CCDN-Origin-Time: 239
+via: CHN-JSlianyungang-AREACMCC3-CACHE6[265],CHN-JSlianyungang-AREACMCC3-CACHE16[261,TCP_MISS,264],CHN-JXnanchang-GLOBAL1-CACHE21[241],CHN-JXnanchang-GLOBAL1-CACHE31[239,TCP_MISS,241]
+x-hcs-proxy-type: 0
+X-CCDN-CacheTTL: 0
+X-CCDN-REQ-ID-46B1: 02fad443743927a34f75c93627758c25
+Content-Length: 0

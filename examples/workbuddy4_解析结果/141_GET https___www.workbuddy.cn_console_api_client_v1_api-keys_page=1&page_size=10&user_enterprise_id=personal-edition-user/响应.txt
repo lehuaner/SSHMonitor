@@ -1,0 +1,14 @@
+HTTP/2 200
+content-type: application/json; charset=utf-8
+set-cookie: session=; Path=/console; Max-Age=0; Expires=Thu, 01-Jan-70 00:00:00 GMT; HttpOnly
+traceid: dc750c1e3e64dfa75c27ae37236128d1
+x-request-id: 62283759-7d15-42ce-a962-677059c540e3
+x-user-id: 8b3cb381-9ebc-4813-92d9-9e5880528465
+server: APISIX/3.9.1
+x-content-type-options: nosniff
+set-cookie: session_2=; Path=/console; Max-Age=0; Expires=Thu, 01-Jan-70 00:00:00 GMT; HttpOnly
+cache-control: no-store
+content-length: 126
+date: Thu, 10 Sep 2026 06:38:32 GMT
+eo-log-uuid: 1541484536703850046
+eo-cache-status: MISS

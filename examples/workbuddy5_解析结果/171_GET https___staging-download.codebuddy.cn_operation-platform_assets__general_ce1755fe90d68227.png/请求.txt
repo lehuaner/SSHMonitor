@@ -1,0 +1,19 @@
+GET https://staging-download.codebuddy.cn/operation-platform/assets/_general/ce1755fe90d68227.png HTTP/2
+:method: GET
+:authority: staging-download.codebuddy.cn
+:scheme: https
+:path: /operation-platform/assets/_general/ce1755fe90d68227.png
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) WorkBuddy/5.5.3 Chrome/138.0.7204.251 Electron/37.10.3 Safari/537.36
+sec-ch-ua: "Not)A;Brand";v="8", "Chromium";v="138"
+sec-ch-ua-mobile: ?0
+accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+sec-fetch-site: cross-site
+sec-fetch-mode: no-cors
+sec-fetch-dest: image
+sec-fetch-storage-access: active
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+if-none-match: "13d9d665c74cf5dd35b37499dede3791"
+if-modified-since: Fri, 14 Aug 2026 14:12:34 GMT
+priority: u=1, i

@@ -1,0 +1,7 @@
+GET http://c.pki.goog/r/r1.crl HTTP/1.1
+Cache-Control: max-age = 3000
+Connection: Keep-Alive
+Accept: */*
+If-Modified-Since: Wed, 11 Feb 2026 14:38:00 GMT
+User-Agent: Microsoft-CryptoAPI/10.0
+Host: c.pki.goog

@@ -1,0 +1,119 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 15:10:27.330
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.hc-cdn.cn, O="Huawei Software Technologies Co., Ltd.", L=Nanjing, S=Jiangsu, C=CN
+  Simple Name: *.hc-cdn.cn
+  DNS Name: *.hc-cdn.cn
+
+[Issuer]
+  CN=GlobalSign RSA OV SSL CA 2018, O=GlobalSign nv-sa, C=BE
+  Simple Name: GlobalSign RSA OV SSL CA 2018
+  DNS Name: GlobalSign RSA OV SSL CA 2018
+
+[Serial Number]
+  3AD43EC71FEF711CC4F77713
+
+[Not Before]
+  2025/11/18 10:41:07
+
+[Not After]
+  2026/12/20 10:41:06
+
+[Thumbprint]
+  743CB01B90A20E90CA7904941502971F4FA2223D
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 3072
+  Key Blob: 30 82 01 8a 02 82 01 81 00 9a c8 41 e5 5e 53 ae a4 4c b3 7e 3a fe 9b ff ce 81 5d 6a 7d be 58 57 ea 65 3c 68 ad aa cb ef 73 7e c7 3c 02 ab 23 7c 03 e4 51 a3 39 a9 dd d3 b4 b7 9d 1a 12 a4 1f fd 6c 8c 4a bb fb 91 e3 06 13 63 20 2b 80 ca d9 cd 16 fe 3d cf c6 2f 57 b0 22 6d 2b bc 89 fc 3a ed b3 87 d0 a4 ce 83 4d fa ef e2 59 e9 30 cb c7 19 57 d8 2a 06 8c d1 bd 41 0a a3 0a b1 1b 1b be f8 48 79 35 02 a0 a9 3b 80 85 d4 ae 94 7f c4 98 22 54 10 52 3c f3 47 ce e3 b4 20 9a 5e 5d 58 12 a8 d3 2c dd 34 4a a3 92 57 74 7f fe 15 59 1f f5 36 df 3b 65 65 c9 a1 9c 47 a8 65 60 28 2d c5 17 ea 2f 09 36 73 73 0d 2c 2b 76 75 34 b6 6a 29 cf eb 47 94 b6 db 82 89 6b 67 54 3d ad 14 f3 47 65 ca 31 84 fc 46 b5 21 ee fd fa 40 db 3c 3f be 94 78 4c 7e 6b d1 c1 11 e0 6d 2c fe b5 c6 15 85 8c ad 7d f0 b7 8b ac ea b6 4a 6c 0c 72 42 a7 48 50 e8 bc 34 a2 8b 62 71 57 16 12 6c d5 b1 b5 ae 13 e8 cd 4d 19 70 0d 63 79 12 80 97 26 78 1d a1 c7 73 35 7e 8f 4f 19 53 ad 49 24 88 de 88 4a 8e bc d2 ec df e2 f4 6f 91 2c 30 47 50 93 27 4a 97 e9 74 a8 d7 da 3f d3 4a dc 3d 7c 90 92 12 5a d4 22 bd ae 13 df 0d b9 1e bf 16 dc 87 e0 7c 19 df e8 5a 14 0e 06 1e 2b 5f 39 ba 19 a8 92 dc e4 ed 24 3a 5b 59 51 29 89 7b b2 c8 59 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://secure.globalsign.com/cacert/gsrsaovsslca2018.crt
+[2]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://ocsp.globalsign.com/gsrsaovsslca2018
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=1.3.6.1.4.1.4146.1.20
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               https://www.globalsign.com/repository/
+[2]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl.globalsign.com/gsrsaovsslca2018.crl
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.hc-cdn.cn
+DNS Name=hc-cdn.cn
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+客户端身份验证 (1.3.6.1.5.5.7.3.2)
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=f8ef7ff2cd7867a8de6f8f248d88f1870302b3eb
+
+* 使用者密钥标识符(2.5.29.14):
+  8537955312ccefb6de8178471b3dd315dcbfd0b1
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+944e4387faecc1ef81f3192426a8186501c7d35f3802013f72677d55372e19d8
+‎2025‎年‎11‎月‎18‎日 10:41:10
+SHA256
+ECDSA
+304402207219cce91f027f9a28c9d56b1c7f5425398f37ce8df68d290231266c39304cd502207d3300348985a90e75b9a0bfded9dba6c22b4c03e534793f993f3421a977c2dc
+
+v1
+acab30706cebec8431f413d2f4915f111e422443b1f2a68c4f3c2b3ba71e02c3
+‎2025‎年‎11‎月‎18‎日 10:41:10
+SHA256
+ECDSA
+304502210095e276495515c43c9011e700ae5afdb273f57f9787c785fe6e099acd90274040022065a7cbfb106474743d564e2976309df0d72e341d7ea6d9cc1fccc985ebf6f646
+
+v1
+c2317e574519a345ee7f38deb29041ebc7c2215a22bf7fd5b5ad769ad90e52cd
+‎2025‎年‎11‎月‎18‎日 10:41:10
+SHA256
+ECDSA
+3045022100982ed4cf51be423d08c85d738d3096f5bbc3acb2c12de8052480084836ddc2570220040daf8553f03dc273ea02a2dc5415d5d561e7afab389653b9abc76abc34536c
+
+
+[SubjectAltNames]
+DNS Name=*.hc-cdn.cn
+DNS Name=hc-cdn.cn
+

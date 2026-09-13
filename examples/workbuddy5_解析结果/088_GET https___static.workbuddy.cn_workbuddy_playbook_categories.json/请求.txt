@@ -1,0 +1,20 @@
+GET https://static.workbuddy.cn/workbuddy/playbook/categories.json HTTP/2
+:method: GET
+:authority: static.workbuddy.cn
+:scheme: https
+:path: /workbuddy/playbook/categories.json
+cache-control: max-age=0
+accept: */*
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN
+sec-fetch-dest: empty
+sec-fetch-mode: cors
+sec-fetch-site: cross-site
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) WorkBuddy/5.5.3 Chrome/138.0.7204.251 Electron/37.10.3 Safari/537.36
+sec-ch-ua: "Not)A;Brand";v="8", "Chromium";v="138"
+sec-ch-ua-mobile: ?0
+sec-ch-ua-platform: "Windows"
+if-none-match: "219802dd9164141afe1e5fa015a51599"
+if-modified-since: Thu, 03 Sep 2026 06:17:35 GMT
+priority: u=1, i
+cookie: qcloud_from=qcloud.directEnter.www.workbuddy.cn-1787211613852

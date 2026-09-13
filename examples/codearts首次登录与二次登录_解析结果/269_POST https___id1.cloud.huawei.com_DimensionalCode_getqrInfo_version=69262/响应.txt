@@ -1,0 +1,21 @@
+HTTP/1.1 200 OK
+Date: Fri, 11 Sep 2026 16:29:32 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 414
+Pragma: No-cache
+Cache-Control: no-store,no-cache
+Set-Cookie: JSESSIONID=7B017252EC0D17CCEF0F32FE56408BB95F5E4861C2CB1444; Path=/DimensionalCode; Secure; HttpOnly; SameSite=None
+Set-Cookie: qRCode=QrCode_vWiawKicTUFWDYep4vPMPS5A7xDLftvs; Path=/DimensionalCode; Secure; HttpOnly; SameSite=None
+Set-Cookie: qrCodeCreateTime=1789144172411; Path=/DimensionalCode; Secure; HttpOnly; SameSite=None
+Set-Cookie: expiredTime=1789144353411; Path=/DimensionalCode; Secure; HttpOnly; SameSite=None
+Set-Cookie: cversion=69262; Path=/DimensionalCode; Secure; HttpOnly; SameSite=None
+Access-Control-Allow-Origin: https://auth.huaweicloud.com
+Access-Control-Allow-Credentials: true
+X-XSS-Protection: 1; mode=block
+X-frame-options: SAMEORIGIN
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Content-Security-Policy: default-src 'self'
+Cache-control: no-cache, no-store, must-revalidate
+Pragma: no-cache
+Expires: 0
+Server: elb

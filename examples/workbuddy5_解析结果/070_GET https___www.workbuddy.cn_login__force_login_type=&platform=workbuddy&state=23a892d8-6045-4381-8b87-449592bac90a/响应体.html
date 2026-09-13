@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <script data-cb-injected="runtime-env">window.APP_EDITION = 'standard';
+window.RUN_ENV = 'prod';
+window.DEFAULT_AGENT_SERVER_URL = '__DEFAULT_AGENT_SERVER_URL__';
+window.MAINTENANCE_NOTICE_TIME_RANGE = '__MAINTENANCE_NOTICE_TIME_RANGE__';
+window.IS_INTERNATIONAL_EDITION = 'false';
+window.GENIE_DOMAINS = 'www.ge.site,genie.codebuddy.cn,genie-canary.ge.site,genie-canary.codebuddy.cn,staging.ge.site,genie.tencent.com,genie-bj.tencent.com,www.workbuddy.link';
+window.__toCdnUrl = (url) => {
+  const BASE_URL = '//download.codebuddy.cn/web/login/97edee1511db26379c3d5a08aa9836514b5be72b';
+  return (/__.*?__$/.test(BASE_URL) ? '' : BASE_URL) + '/' + url;
+};</script>
+
+    <meta charset="UTF-8" />
+    <!-- maximum-scale=1 + user-scalable=no：禁用 iOS Safari 输入框聚焦时页面自动放大
+         （iOS 仅在 input font-size < 16px 时触发，viewport 禁缩放是最彻底方案） -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- title / keywords / description / <html lang> 全部由 login-inject-common-html 注入的
+         运行时 bootstrap 按 brand(hostname)×region(IS_INTERNATIONAL_EDITION) 决定；
+         不再有静态 SEO 出口（登录页对爬虫 SEO 不敏感，静态注入拿不到 hostname 会写错品牌）。
+         此处 lang="zh-CN" 仅为运行时覆盖前的安全默认（intl 由 bootstrap 改为 en-US）。
+         env（RUN_ENV/APP_EDITION/IS_INTERNATIONAL_EDITION/DEFAULT_AGENT_SERVER_URL/
+         MAINTENANCE_NOTICE_TIME_RANGE/GENIE_DOMAINS/__toCdnUrl）与 gtag 也由该插件注入。
+         数据源见 src/head/tkd.ts。 -->
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <!-- 开放平台登录页：在 CSS 加载前同步覆盖 body 紫色背景 #D1CDE3，
+         避免刷新时先显示紫色再变白色的闪现。
+         仅 platform=open 时注入，不影响其他登录页。
+         用 body:not(.iframe-login) 匹配相同选择器 + !important 确保覆盖。 -->
+    <script>
+      (function () {
+        try {
+          var params = new URLSearchParams(window.location.search);
+          if ((params.get('platform') || '').toLowerCase() === 'open') {
+            var style = document.createElement('style');
+            style.textContent = 'body:not(.iframe-login) { background-color: transparent !important; }';
+            document.head.appendChild(style);
+          }
+        } catch (e) { /* ignore */ }
+      })();
+    </script>
+    <!--
+      微信内网员工探测（新版·前置）：在 React bundle 加载前就在 HTML 内联执行，尽早决策，缩短白屏。
+      仅微信环境 + 预发启用；纯裸 fetch，不依赖项目 axios 封装。旧版探测（React 内 checkOAEnv + wechatOauth）
+      保持不变，用于非微信环境/兜底。
+
+      两态：
+        1. 首次进入：直接 location.replace 跳微信 snsapi_base 授权（redirect_uri 回本页带 wx_staff_code=1）。
+        2. 回跳态（wx_staff_code=1&code）：裸 fetch /console/wx/check-staff 判员工；命中则写 sessionStorage
+           标记（React挂载后读取并展示 iOA 入口），随后清掉 URL 上的探测参数、正常渲染登录页。
+      死循环防护：sessionStorage 记时间戳，60s 内不重复发起。
+    -->
+    <script>
+      (function () {
+        try {
+          var ua = navigator.userAgent.toLowerCase();
+          var isWeixin = ua.indexOf('micromessenger') !== -1 && ua.indexOf('wxwork') === -1;
+          if (!isWeixin) { return; }
+
+          // ⚠️【微信内网员工探测 · 总开关 · 后期统一删除入口（index.html 侧）】⚠️
+          // 已全量放开，所有环境生效。此内联脚本在 bundle 之外、无法 import，
+          // 故此处判断与 React 侧 utils/helper.ts 的 isWxStaffDetectEnabled() 等价、需保持一致；
+          // 下线时两处（本函数 + helper.ts）一并删除。
+          var isWxStaffDetectEnabled = function () {
+            return true;
+          };
+          if (!isWxStaffDetectEnabled()) { return; }
+
+          // 微信公众号 AppId 按环境区分：现网(prod) 与预发/开发各用各自后台配了网页授权域名的 AppId，
+          // 用错任一侧都会被微信判为「redirect_uri 参数错误」。此内联脚本在 bundle 之外无法 import，
+          // 用更早注入的 window.RUN_ENV（占位符替换）判断：仅 'prod' 用现网 AppId，其余一律用预发 AppId。
+          var WX_APPID_PROD = 'wxf3055eea2dff6d9c';
+          var WX_APPID_STAGING = 'wx62eea88688369ded';
+          var WX_APPID = window.RUN_ENV === 'prod' ? WX_APPID_PROD : WX_APPID_STAGING;
+          var FLAG = 'wx_staff_code';
+          var STARTED_KEY = 'wx_staff_oauth_started';
+          var IOA_HIT_KEY = 'wx_staff_ioa_hit';
+          var IOA_HIT_EVENT = 'wx-staff-ioa-hit';
+          var TTL_MS = 60 * 1000;
+
+          var params = new URLSearchParams(window.location.search);
+          // 回跳态：拿 code 判员工。
+          if (params.get(FLAG) === '1') {
+            // code 先取进闭包变量，随后【同步】清 URL —— 不能等 fetch 回来再清：
+            // 探测 fetch 与 React bundle 加载是并行的，若 URL 上还留着 code，
+            // newLogin 的 init() 会用 has('code') 把这次访问误判成 OIDC 回调
+            // （污染 aegis span 名，且 embed=iframe 嵌套场景下会去 reload 最外层 login iframe）。
+            var code = params.get('code');
+            try { sessionStorage.removeItem(STARTED_KEY); } catch (e) {}
+            // 清 URL：只删探测标记(wx_staff_code) 和微信回跳追加的 code；state 一律不动。
+            // 首次进入时 redirect_uri 完整保留了原始业务 state，且微信 authorize 未再传探测 state
+            // （见下方首次进入分支），故回跳 URL 上不会出现第二个 state，这里直接保留即可。
+            var p = new URLSearchParams(window.location.search);
+            p.delete(FLAG); p.delete('code');
+            var q = p.toString();
+            var newUrl = window.location.pathname + (q ? '?' + q : '') + window.location.hash;
+            window.history.replaceState(null, '', newUrl);
+            if (!code) { return; }
+            // 裸 fetch 判员工；同域相对路径。命中写 sessionStorage 供React 读取。
+            fetch('/console/wx/check-staff', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ code: code }),
+              credentials: 'include',
+            })
+              .then(function (r) { return r.json(); })
+              .then(function (json) {
+                var data = (json && (json.data || json)) || {};
+                if (data.isStaff) {
+                  // 先写 sessionStorage 再派事件，两条路径覆盖"回包早于/晚于 React 挂载"两种顺序：
+                  // 挂载早于回包时组件读不到 sessionStorage，只能靠这个事件通知（组件消费后会清掉标记）。
+                  try { sessionStorage.setItem(IOA_HIT_KEY, '1'); } catch (e) {}
+                  try { window.dispatchEvent(new Event(IOA_HIT_EVENT)); } catch (e) {}
+                }
+              })
+              .catch(function () { /* 判定失败静默降级，走默认登录 */ });
+            return;
+          }
+
+          // OIDC 登录中（带这些参数）：不干扰，交给 React。
+          if (params.get('mp_login_code') || params.get('kc_idp_hint') || params.get('code')) { return; }
+
+          // 死循环防护：60s 内已发起过则不再跳。
+          var startedRaw = null;
+          try { startedRaw = sessionStorage.getItem(STARTED_KEY); } catch (e) {}
+          if (startedRaw) {
+            var startedAt = Number(startedRaw);
+            if (isFinite(startedAt) && Date.now() - startedAt < TTL_MS) { return; }
+          }
+
+          // 首次进入：直接跳微信授权，回跳本页。
+          // 回跳 redirect_uri = 原始 URL 的全部 query（含业务 platform / redirect_uri / state）+ 新增 wx_staff_code=1，
+          // 完整保留登录上下文 —— 否则微信授权来回 302 后 platform / redirect_uri / state 会丢失，导致登录成功后
+          // 无法跳回原 website/workbuddy 页面（一直转圈），且 platform 为空使审计日志接口报 400。
+          // 不给微信 authorize 传 state：本探测的 state 全程无人校验（后端 /wx/check-staff 只认 code，
+          // 前端也不校验回跳 state），传了反而会被微信原样回传、在回跳 URL 上叠出第二个 state 参数，
+          // 干扰原始业务 state。故这里刻意省略 state，从源头保证回跳 URL 只有原始业务 state 一个。
+          var backParams = new URLSearchParams(window.location.search);
+          backParams.set('wx_staff_code', '1');
+          var redirectUri = window.location.origin + '/login/?' + backParams.toString();
+          var authorizeUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
+            new URLSearchParams({
+              appid: WX_APPID,
+              redirect_uri: redirectUri,
+              response_type: 'code',
+              scope: 'snsapi_base',
+            }).toString() + '#wechat_redirect';
+          try { sessionStorage.setItem(STARTED_KEY, String(Date.now())); } catch (e) {}
+          window.location.replace(authorizeUrl);
+        } catch (e) {
+          /* 任何异常都不阻断，交给 React 版探测/默认登录 */
+        }
+      })();
+    </script>
+    <link rel="icon" href="//download.codebuddy.cn/web/login/97edee1511db26379c3d5a08aa9836514b5be72b/assets/logo.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <!--[if IE]>
+      <style>
+        #app {
+          display: none;
+        }
+      </style>
+    <![endif]-->
+    <script data-cb-injected="head-bootstrap">(function(){
+  try {
+    var DATA = {"tkd":{"codebuddy":{"cn":{"title":"腾讯云代码助手 CodeBuddy - AI 时代的智能编程伙伴","keywords":"CodeBuddy,腾讯云代码助手,代码助手,AI编程,智能编程,AI代码助手","description":"腾讯云代码助手 CodeBuddy 是 AI 时代的智能编程伙伴，提供代码补全、Bug 诊断、技术问答和性能优化等全方位编程辅助服务。"},"intl":{"title":"Tencent Cloud CodeBuddy - AI Code Companion","keywords":"CodeBuddy,AI coding,code assistant,Tencent Cloud,AI programming,code completion","description":"Tencent Cloud CodeBuddy is an AI-powered coding companion that helps you code faster with intelligent code completion, bug diagnosis, and technical Q&A."}},"workbuddy":{"cn":{"title":"WorkBuddy - AI Agent 办公新范式","keywords":"WorkBuddy,AI办公,AI Agent,智能办公助手,腾讯云代码助手,CodeBuddy","description":"WorkBuddy 是腾讯云代码助手推出的 AI Agent 办公工具，自主规划并交付多模态复杂任务结果，极致提效。"},"intl":{"title":"WorkBuddy - AI Agent for Everyday Office Work","keywords":"WorkBuddy,AI Office,AI Agent,AI productivity assistant,CodeBuddy","description":"Tencent WorkBuddy is an AI Agent built for office professionals. Powered by multi-agent collaboration, it delivers finished, verifiable outputs."}}},"favicon":{"codebuddy":{"icon":"assets/logo.svg","appleTouch":"apple-touch-icon.png"},"workbuddy":{"icon":"assets/logo.svg","appleTouch":"apple-touch-icon.png"}},"lang":{"cn":"zh-CN","intl":"en-US"},"isDev":false,"useToCdnUrl":true};
+    var host = window.location.hostname;
+    var search = window.location.search;
+
+    var overrideAllowed = DATA.isDev
+      || host.indexOf('staging') !== -1
+      || host.indexOf('test') !== -1
+      || host === 'localhost'
+      || host.indexOf('127.') === 0
+      || host.indexOf('192.168.') === 0;
+
+    var brand = null;
+    if (overrideAllowed) {
+      try {
+        var q = new URLSearchParams(search).get('brand');
+        if (q === 'codebuddy' || q === 'workbuddy') {
+          brand = q;
+          try { window.localStorage.setItem('cb_brand_override', q); } catch (e) {}
+        }
+      } catch (e) {}
+      if (!brand) {
+        try {
+          var s = window.localStorage.getItem('cb_brand_override');
+          if (s === 'codebuddy' || s === 'workbuddy') { brand = s; }
+        } catch (e) {}
+      }
+    }
+    if (!brand) { brand = host.indexOf('.workbuddy.') !== -1 ? 'workbuddy' : 'codebuddy'; }
+
+    var flag = window.IS_INTERNATIONAL_EDITION;
+    var region = 'cn';
+    if (flag === true) {
+      region = 'intl';
+    } else if (typeof flag === 'string' && !/__.*?__$/.test(flag) && (flag === 'true' || flag === '1')) {
+      region = 'intl';
+    }
+
+    var brandData = DATA.tkd[brand] || DATA.tkd.codebuddy || DATA.tkd.workbuddy;
+    var tkd = brandData ? brandData[region] : null;
+    var lang = DATA.lang[region];
+
+    if (lang) { document.documentElement.lang = lang; }
+    if (tkd) {
+      if (tkd.title) { document.title = tkd.title; }
+      setMeta('name', 'keywords', tkd.keywords);
+      setMeta('name', 'description', tkd.description);
+      setMeta('property', 'og:title', tkd.title);
+      setMeta('property', 'og:description', tkd.description);
+      if (tkd.ogUrl) {
+        setMeta('property', 'og:url', tkd.ogUrl);
+        setLink('canonical', tkd.ogUrl);
+      }
+    }
+
+    var fav = DATA.favicon[brand];
+    if (fav && fav.icon) {
+      var iconHref = fav.icon;
+      if (DATA.useToCdnUrl && typeof window.__toCdnUrl === 'function') {
+        try { iconHref = window.__toCdnUrl(fav.icon); } catch (e) {}
+      } else {
+        iconHref = '/' + fav.icon;
+      }
+      setLink('icon', iconHref);
+    }
+
+    function setMeta(attr, key, content) {
+      if (!content) { return; }
+      var el = document.querySelector('meta[' + attr + '="' + key + '"]');
+      if (!el) {
+        el = document.createElement('meta');
+        el.setAttribute(attr, key);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('content', content);
+    }
+    function setLink(rel, href) {
+      if (!href) { return; }
+      var el = document.querySelector('link[rel="' + rel + '"]');
+      if (!el) {
+        el = document.createElement('link');
+        el.setAttribute('rel', rel);
+        document.head.appendChild(el);
+      }
+      el.setAttribute('href', href);
+    }
+  } catch (e) { /* 判定失败留给 React 侧 resolveHead 兜底 */ }
+})();</script>
+    <script data-cb-injected="gtag-bootstrap">(function () {
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+
+  var isInternational =
+    window.IS_INTERNATIONAL_EDITION === true ||
+    window.IS_INTERNATIONAL_EDITION === 'true' ||
+    /workbuddy\.ai|tencentcloud\.com/i.test(window.location.hostname);
+  var googleAdsId = isInternational ? 'AW-18319947891' : 'AW-17806298785';
+
+  var script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=' + googleAdsId;
+  document.head.appendChild(script);
+
+  window.gtag('js', new Date());
+  window.gtag('config', googleAdsId);
+})();</script>
+    <script type="module" crossorigin src="//download.codebuddy.cn/web/login/97edee1511db26379c3d5a08aa9836514b5be72b/assets/index-0dFUFH0s.js"></script>
+    <link rel="modulepreload" crossorigin href="//download.codebuddy.cn/web/login/97edee1511db26379c3d5a08aa9836514b5be72b/assets/vendor-react-CniOBA0S.js">
+    <link rel="modulepreload" crossorigin href="//download.codebuddy.cn/web/login/97edee1511db26379c3d5a08aa9836514b5be72b/assets/vendor-beacon-C59zGw-e.js">
+    <link rel="modulepreload" crossorigin href="//download.codebuddy.cn/web/login/97edee1511db26379c3d5a08aa9836514b5be72b/assets/vendor-tdesign-CndPxUHb.js">
+    <link rel="modulepreload" crossorigin href="//download.codebuddy.cn/web/login/97edee1511db26379c3d5a08aa9836514b5be72b/assets/vendor-axios-CwoMFvHN.js">
+    <link rel="modulepreload" crossorigin href="//download.codebuddy.cn/web/login/97edee1511db26379c3d5a08aa9836514b5be72b/assets/vendor-i18n-0ygXa4nV.js">
+    <link rel="modulepreload" crossorigin href="//download.codebuddy.cn/web/login/97edee1511db26379c3d5a08aa9836514b5be72b/assets/vendor-oneid-BHVPlggu.js">
+    <link rel="modulepreload" crossorigin href="//download.codebuddy.cn/web/login/97edee1511db26379c3d5a08aa9836514b5be72b/assets/vendor-corejs-BsxtHbRV.js">
+    <link rel="stylesheet" crossorigin href="//download.codebuddy.cn/web/login/97edee1511db26379c3d5a08aa9836514b5be72b/assets/vendor-tdesign-DukekHzM.css">
+    <link rel="stylesheet" crossorigin href="//download.codebuddy.cn/web/login/97edee1511db26379c3d5a08aa9836514b5be72b/assets/vendor-oneid-vGmFLV8R.css">
+    <link rel="stylesheet" crossorigin href="//download.codebuddy.cn/web/login/97edee1511db26379c3d5a08aa9836514b5be72b/assets/index-CzJb-ccK.css">
+  </head>
+
+  <body>
+    <!--[if IE]>
+      <h1 style="position: absolute; width: 100%; text-align: center; top: 45%">
+        建议使用 <a href="https://www.google.cn/chrome/">Chrome</a>
+      </h1>
+    <![endif]-->
+    <td-horizon></td-horizon>
+    <td-aegis></td-aegis>
+    <div id="app"></div>
+    <script>
+      if (window.Cypress) {
+        window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = window.parent.__REACT_DEVTOOLS_GLOBAL_HOOK__;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "all_credit_package": {
+    "package_credit_amount": 7500.0,
+    "package_credit_used": 144.72,
+    "package_credit_remain": 7355.28,
+    "package_credit_user_amount": 7500.0,
+    "package_credit_user_used": 144.72,
+    "package_credit_user_remain": 7355.28,
+    "expiring_credit_amount": 0
+  },
+  "basic_package": {
+    "enable": true,
+    "resource_id": "fa64939fc6ae40fd9c80edac79e6b444",
+    "alarm_number": 0,
+    "package_used_count": 1,
+    "package_amount": 1,
+    "package_used_token": 0,
+    "package_user_used_token": 0,
+    "package_token_amount": 0,
+    "is_token_all_use": false,
+    "package_credit_amount": 500.0,
+    "package_credit_used": 0.0,
+    "package_credit_remain": 500.0,
+    "package_credit_allocated": 500.0,
+    "package_credit_user_amount": 500.0,
+    "package_credit_user_used": 0.0,
+    "package_credit_user_remain": 500.0
+  },
+  "ondemand_credit_package": null,
+  "bonus_credit_package": {
+    "package_credit_amount": 7000.0,
+    "package_credit_used": 144.72,
+    "package_credit_remain": 6855.28,
+    "package_credit_user_amount": 7000.0,
+    "package_credit_user_used": 144.72,
+    "package_credit_user_remain": 6855.28,
+    "expiring_credit_amount": 0
+  },
+  "model_package": []
+}

@@ -1,0 +1,19 @@
+GET https://id1.cloud.huawei.com/UnifiedIDMPortal/jsconfig/hwidConfig.js?cVersion=UP_CAS_6.26.2.100_blue HTTP/2
+:method: GET
+:authority: id1.cloud.huawei.com
+:scheme: https
+:path: /UnifiedIDMPortal/jsconfig/hwidConfig.js?cVersion=UP_CAS_6.26.2.100_blue
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+sec-ch-ua: "Microsoft Edge";v="153", "Not_A Brand";v="8", "Chromium";v="153"
+sec-ch-ua-mobile: ?0
+accept: */*
+sec-fetch-site: cross-site
+sec-fetch-mode: no-cors
+sec-fetch-dest: script
+sec-fetch-storage-access: none
+referer: https://auth.huaweicloud.com/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+if-none-match: W/"6a9047e1-251f"
+if-modified-since: Thu, 27 Aug 2026 14:21:21 GMT

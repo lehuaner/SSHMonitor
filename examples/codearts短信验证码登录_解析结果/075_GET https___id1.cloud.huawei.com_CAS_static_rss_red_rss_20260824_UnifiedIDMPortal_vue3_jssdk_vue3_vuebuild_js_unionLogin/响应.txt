@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Date: Sat, 12 Sep 2026 07:47:10 GMT
+Content-Type: application/javascript
+Last-Modified: Thu, 27 Aug 2026 14:14:32 GMT
+ETag: W/"6a904648-129b"
+Expires: Mon, 12 Oct 2026 07:47:10 GMT
+Cache-Control: max-age=2592000
+Server: elb
+Content-Length: 2226

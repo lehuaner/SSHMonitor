@@ -1,0 +1,51 @@
+CONNECT pc-mon.zijieapi.com:443 HTTP/1.1
+Host: pc-mon.zijieapi.com:443
+
+A SSLv3-compatible ClientHello handshake was found. Fiddler extracted the parameters below.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+Record Layer Version: 3.3 (TLS/1.2)
+Random: 90 7B D2 B7 33 FC 47 C6 98 AE B8 FF FD A5 BB D5 A2 DB F3 0D 2D 87 D8 A1 28 C6 22 64 B4 2F A4 0E
+"Time": 2067/9/24 1:32:00
+SessionID: F2 62 FB 29 FC 1C 88 FF 64 D0 43 64 1B BE FB 14 F6 5A A0 9A FC 6A 18 7C EA 15 70 1E 8E 2A F4 80
+Extensions: 
+	server_name	pc-mon.zijieapi.com
+	status_request	OCSP - Implicit Responder
+	supported_versions	Tls1.3, Tls1.2
+	signature_algs	rsa_pss_rsae_sha256, rsa_pss_rsae_sha384, rsa_pss_rsae_sha512, rsa_pkcs1_sha256, rsa_pkcs1_sha384, rsa_pkcs1_sha1, ecdsa_secp256r1_sha256, ecdsa_secp384r1_sha384, ecdsa_sha1, dsa_sha1, rsa_pkcs1_sha512, ecdsa_secp521r1_sha512
+	SessionTicket	empty
+	supported_groups	x25519 [0x1d], secp256r1 [0x17], secp384r1 [0x18]
+	ec_point_formats	uncompressed [0x0]
+	key_share	00 CE 00 1D 00 20 2A B2 AB DF 21 49 E6 CA DE 5A 82 8A 37 7B CC 42 E2 C0 8C B9 78 6D F8 88 9B 62 62 38 7B DC CE 12 00 17 00 41 04 06 5B 3D C9 34 24 B7 78 AD B4 94 B8 D8 46 2B CE BB C1 90 FC 3B 4D 8F 9B B8 F1 EE 81 2F 1A 05 1E 4E 1A 10 97 A7 2C 63 F9 EA E8 35 E2 A8 98 7C 6E C6 2D 82 B8 5B 98 1D 2D 21 15 64 E4 FC C4 0B 9A 00 18 00 61 04 5B 48 CE 62 F6 1B F8 F4 76 1F E3 11 E9 EE 58 79 9B FF 4A 76 20 C6 48 FB C1 4A 19 6C EE 55 9E 30 D9 EC 3A 8B F6 2D 5F A9 B9 BF B6 26 4A DC 13 05 B5 78 9F 13 73 39 2A 0A EF 04 8F 64 65 05 B5 AF 08 B4 0C 68 0D 71 9A 69 7C 08 AF 5B 50 66 CD 11 42 51 CC B4 AB AB 85 8D E7 F6 16 D2 DF 3C C1 C3
+	post_handshake_auth
+	extended_master_secret	empty
+	renegotiation_info	00
+	psk_key_exchange_modes	01 01
+Ciphers: 
+	[1302]	TLS_AES_256_GCM_SHA384
+	[1301]	TLS_AES_128_GCM_SHA256
+	[C02C]	TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+	[C02B]	TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+	[C030]	TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	[C02F]	TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	[C024]	TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+	[C023]	TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+	[C028]	TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+	[C027]	TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+	[C00A]	TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA
+	[C009]	TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA
+	[C014]	TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+	[C013]	TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+	[009D]	TLS_RSA_WITH_AES_256_GCM_SHA384
+	[009C]	TLS_RSA_WITH_AES_128_GCM_SHA256
+	[003D]	TLS_RSA_WITH_AES_256_CBC_SHA256
+	[003C]	TLS_RSA_WITH_AES_128_CBC_SHA256
+	[0035]	TLS_RSA_WITH_AES_256_CBC_SHA
+	[002F]	TLS_RSA_WITH_AES_128_CBC_SHA
+
+Compression: 
+	[00]	NO_COMPRESSION
+
+

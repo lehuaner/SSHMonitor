@@ -1,0 +1,12 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "5a06635a268a4758ad719c8479b3e0d5",
+  "data": {
+    "items": [],
+    "total": 0,
+    "page": 1,
+    "pageSize": 30,
+    "hasNext": false
+  }
+}

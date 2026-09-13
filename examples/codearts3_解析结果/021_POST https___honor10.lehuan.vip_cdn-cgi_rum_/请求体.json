@@ -1,0 +1,70 @@
+{
+  "startTime": 1789023961114,
+  "pageloadId": "9cb315d1-b348-40f1-aa0f-ca2fd512fa11",
+  "eventType": 3,
+  "nt": "reload",
+  "location": "https://honor10.lehuan.vip/checkin",
+  "versions": {
+    "js": "2026.9.1",
+    "fl": "2024.11.0"
+  },
+  "bi": {
+    "be": "Blink",
+    "bev": "152",
+    "bv": "152",
+    "ov": "11"
+  },
+  "siteToken": "0b933708903b488ba7bccf4961fd2b0f",
+  "lcp": {
+    "value": 5248,
+    "path": "/checkin",
+    "element": "#chartsBtn",
+    "size": 5688,
+    "rld": 0,
+    "rlt": 0,
+    "erd": 4133,
+    "fp": null
+  },
+  "cls": {
+    "value": 0.062321354357102135,
+    "path": "/checkin",
+    "element": "html>body>div.app",
+    "currentRect": {
+      "x": 80.5,
+      "y": 0,
+      "width": 1320,
+      "height": 856,
+      "top": 0,
+      "right": 1400.5,
+      "bottom": 856,
+      "left": 80.5
+    },
+    "previousRect": {
+      "x": 88,
+      "y": 0,
+      "width": 1320,
+      "height": 837.765625,
+      "top": 0,
+      "right": 1408,
+      "bottom": 837.765625,
+      "left": 88
+    }
+  },
+  "fcp": {
+    "value": 1168,
+    "path": "/checkin"
+  },
+  "ttfb": {
+    "value": 1116,
+    "path": "/checkin"
+  },
+  "inp": {
+    "value": 48,
+    "path": "/checkin",
+    "name": "pointer",
+    "idy": 1,
+    "pdn": 12,
+    "pdy": 36
+  },
+  "st": 1
+}

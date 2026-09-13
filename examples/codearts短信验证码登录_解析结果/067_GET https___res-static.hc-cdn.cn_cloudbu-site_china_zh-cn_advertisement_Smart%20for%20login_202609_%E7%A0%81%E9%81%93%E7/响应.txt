@@ -1,0 +1,20 @@
+HTTP/2 200
+date: Sat, 12 Sep 2026 07:47:09 GMT
+content-type: image/png
+content-length: 48508
+server: openresty
+x-obs-request-id: 000001A066E9B68866CC6C39CD3CA7FF
+etag: "1432d4db378de1c831938e724d9f3ceb"
+last-modified: Thu, 03 Sep 2026 10:54:30 GMT
+x-obs-meta-sign: 1788432870731:4ed5fbadfa3b7cd8f968e249bd17c6a26aa3eb010e24086516eb69456c8861cd
+x-obs-tagging-count: 0
+x-obs-id-2: 36AAAQAAEAABAAAQAAEAABAAAQAAEAABAAAaI=AAAAAAAAAAAAAAAAAAAAAAAAAA
+via: CHN-JSlianyungang-AREACMCC3-CACHE14[3],CHN-JSlianyungang-AREACMCC3-CACHE14[0,TCP_HIT,1],CHN-JSlianyungang-AREACMCC3-CACHE18[0,TCP_HIT,1],CHN-SH-GLOBAL4-CACHE117[2],CHN-SH-GLOBAL4-CACHE89[0,TCP_HIT,1],CHN-HElangfang-GLOBAL6-CACHE127[2],CHN-HElangfang-GLOBAL6-CACHE89[0,TCP_HIT,1]
+x-hcs-proxy-type: 1
+x-ccdn-cachettl: 2592000
+nginx-hit: 1
+age: 66910
+cache-control: max-age=600
+accept-ranges: bytes
+access-control-allow-origin: *
+dl-from: HWCDN

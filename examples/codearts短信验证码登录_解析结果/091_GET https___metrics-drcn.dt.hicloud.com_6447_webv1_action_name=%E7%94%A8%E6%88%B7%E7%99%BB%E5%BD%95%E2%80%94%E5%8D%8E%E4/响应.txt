@@ -1,0 +1,10 @@
+HTTP/1.1 200
+Date: Sat, 12 Sep 2026 07:47:11 GMT
+Content-Length: 0
+Access-Control-Allow-Origin: *
+P3P: CP="NON DSP COR CURa ADMa DEVa TAIa PSAa PSDa IVAa IVDa CONa HISa TELa OTPa OUR UNRa IND UNI COM NAV INT DEM CNT PRE LOC"
+Set-Cookie: _pk_hi_ssid=dddbd5a23b52482eab6e829b4e3d3f57; Domain=.vmall.com; Expires=Mon, 11 Sep 2028 07:47:11 GMT; Path=/; Secure; HttpOnly
+X-XSS-Protection: 1; mode=block
+X-frame-options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+Server: elb

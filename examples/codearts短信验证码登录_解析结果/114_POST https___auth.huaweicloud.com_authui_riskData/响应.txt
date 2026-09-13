@@ -1,0 +1,15 @@
+HTTP/2 200
+server: CloudWAF
+date: Sat, 12 Sep 2026 07:47:27 GMT
+content-type: application/json
+x-iam-trace-id: auth_cn-north-4_null_42d170bc09af449787a74167a929f1d7
+set-cookie: cbc-sid=20493715385ef219e4b1df5a448bda6476f24829730b3f5439c0fbc492605c7a3a91b3186f92375736d7; Path=/; secure; SameSite=None; Secure; HttpOnly
+strict-transport-security: max-age=31536000; includeSubdomains;
+x-content-type-options: nosniff
+x-download-options: noopen
+x-xss-protection: 1; mode=block
+cache-control: no-cache, no-store, must-revalidate
+pragma: no-cache
+access-control-allow-origin: https://auth.huaweicloud.com
+access-control-allow-methods: GET
+access-control-allow-credentials: true

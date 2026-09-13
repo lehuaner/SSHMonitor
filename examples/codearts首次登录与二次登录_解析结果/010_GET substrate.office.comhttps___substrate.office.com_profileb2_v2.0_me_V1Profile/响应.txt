@@ -1,0 +1,25 @@
+HTTP/1.1 401 Unauthorized
+Content-Length: 0
+Server: Microsoft-HTTPAPI/2.0
+X-NanoProxy: 1,1
+Request-Id: 2459b8a0-e5dd-b95d-bd3d-b06dfd81ade3
+X-CalculatedFETarget: TYCP286CU022.internal.outlook.com
+MS-CV: oLhZJN3lXbm9PbBt/YGt4w.1.1
+X-BeSku: Unknown
+X-BackEndHttpStatus: 401,401
+Report-To: {"group":"NelOfficeUpload1","max_age":7200,"endpoints":[{"url":"https://exo.nel.measure.office.net/api/report?TenantId=&FrontEnd=Cafe&DestinationEndpoint=TPE&RemoteIP=112.23.190.0&Environment=MT&HttpStatusFrom=BE&ServiceName=Default.profileb2&MiraPartnerName="}],"include_subdomains":true}
+X-BEPartition: CLAPCPRD04HND00
+X-CalculatedBETarget: TY0PR04MB6192.APCPRD04.PROD.OUTLOOK.COM
+X-Content-Type-Options: nosniff
+X-End2EndLatencyMs: 3
+X-FEEFZInfo: HND
+X-FEServer: TP0P295CA0051
+X-MicroserviceVersion: 3.0.1876.0
+X-Proxy-BackendServerStatus: 401
+X-Proxy-RoutingCorrectness: 1
+X-FirstHopCafeEFZ: TPE
+Alt-Svc: h3=":443";ma=2592000,h3-29=":443";ma=2592000
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+NEL: {"report_to":"NelOfficeUpload1","max_age":7200,"include_subdomains":true,"failure_fraction":1.0,"success_fraction":0.01}
+WWW-Authenticate: Bearer client_id="ec156f81-f23a-47bd-b16f-9fb2c66420f9", token_types="app_asserted_user_v1 service_asserted_app_v1", authorization_uri="https://login.microsoftonline.com/common/oauth2/authorize", error="invalid_token"
+Date: Fri, 11 Sep 2026 16:28:57 GMT

@@ -1,0 +1,11 @@
+GET https://copilot.tencent.com/v2/plugin/auth/token?state=23a892d8-6045-4381-8b87-449592bac90a HTTP/1.1
+Accept: application/json, text/plain, */*
+X-No-Authorization: true
+X-No-User-Id: true
+X-No-Enterprise-Id: true
+X-No-Department-Info: true
+User-Agent: WorkBuddy/5.5.3 WorkBuddy/5.5.3 CLI/2.137.1
+X-Request-ID: dc90f414f18d4918b05ca5ddce4ca45e
+X-Product: SaaS
+Host: copilot.tencent.com
+Connection: keep-alive

@@ -1,0 +1,12 @@
+HTTP/1.1 404 Not Found
+Content-Type: text/plain; charset=utf-8
+Set-Cookie: tgw_l7_route=8af4d671cc41e732d6cc1b0e75c2ceca; Expires=Thu, 10-Sep-2026 09:00:06 GMT; Path=/; sameSite=None; Secure
+Set-Cookie: session=; Path=/console; Max-Age=0; Expires=Thu, 01-Jan-70 00:00:00 GMT; HttpOnly
+Server: APISIX/3.9.1
+X-Request-ID: 999236e9ce3445b39ea34ec7b810a332
+X-Content-Type-Options: nosniff
+Content-Length: 18
+Connection: keep-alive
+Date: Thu, 10 Sep 2026 08:00:06 GMT
+EO-LOG-UUID: 92789756305067493
+EO-Cache-Status: MISS

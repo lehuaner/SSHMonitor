@@ -1,0 +1,80 @@
+{
+  "code": 200,
+  "data": {
+    "teams": [
+      {
+        "id": "ALL_MEMBERS",
+        "name": "企业内全部成员"
+      },
+      {
+        "id": "NO_TEAM",
+        "name": "未加入团队成员"
+      },
+      {
+        "id": "ALL_TEAMS",
+        "name": "全部团队"
+      }
+    ],
+    "models": [
+      {
+        "id": "GLM-5.2",
+        "name": "GLM-5.2"
+      }
+    ],
+    "serviceFunctions": [
+      {
+        "id": "agent-general",
+        "name": "智能体"
+      },
+      {
+        "id": "agent-custom",
+        "name": "自定义智能体"
+      },
+      {
+        "id": "ask",
+        "name": "智能问答"
+      },
+      {
+        "id": "agent-teams",
+        "name": "Agent Team"
+      },
+      {
+        "id": "agent-claw",
+        "name": "码道Agent Space"
+      },
+      {
+        "id": "agent-tui",
+        "name": "TUI/CLI"
+      },
+      {
+        "id": "explain",
+        "name": "代码解释"
+      },
+      {
+        "id": "comment",
+        "name": "代码注释"
+      },
+      {
+        "id": "optimize",
+        "name": "代码优化"
+      },
+      {
+        "id": "dt",
+        "name": "单元测试"
+      },
+      {
+        "id": "inline",
+        "name": "编辑区对话"
+      },
+      {
+        "id": "generate",
+        "name": "代码续写"
+      },
+      {
+        "id": "others",
+        "name": "其他功能"
+      }
+    ],
+    "dataLastUpdateTime": "2026-09-10 14:10:23"
+  }
+}

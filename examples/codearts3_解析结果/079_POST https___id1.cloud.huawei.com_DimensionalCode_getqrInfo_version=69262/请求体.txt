@@ -1,0 +1,1 @@
+appID=com.huawei.hwidweb&confirmFlag=1&version=69262&reqClientType=700&loginChannel=7000700&appBrand=&deviceID=2049373b374032d81a9d33f15b7e87fb9503d7b1b683c80f1b843d871fe4df61614febe86337371837a5&deviceType=7

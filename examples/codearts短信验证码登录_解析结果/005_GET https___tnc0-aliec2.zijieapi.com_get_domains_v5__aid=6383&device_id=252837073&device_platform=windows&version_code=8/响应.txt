@@ -1,0 +1,17 @@
+HTTP/2 200
+server: Tengine
+content-length: 0
+date: Sat, 12 Sep 2026 07:46:37 GMT
+upstream-caught: 1789199197387968
+x-tt-logid: 202609121546375041B2B62C6CDE013BC1
+x-ss-etag: 7cfdd648-35432348-c8ad9180-ca2dc0c4
+x-tt-tnc-control: 1
+server-timing: inner; dur=5
+access-control-allow-origin: *
+access-control-allow-credentials: true
+access-control-allow-methods: GET
+x-tt-trace-tag: id=03;cdn-cache=miss;type=dyn
+server-timing: cdn-cache;desc=MISS,edge;dur=0,origin;dur=65
+via: vcache17.cn3816[65,0]
+timing-allow-origin: *
+eagleid: 249c482517891991973333106e

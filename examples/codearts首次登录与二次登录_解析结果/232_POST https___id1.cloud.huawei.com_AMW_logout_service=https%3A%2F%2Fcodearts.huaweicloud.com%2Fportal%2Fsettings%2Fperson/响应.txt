@@ -1,0 +1,17 @@
+HTTP/1.1 302 Found
+Date: Fri, 11 Sep 2026 16:29:30 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 193
+Location: https://id1.cloud.huawei.com/CAS/logout?service=https%3A%2F%2Fcodearts.huaweicloud.com%2Fportal%2Fsettings%2Fpersonal-usage%3Flocale%3Dzh-cn
+Strict-Transport-Security: max-age 16070400; includeSubDomains
+Cache-Control: no-store
+X-Content-Type-Options: nosniff
+Content-Security-Policy: default-src 'self' *.huawei.com *.cloud.huawei.com *.cloud.huawei.com.cn *.consumer.huawei.com *.platform.hicloud.com *.platform.dbankcloud.com *.platform.dbankcloud.cn *.vmall.com *.hicloud.com *.hihonor.com *.emui.com *.geetest.com *.dbankcdn.com *.dbankcdn.cn *.dbankcloud.cn *.dbankcloud.com *.163.com https://metrics-drcn.dt.hicloud.com:6447 https://cstaticdun.126.net https://cstaticdun1.126.net https://cstaticdun-v6.126.net https://cstaticdun1-v6.126.net https://acstatic-dun.126.net https://necaptcha1.nosdn.127.net https://acstatic-dun-v6.126.net *.127.net *.163yun.com *.qlogo.cn *.weibo.com 'unsafe-inline' 'unsafe-eval' blob: data:; script-src 'self' *.huawei.com *.cloud.huawei.com *.cloud.huawei.com.cn *.consumer.huawei.com *.platform.hicloud.com *.platform.dbankcloud.com *.platform.dbankcloud.cn *.vmall.com *.hicloud.com *.hihonor.com *.emui.com *.geetest.com *.dbankcdn.com *.dbankcdn.cn *.dbankcloud.cn *.dbankcloud.com *.163.com https://metrics-drcn.dt.hicloud.com:6447 https://cstaticdun.126.net https://cstaticdun1.126.net https://cstaticdun-v6.126.net https://cstaticdun1-v6.126.net https://acstatic-dun.126.net https://necaptcha1.nosdn.127.net https://acstatic-dun-v6.126.net *.127.net *.163yun.com *.qlogo.cn *.weibo.com 'unsafe-inline' 'unsafe-eval' blob:; object-src 'none'; img-src 'self' *.huawei.com *.cloud.huawei.com *.cloud.huawei.com.cn *.consumer.huawei.com *.platform.hicloud.com *.platform.dbankcloud.com *.platform.dbankcloud.cn *.vmall.com *.hicloud.com *.hihonor.com *.emui.com *.geetest.com *.dbankcdn.com *.dbankcdn.cn *.dbankcloud.cn *.dbankcloud.com *.163.com https://metrics-drcn.dt.hicloud.com:6447 https://cstaticdun.126.net https://cstaticdun1.126.net https://cstaticdun-v6.126.net https://cstaticdun1-v6.126.net https://acstatic-dun.126.net https://necaptcha1.nosdn.127.net https://acstatic-dun-v6.126.net *.127.net *.163yun.com *.qlogo.cn *.weibo.com data: blob:;
+Pragma: no-cache
+X-XSS-Protection: 1
+P3P: CP=" OTI DSP COR IVA OUR IND COM "
+Expires: 0
+Set-Cookie: CAS_THEME_NAME=red;Domain=id1.cloud.huawei.com;Path=/;Secure;HttpOnly;SameSite=None
+Set-Cookie: JSESSIONID=E665FA4040CE86D363EB9453E02E6F7DC5BA530308ED0A16BE3FD770F3ED2D73F247F60EDE077BE4B0386044D9FAC3BD;Path=/AMW;Secure;HttpOnly;SameSite=None
+Set-Cookie: VERSION_NO=UP_CAS_6.26.2.100_blue;Domain=id1.cloud.huawei.com;Path=/;Secure;HttpOnly;SameSite=None
+Server: elb

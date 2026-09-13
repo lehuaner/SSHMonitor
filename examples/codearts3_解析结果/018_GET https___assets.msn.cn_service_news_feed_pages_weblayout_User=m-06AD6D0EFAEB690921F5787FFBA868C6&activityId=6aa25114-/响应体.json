@@ -1,0 +1,92 @@
+{
+  "sections": [],
+  "serviceContext": {
+    "fdHead": "1s-1sw-lsveckey,1s-blis-exp3,1s-cntravelermuidp2,1s-cntravelerprong2,1s-cp1hdboost,1s-cs-viddis,1s-dsbl-tmpl-dahbrd4,1s-dsbl-tmpl-vwslyt-v2,1s-enablepcohort,1s-fcrypt,1s-hide-lckprev,1s-ls-uppermuid,1s-mailman-auth,1s-newsfeed-worknews,1s-no-niche-dp2,1s-no-niche-p2,1s-ntf2-iptlc,1s-ntf2-k2rev1,1s-ntf2-k2rev10,1s-ntf2-k2rev11,1s-ntf2-k2rev12,1s-ntf2-k2rev13,1s-ntf2-k2rev14,1s-ntf2-k2rev15,1s-ntf2-k2rev16,1s-ntf2-k2rev2,1s-ntf2-k2rev3,1s-ntf2-k2rev4,1s-ntf2-k2rev5,1s-ntf2-k2rev6,1s-ntf2-k2rev7,1s-ntf2-k2rev8,1s-ntf2-k2rev9,1s-ntf2-maiprofile,1s-ntf2-rmvspt-rvrs,1s-ntfa-fpmeta,1s-p1-vid-vs-int,1s-p2-bg-appanon,1s-p2-vid-vp-int,1s-pr2-evlcbackingapp,1s-prg-zero-r2-ntpnc,1s-qsmask,1s-routemsnexpc,1s-rpssecautht,1s-ruby-trdn-rev,1s-shorts-rubydis-dp2,1s-shorts-rubydis-p2,1s-uasdisf-t,1s-viddis,1s-wpo-add-rawtopics,1s-wpo-ci2-sc90,1s-wpo-classicsdl4,1s-wpo-clswpol3t,1s-wpo-cohort-interval-v2,1s-wpo-csatr,1s-wpo-ntp-videos2,1s-wpo-pr2cgserve-c,1s-wpo-reco-bg,1s-wpo-remove-urf,1s-wpo-rrankerl3,1s-wpo-vlog,1s-wpo-vrt-uup,1s-wr-l4ht225-ntpc,1s-wv-viddis-dp2,1s-wv-viddis-p2,1s-xap-bnts,1s-xap-bnts-t1,1s-xap-puse-g9-gen9,btie-msan-wfv2count-aml-t1,btie-msanranking-t13,btie-msanrr-t04,btie-tgmerge-uber-t2,ntp-rsshimopt,ntp-rsshimopth,prg-1s-dwvid-wpo-ctr,prg-1s-ntf-mrev,prg-1s-otel,prg-1sw-acmedium,prg-1sw-analysisdata,prg-1sw-badgecaprev,prg-1sw-bref,prg-1sw-con-rvad3,prg-1sw-crypinf,prg-1sw-cryptren,prg-1sw-dedupteam,prg-1sw-dw-rank-c,prg-1sw-dwvid-wpo-2,prg-1sw-fillsptmpl,prg-1sw-hide-lckprev,prg-1sw-lottie,prg-1sw-lottie-r,prg-1sw-mtr-en-c,prg-1sw-mvspstripe,prg-1sw-mvspstripe2,prg-1sw-newe2e,prg-1sw-ntf-bcrpdrev,prg-1sw-ntf-bcrprev,prg-1sw-ntf-cap3x-ctrl,prg-1sw-ntf-pcrpdrev,prg-1sw-ntf-pcrprev,prg-1sw-ntf-pscdrev,prg-1sw-ntf-pscrev,prg-1sw-ntf2-k2rev,prg-1sw-ntf2-rbww,prg-1sw-ntf2-rdash,prg-1sw-ntf2-segmpallt1,prg-1sw-ntf2-segnmcd,prg-1sw-orlt,prg-1sw-pawpor1,prg-1sw-sacwfelc,prg-1sw-sfexpdat,prg-1sw-spawpor1,prg-1sw-spfntmplt1,prg-1sw-spltheader,prg-1sw-t20t1,prg-1sw-tbrfltr,prg-1sw-tbrguard1,prg-1sw-tvid-int-t1,prg-1sw-tvid-int-t2,prg-1sw-tvid-p1-int,prg-1sw-tvid-p2-int,prg-1sw-uunrtdepr,prg-1sw-videopb,prg-1sw-videosxap,prg-1sw-watchmonitor,prg-1sw-wxaqrci,prg-1sw-wxncvf,prg-1sw-wxtrlog,prg-1sw-wxtrlogp-c,prg-ad-cmp-op-t,prg-ad-va-msnhprf,prg-ads-ipv6dmn,prg-adspeek,prg-cg-ab-testing,prg-cg-cfzhcnfx,prg-cg-game-exp-4,prg-cg-lstfix,prg-ch-lsbho,prg-chpg-kt-override,prg-chpg-msn-feed,prg-chpg-msn-feed-iso-kt,prg-cnt-mwtoprank,prg-e2e-compset,prg-gaming-ex-t1,prg-msn-asgp1ho,prg-msn3cb0529,prg-msnashsicoho,prg-ntp-as-hovt2ho,prg-ntp-bn1sept,prg-ntp-cpcw,prg-ntp-rwdmedalho,prg-ntp-t2s-tst-bl,prg-p1-txt2,prg-p1-uc3,prg-p2-txt2,prg-p2-uc3,prg-p2-wxacmedium,prg-pr1-videos,prg-pr2-acwidget,prg-pr2-bao-t,prg-pr2-bapio,prg-pr2-c-rubydashbg,prg-pr2-c-sptdsync,prg-pr2-climretry,prg-pr2-cst-shr-c2d,prg-pr2-ctsr,prg-pr2-diswwidgets,prg-pr2-dmabrowser,prg-pr2-dmat,prg-pr2-fopt,prg-pr2-grubondash,prg-pr2-hybrid,prg-pr2-imghtdd-t,prg-pr2-imghttd-t,prg-pr2-lcsmlcrd,prg-pr2-lifecycleba,prg-pr2-lottie-brds,prg-pr2-lottie-tbr,prg-pr2-msnupqsp,prg-pr2-newint,prg-pr2-novidtel,prg-pr2-ntf-rel,prg-pr2-nupdate,prg-pr2-poclss,prg-pr2-rbylazy,prg-pr2-readytoshow,prg-pr2-reclaim,prg-pr2-rubifyrb,prg-pr2-rubondash,prg-pr2-rubybglobal,prg-pr2-rubyboardcn,prg-pr2-setdur-t2,prg-pr2-spnohide2,prg-pr2-sqreflpprs,prg-pr2-sr-10,prg-pr2-togglehybrid,prg-pr2-videos,prg-pr2-wtab-oo,prg-pr2-wwidgets-t,prg-prcache-20m,prg-rp2-tmpl,prg-sh-bd-video,prg-sh-rmitmlnk,prg-shasgtclho,prg-shopping-api,prg-titlemapping-c,prg-toubanner-1,prg-tv-api,prg-tv-p2-api,prg-tv-p2-segcap10,prg-tv-segcap10,prg-ucs-c,prg-upsaip-w1-t,prg-vid-trdcache,prg-views-c-stage,prg-wtch-n2vimp-c",
+    "fdFlightingVersion": "53620174",
+    "serviceActivityId": "d22543ce-eb46-4990-9baf-6381b12847a5",
+    "debugInfo": "layout:xapwpo",
+    "responseCreationDateTime": "2026-09-10T07:10:18.9553308Z",
+    "requestHeaderMuid": "06ad6d0e-faeb-6909-21f5-787ffba868c6",
+    "debugId": "d22543ce-eb46-4990-9baf-6381b12847a5|2026-09-10T07:10:18.9553404Z|fabric_msn|KOC-A|News_1518",
+    "searchStoreVersion": "XW",
+    "tier": "p",
+    "clientActivityId": "6aa25114-e32d-4847-a410-97c586f0fbb3",
+    "disableContent": true,
+    "wpoDebug": "l3",
+    "rubyEverSelected": true,
+    "rubySeenOrSelectedPrevious": true,
+    "rubySampleSelected": true,
+    "rubyEverSelectedSync": true,
+    "enableSpotlightStack": false
+  },
+  "metadata": {
+    "userContext": {
+      "isMigrationConsentNeeded": false
+    }
+  },
+  "specialEvents": {},
+  "pageContext": {
+    "optimizationItems": [
+      {
+        "type": "topsitesCollapse",
+        "isLocalContent": false,
+        "subCardsCount": 0,
+        "data": "{\"collapsibleControlIsDefaultCollapsed\":true,\"showCollapsibleControl\":true,\"collapseForDefaultInformational\":true,\"promoteTopSitesTop\":false,\"promoteTopSites2Row\":false,\"expandForAllLayout\":false}",
+        "cardRankingMetadata": {
+          "pClick": 0.0,
+          "pRelevance": 0.0,
+          "additionalNumericProperties": {},
+          "additionalProperties": {}
+        },
+        "dedupeIds": {}
+      },
+      {
+        "type": "uxMessage",
+        "isLocalContent": false,
+        "subCardsCount": 0,
+        "data": "{\"showCoachMark\":false,\"tmpl\":\"prg-nondau7days\",\"featUX\":\"NRTDAUActionCntDaily:0,IsCSDAU7dSum:0\"}",
+        "cardRankingMetadata": {
+          "pClick": 0.0,
+          "pRelevance": 0.0,
+          "additionalNumericProperties": {},
+          "additionalProperties": {}
+        },
+        "dedupeIds": {}
+      },
+      {
+        "type": "wpoSignal",
+        "isLocalContent": false,
+        "subCardsCount": 0,
+        "data": "{\"feedsEngagement\":{\"withEngagement30d\":false,\"tmpl\":\"nowpontpengage30d\",\"lookupKey\":\"NoFeedsEngagement\"}}",
+        "cardRankingMetadata": {
+          "pClick": 0.0,
+          "pRelevance": 0.0,
+          "additionalNumericProperties": {},
+          "additionalProperties": {}
+        },
+        "dedupeIds": {}
+      },
+      {
+        "type": "topsitesPromotion",
+        "isLocalContent": false,
+        "subCardsCount": 0,
+        "data": "{\"overrideIconsList\":[{\"identifierHosts\":[\"https://www.msn.com/weather?form=ANTPSWEAT\"],\"faviconUrl\":\"//img-s-msn-com.akamaized.net/tenant/amp/entityid/BB19a9p7.img\",\"faviconId\":\"\"}],\"enableRecommendedSites\":true,\"recommendedSites\":[{\"locationIndex\":19,\"title\":\"\\u5929\\u6C14\",\"url\":\"https://www.msn.com/weather?form=ANTPSWEAT\",\"faviconUrl\":\"cms/api/amp/image/BB19a9p7\",\"faviconId\":\"\",\"isSponsored\":false}]}",
+        "cardRankingMetadata": {
+          "pClick": 0.0,
+          "pRelevance": 0.0,
+          "additionalNumericProperties": {},
+          "additionalProperties": {}
+        },
+        "dedupeIds": {}
+      }
+    ]
+  },
+  "isPartial": false,
+  "expirationDateTime": "2026-09-13T07:10:18.9553784Z",
+  "authContext": {
+    "muid": "m-06AD6D0EFAEB690921F5787FFBA868C6",
+    "anid": "a-46A4CF813C6C4E5C471AA633FFFFFFFF",
+    "at": "MSA",
+    "it": "App"
+  }
+}

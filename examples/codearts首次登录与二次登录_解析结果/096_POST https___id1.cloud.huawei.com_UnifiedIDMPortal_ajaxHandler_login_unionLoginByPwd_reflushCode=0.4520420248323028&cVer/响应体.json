@@ -1,0 +1,7 @@
+{
+  "errorCode": "10002080",
+  "errorDesc": "{\"authCodeSentList\":[{\"accountType\":-1,\"name\":\"Honor 10\",\"sent\":1,\"type\":\"device\"},{\"accountType\":-1,\"name\":\"乐幻的Nova14Pro\",\"sent\":1,\"type\":\"device\"},{\"accountType\":-1,\"name\":\"MatePad Pro\",\"sent\":1,\"type\":\"device\"},{\"accountType\":2,\"name\":\"173******16\",\"sent\":0}],\"riskFlag\":\"001000000011100001000010000\",\"extInfo\":\"9711D1E2649325BFEB8C184EBFB42017:EA5AEF5E7DF16D654C36EF0A95ED568F59E8C900A86A3119C3EEA14AAF01D83A773691F017BFB6734D292788B9B29F50CAEBD4E79C936F46751FFD54CB0ACAA5\"}",
+  "extErrorDesc": "{\"errorCode\":\"70002080\",\"interfaceName\":\"loginHwid\",\"orgErrorCode\":\"70002080\",\"orgErrorDesc\":\"{\\\"authCodeSentList\\\":[{\\\"accountType\\\":-1,\\\"name\\\":\\\"Honor 10\\\",\\\"sent\\\":1,\\\"type\\\":\\\"device\\\"},{\\\"accountType\\\":-1,\\\"name\\\":\\\"乐幻的Nova14Pro\\\",\\\"sent\\\":1,\\\"type\\\":\\\"device\\\"},{\\\"accountType\\\":-1,\\\"name\\\":\\\"MatePad Pro\\\",\\\"sent\\\":1,\\\"type\\\":\\\"device\\\"},{\\\"accountType\\\":2,\\\"name\\\":\\\"173******16\\\",\\\"sent\\\":0}],\\\"riskFlag\\\":\\\"001000000011100001000010000\\\"}\"}",
+  "isSuccess": 0,
+  "logID": "43127"
+}

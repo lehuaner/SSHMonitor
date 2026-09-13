@@ -1,0 +1,36 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var actionErrors = "";
+    actionErrors = encodeURIComponent(actionErrors);
+    var queryString = window.location.search;
+
+    if (actionErrors !== "" && queryString !== "") {
+        if (queryString.indexOf("actionErrors") == -1) {
+            queryString = queryString + "&actionErrors=" + actionErrors;
+        } else {
+            var search = queryString.split('?')[1];
+            var ulrParams = search.split('&');
+            for (var i = 0; i < ulrParams.length; i++) {
+                if (ulrParams[i].split('=')[0] === "actionErrors") {
+                    ulrParams[i] = "actionErrors=" + actionErrors;
+                }
+            }
+            queryString = "?" + ulrParams.join('&');
+        }
+    } else if (actionErrors !== "" && queryString == "") {
+        queryString = "?" + "actionErrors=" + actionErrors;
+    }
+    window.location.href = "/authui/login.html" + queryString;
+</script>

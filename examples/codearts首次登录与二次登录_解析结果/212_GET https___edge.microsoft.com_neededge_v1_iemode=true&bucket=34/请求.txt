@@ -1,0 +1,17 @@
+GET https://edge.microsoft.com/neededge/v1?iemode=true&bucket=34 HTTP/2
+:method: GET
+:authority: edge.microsoft.com
+:scheme: https
+:path: /neededge/v1?iemode=true&bucket=34
+cache-control: max-age=0
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+sec-fetch-storage-access: active
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+if-none-match: "7fcfb2a4a51b3f527ffec72e1a157817ccb8d36feb50d6bf0ece8f75bfaf2825"
+if-modified-since: Wed, 05 Aug 2026 09:22:59 GMT
+priority: u=4, i
+cookie: MC1=GUID=14d058988ece400f8d1957996c654b30&HASH=14d0&LV=202501&V=4&LU=1736780324829

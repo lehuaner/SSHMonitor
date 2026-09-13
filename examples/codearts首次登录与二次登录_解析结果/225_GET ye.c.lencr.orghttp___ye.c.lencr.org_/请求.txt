@@ -1,0 +1,8 @@
+GET http://ye.c.lencr.org/ HTTP/1.1
+Cache-Control: max-age = 3600
+Connection: Keep-Alive
+Accept: */*
+If-Modified-Since: Wed, 13 May 2026 23:14:59 GMT
+If-None-Match: "6a0505f3-11b"
+User-Agent: Microsoft-CryptoAPI/10.0
+Host: ye.c.lencr.org

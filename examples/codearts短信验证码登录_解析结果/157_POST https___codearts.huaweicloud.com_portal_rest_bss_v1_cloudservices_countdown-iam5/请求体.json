@@ -1,0 +1,9 @@
+{
+  "tenantId": "01a093a77e757c5db1d0029c06b8996b",
+  "cloudServiceType": "hws.service.type.devcloud",
+  "resourceType": "hws.resource.type.codearts.snap",
+  "regionId": "cn-north-4",
+  "resourceIds": [
+    "d278505eeb834b92a8859372ab552130"
+  ]
+}

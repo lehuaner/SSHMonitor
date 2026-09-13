@@ -1,0 +1,154 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 15:46:58.616
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.events.data.microsoft.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US
+  Simple Name: *.events.data.microsoft.com
+  DNS Name: *.events.data.microsoft.com
+
+[Issuer]
+  CN=Microsoft TLS G2 RSA CA OCSP 10, O=Microsoft Corporation, C=US
+  Simple Name: Microsoft TLS G2 RSA CA OCSP 10
+  DNS Name: Microsoft TLS G2 RSA CA OCSP 10
+
+[Serial Number]
+  4900CA6619BD29821292B8FC7B000000CA6619
+
+[Not Before]
+  2026/8/29 19:30:15
+
+[Not After]
+  2027/2/25 19:30:15
+
+[Thumbprint]
+  E54746C2A08B420D4FEAD110E0A92862ADB1AE7E
+
+[Signature Algorithm]
+  sha384RSA(1.2.840.113549.1.1.12)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 bb de 0d 44 26 17 91 dd c8 21 7c c8 6e 08 de 4b 7b f4 25 37 2d 7e ba 01 76 19 9c 8d 01 3f 76 fb fb cf 4f c3 00 ac 0b 8b 30 7f dd a0 37 23 b9 03 a6 28 41 27 db 00 90 41 f8 61 30 e8 48 bd 31 0b 0a 64 cc e7 11 dc 8d 6e 37 86 22 07 2c 17 d0 08 d9 23 ac 3f ee 04 59 89 f9 c6 99 80 ba a6 47 6b 7f dd 34 6c 26 7d fe 32 39 53 06 80 4c 0c 9e 6c 69 4b 12 7c bc eb e0 bf 1b 1e 62 61 b1 51 a7 b3 5c b1 8e 39 b3 0b 72 b0 bc a7 10 84 94 7d bd c2 c2 ac b2 d8 48 75 80 ae 21 54 30 5e 2f a7 4f 4a 78 98 cb 28 3e c5 64 de 46 33 ae b6 7c 3f fa 66 a9 1b 29 a9 f0 b4 43 10 f4 c9 27 2f 54 14 bf 90 6e 77 7b 08 7a f7 9b 44 2c de 0e 75 8f 55 2f 02 15 71 b6 3f 4a 03 ba a8 32 f5 1b b3 1d 3d 4c f3 73 70 36 93 90 9c 03 89 78 56 86 8f ec 9c ed 3d dd 51 50 db b4 f7 be 95 35 3c 5e 51 47 d9 67 b5 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+d6d58da9d01753f36a4aa0c7574902afebc7dc2cd38cd9f764c80c89191e9f02
+‎2026‎年‎8‎月‎29‎日 19:40:19
+SHA256
+ECDSA
+304502210092cfff04fb62554b21fbecc9aba856f782dd205c06a55a0c51800ab70bb5883a02202afb6d1dc912322c89ac5756a5450c36111252987b3d2c8358ea7c45d8ea1a69
+
+v1
+001a5d1a1c2d9375b6485578f82f71a1ae6eef397d297c8ae3157bcadee1a01e
+‎2026‎年‎8‎月‎29‎日 19:40:19
+SHA256
+ECDSA
+3045022100d662c221faf49520574027c3ca978f3c6f76f60ab4d657124a442fa0ca53d59002204c30c120a58efe8e6cafd433e157377e86aa356856231ebb79d9256c0dd7b803
+
+v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎8‎月‎29‎日 19:40:19
+SHA256
+ECDSA
+30450220390a4450ae429ddfc43b709ed34e482c1390494f55dcbe47b1a98449045db48d022100c3d921e6dd20df9c53101a7b7f5d3b8276012ff617694c199bd41e509d24fdd3
+
+* 应用程序策略(1.3.6.1.4.1.311.21.10):
+  [1]Application Certificate Policy:
+     Policy Identifier=服务器身份验证
+
+* 证书模板信息(1.3.6.1.4.1.311.21.7):
+  Template=1.3.6.1.4.1.311.21.8.15690651.3798470.4214446.239628.16526621.93.8020455.5050828
+Major Version Number=100
+Minor Version Number=32
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://www.microsoft.com/pkiops/certs/Microsoft TLS G2 RSA CA OCSP 10.crt (http://www.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2010.crt)
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://caissuers.microsoft.com/pkiops/certs/Microsoft TLS G2 RSA CA OCSP 10.crt (http://caissuers.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2010.crt)
+[3]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://oneocsp.microsoft.com/ocsp
+
+* 使用者密钥标识符(2.5.29.14):
+  7bd8a6e057a60ea4d84b822bac1681fd4d849b62
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.events.data.microsoft.com
+DNS Name=events.data.microsoft.com
+DNS Name=*.pipe.aria.microsoft.com
+DNS Name=pipe.skype.com
+DNS Name=*.pipe.skype.com
+DNS Name=*.mobile.events.data.microsoft.com
+DNS Name=mobile.events.data.microsoft.com
+DNS Name=*.events.data.msn.com
+DNS Name=events.data.msn.com
+DNS Name=*.events.data.msn.cn
+DNS Name=events.data.msn.cn
+DNS Name=*.vortex.data.microsoft.com
+DNS Name=vortex.data.microsoft.com
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://www.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 RSA CA OCSP 10_Partition00064.crl (http://www.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2010_Partition00064.crl)
+               URL=http://crl2.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 RSA CA OCSP 10_Partition00064.crl (http://crl2.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2010_Partition00064.crl)
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+[2]Certificate Policy:
+     Policy Identifier=1.3.6.1.4.1.311.76.509.1.1
+     [2,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.microsoft.com/pkiops/Docs/Repository.htm
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=d04c83d18e712e3d34b1ff9b792c8e74d4e27806
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+
+[SubjectAltNames]
+DNS Name=*.events.data.microsoft.com
+DNS Name=events.data.microsoft.com
+DNS Name=*.pipe.aria.microsoft.com
+DNS Name=pipe.skype.com
+DNS Name=*.pipe.skype.com
+DNS Name=*.mobile.events.data.microsoft.com
+DNS Name=mobile.events.data.microsoft.com
+DNS Name=*.events.data.msn.com
+DNS Name=events.data.msn.com
+DNS Name=*.events.data.msn.cn
+DNS Name=events.data.msn.cn
+DNS Name=*.vortex.data.microsoft.com
+DNS Name=vortex.data.microsoft.com
+

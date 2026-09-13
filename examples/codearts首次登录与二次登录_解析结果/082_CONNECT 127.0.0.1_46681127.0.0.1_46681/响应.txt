@@ -1,0 +1,6 @@
+HTTP/1.1 502 Fiddler - Connection Failed
+Date: Fri, 11 Sep 2026 16:29:03 GMT
+Content-Type: text/html; charset=UTF-8
+Cache-Control: no-cache, must-revalidate
+Timestamp: 00:29:03.944
+Connection: close

@@ -1,0 +1,28 @@
+{
+  "ageLimit": 14,
+  "agreeForReg": "[{'id':'12','siteC':'$regionCode','ver':'27030'},{'id':'0','siteC':'$regionCode','ver':'20221229'},{'id':'2','siteC':'$regionCode','ver':'1.04'},{'id':'16','siteC':'$regionCode','ver':'20221229'}]",
+  "agreementContents": [
+    {
+      "agrBrief": "<div class=\"agr-text\">我们为您提供账号服务。您在使用此服务过程中，我们可能需要<div class=\"agr-bold-text\">联网</div>，并使用您的账号、设备、网络、位置、身份、个人基本资料、应用信息以及您主动上传的数据。点击“{0}”，即表示您同意上述内容及<a class=\"item-link\" target=\"_blank\" href=\"https://id1.cloud.huawei.com/AMW/portal/agreements/userAgreement/zh-CN_userAgreement.html?version=china&reqClientType=88&clientID=103493351\">华为账号用户协议</a>、<a class=\"item-link\" target=\"_blank\" href=\"https://id1.cloud.huawei.com/AMW/portal/agreements/accPrivacyStatement/zh-CN_accPrivacyStatement.html?version=china&reqClientType=88&clientID=103493351\">关于华为账号与隐私的声明</a>。</div>",
+      "agrID": 12,
+      "agrTitle": "华为账号服务条款",
+      "agrType": "base_agr_china",
+      "agrVer": "27030",
+      "defaultAgreeOrNot": false
+    }
+  ],
+  "cookieOpen": true,
+  "cookieUrl": "https://consumer.huawei.com/cn/legal/cookie-policy/",
+  "countryCode": "cn",
+  "countrySiteID": 1,
+  "countrySpecial": false,
+  "huaweiIDAgrUrl": "https://id1.cloud.huawei.com/AMW/portal/agreements/userAgreement/zh-cn_userAgreement.html?version=china&regionCode=cn&reqClientType=88&clientID=103493351&loginChannel=88000000",
+  "isRegNeedInputAge": "true",
+  "isSuccess": 1,
+  "letterOfConsentUrl": "https://id1.cloud.huawei.com/AMW/portal/agreements/letterOfConsent/zh-cn_LetterOfConsent.html?reqClientType=88&loginChannel=88000000&version=china&clientID=103493351",
+  "localStorageID": "AqadBXxTb14yLSCIkLh0OKPZfozVPMErSvDX2JNgR1tM3xKi",
+  "mustBindPhone": true,
+  "priorityRegType": "phone",
+  "privacyPolicyUrl": "https://id1.cloud.huawei.com/AMW/portal/agreements/accPrivacyStatement/zh-cn_accPrivacyStatement.html?version=china&regionCode=cn&reqClientType=88&loginChannel=88000000&clientID=103493351",
+  "userPrivacyUrl": "https://id1.cloud.huawei.com/AMW/portal/agreements/userPrivacyPolicy/zh-cn_userPrivacyPolicy.html?reqClientType=88&loginChannel=88000000&version=europe&clientID=103493351"
+}

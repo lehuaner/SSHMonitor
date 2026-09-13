@@ -1,0 +1,12 @@
+{
+  "startDate": "2026-09-06",
+  "endDate": "2026-09-12",
+  "metrics": [
+    "TOTAL_CREDITS",
+    "TOKEN_TOTAL",
+    "TOKEN_DAILY_AVG",
+    "REQUEST_COUNT",
+    "ACTIVE_DAYS",
+    "TOKEN_CACHE_HIT"
+  ]
+}

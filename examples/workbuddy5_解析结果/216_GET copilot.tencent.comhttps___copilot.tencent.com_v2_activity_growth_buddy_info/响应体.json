@@ -1,0 +1,25 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "e8070aff-da41-4c85-926f-a91dbb58d8cc",
+  "data": {
+    "buddy": {
+      "instance_id": 7114066,
+      "name": "雷达喵",
+      "personality": "你话还没问完，就已经在信息汪洋里精准锁定，把答案端上桌的智能搜索官。",
+      "rarity": "R",
+      "soul_desc": "智能搜索官",
+      "base_static_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/b06c0895dbb7fe6d.png",
+      "base_animated_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/47d1ce6f5bd73f23.webm",
+      "full_animated_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/c0e16b6339d1c4c5.apng",
+      "thumbnail_url": "https://staging-download.codebuddy.cn/operation-platform/assets/_general/ce1755fe90d68227.png",
+      "appearance": {
+        "eye": null,
+        "hat": null,
+        "body_accessory": null,
+        "effect": null
+      }
+    },
+    "poll_interval_seconds": 60
+  }
+}

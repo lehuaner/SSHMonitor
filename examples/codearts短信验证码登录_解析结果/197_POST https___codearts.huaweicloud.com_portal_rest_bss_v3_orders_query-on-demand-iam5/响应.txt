@@ -1,0 +1,32 @@
+HTTP/1.1 200
+Date: Sat, 12 Sep 2026 07:47:33 GMT
+Content-Type: application/json;charset=utf-8
+Server: openresty
+lubanops-gtrace-id: 122504-1789199253851-3608864
+lubanops-ntrace-id: 122504-1789199253851-3608864
+lubanops-nenv-id: 75958
+X-ConsoleFrame-Flag: J-CF2
+Stream-Tag: staticB
+Endpoint: CodeArtsAgentPortal
+Region-ID: cn-north-4
+Rf: service
+Seq-Id: 2203600
+lubanops-nenv-id: 161788
+Cache-Control: no-cache, no-store, must-revalidate
+lubanops-gtrace-id: v-7755481-1789199253909-29850873
+Expires: Thu, 01 Jan 1970 00:00:00 GMT
+Pragma: no-cache
+X-Kong-Upstream-Latency: 15
+X-Kong-Proxy-Latency: 2
+X-Request-Id: 9bfcfff4f2b88cb06abf30e93af73ce7
+Strict-Transport-Security: max-age=31536000; includeSubdomains;
+X-Frame-Options: SAMEORIGIN
+X-Content-Type-Options: nosniff
+X-Download-Options: noopen
+X-XSS-Protection: 1; mode=block;
+X-CCDN-Origin-Time: 186
+via: CHN-JSlianyungang-AREACMCC3-CACHE37[210],CHN-JSlianyungang-AREACMCC3-CACHE13[207,TCP_MISS,209],CHN-JXnanchang-GLOBAL1-CACHE28[190],CHN-JXnanchang-GLOBAL1-CACHE104[186,TCP_MISS,188]
+x-hcs-proxy-type: 0
+X-CCDN-CacheTTL: 0
+X-CCDN-REQ-ID-46B1: 244ab66d21fbabb610db57aa053de058
+Content-Length: 169

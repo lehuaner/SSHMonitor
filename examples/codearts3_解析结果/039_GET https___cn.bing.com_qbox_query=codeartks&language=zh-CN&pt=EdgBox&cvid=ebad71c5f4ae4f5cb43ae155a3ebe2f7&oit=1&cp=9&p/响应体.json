@@ -1,0 +1,106 @@
+[
+  "codeartks",
+  [
+    "codearts",
+    "codearts agent",
+    "codearts ide",
+    "codearts snap",
+    "codearts下载",
+    "codearts doer",
+    "codearts repo",
+    "codearts代码智能体",
+    "codearts cli",
+    "codearts agent下载",
+    "codearts ide for 仓颉",
+    "codearts ide 下载"
+  ],
+  [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
+  [],
+  {
+    "google:clientdata": {
+      "bcp": false,
+      "phi": 0,
+      "tlw": false
+    },
+    "google:suggestdetail": [
+      {
+        "q": "qs=SC&pq=codeartks&sk=CSYN1&sc=13-9"
+      },
+      {
+        "q": "qs=SC&pq=codeartks&sk=CSYN1SC1&sc=13-9"
+      },
+      {
+        "q": "qs=SC&pq=codeartks&sk=CSYN1SC2&sc=13-9"
+      },
+      {
+        "q": "qs=SC&pq=codeartks&sk=CSYN1SC3&sc=13-9"
+      },
+      {
+        "q": "qs=SC&pq=codeartks&sk=CSYN1SC4&sc=13-9"
+      },
+      {
+        "q": "qs=SC&pq=codeartks&sk=CSYN1SC5&sc=13-9"
+      },
+      {
+        "q": "qs=SC&pq=codeartks&sk=CSYN1SC6&sc=13-9"
+      },
+      {
+        "q": "qs=SC&pq=codeartks&sk=CSYN1SC7&sc=13-9"
+      },
+      {
+        "q": "qs=SC&pq=codeartks&sk=CSYN1SC8&sc=13-9"
+      },
+      {
+        "q": "qs=SC&pq=codeartks&sk=CSYN1SC9&sc=13-9"
+      },
+      {
+        "q": "qs=SC&pq=codeartks&sk=CSYN1SC10&sc=13-9"
+      },
+      {
+        "q": "qs=SC&pq=codeartks&sk=CSYN1SC11&sc=13-9"
+      }
+    ],
+    "google:suggestrelevance": [
+      900,
+      600,
+      559,
+      558,
+      557,
+      556,
+      555,
+      554,
+      553,
+      552,
+      551,
+      550
+    ],
+    "google:suggesttype": [
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY"
+    ],
+    "google:verbatimrelevance": 935
+  }
+]

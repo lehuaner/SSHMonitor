@@ -1,0 +1,25 @@
+HTTP/1.1 200 OK
+Date: Sat, 12 Sep 2026 07:47:26 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 1319
+Access-Control-Allow-Origin: https://auth.huaweicloud.com
+Access-Control-Allow-Credentials: true
+Set-Cookie: CASTGC=TGT-417025-TgKIGEnW9UQ7QOSzfVavM5eE1ehE62OLAcsejV0klByBumXbVBLe-cas-XbSiLBLWa9woqVFiTX6EL0mfZhy51nZW;Domain=id1.cloud.huawei.com;Path=/UnifiedIDMPortal;Secure;HttpOnly;SameSite=None
+Set-Cookie: HuaweiID_CAS_ISCASLOGIN=true;Domain=.huawei.com;Path=/;Secure;HttpOnly;SameSite=None
+Set-Cookie: CASLOGINSITE=1;Domain=.huawei.com;Path=/;Secure;HttpOnly;SameSite=None
+Set-Cookie: LOGINACCSITE=1;Domain=.huawei.com;Path=/;Secure;HttpOnly;SameSite=None
+Pragma: No-cache
+Cache-Control: no-store,no-cache
+X-Content-Type-Options: nosniff
+Pragma: no-cache
+P3P: CP=" OTI DSP COR IVA OUR IND COM "
+Strict-Transport-Security: max-age 16070400; includeSubDomains
+Cache-Control: no-store
+Content-Security-Policy: default-src 'self' *.huawei.com *.cloud.huawei.com *.huaweicloud.com *.cloud.huawei.com.cn *.consumer.huawei.com *.platform.hicloud.com *.platform.dbankcloud.com *.platform.dbankcloud.cn *.vmall.com *.hicloud.com *.hihonor.com *.emui.com *.geetest.com *.dbankcdn.com *.dbankcdn.cn *.dbankcloud.cn *.dbankcloud.com *.163.com https://metrics-drcn.dt.hicloud.com:6447 https://cstaticdun.126.net https://cstaticdun1.126.net https://cstaticdun-v6.126.net https://cstaticdun1-v6.126.net https://acstatic-dun.126.net https://necaptcha1.nosdn.127.net https://acstatic-dun-v6.126.net *.127.net *.163yun.com *.qlogo.cn *.weibo.com 'unsafe-inline' 'unsafe-eval' blob: data:; script-src 'self' *.huawei.com *.cloud.huawei.com *.cloud.huawei.com.cn *.consumer.huawei.com *.platform.hicloud.com *.platform.dbankcloud.com *.platform.dbankcloud.cn *.vmall.com *.hicloud.com *.hihonor.com *.emui.com *.geetest.com *.dbankcdn.com *.dbankcdn.cn *.dbankcloud.cn *.dbankcloud.com *.163.com https://metrics-drcn.dt.hicloud.com:6447 https://cstaticdun.126.net https://cstaticdun1.126.net https://cstaticdun-v6.126.net https://cstaticdun1-v6.126.net https://acstatic-dun.126.net https://necaptcha1.nosdn.127.net https://acstatic-dun-v6.126.net *.127.net *.163yun.com *.qlogo.cn *.weibo.com 'unsafe-inline' 'unsafe-eval' blob:; object-src 'none'; img-src 'self' *.huawei.com *.cloud.huawei.com *.cloud.huawei.com.cn *.consumer.huawei.com *.platform.hicloud.com *.platform.dbankcloud.com *.platform.dbankcloud.cn *.vmall.com *.hicloud.com *.hihonor.com *.emui.com *.geetest.com *.dbankcdn.com *.dbankcdn.cn *.dbankcloud.cn *.dbankcloud.com *.163.com https://metrics-drcn.dt.hicloud.com:6447 https://cstaticdun.126.net https://cstaticdun1.126.net https://cstaticdun-v6.126.net https://cstaticdun1-v6.126.net https://acstatic-dun.126.net https://necaptcha1.nosdn.127.net https://acstatic-dun-v6.126.net *.127.net *.163yun.com *.qlogo.cn *.weibo.com data: blob:;
+X-XSS-Protection: 1
+Expires: 0
+Set-Cookie: CASTGC=TGT-417025-TgKIGEnW9UQ7QOSzfVavM5eE1ehE62OLAcsejV0klByBumXbVBLe-cas-XbSiLBLWa9woqVFiTX6EL0mfZhy51nZW;Domain=id1.cloud.huawei.com;Path=/CAS;Secure;HttpOnly;SameSite=None
+Set-Cookie: CAS_THEME_NAME=lightred;Domain=id1.cloud.huawei.com;Path=/;Secure;HttpOnly;SameSite=None
+Set-Cookie: JSESSIONID=E7A1EF1F1F53DFF93371CC883F1767857FBC6A4416C251BD09769C7256A063EEE4DE1AFEF091ECAF7042873DEF54F329;Path=/UnifiedIDMPortal;Secure;HttpOnly;SameSite=None
+Set-Cookie: VERSION_NO=UP_CAS_6.26.2.100_blue;Domain=id1.cloud.huawei.com;Path=/;Secure;HttpOnly;SameSite=None
+Server: elb

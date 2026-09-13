@@ -1,0 +1,34 @@
+{
+  "appVersion": "",
+  "sdkId": "js",
+  "sdkVersion": "4.5.30-web",
+  "mainAppKey": "0AND05HGM55JG3O5",
+  "platformId": 3,
+  "common": {
+    "A2": "NcZsaBBiS5nX4kE0CjwWTGBNh0PZi2DN",
+    "A8": "",
+    "A12": "zh-CN",
+    "A17": "1920*1080*1",
+    "A23": "",
+    "A50": "",
+    "A76": "0AND05HGM55JG3O5_1789022301142",
+    "A101": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "A102": "https://www.workbuddy.cn/profile/plans-usage",
+    "A104": "",
+    "A119": "",
+    "A153": ""
+  },
+  "events": [
+    {
+      "eventCode": "rqd_applaunched",
+      "eventTime": "1789022301142",
+      "mapValue": {
+        "A21": "N",
+        "A99": "Y",
+        "A100": "46",
+        "A72": "4.5.30-web",
+        "A88": "1787201063303"
+      }
+    }
+  ]
+}

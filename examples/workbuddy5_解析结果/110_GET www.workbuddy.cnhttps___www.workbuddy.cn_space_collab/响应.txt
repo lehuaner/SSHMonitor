@@ -1,0 +1,10 @@
+HTTP/1.1 101 Switching Protocols
+Connection: upgrade
+Upgrade: websocket
+Sec-WebSocket-Accept: FNZMRfgO8FMABJt3qH0lW7kdK2s=
+Server: APISIX/3.9.1
+X-Request-ID: 1a9ece41-012d-4b48-831d-871b3a33a0a2
+X-Content-Type-Options: nosniff
+Date: Thu, 10 Sep 2026 08:00:09 GMT
+EO-LOG-UUID: 10575183777754641876
+EO-Cache-Status: MISS

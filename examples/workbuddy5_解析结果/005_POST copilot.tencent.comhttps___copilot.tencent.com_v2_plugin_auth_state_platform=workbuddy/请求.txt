@@ -1,0 +1,14 @@
+POST https://copilot.tencent.com/v2/plugin/auth/state?platform=workbuddy HTTP/1.1
+Accept: application/json, text/plain, */*
+Content-Type: application/json
+X-Domain: copilot.tencent.com
+X-No-Authorization: true
+X-No-User-Id: true
+X-No-Enterprise-Id: true
+X-No-Department-Info: true
+User-Agent: WorkBuddy/5.5.3 WorkBuddy/5.5.3 CLI/2.137.1
+X-Request-ID: 6617c5c27d9046d89aaa14cd7a2026a5
+X-Product: SaaS
+Content-Length: 2
+Host: copilot.tencent.com
+Connection: keep-alive

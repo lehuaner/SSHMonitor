@@ -1,0 +1,14 @@
+{
+  "code": 0,
+  "data": {
+    "items": [
+      {
+        "kind": "theme",
+        "resource_key": "dark",
+        "updated_at": "2026-09-08T22:31:08.315+08:00"
+      }
+    ]
+  },
+  "msg": "ok",
+  "requestId": "fd8556f6-c238-4bea-9b6d-b79910381fc0"
+}

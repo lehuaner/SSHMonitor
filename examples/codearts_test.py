@@ -148,6 +148,7 @@ def call(label, method, path, body=None, note="", use_cookie=True):
             "ms": ms,
             "session_expired": bool(redirect_hint),
             "hw_ajax_redirect": redirect_hint,
+            "used_cookie": use_cookie,
             "response": payload if payload is not None else text[:600],
             "note": note,
         }
@@ -172,16 +173,18 @@ def main():
     c1, claimed = call("has-claimed", "GET", f"/portal/snap-manager/v1/credit/has-claimed?_={ts()}",
                        note="今日是否已领取每日签到积分")
 
-    call("package_overview", "GET", f"/portal/snap-manager/v1/package_overview?_={ts()}",
+    call("package_overview", "GET", f"/portal/snap-manager/v1/package/overview?_={ts()}",
          note="积分包总览（可用额度来源）")
 
     call("rest/me", "GET", f"/portal/rest/me?_={ts()}", note="当前用户身份与角色")
 
-    call("package_info", "GET", f"/portal/snap-manager/v1/package_info?_={ts()}", note="套餐信息")
+    call("package_info", "GET", f"/portal/snap-manager/v1/package/info?_={ts()}", note="套餐信息")
 
     # ---- 阶段 2：条件写入 ------------------------------------------------
     log.append("\n【阶段 2】每日签到领取（条件执行）")
-    expired = any(c.get("session_expired") for c in evidence["cases"])
+    # ★ 只统计「带 Cookie」的用例：负向对照（use_cookie=False）**必然**返回
+    #   HW-AJAX-REDIRECT，若一并统计会让失效判定恒为真、导致 claim 永不执行。
+    expired = any(c.get("session_expired") for c in evidence["cases"] if c.get("used_cookie"))
     if expired:
         log.append("  ⚠ 当前 Cookie 会话已失效（抓包于 2026-09-08，实测 2026-09-10）")
         log.append("    -> 跳过 claim 写入；接口行为以抓包实证为准：")
@@ -206,7 +209,7 @@ def main():
         c3, claimed2 = call("has-claimed(复查)", "GET",
                             f"/portal/snap-manager/v1/credit/has-claimed?_={ts()}",
                             note="确认状态已翻转")
-        call("package_overview(复查)", "GET", f"/portal/snap-manager/v1/package_overview?_={ts()}",
+        call("package_overview(复查)", "GET", f"/portal/snap-manager/v1/package/overview?_={ts()}",
              note="确认积分已入账")
         evidence["summary"] = {"claimed_before": claimed, "claim_response": ok,
                                "claimed_after": claimed2, "claim_http": c2}

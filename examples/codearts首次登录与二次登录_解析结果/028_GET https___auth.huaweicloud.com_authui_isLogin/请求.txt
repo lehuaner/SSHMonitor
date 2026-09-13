@@ -1,0 +1,20 @@
+GET https://auth.huaweicloud.com/authui/isLogin HTTP/2
+:method: GET
+:authority: auth.huaweicloud.com
+:scheme: https
+:path: /authui/isLogin
+sec-ch-ua-platform: "Windows"
+x-requested-with: XMLHttpRequest
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+accept: */*
+sec-ch-ua: "Microsoft Edge";v="153", "Not_A Brand";v="8", "Chromium";v="153"
+content-type: application/x-www-form-urlencoded; charset=UTF-8
+sec-ch-ua-mobile: ?0
+sec-fetch-site: same-origin
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://auth.huaweicloud.com/authui/login.html?service=https%3A%2F%2Fcodearts.huaweicloud.com%2Fportal%2Fsettings%2Fpersonal-usage%3Flocale%3Dzh-cn
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+priority: u=1, i
+cookie: auth_cdn=cdn_cookie_on; tiny_language=zh; HWWAFSESTIME=1789144137084; HWWAFSESID=b77cc7f3d653d1780e; Site=mainland; _frid=4341fa0636bb41de96aa6fafa5c08f9a; locale=zh-cn; _fr_ssid=29e5b28239b748d1918e60ea3365ef42

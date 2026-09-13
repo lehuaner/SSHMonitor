@@ -1,0 +1,10 @@
+POST https://galileotelemetry.tencent.com/v1/metrics HTTP/1.1
+host: galileotelemetry.tencent.com
+connection: keep-alive
+Content-Type: application/json
+User-Agent: genie-monitor/1.0.0
+accept: */*
+accept-language: *
+sec-fetch-mode: cors
+accept-encoding: br, gzip, deflate
+content-length: 7030

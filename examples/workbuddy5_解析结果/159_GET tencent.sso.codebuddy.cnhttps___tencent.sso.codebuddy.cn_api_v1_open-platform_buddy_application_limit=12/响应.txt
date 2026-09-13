@@ -1,0 +1,12 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Transfer-Encoding: chunked
+Connection: keep-alive
+Set-Cookie: session=; Path=/api; Max-Age=0; Expires=Thu, 01-Jan-70 00:00:00 GMT; HttpOnly
+Traceid: 7db5e57892fa4ca099779dd4c22827b0
+X-Request-Id: 7db5e57892fa4ca099779dd4c22827b0
+X-Trace-Id: 7db5e57892fa4ca099779dd4c22827b0
+X-User-Id: 8b3cb381-9ebc-4813-92d9-9e5880528465
+Date: Thu, 10 Sep 2026 08:00:10 GMT
+X-Content-Type-Options: nosniff
+Server: APISIX/3.12.0

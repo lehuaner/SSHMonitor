@@ -1,0 +1,25 @@
+POST https://codearts.huaweicloud.com/portal/snap-manager/v1/package/credit/page HTTP/2
+:method: POST
+:authority: codearts.huaweicloud.com
+:scheme: https
+:path: /portal/snap-manager/v1/package/credit/page
+content-length: 73
+language: zh-cn
+sec-ch-ua-platform: "Windows"
+sec-ch-ua: "Chromium";v="152", "Not?A_Brand";v="24", "Microsoft Edge";v="152"
+cftk: RW11-1900-9I24-E50N-COXP-7C2N-NDQO-PKFT
+sec-ch-ua-mobile: ?0
+x-language: zh-cn
+x-requested-with: XMLHttpRequest
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+accept: application/json, text/plain, */*
+content-type: application/json
+origin: https://codearts.huaweicloud.com
+sec-fetch-site: same-origin
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://codearts.huaweicloud.com/portal/settings/personal-usage?locale=zh-cn
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=1, i
+cookie: _frid=d5b02ea98111446d918d4d8995614324; cbc-sid=204938a7380f3812114134aa69c8d3a31bc5e922f5355d0e2af5899159c59960e7dba5e6814a379537b0; vk=38316b85-c4ee-436f-83cd-36c936da02e9; Hm_lvt_e7a90fbb918d40aec64d1170a5ca608f=1788857953; ua=0d2a3a0cc500f3060f0dc00096bca220; le_huan_le_huan_cfProjectName=cn-north-4; HWWAFSESID=2ecfe73bc014e2ed32; HWWAFSESTIME=1789024224466; locale=zh-cn; _fr_ssid=765130cba33141e69f2f8ddfbca5224a; SessionID=07d02be5-d7cd-451c-bd0a-a8f89a048b66; ad_sc=; ad_mdm=; ad_cmp=; ad_ctt=; ad_tm=; ad_adp=; cf=Direct; user_tag=0d2a3a0dae80f58a1f92c0000c3a3de6; domain_tag=0d2a3a0cc500f3060f0dc00096bca220; popup_max_time=60; masked_phone=173****7416; masked_user=l***uan; masked_domain=l***uan; usite=cn; x-framework-ob=; devclouddevuibjJ_SESSION_ID=edc77dec7298c8bedbb8c039d4c4a74c66f5ea80267d269b; devclouddevuibjagencyID=0d2a3a0dae80f58a1f92c0000c3a3de6; devclouddevuibjtcftk=RW11-1900-9I24-E50N-COXP-7C2N-NDQO-PKFT

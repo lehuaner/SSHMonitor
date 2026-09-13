@@ -1,0 +1,323 @@
+<!--
+  ~ Copyright (c) Huawei Technologies Co., Ltd. 2025-2025. All rights reserved.
+  -->
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="HandheldFriendly" content="True" />
+    <meta
+            name="viewport"
+            content="initial-scale=1.0,width=device-width,minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <meta id="oauth-loading-color-scheme" name="color-scheme" content="light dark">
+    <meta http-equiv="cleartype" content="on" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script id="oauth-js">
+        function isVue3Supported() {
+            return typeof Proxy !== 'undefined'
+        }
+
+        function isMobileWap() {
+            var ua = navigator.userAgent.toLocaleLowerCase()
+            return /android|mobile|iphone|ipad|hwid_clienttype=hmos/i.test(ua)
+        }
+
+        if (!isMobileWap() && !isVue3Supported()) {
+            // web不支持vue3则提示升级
+        window.location.href = '/static_rss_vue3/html/updateBrowser.html'
+        }
+    </script>
+    <!-- 注意这里一定要使用base64, 为了兼容端侧老版本getAuthInfo白名单校验bug，需避免js执行getAuthInfo的时候webview还在请求图标 -->
+    <link
+            rel="shortcut icon"
+            href="data:image/png;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApJiSIKSckGignJHIoJiSKKSckkCknJFwpJySkKSckjCknJFQpJyTGKSckSCknJIQpJyRMKCYkmCknJFQpJiOIKScksCgnJI4oJyRyKSckiiknJBQpJyR2KSckgiknJJIpJyRIKSckjiknJLgpJySIKSckTiknJJopJyQaKSYjiCknJFYpJyQQKSckSCknJFgpJyQMKSckSiknJCYpJyRSKSckViknJAopJyRkKSYjPiknJEopJySEKSckUCknJFYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAtF8JqLRfCyi0XwoQtF8IMAAAAAAAAAAAAAAAAAAAAAC0XwQwsF8GELRfCzC0XwWwAAAAAAAAAAAAAAAAtF8IoLRfCri0XwbYtFsHALRfCqi0Xwh4AAAAAAAAAAC0Xwh4sF8GqLRfCviwXwbYtF8GuLRfCKAAAAAAtF8IALRfCZC0XwsYtF8LULBfC1C0XwrYtF8I4AAAAAAAAAAAtF8I4LRbCti0XwtItF8LSLRfBxC0XwmQtF8IALRfCZi0Xwv8tF8L/LRfC+C0XwpgtF8KWLRbBki0XwlgtFsFYLRfCki0XwpYtF8KYLRfC+C0Xwv8tF8L/LRfCZi0XwswtF8L/LRfCri0XwoAtF8LqLRfC9iwXwoQtF8GwLRfCsC0XwoQtF8L2LRfC6i0XwoItF8KuLRfC/ywXwswtF8KYLBbCQi0XwqQtF8L/LRfC/y0XwpwtF8LsLRfCvi0Xwr4tF8LsLRfCmi0Xwv8tF8L/LRfCpC0XwkQtF8GaAAAAAC0WwoAtF8L/LRfC/ywXwuItF8KaLRfC/y0XwsQtF8HELRfC/y0XwposF8LiLRfC/y0Xwv8tF8KAAAAAAAAAAAAtF8K2LRfC/y0Xwv8tFsFeLRfC9C0Xwv8tFsLCLRfCwi0Xwv8tF8L0LRfBXi0Xwv8tF8L/LRfCtgAAAAAAAAAALBfCdC0Xwv8tF8GaLRfCaC0Xwv8tF8L/LRfBtC0XwrQtF8L/LRfC/y0XwmotF8KaLRfC/y0XwnYAAAAAAAAAAC0XwgYsF8KcLRfCCi0XwpgtF8L/LRfC/y0XwpgtF8KYLRfC/y0Xwv8tF8KWLRbBCi0Xwp4sF8IIAAAAAAAAAAAAAAAAAAAAAAAAAAAtF8JuLRfC/y0Xwv8tF8JoLRfCaC0Xwv8tF8L/LRfBbgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALRfCBi0XwpItFsLmLRfCHCwXwhwtF8LmLRfCki0XwQYAAAAAAAAAAAAAAAAAAAAAZKoAACyKAAD/+wAA//8AAOfnAADDwwAAw8MAAIGBAAAAAAAAQAIAAIABAACIEQAAyBMAANALAAD5nwAA+Z8AAA=="
+            type="image/x-icon"
+    />
+    <link rel="stylesheet" href="/static_rss_vue3/css/global.css" />
+    <title>​​​​​</title>
+  
+  
+  <script type="module">if (typeof Proxy !== 'undefined') { import.meta.url;import("_").catch(()=>1);(async function*(){})().next();if(location.protocol!="file:"){window.__vite_is_modern_browser=true} }</script>
+  <script type="module">if (typeof Proxy !== 'undefined') { !function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}(); }</script>
+</head>
+<body>
+<div id="app"></div>
+<script id="oauth-js" type="text/javascript" src="/static_rss_vue3/js/jsAnalysis.js?oauth20260608122941"></script>
+<script id="oauth-js">
+    function loadScript(src, isModule, callback) {
+        var script = document.createElement('script');
+        script.src = src;
+        script.type = isModule ? 'module' : 'text/javascript';
+        script.crossOrigin = 'anonymous';
+
+        script.onreadystatechange = function() {
+            if (this.readyState === 'loaded' || this.readyState === 'complete') {
+                script.onreadystatechange = null;
+                if (typeof callback === 'function') {
+                    callback(null);
+                }
+            }
+        };
+
+        script.onload = function() {
+            if (typeof callback === 'function') {
+                callback(null);
+            }
+        };
+
+        script.onerror = function() {
+            if (typeof callback === 'function') {
+                callback(new Error('Failed to load script: ' + src));
+            }
+        };
+
+        document.head.appendChild(script);
+    }
+
+    function loadCSS(href, callback) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        link.crossOrigin = 'anonymous';
+
+        link.onreadystatechange = function() {
+            if (this.readyState === 'loaded' || this.readyState === 'complete') {
+                link.onreadystatechange = null;
+                if (typeof callback === 'function') {
+                    callback(null);
+                }
+            }
+        };
+
+        link.onload = function() {
+            if (typeof callback === 'function') {
+                callback(null);
+            }
+        };
+
+        link.onerror = function() {
+            if (typeof callback === 'function') {
+                callback(new Error('Failed to load CSS: ' + href));
+            }
+        };
+
+        document.head.appendChild(link);
+    }
+
+    function loadVue3Static() {
+        if (typeof window.oauth2ReportData === 'function') {
+            window.oauth2ReportData(
+                { message: "isSupportES6 = 'true', load vue3 static" },
+                'healthCheck'
+            );
+        }
+
+        loadCSS('/static_rss_vue3/css/index-20260608122941.css', function(err) {
+            if (err) {
+                console.error('Error loading Vue 3 CSS:', err);
+            } else {
+                    loadScript('/static_rss_vue3/js/index-20260608122941.js', true, function(err) {
+                    if (err) {
+                        console.error('Error loading Vue 3 resources:', err);
+                    } else {
+                        console.log('Vue 3 resources loaded successfully');
+                    }
+                });
+            }
+        });
+    }
+
+    function isMobileAuthorizePage(queryParams, isMobile) {
+        // 判断页面是否为移动端授权页面
+        var isMobileDisplay = queryParams.display === 'mobile' || queryParams.display === 'touch';
+        var isDeviceAbsent = !queryParams.device; // 判断 queryParams 中是否没有 device 参数
+        var isMobileDevice = isMobile(navigator.userAgent); // 判断是否为移动设备
+        var isDevicePage = window.location.pathname === '/oauth2/v3/device' || window.location.pathname === '/oauth2/v3/device.html'; // 判断是否为设备授权页面
+
+        return (isMobileDisplay && isDeviceAbsent && isMobileDevice) || isDevicePage;
+    }
+
+    function loadPureJsPage() {
+        // 兼容最老的浏览器
+        var url = window.location.href;
+        var queryParams = getQueryParams(url);
+
+        function isMobile(userAgent) {
+            if (!userAgent || userAgent.trim() === "") return false;
+            var mobileKeys = ["Android", "Mobile", "iPhone", "iPad"];
+            for (var i = 0; i < mobileKeys.length; i++) {
+                if (userAgent.toLowerCase().indexOf(mobileKeys[i].toLowerCase()) !== -1) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        if (!isMobileAuthorizePage(queryParams, isMobile)) {
+            window.oauth2ReportData({ message: "scene not match, load pure js static failed" }, 'healthCheck');
+        }
+
+        var urlJs = '/static_html/authorize-frontend-js/js-index.html?' + queryParamsToString(queryParams);
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('GET', urlJs, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    if (typeof window.oauth2ReportData === 'function') {
+                        window.oauth2ReportData({ message: "load pure js static" }, 'healthCheck');
+                    }
+                    document.body.innerHTML = xhr.responseText;
+                    loadAssets();
+                } else {
+                    window.oauth2ReportData({ message: "fetch http status is " + xhr.status + ", not in [200, 300), load pure js static failed" }, 'healthCheck');
+                }
+            }
+        };
+        xhr.send();
+
+        function getQueryParams(url) {
+            var queryParams = {};
+            var queryString = url.indexOf('?') !== -1 ? url.split('?')[1] : '';
+            var params = queryString.split('&');
+            for (var i = 0; i < params.length; i++) {
+                var param = params[i].split('=');
+                if (param.length === 2) {
+                    queryParams[decodeURIComponent(param[0])] = decodeURIComponent(param[1]);
+                }
+            }
+            return queryParams;
+        }
+
+        function queryParamsToString(queryParams) {
+            var queryString = '';
+            for (var key in queryParams) {
+                if (Object.prototype.hasOwnProperty.call(queryParams, key)) {
+                    if (queryString !== '') {
+                        queryString += '&';
+                    }
+                    queryString += encodeURIComponent(key) + '=' + encodeURIComponent(queryParams[key]);
+                }
+            }
+            return queryString;
+        }
+
+        function loadAssets() {
+            var links = document.body.getElementsByTagName('link');
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i];
+                if (link.rel === 'stylesheet') {
+                    var newLink = document.createElement('link');
+                    newLink.rel = 'stylesheet';
+                    newLink.href = link.href;
+                    document.head.appendChild(newLink);
+                }
+            }
+
+            var scripts = document.body.getElementsByTagName('script');
+            for (var i = 0; i < scripts.length; i++) {
+                var script = scripts[i];
+                if (script.src) {
+                    var newScript = document.createElement('script');
+                    newScript.src = script.src;
+                    document.head.appendChild(newScript);
+                } else {
+                    executeInlineScript(script.innerText || script.textContent);
+                }
+            }
+
+            var onLoadHandler = function () {
+                document.body.style.visibility = 'visible';
+            };
+
+            if (document.readyState === 'complete') {
+                onLoadHandler();
+            } else {
+                window.addEventListener("load", onLoadHandler);
+            }
+        }
+
+        function executeInlineScript(scriptContent) {
+            var scriptElement = document.createElement('script');
+            scriptElement.textContent = scriptContent;
+            document.head.appendChild(scriptElement);
+        }
+    }
+
+    function loadStatic() {
+        if (isVue3Supported()) {
+            loadVue3Static();
+        } else {
+            loadPureJsPage();
+        }
+    }
+
+    function loadStaticWithSwitch(isOnlyJs) {
+        if (isOnlyJs || !isVue3Supported()) {
+            loadPureJsPage();
+        } else {
+            loadVue3Static();
+        }
+    }
+
+    function axiosGetConfigCall(key1) {
+        try {
+            var url =
+                window.location.origin +
+                '/oauth2/config/getBaseSwitchInfo?itemStr=' +
+                encodeURIComponent(key1);
+            var queryString = window.location.search;
+            var urlParams = queryString.length > 1 ? queryString.substring(1).split('&') : [];
+            var cVersion = null;
+
+            for (var i = 0; i < urlParams.length; i++) {
+                var param = urlParams[i].split('=');
+                if (param[0] === 'cVersion') {
+                    cVersion = decodeURIComponent(param[1]);
+                    break;
+                }
+            }
+
+            if (cVersion) {
+                url += '&cVersion=' + encodeURIComponent(cVersion);
+            }
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url, false);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded;');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        var respObj = JSON.parse(xhr.responseText);
+                        var key2Switch = respObj.key2Switch;
+                        loadStaticWithSwitch(key2Switch[key1] === 'true');
+                    } else {
+                        var appDiv = document.getElementById('app');
+                        if (appDiv) {
+                            appDiv.innerText = xhr.responseText; // 显示非200响应内容
+                        }
+                        if (typeof window.oauth2ReportData === 'function') {
+                            window.oauth2ReportData({ message: xhr.responseText });
+                        }
+                    }
+                }
+            };
+
+            xhr.send();
+        } catch (exception) {
+            console.error('Error send request to get switch:', exception);
+            loadStatic();
+        }
+    }
+
+    axiosGetConfigCall('switch.config.only.js');
+
+</script>
+<!-- built files will be auto injected -->
+  <script nomodule>if (typeof Proxy !== 'undefined') { !function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}(); }</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/static_rss_vue3/js/polyfills-legacy-20260608122941.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/static_rss_vue3/js/index-legacy-20260608122941.js">if (typeof Proxy !== 'undefined') { System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src')) }</script>
+</body>
+</html>

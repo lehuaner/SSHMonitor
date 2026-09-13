@@ -1,0 +1,12 @@
+GET https://substrate.office.com/imageb2/v1.0/me/image/$value HTTP/2
+:method: GET
+:authority: substrate.office.com
+:scheme: https
+:path: /imageb2/v1.0/me/image/$value
+authorization: Passport1.4 from-PP='EwAoBGKBBAAUcnotHNLXVkMD2e8VE2fOVpx751UAAfJsCFTVfJWiLsaGYK8ErmXNt78i012VzOA1IdxT79V/U43ti7wKGX2z86jPIacGpbvk91Mp3N9DqBbdnR6/w2r5OAnD9cmI6DwteTpwg6PVbs+2isg+VIIgaqtIdas2fKxDwQqCqqX/w+zaC5duuAeadvzau/oF6T8ekBAPMIzJo+QMMz8WA4VxqYDUlQiTGu2lOgMiY9kYPI1xd2ChQFLye2I33VqaUAAfL0U3KnH/dY3vguOTPHk+hAmANGwq9Z+iD+th8vC2VyM7rnQoXOSPZpq0lVGPldYzJzv/tsvhMxNr37sIAn0RkdQFbcLhyyyYYz6mAQ7KRKcyDWZr5F8QZgAAEK+i1gkvy0AYg7ntDxQ4VdbwAu+8bzRkrSCivIJ3doRsIWh+lwOh8LM0719KJyXnjLj7YS/KTvcwm5PkmgeNMqJzIZVontzVHknLtVbNxab9/siigKPcPwlJRg/22gyeINEdiTHGSZi5QlKLFHb2p+d9TnjinbQCXObyxUUc/QCR8aofaoVU8mvTULz/E4vOCxikdwFex6WK5xQ4ophaWDcmdwvPF/wSbKED5/SZchCtf86Fn7AV5uCW0fZ7QOr9/MRJvLA0aj/y/Q38cnRjEH74vVCn8gA2fbvVl49O6chlC5PXz52qPv3O4uFPbyqPbZc5PCTdUZv/yljbCI+w/DZb+/IwiAAYAs8WG6D4uu47hoCDAzv2NrXjkyZkBGAwEG7RlZ0WFmxj3gKAPKWK+h78TShuTG6veR3ccE90TROdRx3aABj2iMeZJ54JSW8xmg+wxB9ivCvCaoPAeJtc3983DcvOIa2BdZwfHFdt9NqfPHJiQEi+b4AwMCGdYZcjVDngSVKYfjR0GA7i2o5VRqeObhJP3mXcCRFCPi7LeqmIghSry0KgvMvXvqVDmfY7OhIa2FgWisq9yTHOBN3XQXd2cT+DyZk6d8WFZOfBFm8bZWWuDLI0jFiXd69E/mMcifhFCicajkPh2buXq2Efq9yog+wuOUCO7PjfQgUqfdO4D1WfT+yPRfbOxCx7euhs6wlx84g2v/UlQ6C7PzVo59UWsQnzij9Un6i8fxQeCghwBG8BVuKC4hQ/vNwTy3tZJQwbYLDw+f8SfiQDXjwlpMPJd+cYoKHyg+GxR3/8wpNmzEKtIGMewYT5IFEvA8rW3sdLfr2Wduoj667fdJotTStBTTIkYZfz08wq4zUjEImGkXVjVzsh6D2CcFJ69PB83deJgAHgf7VTT+lF/ZMj/SpAzlFLCnKtNO+0mU7nHeFnXSR1i8ox8IdWEfDH7kPrP+J36Is6fDOgeMrX53K/k1n7DcmF9hYTmBMDPYlfB93kQe2kQtavBK5XM/7nnWWpHrM0HwM=
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+accept-encoding: gzip, deflate, br, zstd
+priority: u=4, i

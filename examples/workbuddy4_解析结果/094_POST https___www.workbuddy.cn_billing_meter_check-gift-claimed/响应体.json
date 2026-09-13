@@ -1,0 +1,14 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "c21dfe08-ed29-4669-b2ab-c00a456900dd",
+  "data": {
+    "claimed": true,
+    "claimed_at": "2026-04-14 15:44:41",
+    "active": true,
+    "credit_num": 1500,
+    "validity_period": 1,
+    "start_time": "2026-04-01 00:00:00",
+    "end_time": "2026-09-30 23:59:59"
+  }
+}

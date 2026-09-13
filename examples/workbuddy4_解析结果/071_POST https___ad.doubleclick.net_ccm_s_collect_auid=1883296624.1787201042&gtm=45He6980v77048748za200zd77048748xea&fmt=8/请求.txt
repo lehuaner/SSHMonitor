@@ -1,0 +1,23 @@
+POST https://ad.doubleclick.net/ccm/s/collect?auid=1883296624.1787201042&gtm=45He6980v77048748za200zd77048748xea&fmt=8 HTTP/2
+:method: POST
+:authority: ad.doubleclick.net
+:scheme: https
+:path: /ccm/s/collect?auid=1883296624.1787201042&gtm=45He6980v77048748za200zd77048748xea&fmt=8
+content-length: 0
+pragma: no-cache
+cache-control: no-cache
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+sec-ch-ua: "Chromium";v="152", "Not?A_Brand";v="24", "Microsoft Edge";v="152"
+sec-ch-ua-mobile: ?0
+accept: */*
+origin: https://www.workbuddy.cn
+sec-fetch-site: cross-site
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+sec-fetch-storage-access: active
+referer: https://www.workbuddy.cn/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=1, i
+cookie: id=22216a0d6b0c01b3||t=1783856892|et=730|cs=002213fd480348593c37fc49cc; ar_debug=1

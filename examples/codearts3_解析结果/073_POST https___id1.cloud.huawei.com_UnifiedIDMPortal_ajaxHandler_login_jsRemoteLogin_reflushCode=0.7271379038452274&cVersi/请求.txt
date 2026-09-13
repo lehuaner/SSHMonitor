@@ -1,0 +1,22 @@
+POST https://id1.cloud.huawei.com/UnifiedIDMPortal/ajaxHandler/login/jsRemoteLogin?reflushCode=0.7271379038452274&cVersion=UP_CAS_6.26.2.100_blue HTTP/2
+:method: POST
+:authority: id1.cloud.huawei.com
+:scheme: https
+:path: /UnifiedIDMPortal/ajaxHandler/login/jsRemoteLogin?reflushCode=0.7271379038452274&cVersion=UP_CAS_6.26.2.100_blue
+content-length: 928
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+accept: application/json, text/plain, */*
+sec-ch-ua: "Chromium";v="152", "Not?A_Brand";v="24", "Microsoft Edge";v="152"
+content-type: application/x-www-form-urlencoded
+sec-ch-ua-mobile: ?0
+origin: https://auth.huaweicloud.com
+sec-fetch-site: cross-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+sec-fetch-storage-access: active
+referer: https://auth.huaweicloud.com/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=1, i
+cookie: hwid_cas_sid=2049373b374032d81a9d33f15b7e87fb9503d7b1b683c80f1b843d871fe4df61614febe86337371837a5

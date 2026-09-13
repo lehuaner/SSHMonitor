@@ -1,0 +1,13 @@
+{
+  "fromQueryService": "CLOUD_SERVICE",
+  "pageSize": 200,
+  "pageIndex": 1,
+  "orderCondition": {
+    "orderIds": [
+      "CS2609121127YZUVJ"
+    ]
+  },
+  "orderProperties": [
+    "status"
+  ]
+}

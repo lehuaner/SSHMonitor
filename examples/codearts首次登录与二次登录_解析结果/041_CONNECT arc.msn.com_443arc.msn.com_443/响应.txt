@@ -1,0 +1,156 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 00:28:59.928
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.2
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=arc.msn.com, O=Microsoft Corporation, L=Redmond, S=WA, C=US
+  Simple Name: arc.msn.com
+  DNS Name: dynmsg.modpim.com
+
+[Issuer]
+  CN=Microsoft TLS G2 RSA CA OCSP 02, O=Microsoft Corporation, C=US
+  Simple Name: Microsoft TLS G2 RSA CA OCSP 02
+  DNS Name: Microsoft TLS G2 RSA CA OCSP 02
+
+[Serial Number]
+  4100D4CFB2921A1CFB0079EBBA000000D4CFB2
+
+[Not Before]
+  2026/8/29 4:22:45
+
+[Not After]
+  2027/2/25 4:22:45
+
+[Thumbprint]
+  13BC0C4361AED6012BBFA4D16B0403F317B62380
+
+[Signature Algorithm]
+  sha384RSA(1.2.840.113549.1.1.12)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 c2 4c 9a 51 8a 27 44 7a 25 52 29 96 dd a3 4a ec ad 8a 50 52 bc c9 70 43 34 8d c7 09 16 0b e5 e6 56 b2 ea f0 b5 b1 b1 ee 82 9e 54 1a d4 78 52 7b a0 f4 2f 21 60 4a 26 b0 d3 ae cc 4f 47 38 76 46 4a d6 30 f3 bd e2 c2 a0 00 bc c6 8d b4 29 fe da 0a 99 1d dd 7b 3c 8b ec 3a 6f 9c 38 7d 2a 3b bf 9a 5f 79 3d 9d af f5 98 dc af 13 f3 39 0f 8c 2b 3d 3f 2e 09 47 db f3 e3 43 8e a9 7e 63 5e 0f 8b a1 51 4c 69 e4 5d 0c bb 81 92 c9 f5 94 aa 7f 43 d0 6a 07 3a e9 47 0b e4 f2 15 f5 c4 7b 48 54 9d 99 25 a4 d7 b4 b1 9d 80 01 11 da d8 df 6b e3 07 e5 c3 a8 5f 1c 4a bb f0 26 20 c0 3a f1 ab 75 37 82 52 be 94 5c d7 8e 84 0d 23 15 1b e5 03 56 e8 d8 c5 3d 4e fc 89 32 c6 08 1a 94 26 89 df e5 1f 28 82 52 4c 7d 39 39 d2 dd cb ee e2 92 5d 44 d4 36 2e f4 92 a8 3e 66 f6 41 d6 fe 3d d4 ed 63 b1 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+44c2bd0ce9140e64a5c94a01930a5aa1bb35970e00ee111689682a1c44d7b566
+‎2026‎年‎8‎月‎29‎日 4:32:50
+SHA256
+ECDSA
+3046022100c174e475349fa15c3e27f74923a9e444f60f9192687b53716ba12b3463519c9502210091e3ff0de7f9d6a4584d13e0c1f44e726142f960da1a6a0eee9197b4559ddc5e
+
+v1
+001a5d1a1c2d9375b6485578f82f71a1ae6eef397d297c8ae3157bcadee1a01e
+‎2026‎年‎8‎月‎29‎日 4:32:50
+SHA256
+ECDSA
+3046022100cc594354e72e6ad705ae3dffbbf378b13a23e2cbc6cc51a4daecba662be4e4d90221009b811fdfe5574233edd16954b3b193dbe02ae9d91720dd968764578c1eaca424
+
+v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎8‎月‎29‎日 4:32:50
+SHA256
+ECDSA
+3046022100c4793f558463373695a4e26e7519814f990fe905e418c842bce6529895af347502210087448bed678dec4fa62c5490913e6873fca301329e657aad5b2fbf1f3d085105
+
+* 应用程序策略(1.3.6.1.4.1.311.21.10):
+  [1]Application Certificate Policy:
+     Policy Identifier=服务器身份验证
+
+* 证书模板信息(1.3.6.1.4.1.311.21.7):
+  Template=1.3.6.1.4.1.311.21.8.15690651.3798470.4214446.239628.16526621.93.8020455.5050828
+Major Version Number=100
+Minor Version Number=32
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://www.microsoft.com/pkiops/certs/Microsoft TLS G2 RSA CA OCSP 02.crt (http://www.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2002.crt)
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://caissuers.microsoft.com/pkiops/certs/Microsoft TLS G2 RSA CA OCSP 02.crt (http://caissuers.microsoft.com/pkiops/certs/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2002.crt)
+[3]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://oneocsp.microsoft.com/ocsp
+
+* 使用者密钥标识符(2.5.29.14):
+  544de4e012f611dded08e506ffaf18546c77ead6
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=dynmsg.modpim.com
+DNS Name=dynmsgrest.modpim.com
+DNS Name=arcproxy.microsoft.com
+DNS Name=arc-west.msn.com
+DNS Name=arc-east.msn.com
+DNS Name=arc-emea.msn.com
+DNS Name=arc-apac.msn.com
+DNS Name=fd.api.iris.microsoft.com
+DNS Name=fd-emea.api.iris.microsoft.com
+DNS Name=fd.api.orgmsg.microsoft.com
+DNS Name=fd.msit.api.personalization.ideas.microsoft.com
+DNS Name=ris.api.iris.microsoft.com
+DNS Name=*.ris.api.iris.microsoft.com
+DNS Name=arc.msn.com
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://www.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 RSA CA OCSP 02_Partition00022.crl (http://www.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2002_Partition00022.crl)
+               URL=http://crl2.microsoft.com/pkiops/crl/partition/Microsoft TLS G2 RSA CA OCSP 02_Partition00022.crl (http://crl2.microsoft.com/pkiops/crl/partition/Microsoft%20TLS%20G2%20RSA%20CA%20OCSP%2002_Partition00022.crl)
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+[2]Certificate Policy:
+     Policy Identifier=1.3.6.1.4.1.311.76.509.1.1
+     [2,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.microsoft.com/pkiops/Docs/Repository.htm
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=b82f33a67c514f7f1f2dd5c8154238a4b20e8f2f
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+
+[SubjectAltNames]
+DNS Name=dynmsg.modpim.com
+DNS Name=dynmsgrest.modpim.com
+DNS Name=arcproxy.microsoft.com
+DNS Name=arc-west.msn.com
+DNS Name=arc-east.msn.com
+DNS Name=arc-emea.msn.com
+DNS Name=arc-apac.msn.com
+DNS Name=fd.api.iris.microsoft.com
+DNS Name=fd-emea.api.iris.microsoft.com
+DNS Name=fd.api.orgmsg.microsoft.com
+DNS Name=fd.msit.api.personalization.ideas.microsoft.com
+DNS Name=ris.api.iris.microsoft.com
+DNS Name=*.ris.api.iris.microsoft.com
+DNS Name=arc.msn.com
+

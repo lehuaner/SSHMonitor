@@ -1,0 +1,12 @@
+GET https://tnc0-aliec2.zijieapi.com/get_domains/v5/?aid=6383&device_id=252837073&device_platform=windows&version_code=8.3.0&update_version_code=8.3.0&cronet_version=3cd4fda3_2025-07-21&ttnet_version=4.2.228.2-ccttp&use_store_region_cookie=1&tnc_src=3&delay=0 HTTP/2
+:method: GET
+:authority: tnc0-aliec2.zijieapi.com
+:scheme: https
+:path: /get_domains/v5/?aid=6383&device_id=252837073&device_platform=windows&version_code=8.3.0&update_version_code=8.3.0&cronet_version=3cd4fda3_2025-07-21&ttnet_version=4.2.228.2-ccttp&use_store_region_cookie=1&tnc_src=3&delay=0
+local-etag: 7cfdd648-35432348-c8ad9180-ca2dc0c4
+x-tt-tnc-summary: 7cfdd64835432348c8ad9180ca2dc0c4
+user-agent: Cronet/TTNetVersion:3cd4fda3 2025-07-21 QuicVersion:52c2b40d 2025-04-03
+accept-encoding: gzip, deflate
+x-helios: 3QEAALEAlDYxXy/5ifO3mPac5/YHQVLKFWbcm4U2rUh/JmgQ
+x-medusa: WAOlaqzr+pCM1HlRjSltGgzMxHJjXAMBso1+N0CAIX81GJkHjiz1Qc1NQI1HgBxRs9C91MK073+54z1j+U8i+ij5TGt0I+kOXMhGLzBQINEpa7vqoWMSbgGyCgX05Eqs/QNre+5iVy9dHrqAX36wk6daco4W5ziGn3wr6V/2tWWQES0SPWItry3Gr6ruHeD7Evrl8AwzNnKAqqee8qQYNmTsbJppEKjekRjj3LSotGw5HGDEtn76aGbd/r0rCc+Q7vc1NUlW7mS1wLGnKyonoKKSCH5yFq0AYRuo8bKRzXazPupZM6w3jHgn6L0Y394iGnPrzHgYpSl5EaZaAVZUT2iymPhNVk0bySIgOVbsORqe6jh/9IwxzNQsEtHeJPrwPm+cwwAqOa4amhMEzA3EHxhQm2ajO0PkunfdUWmfxr8pcvHkhDd166Mia71A+r16TL+Z2DRUc2fUdpPzojhEm9hunXDPsbatGV5qglbeMRBGWyIyFNLJdV92stho7ezPZsAFuSbtEL7fdhCoDTL/cpes5tLlD/mphsjGVgu+j0YKe+QvS6lcjm2L83M3FPxz+E+T7TNIolodnYRHIo9yTVU1aUOXYPUKViFi1n2hw7lryWMkXkl0d2CVLSa84M0ECXlF97Jbh/BU+ZXydfcCsS9MR5+fj98XHs+/Jf2fz5vJJ5yYAKsh5vmysyDSrl8xGW+Rua+JO41qal0+WOytP7/NlY1WLk+8So3aPq/H+d8n3tC4T2dlAeUjnGi1kBcoH2X7//////f+/wAA
+x-neptune: -11|50:51:59:00:09

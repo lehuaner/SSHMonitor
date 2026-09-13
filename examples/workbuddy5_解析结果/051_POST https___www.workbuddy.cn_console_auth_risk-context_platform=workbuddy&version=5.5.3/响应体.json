@@ -1,0 +1,9 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "7113ffeb-c32c-4bd8-b6f5-374ccb93e9e5",
+  "data": {
+    "state": "dfaec060-7efd-454b-a0fd-9f19917bf1ff",
+    "authUrl": ""
+  }
+}

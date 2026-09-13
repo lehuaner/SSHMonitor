@@ -1,0 +1,9 @@
+{
+  "startDate": "2025-09-10",
+  "endDate": "2026-09-10",
+  "metrics": [
+    "TOKEN_TOTAL",
+    "REQUEST_COUNT"
+  ],
+  "xDimension": "DATE_DAY"
+}

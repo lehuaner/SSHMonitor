@@ -1,0 +1,20 @@
+HTTP/1.1 200 OK
+Last-Modified: Thu, 10 Sep 2026 02:32:26 GMT
+Etag: "a13ef0cdd15e85c77fd01fbaf9cb3761"
+Content-Type: application/zip
+Date: Thu, 10 Sep 2026 02:33:37 GMT
+Server: tencent-cos
+Vary: Origin, Access-Control-Request-Headers, Access-Control-Request-Method
+x-cos-cache: true
+x-cos-hash-crc64ecma: 6015745109790172239
+x-cos-meta-md5: a13ef0cdd15e85c77fd01fbaf9cb3761
+x-cos-request-id: NmFhMjE3MDFfNTUwZjY5MGJfY2MyM18xODM4OTE2Mg==
+x-cos-storage-class: MAZ_STANDARD
+x-cos-version-id: MTg0NDQ5NTUwNjYxNjI5NjY3NDU
+x-cosindex-replication-status: Complete
+Content-Length: 14254804
+Accept-Ranges: bytes
+X-NWS-LOG-UUID: 10223779833837128691
+Connection: keep-alive
+X-Cache-Lookup: Cache Hit
+Access-Control-Allow-Origin: *

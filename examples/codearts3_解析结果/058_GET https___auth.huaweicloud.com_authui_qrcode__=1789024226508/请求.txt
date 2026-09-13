@@ -1,0 +1,22 @@
+GET https://auth.huaweicloud.com/authui/qrcode?_=1789024226508 HTTP/2
+:method: GET
+:authority: auth.huaweicloud.com
+:scheme: https
+:path: /authui/qrcode?_=1789024226508
+sec-ch-ua-platform: "Windows"
+cache-control: no-store
+pragma: no-store
+sec-ch-ua: "Chromium";v="152", "Not?A_Brand";v="24", "Microsoft Edge";v="152"
+sec-ch-ua-mobile: ?0
+x-requested-with: XMLHttpRequest
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+accept: */*
+content-type: application/x-www-form-urlencoded; charset=UTF-8
+sec-fetch-site: same-origin
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://auth.huaweicloud.com/authui/login.html?service=https%3A%2F%2Fcodearts.huaweicloud.com%2Fportal%2Fsettings%2Fpersonal-usage%3Flocale%3Dzh-cn
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=1, i
+cookie: auth_cdn=cdn_cookie_on; last.login.type=account; rememberPromptMFA_1880604374_nPOjgkce2OHCgBSCSYqRSFdce0OPkUux=1; accountType=personal; tiny_language=zh; _frid=d5b02ea98111446d918d4d8995614324; cbc-sid=204938a7380f3812114134aa69c8d3a31bc5e922f5355d0e2af5899159c59960e7dba5e6814a379537b0; vk=38316b85-c4ee-436f-83cd-36c936da02e9; Hm_lvt_e7a90fbb918d40aec64d1170a5ca608f=1788857953; HW_refts_id1_cloud_huawei_com_auth_huaweicloud_com=1788857992650; HW_id_id1_cloud_huawei_com_auth_huaweicloud_com=6e1372d62a244e708056d03297c6ec92; HW_idts_id1_cloud_huawei_com_auth_huaweicloud_com=1788857992651; xyt_nmk=true; ua=0d2a3a0cc500f3060f0dc00096bca220; le_huan_le_huan_cfProjectName=cn-north-4; HW_idvc_id1_cloud_huawei_com_auth_huaweicloud_com=2; HW_viewts_id1_cloud_huawei_com_auth_huaweicloud_com=1789015102594; HWWAFSESID=e9e3a735e8a40cb1e9; HWWAFSESTIME=1789024224739; locale=zh-cn

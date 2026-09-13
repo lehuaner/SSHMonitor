@@ -1,0 +1,121 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 16:00:11.848
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=copilot.tencent.com, O=Tencent Technology (Shenzhen) Company Limited, L=Shenzhen, S=Guangdong Province, C=CN
+  Simple Name: copilot.tencent.com
+  DNS Name: copilot.tencent.com
+
+[Issuer]
+  CN=DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1, O="DigiCert, Inc.", C=US
+  Simple Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+  DNS Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+
+[Serial Number]
+  0C507F11F8868DB78A1E1BB613A50C73
+
+[Not Before]
+  2026/6/9 8:00:00
+
+[Not After]
+  2026/12/25 7:59:59
+
+[Thumbprint]
+  BD0D58BFD8399D9B409DF5C43C5979F21E37BD2F
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 d3 28 a7 0c 4d 99 fd 56 51 50 03 e1 cd 03 ce f1 de b7 1e 28 79 8e 82 32 17 47 d1 d3 87 e7 ff fb 3e 47 fa 9d e4 6a 76 35 49 4a 49 b1 10 c7 82 6a 36 95 44 c4 6c 87 cc c4 ac 96 e0 3e 8c 28 f6 0d 7e 91 c6 62 70 0d 3f 6e b2 35 16 e2 a1 46 89 14 ce d7 c9 c2 ee 8d 2b c1 14 89 04 91 a7 ea 11 b5 d7 f1 39 4e 7b 7e 21 e9 5f 3e e6 1e d3 c2 c3 d2 af 68 8c 0c 17 55 3e c6 1f d3 71 f4 7d 50 d2 37 4b e5 e5 96 50 cd 3e 52 4a e3 90 b5 51 00 d6 ae f3 e1 ba 23 f8 fd 57 dc 50 06 61 e4 d2 86 c1 8f b3 8a de 34 4c 5d 78 80 4d b3 e7 ec 56 14 28 7e 5d 9a 91 dc d0 d3 e2 e4 3b f5 26 1e c7 75 8a d9 6f 35 13 51 c6 46 04 28 41 fa 68 91 fd cd 5e 69 f6 29 20 45 1b fb a2 07 6c 42 3c 4a 1a aa f7 d0 93 92 34 87 98 85 47 8b dd df a4 d3 4e af 4a 4b d4 35 a2 e5 7d 3d 11 3b 2c 33 6c 27 57 cd 4c 57 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=2b2316811b47898a907aece832d46c8e72f9ce25
+
+* 使用者密钥标识符(2.5.29.14):
+  a69b8d070e992b516e422e10da86394f87b56580
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=copilot.tencent.com
+DNS Name=*.copilot-invite.tencent.com
+DNS Name=*.copilot.tencent.com
+DNS Name=*.sso.copilot.tencent.com
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+客户端身份验证 (1.3.6.1.5.5.7.3.2)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://ocsp.digicert.cn
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+c2317e574519a345ee7f38deb29041ebc7c2215a22bf7fd5b5ad769ad90e52cd
+‎2026‎年‎6‎月‎9‎日 15:03:25
+SHA256
+ECDSA
+3045022036bb46d321ab87a181cdbf098179887773d01f51d031e63fb72c103b04065aea0221008a3a54274102ef6cc5d674779d124420b50d2b16063df00c680bb1112fc7aac4
+
+v1
+d76d7d10d1a7f577c2c7e95fd700bff982c9335a65e1d0b3017317c0c8c56977
+‎2026‎年‎6‎月‎9‎日 15:03:25
+SHA256
+ECDSA
+30450220217bf5f8375af399505e9b169d1b112948d56919903ce0bf1409b94ac5da68120221008457bc377d9f75240f43b889197e8dd954977d86b8f347d86fd012f14c984eca
+
+v1
+944e4387faecc1ef81f3192426a8186501c7d35f3802013f72677d55372e19d8
+‎2026‎年‎6‎月‎9‎日 15:03:25
+SHA256
+ECDSA
+3045022100a745da5d84c84807d1bcdf1d0ae9843b32a90465b11fd978709ef0bd124a168202206d3db6316440a5a6c25d24bcf151f3d38d76f0a02b0f815cb2349eed4ac6009a
+
+
+[SubjectAltNames]
+DNS Name=copilot.tencent.com
+DNS Name=*.copilot-invite.tencent.com
+DNS Name=*.copilot.tencent.com
+DNS Name=*.sso.copilot.tencent.com
+

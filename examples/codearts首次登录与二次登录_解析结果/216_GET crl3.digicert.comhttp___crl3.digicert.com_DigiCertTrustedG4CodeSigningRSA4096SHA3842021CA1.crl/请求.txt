@@ -1,0 +1,8 @@
+GET http://crl3.digicert.com/DigiCertTrustedG4CodeSigningRSA4096SHA3842021CA1.crl HTTP/1.1
+Cache-Control: max-age = 664
+Connection: Keep-Alive
+Accept: */*
+If-Modified-Since: Fri, 11 Sep 2026 08:09:47 GMT
+If-None-Match: "6aa3b74b-2cdd8"
+User-Agent: Microsoft-CryptoAPI/10.0
+Host: crl3.digicert.com

@@ -1,0 +1,8 @@
+HTTP/1.1 204 No Content
+X-Powered-By: Express
+X-Cell-Trace-ID: 304751a3-6ffc-4b5e-a1a3-f768dcff0659
+Access-Control-Allow-Origin: *
+Set-Cookie: gateway_session=d9fdcc2f6d54bb42e21728a1c811f9fbd549e2a64deb9b9d1e092d5b023b642b; HttpOnly; SameSite=Strict; Path=/; Max-Age=2592000
+Date: Thu, 10 Sep 2026 08:00:16 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5

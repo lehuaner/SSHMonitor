@@ -1,0 +1,19 @@
+GET https://oauth-login1.cloud.huawei.com/oauth2/config/getBaseSwitchInfo?itemStr=switch.config.only.js HTTP/2
+:method: GET
+:authority: oauth-login1.cloud.huawei.com
+:scheme: https
+:path: /oauth2/config/getBaseSwitchInfo?itemStr=switch.config.only.js
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+sec-ch-ua: "Chromium";v="152", "Not?A_Brand";v="24", "Microsoft Edge";v="152"
+content-type: application/x-www-form-urlencoded;
+sec-ch-ua-mobile: ?0
+accept: */*
+sec-fetch-site: same-origin
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://oauth-login1.cloud.huawei.com/oauth2/v3/loginCallback?access_type=offline&client_id=103493351&code_challenge_method=S256&display=page&flowID=0a8a41cc000001d17890242291271197&h=1789024229.1280&include_granted_scopes=true&lang=zh-cn&nonce=default&prompt=login&redirect_uri=https%3A%2F%2Fauth.huaweicloud.com%2Fauthui%2FcasLogin%3Fservice%3Dhttps%253A%252F%252Fcodearts.huaweicloud.com%252Fportal%252Fsettings%252Fpersonal-usage%253Flocale%253Dzh-cn&response_type=code&risks=2%3A37EAC30135B8927C3B0CE3FD563FE4A1%3AC7566C0F490148F0CB7A9EE15D80925A0775ED7111937D3A8975D2186B4F3593F158302E8260DCCFA48C8CADAFE457DCD16B0B1088E2ED5A2C167571172ACB8D09B8096C3A5109BD6C903F63DE33A3141D25C7BC4F6342AB6CD7E2CB2124CDF5E5CA00C59A4518&scope=openid+https%3A%2F%2Fwww.huawei.com%2Fauth%2Faccount%2Funified.profile+https%3A%2F%2Fwww.huawei.com%2Fauth%2Faccount%2Frisk.idstate+LoginState&state=f0eacfe8d39c40758a5f48a92424774b&themeName=lightred&v=4ef3b1c096bc79df812495d5d0dd5e57b08fea4d447e8841d496f04d7d7321d6&ticket=1ST-446426-wqicIa18NgKQibVDwYvoYicNfDr11p7Jv0-cas&siteID=1&countryCode=CN
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=0, i
+cookie: _ga_CW901KCGC7=GS2.1.s1755343233$o1$g1$t1755343463$j5$l0$h0; utag_main=v_id:019b4f7353bd0009b975fd53d6f80507d001a07500bd0$_sn:1$_se:1$_ss:1$_st:1766566316799$ses_id:1766564516799%3Bexp-session$_pn:1%3Bexp-session; _ga_8GRJ7QNG8D=GS2.1.s1766564517$o1$g0$t1766564693$j60$l0$h0; Hm_lvt_48e5a2ca327922f1ee2bb5ea69bdd0a6=1776841594,1778609314; _ga=GA1.1.61824663.1736584717; _ce.s=v~0638370fadd7f625bb00ae1de0fbad37ed90c6a7~lcw~1778609318656~vir~new~lva~1778609318656~vpv~18~v11ls~d50618a0-2b84-11f1-86d4-415df25b149d~v11.cs~343187~v11.s~d50618a0-2b84-11f1-86d4-415df25b149d~v11.vs~0638370fadd7f625bb00ae1de0fbad37ed90c6a7~v11.fsvd~eyJub3RNb2RpZmllZFVybCI6Imh0dHBzOi8vY29uc3VtZXIuaHVhd2VpLmNvbS9jbi9tb2JpbGVzZXJ2aWNlcy9hcHBnYWxsZXJ5LyIsInVybCI6ImNvbnN1bWVyLmh1YXdlaS5jb20vY24vbW9iaWxlc2VydmljZXMvYXBwZ2FsbGVyeSIsInJlZiI6Imh0dHBzOi8vY24uYmluZy5jb20vIiwidXRtIjpbXX0%3D~v11.sla~1774798493484~v11.wss~1774798493485~gtrk.la~mnbx7a1n~lcw~1778609318657; _ga_SH6JFW22KY=GS2.1.s1778609314$o22$g0$t1778609318$j56$l0$h0; _ga_J34CY856JM=GS2.1.s1778609314$o13$g0$t1778609318$j56$l0$h0; HuaweiID_CAS_ISCASLOGIN=true; CASLOGINSITE=1; LOGINACCSITE=1

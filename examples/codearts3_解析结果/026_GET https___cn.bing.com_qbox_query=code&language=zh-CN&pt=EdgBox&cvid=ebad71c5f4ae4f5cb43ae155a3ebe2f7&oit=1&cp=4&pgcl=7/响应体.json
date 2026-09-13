@@ -1,0 +1,169 @@
+[
+  "code",
+  [
+    "https://coderschool.cn",
+    "https://code.ziqiangxuetang.com",
+    "https://codeday.me",
+    "https://www.codeceo.com",
+    "http://www.codemao.cn",
+    "https://www.codeblocks.org",
+    "http://www.codeproject.com",
+    "https://code.visualstudio.com",
+    "codex接入deepseek",
+    "codex下载官网",
+    "codex使用教程",
+    "codeforces",
+    "codex cli",
+    "codex安装",
+    "codex下载",
+    "codex官网",
+    "codex++",
+    "codex",
+    "codebuddy",
+    "https://www.codeforge.cn",
+    "https://code.visualstudio.com/download"
+  ],
+  [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
+  [],
+  {
+    "google:clientdata": {
+      "bcp": false,
+      "phi": 0,
+      "tlw": false
+    },
+    "google:suggestdetail": [
+      {
+        "q": "qs=UAS&pq=code&sk=CSYN1&sc=22-4"
+      },
+      {
+        "q": "qs=UAS&pq=code&sk=CSYN1UAS1&sc=22-4"
+      },
+      {
+        "q": "qs=UAS&pq=code&sk=CSYN1UAS2&sc=22-4"
+      },
+      {
+        "q": "qs=UAS&pq=code&sk=CSYN1UAS3&sc=22-4"
+      },
+      {
+        "q": "qs=UAS&pq=code&sk=CSYN1UAS4&sc=22-4"
+      },
+      {
+        "q": "qs=UAS&pq=code&sk=CSYN1UAS5&sc=22-4"
+      },
+      {
+        "q": "qs=UAS&pq=code&sk=CSYN1UAS6&sc=22-4"
+      },
+      {
+        "q": "qs=UAS&pq=code&sk=CSYN1UAS7&sc=22-4"
+      },
+      {
+        "q": "qs=MT&pq=code&sk=CSYN1UAS8&sc=22-4"
+      },
+      {
+        "q": "qs=MT&pq=code&sk=CSYN1UAS8MT1&sc=22-4"
+      },
+      {
+        "q": "qs=MT&pq=code&sk=CSYN1UAS8MT2&sc=22-4"
+      },
+      {
+        "q": "qs=UT&pq=code&sk=CSYN1UAS8MT3&sc=22-4"
+      },
+      {
+        "q": "qs=CT&pq=code&sk=CSYN1UAS8MT3UT1&sc=22-4"
+      },
+      {
+        "q": "qs=MT&pq=code&sk=CSYN1UAS8MT3UT1CT1&sc=22-4"
+      },
+      {
+        "q": "qs=MT&pq=code&sk=CSYN1UAS8MT4UT1CT1&sc=22-4"
+      },
+      {
+        "q": "qs=LT&pq=code&sk=CSYN1UAS8MT5UT1CT1&sc=22-4"
+      },
+      {
+        "q": "qs=FT&pq=code&sk=CSYN1UAS8MT5UT1CT1LT1&sc=22-4"
+      },
+      {
+        "q": "qs=MT&pq=code&sk=CSYN1UAS8MT5UT1CT1LT1FT1&sc=22-4"
+      },
+      {
+        "q": "qs=HS&pq=code&sk=CSYN1UAS8MT6UT1CT1LT1FT1&sc=22-4"
+      },
+      {
+        "q": "qs=UAS&pq=code&sk=CSYN1UAS8MT6UT1CT1LT1FT1HS1&sc=22-4"
+      },
+      {
+        "q": "qs=UAS&pq=code&sk=CSYN1UAS9MT6UT1CT1LT1FT1HS1&sc=22-4"
+      }
+    ],
+    "google:suggestrelevance": [
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      150,
+      550,
+      551,
+      552,
+      553,
+      554,
+      556,
+      558,
+      600,
+      650,
+      651,
+      1399,
+      101,
+      100
+    ],
+    "google:suggesttype": [
+      "NAVIGATION",
+      "NAVIGATION",
+      "NAVIGATION",
+      "NAVIGATION",
+      "NAVIGATION",
+      "NAVIGATION",
+      "NAVIGATION",
+      "NAVIGATION",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "NAVIGATION",
+      "NAVIGATION"
+    ],
+    "google:verbatimrelevance": 1078
+  }
+]

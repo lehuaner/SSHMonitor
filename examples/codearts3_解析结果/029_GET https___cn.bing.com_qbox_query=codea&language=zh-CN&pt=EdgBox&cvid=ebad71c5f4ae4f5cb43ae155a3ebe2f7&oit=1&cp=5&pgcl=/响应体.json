@@ -1,0 +1,109 @@
+[
+  "codea",
+  [
+    "codearts",
+    "codeagent",
+    "codecademy",
+    "codearts agent",
+    "code arena",
+    "codearts ide",
+    "code adventure",
+    "code anime expedition",
+    "codex",
+    "code arena榜单",
+    "codeadventure官网",
+    "code agent cli"
+  ],
+  [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
+  [],
+  {
+    "google:clientdata": {
+      "bcp": false,
+      "phi": 0,
+      "tlw": false
+    },
+    "google:suggestdetail": [
+      {
+        "q": "qs=LT&pq=codea&sk=CSYN1&sc=13-5"
+      },
+      {
+        "q": "qs=LT&pq=codea&sk=CSYN1LT1&sc=13-5"
+      },
+      {
+        "t": "Codecademy",
+        "a": "在线编程学习平台",
+        "i": "https://cn.bing.com/th?id=OSK.88048546a65a805cf248914d8a2fdb5b&w=80&h=80&qlt=90&c=6&rs=1&cdv=1&pid=RS",
+        "q": "filters=ufn%3a%22Codecademy%22+sid%3a%226b651690-016b-a341-20a8-bcff02943940%22&asbe=OS&qs=MB&pq=codea&sk=CSYN1LT2&sc=13-5"
+      },
+      {
+        "q": "qs=LT&pq=codea&sk=CSYN1LT2OS1&sc=13-5"
+      },
+      {
+        "q": "qs=SC&pq=codea&sk=CSYN1LT3OS1&sc=13-5"
+      },
+      {
+        "q": "qs=LT&pq=codea&sk=CSYN1LT3OS1SC1&sc=13-5"
+      },
+      {
+        "q": "qs=SC&pq=codea&sk=CSYN1LT4OS1SC1&sc=13-5"
+      },
+      {
+        "q": "qs=SC&pq=codea&sk=CSYN1LT4OS1SC2&sc=13-5"
+      },
+      {
+        "q": "qs=OS&pq=codea&sk=CSYN1LT4OS1SC3&sc=13-5"
+      },
+      {
+        "q": "qs=SC&pq=codea&sk=CSYN1LT4OS2SC3&sc=13-5"
+      },
+      {
+        "q": "qs=MT&pq=codea&sk=CSYN1LT4OS2SC4&sc=13-5"
+      },
+      {
+        "q": "qs=SC&pq=codea&sk=CSYN1LT4OS2SC4MT1&sc=13-5"
+      }
+    ],
+    "google:suggestrelevance": [
+      1000,
+      650,
+      600,
+      558,
+      557,
+      556,
+      555,
+      554,
+      553,
+      552,
+      551,
+      550
+    ],
+    "google:suggesttype": [
+      "QUERY",
+      "QUERY",
+      "ENTITY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY",
+      "QUERY"
+    ],
+    "google:verbatimrelevance": 886
+  }
+]

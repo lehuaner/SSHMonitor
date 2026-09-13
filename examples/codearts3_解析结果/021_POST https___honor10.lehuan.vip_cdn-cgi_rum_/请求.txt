@@ -1,0 +1,21 @@
+POST https://honor10.lehuan.vip/cdn-cgi/rum? HTTP/2
+:method: POST
+:authority: honor10.lehuan.vip
+:scheme: https
+:path: /cdn-cgi/rum?
+content-length: 882
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+sec-ch-ua: "Chromium";v="152", "Not?A_Brand";v="24", "Microsoft Edge";v="152"
+content-type: application/json
+sec-ch-ua-mobile: ?0
+accept: */*
+origin: https://honor10.lehuan.vip
+sec-fetch-site: same-origin
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://honor10.lehuan.vip/checkin
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=4, i
+cookie: metacubexd_lang=zh; CF_Authorization=eyJhbGciOiJSUzI1NiIsImtpZCI6IjI2OWUwZGI0YzNlZjgxZTliZjA0ZGM1OWUyNjUwMmE3ZWM2OWM3YTM0ZjlkZDgxNGQ1ZTM3ZWU2YzdjYzhlZGIifQ.eyJhdWQiOlsiN2NjMmZhYmQzZjAyMjM4OTk5YzVhNDk3MTZkZGY5ZWE5MWM2ZDI0NmNmMGViMWRiYjBiMTdjYzExMzgxNTUzOSJdLCJlbWFpbCI6IjI0MjM1ODM1MTJAcXEuY29tIiwiZXhwIjoxNzg5MzE1NjcxLCJpYXQiOjE3ODg0NTE2NzEsIm5iZiI6MTc4ODQ1MTY3MSwiaXNzIjoiaHR0cHM6Ly9saXZlbHktbW91c2UtNDYwOC5jbG91ZGZsYXJlYWNjZXNzLmNvbSIsInR5cGUiOiJhcHAiLCJpZGVudGl0eV9ub25jZSI6Ikhka1pESzVJbGRHRTQySjYiLCJzdWIiOiJlZDU2YjljOC02MWEzLTU4MGUtYTJhZS0zNDU0N2ViMjViMjYiLCJoX0lOVEVSTkFMX0RPX05PVF9VU0UiOiJob25vcjEwLmxlaHVhbi52aXAiLCJjb3VudHJ5IjoiQ04iLCJwb2xpY3lfaWQiOiI5OTBhM2E0MC0wNzZhLTRhMDAtYWY4NS1iM2ZiY2UxOGQ0ZGYifQ.iEwW62z4OT8GSjSunNDs1zSOmfXlvYAptHcqAcnsX8Yo2DSZCeIzr65FBjGtFeB4mULPxzk_QgdL5VI9P-6yQKirQZwi_Cc8orE7iL-AF0MEQaNnbokZjq5Mv5nmNetMMXJCOlolx4UARmaaV8xLyP_qDCCQq2FJNvgdNY_aTe3ZXZDhqskjxvjv6k-_3F_INXEmyScFEBbHl0Th-NONnCaFwwpgroRy15VO9Nkyza0hKUURC8eE6FICXqxFe_CsMmmFaC8p5YzB97aktdECbBy9Y12tYKUfLaHIT5vSB1jaJ2gL6nG3hMfdzbqDFZWsfC7s8TH73rm44ttktUY21w

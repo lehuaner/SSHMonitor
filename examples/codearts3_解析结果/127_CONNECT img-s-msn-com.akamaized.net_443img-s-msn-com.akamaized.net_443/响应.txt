@@ -1,0 +1,126 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 15:10:33.991
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=a248.e.akamai.net, O="Akamai Technologies, Inc.", L=Cambridge, S=Massachusetts, C=US
+  Simple Name: a248.e.akamai.net
+  DNS Name: a248.e.akamai.net
+
+[Issuer]
+  CN=DigiCert Global G3 TLS ECC SHA384 2020 CA1, O=DigiCert Inc, C=US
+  Simple Name: DigiCert Global G3 TLS ECC SHA384 2020 CA1
+  DNS Name: DigiCert Global G3 TLS ECC SHA384 2020 CA1
+
+[Serial Number]
+  0373AB420F54941B555742D9AC890626
+
+[Not Before]
+  2025/12/22 8:00:00
+
+[Not After]
+  2026/12/23 7:59:59
+
+[Thumbprint]
+  80B29FCE36F71B99CDBB7138B2107D022D478AF9
+
+[Signature Algorithm]
+  sha384ECDSA(1.2.840.10045.4.3.3)
+
+[Public Key]
+  Algorithm: ECC
+  Length: 
+  Key Blob: 04 6f ba c6 1c 8c d2 5f 45 a6 20 0a 08 94 78 02 a9 a3 1d 74 35 f7 b0 cf 84 f7 7e 85 d9 5a fe c5 cc a1 dd a2 2d 28 5d 7c d7 ad 6d f2 e7 bd 44 8a 4e 9e 7c c8 db d3 d0 82 ca 47 f5 93 7b 6e 87 b0 ae
+  Parameters: 06 08 2a 86 48 ce 3d 03 01 07
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=8a23eb9e6bd7f9375df96d2139769aa167de10a8
+
+* 使用者密钥标识符(2.5.29.14):
+  af3247f9a94b6258e313388b8ac5ea796b5d61b4
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=a248.e.akamai.net
+DNS Name=*.akamaized.net
+DNS Name=*.akamaized-staging.net
+DNS Name=*.akamaihd.net
+DNS Name=*.akamaihd-staging.net
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Agreement (88)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl3.digicert.com/DigiCertGlobalG3TLSECCSHA3842020CA1-2.crl
+[2]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl4.digicert.com/DigiCertGlobalG3TLSECCSHA3842020CA1-2.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://ocsp.digicert.com
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.digicert.com/DigiCertGlobalG3TLSECCSHA3842020CA1-2.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+d809553b944f7affc816196f944f85abb0f8fc5e8755260f15d12e72bb454b14
+‎2025‎年‎12‎月‎23‎日 1:47:38
+SHA256
+ECDSA
+30460221009eef2e14c8168f7a20a9a82422ab11a0f263fa71349893d741aa90738a02d18f022100f167b1e60c2d4ea5ad5df7e78ee901544ebc806830afc2dbc7cabc6cb9f68ca8
+
+v1
+c8a3c47fc7b3adb9356b013f6a7a126de33a4e43a5c646f997ad3975991dcf9a
+‎2025‎年‎12‎月‎23‎日 1:47:38
+SHA256
+ECDSA
+304502201e2bf3b2851998c532d6d2542f89f4906cd01470e7f1aa5f8ca0ade593202082022100f4182eb38cad624e93be61ad859d1f1f289b727cf9d16b474db734b3367ff367
+
+v1
+c2317e574519a345ee7f38deb29041ebc7c2215a22bf7fd5b5ad769ad90e52cd
+‎2025‎年‎12‎月‎23‎日 1:47:38
+SHA256
+ECDSA
+304602210088480d4ad5af501a645a26e7e70dc836103ea0e14a0be86ad2aa397f6aa303800221008109dfec5fab03a7a575ed414905a63a9639880bab3d27bd995adeafc7429fac
+
+
+[SubjectAltNames]
+DNS Name=a248.e.akamai.net
+DNS Name=*.akamaized.net
+DNS Name=*.akamaized-staging.net
+DNS Name=*.akamaihd.net
+DNS Name=*.akamaihd-staging.net
+

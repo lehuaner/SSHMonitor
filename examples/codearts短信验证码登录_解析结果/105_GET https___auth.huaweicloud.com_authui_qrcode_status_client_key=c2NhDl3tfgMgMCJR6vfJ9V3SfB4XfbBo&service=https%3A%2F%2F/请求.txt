@@ -1,0 +1,22 @@
+GET https://auth.huaweicloud.com/authui/qrcode/status?client_key=c2NhDl3tfgMgMCJR6vfJ9V3SfB4XfbBo&service=https%3A%2F%2Fcodearts.huaweicloud.com%2Fportal%2Fsettings%2Fpersonal-usage&_=1789199228480 HTTP/2
+:method: GET
+:authority: auth.huaweicloud.com
+:scheme: https
+:path: /authui/qrcode/status?client_key=c2NhDl3tfgMgMCJR6vfJ9V3SfB4XfbBo&service=https%3A%2F%2Fcodearts.huaweicloud.com%2Fportal%2Fsettings%2Fpersonal-usage&_=1789199228480
+sec-ch-ua-platform: "Windows"
+cache-control: no-store
+pragma: no-store
+sec-ch-ua: "Microsoft Edge";v="153", "Not_A Brand";v="8", "Chromium";v="153"
+sec-ch-ua-mobile: ?0
+x-requested-with: XMLHttpRequest
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+accept: */*
+content-type: application/x-www-form-urlencoded; charset=UTF-8
+sec-fetch-site: same-origin
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://auth.huaweicloud.com/authui/login.html?service=https%3A%2F%2Fcodearts.huaweicloud.com%2Fportal%2Fsettings%2Fpersonal-usage
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+priority: u=1, i
+cookie: auth_cdn=cdn_cookie_on; tiny_language=zh; last.login.type=account; HWWAFSESTIME=1789199227182; HWWAFSESID=2cec38eda70c96fe1d; Site=mainland; _frid=424d25658ae245faaeb002c84029ceb7; locale=zh-cn; _fr_ssid=92b1b52777cf45f0acee1ed48bacee8a; login-sdk-info=authui_login_sdkurl_info:3e070135cb6b4e769e7603fe41484bec; cbc-sid=20493715385ef219e4b1df5a448bda6476f24829730b3f5439c0fbc492605c7a3a91b3186f92375736d7; vk=9eeb7598-5dbc-4ba1-8d8b-a5f309bfc1f6; SessionID=5245e465-e842-4572-9d32-6692ba5a6827; ad_sc=; ad_mdm=; ad_cmp=; ad_ctt=; ad_tm=; ad_adp=; cf=Direct; HW_refts_id1_cloud_huawei_com_auth_huaweicloud_com=1789199231039; HW_idvc_id1_cloud_huawei_com_auth_huaweicloud_com=1; HW_id_id1_cloud_huawei_com_auth_huaweicloud_com=32a9ca9d3a2f463e91b21ff290ff28be; HW_idts_id1_cloud_huawei_com_auth_huaweicloud_com=1789199231040; HW_idn_id1_cloud_huawei_com_auth_huaweicloud_com=92021138bf444416b4de5144a9be9083

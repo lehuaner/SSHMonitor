@@ -1,0 +1,22 @@
+HTTP/1.1 302 Found
+Date: Fri, 11 Sep 2026 16:29:36 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 2
+Location: https://oauth-login1.cloud.huawei.com/oauth2/v3/loginCallback?access_type=offline&client_id=103493351&code_challenge_method=S256&display=page&flowID=0a8a41cc000001d17891441765979116&h=1789144176.5980&include_granted_scopes=true&lang=zh-cn&nonce=default&prompt=login&redirect_uri=https%3A%2F%2Fauth.huaweicloud.com%2Fauthui%2FcasLogin%3Fservice%3Dhttps%253A%252F%252Fcodearts.huaweicloud.com%252Fportal%252Fsettings%252Fpersonal-usage%253Flocale%253Dzh-cn&response_type=code&risks=2%3A58495A33B2615E3BF7C2E918A6A600FB%3A04E848FCC03D1C86AD20A0A83BCF23F1519AA87F4D0A503441B8ABC485E3606FBF0A7124B0F8DC1897EC04EB1AE33898716FB5A2570A4914DF71CC6B5FFB796707EB149E82190588B7ADCBDD13EB3C918C8C8051C100E2E633AE801C2AF898E705E0C8AD293224&scope=openid+https%3A%2F%2Fwww.huawei.com%2Fauth%2Faccount%2Funified.profile+https%3A%2F%2Fwww.huawei.com%2Fauth%2Faccount%2Frisk.idstate+LoginState&state=ea421dc8cfd942e0986cf3d8a6fd5c3e&themeName=lightred&v=44e6224c517b606608d3499d26ab7cfa395067d83805b3e29af15efbd1d8370e&ticket=1ST-493610-ibibGcvvLTibhTMvc8lz0d7qf0oUwTgEx3-cas&siteID=1&countryCode=CN
+Strict-Transport-Security: max-age 16070400; includeSubDomains
+Cache-Control: no-store
+X-Content-Type-Options: nosniff
+Content-Security-Policy: default-src 'self' *.huawei.com *.cloud.huawei.com *.cloud.huawei.com.cn *.consumer.huawei.com *.platform.hicloud.com *.platform.dbankcloud.com *.platform.dbankcloud.cn *.vmall.com *.hicloud.com *.hihonor.com *.emui.com *.geetest.com *.dbankcdn.com *.dbankcdn.cn *.dbankcloud.cn *.dbankcloud.com *.163.com https://metrics-drcn.dt.hicloud.com:6447 https://cstaticdun.126.net https://cstaticdun1.126.net https://cstaticdun-v6.126.net https://cstaticdun1-v6.126.net https://acstatic-dun.126.net https://acstatic-dun-v6.126.net https://necaptcha1.nosdn.127.net *.127.net *.163yun.com *.qlogo.cn *.weibo.com 'unsafe-inline' 'unsafe-eval' blob: data:; script-src 'self' *.huawei.com *.cloud.huawei.com *.cloud.huawei.com.cn *.consumer.huawei.com *.platform.hicloud.com *.platform.dbankcloud.com *.platform.dbankcloud.cn *.vmall.com *.hicloud.com *.hihonor.com *.emui.com *.geetest.com *.dbankcdn.com *.dbankcdn.cn *.dbankcloud.cn *.dbankcloud.com *.163.com https://metrics-drcn.dt.hicloud.com:6447 https://cstaticdun.126.net https://cstaticdun1.126.net https://cstaticdun-v6.126.net https://cstaticdun1-v6.126.net https://acstatic-dun.126.net https://acstatic-dun-v6.126.net https://necaptcha1.nosdn.127.net *.127.net *.163yun.com *.qlogo.cn *.weibo.com 'unsafe-inline' 'unsafe-eval' blob:; object-src 'none'; img-src 'self' *.huawei.com *.cloud.huawei.com *.cloud.huawei.com.cn *.consumer.huawei.com *.platform.hicloud.com *.platform.dbankcloud.com *.platform.dbankcloud.cn *.vmall.com *.hicloud.com *.hihonor.com *.emui.com *.geetest.com *.dbankcdn.com *.dbankcdn.cn *.dbankcloud.cn *.dbankcloud.com *.163.com https://metrics-drcn.dt.hicloud.com:6447 https://cstaticdun.126.net https://cstaticdun1.126.net https://cstaticdun-v6.126.net https://cstaticdun1-v6.126.net https://acstatic-dun.126.net https://acstatic-dun-v6.126.net https://necaptcha1.nosdn.127.net *.127.net *.163yun.com *.qlogo.cn *.weibo.com data: blob:;
+Pragma: no-cache
+X-XSS-Protection: 1
+P3P: CP=" OTI DSP COR IVA OUR IND COM "
+Expires: 0
+Set-Cookie: CASLOGINSITE=1;Domain=.huawei.com;Path=/;Secure;HttpOnly;SameSite=None
+Set-Cookie: LOGINACCSITE=1;Domain=.huawei.com;Path=/;Secure;HttpOnly;SameSite=None
+Set-Cookie: CASTGC=TGT-407549-hrcVQC9rWrrCVnFzlFA9au5Idf4jOTJfSCFpRnVQQasluieObomD-cas-lFM173WNB4riYtxjLfIW1Z5mTcdf3N5I;Domain=id1.cloud.huawei.com;Path=/CAS;Secure;HttpOnly;SameSite=None
+Set-Cookie: CASTGC=TGT-407549-hrcVQC9rWrrCVnFzlFA9au5Idf4jOTJfSCFpRnVQQasluieObomD-cas-lFM173WNB4riYtxjLfIW1Z5mTcdf3N5I;Domain=id1.cloud.huawei.com;Path=/UnifiedIDMPortal;Secure;HttpOnly;SameSite=None
+Set-Cookie: CASTGC=;Domain=id1.cloud.huawei.com;Max-Age=0;Path=/;Secure;HttpOnly;SameSite=None
+Set-Cookie: CAS_THEME_NAME=lightred;Domain=id1.cloud.huawei.com;Path=/;Secure;HttpOnly;SameSite=None
+Set-Cookie: HuaweiID_CAS_ISCASLOGIN=true;Domain=.huawei.com;Path=/;Secure;HttpOnly;SameSite=None
+Set-Cookie: VERSION_NO=UP_CAS_6.26.2.100_blue;Domain=id1.cloud.huawei.com;Path=/;Secure;HttpOnly;SameSite=None
+Server: elb

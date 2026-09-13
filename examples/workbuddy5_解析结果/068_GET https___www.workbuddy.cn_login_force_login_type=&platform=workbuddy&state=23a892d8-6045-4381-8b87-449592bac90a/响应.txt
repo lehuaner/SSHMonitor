@@ -1,0 +1,10 @@
+HTTP/2 301
+content-type: text/html
+location: /login/?force_login_type=&platform=workbuddy&state=23a892d8-6045-4381-8b87-449592bac90a
+server: APISIX/3.9.1
+x-request-id: 759b5f71-612c-4b43-a071-fa06cbacca04
+x-content-type-options: nosniff
+content-length: 169
+date: Thu, 10 Sep 2026 07:59:59 GMT
+eo-log-uuid: 12161304318101692909
+eo-cache-status: MISS

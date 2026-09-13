@@ -1,0 +1,19 @@
+GET https://oauth-login1.cloud.huawei.com/static_rss_vue3/js/oauth2_v3_login-20260608122941.js HTTP/2
+:method: GET
+:authority: oauth-login1.cloud.huawei.com
+:scheme: https
+:path: /static_rss_vue3/js/oauth2_v3_login-20260608122941.js
+origin: https://oauth-login1.cloud.huawei.com
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+sec-ch-ua: "Microsoft Edge";v="153", "Not_A Brand";v="8", "Chromium";v="153"
+sec-ch-ua-mobile: ?0
+accept: */*
+sec-fetch-site: same-origin
+sec-fetch-mode: cors
+sec-fetch-dest: script
+referer: https://oauth-login1.cloud.huawei.com/oauth2/v3/loginCallback?access_type=offline&client_id=103493351&code_challenge_method=S256&display=page&flowID=0a8a3b99000001d17891441591743500&h=1789144159.1750&include_granted_scopes=true&lang=zh-cn&nonce=default&prompt=login&redirect_uri=https%3A%2F%2Fauth.huaweicloud.com%2Fauthui%2FcasLogin%3Fservice%3Dhttps%253A%252F%252Fcodearts.huaweicloud.com%252Fportal%252Fsettings%252Fpersonal-usage%253Flocale%253Dzh-cn&response_type=code&risks=2%3A541C468FA277BF67F7128AC9349A9DA6%3AD84D66F4EB576896FA255A119FCD228E0DCA33D040F9FEBA6BA262A1E544DFEC99BA5F9A1A562952882194E3F56CBA3434E0A9D4E71B6ADEAF237950ACDF4A901246699FCAB4589990B7786B10823AC480395E92E303C4B7022CB9C4F572BC5EA11C838468C9F5&scope=openid+https%3A%2F%2Fwww.huawei.com%2Fauth%2Faccount%2Funified.profile+https%3A%2F%2Fwww.huawei.com%2Fauth%2Faccount%2Frisk.idstate+LoginState&state=88d6bb840eed4cccbaabbe53a3ba07a4&themeName=lightred&v=7bf50f991febf944dbe33a49413a784b1614c58b8bec3514a6fd886783079798&ticket=1ST-493602-TpqKeuWSlSmDOh2jIFw1PqT1s8GkNpXqD3-cas&siteID=1&countryCode=CN
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+priority: u=1
+cookie: CASLOGINSITE=1; LOGINACCSITE=1; HuaweiID_CAS_ISCASLOGIN=true

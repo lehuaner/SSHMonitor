@@ -1,0 +1,17 @@
+OPTIONS https://assets.msn.cn/service/news/feed/pages/weblayout?User=m-06AD6D0EFAEB690921F5787FFBA868C6&activityId=6aa25114-e32d-4847-a410-97c586f0fbb3&adminDisabled=false&adoffsets=c1:-1,c2:-1,c3:-1,c4:-1&adppc=EdgeStart&apikey=1hYoJsIRvPEnSkk0hlnJF2092mHqiz7xFenIFKa9uc&audienceMode=adult&backgroundImageIsSet=true&cm=zh-cn&colstatus=c1:0,c2:0,c3:0,c4:0&column=c4&colwidth=300&disablecontent=true&dprValue=1&inEdgeFeatures=false&it=app&l3v=2&layout=c4&memory=32&newDevFreTime=1736569768682&newProfFreTime=1736569768652&newsSkip=0&newsTop=48&ocid=anaheim-ntp-feeds&pgc=161&revertTimes=0&scn=APP_ANON&timeOut=1000&vpSize=1496x856&wposchema=byregion HTTP/2
+:method: OPTIONS
+:authority: assets.msn.cn
+:scheme: https
+:path: /service/news/feed/pages/weblayout?User=m-06AD6D0EFAEB690921F5787FFBA868C6&activityId=6aa25114-e32d-4847-a410-97c586f0fbb3&adminDisabled=false&adoffsets=c1:-1,c2:-1,c3:-1,c4:-1&adppc=EdgeStart&apikey=1hYoJsIRvPEnSkk0hlnJF2092mHqiz7xFenIFKa9uc&audienceMode=adult&backgroundImageIsSet=true&cm=zh-cn&colstatus=c1:0,c2:0,c3:0,c4:0&column=c4&colwidth=300&disablecontent=true&dprValue=1&inEdgeFeatures=false&it=app&l3v=2&layout=c4&memory=32&newDevFreTime=1736569768682&newProfFreTime=1736569768652&newsSkip=0&newsTop=48&ocid=anaheim-ntp-feeds&pgc=161&revertTimes=0&scn=APP_ANON&timeOut=1000&vpSize=1496x856&wposchema=byregion
+accept: */*
+access-control-request-method: GET
+access-control-request-headers: onesvc-uni-feat-tun
+origin: https://ntp.msn.cn
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+sec-fetch-mode: cors
+sec-fetch-site: same-site
+sec-fetch-dest: empty
+referer: https://ntp.msn.cn/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=1, i

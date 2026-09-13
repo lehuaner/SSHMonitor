@@ -1,0 +1,11 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "131dac38-4c58-4f4d-9b68-bc1f5a76c3fa",
+  "data": {
+    "installed": false,
+    "orchestratorEnabled": false,
+    "teamsEnabled": true,
+    "exclusiveEnabled": true
+  }
+}

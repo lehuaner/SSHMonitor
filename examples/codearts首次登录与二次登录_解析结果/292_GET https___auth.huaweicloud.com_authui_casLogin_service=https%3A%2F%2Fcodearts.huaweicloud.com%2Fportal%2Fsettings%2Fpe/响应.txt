@@ -1,0 +1,15 @@
+HTTP/2 302
+server: CloudWAF
+date: Fri, 11 Sep 2026 16:29:37 GMT
+location: https://auth.huaweicloud.com/authui/loginBindMfa.html?isFromID=1&service=https%3A%2F%2Fcodearts.huaweicloud.com%2Fportal%2Fsettings%2Fpersonal-usage%3Flocale%3Dzh-cn
+x-iam-trace-id: auth_cn-north-4_null_064f00f25a1d406cbb4ff7f27ca1a7c4
+set-cookie: IAMIdentity=X-1880604374--74829-1kn1abacxa1fa6pe1dblx0q1yb3t3s45jphwqknxuxvxvkty0; Path=/; secure; SameSite=None; Secure; HttpOnly
+strict-transport-security: max-age=31536000; includeSubdomains;
+x-content-type-options: nosniff
+x-download-options: noopen
+x-xss-protection: 1; mode=block
+cache-control: no-cache, no-store, must-revalidate
+pragma: no-cache
+access-control-allow-origin: https://console.huaweicloud.com
+access-control-allow-methods: GET
+access-control-allow-credentials: true

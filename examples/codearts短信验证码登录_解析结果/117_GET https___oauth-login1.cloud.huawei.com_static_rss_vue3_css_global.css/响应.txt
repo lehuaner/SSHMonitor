@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Date: Sat, 12 Sep 2026 07:47:28 GMT
+Content-Type: text/css
+Content-Length: 391
+Last-Modified: Mon, 07 Sep 2026 09:07:08 GMT
+ETag: "6a9e7ebc-187"
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Accept-Ranges: bytes
+Server: elb

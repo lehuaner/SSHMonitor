@@ -1,0 +1,9 @@
+HTTP/1.1 200 OK
+Date: Fri, 11 Sep 2026 16:29:19 GMT
+Content-Type: application/json; charset=utf-8
+Content-Length: 7234
+oauth_trace_id: 59-0a8a3b99000001d17891441591743500-153
+x-oauth-microservice: WiseCloudUserAuthorizeService
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Server: elb

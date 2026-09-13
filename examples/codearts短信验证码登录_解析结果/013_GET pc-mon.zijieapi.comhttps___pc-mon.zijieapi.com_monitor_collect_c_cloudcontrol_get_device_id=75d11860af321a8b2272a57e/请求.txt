@@ -1,0 +1,4 @@
+GET https://pc-mon.zijieapi.com/monitor/collect/c/cloudcontrol/get?device_id=75d11860af321a8b2272a57ee5aeb5be&aid=330274222&os=windows&app_version=8.4.0 HTTP/1.1
+Connection: Keep-Alive
+User-Agent: Parfait-Native-Net2022
+Host: pc-mon.zijieapi.com

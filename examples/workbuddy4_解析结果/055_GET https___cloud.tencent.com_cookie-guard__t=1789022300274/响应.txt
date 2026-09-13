@@ -1,0 +1,14 @@
+HTTP/2 200
+server: nginx
+ratelimit-policy: 500;w=5
+ratelimit-limit: 500
+ratelimit-remaining: 499
+ratelimit-reset: 5
+x-req-id: Bk7veRytzg
+pragma: no-cache
+expires: 0
+set-cookie: intl=; Domain=.cloud.tencent.com; Path=/; Secure; SameSite=None
+cache-control: must-revalidate, no-cache, no-store
+date: Thu, 10 Sep 2026 06:38:18 GMT
+eo-log-uuid: 10905588486901991503
+eo-cache-status: MISS

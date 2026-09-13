@@ -1,0 +1,20 @@
+{
+  "code": 200,
+  "data": {
+    "series": [
+      {
+        "name": "REQUEST_COUNT",
+        "xDimension": "FUNCTION",
+        "yDimension": null,
+        "valueType": "COUNT",
+        "cells": [
+          {
+            "xLabel": "其他功能",
+            "yLabel": null,
+            "value": 1
+          }
+        ]
+      }
+    ]
+  }
+}

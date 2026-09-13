@@ -1,0 +1,14 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Set-Cookie: tgw_l7_route=a17042dfbe09d01f1559226e6f7321ec; Expires=Thu, 10-Sep-2026 09:00:13 GMT; Path=/; sameSite=None; Secure
+Set-Cookie: session=; Path=/edge-cloud; Max-Age=0; Expires=Thu, 01-Jan-70 00:00:00 GMT; HttpOnly
+Traceid: 23e510e5bcfc69eb06a6afd36fa35d6b
+X-Request-Id: b948d2880e5f46a0870780078de40eb3
+X-User-Id: 8b3cb381-9ebc-4813-92d9-9e5880528465
+Server: APISIX/3.9.1
+X-Content-Type-Options: nosniff
+Transfer-Encoding: chunked
+Connection: keep-alive
+Date: Thu, 10 Sep 2026 08:00:13 GMT
+EO-LOG-UUID: 8917018252035507467
+EO-Cache-Status: MISS

@@ -1,0 +1,45 @@
+HTTP/2 200
+content-type: application/json; charset=utf-8
+set-cookie: _C_ETH=1; expires=Wed, 09 Sep 2026 07:10:18 GMT; domain=.msn.cn; path=/; secure; samesite=none; httponly
+set-cookie: _C_Auth=
+set-cookie: msnup=%7B%22cnex%22%3A%22no%22%7D; expires=Wed, 09 Dec 2026 07:10:18 GMT; domain=msn.cn; path=/; secure; samesite=none; httponly
+set-cookie: MUID=; domain=.msn.cn; secure; samesite=none
+set-cookie: MUIDB=; domain=.msn.cn; secure; samesite=none
+set-cookie: _EDGE_S=SID=0E8059D73C9166442C994E073D4F6773; domain=.msn.cn; path=/; secure; samesite=none; httponly
+access-control-allow-headers: TicketType,RequestContinuationKey,AuthToken,Content-Type,x-client-activityid,ms-cv,OneSvc-Uni-Feat-Tun,signedInCookieName,muid,appid,User-Location,user-location,userauthtoken,usertickettype,sitename,s2sauthtoken,thumbprint,Authorization,Ent-Authorization,UserIdToken,DDD-TMPL,DDD-ActivityId,DDD-FeatureSet,DDD-Session-ID,Date,date,ads-referer,ads-referer,taboola-sessionId,taboola-sessionid,Akamai-Request-ID,Akamai-Server-IP,X-MSEdge-Ref,DDD-DebugId,s-xbox-token,OneWebServiceLatency,X-FD-Features,DDD-UserType,traceparent,Widgets,Muted,Velocity,DDD-Auth-Features,SoftLanding,PrefMigrated,DDD-TMPL-Removed,deviceFeatures,Server-Timing,X-1S-Digital-ID,x-ntp-cohort-prefs,x-kunlun-trace-id,x-kunlun-session-id,x-kunlun-request-id,x-kunlun-client-id
+access-control-expose-headers: TicketType,RequestContinuationKey,AuthToken,Content-Type,x-client-activityid,ms-cv,OneSvc-Uni-Feat-Tun,signedInCookieName,muid,appid,User-Location,user-location,userauthtoken,usertickettype,sitename,s2sauthtoken,thumbprint,Authorization,Ent-Authorization,UserIdToken,DDD-TMPL,DDD-ActivityId,DDD-FeatureSet,DDD-Session-ID,Date,date,ads-referer,ads-referer,taboola-sessionId,taboola-sessionid,Akamai-Request-ID,Akamai-Server-IP,X-MSEdge-Ref,DDD-DebugId,s-xbox-token,OneWebServiceLatency,X-FD-Features,DDD-UserType,traceparent,Widgets,Muted,Velocity,DDD-Auth-Features,SoftLanding,PrefMigrated,DDD-TMPL-Removed,deviceFeatures,Server-Timing,X-1S-Digital-ID,x-ntp-cohort-prefs,x-kunlun-trace-id,x-kunlun-session-id,x-kunlun-request-id,x-kunlun-client-id
+ddd-authenticatedwithjwtflow: True
+ddd-usertype: PersonalMicrosoftAccount
+server-timing: wpo;dur=67,1s;dur=101
+ddd-strategyexecutionlatency: 00:00:00.1203964
+x-wpo-activityid: d22543ce-eb46-4990-9baf-6381b12847a5|2026-09-10T07:10:18.9386492Z|fabric_wpo|KOC-B|WPO_95
+ddd-tmpl-removed: True
+ddd-activityid: d22543ce-eb46-4990-9baf-6381b12847a5
+x-1s-digital-id: at=MSA;it=App;muid=m-06AD6D0EFAEB690921F5787FFBA868C6;anid=a-46A4CF813C6C4E5C471AA633FFFFFFFF
+ddd-auth-features: AT:MSA;DID:m-06AD6D0EFAEB690921F5787FFBA868C6;IT:App;MsaStateOrigin:EltCookie;MuidStateOrigin:MuidFromCookie
+ddd-debugid: d22543ce-eb46-4990-9baf-6381b12847a5|2026-09-10T07:10:18.9565837Z|fabric_msn|KOC-A|News_1518
+onewebservicelatency: 123
+x-msedge-responseinfo: 123
+accept-ch: Sec-CH-UA-Bitness, Sec-CH-UA-Arch, Sec-CH-UA-Full-Version, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Platform, Sec-CH-UA, UA-Bitness, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform-Version, UA-Platform, UA
+x-ceto-ref: 6aa257daaee548c899427ba31ed47477|AFD:6aa257daaee548c899427ba31ed47477|2026-09-10T07:10:18.838Z
+x-cache: CONFIG_NOCACHE
+server: TencentEdgeOne
+eo-log-uuid: 10621236886008835672
+eo-cache-status: MISS
+x-edgefunction: Phase-2-Edge-Function
+vary: Origin
+nel: {"report_to":"network-errors","max_age":604800,"success_fraction":0.001,"failure_fraction":0.1}
+report-to: {"group":"network-errors","max_age":604800,"endpoints":[{"url":"https://deff.nelreports.net/api/report?cat=msn"}]}
+cache-control: private, max-age=0
+x-as-suppresssetcookie: 1
+access-control-allow-origin: https://ntp.msn.cn
+access-control-allow-credentials: true
+access-control-allow-methods: PUT,PATCH,POST,GET,OPTIONS,DELETE
+x-cdn-ref: 24e506e5-3cb3-4684-b24f-1fec404e5931 | pending | 2026-09-10T07:10:18
+x-msedge-ref: 24e506e5-3cb3-4684-b24f-1fec404e5931 | pending | 2026-09-10T07:10:18
+cors-rule: One-Service-CORS
+x-nws-log-uuid: 10621236886008835672
+date: Thu, 10 Sep 2026 07:10:18 GMT
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+cdn: tencent-p2
+x-cdn: tencent

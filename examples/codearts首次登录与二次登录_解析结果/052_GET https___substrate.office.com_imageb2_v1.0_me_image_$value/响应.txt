@@ -1,0 +1,25 @@
+HTTP/2 200
+cache-control: no-cache
+content-length: 150490
+content-type: image/png
+etag: W/"90f2f7523a6dcd8ae8a76b16ab01dd2516608fb88eba0da8146215139d9aaede"
+server: Microsoft-HTTPAPI/2.0
+x-nanoproxy: 1
+request-id: 10b0a2f6-5120-d793-1e8e-581b3ae5bad5
+x-calculatedbetarget: TPYP295MB0808.TWNP295.PROD.OUTLOOK.COM
+x-end2endlatencyms: 109
+ms-photo-source: cloud
+x-besku: Unknown
+x-backendhttpstatus: 200
+x-microserviceversion: 2.2.373.0
+x-ms-appid: 000000004835BC29
+x-proxy-backendserverstatus: 200
+x-proxy-routingcorrectness: 1
+x-feserver: TP0P295CA0048
+x-firsthopcafeefz: TPE
+alt-svc: h3=":443";ma=2592000,h3-29=":443";ma=2592000
+strict-transport-security: max-age=31536000; includeSubDomains
+ms-cv: 9qKwECBRk9cejlgbOuW61Q.1
+nel: {"report_to":"NelOfficeUpload1","max_age":7200,"include_subdomains":true,"failure_fraction":1.0,"success_fraction":0.01}
+report-to: {"group":"NelOfficeUpload1","max_age":7200,"endpoints":[{"url":"https://exo.nel.measure.office.net/api/report?TenantId=&FrontEnd=Cafe&DestinationEndpoint=TPE&RemoteIP=112.23.190.0&Environment=MT&HttpStatusFrom=BE&ServiceName=Default.ImageB2&MiraPartnerName="}],"include_subdomains":true}
+date: Fri, 11 Sep 2026 16:28:58 GMT

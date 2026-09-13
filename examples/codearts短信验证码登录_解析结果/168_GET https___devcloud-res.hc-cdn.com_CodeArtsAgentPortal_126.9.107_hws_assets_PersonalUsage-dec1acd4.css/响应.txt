@@ -1,0 +1,18 @@
+HTTP/2 200
+date: Sat, 12 Sep 2026 07:47:32 GMT
+content-type: text/css
+server: openresty
+cloudservicediscount: CDN
+x-obs-request-id: 000001A08FFBAC446BEE8B715F08430A
+etag: W/"bf8014d379520985125b99464df9df95"
+last-modified: Fri, 11 Sep 2026 10:12:35 GMT
+x-obs-id-2: 36AAAQAAEAABAAAQAAEAABAAAQAAEAABAAAaI=AAAAAAAAAAAAAAAAAAAAAAAAAA
+x-ccdn-expires: 2519603
+via: CHN-JSyangzhou-CMCC16-CACHE5[3],CHN-JSyangzhou-CMCC16-CACHE1[0,TCP_HIT,0],CHN-JSwuxi-GLOBAL2-CACHE7[3],CHN-JSwuxi-GLOBAL2-CACHE1[0,TCP_HIT,2],CHN-HElangfang-GLOBAL6-CACHE19[14],CHN-HElangfang-GLOBAL6-CACHE90[0,TCP_HIT,12]
+x-hcs-proxy-type: 1
+x-ccdn-cachettl: 2592000
+nginx-hit: 1
+age: 72397
+cache-control: max-age=2592000,s-maxage=3600
+access-control-allow-origin: *
+content-encoding: gzip

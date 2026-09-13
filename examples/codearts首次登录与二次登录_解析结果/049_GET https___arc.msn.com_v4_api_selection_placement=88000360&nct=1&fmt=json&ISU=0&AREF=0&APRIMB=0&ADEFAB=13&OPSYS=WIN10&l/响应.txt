@@ -1,0 +1,12 @@
+HTTP/2 200
+cache-control: max-age=86400, private
+content-length: 103
+content-type: application/json; charset=utf-8
+expires: Mon, 01 Jan 0001 00:00:00 GMT
+server: Microsoft-IIS/10.0
+arc-rsp-dbg: [{"OPTOUTSTATE":"16384"},{"REGIONALPOLICY":"0"}]
+accept-ch: UA, UA-Arch, UA-Full-Version, UA-Mobile, UA-Model, UA-Platform, UA-Platform-Version
+x-aspnet-version: 4.0.30319
+x-powered-by: ASP.NET
+strict-transport-security: max-age=31536000; includeSubDomains
+date: Fri, 11 Sep 2026 16:28:58 GMT

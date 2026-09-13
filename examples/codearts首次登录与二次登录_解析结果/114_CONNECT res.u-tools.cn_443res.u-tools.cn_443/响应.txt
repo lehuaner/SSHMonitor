@@ -1,0 +1,101 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 00:29:20.048
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.u-tools.cn
+  Simple Name: *.u-tools.cn
+  DNS Name: *.u-tools.cn
+
+[Issuer]
+  CN=YE2, O=Let's Encrypt, C=US
+  Simple Name: YE2
+  DNS Name: YE2
+
+[Serial Number]
+  06BF538EAC935E9022370EEF2CA16C769ECB
+
+[Not Before]
+  2026/8/1 19:12:36
+
+[Not After]
+  2026/10/30 19:12:35
+
+[Thumbprint]
+  A4BC0D9B55C4939B5B61B4BFF12BBDA38C58C580
+
+[Signature Algorithm]
+  sha384ECDSA(1.2.840.10045.4.3.3)
+
+[Public Key]
+  Algorithm: ECC
+  Length: 
+  Key Blob: 04 22 b3 c6 45 86 ee 66 b3 42 2c 35 b1 3f 7f 7e 78 83 29 fb 96 2c ad a9 d0 a2 cf ba 05 5a 01 ad 2b ab db 57 3f b8 45 aa a2 7f 54 b3 f6 f4 21 d1 27 ee a8 b7 5b fa 5f 3e 42 c9 3c 44 06 da 83 5c 85
+  Parameters: 06 08 2a 86 48 ce 3d 03 01 07
+
+[Extensions]
+* 密钥用法(2.5.29.15):
+  Digital Signature (80)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* 使用者密钥标识符(2.5.29.14):
+  0efe90ef24bc0f99eb231c976127fbd69e947c91
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=b959f28ecf22f086d33748ff761418ba82d85587
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://ye2.i.lencr.org/
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.u-tools.cn
+DNS Name=u-tools.cn
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://ye2.c.lencr.org/76.crl
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+cb38f715897c84a1445f5bc1ddfbc96ef29a59cd470a690585b0cb14c31458e7
+‎2026‎年‎8‎月‎1‎日 20:11:06
+SHA256
+ECDSA
+3045022100b03c4e6480dd1045ccaa8ee448703685b7661c47ac4f4cd5ad70677e8a30f94a02200126077c3f745b457239070f02699aa61d58f11e4d704f0a1fe2fb9b24aedec0
+
+v1
+46af863d3b3ee59fa577dea8245d36b0d9ed22a223f4617741229452ee95505f
+‎2026‎年‎8‎月‎1‎日 20:11:06
+SHA256
+ECDSA
+3045022100f437e48c5825255cc85ce15b562ded5c5fc0900199beb6f386a47dc711007d96022029f490f8672c96350ea33b8895e89a3cc156dd787181f99ae594c646cd09bd81
+
+
+[SubjectAltNames]
+DNS Name=*.u-tools.cn
+DNS Name=u-tools.cn
+

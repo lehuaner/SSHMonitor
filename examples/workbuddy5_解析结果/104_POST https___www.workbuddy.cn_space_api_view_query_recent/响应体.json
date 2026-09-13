@@ -1,0 +1,157 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "f948cb7e-6cea-45a1-ab42-429941349fce",
+  "data": {
+    "recents": [
+      {
+        "spaceId": "cCwTkzCwCevtZDBkVGnFEv",
+        "blockId": "CS0vSIVlr2ufPQb6M4VTVW",
+        "name": "WorkBuddy资料库：三种载体，一套数据",
+        "blockType": "node",
+        "kind": "web",
+        "creatorUid": "37cb9311-ab56-4608-b1bc-8f8f3bec2f04",
+        "creatorName": "vickymzzhou",
+        "accessTime": 1788877660635,
+        "modifyTime": 1788877660635,
+        "createTime": 1788877660635,
+        "locations": [
+          {
+            "recordId": "cCwTkzCwCevtZDBkVGnFEv",
+            "name": "🚀资料库的100种用法"
+          },
+          {
+            "recordId": "o0KWYeynteVv06UnAZqIFm",
+            "name": "WorkBuddy资料库介绍"
+          },
+          {
+            "recordId": "CS0vSIVlr2ufPQb6M4VTVW",
+            "name": "WorkBuddy资料库：三种载体，一套数据"
+          }
+        ],
+        "props": {
+          "taskInfo": {
+            "hasPermission": false
+          }
+        }
+      },
+      {
+        "spaceId": "cCwTkzCwCevtZDBkVGnFEv",
+        "blockId": "n5QMwOfRMV1JSKKShwErTx",
+        "name": "😁🤖和 Agent 一起用资料库",
+        "blockType": "node",
+        "kind": "doc",
+        "creatorUid": "37cb9311-ab56-4608-b1bc-8f8f3bec2f04",
+        "creatorName": "vickymzzhou",
+        "accessTime": 1788877659789,
+        "modifyTime": 1788877659789,
+        "createTime": 1788877659789,
+        "locations": [
+          {
+            "recordId": "cCwTkzCwCevtZDBkVGnFEv",
+            "name": "🚀资料库的100种用法"
+          },
+          {
+            "recordId": "o0KWYeynteVv06UnAZqIFm",
+            "name": "WorkBuddy资料库介绍"
+          },
+          {
+            "recordId": "n5QMwOfRMV1JSKKShwErTx",
+            "name": "😁🤖和 Agent 一起用资料库"
+          }
+        ],
+        "props": {
+          "taskInfo": {
+            "hasPermission": false
+          }
+        }
+      },
+      {
+        "spaceId": "cCwTkzCwCevtZDBkVGnFEv",
+        "blockId": "eC9igsnYGL62ehjHelJnf2",
+        "name": "一分钟玩转资料库",
+        "blockType": "node",
+        "kind": "web",
+        "creatorUid": "37cb9311-ab56-4608-b1bc-8f8f3bec2f04",
+        "creatorName": "vickymzzhou",
+        "accessTime": 1788877659352,
+        "modifyTime": 1788877659352,
+        "createTime": 1788877659352,
+        "locations": [
+          {
+            "recordId": "cCwTkzCwCevtZDBkVGnFEv",
+            "name": "🚀资料库的100种用法"
+          },
+          {
+            "recordId": "o0KWYeynteVv06UnAZqIFm",
+            "name": "WorkBuddy资料库介绍"
+          },
+          {
+            "recordId": "eC9igsnYGL62ehjHelJnf2",
+            "name": "一分钟玩转资料库"
+          }
+        ],
+        "props": {
+          "taskInfo": {
+            "hasPermission": false
+          }
+        }
+      },
+      {
+        "spaceId": "cCwTkzCwCevtZDBkVGnFEv",
+        "blockId": "o0KWYeynteVv06UnAZqIFm",
+        "name": "WorkBuddy资料库介绍",
+        "blockType": "node",
+        "kind": "web",
+        "creatorUid": "37cb9311-ab56-4608-b1bc-8f8f3bec2f04",
+        "creatorName": "vickymzzhou",
+        "accessTime": 1788877641695,
+        "modifyTime": 1788877641695,
+        "createTime": 1788877641695,
+        "locations": [
+          {
+            "recordId": "cCwTkzCwCevtZDBkVGnFEv",
+            "name": "🚀资料库的100种用法"
+          },
+          {
+            "recordId": "o0KWYeynteVv06UnAZqIFm",
+            "name": "WorkBuddy资料库介绍"
+          }
+        ],
+        "props": {
+          "taskInfo": {
+            "hasPermission": false
+          }
+        }
+      },
+      {
+        "spaceId": "5igTIra22Hz67mWlJQ8gtv",
+        "blockId": "s80iYTIBTmYiHfvkt1ItnR",
+        "name": "😁🤖和 Agent 一起用资料库",
+        "blockType": "node",
+        "kind": "doc",
+        "creatorUid": "8b3cb381-9ebc-4813-92d9-9e5880528465",
+        "creatorName": "乐幻",
+        "accessTime": 1787201299411,
+        "modifyTime": 1787201299411,
+        "createTime": 1787201299411,
+        "locations": [
+          {
+            "recordId": "5igTIra22Hz67mWlJQ8gtv",
+            "name": ""
+          },
+          {
+            "recordId": "s80iYTIBTmYiHfvkt1ItnR",
+            "name": "😁🤖和 Agent 一起用资料库"
+          }
+        ],
+        "props": {
+          "taskInfo": {
+            "hasPermission": false
+          }
+        }
+      }
+    ],
+    "hasNext": false
+  }
+}

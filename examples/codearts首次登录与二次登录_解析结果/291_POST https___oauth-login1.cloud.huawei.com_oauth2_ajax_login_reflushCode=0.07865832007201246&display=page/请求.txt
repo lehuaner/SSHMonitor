@@ -1,0 +1,23 @@
+POST https://oauth-login1.cloud.huawei.com/oauth2/ajax/login?reflushCode=0.07865832007201246&display=page HTTP/2
+:method: POST
+:authority: oauth-login1.cloud.huawei.com
+:scheme: https
+:path: /oauth2/ajax/login?reflushCode=0.07865832007201246&display=page
+content-length: 1018
+interfaceversion: v3
+sec-ch-ua-platform: "Windows"
+fromloginauth: false
+sec-ch-ua: "Microsoft Edge";v="153", "Not_A Brand";v="8", "Chromium";v="153"
+content-type: application/x-www-form-urlencoded
+sec-ch-ua-mobile: ?0
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+accept: */*
+origin: https://oauth-login1.cloud.huawei.com
+sec-fetch-site: same-origin
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://oauth-login1.cloud.huawei.com/oauth2/v3/loginCallback?access_type=offline&client_id=103493351&code_challenge_method=S256&display=page&flowID=0a8a41cc000001d17891441765979116&h=1789144176.5980&include_granted_scopes=true&lang=zh-cn&nonce=default&prompt=login&redirect_uri=https%3A%2F%2Fauth.huaweicloud.com%2Fauthui%2FcasLogin%3Fservice%3Dhttps%253A%252F%252Fcodearts.huaweicloud.com%252Fportal%252Fsettings%252Fpersonal-usage%253Flocale%253Dzh-cn&response_type=code&risks=2%3A58495A33B2615E3BF7C2E918A6A600FB%3A04E848FCC03D1C86AD20A0A83BCF23F1519AA87F4D0A503441B8ABC485E3606FBF0A7124B0F8DC1897EC04EB1AE33898716FB5A2570A4914DF71CC6B5FFB796707EB149E82190588B7ADCBDD13EB3C918C8C8051C100E2E633AE801C2AF898E705E0C8AD293224&scope=openid+https%3A%2F%2Fwww.huawei.com%2Fauth%2Faccount%2Funified.profile+https%3A%2F%2Fwww.huawei.com%2Fauth%2Faccount%2Frisk.idstate+LoginState&state=ea421dc8cfd942e0986cf3d8a6fd5c3e&themeName=lightred&v=44e6224c517b606608d3499d26ab7cfa395067d83805b3e29af15efbd1d8370e&ticket=1ST-493610-ibibGcvvLTibhTMvc8lz0d7qf0oUwTgEx3-cas&siteID=1&countryCode=CN
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+priority: u=1, i
+cookie: CASLOGINSITE=1; LOGINACCSITE=1; HuaweiID_CAS_ISCASLOGIN=true

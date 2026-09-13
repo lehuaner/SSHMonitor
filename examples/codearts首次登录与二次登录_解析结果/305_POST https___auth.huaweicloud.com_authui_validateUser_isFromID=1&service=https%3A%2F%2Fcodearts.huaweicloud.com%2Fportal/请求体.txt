@@ -1,0 +1,1 @@
+step=afterBindMfa&IAMCSRF=c8dd04859b984aad934a3067cfbf57bb&isConfirmed=false&type=console_vmfa&rememberPromptMFA=true&isSupport=true&isFromID=1

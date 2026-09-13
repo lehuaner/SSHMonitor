@@ -1,0 +1,14 @@
+POST https://open.u-tools.cn/logs?access_token=cx1q1y8llb2jfbf2lhxlfyzbnt181j6kjaoljqrr HTTP/2
+:method: POST
+:authority: open.u-tools.cn
+:scheme: https
+:path: /logs?access_token=cx1q1y8llb2jfbf2lhxlfyzbnt181j6kjaoljqrr
+content-length: 501
+content-type: application/json
+accept: application/json
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) uTools/7.8.0-ia32 Chrome/108.0.5359.215 Electron/22.3.27 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: zh-CN

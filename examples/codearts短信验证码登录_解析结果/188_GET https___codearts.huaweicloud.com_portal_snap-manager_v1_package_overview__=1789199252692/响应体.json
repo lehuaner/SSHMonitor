@@ -1,0 +1,43 @@
+{
+  "all_credit_package": {
+    "package_credit_amount": 5500.0,
+    "package_credit_used": 0.0,
+    "package_credit_remain": 5500.0,
+    "package_credit_user_amount": 5500.0,
+    "package_credit_user_used": 0.0,
+    "package_credit_user_remain": 5500.0,
+    "expiring_credit_amount": 0,
+    "expiring_credit_user_amount": 0
+  },
+  "basic_package": {
+    "enable": true,
+    "resource_id": "d278505eeb834b92a8859372ab552130",
+    "alarm_number": 0,
+    "package_used_count": 1,
+    "package_amount": 1,
+    "package_used_token": 0,
+    "package_user_used_token": 0,
+    "package_token_amount": 0,
+    "is_token_all_use": false,
+    "is_luxury_package": false,
+    "package_credit_amount": 500.0,
+    "package_credit_used": 0.0,
+    "package_credit_remain": 500.0,
+    "package_credit_allocated": 500.0,
+    "package_credit_user_amount": 500.0,
+    "package_credit_user_used": 0.0,
+    "package_credit_user_remain": 500.0
+  },
+  "ondemand_credit_package": null,
+  "bonus_credit_package": {
+    "package_credit_amount": 5000.0,
+    "package_credit_used": 0.0,
+    "package_credit_remain": 5000.0,
+    "package_credit_user_amount": 5000.0,
+    "package_credit_user_used": 0.0,
+    "package_credit_user_remain": 5000.0,
+    "expiring_credit_amount": 0,
+    "expiring_credit_user_amount": 0
+  },
+  "model_package": []
+}

@@ -1,0 +1,55 @@
+CONNECT open.u-tools.cn:443 HTTP/1.1
+Host: open.u-tools.cn:443
+Connection: keep-alive
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) uTools/7.8.0-ia32 Chrome/108.0.5359.215 Electron/22.3.27 Safari/537.36
+
+A SSLv3-compatible ClientHello handshake was found. Fiddler extracted the parameters below.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+Record Layer Version: 3.3 (TLS/1.2)
+Random: AA 14 9C F6 CB 9C BF A4 EA 2D 05 F0 12 74 EE 1F A6 C7 C5 EE 1E F5 9D 61 AE 8A C3 B1 3E FE FA A0
+"Time": 2101/2/10 4:27:22
+SessionID: D6 25 41 73 60 20 92 9A 3E 8B 79 E6 90 E5 BB 96 11 62 CE 8D 60 19 73 F5 B2 39 DE C8 9B F3 8E 63
+Extensions: 
+	grease (0x8a8a)	empty
+	server_name	open.u-tools.cn
+	extended_master_secret	empty
+	renegotiation_info	00
+	supported_groups	grease [0xeaea], x25519 [0x1d], secp256r1 [0x17], secp384r1 [0x18]
+	ec_point_formats	uncompressed [0x0]
+	SessionTicket	empty
+	ALPN		h2, http/1.1
+	status_request	OCSP - Implicit Responder
+	signature_algs	ecdsa_secp256r1_sha256, rsa_pss_rsae_sha256, rsa_pkcs1_sha256, ecdsa_secp384r1_sha384, rsa_pss_rsae_sha384, rsa_pkcs1_sha384, rsa_pss_rsae_sha512, rsa_pkcs1_sha512
+	SignedCertTimestamp (RFC6962)	empty
+	key_share	00 29 EA EA 00 01 00 00 1D 00 20 0E 7C 32 5F 23 25 A7 3C 2D 64 6D FE 2B 9C 6E D0 E2 42 03 A0 F0 B5 21 0F 54 B0 22 9F 9D D1 A2 4A
+	psk_key_exchange_modes	01 01
+	supported_versions	grease [0x7a7a], Tls1.3, Tls1.2
+	0x001b		02 00 02
+	0x4469		00 03 02 68 32
+	grease (0x3a3a)	00
+	pre_shared_key	00 F6 00 F0 45 F1 E4 8D 09 12 E2 EB D0 95 1E 7C 14 B1 B3 00 52 A8 21 B5 0A BE AB 45 E1 37 CF 11 A1 EF FD 88 20 C8 9D E8 B8 87 FF 4D B5 AB D8 7D AB 4D 91 44 50 1D 80 42 89 2A 3F 47 C0 AA 0C AE 8F F8 80 2B 9D 9C 12 AD 76 2C D0 E7 A6 89 FC 03 CF DC FE 3F FA F6 BF A0 B1 15 CB D3 1D 0E B6 6F C9 D2 2A 0C F9 98 D8 27 0C C3 FE 6F EA C3 27 EB A7 53 29 24 E9 53 EA 5F C5 33 4E 33 8A AE 8B 9C F6 71 86 D9 00 B3 3D FF 02 09 21 A6 77 64 D3 66 58 32 E8 E3 9F AD 4C 25 E0 27 04 BB 08 22 A7 EA 70 1A 1A 47 B6 DB 5B BD A5 BE EE 75 B6 DF 33 C1 5B B0 02 31 4B A6 7F DE B9 77 D3 CE 0E D4 0F 2A 2B 9B AD 0A D0 5E E9 68 E1 9F F5 E7 A8 9D 37 0C B9 60 54 70 E5 6E 0E 12 3A 6D CD 50 F5 2B 64 2B CF 34 5F D1 04 AC 58 11 8B DD 47 68 65 84 C8 1F 50 96 35 59 2B 0D 7C E3 00 31 30 0C 5A 16 89 F7 EF B4 58 59 7F ED 18 13 97 29 73 A7 5F 46 AC 9E 3C F0 54 B1 64 94 5D 4C A9 76 DA 88 45 56 0C 82 53 5E BD D3 79 EA 7E 08 9E 18 3F
+Ciphers: 
+	[8A8A]	Unrecognized cipher - See https://www.iana.org/assignments/tls-parameters/
+	[1301]	TLS_AES_128_GCM_SHA256
+	[1302]	TLS_AES_256_GCM_SHA384
+	[1303]	TLS_CHACHA20_POLY1305_SHA256
+	[C02B]	TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+	[C02F]	TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	[C02C]	TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+	[C030]	TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	[CCA9]	TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
+	[CCA8]	TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
+	[C013]	TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+	[C014]	TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA
+	[009C]	TLS_RSA_WITH_AES_128_GCM_SHA256
+	[009D]	TLS_RSA_WITH_AES_256_GCM_SHA384
+	[002F]	TLS_RSA_WITH_AES_128_CBC_SHA
+	[0035]	TLS_RSA_WITH_AES_256_CBC_SHA
+
+Compression: 
+	[00]	NO_COMPRESSION
+
+

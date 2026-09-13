@@ -1,0 +1,17 @@
+GET https://oauth-login1.cloud.huawei.com/oauth2/ui/reportData?type=healthCheck&page=%2Foauth2%2Fv3%2Fauthorize&client_id=103493351&message=isSupportES6%20%3D%20%27true%27%2C%20load%20vue3%20static HTTP/2
+:method: GET
+:authority: oauth-login1.cloud.huawei.com
+:scheme: https
+:path: /oauth2/ui/reportData?type=healthCheck&page=%2Foauth2%2Fv3%2Fauthorize&client_id=103493351&message=isSupportES6%20%3D%20%27true%27%2C%20load%20vue3%20static
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+sec-ch-ua: "Microsoft Edge";v="153", "Not_A Brand";v="8", "Chromium";v="153"
+sec-ch-ua-mobile: ?0
+accept: image/avif,image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8
+sec-fetch-site: same-origin
+sec-fetch-mode: no-cors
+sec-fetch-dest: image
+referer: https://oauth-login1.cloud.huawei.com/oauth2/v3/authorize?ticket=1ST-544459-WomWk7bGgKQwhFNnac2cjryirYaB5GdqcD-cas&state=08900d5ea6034e399ea696bed0843ed6&risks=2:7AD7380DDC0106912ED229E27220F603:6EAB03CAFD405A2E598133101188491D875EACCD64FC894333CA8BEF3BCA21AEC9BB9901F75F1AC6398F38E70D5945BB7835C3BFBB9237596DB7657CCB41BD05813FB0577565737FB7E78667C2A02371CDBDCED9926B491D12C6CB910D7C0A64E9802DB8DF535E&response_type=code&client_id=103493351&scope=https%3A%2F%2Fwww.huawei.com%2Fauth%2Faccount%2Funified.profile+https%3A%2F%2Fwww.huawei.com%2Fauth%2Faccount%2Frisk.idstate+LoginState&redirect_uri=https%3A%2F%2Fauth.huaweicloud.com%2Fauthui%2FcasLogin%3Fservice%3Dhttps%253A%252F%252Fcodearts.huaweicloud.com%252Fportal%252Fsettings%252Fpersonal-usage&ui_locales=zh-cn&siteID=1&countryCode=CN&display=page&themeName=lightred&access_type=offline&authType=tType&authService=https%3A%2F%2Fauth.huaweicloud.com%2Fauthui%2FcasLogin%3Fservice%3Dhttps%253A%252F%252Fcodearts.huaweicloud.com%252Fportal%252Fsettings%252Fpersonal-usage
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+priority: i

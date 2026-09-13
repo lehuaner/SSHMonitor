@@ -111,6 +111,10 @@ CODEARTS_SESSION_COOKIES = ("devclouddevuibjJ_SESSION_ID", "devclouddevuibjagenc
 # 失效信号头
 EXPIRY_HEADER = "hw-ajax-redirect"
 
+# unionLoginByPwd 以「isSuccess=0 + 这些 errorCode」的形式要求设备验证
+# （实测：不带受信 hwid_cas_sid 时返回 10002080，且 errorDesc 里内嵌 authCodeSentList）
+NEED_VERIFY_CODES = ("10002080",)
+
 # 指纹模板：一台 Windows + Edge、1920x1080、UTC+8 的常见桌面环境
 # （实测证明服务端不校验这些值，只校验 cs，因此固定模板即可、且能保证跨会话稳定）
 FP_PROFILE: Dict[str, Any] = {
@@ -205,6 +209,26 @@ def build_fp(seed: str = "codearts-checkin", *, now_ms: Optional[int] = None,
 def decode_fp(fp: str) -> str:
     """反向解码 fp（用于调试 / 自检）。"""
     return _xor_decrypt(base64.b64decode(fp).decode("latin-1"))
+
+
+def parse_auth_code_sent_list(raw: Any) -> List[Dict[str, Any]]:
+    """从 `errorDesc` / `localInfo.errorDesc` 里抽出 `authCodeSentList`。
+
+    `errorDesc` 可能是 JSON 字符串，也可能是已解析好的 dict；两种都兼容。
+    形如：{"authCodeSentList":[{"name":"Honor 10","accountType":-1,"sent":1,"type":"device"}]}
+    """
+    if not raw:
+        return []
+    desc = raw
+    if isinstance(desc, str):
+        try:
+            desc = json.loads(desc)
+        except Exception:  # noqa: BLE001
+            return []
+    if not isinstance(desc, dict):
+        return []
+    items = desc.get("authCodeSentList") or []
+    return [d for d in items if isinstance(d, dict)]
 
 
 # ==========================================================================
@@ -546,13 +570,10 @@ class CodeArtsLogin:
                           current_uri="/CAS/portal/authIdentify.html")
 
         desc = (res.get("localInfo") or {}).get("errorDesc", "{}")
-        if isinstance(desc, str):
-            try:
-                desc = json.loads(desc)
-            except Exception:  # noqa: BLE001
-                desc = {}
-        devices = desc.get("authCodeSentList", []) or []
-        self._auth_devices = devices
+        devices = parse_auth_code_sent_list(desc)
+        # getPageInfo 若没返回设备列表，保留上一步（10002080 分支）拿到的，避免丢信息
+        if devices:
+            self._auth_devices = devices
         return res
 
     def send_verify_code(self, device_index: int = 0) -> LoginResult:
@@ -768,7 +789,24 @@ class CodeArtsLogin:
             self._log("        getLoginIdsByPwd 返回 %s，继续尝试 unionLoginByPwd" % code)
 
         login = self._step_union_login(account, password, account_info, hwmeta=hwmeta)
+
+        # ★ 新设备分支 A：isSuccess=0 + errorCode=10002080
+        #   实测（不带受信 hwid_cas_sid）：服务端不返回 callbackURL，而是把
+        #   「已下发验证码的设备列表」塞进 errorDesc 的 JSON 串里。
+        #   必须与分支 B（needPopTrust=true，见下）一并支持。
         if login.get("isSuccess") != 1:
+            code_err = str(login.get("errorCode") or "")
+            if code_err in NEED_VERIFY_CODES:
+                self._auth_devices = parse_auth_code_sent_list(login.get("errorDesc"))
+                self._log("        unionLoginByPwd 返回 %s → 本机是新设备，需要设备验证"
+                          % code_err)
+                if self._auth_devices:
+                    self._log("        服务端已向以下设备下发验证码：%s" % ", ".join(
+                        "%s(accountType=%s,sent=%s)" % (d.get("name"), d.get("accountType"),
+                                                        d.get("sent"))
+                        for d in self._auth_devices))
+                return LoginResult(True, need_verify=True, cookies=self.cookies(),
+                                   auth_devices=self._auth_devices, detail=login)
             err = login.get("errorDesc") or login.get("errorCode") or "未知错误"
             return LoginResult(False, error="密码登录失败：%s" % err, detail=login)
 
@@ -892,6 +930,32 @@ def _print_devices(devices: List[Dict[str, Any]]) -> None:
     print("（华为云已向其中一台发送验证码）")
 
 
+def _wait_for_code(path: str, timeout: int) -> Optional[str]:
+    """轮询读取验证码文件（供后台/非交互运行使用）。
+
+    为何需要：服务端在 `cloudIframeAuthIdentify/getPageInfo` 时**才**下发验证码，
+    所以验证码必须在「本次运行的 send_verify_code() 之后」提交 ——
+    把码写进文件、由本函数取走，是唯一能跨进程又不重发验证码的方式。
+    """
+    print("\n等待验证码：请把收到的验证码写入 %s" % path)
+    waited = 0
+    while waited < timeout:
+        if os.path.exists(path):
+            try:
+                with open(path, encoding="utf-8") as fh:
+                    val = fh.read().strip()
+            except Exception:  # noqa: BLE001
+                val = ""
+            if val:
+                print("已读到验证码，提交中 …")
+                return val
+        time.sleep(2)
+        waited += 2
+        if waited % 30 == 0:
+            print("  …已等待 %d 秒（超时 %d 秒）" % (waited, timeout))
+    return None
+
+
 def main(argv: Optional[List[str]] = None) -> int:
     ap = argparse.ArgumentParser(description="CodeArts（华为云）登录 + 新设备验证")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -900,7 +964,12 @@ def main(argv: Optional[List[str]] = None) -> int:
     p_login.add_argument("--account", required=True, help="手机号或华为账号")
     p_login.add_argument("--password", default=None, help="密码（省略则交互输入）")
     p_login.add_argument("--session", default=".codearts_session.json", help="会话保存路径")
-    p_login.add_argument("--code", default=None, help="设备验证码（新设备时使用）")
+    p_login.add_argument("--code", default=None,
+                         help="设备验证码（注意：本次运行仍会重新下发一条验证码，"
+                              "仅当你能立刻提供刚收到的码时使用）")
+    p_login.add_argument("--code-file", default=None,
+                         help="★推荐：非交互运行，轮询该文件获取验证码（不重发）")
+    p_login.add_argument("--code-timeout", type=int, default=900, help="等待验证码最长秒数")
     p_login.add_argument("--device-index", type=int, default=0, help="选择第几个验证设备")
     p_login.add_argument("--hwmeta", default="", help="风控 hwmeta（默认空串）")
     p_login.add_argument("--fp-seed", default="codearts-checkin", help="设备指纹种子（同一台机器固定）")
@@ -966,9 +1035,28 @@ def main(argv: Optional[List[str]] = None) -> int:
             vr = lg.send_verify_code(device_index=args.device_index)
             if not vr:
                 print("\n✗ 取验证设备失败：%s" % vr.error)
+                if lg._hwid_cas_sid:
+                    save_session(lg, args.session)
                 return 1
             _print_devices(vr.auth_devices)
-            code = input("请输入设备上收到的验证码: ").strip()
+            if args.code_file:
+                code = _wait_for_code(args.code_file, args.code_timeout)
+                if not code:
+                    print("\n✗ 等待验证码超时")
+                    if lg._hwid_cas_sid:
+                        save_session(lg, args.session)
+                    return 4
+            elif not sys.stdin.isatty():
+                # 非交互环境（CI / 脚本调用）：不能阻塞在 input()。
+                # 保存 hwid_cas_sid 后退出，调用方拿验证码再用 --code-file 重跑。
+                if lg._hwid_cas_sid:
+                    save_session(lg, args.session)
+                print("\n⚠ 需要设备验证码，但当前不是交互终端。")
+                print("  请改用：python codearts_login.py login --account %s --code-file <文件>"
+                      % args.account)
+                return 4
+            else:
+                code = input("请输入设备上收到的验证码: ").strip()
         else:
             lg.send_verify_code(device_index=args.device_index)
         res = lg.verify_device(code)

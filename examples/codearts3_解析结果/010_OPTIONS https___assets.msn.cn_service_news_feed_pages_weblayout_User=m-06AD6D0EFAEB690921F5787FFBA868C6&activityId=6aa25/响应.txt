@@ -1,0 +1,20 @@
+HTTP/2 200
+vary: Origin
+nel: {"report_to":"network-errors","max_age":604800,"success_fraction":0.001,"failure_fraction":0.1}
+report-to: {"group":"network-errors","max_age":604800,"endpoints":[{"url":"https://deff.nelreports.net/api/report?cat=msn"}]}
+cache-control: public, max-age=300
+x-as-suppresssetcookie: 1
+access-control-allow-origin: https://ntp.msn.cn
+access-control-allow-credentials: true
+access-control-allow-methods: PUT,PATCH,POST,GET,OPTIONS,DELETE
+access-control-allow-headers: TicketType,RequestContinuationKey,AuthToken,Content-Type,x-client-activityid,ms-cv,signedInCookieName,muid,appid,User-Location,user-location,userauthtoken,usertickettype,sitename,s2sauthtoken,thumbprint,Authorization,Ent-Authorization,UserIdToken,DDD-TMPL,DDD-ActivityId,DDD-FeatureSet,DDD-Session-ID,Date,date,ads-referer,taboola-sessionId,taboola-sessionid,Akamai-Request-ID,Akamai-Server-IP,X-MSEdge-Ref,DDD-DebugId,X-Statics-Fallback,X-FD-RevIP,X-FD-ClientIP,s-xbox-token,X-Client-Data,x-fd-features,cache-control,pragma,traceparent,Widgets,Muted,OneSvc-Uni-Feat-Tun,appUninstall,Velocity,SoftLanding,PrefMigrated,DDD-TMPL-Removed,deviceFeatures,X-Staticfallback-Reason,Static_fallback_reason_qs,X-1S-Digital-ID,x-ntp-cohort-prefs
+access-control-expose-headers: TicketType,RequestContinuationKey,AuthToken,Content-Type,x-client-activityid,ms-cv,signedInCookieName,muid,appid,User-Location,user-location,userauthtoken,usertickettype,sitename,s2sauthtoken,thumbprint,Authorization,Ent-Authorization,UserIdToken,DDD-TMPL,DDD-ActivityId,DDD-FeatureSet,DDD-Session-ID,Date,date,ads-referer,taboola-sessionId,taboola-sessionid,Akamai-Request-ID,Akamai-Server-IP,X-MSEdge-Ref,DDD-DebugId,X-Statics-Fallback,X-FD-RevIP,X-FD-ClientIP,s-xbox-token,X-Client-Data,x-fd-features,cache-control,pragma,traceparent,Widgets,Muted,OneSvc-Uni-Feat-Tun,appUninstall,Velocity,SoftLanding,PrefMigrated,DDD-TMPL-Removed,deviceFeatures,X-Staticfallback-Reason,Static_fallback_reason_qs,X-1S-Digital-ID,x-ntp-cohort-prefs,Akamai-Request-BC
+access-control-max-age: 300
+content-type: text/html
+x-nws-log-uuid: 5674802485167295870
+server: TencentEdgeOne
+date: Thu, 10 Sep 2026 07:10:18 GMT
+alt-svc: h3=":443"; ma=2592000,h3-29=":443"; ma=2592000,h3-Q050=":443"; ma=2592000,quic=":443"; ma=2592000; v="46,43"
+cdn: tencent-p2
+x-cdn: tencent
+content-length: 2

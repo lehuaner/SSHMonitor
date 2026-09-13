@@ -1,0 +1,96 @@
+
+
+
+
+<html>
+	<body>
+
+
+
+
+
+<script language="javascript">
+var count = 0;
+var onloadcount = 0;
+var sum = 2;
+
+function logout(logoutUrl)
+{
+    var theDiv = document.createElement("div");
+	theDiv.height = 0;
+	theDiv.width = 0;
+	theDiv.setAttribute("style","display:none");
+	theDiv.innerHTML="<iframe id=iframe_"+count+" name=iframe_"+count+" height=0 width=0 />";
+	document.body.appendChild(theDiv);
+	
+	var iframe = document.getElementById("iframe_"+count);
+	var theForm = document.createElement("form");
+	theDiv.appendChild(theForm);
+
+	if (logoutUrl.includes("console/logout")) {
+		theForm.method = "get";
+	} else {
+		theForm.method = "post";
+	}
+	theForm.action = logoutUrl;
+	theForm.target = "iframe_"+count;
+	theForm.submit();
+	
+	count++;
+	if (iframe.attachEvent)
+	{ 
+		iframe.attachEvent("onload", function()
+		{
+         	onloadcount++;
+			if(onloadcount == sum)
+			{
+			    window.location.href = "/authui/serviceLogin.action?service=https%3A%2F%2Fcodearts.huaweicloud.com%2Fportal%2Fsettings%2Fpersonal-usage%3Flocale%3Dzh-cn";
+			}
+		});
+	}
+	else
+	{
+        iframe.onload = function()
+		{
+			onloadcount++;
+			if(onloadcount == sum)
+			{
+				window.location.href = "/authui/serviceLogin.action?service=https%3A%2F%2Fcodearts.huaweicloud.com%2Fportal%2Fsettings%2Fpersonal-usage%3Flocale%3Dzh-cn";
+			}
+		};
+	}
+ 	setTimeout("timeout()",10000);
+}
+function timeout()
+{
+		onloadcount++;
+		if(onloadcount == sum)
+		{
+			window.location.href = "/authui/serviceLogin.action?service=https%3A%2F%2Fcodearts.huaweicloud.com%2Fportal%2Fsettings%2Fpersonal-usage%3Flocale%3Dzh-cn";
+		}
+}
+
+function redirect()
+{
+	window.location.href = "/authui/serviceLogin.action?service=https%3A%2F%2Fcodearts.huaweicloud.com%2Fportal%2Fsettings%2Fpersonal-usage%3Flocale%3Dzh-cn";
+}
+
+</script>
+
+	</body>
+</html>
+
+
+   
+       
+			     <script defer="defer" type="text/javascript">
+			         logout('https://codearts.huaweicloud.com/portal/settings/personal-usage?locale=zh-cn&logoutRequest=%3Csamlp%3ALogoutRequest%20xmlns%3Asamlp%3D%22urn%3Aoasis%3Anames%3Atc%3ASAML%3A2.0%3Aprotocol%22%20ID%3D%22LR-99984885-BkPXtPvFgENrqebeQ2gxcyYA-sso%22%20Version%3D%222.0%22%20IssueInstant%3D%222026-09-12T00%3A29%3A30Z%22%3E%3Csaml%3ANameID%20xmlns%3Asaml%3D%22urn%3Aoasis%3Anames%3Atc%3ASAML%3A2.0%3Aassertion%22%3E%40NOT_USED%40%3C%2Fsaml%3ANameID%3E%3Csamlp%3ASessionIndex%3EST-93963157-79voJ4HeWzVpSaKbfdYz0IWr-sso%3C%2Fsamlp%3ASessionIndex%3E%3C%2Fsamlp%3ALogoutRequest%3E');
+			     </script>
+       
+			     <script defer="defer" type="text/javascript">
+			         logout('https://id1.cloud.huawei.com/AMW/logout?service=https%3A%2F%2Fcodearts.huaweicloud.com%2Fportal%2Fsettings%2Fpersonal-usage%3Flocale%3Dzh-cn');
+			     </script>
+       
+   
+   
+

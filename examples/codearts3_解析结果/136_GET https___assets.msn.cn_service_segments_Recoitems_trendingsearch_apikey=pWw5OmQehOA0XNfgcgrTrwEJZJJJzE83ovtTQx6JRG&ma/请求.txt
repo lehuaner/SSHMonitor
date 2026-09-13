@@ -1,0 +1,22 @@
+GET https://assets.msn.cn/service/segments/Recoitems/trendingsearch?apikey=pWw5OmQehOA0XNfgcgrTrwEJZJJJzE83ovtTQx6JRG&market=zh-cn HTTP/2
+:method: GET
+:authority: assets.msn.cn
+:scheme: https
+:path: /service/segments/Recoitems/trendingsearch?apikey=pWw5OmQehOA0XNfgcgrTrwEJZJJJzE83ovtTQx6JRG&market=zh-cn
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0
+sec-ch-ua: "Chromium";v="152", "Not?A_Brand";v="24", "Microsoft Edge";v="152"
+sec-ch-ua-mobile: ?0
+accept: */*
+origin: https://ntp.msn.cn
+x-edge-shopping-flag: 1
+sec-ms-gec: 47CF54C4AC8DFA54-73871D13F0F6E48EED84F58E771E9BBDD1ED00FF4C5FD868AF35976A5ADA9FED
+sec-ms-gec-version: 2-152.0.4191.66
+x-client-data: eyIxIjoiMTAiLCIyIjoiMSIsIjMiOiIwIiwiNCI6Ijc3MTU5NzU3NDkyNjI1NTc0OTMiLCI2Ijoic3RhYmxlIiwiOSI6ImRlc2t0b3AifQ==
+sec-fetch-site: same-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://ntp.msn.cn/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7,bn-IN;q=0.6,bn;q=0.5,en-GB;q=0.4
+priority: u=1, i

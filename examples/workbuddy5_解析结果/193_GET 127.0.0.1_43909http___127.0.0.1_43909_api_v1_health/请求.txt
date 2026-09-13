@@ -1,0 +1,10 @@
+GET http://127.0.0.1:43909/api/v1/health HTTP/1.1
+host: 127.0.0.1:43909
+connection: keep-alive
+X-CodeBuddy-Request: 1
+Authorization: Bearer Bn6M3FKlIKeftw7OuJHFavdWZ95Q5UYqKF6fLkm7p9I
+accept: */*
+accept-language: *
+sec-fetch-mode: cors
+user-agent: node
+accept-encoding: gzip, deflate

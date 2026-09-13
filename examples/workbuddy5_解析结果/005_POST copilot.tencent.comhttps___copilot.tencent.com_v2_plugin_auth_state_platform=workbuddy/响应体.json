@@ -1,0 +1,9 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "6617c5c27d9046d89aaa14cd7a2026a5",
+  "data": {
+    "state": "23a892d8-6045-4381-8b87-449592bac90a",
+    "authUrl": "https://www.workbuddy.cn/login?platform=workbuddy&state=23a892d8-6045-4381-8b87-449592bac90a"
+  }
+}

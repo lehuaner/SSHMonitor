@@ -1,0 +1,29 @@
+{
+  "accountInfoList": [
+    {
+      "anonymousAccount": "le****an",
+      "anonymousEncryption": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJkaWQiOiIwMWEwOTNhNzc3OTg3YzE3YmVhZDRkODMzYzg0OGQ0MyIsImNhdCI6MTc4OTE5OTIzMjY5MiwidHlwZSI6IjIifQ.jhi21ztVyPta_zjxH13apHvXPODW3MM2ynjaiyP-I8jDaif8_Z4_SIZFw8dFe7sGJAtxM2Pe9bamvFnN949pSw",
+      "bindTime": "1789154821000",
+      "countryCode": "CN",
+      "freezeStatus": "UNFREEZE",
+      "innerUID": "01a093a777987c17bead4d833c848d43",
+      "inputAccountType": 2,
+      "labelInfo": {
+        "domainID": "01a093a777987c17bead4d833c848d43",
+        "isEnableHwCloud": true,
+        "isLastLogin": true,
+        "isNotMigrateHwCloudAccount": false,
+        "isOverseasAccount": false,
+        "loginTime": 1789186981288,
+        "verifiedFlag": 0
+      },
+      "loginID": "le****an",
+      "loginSecLevel": 1,
+      "serial": 0,
+      "siteID": 1,
+      "srcAcctType": 0
+    }
+  ],
+  "isSuccess": 1,
+  "localStorageID": "AqadBXxTb14yLSCIkLh0OKPZfozVPMErSvDX2JNgR1tM3xKi"
+}

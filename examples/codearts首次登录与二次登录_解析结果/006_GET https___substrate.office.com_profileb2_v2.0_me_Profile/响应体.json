@@ -1,0 +1,275 @@
+{
+  "@odata.context": "https://substrate.office.com/profileb2/v2.0/me/$metadata#profile(accounts(),addresses(),anniversaries(),directoryExtensionAttributes(),educationalActivities(),names(),emails(),notes(),interests(),languages(),phones(),positions(),projects(),responsibilities(),skills(),topics(),webAccounts(),websites(),awards(),publications(),patents(),certifications(),extensions(),photos(),profileVideoMetadata(),summary())",
+  "profileId": "profileId",
+  "freshnessTag": "FT-PAPI-View-a4859aa59d8840529fab7dfa07d6e9fb",
+  "lastModifiedDateTime": "2024-05-19T12:11:13.0397485Z",
+  "activities": [],
+  "accounts": [
+    {
+      "ageGroup": "Adult",
+      "countryCode": "US",
+      "userPrincipalName": "s2384335609@gmail.com",
+      "externalDirectoryObjectId": "",
+      "alias": "",
+      "exchangeAccountType": null,
+      "exchangeAccountTypeDetails": null,
+      "cid": -1834168955571741383,
+      "puid": 914802243636686,
+      "userType": null,
+      "accountEnabled": null,
+      "isSipEnabled": null,
+      "userPersona": null,
+      "searchableByProfile": null,
+      "isTeamsForLifeUser": null,
+      "allowedAudiences": "me",
+      "createdDateTime": "2022-08-11T05:33:04.3667086Z",
+      "lastModifiedDateTime": "2024-05-19T12:11:02.8478165Z",
+      "id": "7e8f794f-e7f0-4c83-acec-3acf6f6ba50d",
+      "isSearchable": false,
+      "preferredLanguageTag": {
+        "locale": "zh-CN",
+        "displayName": "中文(中国)"
+      },
+      "originTenantInfo": null,
+      "createdBy": {
+        "user": null,
+        "application": {
+          "displayName": "MSA",
+          "id": null
+        },
+        "device": null
+      },
+      "inference": null,
+      "lastModifiedBy": {
+        "user": null,
+        "application": {
+          "displayName": "MSA",
+          "id": null
+        },
+        "device": null
+      },
+      "source": {
+        "type": [
+          "MSA"
+        ]
+      },
+      "sources": [
+        {
+          "id": "9a3e0ce2-cf4b-477e-b3b3-df246318e251"
+        }
+      ]
+    }
+  ],
+  "addresses": [],
+  "anniversaries": [
+    {
+      "type": "birthday",
+      "date": "2003-08-23T00:00:00Z",
+      "displayName": null,
+      "allowedAudiences": "me",
+      "createdDateTime": "2024-04-04T19:09:12.8634221Z",
+      "lastModifiedDateTime": "2024-04-04T19:09:12.8634222Z",
+      "id": "f21e112c-30dd-40a9-84a2-16fc2b850b5c",
+      "isSearchable": false,
+      "createdBy": {
+        "user": null,
+        "application": {
+          "displayName": "Directory",
+          "id": null
+        },
+        "device": null
+      },
+      "inference": null,
+      "lastModifiedBy": {
+        "user": null,
+        "application": {
+          "displayName": "Directory",
+          "id": null
+        },
+        "device": null
+      },
+      "source": {
+        "type": [
+          "MSA"
+        ]
+      },
+      "sources": [
+        {
+          "id": "9a3e0ce2-cf4b-477e-b3b3-df246318e251"
+        }
+      ]
+    }
+  ],
+  "directoryExtensionAttributes": [],
+  "educationalActivities": [],
+  "names": [
+    {
+      "displayName": "",
+      "first": "焕然",
+      "initials": null,
+      "last": "孙",
+      "languageTag": null,
+      "maiden": null,
+      "middle": null,
+      "nickname": null,
+      "suffix": null,
+      "title": null,
+      "allowedAudiences": "organization, federatedOrganizations",
+      "createdDateTime": "2022-08-11T05:33:04.3667086Z",
+      "lastModifiedDateTime": "2022-08-11T05:33:04.3667086Z",
+      "id": "986b7f7f-50b5-4a09-826a-c3ba0bcb6212",
+      "isSearchable": false,
+      "pronunciation": null,
+      "createdBy": {
+        "user": null,
+        "application": {
+          "displayName": "MSA",
+          "id": null
+        },
+        "device": null
+      },
+      "inference": null,
+      "lastModifiedBy": {
+        "user": null,
+        "application": {
+          "displayName": "MSA",
+          "id": null
+        },
+        "device": null
+      },
+      "source": {
+        "type": [
+          "MSA"
+        ]
+      },
+      "sources": [
+        {
+          "id": "9a3e0ce2-cf4b-477e-b3b3-df246318e251"
+        }
+      ]
+    }
+  ],
+  "emails": [
+    {
+      "address": "s2384335609@gmail.com",
+      "displayName": null,
+      "type": "personal",
+      "allowedAudiences": "me",
+      "createdDateTime": "2026-09-11T13:56:04.7584311Z",
+      "lastModifiedDateTime": "2026-09-11T13:56:04.7584312Z",
+      "id": "b8c510db-1fc0-4a49-b056-9ced9ae17192",
+      "isSearchable": false,
+      "createdBy": {
+        "user": null,
+        "application": {
+          "displayName": "Directory",
+          "id": null
+        },
+        "device": null
+      },
+      "inference": null,
+      "lastModifiedBy": {
+        "user": null,
+        "application": {
+          "displayName": "Directory",
+          "id": null
+        },
+        "device": null
+      },
+      "source": {
+        "type": [
+          "MSA"
+        ]
+      },
+      "sources": [
+        {
+          "id": "9a3e0ce2-cf4b-477e-b3b3-df246318e251"
+        }
+      ]
+    },
+    {
+      "address": "outlook_E68BB90D8118DD39@outlook.com",
+      "displayName": null,
+      "type": "personal",
+      "allowedAudiences": "me",
+      "createdDateTime": "2026-09-11T13:56:04.7584326Z",
+      "lastModifiedDateTime": "2026-09-11T13:56:04.758433Z",
+      "id": "f9072022-0f47-4db1-890d-1e82f082c0a8",
+      "isSearchable": false,
+      "createdBy": {
+        "user": null,
+        "application": {
+          "displayName": "Directory",
+          "id": null
+        },
+        "device": null
+      },
+      "inference": null,
+      "lastModifiedBy": {
+        "user": null,
+        "application": {
+          "displayName": "Directory",
+          "id": null
+        },
+        "device": null
+      },
+      "source": {
+        "type": [
+          "MSA"
+        ]
+      },
+      "sources": [
+        {
+          "id": "9a3e0ce2-cf4b-477e-b3b3-df246318e251"
+        }
+      ]
+    }
+  ],
+  "notes": [],
+  "interests": [],
+  "languages": [],
+  "phones": [],
+  "positions": [],
+  "projects": [],
+  "responsibilities": [],
+  "skills": [],
+  "topics": [],
+  "webAccounts": [],
+  "websites": [],
+  "awards": [],
+  "publications": [],
+  "patents": [],
+  "certifications": [],
+  "extensions": [],
+  "photos": [],
+  "profileVideoMetadata": {
+    "profileVideoUrl": null,
+    "allowedAudiences": "organization",
+    "createdDateTime": "2025-12-13T04:52:29.4205503Z",
+    "lastModifiedDateTime": "2025-12-13T04:52:29.4205503Z",
+    "id": "8f75d5c9-4187-43d4-8c4b-e70219743bb8",
+    "isSearchable": false,
+    "createdBy": {
+      "user": null,
+      "application": null,
+      "device": null
+    },
+    "inference": null,
+    "lastModifiedBy": {
+      "user": null,
+      "application": null,
+      "device": null
+    },
+    "source": {
+      "type": [
+        "User"
+      ]
+    },
+    "sources": [
+      {
+        "id": "46a57efc-33f8-4eec-a512-b90039ad6187"
+      }
+    ]
+  },
+  "summary": null
+}

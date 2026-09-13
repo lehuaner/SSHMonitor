@@ -1,0 +1,8 @@
+HTTP/2 200
+content-type: application/octet-stream
+vary: Accept-Encoding
+ms-cv: KxkvctS+2TvPH1Ff4DAORp.0
+x-afs-tracking: cV=KxkvctS+2TvPH1Ff4DAORp.0;server=akswtt003000038;cloudType=Consumer;environment=Prod_southeastasia_prod-s01-065-apac-southeastasia;migrationStage=NotStarted
+x-cache: CONFIG_NOCACHE
+x-msedge-ref: Ref A: CF064636E83843A8A13CE37C3D912018 Ref B: TYO201151004062 Ref C: 2026-09-10T07:10:32Z
+date: Thu, 10 Sep 2026 07:10:33 GMT

@@ -1,0 +1,21 @@
+POST https://id1.cloud.huawei.com/UnifiedIDMPortal/ajaxHandler/login/getSMSCodeV3?reflushCode=0.04361980993717696&cVersion=UP_CAS_6.26.2.100_blue HTTP/2
+:method: POST
+:authority: id1.cloud.huawei.com
+:scheme: https
+:path: /UnifiedIDMPortal/ajaxHandler/login/getSMSCodeV3?reflushCode=0.04361980993717696&cVersion=UP_CAS_6.26.2.100_blue
+content-length: 507
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+accept: application/json, text/plain, */*
+sec-ch-ua: "Microsoft Edge";v="153", "Not_A Brand";v="8", "Chromium";v="153"
+content-type: application/x-www-form-urlencoded
+sec-ch-ua-mobile: ?0
+origin: https://auth.huaweicloud.com
+sec-fetch-site: cross-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+sec-fetch-storage-access: none
+referer: https://auth.huaweicloud.com/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+priority: u=1, i

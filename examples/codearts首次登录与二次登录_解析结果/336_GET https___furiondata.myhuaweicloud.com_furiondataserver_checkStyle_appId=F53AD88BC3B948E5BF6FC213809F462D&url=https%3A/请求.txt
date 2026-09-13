@@ -1,0 +1,18 @@
+GET https://furiondata.myhuaweicloud.com/furiondataserver/checkStyle?appId=F53AD88BC3B948E5BF6FC213809F462D&url=https%3A%2F%2Fcodearts.huaweicloud.com%2Fportal%2Fsettings%2Fpersonal-usage%3Flocale%3Dzh-cn HTTP/2
+:method: GET
+:authority: furiondata.myhuaweicloud.com
+:scheme: https
+:path: /furiondataserver/checkStyle?appId=F53AD88BC3B948E5BF6FC213809F462D&url=https%3A%2F%2Fcodearts.huaweicloud.com%2Fportal%2Fsettings%2Fpersonal-usage%3Flocale%3Dzh-cn
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+sec-ch-ua: "Microsoft Edge";v="153", "Not_A Brand";v="8", "Chromium";v="153"
+sec-ch-ua-mobile: ?0
+accept: */*
+origin: https://codearts.huaweicloud.com
+sec-fetch-site: cross-site
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://codearts.huaweicloud.com/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+priority: u=1, i

@@ -1,0 +1,11 @@
+{
+  "code": 0,
+  "msg": "success",
+  "requestId": "ba1245e9-9e56-4146-9a3b-f7d2f022c735",
+  "data": {
+    "connectionToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3ODk2MzIwMTAsImlhdCI6MTc4OTAyNzIxMCwic3ViIjoiOGIzY2IzODEtOWViYy00ODEzLTkyZDktOWU1ODgwNTI4NDY1In0.h1uzOWu5Vszke0UiaakD2lSzcswXNJSicp6_HtTJIdA",
+    "subscriptionToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjaGFubmVsIjoiY29waWxvdF93b3JrYnVkZHk6OGIzY2IzODEtOWViYy00ODEzLTkyZDktOWU1ODgwNTI4NDY1X2Q4MjY4N2YxNDIyMjQxOGJiOGI1ZjE0Mjc3ZWE3MjYxX2Q4OWZlZDkzZjVlNzRiZDgiLCJleHAiOjE3ODk2MzIwMTAsImlhdCI6MTc4OTAyNzIxMCwic3ViIjoiOGIzY2IzODEtOWViYy00ODEzLTkyZDktOWU1ODgwNTI4NDY1In0.rRTAd6MThxZoftAKODf2tcWtH4tOh9OaLc4LL5mjrsM",
+    "channel": "copilot_workbuddy:8b3cb381-9ebc-4813-92d9-9e5880528465_d82687f14222418bb8b5f14277ea7261_d89fed93f5e74bd8",
+    "url": "wss://www.codebuddy.cn/v2/agentos/localagent/workspaces/websocket"
+  }
+}

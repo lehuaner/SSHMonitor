@@ -1,0 +1,21 @@
+POST https://uba.huaweicloud.com/sdk/download/1.png HTTP/2
+:method: POST
+:authority: uba.huaweicloud.com
+:scheme: https
+:path: /sdk/download/1.png
+content-length: 793
+sec-ch-ua-platform: "Windows"
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+sec-ch-ua: "Microsoft Edge";v="153", "Not_A Brand";v="8", "Chromium";v="153"
+content-type: text/plain;charset=UTF-8
+sec-ch-ua-mobile: ?0
+accept: */*
+origin: https://auth.huaweicloud.com
+sec-fetch-site: same-site
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+referer: https://auth.huaweicloud.com/
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+priority: u=4, i
+cookie: _frid=424d25658ae245faaeb002c84029ceb7; locale=zh-cn; _fr_ssid=92b1b52777cf45f0acee1ed48bacee8a; cbc-sid=20493715385ef219e4b1df5a448bda6476f24829730b3f5439c0fbc492605c7a3a91b3186f92375736d7; vk=9eeb7598-5dbc-4ba1-8d8b-a5f309bfc1f6; SessionID=5245e465-e842-4572-9d32-6692ba5a6827; ad_sc=; ad_mdm=; ad_cmp=; ad_ctt=; ad_tm=; ad_adp=; cf=Direct

@@ -1,0 +1,12 @@
+HTTP/2 302
+cache-control: private, no-cache, proxy-revalidate, no-store
+pragma: no-cache
+location: https://c.msn.cn/c.gif?rnd=1789024219386&udc=true&pg.n=default&pg.t=ntp&pg.c=161&pg.p=anaheim&rf=&tp=https%3A%2F%2Fntp.msn.cn%2Fedge%2Fntp%3Flocale%3Dzh-CN%26title%3D%25E6%2596%25B0%25E5%25BB%25BA%25E6%25A0%2587%25E7%25AD%25BE%25E9%25A1%25B5%26dsp%3D1%26sp%3D%25E5%25BF%2585%25E5%25BA%2594%26feed_dis%3Doff%26en_widget_reg%3Dfalse%26prerender%3D1%26PC%3DCNNDDB%26adppc%3DEdgeStart%26ocid%3Dmsedgntp&cvs=Browser&di=340&st.dpt=&st.sdpt=antp&subcvs=homepage&lng=zh-cn&rid=6aa25114e32d4847a41097c586f0fbb3&activityId=6aa25114e32d4847a41097c586f0fbb3&d.imd=false&scr=1920x1080&anoncknm=app_anon&issso=&aadState=0&CtsSyncId=3E35BC3BD81B4BF3B52E8B4E2B0B4A00&MUID=06AD6D0EFAEB690921F5787FFBA868C6&ANON=A=46A4CF813C6C4E5C471AA633FFFFFFFF
+p3p: CP="BUS CUR CONo FIN IVDo ONL OUR PHY SAMo TELo"
+set-cookie: SRA_B=46A4CF813C6C4E5C471AA633FFFFFFFF; domain=c.bing.com; expires=Wed, 09-Sep-2026 07:10:19 GMT; path=/; SameSite=None; Secure;
+x-powered-by: ASP.NET
+x-cache: CONFIG_NOCACHE
+accept-ch: Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+x-msedge-ref: Ref A: 18645A4C2B824FBE888D9377B907B4F9 Ref B: TYO601100913036 Ref C: 2026-09-10T07:10:19Z
+date: Thu, 10 Sep 2026 07:10:18 GMT
+content-length: 0

@@ -1,0 +1,21 @@
+HTTP/2 200
+cache-control: public, max-age=300
+content-length: 348
+content-type: application/json; charset=utf-8
+vary: Accept-Encoding
+p3p: CP="NON UNI COM NAV STA LOC CURa DEVa PSAa PSDa OUR IND"
+set-cookie: SNRHOP=I=&TS=; domain=.bing.com; path=/; secure; SameSite=None
+set-cookie: MUIDB=06AD6D0EFAEB690921F5787FFBA868C6; expires=Tue, 05-Oct-2027 07:10:21 GMT; path=/; HttpOnly
+set-cookie: WLS=C=e68bb90d8118dd39&N=%e7%84%95%e7%84%b6; domain=.bing.com; path=/; secure; SameSite=None
+set-cookie: _SS=SID=3A00EB8A6A0C69B11551FC5A6BDE68CB; domain=.bing.com; path=/; secure; SameSite=None
+set-cookie: SRCHHPGUSR=SRCHLANG=zh-Hans&PV=19.0.0&BZA=0&HV=1788959177&DM=1&BRW=XW&BRH=M&CW=1496&CH=856&SCW=1481&SCH=2691&DPR=1.0&UTC=480&EXLTT=31&WTS=63872166571&PRVCW=1496&PRVCH=856&AV=14&ADV=14&RB=0&MB=0&IG=3F1BC57E319C4621B5EFD68FA31992EE&HVE=CfDJ8Pj64jZaZ_RFrelrus2TRABIUqvVGZapjrOWem44_kqnFdF6HnAoQys_Rpq5tjvUHLILULLAcffgH6ovFp2YBT9nxcrTX3bEf_LB4Xds7HhxYNoKFmhqaEYw5dgpy8N1ZxblvpFzcLuhXOVBxYf2G8Rk0ps6qMQXcFwh0nGkWVJpCdM41ToCu92HPekuDAm84w&DMREF=0&PREFCOL=1&B=0&P=CfDJ8BJecyNyfxpMtsfDoM3OqQsE5llJuujUv02Q0UsIJGLb7pr5xH0zOQBnYg65PoIBCpV13Sq1PIvm2YYZNb4k0FKACJ8qXrtHYLYV8YcPC0zzkiniIEYeq864527ciKtVU3qtI5FJ9Mo9Je5KP-g8JASf7WiJOFGawMOP9AjesFGZlw7ajrqRJS_k0RcG4fvdYg1&WEBTHEME=2; domain=.bing.com; expires=Sun, 10-Sep-2028 07:10:21 GMT; path=/; secure; SameSite=None
+x-eventid: 6aa257ddf02044e3bdd6ee4a939ff2b0
+useragentreductionoptout: A7kgTC5xdZ2WIVGZEfb1hUoNuvjzOZX3VIV/BA6C18kQOOF50Q0D3oWoAm49k3BQImkujKILc7JmPysWk3CSjwUAAACMeyJvcmlnaW4iOiJodHRwczovL3d3dy5iaW5nLmNvbTo0NDMiLCJmZWF0dXJlIjoiU2VuZEZ1bGxVc2VyQWdlbnRBZnRlclJlZHVjdGlvbiIsImV4cGlyeSI6MTY4NDg4NjM5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=
+permissions-policy: unload=()
+content-security-policy: script-src https: 'strict-dynamic' 'report-sample' 'wasm-unsafe-eval' 'nonce-ZJVnfDRhL6osjvGdcdxw/2X0OnoMOlgj2YI2PaW3NQ4='; base-uri 'self';report-to csp-endpoint
+report-to: {"group":"csp-endpoint","max_age":86400,"endpoints":[{"url":"https://aefd.nelreports.net/api/report?cat=bingcsp"}]}
+x-bing-as-context: KR9BdXRvU3VnZ2VzdC5BY3RUb2tlbi5BY3RUb2tlbl8xATGk5LmikWhJDjExMi4yMy4xOTAuMjE0agCKAKpJB2NvZGVhcnQA0AYCAA
+x-cache: CONFIG_NOCACHE
+accept-ch: Sec-CH-UA-Arch, Sec-CH-UA-Bitness, Sec-CH-UA-Full-Version, Sec-CH-UA-Full-Version-List, Sec-CH-UA-Mobile, Sec-CH-UA-Model, Sec-CH-UA-Platform, Sec-CH-UA-Platform-Version
+x-msedge-ref: Ref A: 56DDB05A18DF483BA9D7FFBDABAE5549 Ref B: BJ1EDGE1210 Ref C: 2026-09-10T07:10:21Z
+date: Thu, 10 Sep 2026 07:10:20 GMT

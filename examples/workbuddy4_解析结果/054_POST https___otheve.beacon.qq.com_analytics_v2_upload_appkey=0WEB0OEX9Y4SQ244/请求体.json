@@ -1,0 +1,59 @@
+{
+  "appVersion": "",
+  "sdkId": "js",
+  "sdkVersion": "4.5.20-web",
+  "mainAppKey": "0WEB0OEX9Y4SQ244",
+  "platformId": 3,
+  "common": {
+    "atversion": "4.1.15",
+    "uid": "",
+    "fromsource": "gwzcw.15291244.15291244.15291244",
+    "from": "",
+    "from_column": "",
+    "islogined": "false",
+    "pagetag": "",
+    "trafficparams": "***$;timestamp%3D1788877466293;from_type%3Dserver;track%3D6ee91103-5f09-42dd-9837-f7c87762256e;$***",
+    "uaCategory": "PC端-非微信",
+    "owneruin": "",
+    "qclouduid": "undefined",
+    "articleSource": "",
+    "magicSource": "",
+    "authorType": "",
+    "subjectTime": "",
+    "productSlug": "",
+    "A2": "NcZsaBBiS5nX4kE0CjwWTGBNh0PZi2DN",
+    "A8": "",
+    "A12": "zh-CN",
+    "A17": "1920*1080*1",
+    "A23": "",
+    "A50": "",
+    "A76": "0WEB0OEX9Y4SQ244_1789022023747",
+    "A101": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "A102": "https://www.workbuddy.cn/profile/plans-usage",
+    "A104": "",
+    "A119": "",
+    "A153": ""
+  },
+  "events": [
+    {
+      "eventCode": "cps_cookie_event",
+      "eventTime": "1789022300297",
+      "mapValue": {
+        "viewportWidth": "1496",
+        "viewportHeight": "856",
+        "url": "https://www.workbuddy.cn/profile/plans-usage",
+        "pathname": "/profile/plans-usage",
+        "query": "",
+        "hostname": "www.workbuddy.cn",
+        "pagefrom": "$$$$",
+        "urlfrom": "",
+        "title": "WorkBuddy - 个人中心",
+        "remark": "{\"genTime\":\"2026-09-10 14:38:20\",\"isIframe\":false,\"topPage\":\"https://www.workbuddy.cn/profile/plans-usage\",\"topStatus\":\"{\\\"code\\\":3,\\\"href\\\":\\\"https://www.workbuddy.cn/profile/plans-usage\\\"}\",\"referrer\":\"\",\"selfPage\":\"https://www.workbuddy.cn/profile/plans-usage\",\"height\":856,\"width\":1496,\"cookieEventStatus\":\"fail\",\"eventDescp\":\"fail_set_traffic_cps_cookie\"}",
+        "A99": "Y",
+        "A100": "422",
+        "A72": "4.5.20-web",
+        "A88": "1787201063335"
+      }
+    }
+  ]
+}

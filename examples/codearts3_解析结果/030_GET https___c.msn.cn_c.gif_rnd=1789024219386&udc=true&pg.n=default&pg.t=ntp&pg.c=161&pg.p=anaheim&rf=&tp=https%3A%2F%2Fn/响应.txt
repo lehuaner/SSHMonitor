@@ -1,0 +1,15 @@
+HTTP/2 200
+date: Thu, 10 Sep 2026 07:10:19 GMT
+content-type: image/gif
+content-length: 42
+cache-control: private, no-cache, proxy-revalidate, no-store
+pragma: no-cache
+last-modified: Fri, 01 May 2026 17:50:32 GMT
+etag: "b0ec9c193d9dc1:0"
+x-powered-by: ASP.NET
+p3p: CP="BUS CUR CONo FIN IVDo ONL OUR PHY SAMo TELo"
+set-cookie: SM=C; domain=c.msn.cn; path=/; SameSite=None; Secure;
+set-cookie: ANONCHK=0; domain=c.msn.cn; expires=Thu, 10-Sep-2026 07:20:19 GMT; path=/; SameSite=None; Secure;
+x-azure-ref: 20260910T071019Z-15559d97d99fqlm4hC1SEL3e9c0000000gd000000000dss9
+x-cache: CONFIG_NOCACHE
+accept-ranges: bytes

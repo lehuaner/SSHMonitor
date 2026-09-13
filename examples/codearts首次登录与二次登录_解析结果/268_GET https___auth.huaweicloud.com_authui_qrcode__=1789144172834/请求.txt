@@ -1,0 +1,22 @@
+GET https://auth.huaweicloud.com/authui/qrcode?_=1789144172834 HTTP/2
+:method: GET
+:authority: auth.huaweicloud.com
+:scheme: https
+:path: /authui/qrcode?_=1789144172834
+sec-ch-ua-platform: "Windows"
+cache-control: no-store
+pragma: no-store
+sec-ch-ua: "Microsoft Edge";v="153", "Not_A Brand";v="8", "Chromium";v="153"
+sec-ch-ua-mobile: ?0
+x-requested-with: XMLHttpRequest
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+accept: */*
+content-type: application/x-www-form-urlencoded; charset=UTF-8
+sec-fetch-site: same-origin
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://auth.huaweicloud.com/authui/login.html?service=https%3A%2F%2Fcodearts.huaweicloud.com%2Fportal%2Fsettings%2Fpersonal-usage%3Flocale%3Dzh-cn
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+priority: u=1, i
+cookie: auth_cdn=cdn_cookie_on; tiny_language=zh; last.login.type=account; accountType=personal; HWWAFSESTIME=1789144137084; HWWAFSESID=b77cc7f3d653d1780e; Site=mainland; _frid=4341fa0636bb41de96aa6fafa5c08f9a; _fr_ssid=29e5b28239b748d1918e60ea3365ef42; cbc-sid=204937ab3791fe44fe81f95971f87b6a29c181fbfa67eae63d3d4067a3ee7ba4f8ee4b7872c837d0377b; vk=294a0699-7951-426c-8979-2b0167c7e8cd; SessionID=68e30f6a-fb20-4d41-85d6-5922ba792a1e; ad_sc=; ad_mdm=; ad_cmp=; ad_ctt=; ad_tm=; ad_adp=; cf=Direct; HW_refts_id1_cloud_huawei_com_auth_huaweicloud_com=1789144142255; HW_idvc_id1_cloud_huawei_com_auth_huaweicloud_com=1; HW_id_id1_cloud_huawei_com_auth_huaweicloud_com=54d73444447c4d5f890599a51beee435; HW_idts_id1_cloud_huawei_com_auth_huaweicloud_com=1789144142255; HW_idn_id1_cloud_huawei_com_auth_huaweicloud_com=1f05989a800d41baa7caa4fcb3669a74; HW_viewts_id1_cloud_huawei_com_auth_huaweicloud_com=1789144159505; cbc-sid=204937ab3791fe44fe81f95971f87b6a29c181fbfa67eae63d3d4067a3ee7ba4f8ee4b7872c837d0377b; user_tag=0d2a3a0dae80f58a1f92c0000c3a3de6; domain_tag=0d2a3a0cc500f3060f0dc00096bca220; popup_max_time=60; xyt_nmk=true; masked_phone=173****7416; masked_user=l***uan; masked_domain=l***uan; usite=cn; x-framework-ob=; tjbdsb_76ea438906e1fed663ca807029cc7fd230937b944a4779c66347c7e77ada53ed=1; BENSESSCC_TAG=Direct; IAMIdentity=X-1880604374--1643258-4t711zigwkzv4z6rkilk8thhsoga2bo9e1pg12ldnhyot7wyo; locale=zh-cn; login-sdk-info=authui_login_sdkurl_info:c6d8c8b07779481686f882a148d57873

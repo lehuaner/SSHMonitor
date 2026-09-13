@@ -1,0 +1,15 @@
+GET https://lf-normal-gr-sourcecdn.bytegecko.com/obj/byte-gurd-source-gr/argus/security/policy/container_config/gecko.config.json?aid=6383&version_name=8.4.0&device_id=252837073&device_platform=android&gecko_bkt=7 HTTP/2
+:method: GET
+:authority: lf-normal-gr-sourcecdn.bytegecko.com
+:scheme: https
+:path: /obj/byte-gurd-source-gr/argus/security/policy/container_config/gecko.config.json?aid=6383&version_name=8.4.0&device_id=252837073&device_platform=android&gecko_bkt=7
+content-type: application/json; charset=utf-8
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) douyin/8.4.0 Chrome/136.0.7103.59 Electron/36.4.0-rs.30.release.pgo.2 TTElectron/36.4.0-rs.30.release.pgo.2 Safari/537.36 awemePcClient/8.4.0 buildId/444881651 osName/Windows
+x-tt-trace-id: 00-9495206507f11fcd17d38579d0f918ef-9495206507f11fcd-01
+accept-encoding: gzip, deflate
+x-helios: owQAANSZYctv+E3eILHrsNUv1xb7qp/D3J0aic9xUfKJB4zd
+x-medusa: WAOlaqzr+pCM1HlRjSltGgzMxHItEQMBTQ27TAAAMew8GA4/35TQAmPREGlj6TiiacLjmnIFOTddlCAxlJlJqHGL3mtGR6aVnvoqjbozP8Otz/S7k42xsPyqT09D0Tf2gB5FUYdE7a9lNSpQhy2Jv4Pxh9o+fk2okuYJzomFcjygeKteInjP5dWf9uXVfLfNVByseBsTBvwWtPTmiEzsMGzvJnB9a0fTnB+nh8Xt/OF419mvV5PbqwWTJFrb8AE03ns33wdIRtkt+zyLUHviBg7XE3EigXopyeF6ZskbeOP+vxCkDcPmhnCmdL6DpjkTiVdiOvnhrSpRDd7PMvFQL8yvdZ9lv68MShXKnsnLFOJwH7EssxIQMGUju/bdoAGXSCoTT+xOOmPA2HaIIs0OlcgQ4zj/f1O4aXJK3mme+ilJNzT4xkSsoggi8eQCRVc/c+uvXkUE7Yv+fJ+ylxYannGBCxDPtOA65bD5VsR062Ztp/rDkn/2koGF64wJKRoeKWZxPv664JQvBzHNwB9oJFuz5tcHcgV8XdUU4BeEOcpldHBbWsGCGta/hJs7+N6IWNGKydmGa1vN6IyVV7kxiZUOIxkjyZjTi69VIDEPHkFqjAWCVxeaWP7hA0PGtS0Xvy/c+LEZjymLK5HydfcSuS5MR5+fz98XH0+7Jf2fz5PIpyvUypM2wFzDsyLyrl8xGe+Vua+JK41qalk+eOytP75NkY9Wbk+8Sg3aPsnn+Y+m/tC4b2d1CeSjnGqVkBcoHuX//f+///f//wAA
+x-neptune: -11|50:51:59:00:09
+if-none-match: "a9f99a12ba71a31eaf3f9aff1cdf06cd"
+if-modified-since: Thu, 26 Mar 2026 07:46:28 GMT
+cookie: bd_sso_hi3jfd=QWXGRb3GWZramUIGJptCj1Fjix%2BysCwgkQh2gQ%3D%3D

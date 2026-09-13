@@ -1,0 +1,19 @@
+HTTP/2 200
+server: CloudWAF
+date: Fri, 11 Sep 2026 16:29:00 GMT
+content-type: text/plain;charset=UTF-8
+set-cookie: HWWAFSESTIME=1789144138066; path=/
+set-cookie: HWWAFSESID=2c5af855232b17f151; path=/
+lubanops-gtrace-id: v-7222918-1789144140683-444501758
+lubanops-nenv-id: 179450
+access-control-allow-origin: *
+x-kong-upstream-latency: 17
+x-kong-proxy-latency: 1
+expires: Fri, 18 Sep 2026 16:29:00 GMT
+cache-control: max-age=604800
+cache-control: public
+x-frame-options: SAMEORIGIN
+x-content-type-options: nosniff
+x-download-options: noopen
+x-xss-protection: 1; mode=block
+content-encoding: gzip

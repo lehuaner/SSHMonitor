@@ -1,0 +1,61 @@
+{
+  "appVersion": "",
+  "sdkId": "js",
+  "sdkVersion": "4.5.30-web",
+  "mainAppKey": "0WEB060WI684WP7E",
+  "platformId": 3,
+  "common": {
+    "A300": "4.3.18",
+    "trace_id": "80a006d5-24b2-437d-a109-2cfe7c7532ce",
+    "userId": "8b3cb381-9ebc-4813-92d9-9e5880528465",
+    "fromSource": "",
+    "clientPlatform": "web",
+    "A301": "Windows(11)-Blink",
+    "A302": "Edge(152.0.0.0)",
+    "A323": "",
+    "A2": "NcZsaBBiS5nX4kE0CjwWTGBNh0PZi2DN",
+    "A8": "",
+    "A12": "zh-CN",
+    "A17": "1920*1080*1",
+    "A23": "",
+    "A50": "",
+    "A76": "0WEB060WI684WP7E_1789022022692",
+    "A101": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+    "A102": "https://www.workbuddy.cn/profile/keys",
+    "A104": "",
+    "A119": "",
+    "A153": ""
+  },
+  "events": [
+    {
+      "eventCode": "at_click",
+      "eventTime": "1789022314611",
+      "mapValue": {
+        "A309": "1496",
+        "A310": "856",
+        "A102": "https://www.workbuddy.cn/profile/keys",
+        "A303": "/profile/keys",
+        "A306": "",
+        "A307": "www.workbuddy.cn",
+        "A305": "www.workbuddy.cn$$/profile/billing$$",
+        "A304": "https://www.workbuddy.cn/profile/billing",
+        "A308": "WorkBuddy - 个人中心",
+        "page_vid": "ef8f7783-e751-448d-b3da-fe79c5bfa85a",
+        "A312": "账号设置",
+        "A321": "t-menu__item",
+        "A320": "",
+        "A322": "326,22",
+        "A315": "5",
+        "A314": ".t-menu > li",
+        "A313": ".t-menu__item",
+        "A311": "-17594176646",
+        "A332": "122",
+        "A333": "333",
+        "A99": "Y",
+        "A100": "470",
+        "A72": "4.5.30-web",
+        "A88": "1787201063296"
+      }
+    }
+  ]
+}

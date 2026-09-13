@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Date: Fri, 11 Sep 2026 16:29:19 GMT
+Content-Type: application/javascript
+Content-Length: 962
+Last-Modified: Thu, 02 Jul 2026 17:12:34 GMT
+ETag: "6a469c02-3c2"
+X-XSS-Protection: 1; mode=block
+X-Content-Type-Options: nosniff
+Accept-Ranges: bytes
+Server: elb

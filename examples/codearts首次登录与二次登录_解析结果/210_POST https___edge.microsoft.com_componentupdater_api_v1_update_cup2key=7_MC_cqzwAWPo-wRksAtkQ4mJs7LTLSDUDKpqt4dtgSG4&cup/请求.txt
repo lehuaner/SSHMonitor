@@ -1,0 +1,24 @@
+POST https://edge.microsoft.com/componentupdater/api/v1/update?cup2key=7:MC_cqzwAWPo-wRksAtkQ4mJs7LTLSDUDKpqt4dtgSG4&cup2hreq=96d6266ef5ef82c76691ef60b34e92f48c52d8dc866c8797fe36ac17b5cae329 HTTP/2
+:method: POST
+:authority: edge.microsoft.com
+:scheme: https
+:path: /componentupdater/api/v1/update?cup2key=7:MC_cqzwAWPo-wRksAtkQ4mJs7LTLSDUDKpqt4dtgSG4&cup2hreq=96d6266ef5ef82c76691ef60b34e92f48c52d8dc866c8797fe36ac17b5cae329
+content-length: 17620
+x-microsoft-update-appid: ndikpojcjlepofdkaaldkinkjbeeebkl,kpfehajjjbbcifeehjgfgnabifknmdad,ohckeflnhegojcjlcpbfpciadgikcohk,oankkpibpaokgecfckkdkgaoafllipag,alpjnmnfbgfkmmpcfpejmmoebdndedno,fppmbhmldokgmleojlplaaodlkibgikh,ojblfafjmiikbkepnnolpgbbhejhlcim,fgbafbciocncjfbbonhocjaohoknlaco,llmidpclgepbgbgoecnhcmgfhmfplfao,laoigpblnllgcgjnjnllmfolckpjlhki,ahmaebgpfccdhgidjaidaoojjcijckba,ohjmcpfnpmlgfkommepbhamjmanldlae,mpicjakjneaggahlnmbojhjpnileolnb,dkjpmlmeembibieekchnelkkbmpejkak,kmkacjgmmfchkbeglfbjjeidfckbnkca,plbmmhnabegcabfbcejohgjpkamkddhn,gllimckfbolmioaaihpppacjccghejen,pghocgajpebopihickglahgebcmkcekh,eodcfhpdifcaamjndfbdfbbhjkjgbion,eeobbhfgfagbclfofmgbdfoicabjdbkn,kieecehchjjaaepgajdhcehijkehdenm,jcmcegpcehdchljeldgmmfbgcpnmgedo,phinnaepdmlnlpjbgjefkaehnijkpfdh,npbipokbgmclmkjhfjicdgnedhkocjpl,jbfaflocpnkhbgcijpkiafdpbjkedane,eiihffpgcdgabdmcecnakaohbclgfbmb,jpinkpebmplndiafioikiciobeafamld,lkkdlcloifjinapabfonaibjijloebfb,fmbfidpnnknmblionmcahabilfoageoe,mkcgfaeepibomfapiapjaceihcojnphg
+x-microsoft-update-interactivity: bg
+x-microsoft-update-service-cohort: 5549
+x-microsoft-update-updater: msedge-153.0.4234.32
+content-type: application/json
+sec-mesh-client-edge-version: 153.0.4234.32
+sec-mesh-client-edge-channel: stable
+sec-mesh-client-os: Windows
+sec-mesh-client-os-version: 10.0.26200
+sec-mesh-client-arch: x86_64
+sec-mesh-client-webview: 0
+x-client-data: CKxN
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+accept-encoding: gzip, deflate, br, zstd
+priority: u=4, i

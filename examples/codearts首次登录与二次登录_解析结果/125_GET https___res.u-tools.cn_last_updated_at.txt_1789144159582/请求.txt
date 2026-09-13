@@ -1,0 +1,12 @@
+GET https://res.u-tools.cn/last_updated_at.txt?1789144159582 HTTP/2
+:method: GET
+:authority: res.u-tools.cn
+:scheme: https
+:path: /last_updated_at.txt?1789144159582
+cache-control: no-store
+sec-fetch-site: none
+sec-fetch-mode: no-cors
+sec-fetch-dest: empty
+user-agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) uTools/7.8.0-ia32 Chrome/108.0.5359.215 Electron/22.3.27 Safari/537.36
+accept-encoding: gzip, deflate, br
+accept-language: zh-CN

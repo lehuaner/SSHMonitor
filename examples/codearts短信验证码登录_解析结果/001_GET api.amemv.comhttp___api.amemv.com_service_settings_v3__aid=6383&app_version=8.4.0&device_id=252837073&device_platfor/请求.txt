@@ -1,0 +1,10 @@
+GET http://api.amemv.com/service/settings/v3/?aid=6383&app_version=8.4.0&device_id=252837073&device_platform=pc&caller_name=Bullet&channel=online HTTP/1.1
+Host: api.amemv.com
+Connection: keep-alive
+content-type: application/json; charset=utf-8
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) douyin/8.4.0 Chrome/136.0.7103.59 Electron/36.4.0-rs.30.release.pgo.2 TTElectron/36.4.0-rs.30.release.pgo.2 Safari/537.36 awemePcClient/8.4.0 buildId/444881651 osName/Windows
+x-tt-trace-id: 00-9495207b07f11fcd11ac2603ffff18ef-9495207b07f11fcd-01
+Accept-Encoding: gzip, deflate
+X-Helios: oWAAAFZrUoX90FgoUI/Yly2YX01fed3ZLo3jx3SIY2CTPGkI
+X-Medusa: WAOlaqzr+pCM1HlRjSltGgzMxHJBRAMBZwx+ZUCAMWIwmGNxOlVohDaGEn6aIXKMHb5un8c9mStZ0YTrech3vSFtVgZ3YOtZLSN733eYkpdtHMORK5GhR62aLum/8ZAdm6mj+j26EucVPeA+uk0A31uw5dLR7UZLjA7s/vvZVsl3jSnXStL7TOOA7VYYzfrNZ3bfnnkdFFFpkpCRGbUpFKVqD6Nc8stmWs9ohUeiutLAv8xB4NIMWduQxlsCcDDxJ+lPC7JIwSqoLG5WT9AvqOL02QGKaSvs9OJDbBIwVMemYbvEuEDb2A4CFpiG9HT2jQA0387q5c7/CQefsziyq0UJ3qB6TZTRaeZBBjItExKJ9OWu7IRu245cLXOyDqZWtKKOqu46UmWRbYYcC/ItweGcOQJmbe4ZwuXMrOrj4KVtTu8BGg8ItEUm11BcqgokTtxo2LlJPgWC13lzcljBeWtiWw0cIly4hP21z7nwTT+fqrM0aZLIbuYqYtr9jVHh+msYCbUkvaTnWjViAfnTsGDs5DwIPc8Ha72JA1VN+j45zQhDa0gldp0tdHZDkkhB64f+Xpkgj6zUXnZdYGTCa1nNlS5Df5OX0TXHRBN6ah3N8LVP2WyVa6VQvdsDjmvc5zBkxkR1xVHyi5HwVbcSsS/MR5+fz88XHk+7J93fz5PIJ5yYAKsh5vgysyDy7l8xGW+Vu4/JK4Vr6lk+WOy9P75NkY1Wbl+8S43ZoU/H2Rd3btS6bydlAeUjnGq1kAcoH+X//d//7//+/wAA
+X-Neptune: -11|50:51:59:00:09

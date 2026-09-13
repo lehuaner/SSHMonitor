@@ -1,0 +1,15 @@
+HTTP/2 304
+etag: "bc30e59fa8d66d04b46e4d61eab2a14c"
+content-type: image/png
+date: Mon, 31 Aug 2026 05:55:00 GMT
+server: tencent-cos
+vary: Origin, Access-Control-Request-Headers, Access-Control-Request-Method
+x-cos-hash-crc64ecma: 17258883575533459366
+x-cos-meta-md5: bc30e59fa8d66d04b46e4d61eab2a14c
+x-cos-request-id: NmE5NTE3MzRfNWRhMDA4MDlfMTJmMjhfMWIwZjUxM2I=
+x-cos-storage-class: MAZ_STANDARD
+x-cos-version-id: MTg0NDQ5NTU5MjAyMTAxMjEwMTQ
+x-cosindex-replication-status: Complete
+x-nws-log-uuid: 2682954887376130870
+x-cache-lookup: Cache Hit
+access-control-allow-origin: *

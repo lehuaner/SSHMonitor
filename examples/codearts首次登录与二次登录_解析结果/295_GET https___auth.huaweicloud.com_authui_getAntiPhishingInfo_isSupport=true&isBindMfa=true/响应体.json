@@ -1,0 +1,24 @@
+{
+  "u2f_has_bind_enable": "false",
+  "u2f_bind_enable": "true",
+  "mobile": "0086-173****16",
+  "mfa": {
+    "login_protect_type": "",
+    "sn": "",
+    "login_protect_enable": "",
+    "force_login_protect_enable": "",
+    "enabled": "false"
+  },
+  "sms_bind_enable": "false",
+  "promptRedirectUrl": "https://id1.cloud.huawei.com/AMW/portal/userCenter/index.html?reqClientType=88&loginChannel=88000000",
+  "isDomestic": "true",
+  "result": "success",
+  "u2f_enable": "true",
+  "isTenant": "false",
+  "IAMCSRF": "c8dd04859b984aad934a3067cfbf57bb",
+  "showRememberPromptMfaDays": "30",
+  "promptBindMfa": "promptRedirectEnable",
+  "email": "s***9@163.com",
+  "vmfa_bind_enable": "false",
+  "email_bind_enable": "false"
+}

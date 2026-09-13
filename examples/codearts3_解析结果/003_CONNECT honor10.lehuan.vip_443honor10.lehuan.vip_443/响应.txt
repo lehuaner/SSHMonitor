@@ -1,0 +1,101 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 15:10:19.866
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.3
+Cipher Suite: TLS_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=lehuan.vip
+  Simple Name: lehuan.vip
+  DNS Name: *.lehuan.vip
+
+[Issuer]
+  CN=YE1, O=Let's Encrypt, C=US
+  Simple Name: YE1
+  DNS Name: YE1
+
+[Serial Number]
+  054D8A055DF181EF259EDD7F6246050C9F3F
+
+[Not Before]
+  2026/7/14 20:48:17
+
+[Not After]
+  2026/10/12 20:48:16
+
+[Thumbprint]
+  235064D0E187A4FA38558816AD1D880119F48EBB
+
+[Signature Algorithm]
+  sha384ECDSA(1.2.840.10045.4.3.3)
+
+[Public Key]
+  Algorithm: ECC
+  Length: 
+  Key Blob: 04 68 98 e0 bc 1f ec 0a 82 21 79 f9 6f d4 ac a4 0e 7b c6 3c 1a 4d a4 f1 a0 36 1b 6c c8 e2 7d 4e ee 3c 13 8a 42 1d 2f b9 b0 94 25 67 d2 bf 7f 00 06 19 a1 a2 6b 5d 31 ce 18 f7 8a 02 fa 60 51 b9 d5
+  Parameters: 06 08 2a 86 48 ce 3d 03 01 07
+
+[Extensions]
+* 密钥用法(2.5.29.15):
+  Digital Signature (80)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* 使用者密钥标识符(2.5.29.14):
+  bfac74eed3785683781c168585e6eb84b769ccda
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=bb20ca470bfed7e59cf98f092aa38c3745b1bcd8
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://ye1.i.lencr.org/
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.lehuan.vip
+DNS Name=lehuan.vip
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.1
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://ye1.c.lencr.org/64.crl
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+c2317e574519a345ee7f38deb29041ebc7c2215a22bf7fd5b5ad769ad90e52cd
+‎2026‎年‎7‎月‎14‎日 21:46:47
+SHA256
+ECDSA
+3046022100f82780f96996008724224cccc12d994c402b70c8c000ebe3f90dd188b899604902210092e4e279be764ace960e981a3ff6b65a35ec901788e4bb0f11cce395410af315
+
+v1
+6cfe501943a85ea916bc52d133e4dcc91ef1411c7d258420d173809e1818eb3a
+‎2026‎年‎7‎月‎14‎日 21:46:48
+SHA256
+ECDSA
+3046022100bfdd906f3bdd9467436b8912b97df14c04d06d2b82747d5261dbe9257d5cfac3022100e42339bdc25db9bd31915a002ed4d8f8a35c016313772f31186ce15fa1e9e519
+
+
+[SubjectAltNames]
+DNS Name=*.lehuan.vip
+DNS Name=lehuan.vip
+

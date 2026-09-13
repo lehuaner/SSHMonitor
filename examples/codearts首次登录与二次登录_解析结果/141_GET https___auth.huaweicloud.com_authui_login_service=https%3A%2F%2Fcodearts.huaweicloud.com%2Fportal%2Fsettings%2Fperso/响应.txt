@@ -1,0 +1,16 @@
+HTTP/2 302
+server: CloudWAF
+date: Fri, 11 Sep 2026 16:29:20 GMT
+location: https://codearts.huaweicloud.com/portal/settings/personal-usage?locale=zh-cn&ticket=ST-93963157-79voJ4HeWzVpSaKbfdYz0IWr-sso
+set-cookie: BENSESSCC_TAG=Direct; path=/
+x-iam-trace-id: auth_cn-north-4_null_ab37ffbe36c840db860bf1441211c2d7
+expires: Thu, 01 Jan 1970 00:00:00 GMT
+strict-transport-security: max-age=31536000; includeSubdomains;
+x-content-type-options: nosniff
+x-download-options: noopen
+x-xss-protection: 1; mode=block
+cache-control: no-cache, no-store, must-revalidate
+pragma: no-cache
+access-control-allow-origin: https://console.huaweicloud.com
+access-control-allow-methods: GET
+access-control-allow-credentials: true

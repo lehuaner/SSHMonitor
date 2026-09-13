@@ -1,0 +1,9 @@
+POST https://copilot.tencent.com/v2/report HTTP/1.1
+Accept: application/json, text/plain, */*
+Content-Type: application/json;charset=UTF-8
+User-Agent: WorkBuddy/5.5.3 WorkBuddy/5.5.3 CLI/2.137.1
+X-Request-ID: 3c78f944bb404c9f95e0b74142fe7b6e
+X-Product: SaaS
+Content-Length: 30371
+Host: copilot.tencent.com
+Connection: keep-alive

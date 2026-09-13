@@ -1,0 +1,6 @@
+HTTP/1.1 502 Fiddler - DNS Lookup Failed
+Date: Thu, 10 Sep 2026 07:10:32 GMT
+Content-Type: text/html; charset=UTF-8
+Cache-Control: no-cache, must-revalidate
+Timestamp: 15:10:32.682
+Connection: close

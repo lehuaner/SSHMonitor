@@ -1,0 +1,117 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 14:38:20.215
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.2
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=*.gtimg.cn, O=Tencent Technology (Shenzhen) Company Limited, L=Shenzhen, S=Guangdong Province, C=CN
+  Simple Name: *.gtimg.cn
+  DNS Name: *.gtimg.cn
+
+[Issuer]
+  CN=DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1, O="DigiCert, Inc.", C=US
+  Simple Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+  DNS Name: DigiCert Secure Site OV G2 TLS CN RSA4096 SHA256 2022 CA1
+
+[Serial Number]
+  019532FFFF2617FC90F66698D60959E8
+
+[Not Before]
+  2026/2/12 8:00:00
+
+[Not After]
+  2027/2/12 7:59:59
+
+[Thumbprint]
+  2856053FD989ED6DD8942717AD78486CC784C99C
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 2048
+  Key Blob: 30 82 01 0a 02 82 01 01 00 f4 62 99 c3 68 2f df 96 ce 7b 72 3b 97 ae ac 22 81 b7 a9 2e 08 d2 1e bc 82 15 3c 27 27 96 f4 76 85 9f af 28 96 86 b5 8c 67 73 5a 7b f9 8e 50 2c 58 f5 a0 5e 78 ab b7 02 a3 aa c8 77 23 11 ca ac 96 14 2e 95 ed 87 ae 37 b5 f5 fb a8 6b 65 4e 8a 01 61 18 ce f0 2c 7e e7 d6 2d 7e ea 31 90 e9 f1 cb 88 04 9f c7 53 3b 5f c2 12 69 c0 49 bd 00 f6 71 f6 ca 4d 5b 40 3e 1b 70 e5 ec d3 09 56 fc 5f 6b 7c 0a 6f a0 ab 25 9b 28 ce e5 d5 fd 1c e1 0c 2f a3 af b6 4c a5 f3 de 6c 84 06 15 9b 77 f3 2b 1e 42 53 18 c3 5d 26 78 7a 0a b8 f3 03 fe ad da 04 b4 ab 76 7d af 73 54 ee 9a e4 d6 60 77 47 e2 43 a1 28 26 f5 31 2c 47 b6 6c 5d bf 44 7a 3a 2f f7 4c 93 2b 94 1b e8 c8 37 98 ce 4f 04 6f 9a 44 d9 90 53 da f8 46 16 81 b5 ce 17 72 97 33 19 62 ee b1 3a be c8 e3 3b 67 f7 ec ec 9b 1b 4e 58 3b 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 授权密钥标识符(2.5.29.35):
+  KeyID=2b2316811b47898a907aece832d46c8e72f9ce25
+
+* 使用者密钥标识符(2.5.29.14):
+  5a8dae540453fde09cc0293b54143084ef4a5546
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=*.gtimg.cn
+DNS Name=gtimg.cn
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               http://www.digicert.com/CPS
+
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+客户端身份验证 (1.3.6.1.5.5.7.3.2)
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crl
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://ocsp.digicert.cn
+[2]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://cacerts.digicert.cn/DigiCertSecureSiteOVG2TLSCNRSA4096SHA2562022CA1.crt
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+4c63dc98e59c1dab88f61e8a3ddeae8fab44a3377b5f9b94c3fba19cfcc1be26
+‎2026‎年‎2‎月‎12‎日 11:57:02
+SHA256
+ECDSA
+3046022100fb3e50e2075337ef1e9964a109c016ed44c2819080965f2c831993d24f1c490a022100e604511b4cbb777220139e1c5f49373457052394c4e21b0209928209dc9619d6
+
+v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎2‎月‎12‎日 11:57:02
+SHA256
+ECDSA
+3046022100d83159993efbdb2256acb1014daff8688b3a1b02ddbd37088c12e36847664edb022100d73a51c51c343e41ff7339fc904dac7f46013a41ea633c4f1c5df1776d7095e2
+
+v1
+604c9aaf7a7f775f01d406fc920dc899eb0b1c7df8c9521bfafa17773b978bc9
+‎2026‎年‎2‎月‎12‎日 11:57:03
+SHA256
+ECDSA
+304502205ccc5787b29dddcb92e33b2e65e42ebd28fd79e0a96e7ba4d8a64f6387e41e3e0221008be6804706e032ba0fbffedec0aaf43ae53eb43914333f901f562bf459c703f3
+
+
+[SubjectAltNames]
+DNS Name=*.gtimg.cn
+DNS Name=gtimg.cn
+

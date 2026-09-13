@@ -1,0 +1,10 @@
+{
+  "code": 0,
+  "msg": "OK",
+  "requestId": "72dfb09c-8851-428d-8bc2-6bdc8b70ef36",
+  "data": {
+    "total": 5368709120,
+    "used": 0,
+    "memberLevel": "free"
+  }
+}

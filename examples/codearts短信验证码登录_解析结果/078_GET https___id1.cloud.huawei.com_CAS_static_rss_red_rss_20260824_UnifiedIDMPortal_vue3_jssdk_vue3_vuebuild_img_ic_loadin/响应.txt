@@ -1,0 +1,10 @@
+HTTP/1.1 200 OK
+Date: Sat, 12 Sep 2026 07:47:10 GMT
+Content-Type: image/gif
+Content-Length: 23297
+Last-Modified: Thu, 27 Aug 2026 14:14:31 GMT
+ETag: "6a904647-5b01"
+Expires: Mon, 12 Oct 2026 07:47:10 GMT
+Cache-Control: max-age=2592000
+Accept-Ranges: bytes
+Server: elb

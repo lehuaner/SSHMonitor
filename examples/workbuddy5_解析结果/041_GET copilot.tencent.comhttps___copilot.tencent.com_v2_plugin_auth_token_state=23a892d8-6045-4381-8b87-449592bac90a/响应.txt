@@ -1,0 +1,13 @@
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Set-Cookie: tgw_l7_route=5d91eccf8fd814f771ef2b81de0b71f5; Expires=Thu, 10-Sep-2026 08:59:56 GMT; Path=/; sameSite=None; Secure
+Traceid: 91c297a40428df0972d2a1e5e3f05836
+X-Request-Id: dc90f414f18d4918b05ca5ddce4ca45e
+Server: APISIX/3.9.1
+X-Content-Type-Options: nosniff
+Cache-Control: no-store
+Content-Length: 88
+Connection: keep-alive
+Date: Thu, 10 Sep 2026 07:59:56 GMT
+EO-LOG-UUID: 6807034455289027649
+EO-Cache-Status: MISS

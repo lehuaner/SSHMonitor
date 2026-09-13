@@ -1,0 +1,64 @@
+{
+  "status": "success",
+  "result": {
+    "total": 1,
+    "list": [
+      {
+        "resource_id": "d278505eeb834b92a8859372ab552130",
+        "name": "CodeArts Agent",
+        "order_id": "CS2609121127YZUVJ",
+        "product_id": "OFFI1296473119762554880",
+        "buy_time": "2026-09-12 11:27:20",
+        "update_time": "2026-09-12 11:27:20",
+        "tenant_id": "01a093a777987c17bead4d833c848d43",
+        "tenant_name": "le__huan",
+        "project_id": "01a093a77e757c5db1d0029c06b8996b",
+        "region_id": "cn-north-4",
+        "auto_renew": "yes",
+        "status": "normal",
+        "resource_type_code": "hws.resource.type.codearts.snap",
+        "resource_type_name": "码道代码智能体",
+        "resource_spec_code": "codearts.agent.individual.trial",
+        "resource_spec_name": "个人体验版",
+        "period_num": 1,
+        "period_type": 2,
+        "resource_num": 1,
+        "resource_size": 1,
+        "service_type": "hws.service.type.devcloud",
+        "service_specs": [
+          {
+            "service_name": "doer",
+            "factor": "user_number",
+            "amount": "1"
+          },
+          {
+            "service_name": "doer",
+            "factor": "credit",
+            "amount": "500"
+          },
+          {
+            "service_name": "doer",
+            "factor": "agent_space_task",
+            "amount": "3"
+          },
+          {
+            "service_name": "doer",
+            "factor": "knowledge_repo_storage",
+            "amount": "500",
+            "unit": "MB"
+          },
+          {
+            "service_name": "doer",
+            "factor": "codebase_file",
+            "amount": "5000"
+          }
+        ],
+        "charge_type": 1,
+        "tags": [
+          "codearts_combo",
+          "codearts_agent"
+        ]
+      }
+    ]
+  }
+}

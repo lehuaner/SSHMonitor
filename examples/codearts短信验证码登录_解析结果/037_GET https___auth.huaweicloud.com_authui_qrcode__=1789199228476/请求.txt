@@ -1,0 +1,22 @@
+GET https://auth.huaweicloud.com/authui/qrcode?_=1789199228476 HTTP/2
+:method: GET
+:authority: auth.huaweicloud.com
+:scheme: https
+:path: /authui/qrcode?_=1789199228476
+sec-ch-ua-platform: "Windows"
+cache-control: no-store
+pragma: no-store
+sec-ch-ua: "Microsoft Edge";v="153", "Not_A Brand";v="8", "Chromium";v="153"
+sec-ch-ua-mobile: ?0
+x-requested-with: XMLHttpRequest
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/153.0.0.0 Safari/537.36 Edg/153.0.0.0
+accept: */*
+content-type: application/x-www-form-urlencoded; charset=UTF-8
+sec-fetch-site: same-origin
+sec-fetch-mode: cors
+sec-fetch-dest: empty
+referer: https://auth.huaweicloud.com/authui/login.html?service=https%3A%2F%2Fcodearts.huaweicloud.com%2Fportal%2Fsettings%2Fpersonal-usage
+accept-encoding: gzip, deflate, br, zstd
+accept-language: zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+priority: u=1, i
+cookie: auth_cdn=cdn_cookie_on; tiny_language=zh; HWWAFSESTIME=1789199227182; HWWAFSESID=2cec38eda70c96fe1d; Site=mainland; _frid=424d25658ae245faaeb002c84029ceb7; locale=zh-cn; _fr_ssid=92b1b52777cf45f0acee1ed48bacee8a

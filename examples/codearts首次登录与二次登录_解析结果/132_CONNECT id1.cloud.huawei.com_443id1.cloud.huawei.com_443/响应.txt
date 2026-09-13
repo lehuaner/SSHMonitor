@@ -1,0 +1,163 @@
+HTTP/1.1 200 Connection Established
+FiddlerGateway: Direct
+StartTime: 00:29:20.541
+
+Encrypted HTTPS traffic flows through this CONNECT tunnel. HTTPS Decryption is enabled in Fiddler, so decrypted sessions running in this tunnel will be shown in the Web Sessions list.
+
+Secure Protocol: TLS 1.2
+Cipher Suite: TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+== Server Certificate ==========
+[Version]
+  V3
+
+[Subject]
+  CN=id.cloud.huawei.com, O="Huawei Software Technologies Co., Ltd.", L=Nanjing, S=Jiangsu, C=CN
+  Simple Name: id.cloud.huawei.com
+  DNS Name: id.cloud.huawei.com
+
+[Issuer]
+  CN=GlobalSign RSA OV SSL CA 2018, O=GlobalSign nv-sa, C=BE
+  Simple Name: GlobalSign RSA OV SSL CA 2018
+  DNS Name: GlobalSign RSA OV SSL CA 2018
+
+[Serial Number]
+  681D34B8E1391D5C87D6F910
+
+[Not Before]
+  2026/7/15 17:06:44
+
+[Not After]
+  2027/1/30 17:06:44
+
+[Thumbprint]
+  4F18DC60B598934713B174D95790380A93241A0E
+
+[Signature Algorithm]
+  sha256RSA(1.2.840.113549.1.1.11)
+
+[Public Key]
+  Algorithm: RSA
+  Length: 3072
+  Key Blob: 30 82 01 8a 02 82 01 81 00 b1 32 eb dc 53 ff 1a 0d 7f 7e f9 a4 4f c0 d0 ea a0 0f 92 a3 d6 18 a3 30 85 ba 5d 09 04 ca 90 84 9c 24 0e 03 5d dd ba f7 08 5a 39 8d 5d 43 64 f5 18 6c 2c fe 9d af d7 bb 5b 6e c0 84 66 2d 45 e4 7e e4 1a 47 9e 3b 40 36 75 2d 34 db 83 88 27 b7 0a 6b 5b ed 14 a8 25 aa 40 6e 94 1f a5 42 95 a4 49 c0 04 56 b7 ec f7 35 fb 1d 15 45 9e 11 e1 9c f2 c0 0b ba 30 4a 09 17 e5 09 36 d7 b6 91 b8 56 22 24 d6 3f 76 17 b8 83 c3 55 6e 36 cc 78 72 8f 65 c4 c6 be 43 d9 b9 ef 3a a4 4a 45 72 a8 f9 a6 fd f7 78 ef 43 24 94 c3 ee ec a4 62 dc 11 71 36 80 7e 67 ee ad 2e 30 12 0d 95 de 4f d0 79 9b cb 91 ae ca d8 cf 16 9e 46 54 40 fe c3 a9 e7 cf 13 47 d6 6f 62 55 5a f4 cc 26 cf f3 f3 0d d4 47 6b 2e a1 0a 78 0f 75 3e 93 af 86 cf c4 e9 4c 3a 83 a6 5c e2 89 ff 9a 3a 9c 57 00 73 be e0 e2 72 31 82 67 bf df 22 df 05 14 ea 17 11 f9 4e e3 3d 1c d5 57 66 5d 60 eb 96 cd ca e2 30 5c a5 78 df 06 5e de ba 59 f2 07 02 84 5d 87 d2 68 5e d3 ba b6 ea 2b 9f 50 dd 59 0e db 59 fc 48 86 a5 09 5e bc 9c 5c 97 52 6d 90 ee 2a dc 5a fd dc a3 db 9d 33 0e 46 cd 04 fc be 48 ac 1c ea 3b a7 f5 76 cb e6 62 ad 09 51 77 d6 a6 de c6 b1 94 a3 ea e7 85 fe 9f 64 7f d3 b6 8c ae 6d 8d de b4 ed 5b e3 8f db 02 03 01 00 01
+  Parameters: 05 00
+
+[Extensions]
+* 密钥用法(2.5.29.15):
+  Digital Signature, Key Encipherment (a0)
+
+* 基本约束(2.5.29.19):
+  Subject Type=End Entity
+Path Length Constraint=None
+
+* 授权信息访问(1.3.6.1.5.5.7.1.1):
+  [1]Authority Info Access
+     Access Method=证书颁发机构颁发者 (1.3.6.1.5.5.7.48.2)
+     Alternative Name:
+          URL=http://secure.globalsign.com/cacert/gsrsaovsslca2018.crt
+[2]Authority Info Access
+     Access Method=联机证书状态协议 (1.3.6.1.5.5.7.48.1)
+     Alternative Name:
+          URL=http://ocsp.globalsign.com/gsrsaovsslca2018
+
+* 证书策略(2.5.29.32):
+  [1]Certificate Policy:
+     Policy Identifier=1.3.6.1.4.1.4146.1.20
+     [1,1]Policy Qualifier Info:
+          Policy Qualifier Id=CPS
+          Qualifier:
+               https://www.globalsign.com/repository/
+[2]Certificate Policy:
+     Policy Identifier=2.23.140.1.2.2
+
+* CRL 分发点(2.5.29.31):
+  [1]CRL Distribution Point
+     Distribution Point Name:
+          Full Name:
+               URL=http://crl.globalsign.com/gsrsaovsslca2018.crl
+
+* 使用者可选名称(2.5.29.17):
+  DNS Name=id.cloud.huawei.com
+DNS Name=*.platform.hicloud.com
+DNS Name=*.cloud.huawei.com
+DNS Name=*.cloud.huawei.ru
+DNS Name=*.cloud.huawei.lat
+DNS Name=*.cloud.huawei.eu
+DNS Name=*.cloud.huawei.com.cn
+DNS Name=*.cloud.huawei.com.au
+DNS Name=*.cloud.huawei.asia
+DNS Name=*.vmall.com
+DNS Name=*.huawei.com
+DNS Name=*.hicloud.com
+DNS Name=*.platform.dbankcloud.cn
+DNS Name=*.platform.dbankcloud.com
+DNS Name=*.platform.dbankcloud.ru
+DNS Name=*.dbankcloud.com
+DNS Name=*.cloud.hicloud.com
+DNS Name=*.cdn.hicloud.com
+DNS Name=*.dbankcloud.cn
+DNS Name=*.platform-dbankcloud.dbankcloud.cn
+DNS Name=*.wallet.dbankcloud.cn
+DNS Name=*.cp13.ott.cibntv.net
+DNS Name=*.cloud.dbankcloud.com
+DNS Name=*.hms.dbankcloud.cn
+
+* 增强型密钥用法(2.5.29.37):
+  服务器身份验证 (1.3.6.1.5.5.7.3.1)
+客户端身份验证 (1.3.6.1.5.5.7.3.2)
+
+* 授权密钥标识符(2.5.29.35):
+  KeyID=f8ef7ff2cd7867a8de6f8f248d88f1870302b3eb
+
+* 使用者密钥标识符(2.5.29.14):
+  4b1b38a6546148d86dd9ffd0ed7ad122bd0a5afe
+
+* SCT 列表(1.3.6.1.4.1.11129.2.4.2):
+  v1
+1c9f682ce9faf0456950f81b968a87dddb3210d84ce6c8b2e382524ac4cf599f
+‎2026‎年‎7‎月‎15‎日 17:06:50
+SHA256
+ECDSA
+3045022100cbc3d643d9ea0d0e63a5f95448bc8e04d864e937a09133e256b790d1ebc51a31022045db6d19dd34205009c6acf24780b84913dc6b849386b2fb4003a0013eb8bbf6
+
+v1
+4c63dc98e59c1dab88f61e8a3ddeae8fab44a3377b5f9b94c3fba19cfcc1be26
+‎2026‎年‎7‎月‎15‎日 17:06:49
+SHA256
+ECDSA
+3045022100abac51c1d002ee0939043aa4511f4746111c141db2aa49aefd347a02eddf2c6302202340e894576db385a1355d0971a1eb917ec98d7d6681ef7c7d84043150d796b1
+
+v1
+604c9aaf7a7f775f01d406fc920dc899eb0b1c7df8c9521bfafa17773b978bc9
+‎2026‎年‎7‎月‎15‎日 17:06:50
+SHA256
+ECDSA
+3045022100f63a4a6b5d1a5d104d2641fc62d0a0244820dbbec549d92f0cde1193f4c59dcb02207f3035dee1d7f79e05a36a17a6a68314e2b871116498ed1fa600b142fec19034
+
+
+[SubjectAltNames]
+DNS Name=id.cloud.huawei.com
+DNS Name=*.platform.hicloud.com
+DNS Name=*.cloud.huawei.com
+DNS Name=*.cloud.huawei.ru
+DNS Name=*.cloud.huawei.lat
+DNS Name=*.cloud.huawei.eu
+DNS Name=*.cloud.huawei.com.cn
+DNS Name=*.cloud.huawei.com.au
+DNS Name=*.cloud.huawei.asia
+DNS Name=*.vmall.com
+DNS Name=*.huawei.com
+DNS Name=*.hicloud.com
+DNS Name=*.platform.dbankcloud.cn
+DNS Name=*.platform.dbankcloud.com
+DNS Name=*.platform.dbankcloud.ru
+DNS Name=*.dbankcloud.com
+DNS Name=*.cloud.hicloud.com
+DNS Name=*.cdn.hicloud.com
+DNS Name=*.dbankcloud.cn
+DNS Name=*.platform-dbankcloud.dbankcloud.cn
+DNS Name=*.wallet.dbankcloud.cn
+DNS Name=*.cp13.ott.cibntv.net
+DNS Name=*.cloud.dbankcloud.com
+DNS Name=*.hms.dbankcloud.cn
+
