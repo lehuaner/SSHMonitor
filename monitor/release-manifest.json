@@ -55,6 +55,7 @@
       "$comment": "前端部署走 deploy.ps1 frontend（CF Pages），tag 流程只提示不执行",
       "files": {
         "monitor/frontend/checkin.html": "CF_PAGES",
+        "monitor/frontend/release.html": "CF_PAGES",
         "monitor/frontend/index.html": "CF_PAGES",
         "monitor/frontend/notify.html": "CF_PAGES",
         "monitor/frontend/subscription.html": "CF_PAGES",

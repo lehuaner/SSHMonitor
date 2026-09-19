@@ -29,6 +29,199 @@ const VERSION = process.env.MONITOR_MODULE_VERSION || 'dev';
 import { run } from './lib/utils.js';
 
 const MANIFEST = JSON.parse(readFileSync(join(MONITOR_DIR, 'release-manifest.json'), 'utf8'));
+
+// ====== 上游版本检测（手机直连 GitHub API） ======
+// 职责边界：Windows 侧只负责发布（commit/tag/push + staging 把文件推上来），
+// 「有没有新版本」由手机端自己拉 tag 并缓存，前端展示。私有仓库需只读 PAT。
+const UPSTREAM_CONFIG_FILE = join(HOME, '.monitor_data', 'release_config.json');
+const UPSTREAM_CACHE_FILE = join(HOME, '.monitor_data', 'upstream-version.json');
+const DEFAULT_UPSTREAM = {
+  enabled: true,
+  repo: 'lehuaner/SSHMonitor',
+  token: '',                            // fine-grained PAT，权限 Contents: Read-only 即可
+  tagPattern: '^v[0-9]+(\\.[0-9]+)*$',
+  intervalMin: 30,
+  listSize: 20,                         // 最多保留/比对最近 N 个 tag
+};
+
+function readUpstreamConfig() {
+  const raw = readJson(UPSTREAM_CONFIG_FILE, {});
+  return { ...DEFAULT_UPSTREAM, ...(raw.upstream || {}) };
+}
+
+/** 合并写入（只接受白名单键；token 传空或含 * 视为「不修改」） */
+function writeUpstreamConfig(patch) {
+  const cur = readUpstreamConfig();
+  const next = { ...cur };
+  for (const k of Object.keys(DEFAULT_UPSTREAM)) {
+    if (patch[k] === undefined) continue;
+    if (k === 'token') {
+      const v = String(patch[k] ?? '').trim();
+      if (v && !v.includes('*')) next.token = v;   // 掩码值/空串 → 保留原 token
+      else if (v === '' && patch.clearToken) next.token = '';
+      continue;
+    }
+    if (k === 'enabled') next.enabled = !!patch[k];
+    else if (k === 'intervalMin') next.intervalMin = Math.min(1440, Math.max(5, Number(patch[k]) || DEFAULT_UPSTREAM.intervalMin));
+    else if (k === 'listSize') next.listSize = Math.min(100, Math.max(1, Number(patch[k]) || DEFAULT_UPSTREAM.listSize));
+    else if (k === 'tagPattern') { try { new RegExp(String(patch[k])); next.tagPattern = String(patch[k]); } catch { /* 非法正则 → 保持原值 */ } }
+    else next[k] = String(patch[k] ?? '').trim() || cur[k];
+  }
+  const raw = readJson(UPSTREAM_CONFIG_FILE, {});
+  raw.upstream = next;
+  mkdirSync(join(HOME, '.monitor_data'), { recursive: true });
+  writeFileSync(UPSTREAM_CONFIG_FILE, JSON.stringify(raw, null, 2));
+  return next;
+}
+
+function maskToken(tok) {
+  const s = String(tok || '');
+  if (!s) return '';
+  return s.length <= 6 ? '***' : '•'.repeat(Math.min(24, s.length - 4)) + s.slice(-4);
+}
+
+/** v1.2.3 / 1.2.3 → [1,2,3]；解析不出给 [-1,-1,-1]（排到最后） */
+function tagParts(t) {
+  const m = /^v?(\d+)\.(\d+)\.(\d+)/.exec(String(t || ''));
+  return m ? [Number(m[1]), Number(m[2]), Number(m[3])] : [-1, -1, -1];
+}
+function cmpTag(a, b) {
+  const A = tagParts(a), B = tagParts(b);
+  for (let i = 0; i < 3; i++) if (A[i] !== B[i]) return A[i] - B[i];
+  return String(a).localeCompare(String(b));
+}
+
+/** 基准版本 = 各模块已部署 tag 的最低值（任一模块落后就认为有更新） */
+function baseTag(deployed) {
+  const tags = Object.values((deployed && deployed.modules) || {}).map((m) => m && m.tag).filter(Boolean);
+  if (!tags.length) return 'v0.0.0';
+  return tags.sort(cmpTag)[0];
+}
+
+async function ghFetch(pathname, cfg) {
+  const headers = {
+    'user-agent': 'honor10-monitor',
+    accept: 'application/vnd.github+json',
+    'x-github-api-version': '2022-11-28',
+  };
+  if (cfg.token) headers.authorization = `Bearer ${cfg.token}`;
+  const r = await fetch(`https://api.github.com${pathname}`, { headers, signal: AbortSignal.timeout(20000) });
+  const text = await r.text();
+  let data = null;
+  try { data = JSON.parse(text); } catch { /* 非 JSON（如代理劫持页） */ }
+  if (!r.ok) {
+    let msg = data && (data.message || data.error) ? String(data.message || data.error) : `HTTP ${r.status}`;
+    if (r.status === 404) msg = cfg.token ? '404：token 无该仓库读取权限，或 repo 名称不对' : '404：仓库不可匿名访问（私有仓库需在设置里填只读 token）';
+    else if (r.status === 401) msg = '401：token 无效或已过期';
+    else if (r.status === 403) msg = '403：触发 GitHub 速率限制（配 token 可解除）';
+    else if (!data) msg += `（响应非 JSON，可能被代理/网络拦截：${text.slice(0, 60)}）`;
+    throw new Error(`${pathname.split('?')[0]} → ${msg}`);
+  }
+  return data;
+}
+
+let upstreamPromise = null;
+/** 拉取上游 tag → 写缓存 ~/.monitor_data/upstream-version.json（并发共享同一次检测，不能回退旧缓存） */
+function checkUpstream() {
+  if (!upstreamPromise) {
+    upstreamPromise = doCheckUpstream().finally(() => { upstreamPromise = null; });
+  }
+  return upstreamPromise;
+}
+
+async function doCheckUpstream() {
+  const cfg = readUpstreamConfig();
+  const prev = readJson(UPSTREAM_CACHE_FILE, null);
+  const out = { checkedAt: Date.now(), ok: false, error: null, repo: cfg.repo, tokenSet: !!cfg.token, tags: [], latest: null };
+  try {
+    const list = await ghFetch(`/repos/${cfg.repo}/tags?per_page=100`, cfg);
+    let re;
+    try { re = new RegExp(cfg.tagPattern); } catch { re = /^v\d+(\.\d+)*$/; }
+    let tags = (Array.isArray(list) ? list : [])
+      .filter((x) => x && x.name && re.test(x.name))
+      .map((x) => ({ tag: x.name, sha: (x.commit && x.commit.sha) || '' }));
+    tags.sort((a, b) => cmpTag(b.tag, a.tag));
+    tags = tags.slice(0, cfg.listSize);
+    // 提交说明只补最近 6 个，省请求；失败不影响检测结果
+    for (const t of tags.slice(0, Math.min(6, tags.length))) {
+      try {
+        const c = await ghFetch(`/repos/${cfg.repo}/commits/${t.sha}`, cfg);
+        t.subject = String((c && c.commit && c.commit.message) || '').split('\n')[0].slice(0, 200);
+        t.date = (c && c.commit && c.commit.committer && c.commit.committer.date) || '';
+      } catch { /* ignore */ }
+    }
+    out.tags = tags;
+    out.latest = tags.length ? tags[0].tag : null;
+    out.ok = tags.length > 0;
+    if (!out.latest) out.error = `仓库 ${cfg.repo} 里没有匹配 ${cfg.tagPattern} 的 tag`;
+  } catch (e) {
+    out.error = e.message;
+    // 失败时沿用上次结果供展示，但**仓库换了就不能继承**（否则会把别的仓库的 tag 当成上游最新）
+    if (prev && prev.repo === cfg.repo) {
+      out.tags = (prev && prev.tags) || [];
+      out.latest = (prev && prev.latest) || null;
+    }
+  }
+  const deployed = readJson(VERSION_FILE, { modules: {} });
+  out.base = baseTag(deployed);
+  out.behind = out.tags.filter((t) => cmpTag(t.tag, out.base) > 0).map((t) => t.tag);
+  mkdirSync(join(HOME, '.monitor_data'), { recursive: true });
+  writeFileSync(UPSTREAM_CACHE_FILE, JSON.stringify(out, null, 2));
+  // 审计只在「发现新版本」时记一条，避免每 30 分钟刷屏
+  if (out.ok && out.latest && (!prev || prev.latest !== out.latest)) audit('upstream:new-tag', { latest: out.latest, base: out.base, behind: out.behind.length });
+  return out;
+}
+
+/** 缓存 + 本地状态（staged / applied）合成前端视图 */
+function upstreamView() {
+  const cfg = readUpstreamConfig();
+  const cache = readJson(UPSTREAM_CACHE_FILE, null);
+  const deployed = readJson(VERSION_FILE, { modules: {} });
+  const stagedMap = new Map(listReleases().map((x) => [x.tag, x]));
+  const appliedTags = new Set(Object.values((deployed && deployed.modules) || {}).map((m) => m && m.tag).filter(Boolean));
+  const base = baseTag(deployed);
+  const items = ((cache && cache.tags) || []).map((t) => {
+    const st = stagedMap.get(t.tag);
+    const newer = cmpTag(t.tag, base) > 0;
+    // state: new-unstaged（上游有、本地没档案）/ new-staged（可直接应用）/ partial（部分模块已用该 tag）/ old
+    let state = 'old';
+    if (newer && !st) state = 'new-unstaged';
+    else if (newer && st) state = 'new-staged';
+    else if (!newer && appliedTags.has(t.tag)) state = 'deployed';
+    return { ...t, newer, staged: !!st, applied: appliedTags.has(t.tag), state,
+      affectedModules: (st && st.affectedModules) || [], fileCount: st ? st.fileCount : 0 };
+  });
+  const behind = items.filter((x) => x.newer);
+  return {
+    configured: !!(cfg.repo),
+    enabled: !!cfg.enabled,
+    repo: cfg.repo,
+    tokenSet: !!cfg.token,
+    intervalMin: cfg.intervalMin,
+    tagPattern: cfg.tagPattern,
+    listSize: cfg.listSize,
+    checkedAt: (cache && cache.checkedAt) || 0,
+    checkError: (cache && cache.error) || null,
+    never: !cache,
+    base,
+    latest: (cache && cache.latest) || null,
+    behindCount: behind.length,
+    pendingStaging: behind.filter((x) => !x.staged).length,
+    items,
+  };
+}
+
+// 定时器：启动 12s 后首检，之后按 intervalMin 轮询（改配置后重新排程）
+let upstreamTimer = null;
+function scheduleUpstream() {
+  if (upstreamTimer) clearInterval(upstreamTimer);
+  const cfg = readUpstreamConfig();
+  if (!cfg.enabled) return;
+  const ms = Math.min(1440, Math.max(5, Number(cfg.intervalMin) || 30)) * 60 * 1000;
+  upstreamTimer = setInterval(() => { checkUpstream().catch((e) => console.error('[upstream] check failed:', e.message)); }, ms);
+  if (upstreamTimer.unref) upstreamTimer.unref();
+}
+
   // ====== 异步任务模型（202）：apply/rollback 全部后台执行，响应立即返回任务 ID ======
   // 解决：apply 含 gateway 时响应被自身重启切断（假失败）；同时提供逐步进度与并发互斥。
 const tasks = new Map();   // taskId -> { id, kind: 'apply'|'rollback', tag, modules, state, steps, error, createdAt, updatedAt }
@@ -228,15 +421,53 @@ async function router(url, q, r, send) {
   const p = url.pathname;
   if (!p.startsWith('/api/release')) return false;
 
-  // ---- 状态：当前版本 + 待应用 releases ----
+  // ---- 状态：当前版本 + 待应用 releases + 上游摘要 ----
   if (p === '/api/release/status' && q.method === 'GET') {
     const deployed = readJson(VERSION_FILE, { modules: {} });
+    const up = upstreamView();
     send(200, JSON.stringify({
       ok: true,
       deployed,
       releases: listReleases(),
       manifestModules: Object.keys(MANIFEST.modules),
+      upstream: {
+        enabled: up.enabled, repo: up.repo, tokenSet: up.tokenSet, never: up.never,
+        checkedAt: up.checkedAt, checkError: up.checkError, base: up.base,
+        latest: up.latest, behindCount: up.behindCount, pendingStaging: up.pendingStaging,
+      },
     }));
+    return true;
+  }
+
+  // ---- 上游版本检测 ----
+  if (p === '/api/release/upstream' && q.method === 'GET') {
+    send(200, JSON.stringify({ ok: true, ...upstreamView() }));
+    return true;
+  }
+  if (p === '/api/release/upstream/check' && q.method === 'POST') {
+    const cache = await checkUpstream();          // 失败不抛，错因在 cache.error
+    const v = upstreamView();
+    send(200, JSON.stringify({ ok: !v.checkError, ...v, detail: cache && cache.tags ? `${cache.tags.length} tags` : '' }));
+    return true;
+  }
+
+  // ---- 检测配置（token 永远脱敏输出） ----
+  if (p === '/api/release/config' && q.method === 'GET') {
+    const c = readUpstreamConfig();
+    send(200, JSON.stringify({ ok: true, upstream: { ...c, token: maskToken(c.token), tokenSet: !!c.token } }));
+    return true;
+  }
+  if (p === '/api/release/config' && (q.method === 'PUT' || q.method === 'POST')) {
+    let input;
+    try { input = JSON.parse((await readBody(q)) || '{}'); } catch { send(400, JSON.stringify({ ok: false, error: 'body 不是合法 JSON' })); return true; }
+    const patch = (input.upstream && typeof input.upstream === 'object') ? input.upstream : input;
+    if (patch.repo && !/^[\w.-]+\/[\w.-]+$/.test(String(patch.repo).trim())) {
+      send(400, JSON.stringify({ ok: false, error: 'repo 需为 owner/name 形式' })); return true;
+    }
+    const saved = writeUpstreamConfig(patch);
+    scheduleUpstream();
+    send(200, JSON.stringify({ ok: true, upstream: { ...saved, token: maskToken(saved.token), tokenSet: !!saved.token }, timerArmed: !!upstreamTimer }));
+    if (saved.enabled) checkUpstream().catch((e) => console.error('[upstream] post-config check failed:', e.message));
     return true;
   }
 
@@ -299,6 +530,10 @@ async function router(url, q, r, send) {
 
   return true;
 }
+
+scheduleUpstream();
+// 启动首检（延后 12s，不与开机其它服务抢网络）；失败不致命，只记日志
+setTimeout(() => { checkUpstream().then((c) => { if (c && c.error) console.log('[upstream] ' + c.error); }).catch((e) => console.error('[upstream] startup check failed:', e.message)); }, 12000).unref?.();
 
 await createModuleServer({
   name: 'release',
