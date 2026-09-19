@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang=zh-CN><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>发布 - Honor10</title>
+<style>
+:root{--bg:#0f172a;--card:#1e293b;--line:#334155;--txt:#e2e8f0;--muted:#64748b;--blue:#2563eb;--green:#34d399;--amber:#f59e0b;--red:#ef4444}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--txt);font:14px/1.6 system-ui,'Segoe UI','Microsoft YaHei',sans-serif;padding:16px;max-width:860px;margin:0 auto}
+.nav{display:flex;gap:4px;margin-bottom:20px;background:#131c31;border-radius:10px;padding:4px;overflow-x:auto}
+.nav a{padding:8px 16px;border-radius:6px;text-decoration:none;color:#94a3b8;font-size:.85rem;white-space:nowrap}
+.nav a:hover,.nav a.active{background:var(--blue);color:#fff}
+.header{margin-bottom:16px}.header h1{font-size:1.25rem}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}
+.panel h2{font-size:.95rem;margin-bottom:10px;color:#cbd5e1}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.btn{padding:8px 14px;border-radius:6px;border:1px solid var(--line);background:transparent;color:var(--txt);cursor:pointer;font-size:.85rem}
+.btn:hover{border-color:#38bdf8;color:#e2e8f0}
+.btn-primary{background:var(--blue);border-color:var(--blue);color:#fff}
+.btn-primary:hover{background:#1d4ed8}
+.btn-danger{background:transparent;border-color:var(--red);color:#f87171}
+.btn-danger:hover{background:#7f1d1d33}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.tag{display:inline-block;padding:2px 10px;border-radius:999px;font-size:.72rem;border:1px solid var(--line);color:var(--muted)}
+.tag.ok{border-color:var(--green);color:var(--green)}
+.tag.warn{border-color:var(--amber);color:var(--amber)}
+.tag.err{border-color:var(--red);color:#f87171}
+.mono{font-family:Consolas,monospace;font-size:.8rem;color:#94a3b8;word-break:break-all}
+.mods{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-top:8px}
+.mod{border:1px solid var(--line);border-radius:8px;padding:10px 12px}
+.mod .n{font-weight:600;font-size:.9rem}
+.mod .v{font-family:Consolas,monospace;font-size:.78rem;color:var(--muted);margin-top:2px}
+.rel{border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.rel .h{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.rel .h b{font-family:Consolas,monospace;font-size:.95rem}
+.rel .meta{font-size:.75rem;color:var(--muted);margin-top:4px}
+.rel .acts{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.audit{font-family:Consolas,monospace;font-size:.72rem;color:#94a3b8;line-height:1.9;max-height:260px;overflow-y:auto}
+.audit .ev-apply\:done,.audit .ev-rollback\:done{color:var(--green)}
+.audit .ev-apply\:fail,.audit .ev-rollback\:fail{color:#f87171}
+.empty{color:var(--muted);font-size:.85rem;padding:8px 0}
+.result{margin-top:10px;padding:10px 12px;border-radius:6px;font-family:Consolas,monospace;font-size:.75rem;white-space:pre-wrap;display:none;border:1px solid var(--line)}
+.result.ok{display:block;border-color:var(--green);color:var(--green)}
+.result.err{display:block;border-color:var(--red);color:#f87171}
+.spin{display:inline-block;width:12px;height:12px;border:2px solid #475569;border-top-color:#e2e8f0;border-radius:50%;animation:sp .8s linear infinite;vertical-align:-2px}
+@keyframes sp{to{transform:rotate(360deg)}}
+</style>
+<script src=config.js></script>
+<div class=nav><a href=/>&#9660; 监控</a><a href=/sb/ui/ target=_blank>&#9881; Sing-box</a><a href=/subscription>&#128225; 订阅</a><a href=/notify>&#128231; 通知</a><a href=/files>&#128193; 文件</a><a href=/android>&#129539; Android</a><a href=/checkin>&#9989; 签到</a><a href=/release class=active>&#128640; 发布</a></div>
+<div class=header><h1>&#128640; 版本发布</h1></div>
+
+<div class=panel>
+  <h2>当前部署</h2>
+  <div id=deployed class=mods><span class=empty><span class=spin></span> 加载中…</span></div>
+  <div class=row style=margin-top:12px>
+    <button class=btn onclick=loadData()>&#8635; 刷新</button>
+    <button class="btn btn-danger" onclick=doRollback() id=btnRollback>&#9100; 回滚上一版本</button>
+    <span class=mono id=updAt></span>
+  </div>
+</div>
+
+<div class=panel>
+  <h2>已 staging 的 Release（tag 自动落盘，待应用）</h2>
+  <div id=releases></div>
+</div>
+
+<div class=panel>
+  <h2>发布审计（最近事件）</h2>
+  <div id=audit class=audit><span class=empty>加载中…</span></div>
+</div>
+
+<div class="result" id=result></div>
+
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function fmtT(ts){return ts?new Date(ts).toLocaleString('zh-CN',{hour12:false}):'—'}
+function show(res,ok){const el=$('#result');el.className='result '+(ok?'ok':'err');el.textContent=typeof res==='string'?res:JSON.stringify(res,null,2)}
+async function api(u,opt){try{const r=await fetch(u,opt);return await r.json()}catch(e){return{ok:false,error:e.message}}}
+
+async function loadData(){
+  const r=await api('/api/release/status');
+  if(!r.ok){$('#deployed').innerHTML='<span class=empty>加载失败: '+esc(r.error||'')+'</span>';return}
+  // 当前部署（各模块版本）
+  const mods=Object.entries(r.deployed.modules||{});
+  $('#deployed').innerHTML=mods.length
+    ? mods.map(([m,v])=>`<div class=mod><div class=n>${esc(m)}</div><div class=v>${esc(v.tag)}<br>${esc((v.sha||'').slice(0,7))}</div></div>`).join('')
+    : '<span class=empty>尚未记录部署版本（首次 apply 后显示）</span>';
+  const la=r.deployed.lastApply;
+  $('#updAt').textContent=la?('上次操作: '+la.tag+' @ '+fmtT(la.at)):'';
+  $('#btnRollback').disabled=!r.releases.length;
+  // 待应用 releases
+  const box=$('#releases');
+  if(!r.releases.length){box.innerHTML='<div class=empty>暂无待应用版本。PC 侧执行 release-watch.ps1（或 push 新 tag 后自动 staging）。</div>';return}
+  box.innerHTML=r.releases.map(x=>{
+    const appliedMods=mods.filter(([m,v])=>v.tag===x.tag);
+    const isApplied=appliedMods.length===Object.keys(r.deployed.modules||{}).length&&appliedMods.length>0;
+    return `<div class=rel>
+      <div class=h><b>${esc(x.tag)}</b>
+        <span class="tag ${isApplied?'ok':'warn'}">${isApplied?'已部署':'待应用'}</span>
+        <span class=tag>${x.fileCount} 文件</span>
+        <span class=tag>影响: ${esc((x.affectedModules||[]).join(', ')||'—')}</span>
+      </div>
+      <div class=meta>sha ${esc((x.sha||'').slice(0,7))} · staged ${fmtT(x.stagedAt)}</div>
+      <div class=acts>
+        <button class="btn btn-primary" onclick=doApply('${esc(x.tag)}')>&#9654; 应用此版本</button>
+        <span class=mono style=align-self:center>POST /api/release/apply</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+async function doApply(tag){
+  if(!confirm(`应用 ${tag}？\n将按 manifest 复制文件并重启受影响模块（签到/网关各自独立重启）。`))return;
+  show('应用中…',true);
+  const r=await api('/api/release/apply',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tag})});
+  show(r,r.ok);
+  r.ok?await loadData():null;
+}
+
+async function doRollback(){
+  if(!confirm('回滚到上一 release？\n将恢复其全部文件并重启相关模块。'))return;
+  show('回滚中…',true);
+  const r=await api('/api/release/rollback',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});
+  show(r,r.ok);
+  r.ok?await loadData():null;
+}
+
+async function loadAudit(){
+  const r=await api('/api/release/audit');
+  const el=$('#audit');
+  if(!r.ok){el.textContent='加载失败: '+(r.error||'');return}
+  el.innerHTML=(r.events||[]).map(e=>{
+    const t=new Date(e.ts).toLocaleString('zh-CN',{hour12:false});
+    const {ts,...rest}=e;
+    return `<div class="ev-${esc(e.event).replace(':','\\:')}">${t}  ${esc(e.event)}  ${esc(JSON.stringify(rest))}</div>`;
+  }).join('')||'<div class=empty>暂无事件</div>';
+}
+
+loadData();loadAudit();
+setInterval(loadAudit,30000);
+</script>

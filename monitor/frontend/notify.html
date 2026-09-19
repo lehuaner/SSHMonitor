@@ -256,7 +256,7 @@ function clearPass(){const f=$('smtp_pass');f.value='';f.readOnly=false;f.style.
 function renderProcs(candidates,selected){
   const el=$('procList');
   const sel=new Set(selected||[]);
-  if(!candidates||!candidates.length){el.innerHTML='<div class=empty>暂无标记的进程。请先在<a href=/ style=color:#38bdf8>监控页面</a>用星标(&#9733;)标记重要进程。</div>';$('procCount').textContent='0 个';return}
+  if(!candidates||!candidates.length){el.innerHTML='<div class=empty>暂无标记的进程。请先在<a href=/ style=color:#38bdf8>监控页面</a><a href=/release>&#128640; 发布</a>用星标(&#9733;)标记重要进程。</div>';$('procCount').textContent='0 个';return}
   $('procCount').textContent=candidates.length+' 个 (已选 '+sel.size+')';
   el.innerHTML=candidates.map(p=>{
     const checked=sel.has(p.cmd)?'checked':'';

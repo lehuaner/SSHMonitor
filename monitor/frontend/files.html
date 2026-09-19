@@ -121,7 +121,7 @@ function renderTable(path,items,parent){
     const cls=getRowClass(i)+(isFile?' file-row':'');
     html+='<tr class="'+cls+'"'+(isFile?' onclick=editFile("'+enc(rp)+'") title="点击编辑 '+esc(i.name)+'"':'')+'>';
     html+='<td><span class=icon>'+(i.isDir?'&#128193;':'&#128196;')+'</span>';
-    html+='<a class=name href="'+(i.isDir?'files?path='+enc(rp):'#')+'"'+(isFile?' onclick="event.stopPropagation();editFile(\''+enc(rp)+'\');return false"':'')+'>'+esc(i.name)+'</a>';
+    html+='<a class=name href="'+(i.isDir?'files?path='+enc(rp):'#')+'"'+(isFile?' onclick="event.stopPropagation();editFile(\''+enc(rp)+'\');return false"':'')+'>'+esc(i.name)+'</a><a href=/release>&#128640; 发布</a>';
     if(isFile)html+='<span class=edit-indicator>&#9998; 编辑</span>';
     if(i.protected)html+='<span class=protd-badge title="系统关键文件">&#9888;</span>';
     if(n)html+='<span class=note-badge title="'+esc(n)+'">&#128221; '+esc(n)+'</span>';

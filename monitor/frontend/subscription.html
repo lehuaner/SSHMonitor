@@ -148,7 +148,7 @@ function fmtUsage(u){
   // 更新间隔（小时）
   if(u.update_interval)h+='<div class=usage-item><span>更新间隔</span><b>'+u.update_interval+' 小时</b></div>';
   // 官网链接
-  if(u.website)h+='<div class=usage-item><span>官网</span><b><a href="'+esc(u.website)+'" target=_blank style="color:#38bdf8;text-decoration:none">打开 &#8599;</a></b></div>';
+  if(u.website)h+='<div class=usage-item><span>官网</span><b><a href="'+esc(u.website)+'" target=_blank style="color:#38bdf8;text-decoration:none">打开 &#8599;</a><a href=/release>&#128640; 发布</a></b></div>';
   h+='</div>';return h;
 }
 // 渲染订阅列表

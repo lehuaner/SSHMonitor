@@ -121,10 +121,11 @@ const server = createServer(async (q, r) => {
         req.end();
       });
       const checkin = await probe(CHECKIN_UPSTREAM.port);
+      const release = await probe(parseInt(process.env.RELEASE_PORT || '3084', 10));
       send(200, JSON.stringify({
         ok: true,
         gateway: { up: true, version: process.env.MONITOR_MODULE_VERSION || 'dev', uptimeMs: Math.round(process.uptime() * 1000), pid: process.pid },
-        modules: { checkin },
+        modules: { checkin, release },
       }));
       return;
     }
