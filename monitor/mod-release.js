@@ -514,9 +514,16 @@ async function router(url, q, r, send) {
     // 并发互斥：同一时间只允许一个 running 任务
     const running = [...tasks.values()].find(x => x.state === 'running');
     if (running) { send(409, JSON.stringify({ ok: false, error: `已有任务进行中（${running.kind} ${running.tag || ''}），请稍候` })); return true; }
-    const modules = (Array.isArray(input.modules) && input.modules.length)
-      ? input.modules
-      : (meta.affectedModules && meta.affectedModules.length ? meta.affectedModules : ['gateway', 'checkin']);
+    // 模块来源：显式传入 > meta.affectedModules。两者都空时**不得**默默重启 gateway+checkin
+    // （“无差异的重复 tag”会被误伤），直接 400 要调用方显式指定。
+    let modules = (Array.isArray(input.modules) && input.modules.length) ? input.modules : null;
+    if (!modules) {
+      if (Array.isArray(meta.affectedModules) && meta.affectedModules.length) modules = meta.affectedModules;
+      else { send(400, JSON.stringify({ ok: false, error: `${tag} 的 meta.affectedModules 为空（与已部署内容无差异或基线丢失），请显式传 modules` })); return true; }
+    }
+    const known = Object.keys(MANIFEST.modules);
+    const unknown = modules.filter((m) => !known.includes(m));
+    if (unknown.length) { send(400, JSON.stringify({ ok: false, error: `未知模块: ${unknown.join(', ')}（manifest 只有 ${known.join(', ')}）` })); return true; }
     const t = newTask('apply', tag, modules);
     audit('apply:start', { tag, modules, taskId: t.id });
     runApply(t).then(() => console.log('[release-task] runApply finished', t.id, t.state)).catch(e => { console.error('[release-task] runApply throw:', e.message); t.state = 'failed'; t.error = e.message; });
