@@ -177,18 +177,26 @@ function upstreamView() {
   const cfg = readUpstreamConfig();
   const cache = readJson(UPSTREAM_CACHE_FILE, null);
   const deployed = readJson(VERSION_FILE, { modules: {} });
+  const modTags = (deployed && deployed.modules) || {};
   const stagedMap = new Map(listReleases().map((x) => [x.tag, x]));
-  const appliedTags = new Set(Object.values((deployed && deployed.modules) || {}).map((m) => m && m.tag).filter(Boolean));
   const base = baseTag(deployed);
+  // 是否已应用：看该 release **真正影响的模块**（只统计有部署记录的模块，
+  // frontend/CF_PAGES 不参与）。否则像“只发 release 模块”的版本会永远被当成可应用。
+  const isApplied = (tag, stagedMeta) => {
+    const names = stagedMeta && Array.isArray(stagedMeta.affectedModules) && stagedMeta.affectedModules.length
+      ? stagedMeta.affectedModules.filter((m) => modTags[m] && modTags[m].tag)
+      : Object.keys(modTags).filter((m) => modTags[m] && modTags[m].tag);   // 未 staging 的 tag 不知道影响面 → 保守按全部
+    if (!names.length) return Object.keys(modTags).length > 0 && Object.values(modTags).every((m) => cmpTag(m.tag, tag) >= 0);
+    return names.every((m) => cmpTag(modTags[m].tag, tag) >= 0);
+  };
   const items = ((cache && cache.tags) || []).map((t) => {
     const st = stagedMap.get(t.tag);
-    const newer = cmpTag(t.tag, base) > 0;
-    // state: new-unstaged（上游有、本地没档案）/ new-staged（可直接应用）/ partial（部分模块已用该 tag）/ old
+    const applied = isApplied(t.tag, st);
+    const currentLine = cmpTag(t.tag, base) >= 0;      // 比最低模块版本还老的一律当旧版本
     let state = 'old';
-    if (newer && !st) state = 'new-unstaged';
-    else if (newer && st) state = 'new-staged';
-    else if (!newer && appliedTags.has(t.tag)) state = 'deployed';
-    return { ...t, newer, staged: !!st, applied: appliedTags.has(t.tag), state,
+    if (currentLine && !applied) state = st ? 'new-staged' : 'new-unstaged';
+    else if (currentLine && applied) state = 'deployed';
+    return { ...t, newer: currentLine && !applied, staged: !!st, applied, state,
       affectedModules: (st && st.affectedModules) || [], fileCount: st ? st.fileCount : 0 };
   });
   const behind = items.filter((x) => x.newer);
