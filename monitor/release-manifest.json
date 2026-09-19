@@ -52,7 +52,7 @@
     },
     "frontend": {
       "service": null,
-      "$comment": "前端部署走 deploy.ps1 frontend（CF Pages），tag 流程只提示不执行",
+      "$comment": "前端（CF Pages）走 GitHub Actions 自动发布（.github/workflows/deploy-frontend.yml），tag 流程不涉及前端",
       "files": {
         "monitor/frontend/checkin.html": "CF_PAGES",
         "monitor/frontend/release.html": "CF_PAGES",

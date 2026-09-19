@@ -4,9 +4,9 @@
 
 ```
 Honor 10/
-├── deploy.ps1              # 一键部署脚本（前端 + 后端）
+├── deploy.ps1              # 后端一键部署脚本（前端已迁 GitHub Actions CI）
 ├── deploy-remote.sh        # 远程执行的 bash 脚本（重启 + auto-recovery）
-├── cloudflaretoken         # Cloudflare API Token 凭证
+├── cloudflaretoken         # Cloudflare API Token 凭证（仅运维如清缓存用；前端 CI 令牌存 GitHub Secrets）
 ├── monitor/
 │   ├── server.js           # 后端主服务（Node.js HTTP 服务，端口 3081）
 │   ├── package.json
@@ -89,37 +89,25 @@ ssh -p 8022 u0_a145@192.168.0.107 "echo OK"
 
 ### 4. Cloudflare API Token
 
-使用 `cloudflaretoken` 文件中的 `max_token`（权限最大的 sub-token，370 个权限组）。
+前端发布所需的 Cloudflare 令牌为最小权限 `Cloudflare Pages:Edit`，由 GitHub 仓库 Secrets 保管（`CLOUDFLARE_API_TOKEN`），不再放本地/脚本。CDN 清除缓存等运维操作（下方）另需具备 `Zone: Purge Cache` 权限的令牌。
 
-## 一键部署
+## 一键部署（后端）
 
-### 部署双端（前端 + 后端）
-
-```powershell
-.\deploy.ps1
-```
-
-### 仅部署前端
+> 前端（Cloudflare Pages）不再用本脚本发布：改 `monitor/frontend/**` 合 `main` 由 GitHub Actions 自动发（`.github/workflows/deploy-frontend.yml`），也可到 Actions 页手动 `Run workflow`。
 
 ```powershell
-.\deploy.ps1 frontend
-```
-
-### 仅部署后端
-
-```powershell
-.\deploy.ps1 backend
+.\deploy.ps1        # 部署后端（Termux，经 SSH/SCP）
 ```
 
 ## 部署流程详解
 
 ### 前端部署（Cloudflare Pages）
 
-1. 清除代理环境变量（避免 wrangler 走 sing-box 代理导致认证失败）
-2. 设置 `CLOUDFLARE_API_TOKEN`
-3. `cd monitor/frontend`
-4. `npx wrangler pages deploy . --project-name=honor10-monitor --branch=production --commit-dirty=true --skip-caching`
-5. 部署完成后可通过 `https://honor10.lehuan.vip` 访问
+已迁移到 GitHub Actions，本地不再手发：
+
+1. 推送到 `main` 且改动命中 `monitor/frontend/**` → workflow 自动触发
+2. CI 内 `npx wrangler pages deploy`（凭据取自仓库 Secrets `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID`）
+3. 发布到 `honor10-monitor` 的 production，可经 `https://honor10.lehuan.vip` 访问
 
 ### 后端部署（Termux Node.js）
 
@@ -178,7 +166,8 @@ ssh -p 8022 u0_a145@192.168.0.107 "pgrep -fa 'node server.js|sing-box run|cloudf
 ### 清除 CDN 缓存
 
 ```powershell
-$token = "cfut_22Wpsd918WZHE3fpgBDcpPHUjm7rb1RFMVF8uep5870f091b"
+# 需具备 Zone: Purge Cache 权限的令牌（Pages 令牌无此权限）；勿写回明文，用环境变量提供
+$token = $env:CLOUDFLARE_PURGE_TOKEN
 $zone = "392b994235b3ffb2fdb55f39661c59e1"
 Invoke-RestMethod -Method POST -Uri "https://api.cloudflare.com/client/v4/zones/$zone/purge_cache" `
   -Headers @{ Authorization = "Bearer $token"; "Content-Type" = "application/json" } `
