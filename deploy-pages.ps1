@@ -11,8 +11,12 @@ $env:all_proxy = $null
 $env:NO_PROXY = $null
 $env:no_proxy = $null
 
-# 使用权限最大的 token
-$env:CLOUDFLARE_API_TOKEN = 'cfut_22Wpsd918WZHE3fpgBDcpPHUjm7rb1RFMVF8uep5870f091b'
+# ⚠️ 明文令牌已移除（曾随版本库泄露，对应令牌已吊销）。
+# 前端部署已迁移到 GitHub Actions：.github/workflows/deploy-frontend.yml。本脚本仅作应急：
+if (-not $env:CLOUDFLARE_API_TOKEN) {
+  Write-Error '未提供 $env:CLOUDFLARE_API_TOKEN。前端请走 CI；本地应急发布请先在外部环境变量提供最小权限 Pages:Edit 令牌。'
+  exit 1
+}
 
 # 启用 debug 日志，确保 wrangler 正确检测 _worker.js 并编译 Worker bundle
 # （不启用 debug 日志时，wrangler 可能上传缓存的旧文件导致 uses_functions=false）

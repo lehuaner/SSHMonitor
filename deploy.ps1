@@ -35,7 +35,10 @@ $REMOTE_LIB_DIR = '~/monitor/lib'
 # Cloudflare Pages 配置
 $CF_PROJECT = 'honor10-monitor'
 $CF_BRANCH = 'production'
-$CF_TOKEN = 'cfut_22Wpsd918WZHE3fpgBDcpPHUjm7rb1RFMVF8uep5870f091b'
+# ⚠️ 已移除明文令牌（曾随版本库泄露，对应令牌已吊销）。
+# 前端部署已迁移到 GitHub Actions：.github/workflows/deploy-frontend.yml（改 monitor/frontend/** 合 main 自动发）。
+# 如确需本地应急手发前端，请在外部环境变量提供最小权限 Pages:Edit 令牌：$env:CLOUDFLARE_API_TOKEN
+$CF_TOKEN = ''
 
 # ====== 工具函数 ======
 function Write-Step  { param([string]$msg) Write-Host "`n[*] $msg" -ForegroundColor Cyan }
@@ -95,7 +98,10 @@ function Deploy-Frontend {
   foreach ($v in 'HTTP_PROXY','HTTPS_PROXY','http_proxy','https_proxy','ALL_PROXY','all_proxy','NO_PROXY','no_proxy') {
     Set-Item -Path "Env:$v" -Value $null
   }
-  $env:CLOUDFLARE_API_TOKEN = $CF_TOKEN
+  if ($CF_TOKEN) { $env:CLOUDFLARE_API_TOKEN = $CF_TOKEN }
+  if (-not $env:CLOUDFLARE_API_TOKEN) {
+    throw '前端已改由 GitHub Actions 自动部署；如需本地应急发布，请先设置 $env:CLOUDFLARE_API_TOKEN（最小权限 Pages:Edit 令牌）。'
+  }
   # WRANGLER_LOG=debug: 规避 wrangler 4.x 部署时上传缓存旧文件的 bug（否则 uses_functions 可能为 false）
   $env:WRANGLER_LOG = 'debug'
 
