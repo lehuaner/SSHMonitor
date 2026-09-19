@@ -19,8 +19,8 @@ monitor 部署在手机 Termux，此前用 scp 手工拷文件 + 全量重启：
 ```
 ① 开发   改代码（Windows 工作副本 D:\Code\Project\SSH\Honor 10\monitor）
 ② 发布   git commit → git tag -a vX.Y.Z → git push origin main --tags
-         → release-watch.ps1 自动 staging（或手动：.\release-watch.ps1）
-③ 应用   面板「发布」页点「应用此版本」（或 curl POST /api/release/apply）
+         （v1.0.9 起无需 PC staging；手机 apply 时自 GitHub 自拉。release-watch.ps1 预 staging 降为可选）
+③ 应用   面板「发布」页点「应用 / 拉取并应用」（或 POST /api/release/apply {tag}）
          → 失败时：面板点「回滚上一版本」（或 POST /api/release/rollback）
 ```
 
@@ -67,7 +67,7 @@ monitor 部署在手机 Termux，此前用 scp 手工拷文件 + 全量重启：
 保守按全部模块。否则像“只发 release 模块”的 v1.0.5（gateway/checkin 记账仍是 v1.0.4）会被永远
 报成“可应用 + 落后 1 个”，红点长亮不灭。比 `base`（各模块最低 tag）更老的一律归为旧版本。
 
-## 阶段一：staging（PC 侧 release-watch.ps1，线上零影响）
+## 阶段一：staging（v1.0.9 起可选：默认设备自 GitHub 自拉；PC release-watch.ps1 为备用，线上零影响）
 
 | 步骤 | 动作 | 失败行为 |
 |---|---|---|
@@ -93,18 +93,21 @@ staging 完成后线上不受任何影响；`stage.tar.gz` 保留在 release 目
 
 `POST /api/release/rollback {}`（默认回滚到比当前早的最近 release；`{"tag":"v1.0.0"}` 指定）：按 manifest 全量恢复该 release 内文件 → 各模块重启 → 健康验证 → 记账 + 审计。前提：目标 release 已在 `~/releases/` 常驻（staging 过就会一直在，无自动清理）。
 
-## PC ↔ SSH 直连现状（2026-09-19 核对）
+## PC ↔ SSH 直连现状（v1.0.9 起：方案A 已落地）
 
-结论：**当前发布流程仍含 PC 与设备的 SSH 直连**（分布在两处），前端已彻底不连设备。
+结论：**后端 staging 不再必须 PC↔SSH** —— apply 时若无本地档案，手机直接按 manifest 从 GitHub 拉取。PC 端只剩 `git push` + 打 tag。
 
 | 环节 | PC↔SSH | 说明 |
 |---|---|---|
-| 阶段一 staging（`release-watch.ps1`） | ✅ 是（PC→设备） | `git archive <tag>` 本地打包 → **`scp`** tar 到手机 `~/releases/<tag>/` → **`ssh`** 执行 `tar` 解包、`node --check` 门禁、写 `meta.json`。**这是目前唯一的 PC↔SSH 文件/命令通道** |
-| 阶段二 apply / rollback | ❌ 否（正常走面板） | 面板「发布」页按钮 → gateway → mod-release；PC 亦可 `ssh … curl :3084` 触发（属备用路径） |
-| 前端 Pages 发布 | ❌ 否 | 改由 GitHub Actions（`deploy-frontend.yml`）：PC `git push` → Actions 拉代码 → `wrangler` 发 Cloudflare，PC 不直连设备 |
-| 遗留 `deploy.ps1 backend` | ✅ 是（PC→设备） | F101 之前的整包 scp 部署，仍保留可用（后端应急）；日常发版应走 tag 流程 |
+| staging（新·默认：设备自拉） | ❌ 否 | `mod-release.stageFromGithub()` 从 GitHub Contents API 下载 manifest 文件 → `node --check` 门禁 → 写 `meta.json`（`source:github`）→ 复制重启。由 apply 自动触发，也可 `POST /api/release/stage {tag}` 只拉不装 |
+| staging（旧：`release-watch.ps1`） | ✅ 是（PC→设备，**可选备用**） | `git archive <tag>` → `scp` → `ssh` 解包/门禁/写 meta。用于 PC 预置或手机无法出网 GitHub 时 |
+| apply / rollback | ❌ 否 | 面板「发布」页按钮 → gateway → mod-release（apply 按需触发自拉）；PC 亦可 `ssh … curl :3084`（备用） |
+| 前端 Pages 发布 | ❌ 否 | GitHub Actions（`deploy-frontend.yml`）：`git push` → Actions → `wrangler` 发 Cloudflare，PC 不连设备 |
+| 遗留 `deploy.ps1 backend` | ✅ 是（PC→设备） | F101 前的整包 scp，保留作后端应急；日常走 tag + 面板 |
 
-**彻底去 PC↔SSH 的规划（方案 A，待实施）**：apply 时由手机侧按 manifest 从 GitHub Contents API 直接下载文件，取消 staging 的 `scp`；届时 PC 只剩 `git push`，设备完全自主拉取 + 应用。
+**方案A 机制**：复用上游检测已配的**只读 Contents PAT**（`release_config.json.token`）；`tag→sha` 解析后逐文件下载；affected 由 GitHub `compare(<已部署sha>...<tagsha>)` 交集 manifest 模块得出，无基线保守全量、无差异则需显式 `modules`；私有仓库缺 token 时明确报错、不静默回退。
+
+> **引导悖论**：承载 方案A 代码的这次发布（v1.0.9）本身仍需旧流程（PC `release-watch.ps1` staging 或 `deploy.ps1`）装上手机；此后版本才走设备自拉。
 
 ## 接口速查（经 gateway :3081，路径前缀 /api/release）
 
@@ -173,6 +176,8 @@ staging 完成后线上不受任何影响；`stage.tar.gz` 保留在 release 目
 
 | tag | 日期 | 主要内容 | 受影响模块 | 结果 |
 |---|---|---|---|---|
+| v1.0.9 | 2026-09-19 | 方案A：mod-release 设备端自 GitHub 自拉 staging（apply 自动 / 新增 `/stage`）；release.html 支持未 staging 直接拉取并应用 | release (+frontend CI) | 本次发布仍需旧流程 bootstrap；之后版本走设备自拉 |
+| v1.0.8 | 2026-09-19 | WorkBuddy 凭证到期通知修复（probeSession 有 Cookie 返回 null） | checkin | apply [checkin] 成功；实测落盘 cookieExpiresAt 已不再误报 |
 | v1.0.7 | 2026-09-19 | apply 空 affected / 未知模块 400 防护；release-watch 区分两种空 diff + `-SyncUpstreamToken` | release | apply [release] 成功；token 同步后实测 latest=v1.0.7 / behind=0 / checkError=null |
 | v1.0.6 | 2026-09-19 | fix：上游 applied 按受影响模块判定（历史改写后 tag 指向 8bedae2） | release | apply [release] 成功；真实数据验证 v1.0.4/5/6 均为 deployed、behind=0 |
 | v1.0.5 | 2026-09-19 | 上游版本检测（手机直连 GitHub API）+ 前端面板；补登记 release.html | release, frontend | apply [release] 成功（自重启丢任务 → sha256 核对 SAME → 补记账）；前端 deploy.ps1 上线；release=v1.0.5、gateway/checkin=v1.0.4 |

@@ -6,16 +6,19 @@
  *   POST /api/release/apply     应用一个已 staging 的 release：按 manifest 复制文件 → 按模块重启服务 → 健康验证 → 记账
  *   POST /api/release/rollback  回滚到上一 release（切上一目录的文件 → 重启 → 验证）
  *
- * staging 由 PC 侧 release-watcher 完成：把 tag 的文件树按 manifest 落到
- *   ~/releases/<tag>/files/<仓库相对路径>   （原样路径，便于按 manifest 映射）
- *   ~/releases/<tag>/meta.json             { tag, sha, stagedAt, affectedModules, smoke }
- * apply 时逐文件复制到运行位置 → 重启受影响 runit 服务 → /healthz 验证 → 失败自动回滚本次变更。
+ * staging 有两种来源：
+ *   （旧）PC 侧 release-watch.ps1：把 tag 的文件树按 manifest 落到
+ *     ~/releases/<tag>/files/<仓库相对路径>  + meta.json；
+ *   （方案A / 新）手机侧 stageFromGithub()：apply 时若无本地档案，直接按 manifest 从
+ *     GitHub Contents API 拉取到同一目录结构（复用上游检测的只读 Contents PAT）。
+ * 两种都落到同一布局，apply 按 manifest 逐文件复制到运行位置 → 重启受影响 runit 服务
+ *   → /healthz 验证 → 失败自动回滚本次变更。
  *
  * 安全：只监听 127.0.0.1（gateway 反代）；apply/rollback 需 Bearer token（MONITOR_SHUTDOWN_TOKEN 复用）；
  *       文件操作全部限制在 ~/monitor 与 ~/releases 内（路径归一化校验）。
  */
 import { existsSync, readFileSync, writeFileSync, mkdirSync, cpSync, rmSync, readdirSync } from 'node:fs';
-import { join, normalize, resolve } from 'node:path';
+import { join, dirname, normalize, resolve } from 'node:path';
 import { createModuleServer, readBody } from './lib/module.js';
 
 const HOME = process.env.MONITOR_HOME || '/data/data/com.termux/files/home';
@@ -253,7 +256,7 @@ function step(t, msg) { t.steps.push({ at: Date.now(), msg }); t.updatedAt = Dat
   /** 复制某模块文件并重启其服务 → 健康验证。返回 {copied, healthy}，失败抛错 */
   async function applyModule(t, releaseDir, moduleName) {
     const mod = MANIFEST.modules[moduleName];
-    if (!mod || !mod.service) { return { skipped: true, reason: 'no service (frontend? use deploy.ps1)' }; }
+    if (!mod || !mod.service) { return { skipped: true, reason: 'no service (frontend? 走 GitHub Actions CI)' }; }
     const copied = applyFiles(releaseDir, moduleName);
     step(t, `${moduleName}: 复制 ${copied.length} 文件 → 重启 ${mod.service}`);
     const ok = await restartService(mod.service, healthByService[mod.service] || 3081);
@@ -262,13 +265,25 @@ function step(t, msg) { t.steps.push({ at: Date.now(), msg }); t.updatedAt = Dat
     return { copied: copied.length, files: copied, healthy: true };
   }
 
-  /** 后台执行 apply（原同步逻辑迁移） */
+  /** 后台执行 apply。t.needStage=true 时先按方案A从 GitHub 自拉 staging（不触碰运行中代码，失败直接终止） */
   async function runApply(t) {
     console.log(`[release-task] runApply start ` + t.id);
     const tag = t.tag;
     const releaseDir = join(RELEASES_DIR, tag);
+    if (t.needStage) {
+      try {
+        await stageFromGithub(tag, t);
+        audit('stage:done', { tag, source: 'apply-auto' });
+      } catch (e) {
+        t.state = 'failed'; t.error = `GitHub staging 失败: ${e.message}`;
+        step(t, t.error); audit('stage:fail', { tag, error: e.message });
+        return;   // 尚未复制/重启任何文件，无需回滚
+      }
+    }
     const meta = readJson(join(releaseDir, 'meta.json'), null);
     if (!meta) { t.state = 'failed'; t.error = `release 未 staging: ${tag}`; return; }
+    if (!t.modules || !t.modules.length) t.modules = Array.isArray(meta.affectedModules) ? meta.affectedModules : [];
+    if (!t.modules.length) { t.state = 'failed'; t.error = 'affected 为空且未显式指定 modules'; step(t, t.error); return; }
     const results = {};
     const done = [];
     try {
@@ -414,7 +429,7 @@ function applyFiles(releaseDir, moduleName) {
   if (!mod || !mod.files) return [];
   const copied = [];
   for (const [repoPath, remotePath] of Object.entries(mod.files)) {
-    if (remotePath === 'CF_PAGES') continue; // 前端由 deploy.ps1 发布
+    if (remotePath === 'CF_PAGES') continue; // 前端由 GitHub Actions CI 发布
     const src = safeJoin(releaseDir, join('files', repoPath));
     if (!existsSync(src)) continue; // release 里没有该文件（未变更且未全量）→ 跳过
     const dst = safeJoin(HOME, remotePath.replace(/^~\//, ''));
@@ -423,6 +438,119 @@ function applyFiles(releaseDir, moduleName) {
     copied.push(remotePath);
   }
   return copied;
+}
+
+// ====== 方案A：设备端从 GitHub 自主拉取 staging ======
+function manifestRepoFiles() {
+  const set = new Set();
+  for (const mod of Object.values(MANIFEST.modules)) {
+    for (const [repoPath, remote] of Object.entries(mod.files || {})) {
+      if (remote !== 'CF_PAGES') set.add(repoPath);   // CF_PAGES 前端不参与设备部署（走 CI）
+    }
+  }
+  return [...set];
+}
+function modulesOwning(repoPath) {
+  const out = [];
+  for (const [name, mod] of Object.entries(MANIFEST.modules)) {
+    if (mod.files && Object.prototype.hasOwnProperty.call(mod.files, repoPath)) out.push(name);
+  }
+  return out;
+}
+async function resolveTagSha(repo, tag, cfg) {
+  try {
+    const cache = readJson(UPSTREAM_CACHE_FILE, null);
+    const hit = cache && Array.isArray(cache.tags) && cache.tags.find((x) => x.tag === tag);
+    if (hit && hit.sha) return hit.sha;
+  } catch { /* 缓存不可用则回退 API */ }
+  const c = await ghFetch(`/repos/${repo}/commits/${encodeURIComponent(tag)}`, cfg);
+  if (!c || !c.sha) throw new Error(`无法解析 tag ${tag} 的 commit sha`);
+  return c.sha;
+}
+async function ghDownloadFile(repo, ref, repoPath, cfg) {
+  const api = `/repos/${repo}/contents/${repoPath.split('/').map(encodeURIComponent).join('/')}?ref=${encodeURIComponent(ref)}`;
+  const data = await ghFetch(api, cfg);
+  if (data && typeof data.content === 'string') {
+    return Buffer.from(data.content.replace(/\s+/g, ''), 'base64');
+  }
+  if (data && data.download_url) {   // >1MB 文件 Contents API 不给 inline，走 download_url
+    const headers = { 'user-agent': 'honor10-monitor' };
+    if (cfg.token) headers.authorization = `Bearer ${cfg.token}`;
+    const r = await fetch(data.download_url, { headers, signal: AbortSignal.timeout(30000) });
+    if (!r.ok) throw new Error(`下载失败 ${repoPath}: HTTP ${r.status}`);
+    return Buffer.from(await r.arrayBuffer());
+  }
+  throw new Error(`Contents API 未返回内容：${repoPath}`);
+}
+
+/**
+ * 从 GitHub 按 manifest 下载 tag 文件到 ~/releases/<tag>/files/，跑 node --check 门禁，写 meta.json。
+ * 复用上游检测已配置的只读 Contents PAT。失败只抛错，不触碰正在运行的代码。
+ * @returns meta.json 对象
+ */
+async function stageFromGithub(tag, t) {
+  const cfg = readUpstreamConfig();
+  if (!cfg.repo) throw new Error('未配置上游仓库（release_config.json.repo）');
+  if (!cfg.token) throw new Error('未配置 GitHub token（私有仓库需只读 Contents PAT）');
+  const st = t ? (m) => step(t, m) : () => {};
+  const sha = await resolveTagSha(cfg.repo, tag, cfg);
+  st(`GitHub staging ${tag} → ${String(sha).slice(0, 7)}`);
+
+  const releaseDir = join(RELEASES_DIR, tag);
+  const filesDir = join(releaseDir, 'files');
+  if (existsSync(filesDir)) rmSync(filesDir, { recursive: true, force: true });
+  mkdirSync(filesDir, { recursive: true });
+
+  const repoFiles = manifestRepoFiles();
+  let wrote = 0; const missing = [];
+  for (const repoPath of repoFiles) {
+    try {
+      const buf = await ghDownloadFile(cfg.repo, sha, repoPath, cfg);
+      const dst = safeJoin(releaseDir, join('files', repoPath));
+      mkdirSync(dirname(dst), { recursive: true });
+      writeFileSync(dst, buf);
+      wrote++;
+    } catch (e) {
+      const msg = e && e.message ? e.message : String(e);
+      if (/404|Not Found/i.test(msg)) { missing.push(repoPath); continue; }   // 该 tag 无此文件
+      throw new Error(`下载 ${repoPath} 失败: ${msg}`);
+    }
+  }
+  if (!wrote) throw new Error('未下载到任何 manifest 文件（检查 token 权限 / 仓库名 / 该 tag 是否含这些文件）');
+  st(`下载 ${wrote} 文件${missing.length ? `（缺失 ${missing.length}）` : ''}`);
+
+  // 语法门禁：任一 .js 不过即中止（此时尚未触碰运行目录，安全）
+  for (const repoPath of repoFiles) {
+    if (!repoPath.endsWith('.js')) continue;
+    const abs = safeJoin(releaseDir, join('files', repoPath));
+    if (!existsSync(abs)) continue;
+    const chk = await run(`node --check '${abs}' 2>&1`);
+    if (chk && chk.trim()) throw new Error(`语法门禁未通过 ${repoPath}: ${chk.trim().slice(0, 300)}`);
+  }
+  st('node --check 门禁通过');
+
+  // affected：与已部署 sha 比对（compare API）交集 manifest 模块；拿不到基线 → 全量
+  let affected = [];
+  const deployed = readJson(VERSION_FILE, { modules: {} });
+  const baseSha = deployed.lastApply && deployed.lastApply.sha;
+  try {
+    if (baseSha && baseSha !== sha) {
+      const cmp = await ghFetch(`/repos/${cfg.repo}/compare/${baseSha}...${sha}`, cfg);
+      const mods = new Set();
+      for (const f of (cmp.files || [])) for (const m of modulesOwning(f.filename)) if (MANIFEST.modules[m] && MANIFEST.modules[m].service) mods.add(m);
+      affected = [...mods];
+    } else if (!baseSha) {
+      affected = Object.keys(MANIFEST.modules).filter((m) => MANIFEST.modules[m].service);
+      st('无部署基线 → 保守按全部模块');
+    } else {
+      st('与当前部署同 sha → affected 空，apply 需显式 modules');
+    }
+  } catch (e) { st(`compare 失败（affected 交显式指定）: ${e.message}`); }
+  st(`affected: ${affected.join(', ') || '(空)'}`);
+
+  const meta = { tag, sha, stagedAt: Date.now(), affectedModules: affected, fileCount: wrote, source: 'github' };
+  writeFileSync(join(releaseDir, 'meta.json'), JSON.stringify(meta));
+  return meta;
 }
 
 async function router(url, q, r, send) {
@@ -503,31 +631,48 @@ async function router(url, q, r, send) {
     return true;
   }
 
-  // ---- 应用一个 release（202 异步） ----
+  // ---- 仅从 GitHub 拉取并 staging（不应用），供“先拉后审再应用” ----
+  if (p === '/api/release/stage' && q.method === 'POST') {
+    const input = JSON.parse((await readBody(q)) || '{}');
+    const tag = String(input.tag || '').trim();
+    if (!/^[\w.\-]+$/.test(tag)) { send(400, JSON.stringify({ ok: false, error: 'tag 格式不合法' })); return true; }
+    const running = [...tasks.values()].find(x => x.state === 'running');
+    if (running) { send(409, JSON.stringify({ ok: false, error: `已有任务进行中（${running.kind} ${running.tag || ''}），请稍候` })); return true; }
+    const t = newTask('stage', tag, []);
+    audit('stage:start', { tag, taskId: t.id });
+    (async () => {
+      try { const meta = await stageFromGithub(tag, t); t.state = 'done'; t.results = { meta }; step(t, `staged ${tag} → ${meta.fileCount} 文件`); audit('stage:done', { tag, sha: meta.sha }); }
+      catch (e) { t.state = 'failed'; t.error = e.message; step(t, e.message); audit('stage:fail', { tag, error: e.message }); }
+    })();
+    send(202, JSON.stringify({ ok: true, taskId: t.id, statusUrl: `/api/release/tasks?id=${t.id}`, tag }));
+    return true;
+  }
+
+  // ---- 应用一个 release（202 异步）。未 staging 时按方案A自动从 GitHub 拉取后再应用 ----
   if (p === '/api/release/apply' && q.method === 'POST') {
     const input = JSON.parse((await readBody(q)) || '{}');
     const tag = String(input.tag || '').trim();
     if (!/^[\w.\-]+$/.test(tag)) { send(400, JSON.stringify({ ok: false, error: 'tag 格式不合法' })); return true; }
     const releaseDir = join(RELEASES_DIR, tag);
     const meta = readJson(join(releaseDir, 'meta.json'), null);
-    if (!meta) { send(404, JSON.stringify({ ok: false, error: `release 未 staging: ${tag}` })); return true; }
+    const needStage = !meta;                          // 方案A：无本地档案 → apply 内自拉
     // 并发互斥：同一时间只允许一个 running 任务
     const running = [...tasks.values()].find(x => x.state === 'running');
     if (running) { send(409, JSON.stringify({ ok: false, error: `已有任务进行中（${running.kind} ${running.tag || ''}），请稍候` })); return true; }
-    // 模块来源：显式传入 > meta.affectedModules。两者都空时**不得**默默重启 gateway+checkin
-    // （“无差异的重复 tag”会被误伤），直接 400 要调用方显式指定。
+    // 模块来源：显式传入 > meta.affectedModules。needStage 时可为空（staging 后由 affected 解析）。
     let modules = (Array.isArray(input.modules) && input.modules.length) ? input.modules : null;
-    if (!modules) {
-      if (Array.isArray(meta.affectedModules) && meta.affectedModules.length) modules = meta.affectedModules;
-      else { send(400, JSON.stringify({ ok: false, error: `${tag} 的 meta.affectedModules 为空（与已部署内容无差异或基线丢失），请显式传 modules` })); return true; }
-    }
+    if (!modules && meta && Array.isArray(meta.affectedModules) && meta.affectedModules.length) modules = meta.affectedModules;
+    if (!modules && !needStage) { send(400, JSON.stringify({ ok: false, error: `${tag} 的 meta.affectedModules 为空（与已部署内容无差异或基线丢失），请显式传 modules` })); return true; }
     const known = Object.keys(MANIFEST.modules);
-    const unknown = modules.filter((m) => !known.includes(m));
-    if (unknown.length) { send(400, JSON.stringify({ ok: false, error: `未知模块: ${unknown.join(', ')}（manifest 只有 ${known.join(', ')}）` })); return true; }
-    const t = newTask('apply', tag, modules);
-    audit('apply:start', { tag, modules, taskId: t.id });
+    if (modules) {
+      const unknown = modules.filter((m) => !known.includes(m));
+      if (unknown.length) { send(400, JSON.stringify({ ok: false, error: `未知模块: ${unknown.join(', ')}（manifest 只有 ${known.join(', ')}）` })); return true; }
+    }
+    const t = newTask('apply', tag, modules || []);
+    t.needStage = needStage;
+    audit('apply:start', { tag, modules: modules || '(自拉后解析)', needStage, taskId: t.id });
     runApply(t).then(() => console.log('[release-task] runApply finished', t.id, t.state)).catch(e => { console.error('[release-task] runApply throw:', e.message); t.state = 'failed'; t.error = e.message; });
-    send(202, JSON.stringify({ ok: true, taskId: t.id, statusUrl: `/api/release/tasks?id=${t.id}`, tag, modules }));
+    send(202, JSON.stringify({ ok: true, taskId: t.id, statusUrl: `/api/release/tasks?id=${t.id}`, tag, modules: modules || [], autoStage: needStage }));
     return true;
   }
 

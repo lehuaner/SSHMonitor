@@ -126,7 +126,7 @@ async function loadData(){
   $('#btnRollback').disabled=!r.releases.length;
   // 待应用 releases
   const box=$('#releases');
-  if(!r.releases.length){box.innerHTML='<div class=empty>暂无待应用版本。PC 侧执行 release-watch.ps1（或 push 新 tag 后自动 staging）。</div>';return}
+  if(!r.releases.length){box.innerHTML='<div class=empty>暂无本地 release。上游新 tag 可在下方直接「拉取并应用」（手机端自 GitHub 自拉），PC 侧 release-watch.ps1 预 staging 已可选。</div>';return}
   box.innerHTML=r.releases.map(x=>{
     const appliedMods=mods.filter(([m,v])=>v.tag===x.tag);
     const isApplied=appliedMods.length===Object.keys(r.deployed.modules||{}).length&&appliedMods.length>0;
@@ -166,7 +166,7 @@ async function pollTask(taskId, totalMs = 120000){
 }
 
 async function doApply(tag){
-  if(!confirm(`应用 ${tag}？\n将按 manifest 复制文件并重启受影响模块（含网关时响应不会中断）。`))return;
+  if(!confirm(`应用 ${tag}？\n若手机本地无该版本档案，会先从 GitHub 按 manifest 自拉文件，再复制并重启受影响模块。`))return;
   pollAbort = false;
   const r=await api('/api/release/apply',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tag})});
   if(!r.ok){ show(r, false); return; }
@@ -204,7 +204,7 @@ async function loadAudit(){
 let UP=null;
 const STATE={
   'new-staged':['ok','可应用','文件已在手机上，直接点应用'],
-  'new-unstaged':['warn','待 staging','上游有但手机无档案：需 PC 侧跑 .\\release-watch.ps1 -Tag <tag>'],
+  'new-unstaged':['warn','可拉取并应用','手机按 manifest 从 GitHub 自拉后应用（无需 PC staging）'],
   deployed:['ok','当前'],
   old:['','旧版本'],
 };
@@ -221,9 +221,7 @@ function renderUp(){
   document.title=behind?`(${behind} 待更新) 发布 - Honor10`:'发布 - Honor10';
   if(r.never&&!r.items.length){S.innerHTML='<span class=empty>尚未检测过。点下方「立即检测」（私有仓库需先在「检测设置」里填只读 token）。</span>';L.innerHTML='';return}
   const chips=[`<span class=tag>已部署 ${esc(r.base)}</span>`,r.latest?`<span class=tag>上游最新 ${esc(r.latest)}</span>`:''];
-  if(behind) chips.push(r.pendingStaging
-    ? `<span class="tag warn">落后 ${behind} 个（${r.pendingStaging} 个待 PC staging）</span>`
-    : `<span class="tag ok">落后 ${behind} 个，已 staging 可应用</span>`);
+  if(behind) chips.push(`<span class="tag warn">落后 ${behind} 个，可直接「拉取并应用」（自 GitHub）</span>`);
   else if(r.latest) chips.push('<span class="tag ok">已是最新</span>');
   let err='';
   if(r.checkError) err=`<div class="tag err" style=margin-top:6px>检测失败：${esc(r.checkError)}</div>`;
@@ -231,7 +229,9 @@ function renderUp(){
   if(!r.items.length){L.innerHTML='<div class=empty>无 tag 数据</div>';return}
   L.innerHTML=r.items.map(x=>{
     const [cls,txt,hint]=STATE[x.state]||STATE.old;
-    const btn=(x.state==='new-staged')?`<button class="btn btn-primary" style=padding:4px 10px onclick="doApply('${esc(x.tag)}')">&#9654; 应用</button>`:'';
+    let btn='';
+    if(x.state==='new-staged') btn=`<button class="btn btn-primary" style=padding:4px 10px onclick="doApply('${esc(x.tag)}')">&#9654; 应用</button>`;
+    else if(x.state==='new-unstaged') btn=`<button class="btn btn-primary" style=padding:4px 10px onclick="doApply('${esc(x.tag)}')">&#8681; 拉取并应用</button>`;
     return `<div class="up ${x.newer?'':'old'}">
       <b>${esc(x.tag)}</b><span class="tag ${cls}">${txt}</span>
       <span class=sj title="${esc(hint||'')} · ${esc(x.subject||'')}">${esc(x.subject||hint||'')}</span>
