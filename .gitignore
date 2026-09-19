@@ -13,6 +13,9 @@ cloudflaretoken.txt
 # 登录会话（含 cookie 与设备信任令牌 hwid_cas_sid，等同账号凭证）
 .codearts_session.json
 **/.codearts_session.json
+# AutoClaw 登录会话（含 30 天 refresh_token，等同账号凭证）
+.autoclaw_session.json
+**/.autoclaw_session.json
 # 临时探测脚本（一次性验证用，验证完即删）
 **/_probe_*.py
 # 探测过程的中间产物（含短信验证码 / 原始响应，可能含凭证）
@@ -127,3 +130,6 @@ monitor/_probe*.mjs
 /_xfer/
 /cap_*.txt
 /_remote_now_checkin.js
+
+# JiuwenSwarm runtime file operation logs
+.agent_history/

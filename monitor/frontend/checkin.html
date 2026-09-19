@@ -113,6 +113,9 @@ input:focus,select:focus{border-color:#38bdf8}
 <button class="btn btn-rst" onclick=runAll()>▶ 全部签到</button>
 <button class="btn" onclick=loadData()>↻ 刷新</button>
 <button class="btn btn-primary" id=chartsBtn onclick=openCharts() style="display:none">📈 图表</button>
+<select id=providerFilter onchange=loadData() style="max-width:170px" title="按平台筛选账号列表">
+<option value="">全部平台</option>
+</select>
 <span class=status id=status style="margin:0;flex:1;min-width:120px"></span>
 </div>
 <div id=tasks></div>
@@ -197,14 +200,22 @@ function fmtDate(date){const [,m,d]=date.split('-');return `${m}/${d}`;}
 
 async function loadData(){
   status('加载中…','');$('#status').innerHTML='<span class=loading></span> 加载中…';
-  const [p,t,s]=await Promise.all([api('/api/checkin/providers'),api('/api/checkin/tasks'),api('/api/checkin/stats')]);
+  const pfSel=$('#providerFilter');const pf=pfSel?pfSel.value:'';
+  const [p,t,s]=await Promise.all([api('/api/checkin/providers'),api('/api/checkin/tasks'+(pf?'?provider='+encodeURIComponent(pf):'')),api('/api/checkin/stats')]);
   providers=p.providers||[];
+  // 平台筛选下拉：每次刷新重建（含账号数角标），保留用户已选值
+  if(pfSel){
+    const cur=pfSel.value;
+    pfSel.innerHTML='<option value="">全部平台</option>'+providers.map(x=>`<option value="${esc(x.id)}">${esc(x.name)}${x.accountCount?` (${x.accountCount})`:''}</option>`).join('');
+    pfSel.value=[...pfSel.options].some(o=>o.value===cur)?cur:'';
+  }
   tasks=t.tasks||[];
   if(s.accounts)stats=s;
   render();
   renderStats();
   updateChartsBtn();
-  status(`已加载 ${tasks.length} 个账号`,'ok');
+  const filteredNote=pf&&t.total!==undefined?`（筛选 ${t.filtered}/${t.total}）`:'';
+  status(`已加载 ${tasks.length} 个账号${filteredNote}`,'ok');
   autoCheck();
 }
 function provName(id){const p=providers.find(x=>x.id===id);return p?p.name:id;}
@@ -239,6 +250,9 @@ function render(){
     // （单独成串再插入，避免在外层模板字符串里嵌套反引号）
     const verifyBtn=provCaps(t.providerId).includes('verifyCode')
       ?`<button class="btn btn-sm" onclick=verifyCode('${t.id}')>📱 设备验证</button>`:'';
+    // 验证码登录按钮：仅对声明了 smsLogin 能力的 provider 显示（如 AutoClaw：无凭证登录 / 换新 30 天凭证）
+    const smsBtn=provCaps(t.providerId).includes('smsLogin')
+      ?`<button class="btn btn-sm" onclick=smsLogin('${t.id}')>验证码登录</button>`:'';
     // 权益包按钮：仅对声明了 packages 能力（有真实权益包端点）的 provider 显示
     const pkgBtn=provCaps(t.providerId).includes('packages')
       ?`<button class="btn btn-sm" onclick=togglePackages('${t.id}',this)>💎 权益包</button>`:'';
@@ -265,6 +279,7 @@ function render(){
         <button class="btn btn-sm" onclick=checkToday('${t.id}')>☑ 检测签到</button>
         <button class="btn btn-sm" onclick=testCred('${t.id}')>d 测试凭证</button>
         ${verifyBtn}
+        ${smsBtn}
         <button class="btn btn-sm" onclick=getTotalCredits('${t.id}')>◈ 查总积分</button>
         ${pkgBtn}
         <button class="btn btn-sm" onclick=toggleLog('${t.id}',this)>📅 近30天</button>
@@ -621,6 +636,24 @@ async function verifyCode(id){
   toast('⏳ 校验中…');
   const s=await api('/api/checkin/verify-code/submit?id='+id,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code.trim()})});
   toast(s.ok?('✅ '+(s.message||'设备验证通过')):('❌ '+(s.error||'验证失败')));
+  loadData();
+}
+
+// AutoClaw 验证码登录：无需粘贴任何凭证，手机收码即可建立/换新 30 天凭证
+// 流程：输手机号 → 后端 agent-send-code → 输短信验证码 → 后端 agent-login 换 token 直接写入任务
+async function smsLogin(id){
+  const phone=prompt('输入 AutoClaw 账号手机号：');
+  if(!phone)return;
+  const p=phone.trim();
+  if(!/^1\d{10}$/.test(p)){toast('手机号格式不正确');return;}
+  toast('发送验证码中…');
+  const r=await api('/api/checkin/sms-login/request?id='+id,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone:p})});
+  if(!r.ok){toast('发送失败: '+(r.error||'未知错误'));return;}
+  const code=prompt('验证码已发送至 '+p+'\n请输入短信验证码：');
+  if(!code)return;
+  toast('登录中…');
+  const s=await api('/api/checkin/sms-login/submit?id='+id,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({phone:p,code:code.trim()})});
+  if(s.ok){toast('登录成功: '+(s.message||'凭证已更新'));}else{toast('登录失败: '+(s.error||'未知错误'));}
   loadData();
 }
 

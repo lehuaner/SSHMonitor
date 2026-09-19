@@ -1,12 +1,19 @@
 import { run, fetchJson, fetchSb, findService, procKeyword, fmtDurationStr, SB_DISABLED } from './utils.js';
 import { history, trafficLog, hourlyBuckets, dailyBuckets, traffic5s, trafficMinute, requestCount, apiBytes, getTrafficInPeriod, sampleTraffic5s, sampleTrafficMinute, sampleDailyBuckets } from './recorder.js';
 
+// du 缓存（1 小时；du 全量扫盘 ~50s，目录大小变化慢，缓存安全）
+const duCache = { value: null, at: 0 };
+const DU_CACHE_TTL_MS = 60 * 60 * 1000;
+
 export async function metrics() {
+  // ★du -sh Termux 全目录扫 8.6GB 要 ~50s（2026-09-19 实测），是 /api 慢的元凶。
+  //   目录大小变化慢 → 缓存 1 小时，期间直接复用；冷启动后首个请求仍会等一次 du。
+  let cachedSize = (duCache.value !== null && Date.now() - duCache.at < DU_CACHE_TTL_MS) ? duCache.value : null;
   const [mem, diskRaw, diskDataRaw, termuxSizeRaw, up, ps, psAge, netRaw, nprocRaw, sbVer, sbCon, sbProxies, watchdogRaw, batteryRaw, wifiRaw] = await Promise.all([
     run('cat /proc/meminfo'),
     run("df -h | awk '$NF == \"/\"'"),
     run("df -h | awk '$NF == \"/data\"'"),
-    run('du -sh /data/data/com.termux/files 2>/dev/null'),
+    cachedSize !== null ? Promise.resolve(cachedSize) : run('du -sh /data/data/com.termux/files 2>/dev/null').then(v => { duCache.value = v; duCache.at = Date.now(); return v; }),
     run('uptime'),
     run('ps aux'),
     run('ps -eo pid,etime=,args= 2>/dev/null'),

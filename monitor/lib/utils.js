@@ -4,7 +4,8 @@ import { readFileSync, writeFileSync } from 'node:fs';
 
 // ====== Paths ======
 export const BASH = '/data/data/com.termux/files/usr/bin/bash';
-export const HOME = '/data/data/com.termux/files/home';
+// MONITOR_HOME：本地开发/冒烟时覆盖数据目录（手机端不设此变量，行为不变）
+export const HOME = process.env.MONITOR_HOME || '/data/data/com.termux/files/home';
 export const DATA_DIR = HOME + '/.monitor_data';
 export const SB_HOST = '127.0.0.1';
 export const SB_PORT = 9090;
