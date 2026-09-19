@@ -43,9 +43,15 @@ monitor 部署在手机 Termux，此前用 scp 手工拷文件 + 全量重启：
 调度：启动 12s 后首检 + `intervalMin`（默认 30，下限 5）轮询；改配置后立即重排程并触发一次检测。
 审计只在「发现新 tag」时记 `upstream:new-tag`，不刷屏。
 
-**私有仓库必须配只读 token**（实测匿名访问 `api.github.com/repos/lehuaner/SSHMonitor/tags` → 404）：
-GitHub → Settings → Personal access tokens → Fine-grained → 只勾 `Contents: Read-only`，
-在面板「发布 → 检测设置」里填一次（只写不读，留空不覆盖）。
+**私有仓库必须配只读 token**（实测匿名访问 `api.github.com/repos/lehuaner/SSHMonitor/tags` → 404），两种方式：
+
+- PC 一条命令（已固化）：`.\release-watch.ps1 -SyncUpstreamToken` —— 取 PC 上 git 已存的凭证
+  （`git credential fill`），base64 走 **stdin** 推给手机 `PUT /api/release/config`（不进远程命令行、
+  不回显），同步完立即跑一次检测并打印脱敏结果。当前用的是 GCM 的 OAuth token（会轮换，
+  失效后重跑这条即可）；更建议换成只读的 fine-grained PAT（`Contents: Read-only`）。
+- 面板手填：GitHub → Settings → Personal access tokens → Fine-grained → 只勾 `Contents: Read-only`，
+  在「发布 → ⚙ 检测设置」填一次（只写不读，留空不覆盖）。
+
 不配 token 时面板会显式提示「无 token（仅公开仓库可检）」，不会谎报「已是最新」。
 
 前端（release.html）三态区分得很清楚，避免“有更新但应用不了”的歧义：
@@ -91,12 +97,17 @@ staging 完成后线上不受任何影响；`stage.tar.gz` 保留在 release 目
 
 | 端点 | 用途 |
 |---|---|
-| GET `/status` | deployed 各模块版本 + releases 列表 + manifest 模块名 |
+| GET `/status` | deployed 各模块版本 + releases 列表 + manifest 模块名 + `upstream` 摘要 |
+| GET `/upstream` | 上游 tag 列表与本地 staged/applied 关联出的 state（读缓存，不打网络） |
+| POST `/upstream/check` | 立即拉一次 GitHub tags 并刷新缓存 |
+| GET/PUT `/config` | 上游检测配置（token 只写不读，回传永远脱敏） |
 | GET `/audit` | 最近 200 条发布事件（倒序） |
-| POST `/apply` | 应用 release（body: tag, modules?） |
+| POST `/apply` | 应用 release（body: tag, modules?；affected 为空时必须显式给 modules） |
 | POST `/rollback` | 回滚（body: tag?） |
+| GET `/tasks[?id=]` | 202 异步任务进度（steps / state / results） |
 
-前端入口：面板顶部「🚀 发布」标签（release.html）；PC 入口：`release-watch.ps1 [-Tag vX.Y.Z] [-Watch]`。
+前端入口：面板顶部「🚀 发布」标签（release.html）；PC 入口：
+`release-watch.ps1 [-Tag vX.Y.Z] [-Watch] [-SyncUpstreamToken]`。
 
 ## 版本与文件位置
 
@@ -133,6 +144,14 @@ staging 完成后线上不受任何影响；`stage.tar.gz` 保留在 release 目
   进而 `deployedSha` 取不到 → 静默退化成「全量 affected」。已修：脚本顶部强制
   `[Console]::OutputEncoding = UTF8` + 解析失败/无基线都打 `[warn]`；staging 跳过条件收紧为
   「sha + affected 均一致」，基线修正后重跑即可自动纠正 meta.json；
+- **改写历史 / 移动 tag 后要做记账对齐**（v1.0.6 实际改写过）：旧 sha 会从历史里消失，
+  而 `deployed-version.json` 与 `releases/<tag>/meta.json` 里记的是旧 sha。处理：重建 tag 后重新
+  `release-watch -Tag <tag>`（sha 不一致会自动重新 staging），再 apply 一次把记账刷成新 sha；
+  改写前先 `git branch pre-rewrite-backup main` 留命，并**用 `git diff <新> <备份>` 验证内容树完全一致**
+  （只改 message 不改内容），推远端用 `--force-with-lease`；
+- **`affected` 为空不等于“全量”**（v1.0.7）：`git diff <deployedSha>..<tag>` 为空有两种可能——
+  拿不到基线（→ 才按全量）与同一内容的重复 tag（→ affected 置空）。apply 遇到空 affected 直接 400
+  要显式 modules，不再默默重启 gateway+checkin；模块名也会先过一遍 manifest 校验。
 - **禁止绕过 tag 直接 scp 上线**（v1.0.4 踩过）：线上会跑成“无版本记录的代码”，下一次 apply/回滚
   会把它静默覆盖回去。临时验证可以，但收尾必须补 commit + tag + staging + apply，
   并用 `sha256sum` 比对 live 与 staged 文件确认一致。
@@ -141,7 +160,8 @@ staging 完成后线上不受任何影响；`stage.tar.gz` 保留在 release 目
 
 | tag | 日期 | 主要内容 | 受影响模块 | 结果 |
 |---|---|---|---|---|
-| v1.0.6 | 2026-09-19 | fix：上游 applied 按受影响模块判定 | release | apply [release] 成功（自重启丢任务 → sha256 SAME → 补记账）；release=v1.0.6 |
+| v1.0.7 | 2026-09-19 | apply 空 affected / 未知模块 400 防护；release-watch 区分两种空 diff + `-SyncUpstreamToken` | release | apply [release] 成功；token 同步后实测 latest=v1.0.7 / behind=0 / checkError=null |
+| v1.0.6 | 2026-09-19 | fix：上游 applied 按受影响模块判定（历史改写后 tag 指向 8bedae2） | release | apply [release] 成功；真实数据验证 v1.0.4/5/6 均为 deployed、behind=0 |
 | v1.0.5 | 2026-09-19 | 上游版本检测（手机直连 GitHub API）+ 前端面板；补登记 release.html | release, frontend | apply [release] 成功（自重启丢任务 → sha256 核对 SAME → 补记账）；前端 deploy.ps1 上线；release=v1.0.5、gateway/checkin=v1.0.4 |
 | v1.0.4 | 2026-09-19 | OfficeAce 签到 Provider（纯协议登录）+ tasks 接口凭证脱敏 | checkin, gateway, release | apply 成功（gateway 11 / checkin 18 文件 healthy）；release 模块自重启丢任务 → sha256 核对后补记账；三模块 deployed=v1.0.4 |
 | v1.0.3 | 2026-09-19 | 202 异步 apply/rollback + 地区候选 + 订阅刷新 | gateway, release, checkin | 同上（手工 reconcile） |
