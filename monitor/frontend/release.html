@@ -41,6 +41,21 @@ body{background:var(--bg);color:var(--txt);font:14px/1.6 system-ui,'Segoe UI','M
 .result.err{display:block;border-color:var(--red);color:#f87171}
 .spin{display:inline-block;width:12px;height:12px;border:2px solid #475569;border-top-color:#e2e8f0;border-radius:50%;animation:sp .8s linear infinite;vertical-align:-2px}
 @keyframes sp{to{transform:rotate(360deg)}}
+input,select{background:#0b1220;border:1px solid var(--line);color:var(--txt);border-radius:6px;padding:7px 9px;font-size:.82rem;font-family:Consolas,monospace;min-width:0}
+input:focus{outline:none;border-color:#38bdf8}
+.cfg{display:none;margin-top:12px;border-top:1px dashed var(--line);padding-top:12px;gap:10px;flex-wrap:wrap}
+.cfg.show{display:flex}
+.cfg label{display:flex;flex-direction:column;gap:4px;font-size:.72rem;color:#94a3b8}
+.cfg label.chk{flex-direction:row;align-items:center;gap:6px;font-size:.8rem}
+.cfg .wide{flex:1 1 260px}
+.up{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:7px 0;border-bottom:1px dashed #233047}
+.up:last-child{border-bottom:0}
+.up b{font-family:Consolas,monospace;font-size:.88rem}
+.up .sj{font-size:.78rem;color:#94a3b8;flex:1 1 240px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.up .dt{font-size:.72rem;color:var(--muted)}
+.up.old{opacity:.55}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);margin-left:5px;vertical-align:2px;animation:bl 1.4s infinite}
+@keyframes bl{50%{opacity:.25}}
 </style>
 <script src=config.js></script>
 <div class=nav><a href=/>&#9660; 监控</a><a href=/sb/ui/ target=_blank>&#9881; Sing-box</a><a href=/subscription>&#128225; 订阅</a><a href=/notify>&#128231; 通知</a><a href=/files>&#128193; 文件</a><a href=/android>&#129539; Android</a><a href=/checkin>&#9989; 签到</a><a href=/release class=active>&#128640; 发布</a></div>
@@ -53,6 +68,29 @@ body{background:var(--bg);color:var(--txt);font:14px/1.6 system-ui,'Segoe UI','M
     <button class=btn onclick=loadData()>&#8635; 刷新</button>
     <button class="btn btn-danger" onclick=doRollback() id=btnRollback>&#9100; 回滚上一版本</button>
     <span class=mono id=updAt></span>
+  </div>
+</div>
+
+<div class=panel>
+  <h2>上游版本（GitHub）<span id=upBadge></span></h2>
+  <div class=row id=upSummary><span class=empty><span class=spin></span> 检测中…</span></div>
+  <div id=upList style=margin-top:8px></div>
+  <div class=row style=margin-top:12px>
+    <button class=btn id=btnUpCheck onclick=checkUp()>&#8635; 立即检测</button>
+    <button class=btn onclick=toggleCfg()>&#9881; 检测设置</button>
+    <span class=mono id=upAt></span>
+  </div>
+  <div class=cfg id=upCfg>
+    <label class=wide>仓库（owner/name）<input id=cfgRepo placeholder=lehuaner/SSHMonitor></label>
+    <label class=wide>只读 Token（私有仓库必填）<input id=cfgToken type=password placeholder="留空则不修改；fine-grained PAT → Contents: Read-only"></label>
+    <label>检测间隔（分）<input id=cfgInterval type=number min=5 max=1440 style=width:96px></label>
+    <label class=wide>tag 匹配规则<input id=cfgPattern style=width:200px></label>
+    <label class=chk><input id=cfgEnabled type=checkbox> 启用自动检测</label>
+    <div class=row style=margin-top:6px;width:100%>
+      <button class="btn btn-primary" onclick=saveCfg()>&#128190; 保存并检测</button>
+      <button class=btn onclick=clearToken()>清除 Token</button>
+      <span class=mono id=cfgHint></span>
+    </div>
   </div>
 </div>
 
@@ -162,6 +200,82 @@ async function loadAudit(){
   }).join('')||'<div class=empty>暂无事件</div>';
 }
 
-loadData();loadAudit();
+// ====== 上游版本检测（手机端自己拉 GitHub，Windows 侧只负责发布） ======
+let UP=null;
+const STATE={
+  'new-staged':['ok','可应用','文件已在手机上，直接点应用'],
+  'new-unstaged':['warn','待 staging','上游有但手机无档案：需 PC 侧跑 .\\release-watch.ps1 -Tag <tag>'],
+  deployed:['ok','当前'],
+  old:['','旧版本'],
+};
+async function loadUpstream(){
+  const r=await api('/api/release/upstream');
+  if(!r.ok){$('#upSummary').innerHTML='<span class="tag err">加载失败</span> <span class=mono>'+esc(r.error||'')+'</span>';return}
+  UP=r; renderUp();
+}
+function renderUp(){
+  const r=UP, S=$('#upSummary'), L=$('#upList');
+  $('#upAt').textContent=r.checkedAt?('上次检测: '+fmtT(r.checkedAt)):'尚未检测';
+  const behind=r.behindCount||0;
+  $('#upBadge').innerHTML=behind?`<span class="tag warn" style=margin-left:6px>+${behind} 个新版本<span class=dot></span></span>`:(r.latest?`<span class="tag ok" style=margin-left:6px>已最新</span>`:'');
+  document.title=behind?`(${behind} 待更新) 发布 - Honor10`:'发布 - Honor10';
+  if(r.never&&!r.items.length){S.innerHTML='<span class=empty>尚未检测过。点下方「立即检测」（私有仓库需先在「检测设置」里填只读 token）。</span>';L.innerHTML='';return}
+  const chips=[`<span class=tag>已部署 ${esc(r.base)}</span>`,r.latest?`<span class=tag>上游最新 ${esc(r.latest)}</span>`:''];
+  if(behind) chips.push(r.pendingStaging
+    ? `<span class="tag warn">落后 ${behind} 个（${r.pendingStaging} 个待 PC staging）</span>`
+    : `<span class="tag ok">落后 ${behind} 个，已 staging 可应用</span>`);
+  else if(r.latest) chips.push('<span class="tag ok">已是最新</span>');
+  let err='';
+  if(r.checkError) err=`<div class="tag err" style=margin-top:6px>检测失败：${esc(r.checkError)}</div>`;
+  S.innerHTML=chips.join('')+(r.tokenSet?'':'<span class=tag style=margin-left:6px>无 token（仅公开仓库可检）</span>')+err;
+  if(!r.items.length){L.innerHTML='<div class=empty>无 tag 数据</div>';return}
+  L.innerHTML=r.items.map(x=>{
+    const [cls,txt,hint]=STATE[x.state]||STATE.old;
+    const btn=(x.state==='new-staged')?`<button class="btn btn-primary" style=padding:4px 10px onclick="doApply('${esc(x.tag)}')">&#9654; 应用</button>`:'';
+    return `<div class="up ${x.newer?'':'old'}">
+      <b>${esc(x.tag)}</b><span class="tag ${cls}">${txt}</span>
+      <span class=sj title="${esc(hint||'')} · ${esc(x.subject||'')}">${esc(x.subject||hint||'')}</span>
+      <span class=dt>${esc((x.date||'').slice(0,10))}</span>
+      <span class=mono>${esc((x.sha||'').slice(0,7))}</span>${btn}
+    </div>`;
+  }).join('');
+}
+async function checkUp(){
+  const b=$('#btnUpCheck'); b.disabled=true; b.innerHTML='<span class=spin></span> 检测中…';
+  const r=await api('/api/release/upstream/check',{method:'POST'});
+  b.disabled=false; b.innerHTML='&#8635; 立即检测';
+  if(!r.ok&&r.error){show(r,false);return}
+  if(r.items){UP=r;renderUp();}
+  show(`检测完成：${(r.items||[]).length} 个 tag，上游最新 ${r.latest||'—'}，落后 ${r.behindCount||0}`, !r.checkError);
+}
+function toggleCfg(){const el=$('#upCfg');el.classList.toggle('show');if(el.classList.contains('show')&&!el.dataset.loaded)loadCfg()}
+async function loadCfg(){
+  const r=await api('/api/release/config');
+  if(!r.ok){$('#cfgHint').textContent='配置加载失败: '+(r.error||'');return}
+  const u=r.upstream;
+  $('#cfgRepo').value=u.repo||''; $('#cfgInterval').value=u.intervalMin||30;
+  $('#cfgPattern').value=u.tagPattern||''; $('#cfgEnabled').checked=!!u.enabled;
+  $('#cfgToken').placeholder=u.tokenSet?`已设置（${u.token}），留空则不修改`:'留空则不修改；fine-grained PAT → Contents: Read-only';
+  $('#cfgHint').textContent=u.tokenSet?'token 已设置（响应只回传脱敏值）':'未设置 token';
+  $('#upCfg').dataset.loaded='1';
+}
+async function saveCfg(){
+  const body={repo:$('#cfgRepo').value.trim(),intervalMin:Number($('#cfgInterval').value)||30,
+    tagPattern:$('#cfgPattern').value.trim(),enabled:$('#cfgEnabled').checked};
+  const tk=$('#cfgToken').value.trim(); if(tk)body.token=tk;
+  const r=await api('/api/release/config',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  if(!r.ok){$('#cfgHint').textContent='保存失败: '+(r.error||'');show(r,false);return}
+  $('#cfgToken').value=''; $('#cfgHint').textContent='已保存，正在检测…';
+  await checkUp(); await loadCfg(); loadData();
+}
+async function clearToken(){
+  if(!confirm('清除手机端保存的 GitHub token？之后私有仓库将无法检测。'))return;
+  const r=await api('/api/release/config',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({token:'',clearToken:true})});
+  $('#cfgHint').textContent=r.ok?'token 已清除':'清除失败: '+(r.error||'');
+  $('#cfgToken').value=''; await checkUp(); await loadCfg();
+}
+
+loadData();loadAudit();loadUpstream();
 setInterval(loadAudit,30000);
+setInterval(loadUpstream,60000);
 </script>
