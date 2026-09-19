@@ -337,15 +337,6 @@ async function request(task, method, path, body, opts = {}) {
   return envelope(res);
 }
 
-/** 解析 web 侧 session=<id>|<expiry_unix>|<hash> 的名义到期时间（仅作刷新提醒，不可作有效性判据） */
-function sessionExpiry(cookie) {
-  const m = /(?:^|;\s*)session=([^;]*)/.exec(String(cookie || ''));
-  if (!m) return null;
-  const parts = decodeURIComponent(m[1]).split('|');
-  const ts = Number(parts[1]);
-  return Number.isFinite(ts) && ts > 0 ? ts * 1000 : null;
-}
-
 /** 解析 JWT 的 exp（bearer 模式） */
 function jwtExp(token) {
   try {
@@ -807,9 +798,15 @@ export default {
   /**
    * 凭证探活（供到期监控使用）。
    *
-   * ★需要人工维护的永远是 **Cookie**（Bearer 是它换来的派生物）：
-   *   有 Cookie → 报 session 的名义到期（仅提醒用，实测可被 logout 即时吊销）；
-   *   只填了 token（bearer/auto）→ 报 JWT 的 exp。
+   * ★需要人工维护的永远是 **Cookie**（Bearer 是它换来的派生物，可凭 Cookie 反复续换 60 天 Bearer）。
+   *   到期通知的唯一目的：提醒用户「手动更新凭证」。对 WorkBuddy 而言，只有 Cookie 被服务端
+   *   拒绝（探活 401 / isLogin=false）才是真正需要人工更新的时候：
+   *   有 Cookie → 一律不返回名义到期（expiresAt:null）。session=<id>|<expiry>|<hash> 里的名义
+   *     时间不可作有效性判据（实测可被 logout 即时吊销；且只要服务端还接受 Cookie 就能自动续换
+   *     Bearer、签到照常）。若拿它当到期判据，会误报「Cookie 名义过期 < Bearer 仍有效」的假告警
+   *     （2026-09 实测复现：账号仍可签到，却因 cookie 名义到期发了「凭证已失效」邮件）。
+   *     真正的失效信号交给探活 isLogin=false → 调度层据此触发「凭证已失效」告警。
+   *   只填了 token（bearer 模式，无 Cookie 可续换）→ JWT exp 是硬性到期，保留到期提前提醒。
    * 同时附带 tokenExpiresAt（换出的 Bearer 何时到期），便于排查「为何突然要重换」。
    * @returns {Promise<{ok:boolean, isLogin:boolean, expiresAt:number|null, tokenExpiresAt?:number|null}>}
    */
@@ -818,7 +815,8 @@ export default {
     const token = tokenOf(task);
     if (!cookie && !token) return { ok: false, isLogin: false, expiresAt: null, error: '未配置凭证' };
 
-    const expiresAt = cookie ? sessionExpiry(cookie) : jwtExp(token);
+    // 有 Cookie 时不按名义 session 到期发通知（见上 ★），仅在无 Cookie 的纯 bearer 模式下用 JWT exp。
+    const expiresAt = cookie ? null : jwtExp(token);
     const tokenExpiresAt = task.tokenExpiredAt || jwtExp(token) || null;
     let r;
     try {
