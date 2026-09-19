@@ -25,6 +25,9 @@ const defaultConfig = {
     retry_delay: 3000,
     check_interval: 10,
     candidate_nodes: [],
+    excluded_subscriptions: [],                       // F102：排除订阅（地区展开时不纳入其节点）
+    subscription_refresh: { enabled: false, interval_minutes: 180 },  // F102：订阅定时自动刷新
+    refresh_on_all_failed: { enabled: false, after_failures: 3 },     // F102：全部失败触发刷新
   },
   device_alerts: {
     enabled: false,
@@ -57,6 +60,10 @@ if (mailConfig.proxy_check) {
 } else {
   mailConfig.proxy_check = { ...defaultConfig.proxy_check };
 }
+// F102 新字段兼容：旧配置文件缺键时填默认值
+if (!Array.isArray(mailConfig.proxy_check.excluded_subscriptions)) mailConfig.proxy_check.excluded_subscriptions = [];
+if (!mailConfig.proxy_check.subscription_refresh) mailConfig.proxy_check.subscription_refresh = { ...defaultConfig.proxy_check.subscription_refresh };
+if (!mailConfig.proxy_check.refresh_on_all_failed) mailConfig.proxy_check.refresh_on_all_failed = { ...defaultConfig.proxy_check.refresh_on_all_failed };
 
 // Backward compatibility: ensure device_alerts fields exist
 if (!mailConfig.device_alerts) {
@@ -446,10 +453,41 @@ export async function runProxyCheck(force = false) {
     return { ok: false, error: '无法获取当前节点（sing-box 可能未运行）', current_node: '', all_ok: false, switched: false, details: [], timestamp: new Date().toISOString() };
   }
 
-  // 只测试候选节点中的有效节点
-  const nodesToTest = candidates.filter(n => n && n.trim());
+  // ★展开地区候选（F102）：candidate_nodes 支持 "region:<关键词>" 形态（如 region:日本）。
+  //   运行时把所有地区条目展开为当前 Clash API 节点列表里的实际节点（按名称包含关键词匹配），
+  //   并排除 excludedSubscriptions 里命中的订阅前缀（tag 形如 "<订阅名>_<节点名>"）。
+  //   好处：上游节点名变化（区02→区05、后缀变化）不影响候选有效性；地区作为稳定锚点。
+  const expandCandidates = (cands, allNodes) => {
+    const excluded = (cfg.excluded_subscriptions || []).map(s => String(s).trim()).filter(Boolean);
+    const isExcluded = (tag) => excluded.some(name => tag === name || tag.startsWith(name + '_'));
+    const out = [];
+    const seen = new Set();
+    for (const c of cands) {
+      const entry = String(c || '').trim();
+      if (!entry) continue;
+      if (entry.startsWith('region:')) {
+        const kw = entry.slice(7).trim();
+        if (!kw) continue;
+        for (const n of allNodes) {
+          if (n.includes(kw) && !isExcluded(n) && !seen.has(n)) { seen.add(n); out.push(n); }
+        }
+      } else if (!isExcluded(entry) && !seen.has(entry)) {
+        seen.add(entry); out.push(entry);   // 具名候选也做排除过滤（防手工选到被排除订阅的节点）
+      }
+    }
+    return out;
+  };
+
+  // 取当前全部节点名（Clash API）；失败则退化为纯具名候选
+  let allNodeNames = [];
+  try {
+    const px = await fetchJson('http://127.0.0.1:9090/proxies');
+    const sel = px && px.proxies && Object.values(px.proxies).find(p => p.type === 'Selector' && p.all);
+    allNodeNames = sel ? sel.all : [];
+  } catch {}
+  const nodesToTest = expandCandidates(candidates, allNodeNames);
   if (nodesToTest.length === 0) {
-    return { ok: false, error: '未配置候选节点，请先在上方选择候选节点', current_node: currentNode, all_ok: false, switched: false, details: [], timestamp: new Date().toISOString() };
+    return { ok: false, error: '候选节点展开后为空（检查 region 关键词/排除订阅配置）', current_node: currentNode, all_ok: false, switched: false, details: [], timestamp: new Date().toISOString() };
   }
 
   // 写入检测开始日志（让前端能实时看到进度）
@@ -604,6 +642,40 @@ export async function runProxyCheck(force = false) {
       switchLogEntry.reason = `所有 ${nodesToTest.length} 个候选节点均失效，切回原节点 ${currentNode}`;
       // 注意：候选节点失效不再在此单独发邮件（会与 checkProxy 的"连通性异常"重复发两封）。
       // 统一由 checkProxy() 结合状态机一次性发送，一个事件只发一封。
+      // ★失败触发订阅刷新（F102）：连续 D_all_failed 达 refresh_after_failures 次时，
+      //   自动刷新全部订阅并重启 sing-box；连续失败 ≥ refresh_after_failures + 3 次则熔断停止，发邮件告警。
+      try {
+        const rf = cfg.refresh_on_all_failed || {};
+        if (rf.enabled) {
+          const threshold = Math.max(1, Number(rf.after_failures) || 3);
+          const maxRefresh = 3; // 刷新也救不回来的次数上限（每次刷新后仍 D_all_failed 计一次）
+          const st = loadJSON(DATA_DIR + '/proxy_refresh_state.json', { failStreak: 0, refreshCount: 0 });
+          st.failStreak = (st.failStreak || 0) + 1;
+          if (st.failStreak >= threshold && st.refreshCount < maxRefresh) {
+            st.refreshCount = (st.refreshCount || 0) + 1;
+            saveJSON(DATA_DIR + '/proxy_refresh_state.json', st);
+            writeLog(LOG_PATH, JSON.stringify({ timestamp: new Date().toISOString(), node: '__refresh__', urls: [], ok: false, retry_count: 0, switched: false, progress: `连续失败 ${st.failStreak} 次 → 第 ${st.refreshCount}/${maxRefresh} 次自动刷新订阅` }));
+            const { regenerateConfig } = await import('./subscription.js');
+            const count = await regenerateConfig(null);   // 全部订阅重新下载 + 重启 sing-box
+            switchLogEntry.subscription_refreshed = true;
+            switchLogEntry.refresh_round = `${st.refreshCount}/${maxRefresh}`;
+            switchLogEntry.refresh_node_count = count;
+            st.failStreak = 0;   // 刷新后重置连败计数（下一轮 D_all_failed 重新累计）
+            saveJSON(DATA_DIR + '/proxy_refresh_state.json', st);
+            await sendMail(`[动作] 连续检测失败，已自动刷新订阅（第 ${st.refreshCount}/${maxRefresh} 次）`, `全部候选节点连续失效 ${threshold} 次后触发订阅刷新。\n重新加载节点数: ${count}\n若本轮刷新后仍全部失效，将继续自动刷新；累计 ${maxRefresh} 次无效后将停止并告警。`);
+          } else if (st.refreshCount >= maxRefresh) {
+            // 熔断：刷新次数用尽仍失败 → 停止刷新，只告警一次（用 failStreak 增量避免重复发）
+            if (st.failStreak === threshold + maxRefresh) {   // 只在越过阈值那一刻发一次
+              await sendMail(`[告警] 代理候选全部失效且自动刷新无效`, `已自动刷新订阅 ${maxRefresh} 次仍全部候选失效，停止自动刷新。\n请人工检查订阅链接/机场状态。\n当前节点: ${currentNode}`);
+            }
+            saveJSON(DATA_DIR + '/proxy_refresh_state.json', st);
+          } else {
+            saveJSON(DATA_DIR + '/proxy_refresh_state.json', st);
+          }
+        }
+      } catch (e) {
+        writeLog(LOG_PATH, JSON.stringify({ timestamp: new Date().toISOString(), node: '__refresh_error__', urls: [], ok: false, retry_count: 0, switched: false, progress: '订阅刷新异常: ' + e.message }));
+      }
     }
   }
 
@@ -642,6 +714,32 @@ function saveProxyNotifyState(st) {
 }
 
 /**
+ * 订阅定时自动刷新（F102）：按配置的间隔分钟数刷新全部订阅并重启 sing-box。
+ * 配置（mail_config.proxy_check.subscription_refresh）：
+ *   enabled: false        开关（默认关）
+ *   interval_minutes: 180 刷新间隔（分钟）
+ * 状态落盘 proxy_subrefresh_state.json：{ lastRefreshAt }（跨重启计时）
+ * 选择器保持：regenerateConfig 内部已实现「保留当前选中节点」，刷新不会改变用户正在用的节点。
+ */
+async function autoRefreshSubscriptions() {
+  const cfg = mailConfig.proxy_check;
+  const rc = cfg && cfg.subscription_refresh;
+  if (!rc || !rc.enabled) return;
+  const intervalMs = Math.max(5, Number(rc.interval_minutes) || 180) * 60 * 1000;
+  const st = loadJSON(DATA_DIR + '/proxy_subrefresh_state.json', { lastRefreshAt: 0 });
+  if (Date.now() - (st.lastRefreshAt || 0) < intervalMs) return;
+  try {
+    const { regenerateConfig } = await import('./subscription.js');
+    const count = await regenerateConfig(null);
+    st.lastRefreshAt = Date.now();
+    saveJSON(DATA_DIR + '/proxy_subrefresh_state.json', st);
+    writeLog(LOG_PATH, JSON.stringify({ timestamp: new Date().toISOString(), node: '__sub_refresh__', urls: [], ok: true, retry_count: 0, switched: false, progress: `定时刷新订阅完成: ${count} 节点` }));
+  } catch (e) {
+    writeLog(LOG_PATH, JSON.stringify({ timestamp: new Date().toISOString(), node: '__sub_refresh__', urls: [], ok: false, retry_count: 0, switched: false, progress: '定时刷新订阅失败: ' + e.message }));
+  }
+}
+
+/**
  * 代理连通性检查（定时任务调用）
  * 包装 runProxyCheck()，用持久化状态做状态机去重：
  * - 仅"正常→异常"跳变发一封异常、仅"异常→恢复"跳变发一封恢复
@@ -667,6 +765,9 @@ export async function checkProxy() {
     st.last_fail_at = 0;
     saveProxyNotifyState(st);
     procStatus['__proxy__'] = true;
+    // 恢复连通时同步清零「失败触发刷新」状态（F102）
+    const rfSt = loadJSON(DATA_DIR + '/proxy_refresh_state.json', null);
+    if (rfSt && (rfSt.failStreak || rfSt.refreshCount)) saveJSON(DATA_DIR + '/proxy_refresh_state.json', { failStreak: 0, refreshCount: 0 });
   } else {
     // 本次连通异常：仅当确认过基线 + 未处于告警 + 距上次告警超过一个检测周期 才发一封
     const intervalMs = (cfg.check_interval || 10) * 60 * 1000;
@@ -697,6 +798,7 @@ async function runScheduledCheck() {
     await checkProcs();
     await checkProxy();
     await checkDeviceAlerts();
+    await autoRefreshSubscriptions();
     nextInterval = (mailConfig.proxy_check?.check_interval || 10) * 60 * 1000;
   } catch (err) {
     // **关键保护**：如果任何检查组件抛出未捕获异常，调度链不会断裂
