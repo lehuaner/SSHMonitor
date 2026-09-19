@@ -39,6 +39,14 @@
         "monitor/package.json": "~/monitor/package.json"
       }
     },
+    "release": {
+      "service": "mon-release",
+      "files": {
+        "monitor/mod-release.js": "~/monitor/mod-release.js",
+        "monitor/release-manifest.json": "~/monitor/release-manifest.json",
+        "monitor/lib/module.js": "~/monitor/lib/module.js"
+      }
+    },
     "frontend": {
       "service": null,
       "$comment": "前端部署走 deploy.ps1 frontend（CF Pages），tag 流程只提示不执行",

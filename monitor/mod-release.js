@@ -106,6 +106,17 @@ async function router(url, q, r, send) {
     return true;
   }
 
+  // ---- 审计日志（最近 N 条，倒序） ----
+  if (p === '/api/release/audit' && q.method === 'GET') {
+    let events = [];
+    try {
+      const raw = readFileSync(AUDIT_LOG, 'utf8').trim().split('\n').filter(Boolean);
+      events = raw.slice(-200).map((l) => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean).reverse();
+    } catch {}
+    send(200, JSON.stringify({ ok: true, events }));
+    return true;
+  }
+
   // ---- 应用一个 release ----
   if (p === '/api/release/apply' && q.method === 'POST') {
     const input = JSON.parse((await readBody(q)) || '{}');
