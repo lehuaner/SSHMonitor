@@ -55,7 +55,11 @@ GitHub → Settings → Personal access tokens → Fine-grained → 只勾 `Cont
 - `当前 / 旧版本`（muted）
 
 落后数 > 0 时页头显示 `+N 个新版本` 带红点，并把浏览器标签改成 `(N 待更新) 发布`。
-基准版本取**各模块已部署 tag 的最低值**：任一模块落后就报有更新，防止多模块版本错位时漏报。
+
+**“是否已应用”按受影响模块判定**（v1.0.6）：读 staged meta 的 `affectedModules`，只要求
+其中有部署记录的模块（frontend/CF_PAGES 不参与）都 ≥ 该 tag；未 staging 的 tag 不知道影响面 →
+保守按全部模块。否则像“只发 release 模块”的 v1.0.5（gateway/checkin 记账仍是 v1.0.4）会被永远
+报成“可应用 + 落后 1 个”，红点长亮不灭。比 `base`（各模块最低 tag）更老的一律归为旧版本。
 
 ## 阶段一：staging（PC 侧 release-watch.ps1，线上零影响）
 
@@ -137,6 +141,7 @@ staging 完成后线上不受任何影响；`stage.tar.gz` 保留在 release 目
 
 | tag | 日期 | 主要内容 | 受影响模块 | 结果 |
 |---|---|---|---|---|
+| v1.0.6 | 2026-09-19 | fix：上游 applied 按受影响模块判定 | release | apply [release] 成功（自重启丢任务 → sha256 SAME → 补记账）；release=v1.0.6 |
 | v1.0.5 | 2026-09-19 | 上游版本检测（手机直连 GitHub API）+ 前端面板；补登记 release.html | release, frontend | apply [release] 成功（自重启丢任务 → sha256 核对 SAME → 补记账）；前端 deploy.ps1 上线；release=v1.0.5、gateway/checkin=v1.0.4 |
 | v1.0.4 | 2026-09-19 | OfficeAce 签到 Provider（纯协议登录）+ tasks 接口凭证脱敏 | checkin, gateway, release | apply 成功（gateway 11 / checkin 18 文件 healthy）；release 模块自重启丢任务 → sha256 核对后补记账；三模块 deployed=v1.0.4 |
 | v1.0.3 | 2026-09-19 | 202 异步 apply/rollback + 地区候选 + 订阅刷新 | gateway, release, checkin | 同上（手工 reconcile） |
