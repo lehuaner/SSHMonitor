@@ -1,0 +1,63 @@
+name: Deploy Frontend (Cloudflare Pages)
+
+# 前端去 PC-PS1 化：检测到「前端文件被改动」后自动部署到 Cloudflare Pages。
+# 触发：
+#   1) push 到 main 且改动命中 monitor/frontend/** → 自动发 production
+#   2) 也可在仓库 Actions 页手动「Run workflow」(workflow_dispatch) 补发
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'monitor/frontend/**'
+  workflow_dispatch:
+
+# 同一时间只跑一个前端部署；新的 push 会取消进行中的旧部署，避免旧覆盖新
+concurrency:
+  group: deploy-frontend
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: wrangler pages deploy
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: monitor/frontend
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Check Cloudflare secrets
+        env:
+          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CF_TOKEN" ]; then
+            echo "::error::缺少 secret CLOUDFLARE_API_TOKEN（请在 仓库 Settings → Secrets and variables → Actions 添加）"
+            exit 1
+          fi
+          if [ -z "$CF_ACCOUNT" ]; then
+            echo "::warning::未设置 CLOUDFLARE_ACCOUNT_ID：单账户 token 通常可省；多账户建议加上，避免非交互环境卡在选账户"
+          fi
+
+      # 与 deploy.ps1 保持一致：pages deploy 当前目录、production 分支、--skip-caching，
+      # 并保留 WRANGLER_LOG=debug 以规避 wrangler 4.x 上传缓存旧文件导致 uses_functions=false 的 bug。
+      - name: Deploy to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          WRANGLER_LOG: debug
+        run: |
+          npx --yes wrangler@4 pages deploy . \
+            --project-name=honor10-monitor \
+            --branch=production \
+            --commit-dirty=true \
+            --skip-caching
