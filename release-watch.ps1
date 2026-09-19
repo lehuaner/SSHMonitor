@@ -12,6 +12,10 @@ param(
   [int]$IntervalSec = 300
 )
 $ErrorActionPreference = 'Stop'
+# ★远程 JSON 可能含非 ASCII（如 deployed-version.json 的中文 note）：
+#   PowerShell 默认按本地代码页（GBK）解码 ssh 的字节流，多字节字符会被解坏 → ConvertFrom-Json 报
+#   “Unterminated string”，进而静默退化成“无基线 → 全量 affected”。强制 UTF-8 解码。
+try { [Console]::OutputEncoding = [System.Text.Encoding]::UTF8 } catch {}
 $ROOT = $PSScriptRoot
 $SSH_ARGS = @('-p', '8022')
 $SSH_TARGET = 'u0_a145@192.168.0.107'
@@ -22,7 +26,10 @@ function Invoke-Remote([string]$Cmd) {
 }
 function Get-RemoteJson([string]$Cmd) {
   $out = & ssh @SSH_ARGS -o BatchMode=yes $SSH_TARGET $Cmd
-  try { ($out -join "`n") | ConvertFrom-Json } catch { $null }
+  try { ($out -join "`n") | ConvertFrom-Json } catch {
+    Write-Host "[warn] 远程 JSON 解析失败（会退化成全量 affected）: $_" -ForegroundColor Yellow
+    $null
+  }
 }
 
 $manifest = Get-Content (Join-Path $ROOT 'monitor\release-manifest.json') -Raw -Encoding UTF8 | ConvertFrom-Json
@@ -39,21 +46,24 @@ function Stage-Release([string]$tag) {
   $remoteDir = "~/releases/$tag"
 
   $existing = Get-RemoteJson "cat $remoteDir/meta.json 2>/dev/null"
-  if ($existing -and $existing.sha -eq $sha) {
-    Write-Host '   已 staging（sha 一致），跳过'; return
-  }
 
-  # ① 受影响模块 = diff 上一部署 sha..tag ∩ manifest
+  # ① 受影响模块 = diff 上一部署 sha..tag ∩ manifest（先算，用于判断旧 meta 是否需重算）
   $deployed = Get-RemoteJson 'cat ~/.monitor_data/deployed-version.json 2>/dev/null'
   $deployedSha = $deployed.lastApply.sha
   $changed = @()
   if ($deployedSha) { $changed = @(git diff --name-only $deployedSha $sha) }
-  if (-not $changed.Count) { $changed = $repoFiles }   # 无基线 → 视为全量
+  if (-not $changed.Count) { Write-Host "   [warn] 拿不到部署基线 sha（deployed-version.json 缺失或解析失败）→ 视为全量" -ForegroundColor Yellow; $changed = $repoFiles }
   $affected = @()
   foreach ($m in $manifest.modules.PSObject.Properties) {
     if ($changed | Where-Object { $m.Value.files.PSObject.Properties.Name -contains $_ }) { $affected += $m.Name }
   }
   Write-Host ("   affected: " + ($affected -join ', '))
+
+  # 已 staging 且 sha + affected 均一致才跳过（affected 不一致 → 基线修正后重算并覆写 meta）
+  if ($existing -and $existing.sha -eq $sha `
+      -and ((@($existing.affectedModules) | Sort-Object) -join ',') -eq ((@($affected) | Sort-Object) -join ',')) {
+    Write-Host '   已 staging（sha 与 affected 一致），跳过'; return
+  }
 
   # ② 只导出 tag 里真实存在的 manifest 文件（git archive 直接产 tar，PC 侧无临时目录）
   $tagTree = @(git ls-tree -r --name-only $tag)
