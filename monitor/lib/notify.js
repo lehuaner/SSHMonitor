@@ -714,12 +714,18 @@ async function runScheduledCheck() {
   setTimeout(runScheduledCheck, nextInterval);
 }
 
-// 写调度器启动日志
-writeLog(SCHEDULER_LOG_PATH, `${new Date().toISOString()} 调度器启动 | checkProcs + checkProxy + checkDeviceAlerts`);
-runScheduledCheck();
-
-// 延迟 30 秒后执行第一次进程检查
-setTimeout(checkProcs, 30000);
+// 巡检调度器启动标志 + 显式启动入口。
+// ★拆模块后（方案 B）：本模块会被多个进程 import（core 主进程、checkin 进程只用 sendMail），
+//   import 副作用会在每个进程都拉起巡检调度器 → 双份告警邮件。改为由入口进程显式调用。
+let schedulerStarted = false;
+export function startNotifyScheduler() {
+  if (schedulerStarted) return;
+  schedulerStarted = true;
+  writeLog(SCHEDULER_LOG_PATH, `${new Date().toISOString()} 调度器启动 | checkProcs + checkProxy + checkDeviceAlerts`);
+  runScheduledCheck();
+  // 延迟 30 秒后执行第一次进程检查
+  setTimeout(checkProcs, 30000);
+}
 
 // 重置进程状态（配置保存时调用）
 export function resetProcStatus() {

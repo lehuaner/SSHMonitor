@@ -1,0 +1,415 @@
+/**
+ * mod-checkin —— 签到模块独立进程（方案 B / P1 阶段）。
+ *
+ * 职责：/api/checkin/* 全量路由 + 签到调度器 + 凭证到期监控 + 积分过期提醒 + 每日快照。
+ * 与 core 的边界：只通过 gateway 反代对外服务；sendMail 直连（SMTP 出网，不走 core）。
+ *
+ * 新增能力（2026-09-19）：
+ *   GET /api/checkin/tasks?provider=<id>  按 provider 筛选账号列表
+ *   GET /api/checkin/providers 里各 provider 附 accountCount（前端筛选器角标）
+ *
+ * 停机：SIGTERM → 停全部调度器 → 排空在途请求 → exit；runit 拉起新实例。
+ */
+import { registerProvider, getProviderSchemas, getProvider } from './lib/providers/index.js';
+import traeProvider from './lib/providers/trae.js';
+import workbuddyProvider from './lib/providers/workbuddy.js';
+import codeartsProvider from './lib/providers/codearts.js';
+import autoclawProvider from './lib/providers/autoclaw.js';
+import {
+  addTask, updateTask, deleteTask, runTaskNow, runAllNow, testCredential, getCredits,
+  loadTasks, saveTasks, startAllTasks, stopAllTasks, startCookieExpiryWatcher,
+  checkStatusForTask, autoCheckToday, getTotalCreditsForTask, checkCreditExpiryNow,
+} from './lib/tasks/index.js';
+import { fetchCreditExpiryBatches } from './lib/checkin/credit-expiry.js';
+import { getLogs } from './lib/checkin-log.js';
+import { recordSnapshot, updateUsageStats, getUsageStatsWithEstimates, getTaskUsageDetail, startDailySnapshot, removeTaskStats } from './lib/checkin-stats.js';
+import { createModuleServer, readBody } from './lib/module.js';
+
+const VERSION = process.env.MONITOR_MODULE_VERSION || 'dev';
+
+registerProvider(traeProvider);
+registerProvider(workbuddyProvider);
+registerProvider(codeartsProvider);
+registerProvider(autoclawProvider);
+
+// ====== 调度器启动（延迟错峰，与旧版行为一致） ======
+const startTimers = [];
+startTimers.push(setTimeout(() => { try { startAllTasks(); } catch (e) { console.error('start checkin tasks:', e); } }, 4000));
+startTimers.push(setTimeout(() => { try { startCookieExpiryWatcher(); } catch (e) { console.error('start cookie expiry watcher:', e); } }, 4000));
+startTimers.push(setTimeout(() => { try { recordSnapshot(); } catch (e) { console.error('initial checkin snapshot:', e); } }, 7000));
+startTimers.push(setTimeout(() => { try { startDailySnapshot(); } catch (e) { console.error('start checkin stats:', e); } }, 7000));
+
+// ====== 路由 ======
+async function router(url, q, r, send) {
+  const p = url.pathname;
+  if (!p.startsWith('/api/checkin') && p !== '/api/update/module') return false;
+
+  // ---- 运维：本模块版本信息（gateway /healthz 汇总用） ----
+  if (p === '/api/update/module' && q.method === 'GET') {
+    send(200, JSON.stringify({ ok: true, module: 'checkin', version: VERSION }));
+    return true;
+  }
+
+  // GET /api/checkin/providers - provider 注册表 + configSchema（附账号计数）
+  if (p === '/api/checkin/providers' && q.method === 'GET') {
+    const counts = {};
+    for (const t of loadTasks()) counts[t.providerId] = (counts[t.providerId] || 0) + 1;
+    send(200, JSON.stringify({
+      ok: true,
+      providers: getProviderSchemas().map((pr) => ({ ...pr, accountCount: counts[pr.id] || 0 })),
+    }));
+    return true;
+  }
+
+  // GET /api/checkin/tasks - 账号列表（★支持 ?provider= 按平台筛选；凭证脱敏）
+  if (p === '/api/checkin/tasks' && q.method === 'GET') {
+    const providerFilter = (url.searchParams.get('provider') || '').trim();
+    let tasks = loadTasks();
+    const totalBeforeFilter = tasks.length;
+    if (providerFilter) tasks = tasks.filter((t) => t.providerId === providerFilter);
+    tasks = tasks.map((t) => ({
+      ...t,
+      config: { ...t.config, token: t.config.token ? '***' : '', cookie: t.config.cookie ? '***' : '' },
+      hasToken: !!t.config.token,
+      hasCookie: !!t.config.cookie,
+    }));
+    send(200, JSON.stringify({ ok: true, tasks, total: totalBeforeFilter, filtered: tasks.length }));
+    return true;
+  }
+
+  // POST /api/checkin/tasks - 新增账号
+  if (p === '/api/checkin/tasks' && q.method === 'POST') {
+    const input = JSON.parse((await readBody(q)) || '{}');
+    if (!input.providerId || !input.name) { send(400, JSON.stringify({ ok: false, error: '缺少 providerId 或 name' })); return true; }
+    const task = addTask(input);
+    send(200, JSON.stringify({ ok: true, task }));
+    return true;
+  }
+
+  // PUT /api/checkin/tasks?id=
+  if (p === '/api/checkin/tasks' && q.method === 'PUT') {
+    const id = url.searchParams.get('id');
+    const patch = JSON.parse((await readBody(q)) || '{}');
+    const task = updateTask(id, patch);
+    if (!task) { send(404, JSON.stringify({ ok: false, error: '任务不存在' })); return true; }
+    send(200, JSON.stringify({ ok: true, task }));
+    return true;
+  }
+
+  // DELETE /api/checkin/tasks?id=
+  if (p === '/api/checkin/tasks' && q.method === 'DELETE') {
+    const id = url.searchParams.get('id') || '';
+    const removed = deleteTask(id);
+    if (removed) removeTaskStats(id);
+    send(200, JSON.stringify({ ok: removed }));
+    return true;
+  }
+
+  if (p === '/api/checkin/run' && q.method === 'POST') {
+    const res = await runTaskNow(url.searchParams.get('id') || '');
+    send(res.ok ? 200 : 500, JSON.stringify(res));
+    return true;
+  }
+  if (p === '/api/checkin/run-all' && q.method === 'POST') {
+    send(200, JSON.stringify({ ok: true, results: await runAllNow() }));
+    return true;
+  }
+  if (p === '/api/checkin/test' && q.method === 'POST') {
+    const res = await testCredential(url.searchParams.get('id') || '');
+    send(res.ok ? 200 : 500, JSON.stringify(res));
+    return true;
+  }
+  if (p === '/api/checkin/credits' && q.method === 'GET') {
+    const res = await getCredits(url.searchParams.get('id') || '');
+    send(res.ok ? 200 : 500, JSON.stringify(res));
+    return true;
+  }
+  if (p === '/api/checkin/credits/total' && q.method === 'GET') {
+    const res = await getTotalCreditsForTask(url.searchParams.get('id') || '');
+    send(res.ok ? 200 : 500, JSON.stringify(res));
+    return true;
+  }
+  if (p === '/api/checkin/status' && q.method === 'GET') {
+    const res = await checkStatusForTask(url.searchParams.get('id') || '');
+    send(res.ok ? 200 : 500, JSON.stringify(res));
+    return true;
+  }
+  if (p === '/api/checkin/auto-check' && q.method === 'GET') {
+    send(200, JSON.stringify({ ok: true, results: await autoCheckToday() }));
+    return true;
+  }
+
+  // GET /api/checkin/logs - 30 天日志（本地 + provider 平台侧历史合并）
+  if (p === '/api/checkin/logs' && q.method === 'GET') {
+    const days = parseInt(url.searchParams.get('days') || '30', 10);
+    const taskId = url.searchParams.get('taskId') || undefined;
+    const local = getLogs({ days, taskId }).map((l) => ({ ...l, source: 'local' }));
+    let remote = [];
+    let hasRemoteApi = false;
+    let remoteError = null;
+    let remoteLabel = null;
+    const tasks = loadTasks();
+    const task = taskId ? tasks.find((t) => t.id === taskId) : null;
+    if (task) {
+      const provider = getProvider(task.providerId);
+      if (provider && typeof provider.getCheckinHistory === 'function') {
+        hasRemoteApi = true;
+        try {
+          remote = (await provider.getCheckinHistory(task, { days })) || [];
+          remoteLabel = remote.length ? remote[0].source : null;
+          saveTasks(tasks);
+        } catch (e) {
+          remoteError = e.message || String(e);
+        }
+      }
+    }
+    const have = new Set(local.map((l) => l.date));
+    const merged = local.concat(
+      remote.filter((x) => x && x.date && !have.has(x.date)).map((x) => ({
+        taskId: taskId || null,
+        providerId: task ? task.providerId : '',
+        date: x.date,
+        status: 'success',
+        credits: x.credits ?? null,
+        reward: x.credits ?? null,
+        error: null,
+        source: 'remote',
+        sourceLabel: x.source || null,
+      }))
+    ).sort((a, b) => (a.date < b.date ? -1 : 1));
+    send(200, JSON.stringify({
+      ok: true, logs: merged,
+      localCount: local.length, remoteCount: merged.length - local.length,
+      hasRemoteApi, remoteError, remoteLabel,
+    }));
+    return true;
+  }
+
+  if (p === '/api/checkin/stats' && q.method === 'GET') {
+    await updateUsageStats();
+    send(200, JSON.stringify({ ok: true, ...(await getUsageStatsWithEstimates()) }));
+    return true;
+  }
+
+  // POST /api/checkin/usage?id=
+  if (p === '/api/checkin/usage' && q.method === 'POST') {
+    const id = url.searchParams.get('id') || '';
+    const task = loadTasks().find((t) => t.id === id);
+    if (!task) { send(404, JSON.stringify({ ok: false, error: '账号不存在' })); return true; }
+    const provider = getProvider(task.providerId);
+    if (!provider || typeof provider.getUsage !== 'function') {
+      const detail = getTaskUsageDetail(id);
+      if (detail) {
+        send(200, JSON.stringify({ ok: true, fallback: 'daily', reason: 'provider_no_session_api', ...detail }));
+      } else {
+        send(501, JSON.stringify({ ok: false, error: '该账号的 provider 不支持用量查询，且暂无已落库的逐日数据' }));
+      }
+      return true;
+    }
+    let params = {};
+    try { params = JSON.parse((await readBody(q)) || '{}'); } catch { params = {}; }
+    try {
+      send(200, JSON.stringify({ ok: true, data: await provider.getUsage(task, params) }));
+    } catch (e) {
+      send(200, JSON.stringify({ ok: false, error: e.message }));
+    }
+    return true;
+  }
+
+  // GET /api/checkin/packages?id=
+  if (p === '/api/checkin/packages' && q.method === 'GET') {
+    const id = url.searchParams.get('id') || '';
+    const tasks = loadTasks();
+    const task = tasks.find((t) => t.id === id);
+    if (!task) { send(404, JSON.stringify({ ok: false, error: '账号不存在' })); return true; }
+    const provider = getProvider(task.providerId);
+    if (!provider || typeof provider.getPackages !== 'function') {
+      send(501, JSON.stringify({ ok: false, error: '该 provider 不支持权益包查询' }));
+      return true;
+    }
+    try {
+      const res = await provider.getPackages(task);
+      saveTasks(tasks);
+      send(200, JSON.stringify({ ok: true, data: res }));
+    } catch (e) {
+      send(200, JSON.stringify({ ok: false, error: e.message }));
+    }
+    return true;
+  }
+
+  // GET /api/checkin/credit-expiry?id=
+  if (p === '/api/checkin/credit-expiry' && q.method === 'GET') {
+    const id = url.searchParams.get('id') || '';
+    const tasks = loadTasks();
+    const task = tasks.find((t) => t.id === id);
+    if (!task) { send(404, JSON.stringify({ ok: false, error: '账号不存在' })); return true; }
+    try {
+      const res = await fetchCreditExpiryBatches(task);
+      saveTasks(tasks);
+      send(200, JSON.stringify({
+        ok: true,
+        data: {
+          batches: res.batches.map((b) => ({
+            date: b.key, expireAt: b.expireAtMs, amount: b.amount,
+            packs: b.packs.map((x) => ({ name: x.name, remain: x.remain })),
+          })),
+          source: res.source,
+          state: task.creditExpiryState || {},
+        },
+      }));
+    } catch (e) {
+      send(200, JSON.stringify({ ok: false, error: e.message, kind: e.kind }));
+    }
+    return true;
+  }
+
+  if (p === '/api/checkin/credit-expiry/check' && q.method === 'POST') {
+    try {
+      send(200, JSON.stringify(await checkCreditExpiryNow(url.searchParams.get('id') || '')));
+    } catch (e) {
+      send(200, JSON.stringify({ ok: false, error: e.message }));
+    }
+    return true;
+  }
+
+  // ---- 设备验证码（CodeArts） ----
+  if (p === '/api/checkin/verify-code/request' && q.method === 'POST') {
+    const id = url.searchParams.get('id') || '';
+    const tasks = loadTasks();
+    const task = tasks.find((t) => t.id === id);
+    if (!task) { send(404, JSON.stringify({ ok: false, error: '账号不存在' })); return true; }
+    const provider = getProvider(task.providerId);
+    if (!provider || typeof provider.requestVerifyCode !== 'function') {
+      send(501, JSON.stringify({ ok: false, error: '该 provider 不支持设备验证码' }));
+      return true;
+    }
+    try {
+      const res = await provider.requestVerifyCode(task);
+      saveTasks(tasks);
+      send(200, JSON.stringify(res));
+    } catch (e) {
+      saveTasks(tasks);
+      send(200, JSON.stringify({ ok: false, error: e.message }));
+    }
+    return true;
+  }
+  if (p === '/api/checkin/verify-code/submit' && q.method === 'POST') {
+    const input = JSON.parse((await readBody(q)) || '{}');
+    const code = String(input.code || '').trim();
+    if (!code) { send(400, JSON.stringify({ ok: false, error: '缺少验证码 code' })); return true; }
+    const id = url.searchParams.get('id') || '';
+    const tasks = loadTasks();
+    const task = tasks.find((t) => t.id === id);
+    if (!task) { send(404, JSON.stringify({ ok: false, error: '账号不存在' })); return true; }
+    const provider = getProvider(task.providerId);
+    if (!provider || typeof provider.submitVerifyCode !== 'function') {
+      send(501, JSON.stringify({ ok: false, error: '该 provider 不支持设备验证码' }));
+      return true;
+    }
+    try {
+      const res = await provider.submitVerifyCode(task, code, Number(input.deviceIndex) || 0);
+      saveTasks(tasks);
+      send(200, JSON.stringify(res));
+    } catch (e) {
+      saveTasks(tasks);
+      send(200, JSON.stringify({ ok: false, error: e.message }));
+    }
+    return true;
+  }
+  if (p === '/api/checkin/verify-code/cancel' && q.method === 'POST') {
+    const task = loadTasks().find((t) => t.id === (url.searchParams.get('id') || ''));
+    const provider = task ? getProvider(task.providerId) : null;
+    if (!task || !provider || typeof provider.cancelVerifyCode !== 'function') {
+      send(200, JSON.stringify({ ok: false, error: '该 provider 不支持设备验证码' }));
+      return true;
+    }
+    send(200, JSON.stringify(provider.cancelVerifyCode(task)));
+    return true;
+  }
+
+  // ---- AutoClaw 短信登录 ----
+  if (p === '/api/checkin/sms-login/request' && q.method === 'POST') {
+    const input = JSON.parse((await readBody(q)) || '{}');
+    const phone = String(input.phone || '').trim();
+    if (!/^1\d{10}$/.test(phone)) { send(400, JSON.stringify({ ok: false, error: '手机号格式不正确' })); return true; }
+    const id = url.searchParams.get('id') || '';
+    const tasks = loadTasks();
+    const task = id ? tasks.find((t) => t.id === id) : null;
+    if (id && !task) { send(404, JSON.stringify({ ok: false, error: '账号不存在' })); return true; }
+    const provider = getProvider('autoclaw');
+    if (!provider || typeof provider.requestLoginCode !== 'function') {
+      send(501, JSON.stringify({ ok: false, error: '该 provider 不支持验证码登录' }));
+      return true;
+    }
+    try {
+      const res = await provider.requestLoginCode(task || { config: {} }, phone);
+      if (id) saveTasks(tasks);
+      send(200, JSON.stringify(res));
+    } catch (e) {
+      send(200, JSON.stringify({ ok: false, error: e.message }));
+    }
+    return true;
+  }
+  if (p === '/api/checkin/sms-login/submit' && q.method === 'POST') {
+    const input = JSON.parse((await readBody(q)) || '{}');
+    const phone = String(input.phone || '').trim();
+    const code = String(input.code || '').trim();
+    if (!/^1\d{10}$/.test(phone)) { send(400, JSON.stringify({ ok: false, error: '手机号格式不正确' })); return true; }
+    if (!/^\d{4,8}$/.test(code)) { send(400, JSON.stringify({ ok: false, error: '验证码格式不正确' })); return true; }
+    const id = url.searchParams.get('id') || '';
+    const tasks = loadTasks();
+    const task = id ? tasks.find((t) => t.id === id) : null;
+    if (id && !task) { send(404, JSON.stringify({ ok: false, error: '账号不存在' })); return true; }
+    const provider = getProvider('autoclaw');
+    if (!provider || typeof provider.submitLoginCode !== 'function') {
+      send(501, JSON.stringify({ ok: false, error: '该 provider 不支持验证码登录' }));
+      return true;
+    }
+    try {
+      const target = task || { config: {} };
+      const res = await provider.submitLoginCode(target, phone, code);
+      if (id) {
+        saveTasks(tasks);
+      } else if (res.ok) {
+        const cfg = target.config;
+        const created = addTask({
+          providerId: 'autoclaw',
+          name: String(input.name || '').trim() || res.userName || phone,
+          enabled: true,
+          config: {
+            refreshToken: cfg.refreshToken,
+            token: cfg.token,
+            refreshTokenExpiresAt: cfg.refreshTokenExpiresAt,
+            time: String(input.time || '09:00'),
+            timezone: String(input.timezone || 'Asia/Shanghai'),
+            failThreshold: '3',
+            notifyOnSuccess: false,
+            cookieExpiryNotify: true,
+            cookieExpiryNotifyDays: '3',
+            creditExpiryNotify: true,
+            creditExpiryNotifyDays: 3,
+          },
+        });
+        res.taskId = created.id;
+        res.taskName = created.name;
+      }
+      send(200, JSON.stringify(res));
+    } catch (e) {
+      send(200, JSON.stringify({ ok: false, error: e.message }));
+    }
+    return true;
+  }
+
+  return true; // 前缀命中但路由未匹配 → 404 由 module.js 兜底
+}
+
+await createModuleServer({
+  name: 'checkin',
+  version: VERSION,
+  port: parseInt(process.env.MOD_PORT || '3083', 10),
+  router,
+  stopHooks: [
+    () => { try { stopAllTasks(); } catch {} },   // 停签到/凭证/积分过期调度器
+    () => startTimers.forEach(clearTimeout),       // 停启动延迟器
+  ],
+});
