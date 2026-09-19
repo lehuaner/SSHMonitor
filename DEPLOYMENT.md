@@ -4,8 +4,8 @@
 
 ```
 Honor 10/
-├── deploy.ps1              # 后端一键部署脚本（前端已迁 GitHub Actions CI）
-├── deploy-remote.sh        # 远程执行的 bash 脚本（重启 + auto-recovery）
+├── update-modules.ps1      # 新机首次 provisioning（建 runit 服务 + 基线上传，仅初始化）
+                            # 后端发布：见 docs/features/f101 —— 设备 apply 时自 GitHub 拉取；前端走 .github/workflows/deploy-frontend.yml
 ├── cloudflaretoken         # Cloudflare API Token 凭证（仅运维如清缓存用；前端 CI 令牌存 GitHub Secrets）
 ├── monitor/
 │   ├── server.js           # 后端主服务（Node.js HTTP 服务，端口 3081）
@@ -91,13 +91,11 @@ ssh -p 8022 u0_a145@192.168.0.107 "echo OK"
 
 前端发布所需的 Cloudflare 令牌为最小权限 `Cloudflare Pages:Edit`，由 GitHub 仓库 Secrets 保管（`CLOUDFLARE_API_TOKEN`），不再放本地/脚本。CDN 清除缓存等运维操作（下方）另需具备 `Zone: Purge Cache` 权限的令牌。
 
-## 一键部署（后端）
+## 部署方式（已去 PC↔SSH）
 
-> 前端（Cloudflare Pages）不再用本脚本发布：改 `monitor/frontend/**` 合 `main` 由 GitHub Actions 自动发（`.github/workflows/deploy-frontend.yml`），也可到 Actions 页手动 `Run workflow`。
-
-```powershell
-.\deploy.ps1        # 部署后端（Termux，经 SSH/SCP）
-```
+- **后端（手机 monitor）**：`git commit → git tag → git push` 后，在手机「发布」面板点「应用 / 拉取并应用」（`POST /api/release/apply {tag}`）。手机若本地无该版本档案，会**自动按 manifest 从 GitHub 拉取**文件、`node --check` 门禁后复制重启（方案A）。详见 `docs/features/f101-tag发布部署流程.md`。
+- **前端（Cloudflare Pages）**：改 `monitor/frontend/**` 合 `main` → GitHub Actions 自动发（`.github/workflows/deploy-frontend.yml`）。
+- **新机首次初始化**：`.\update-modules.ps1`（创建 runit 服务 + 上传基线，仅此一次）。
 
 ## 部署流程详解
 
@@ -111,18 +109,13 @@ ssh -p 8022 u0_a145@192.168.0.107 "echo OK"
 
 ### 后端部署（Termux Node.js）
 
-1. **检查本地文件** - 确认 10 个文件都存在
-2. **测试 SSH 连接** - 验证密钥认证
-3. **备份远程旧文件** - `~/monitor_backup_YYYYMMDD_HHMMss`
-4. **SCP 上传文件**：
-   - `server.js` → `~/monitor/server.js`
-   - `package.json` → `~/monitor/package.json`
-   - `lib/*.js` → `~/monitor/lib/`（8 个模块文件）
-5. **执行远程脚本**（`deploy-remote.sh`）：
-   - 停止旧 monitor 进程
-   - 启动新 monitor（`nohup node server.js`）
-   - **启动 auto-recovery 循环**（关键：保证服务自动重启）
-   - 验证所有服务状态
+由 `mod-release` 在设备上执行（无 PC scp）：
+
+1. 解析 tag → commit sha，读 `release-manifest.json` 的设备侧文件清单
+2. 逐个文件从 GitHub Contents API 下载到 `~/releases/<tag>/files/`
+3. 对每个 `.js` 跑 `node --check` 门禁（失败即中止，不触碰运行中代码）
+4. 按 manifest 复制到 `~/monitor/` 运行位置 → `sv restart` 对应 runit 服务 → `/healthz` 验证
+5. 写 `deployed-version.json` 记账 + 审计；失败自动回滚本次复制
 
 ## 自动重启机制
 

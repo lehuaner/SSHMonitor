@@ -19,7 +19,7 @@ monitor 部署在手机 Termux，此前用 scp 手工拷文件 + 全量重启：
 ```
 ① 开发   改代码（Windows 工作副本 D:\Code\Project\SSH\Honor 10\monitor）
 ② 发布   git commit → git tag -a vX.Y.Z → git push origin main --tags
-         （v1.0.9 起无需 PC staging；手机 apply 时自 GitHub 自拉。release-watch.ps1 预 staging 降为可选）
+         （v1.0.9 起：staging 由设备自 GitHub 拉取；PC 侧 release-watch.ps1 / deploy.ps1 等 scp 脚本已删除）
 ③ 应用   面板「发布」页点「应用 / 拉取并应用」（或 POST /api/release/apply {tag}）
          → 失败时：面板点「回滚上一版本」（或 POST /api/release/rollback）
 ```
@@ -67,17 +67,21 @@ monitor 部署在手机 Termux，此前用 scp 手工拷文件 + 全量重启：
 保守按全部模块。否则像“只发 release 模块”的 v1.0.5（gateway/checkin 记账仍是 v1.0.4）会被永远
 报成“可应用 + 落后 1 个”，红点长亮不灭。比 `base`（各模块最低 tag）更老的一律归为旧版本。
 
-## 阶段一：staging（v1.0.9 起可选：默认设备自 GitHub 自拉；PC release-watch.ps1 为备用，线上零影响）
+## 阶段一：staging（v1.0.9 起：设备端自 GitHub 拉取，无 PC↔SSH）
+
+apply 时手机侧 `mod-release.stageFromGithub(tag)` 自动完成（也可 `POST /api/release/stage {tag}` 只拉不装）：
 
 | 步骤 | 动作 | 失败行为 |
 |---|---|---|
-| 发现 | `git ls-remote --tags` 找未部署/staging 的新 tag（semver 最新） | 无新 tag 直接退出 |
-| 变更计算 | `git diff --name-only <deployed_sha>..<tag>` ∩ release-manifest.json → affectedModules | 无基线 → 视为全量 |
-| 导出 | `git archive <tag> -- <manifest 文件>`（PC 无临时文件）→ scp → 手机 `~/releases/<tag>/files/` | scp 失败即中止 |
-| 门禁 | 手机端对所有 staged .js 跑 `node --check` | 语法错误即中止 |
-| 记录 | `meta.json`（tag/sha/stagedAt/affectedModules/fileCount，base64 传输） | — |
+| 解析 | `tag → commit sha`（优先上游缓存，回退 `/repos/{repo}/commits/{tag}`） | 解析失败即中止 |
+| 变更计算 | GitHub `compare/<已部署sha>...<sha>` ∩ release-manifest → affectedModules | 无基线 → 全量；无差异 → 需显式 modules |
+| 下载 | 逐个 manifest 文件走 Contents API（base64）写到 `~/releases/<tag>/files/`（跳过 CF_PAGES；缺失 404 跳过） | 非 404 错误即中止 |
+| 门禁 | 对下载的 `.js` 跑 `node --check` | 语法错误即中止（不触碰运行中代码） |
+| 记录 | `meta.json`（tag/sha/stagedAt/affectedModules/fileCount/`source:github`） | — |
 
-staging 完成后线上不受任何影响；`stage.tar.gz` 保留在 release 目录作为档案。
+凭据复用上游检测已配的只读 Contents PAT（`release_config.json.token`）。staging 只写 `~/releases/`，线上不受影响。
+
+> 旧 PC 侧 `release-watch.ps1`（git archive + scp + ssh）与 `deploy.ps1`/`deploy-remote.sh`（整包 scp）已随 方案A 删除；`update-modules.ps1` 仅保留用于新机首次 provisioning。
 
 ## 阶段二：apply（手机侧 mod-release :3084，经 gateway 反代）
 
@@ -100,14 +104,14 @@ staging 完成后线上不受任何影响；`stage.tar.gz` 保留在 release 目
 | 环节 | PC↔SSH | 说明 |
 |---|---|---|
 | staging（新·默认：设备自拉） | ❌ 否 | `mod-release.stageFromGithub()` 从 GitHub Contents API 下载 manifest 文件 → `node --check` 门禁 → 写 `meta.json`（`source:github`）→ 复制重启。由 apply 自动触发，也可 `POST /api/release/stage {tag}` 只拉不装 |
-| staging（旧：`release-watch.ps1`） | ✅ 是（PC→设备，**可选备用**） | `git archive <tag>` → `scp` → `ssh` 解包/门禁/写 meta。用于 PC 预置或手机无法出网 GitHub 时 |
+| ~~staging（旧 PC `release-watch.ps1`）~~ | ❌ 已删除 | v1.0.9 起连同 `deploy.ps1`/`deploy-remote.sh` 一并移除；无 PC↔SSH 发布通道 |
 | apply / rollback | ❌ 否 | 面板「发布」页按钮 → gateway → mod-release（apply 按需触发自拉）；PC 亦可 `ssh … curl :3084`（备用） |
 | 前端 Pages 发布 | ❌ 否 | GitHub Actions（`deploy-frontend.yml`）：`git push` → Actions → `wrangler` 发 Cloudflare，PC 不连设备 |
-| 遗留 `deploy.ps1 backend` | ✅ 是（PC→设备） | F101 前的整包 scp，保留作后端应急；日常走 tag + 面板 |
+| provisioning `update-modules.ps1` | ✅ 是（PC→设备） | 仅**新机首次**建 runit 服务 + 传基线时用；日常发布不经过它 |
 
 **方案A 机制**：复用上游检测已配的**只读 Contents PAT**（`release_config.json.token`）；`tag→sha` 解析后逐文件下载；affected 由 GitHub `compare(<已部署sha>...<tagsha>)` 交集 manifest 模块得出，无基线保守全量、无差异则需显式 `modules`；私有仓库缺 token 时明确报错、不静默回退。
 
-> **引导悖论**：承载 方案A 代码的这次发布（v1.0.9）本身仍需旧流程（PC `release-watch.ps1` staging 或 `deploy.ps1`）装上手机；此后版本才走设备自拉。
+> **引导（本次已这样处理）**：新代码需先上机才能自拉。v1.0.9 的 `mod-release.js` 由**设备端一次性脚本从 GitHub Contents API 自拉**并 `sv restart mon-release` 完成引导（非 PC scp）；随后 `POST /api/release/stage v1.0.9` 实测自拉 30 个设备文件、`source:github`、门禁通过、`affected:[release]`，记账已对齐。此后版本 apply 会自动走同一路径。
 
 ## 接口速查（经 gateway :3081，路径前缀 /api/release）
 

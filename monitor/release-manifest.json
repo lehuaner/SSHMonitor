@@ -1,5 +1,5 @@
 {
-  "$comment": "模块发布清单（P2 tag 发布流水线）：每个模块 = 一组部署文件（仓库相对路径 → 手机绝对路径）。release-watcher 用 git diff 映射受影响模块；apply 按 manifest 从 release 目录复制到运行目录并重启对应 runit 服务。",
+  "$comment": "模块发布清单（tag 发布流水线）：每个模块 = 一组部署文件（仓库相对路径 → 手机绝对路径）。面板 apply 时，mod-release 按本清单从 GitHub Contents API 自拉文件（compare 得出受影响模块）、node --check 门禁后复制到运行目录并重启对应 runit 服务。",
   "version": 1,
   "modules": {
     "checkin": {
