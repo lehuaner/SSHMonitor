@@ -15,6 +15,7 @@ import traeProvider from './lib/providers/trae.js';
 import workbuddyProvider from './lib/providers/workbuddy.js';
 import codeartsProvider from './lib/providers/codearts.js';
 import autoclawProvider from './lib/providers/autoclaw.js';
+import officeaceProvider from './lib/providers/officeace.js';
 import {
   addTask, updateTask, deleteTask, runTaskNow, runAllNow, testCredential, getCredits,
   loadTasks, saveTasks, startAllTasks, stopAllTasks, startCookieExpiryWatcher,
@@ -31,6 +32,7 @@ registerProvider(traeProvider);
 registerProvider(workbuddyProvider);
 registerProvider(codeartsProvider);
 registerProvider(autoclawProvider);
+registerProvider(officeaceProvider);
 
 // ====== 调度器启动（延迟错峰，与旧版行为一致） ======
 const startTimers = [];
@@ -40,6 +42,34 @@ startTimers.push(setTimeout(() => { try { recordSnapshot(); } catch (e) { consol
 startTimers.push(setTimeout(() => { try { startDailySnapshot(); } catch (e) { console.error('start checkin stats:', e); } }, 7000));
 
 // ====== 路由 ======
+/**
+ * 列表接口的凭证脱敏键集。
+ *
+ * ★2026-09-19 补全：原来只遮 token/cookie，`password` / `hwidCasSid` / `cookies` 以及
+ *   OfficeAce 的 `refreshToken` / `dpopJwk` / `secretKey` / `securityToken` 全部明文回传，
+ *   而这些**等同于账号凭证**（refresh_token 单次有效、DPoP 私钥与它绑定，拿到即可签到与续期）。
+ * ★只遮 schema 里声明为 password 的字段 + 不进表单的内部键：
+ *   表单里 `text` 类型字段（如 CodeArts 的 localStorageId、projectId）不能遮——
+ *   前端对非 password 字段会把看到的值原样回传，`***` 会覆盖掉真实值。
+ */
+const MASKED_CONFIG_KEYS = [
+  'token', 'cookie', 'cookies', 'password', 'hwidCasSid',
+  'refreshToken', 'dpopJwk', 'accessKey', 'secretKey', 'securityToken',
+  'modelAppKey', 'modelAppSecret',
+];
+function maskTaskCredentials(t) {
+  const config = { ...t.config };
+  for (const k of MASKED_CONFIG_KEYS) {
+    if (!(k in config)) continue;
+    const v = config[k];
+    const filled = v !== undefined && v !== null && v !== ''
+      && !(Array.isArray(v) && !v.length)
+      && !(typeof v === 'object' && !Array.isArray(v) && !Object.keys(v).length);
+    config[k] = filled ? '***' : '';
+  }
+  return { ...t, config, hasToken: !!t.config.token, hasCookie: !!t.config.cookie };
+}
+
 async function router(url, q, r, send) {
   const p = url.pathname;
   if (!p.startsWith('/api/checkin') && p !== '/api/update/module') return false;
@@ -67,12 +97,7 @@ async function router(url, q, r, send) {
     let tasks = loadTasks();
     const totalBeforeFilter = tasks.length;
     if (providerFilter) tasks = tasks.filter((t) => t.providerId === providerFilter);
-    tasks = tasks.map((t) => ({
-      ...t,
-      config: { ...t.config, token: t.config.token ? '***' : '', cookie: t.config.cookie ? '***' : '' },
-      hasToken: !!t.config.token,
-      hasCookie: !!t.config.cookie,
-    }));
+    tasks = tasks.map(maskTaskCredentials);
     send(200, JSON.stringify({ ok: true, tasks, total: totalBeforeFilter, filtered: tasks.length }));
     return true;
   }

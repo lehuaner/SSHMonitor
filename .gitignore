@@ -16,6 +16,15 @@ cloudflaretoken.txt
 # AutoClaw 登录会话（含 30 天 refresh_token，等同账号凭证）
 .autoclaw_session.json
 **/.autoclaw_session.json
+# OfficeAce 登录会话（单次有效 refresh_token + 绑定的 DPoP 私钥，等同账号凭证）
+officeace_session.json
+**/officeace_session.json
+**/fresh_session_creds.json
+**/live_creds.json
+**/refresh_token*.txt
+**/v3_sts_token.txt
+# Agent 运行时 scratch 目录（探测脚本 + 抓包中间产物，含明文凭证，绝不入库）
+.openclaw/
 # 临时探测脚本（一次性验证用，验证完即删）
 **/_probe_*.py
 # 探测过程的中间产物（含短信验证码 / 原始响应，可能含凭证）

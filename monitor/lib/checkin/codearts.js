@@ -354,6 +354,7 @@ export class HttpClient {
    * @param {object} [opts]
    * @param {object} [opts.form]    urlencoded 表单体
    * @param {object} [opts.json]    JSON 体（与 form 互斥）
+   * @param {string} [opts.rawBody] 原文请求体（与 form/json 互斥；签名场景必须逐字节可控）
    * @param {object} [opts.headers]
    * @param {boolean} [opts.follow] 自动跟随 3xx（默认 false，需读 Location）
    * @param {number} [opts.maxHops]
@@ -361,9 +362,10 @@ export class HttpClient {
    * @returns {Promise<{status:number,url:string,headers:object,text:string}>}
    */
   async request(method, url, opts = {}) {
-    const { form, json, headers = {}, follow = false, maxHops = 10 } = opts;
+    const { form, json, rawBody, headers = {}, follow = false, maxHops = 10 } = opts;
     let body = null;
-    if (form) body = new URLSearchParams(form).toString();
+    if (rawBody !== undefined && rawBody !== null) body = rawBody;
+    else if (form) body = new URLSearchParams(form).toString();
     else if (json !== undefined) body = JSON.stringify(json);
 
     let current = url;
@@ -381,7 +383,10 @@ export class HttpClient {
       const cookie = this.cookieHeader(current);
       if (cookie) h.cookie = cookie;
       if (body) {
-        h['content-type'] = form ? 'application/x-www-form-urlencoded' : 'application/json';
+        // ★调用方自带 content-type（任意大小写）时不再补默认值：
+        //   网关签名把 content-type 计入 SignedHeaders，重复头名会让验签/ WAF 判定失败。
+        const hasCT = Object.keys(h).some((k) => k.toLowerCase() === 'content-type');
+        if (!hasCT) h['content-type'] = form ? 'application/x-www-form-urlencoded' : 'application/json';
         h['content-length'] = Buffer.byteLength(body);
       }
 

@@ -15,6 +15,7 @@ import traeProvider from './lib/providers/trae.js';
 import workbuddyProvider from './lib/providers/workbuddy.js';
 import codeartsProvider from './lib/providers/codearts.js';
 import autoclawProvider from './lib/providers/autoclaw.js';
+import officeaceProvider from './lib/providers/officeace.js';
 import { addTask, updateTask, deleteTask, runTaskNow, runAllNow, testCredential, getCredits, loadTasks, saveTasks, startAllTasks, startCookieExpiryWatcher, checkStatusForTask, autoCheckToday, getTotalCreditsForTask, checkCreditExpiryNow } from './lib/tasks/index.js';
 // 积分过期提醒：批次预览（只读）+ 手动立即检查
 import { fetchCreditExpiryBatches } from './lib/checkin/credit-expiry.js';
@@ -31,6 +32,7 @@ registerProvider(traeProvider);
 registerProvider(workbuddyProvider);
 registerProvider(codeartsProvider);
 registerProvider(autoclawProvider);
+registerProvider(officeaceProvider);
 setTimeout(() => { try { startAllTasks(); } catch (e) { console.error('start checkin tasks:', e); } }, 5000);
 setTimeout(() => { try { startCookieExpiryWatcher(); } catch (e) { console.error('start cookie expiry watcher:', e); } }, 5000);
 

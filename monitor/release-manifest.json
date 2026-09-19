@@ -8,6 +8,8 @@
         "monitor/mod-checkin.js": "~/monitor/mod-checkin.js",
         "monitor/lib/module.js": "~/monitor/lib/module.js",
         "monitor/lib/checkin/autoclaw.js": "~/monitor/lib/checkin/autoclaw.js",
+        "monitor/lib/checkin/codearts.js": "~/monitor/lib/checkin/codearts.js",
+        "monitor/lib/checkin/officeace.js": "~/monitor/lib/checkin/officeace.js",
         "monitor/lib/checkin/checkin.js": "~/monitor/lib/checkin/checkin.js",
         "monitor/lib/checkin/scheduler.js": "~/monitor/lib/checkin/scheduler.js",
         "monitor/lib/checkin/credit-expiry.js": "~/monitor/lib/checkin/credit-expiry.js",
@@ -19,6 +21,7 @@
         "monitor/lib/providers/workbuddy.js": "~/monitor/lib/providers/workbuddy.js",
         "monitor/lib/providers/codearts.js": "~/monitor/lib/providers/codearts.js",
         "monitor/lib/providers/autoclaw.js": "~/monitor/lib/providers/autoclaw.js",
+        "monitor/lib/providers/officeace.js": "~/monitor/lib/providers/officeace.js",
         "monitor/lib/tasks/index.js": "~/monitor/lib/tasks/index.js"
       }
     },
