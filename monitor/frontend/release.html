@@ -107,20 +107,48 @@ async function loadData(){
   }).join('');
 }
 
+// 202 异步任务：发起后轮询 /api/release/tasks?id= 直到 done/failed
+// 轮询容忍 gateway 重启窗口的 502/网络错误（重试至总超时 120s）
+let pollAbort = false;
+async function pollTask(taskId, totalMs = 120000){
+  const t0 = Date.now();
+  let lastSteps = 0;
+  while (Date.now() - t0 < totalMs && !pollAbort) {
+    await new Promise(r=>setTimeout(r,1500));
+    let st = null;
+    try { st = await api('/api/release/tasks?id='+taskId); } catch { st = null; }
+    if (!st || !st.ok) { show('轮询中…（网关重启窗口，继续等待）', true); continue; }
+    const t = st.task;
+    const lines = (t.steps||[]).map(s=>'· '+s.msg).join('\n');
+    show(`[${t.state}] ${t.kind === 'apply' ? '应用 '+(t.tag||'') : '回滚'+(t.rollbackTo?' → '+t.rollbackTo:'')}\n${lines}${t.error?('\n错误: '+t.error):''}`, t.state==='running');
+    if (t.state !== 'running') return t;
+    lastSteps = (t.steps||[]).length;
+  }
+  throw new Error('轮询超时（120s），任务可能仍在进行，请稍后刷新查看');
+}
+
 async function doApply(tag){
-  if(!confirm(`应用 ${tag}？\n将按 manifest 复制文件并重启受影响模块（签到/网关各自独立重启）。`))return;
-  show('应用中…',true);
+  if(!confirm(`应用 ${tag}？\n将按 manifest 复制文件并重启受影响模块（含网关时响应不会中断）。`))return;
+  pollAbort = false;
   const r=await api('/api/release/apply',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tag})});
-  show(r,r.ok);
-  r.ok?await loadData():null;
+  if(!r.ok){ show(r, false); return; }
+  try {
+    const t = await pollTask(r.taskId);
+    show(t, t.state==='done');
+    loadData();
+  } catch(e){ show({ok:false,error:e.message}, false); loadData(); }
 }
 
 async function doRollback(){
   if(!confirm('回滚到上一 release？\n将恢复其全部文件并重启相关模块。'))return;
-  show('回滚中…',true);
+  pollAbort = false;
   const r=await api('/api/release/rollback',{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});
-  show(r,r.ok);
-  r.ok?await loadData():null;
+  if(!r.ok){ show(r, false); return; }
+  try {
+    const t = await pollTask(r.taskId);
+    show(t, t.state==='done');
+    loadData();
+  } catch(e){ show({ok:false,error:e.message}, false); loadData(); }
 }
 
 async function loadAudit(){

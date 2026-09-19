@@ -166,6 +166,31 @@ textarea:focus,input:focus{border-color:#38bdf8}
 <div id=availableNodesList style=margin-top:6px;max-height:160px;overflow-y:auto;display:flex;flex-wrap:wrap;gap:4px;background:#0b1120;border-radius:6px;padding:6px;border:1px solid #1e293b></div>
 <div style=display:flex;gap:4px;margin-top:4px>
 <button class="btn btn-sm" onclick=loadAllNodes()>&#128260; 加载订阅节点</button>
+<button class="btn btn-sm" onclick=addRegionCandidate()>&#127757; 添加地区候选</button>
+</div>
+<div style="margin-top:12px;border-top:1px solid #1e293b;padding-top:10px">
+<label style=font-size:.7rem;color:#94a3b8>地区候选（推荐）<span style=color:#475569;font-weight:normal> — 按名称关键词实时匹配，上游改名不影响；与具名候选可混用</span></label>
+<div style=display:flex;gap:6px;margin-top:4px;flex-wrap:wrap>
+<select id=regionKw style=max-width:180px></select>
+<button class="btn btn-sm" onclick=addRegionKw()>+ 添加地区</button>
+</div>
+<div id=regionCands style=display:flex;flex-wrap:wrap;gap:4px;margin-top:4px></div>
+</div>
+<div style="margin-top:12px;border-top:1px solid #1e293b;padding-top:10px">
+<label style=font-size:.7rem;color:#94a3b8>排除订阅<span style=color:#475569;font-weight:normal> — 勾选后，该订阅的节点不参与候选展开（防止非预期订阅节点被纳入候补）</span></label>
+<div id=excludedSubs style=display:flex;flex-wrap:wrap;gap:8px;margin-top:4px></div>
+</div>
+<div style="margin-top:12px;border-top:1px solid #1e293b;padding-top:10px">
+<label style=display:flex;align-items:center;gap:8px;font-size:.8rem;cursor:pointer><input type=checkbox id=subAutoRefresh onchange="document.getElementById('subRefreshOpts').style.display=this.checked?'block':'none'"> 定时自动刷新机场订阅</label>
+<div id=subRefreshOpts style=display:none;margin-top:8px>
+<label style=font-size:.7rem;color:#94a3b8>刷新间隔（分钟）</label><input id=subRefreshInterval type=number value=180 style=width:120px>
+<span style=font-size:.68rem;color:#475569;margin-left:8px>刷新时自动保留当前选中的节点，不会改变你在用的节点</span>
+</div>
+<label style=display:flex;align-items:center;gap:8px;font-size:.8rem;cursor:pointer;margin-top:10px><input type=checkbox id=failAutoRefresh> 连通性检测全部失败时自动刷新订阅</label>
+<div id=failRefreshOpts style=display:none;margin-top:8px>
+<label style=font-size:.7rem;color:#94a3b8>连续失败多少次后触发刷新</label><input id=failRefreshAfter type=number value=3 min=1 style=width:80px>
+<span style=font-size:.68rem;color:#475569;margin-left:8px>刷新也无效时，最多尝试 3 次，之后停止并发邮件告警</span>
+</div>
 </div>
 <div style=display:flex;gap:6px;flex-wrap:wrap;margin-top:12px>
 <button class="btn btn-warn" onclick=runProxyCheck()>&#9654; 立即检测</button>
@@ -220,7 +245,72 @@ function fmtTime(t){if(!t)return '-';try{return new Date(t).toLocaleString('zh-C
 let currentConfig={enabled:false,smtp_host:'smtp.qq.com',smtp_port:'465',smtp_user:'',smtp_pass:'',to:'',monitored_procs:[]};
 let currentUrls=['https://www.google.com'];
 let currentCandidates=[];
+let currentExcluded=[];   // 排除订阅名列表（F102）
+let currentRegionCands=[]; // 地区候选列表（region:kw）
 let logsVisible=false;
+// ====== 地区候选 + 排除订阅 UI（F102）======
+async function loadRegionOptions(){
+  // 从 Clash API 拉当前节点名，提取地区关键词（订阅前缀后的首段）
+  let names=[];
+  try{const r=await api('/api/proxy-check/status');}catch(e){}
+  try{
+    const r=await api('/api/checkin/providers'); // 占位保持 api() 热身
+  }catch(e){}
+  try{
+    const res=await fetch('/sb-api/proxies');const j=await res.json();
+    const sel=Object.values(j.proxies||{}).find(p=>p.type==='Selector'&&p.all);
+    names=(sel&&sel.all)||[];
+  }catch(e){}
+  const kws=new Set();
+  for(const n of names){
+    const base=n.includes('_')?n.slice(n.indexOf('_')+1):n;
+    const m=/^([^0-9【｜|]+)/.exec(base);
+    if(m&&m[1].trim())kws.add(m[1].trim());
+  }
+  const sel=$('regionKw');if(!sel)return;
+  const cur=sel.value;
+  sel.innerHTML='<option value="">选择地区…</option>'+[...kws].map(k=>`<option value="${esc(k)}">${esc(k)}</option>`).join('');
+  if([...sel.options].some(o=>o.value===cur))sel.value=cur;
+}
+function addRegionKw(){
+  const kw=$('regionKw')&&$('regionKw').value.trim();
+  if(!kw){toast('请先选择地区');return}
+  const entry='region:'+kw;
+  if(currentCandidates.includes(entry)){toast('已存在');return}
+  currentCandidates.push(entry);
+  renderCandidates();renderRegionCands();
+}
+function addRegionCandidate(){
+  const kw=prompt('输入地区关键词（如：日本 / 香港 / 新加坡）\n候选将实时匹配节点名包含该关键词的全部节点：');
+  if(!kw)return;
+  const entry='region:'+kw.trim();
+  if(!kw.trim()||currentCandidates.includes(entry)){return}
+  currentCandidates.push(entry);
+  renderCandidates();renderRegionCands();
+}
+function removeRegion(entry){
+  const idx=currentCandidates.indexOf(entry);
+  if(idx>=0)currentCandidates.splice(idx,1);
+  renderCandidates();renderRegionCands();
+}
+function renderRegionCands(){
+  const el=$('regionCands');if(!el)return;
+  const regions=currentCandidates.filter(n=>String(n).startsWith('region:'));
+  el.innerHTML=regions.length?regions.map(r=>'<span class=candidate-tag>'+esc(r)+'<span class=candidate-del onclick="removeRegion(\''+esc(r)+'\')">&#10005;</span></span>').join(''):'<span style=font-size:.72rem;color:#475569>未配置（可选，与具名候选可混用）</span>';
+}
+async function loadExcludedSubs(){
+  // 从订阅列表拉取订阅名，按 mail_config 中已存的排除列表勾选
+  let names=[];
+  try{const r=await api('/api/subscriptions');names=(r.subscriptions||[]).map(s=>s.name);}catch(e){}
+  const box=$('excludedSubs');if(!box)return;
+  if(!names.length){box.innerHTML='<span style=font-size:.72rem;color:#475569>无订阅（或加载失败）</span>';return}
+  box.innerHTML=names.map(n=>`<label style="display:flex;align-items:center;gap:4px;font-size:.75rem;cursor:pointer"><input type=checkbox data-subname="${esc(n)}" ${currentExcluded.includes(n)?'checked':''} onchange="toggleExclude('${esc(n)}',this.checked)">${esc(n)}</label>`).join('');
+}
+function toggleExclude(name,on){
+  const i=currentExcluded.indexOf(name);
+  if(on&&i<0)currentExcluded.push(name);
+  if(!on&&i>=0)currentExcluded.splice(i,1);
+}
 function renderForm(c){
   currentConfig=c||currentConfig;
   $('enabled').checked=!!c.enabled;
@@ -239,7 +329,19 @@ function renderForm(c){
   $('retryCount').value=pc.retry_count||2;
   $('retryDelay').value=pc.retry_delay||3000;
   $('checkInterval').value=pc.check_interval||10;
-  renderCandidates(pc.candidate_nodes||[]);
+"  renderCandidates(pc.candidate_nodes||[]);
+  currentExcluded=pc.excluded_subscriptions||[];
+  loadExcludedSubs();
+  renderRegionCands();
+  loadRegionOptions();
+  const sr=pc.subscription_refresh||{};
+  subAutoRefresh.checked=!!sr.enabled;
+  subRefreshOpts.style.display=sr.enabled?'block':'none';
+  subRefreshInterval.value=sr.interval_minutes||180;
+  const rf=pc.refresh_on_all_failed||{};
+  failAutoRefresh.checked=!!rf.enabled;
+  failRefreshOpts.style.display=rf.enabled?'block':'none';
+  failRefreshAfter.value=rf.after_failures||3;"
   // 设备状况通知
   const da=c.device_alerts||{};
   $('deviceAlertsEnabled').checked=!!da.enabled;
@@ -353,7 +455,10 @@ function collectConfig(){
       retry_count:parseInt($('retryCount').value)||2,
       retry_delay:parseInt($('retryDelay').value)||3000,
       check_interval:parseInt($('checkInterval').value)||10,
-      candidate_nodes:currentCandidates
+      candidate_nodes:currentCandidates,
+      excluded_subscriptions:currentExcluded,
+      subscription_refresh:{enabled:$('subAutoRefresh').checked,interval_minutes:parseInt($('subRefreshInterval').value)||180},
+      refresh_on_all_failed:{enabled:$('failAutoRefresh').checked,after_failures:parseInt($('failRefreshAfter').value)||3}
     },
     device_alerts:{
       enabled:$('deviceAlertsEnabled').checked,
