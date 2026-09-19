@@ -1,28 +1,22 @@
 ﻿<#
 .SYNOPSIS
-  Honor10 一键部署脚本
+  Honor10 后端一键部署脚本
 .DESCRIPTION
-  支持部署前端（Cloudflare Pages）、后端（Termux Node.js）、或双端一起部署。
-  后端部署后会自动重启 monitor 并确保 auto-recovery 循环运行，保证服务自动重启。
-.PARAMETER Target
-  frontend : 仅部署前端到 Cloudflare Pages
-  backend  : 仅部署后端到 Termux (通过 SSH/SCP)
-  all      : 同时部署前端和后端（默认）
+  部署后端（Termux Node.js）到手机。前端（Cloudflare Pages）已改由 GitHub Actions 自动发布
+  （.github/workflows/deploy-frontend.yml），本脚本不再负责前端。
+  部署后会自动重启 monitor 并确保 auto-recovery 循环运行，保证服务自动重启。
 .EXAMPLE
-  .\deploy.ps1              # 部署双端
-  .\deploy.ps1 frontend     # 仅前端
-  .\deploy.ps1 backend      # 仅后端
+  .\deploy.ps1              # 部署后端
 #>
 param(
-  [ValidateSet('frontend','backend','all')]
-  [string]$Target = 'all'
+  [ValidateSet('backend')]
+  [string]$Target = 'backend'
 )
 
 # ====== 全局配置 ======
 $ErrorActionPreference = 'Stop'
 $ROOT = $PSScriptRoot
 $MONITOR_DIR = Join-Path $ROOT 'monitor'
-$FRONTEND_DIR = Join-Path $MONITOR_DIR 'frontend'
 $LIB_DIR = Join-Path $MONITOR_DIR 'lib'
 
 # SSH 目标（~/.ssh/config 已配置 honor10 别名；未配置则用 IP+端口）
@@ -31,14 +25,6 @@ $SSH_PORT = 8022
 $SSH_USER = 'u0_a145'
 $REMOTE_MONITOR_DIR = '~/monitor'
 $REMOTE_LIB_DIR = '~/monitor/lib'
-
-# Cloudflare Pages 配置
-$CF_PROJECT = 'honor10-monitor'
-$CF_BRANCH = 'production'
-# ⚠️ 已移除明文令牌（曾随版本库泄露，对应令牌已吊销）。
-# 前端部署已迁移到 GitHub Actions：.github/workflows/deploy-frontend.yml（改 monitor/frontend/** 合 main 自动发）。
-# 如确需本地应急手发前端，请在外部环境变量提供最小权限 Pages:Edit 令牌：$env:CLOUDFLARE_API_TOKEN
-$CF_TOKEN = ''
 
 # ====== 工具函数 ======
 function Write-Step  { param([string]$msg) Write-Host "`n[*] $msg" -ForegroundColor Cyan }
@@ -82,42 +68,6 @@ function Upload-File {
   $c = Get-ScpCmd -LocalFile $Local -RemoteFile $Remote
   & $c.Exe @($c.Args) 2>&1 | ForEach-Object { Write-Host "    $_" }
   if ($LASTEXITCODE -ne 0) { throw "上传失败 (exit=$LASTEXITCODE): $Local -> $Remote" }
-}
-
-# ====== 前端部署 ======
-function Deploy-Frontend {
-  Write-Step '部署前端到 Cloudflare Pages'
-
-  # 优先使用满足 wrangler 要求的 Node 版本（>=22），避免 PATH 里是旧版 Node
-  $nodeDir = 'D:\Code\JavaScript\NodeJs'
-  if (Test-Path (Join-Path $nodeDir 'node.exe')) {
-    $env:PATH = "$nodeDir;$env:PATH"
-  }
-
-  # 清除代理环境变量，避免 wrangler 走代理导致认证失败
-  foreach ($v in 'HTTP_PROXY','HTTPS_PROXY','http_proxy','https_proxy','ALL_PROXY','all_proxy','NO_PROXY','no_proxy') {
-    Set-Item -Path "Env:$v" -Value $null
-  }
-  if ($CF_TOKEN) { $env:CLOUDFLARE_API_TOKEN = $CF_TOKEN }
-  if (-not $env:CLOUDFLARE_API_TOKEN) {
-    throw '前端已改由 GitHub Actions 自动部署；如需本地应急发布，请先设置 $env:CLOUDFLARE_API_TOKEN（最小权限 Pages:Edit 令牌）。'
-  }
-  # WRANGLER_LOG=debug: 规避 wrangler 4.x 部署时上传缓存旧文件的 bug（否则 uses_functions 可能为 false）
-  $env:WRANGLER_LOG = 'debug'
-
-  if (-not (Test-Path $FRONTEND_DIR)) { throw "前端目录不存在: $FRONTEND_DIR" }
-  Push-Location $FRONTEND_DIR
-  try {
-    Write-Host "    项目: $CF_PROJECT  分支: $CF_BRANCH"
-    Write-Host "    目录: $FRONTEND_DIR"
-    # --skip-caching: 避免 wrangler 缓存导致旧文件
-    # functions/ 目录结构确保 uses_functions=true
-    & npx wrangler pages deploy . --project-name $CF_PROJECT --branch $CF_BRANCH --commit-dirty=true --skip-caching 2>&1 | ForEach-Object { Write-Host "    $_" }
-    if ($LASTEXITCODE -ne 0) { throw "wrangler 部署失败 (exit=$LASTEXITCODE)" }
-    Write-OK '前端部署完成'
-  } finally {
-    Pop-Location
-  }
 }
 
 # ====== 后端部署 ======
@@ -193,21 +143,12 @@ Write-Host "========================================" -ForegroundColor Magenta
 
 $startTime = Get-Date
 try {
-  switch ($Target) {
-    'frontend' { Deploy-Frontend }
-    'backend'  { Deploy-Backend }
-    'all'      { Deploy-Backend; Deploy-Frontend }
-  }
+  Deploy-Backend
   $elapsed = ((Get-Date) - $startTime).TotalSeconds
   Write-Host "`n========================================" -ForegroundColor Green
   Write-OK "部署完成！耗时 $([math]::Round($elapsed,1)) 秒"
   Write-Host "========================================" -ForegroundColor Green
-  if ($Target -in 'frontend','all') {
-    Write-Host "  前端: https://honor10.lehuan.vip" -ForegroundColor Cyan
-  }
-  if ($Target -in 'backend','all') {
-    Write-Host "  后端: 已部署并重启，auto-recovery 已启用" -ForegroundColor Cyan
-  }
+  Write-Host "  后端: 已部署并重启，auto-recovery 已启用" -ForegroundColor Cyan
   Write-Host "========================================" -ForegroundColor Green
 } catch {
   $elapsed = ((Get-Date) - $startTime).TotalSeconds

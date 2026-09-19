@@ -24,7 +24,7 @@ monitor 部署在手机 Termux，此前用 scp 手工拷文件 + 全量重启：
          → 失败时：面板点「回滚上一版本」（或 POST /api/release/rollback）
 ```
 
-前端（CF Pages）单独走 `.\deploy.ps1 frontend`，tag 流程只提示不代发。
+前端（CF Pages）已改由 **GitHub Actions** 自动发布（`.github/workflows/deploy-frontend.yml`：改 `monitor/frontend/**` 合 `main` 即触发，也可手动 dispatch）；`deploy.ps1` 已不再负责前端。
 
 ## 阶段零：上游版本检测（v1.0.5 起，手机端自主）
 
@@ -84,7 +84,7 @@ staging 完成后线上不受任何影响；`stage.tar.gz` 保留在 release 目
 `POST /api/release/apply {"tag":"vX.Y.Z","modules":["gateway","checkin",...]}`（modules 缺省用 meta.affectedModules）：
 
 1. 读 `~/releases/<tag>/meta.json` 校验存在；
-2. 按 manifest 逐模块复制文件（CF_PAGES 条目跳过并提示走 deploy.ps1）；
+2. 按 manifest 逐模块复制文件（CF_PAGES 条目跳过；前端走 GitHub Actions CI）；
 3. 该模块 `sv restart <service>` → 轮询 `/healthz`（≤15s）；
 4. 全部成功 → 写 `~/.monitor_data/deployed-version.json`（每模块 tag/sha/appliedAt）+ 审计 JSONL；
 5. 任一模块失败 → **停止后续模块，已复制文件自动回滚**（重新复制该 release 目录内旧文件并重启），审计记 `apply:fail`。
@@ -92,6 +92,19 @@ staging 完成后线上不受任何影响；`stage.tar.gz` 保留在 release 目
 ## 回滚
 
 `POST /api/release/rollback {}`（默认回滚到比当前早的最近 release；`{"tag":"v1.0.0"}` 指定）：按 manifest 全量恢复该 release 内文件 → 各模块重启 → 健康验证 → 记账 + 审计。前提：目标 release 已在 `~/releases/` 常驻（staging 过就会一直在，无自动清理）。
+
+## PC ↔ SSH 直连现状（2026-09-19 核对）
+
+结论：**当前发布流程仍含 PC 与设备的 SSH 直连**（分布在两处），前端已彻底不连设备。
+
+| 环节 | PC↔SSH | 说明 |
+|---|---|---|
+| 阶段一 staging（`release-watch.ps1`） | ✅ 是（PC→设备） | `git archive <tag>` 本地打包 → **`scp`** tar 到手机 `~/releases/<tag>/` → **`ssh`** 执行 `tar` 解包、`node --check` 门禁、写 `meta.json`。**这是目前唯一的 PC↔SSH 文件/命令通道** |
+| 阶段二 apply / rollback | ❌ 否（正常走面板） | 面板「发布」页按钮 → gateway → mod-release；PC 亦可 `ssh … curl :3084` 触发（属备用路径） |
+| 前端 Pages 发布 | ❌ 否 | 改由 GitHub Actions（`deploy-frontend.yml`）：PC `git push` → Actions 拉代码 → `wrangler` 发 Cloudflare，PC 不直连设备 |
+| 遗留 `deploy.ps1 backend` | ✅ 是（PC→设备） | F101 之前的整包 scp 部署，仍保留可用（后端应急）；日常发版应走 tag 流程 |
+
+**彻底去 PC↔SSH 的规划（方案 A，待实施）**：apply 时由手机侧按 manifest 从 GitHub Contents API 直接下载文件，取消 staging 的 `scp`；届时 PC 只剩 `git push`，设备完全自主拉取 + 应用。
 
 ## 接口速查（经 gateway :3081，路径前缀 /api/release）
 
@@ -133,7 +146,7 @@ staging 完成后线上不受任何影响；`stage.tar.gz` 保留在 release 目
 - **apply 含 gateway 时 HTTP 响应会被自身重启切断**（面板显示网络错误但实际成功）——202 异步模式已解；
   请求直接发给 :3084（mod-release）而不走 gateway 时，连这个影响也没有；
 - apply 是异步任务，进模块多时耗时 = Σ(复制 + 重启 + 健康轮询)，最长可到数十秒；
-- `deploy.ps1 frontend` 与 tag 流程互相独立：前端发版不产生手机端 release；
+- **前端 CI 与 tag 流程互相独立**：前端发版走 GitHub Actions（`deploy-frontend.yml`），既不产生手机端 release，也不连设备；
 - 首次在新机器使用需先手工部署一次基线（update-modules.ps1）并写入 deployed-version.json；
 - manifest 是发布的唯一依据：**新增/移动文件必须同步改 release-manifest.json**，否则该文件不参与发布与回滚；
 - **manifest 必须登记所有发布文件，新增文件要同步补条目**：v1.0.5 发现 `frontend/release.html`（v1.0.2 引入）
