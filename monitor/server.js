@@ -824,6 +824,16 @@ const server = createServer(async (q, r) => {
       return;
     }
 
+    // ====== Release worker (mod-release 独立进程, :3084) ======
+    if (q.url.startsWith('/api/release/')) {
+      const opts = { hostname: '127.0.0.1', port: parseInt(process.env.RELEASE_PORT || '3084', 10), path: q.url, method: q.method, headers: { ...q.headers } };
+      delete opts.headers['host']; delete opts.headers['connection'];
+      const rel = httpReq(opts, up => { r.writeHead(up.statusCode, up.headers); up.pipe(r, { end: true }); });
+      rel.on('error', () => { if (!r.headersSent) { r.writeHead(502, {'Content-Type':'application/json'}); r.end(JSON.stringify({ ok:false, error:'发布模块不可用' })); } else r.end(); });
+      q.pipe(rel, { end: true });
+      return;
+    }
+
     // ====== Sing-box Reverse Proxy ======
     if (q.url === '/dashboard' || q.url === '/sb' || q.url === '/dashboard/' || q.url === '/sb/') {
       r.writeHead(302, { Location: '/sb/ui/' });

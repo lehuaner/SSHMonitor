@@ -1,0 +1,61 @@
+{
+  "$comment": "模块发布清单（P2 tag 发布流水线）：每个模块 = 一组部署文件（仓库相对路径 → 手机绝对路径）。release-watcher 用 git diff 映射受影响模块；apply 按 manifest 从 release 目录复制到运行目录并重启对应 runit 服务。",
+  "version": 1,
+  "modules": {
+    "checkin": {
+      "service": "mon-checkin",
+      "files": {
+        "monitor/mod-checkin.js": "~/monitor/mod-checkin.js",
+        "monitor/lib/module.js": "~/monitor/lib/module.js",
+        "monitor/lib/checkin/autoclaw.js": "~/monitor/lib/checkin/autoclaw.js",
+        "monitor/lib/checkin/checkin.js": "~/monitor/lib/checkin/checkin.js",
+        "monitor/lib/checkin/scheduler.js": "~/monitor/lib/checkin/scheduler.js",
+        "monitor/lib/checkin/credit-expiry.js": "~/monitor/lib/checkin/credit-expiry.js",
+        "monitor/lib/checkin-log.js": "~/monitor/lib/checkin-log.js",
+        "monitor/lib/checkin-stats.js": "~/monitor/lib/checkin-stats.js",
+        "monitor/lib/providers/index.js": "~/monitor/lib/providers/index.js",
+        "monitor/lib/providers/common.js": "~/monitor/lib/providers/common.js",
+        "monitor/lib/providers/trae.js": "~/monitor/lib/providers/trae.js",
+        "monitor/lib/providers/workbuddy.js": "~/monitor/lib/providers/workbuddy.js",
+        "monitor/lib/providers/codearts.js": "~/monitor/lib/providers/codearts.js",
+        "monitor/lib/providers/autoclaw.js": "~/monitor/lib/providers/autoclaw.js",
+        "monitor/lib/tasks/index.js": "~/monitor/lib/tasks/index.js"
+      }
+    },
+    "gateway": {
+      "service": "server",
+      "disruptive": true,
+      "files": {
+        "monitor/server.js": "~/monitor/server.js",
+        "monitor/lib/utils.js": "~/monitor/lib/utils.js",
+        "monitor/lib/module.js": "~/monitor/lib/module.js",
+        "monitor/lib/metrics.js": "~/monitor/lib/metrics.js",
+        "monitor/lib/recorder.js": "~/monitor/lib/recorder.js",
+        "monitor/lib/actions.js": "~/monitor/lib/actions.js",
+        "monitor/lib/files.js": "~/monitor/lib/files.js",
+        "monitor/lib/logger.js": "~/monitor/lib/logger.js",
+        "monitor/lib/notify.js": "~/monitor/lib/notify.js",
+        "monitor/lib/subscription.js": "~/monitor/lib/subscription.js",
+        "monitor/package.json": "~/monitor/package.json"
+      }
+    },
+    "frontend": {
+      "service": null,
+      "$comment": "前端部署走 deploy.ps1 frontend（CF Pages），tag 流程只提示不执行",
+      "files": {
+        "monitor/frontend/checkin.html": "CF_PAGES",
+        "monitor/frontend/index.html": "CF_PAGES",
+        "monitor/frontend/notify.html": "CF_PAGES",
+        "monitor/frontend/subscription.html": "CF_PAGES",
+        "monitor/frontend/files.html": "CF_PAGES",
+        "monitor/frontend/android.html": "CF_PAGES",
+        "monitor/frontend/config.js": "CF_PAGES",
+        "monitor/frontend/_worker.js": "CF_PAGES"
+      }
+    }
+  },
+  "shared": {
+    "$comment": "gateway 与 checkin 共同依赖的文件：出现在 diff 时按依赖顺序 two-phase（先 gateway 后 checkin，各自重启）",
+    "files": ["monitor/lib/utils.js", "monitor/lib/module.js", "monitor/package.json"]
+  }
+}
