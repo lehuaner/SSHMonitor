@@ -23,6 +23,16 @@
 import { OfficeAceClient, POINTS_ATTR } from '../checkin/officeace.js';
 import { TIMEZONES, TIMES, THRESHOLDS, EXPIRY_DAYS, creditExpirySchema } from './common.js';
 
+// 验证会话缓存：requestVerifyCode 与 submitVerifyCode 之间必须复用同一个客户端
+// （PKCE verifier / pageToken / authDevices 都在客户端内存里，换实例就失效）
+const VERIFY_TTL_MS = 10 * 60 * 1000;
+const pendingVerify = new Map(); // taskId -> { client, at }
+
+function gcPending() {
+  const now = Date.now();
+  for (const [id, p] of pendingVerify) if (now - p.at > VERIFY_TTL_MS) pendingVerify.delete(id);
+}
+
 function buildClient(task) {
   const c = task.config || {};
   return new OfficeAceClient({
@@ -71,10 +81,10 @@ function persist(task, client) {
 function classify(err) {
   const msg = (err && err.message ? err.message : String(err)).trim();
   const e = new Error(err && err.needVerify
-    ? `${msg}（需要在任务里补 hwid_cas_sid 或先在客户端登录一次本机）`
+    ? `${msg}（设备未受信，请在该任务上点「设备验证」完成一次验证）`
     : msg);
   if (err && err.kind) e.kind = err.kind;
-  if (err && err.needVerify) { e.needVerify = true; }
+  if (err && err.needVerify) { e.needVerify = true; e.authDevices = err.authDevices || []; }
   if (err && err.riskCaptcha) e.riskCaptcha = true;
   if (e.kind) return e;
   e.kind = /refresh token has been used|invalid jkt|STS5\.18|HTTP 401|HTTP 403|凭证|未配置|账号或密码/i.test(msg)
@@ -126,7 +136,7 @@ function toPackages(subscription) {
 export default {
   id: 'officeace',
   name: 'OfficeAce',
-  capabilities: ['checkin', 'credits', 'credentialTest', 'status', 'totalCredits', 'sessionProbe', 'packages'],
+  capabilities: ['checkin', 'credits', 'credentialTest', 'status', 'totalCredits', 'sessionProbe', 'packages', 'verifyCode'],
   // 会话到期巡检看的长期凭证 = refresh_token（DPoP 私钥与它绑定，一起声明避免被当空配置）
   sessionCredentialKeys: ['refreshToken', 'dpopJwk'],
   namePlaceholder: '例：OfficeAce · 华为云主账号',
@@ -285,5 +295,71 @@ export default {
     } finally {
       persist(task, client);
     }
+  },
+
+  // ------------------------------------------------------------------
+  // 设备验证接口（★仅当 hwid_cas_sid 也失效/换设备时才需人工填一次验证码）
+  //   与 CodeArts 同源：同一套华为 ID 端点，成功后本机会受信，下次重登免验证。
+  // ------------------------------------------------------------------
+
+  /**
+   * 「获取验证码」：尝试登录；设备已受信则直接签发凭证；否则触发下发验证码并返回设备列表。
+   */
+  async requestVerifyCode(task) {
+    gcPending();
+    const client = buildClient(task);
+    try {
+      const r = await client.requestVerifyCode();
+      persist(task, client);   // 已受信时顺手签发的新 RT / hwid_cas_sid 也要存下来
+      if (r.ok && r.alreadyTrusted) {
+        task.credentialInvalid = false; task.failCount = 0; task.notifiedInvalid = false; // 已重签凭证，解除失效锁定
+        return { ok: true, alreadyTrusted: true, message: '设备已受信（hwid_cas_sid 有效），无需验证码，已重新签发凭证' };
+      }
+      if (!r.ok) {
+        return { ok: false, error: r.error || '获取验证码失败', errorCode: r.errorCode, riskCaptcha: r.riskCaptcha };
+      }
+      const devices = r.authDevices || [];
+      pendingVerify.set(task.id, { client, at: Date.now() });
+      const phoneOnly = devices.length > 0 && devices.every((d) => Number(d.accountType) === 2);
+      return {
+        ok: true,
+        authDevices: devices,
+        hint: phoneOnly
+          ? '验证码已通过短信发送到绑定手机号，请填入收到的 6 位数字'
+          : '验证码已下发至下列设备，请填入收到的 6 位数字',
+      };
+    } catch (err) {
+      persist(task, client);
+      throw classify(err);
+    }
+  },
+
+  /**
+   * 「提交验证码」：opType=1 重放 → 信任本机 → 换票签发 refresh_token（回写 task.config）。
+   */
+  async submitVerifyCode(task, code, deviceIndex = 0) {
+    gcPending();
+    const p = pendingVerify.get(task.id);
+    if (!p) return { ok: false, error: '验证会话已过期，请重新点击「获取验证码」' };
+
+    const r = await p.client.submitVerifyCode(code, deviceIndex);
+    persist(task, p.client);
+    if (r.ok) {
+      pendingVerify.delete(task.id);
+      // 验证成功已签发新凭证 → 解除失效锁定，让调度重新排期自动签到
+      task.credentialInvalid = false;
+      task.failCount = 0;
+      task.notifiedInvalid = false;
+      return { ok: true, message: '设备验证通过，凭证已签发' };
+    }
+    if (r.landingFailed) {
+      return { ok: false, landingFailed: true, error: `验证码已通过，但凭证签发失败：${r.error}` };
+    }
+    return { ok: false, error: r.error || '验证码校验失败', errorCode: r.errorCode };
+  },
+
+  /** 丢弃当前验证会话（用户取消/超时） */
+  cancelVerifyCode(task) {
+    return { ok: pendingVerify.delete(task.id) };
   },
 };
