@@ -16,7 +16,7 @@ import workbuddyProvider from './lib/providers/workbuddy.js';
 import codeartsProvider from './lib/providers/codearts.js';
 import autoclawProvider from './lib/providers/autoclaw.js';
 import officeaceProvider from './lib/providers/officeace.js';
-import { addTask, updateTask, deleteTask, runTaskNow, runAllNow, testCredential, getCredits, loadTasks, saveTasks, startAllTasks, startCookieExpiryWatcher, checkStatusForTask, autoCheckToday, getTotalCreditsForTask, checkCreditExpiryNow } from './lib/tasks/index.js';
+import { addTask, updateTask, deleteTask, runTaskNow, runAllNow, testCredential, getCredits, loadTasks, saveTasks, startAllTasks, checkStatusForTask, autoCheckToday, getTotalCreditsForTask, checkCreditExpiryNow } from './lib/tasks/index.js';
 // 积分过期提醒：批次预览（只读）+ 手动立即检查
 import { fetchCreditExpiryBatches } from './lib/checkin/credit-expiry.js';
 import { getLogs } from './lib/checkin-log.js';
@@ -34,7 +34,8 @@ registerProvider(codeartsProvider);
 registerProvider(autoclawProvider);
 registerProvider(officeaceProvider);
 setTimeout(() => { try { startAllTasks(); } catch (e) { console.error('start checkin tasks:', e); } }, 5000);
-setTimeout(() => { try { startCookieExpiryWatcher(); } catch (e) { console.error('start cookie expiry watcher:', e); } }, 5000);
+// ★凭证到期巡检只在 mod-checkin 进程跑（本进程曾重复注册，双 watcher 各自全量写
+//   checkin_tasks.json 互相覆盖，且 gateway 长驻不重启时用旧 lib 误报「凭证已失效」邮件 2026-09-21）
 
 // 签到积分每日零点快照：启动时先记录一次当前快照，之后每天零点记录
 setTimeout(() => { try { recordSnapshot(); } catch (e) { console.error('initial checkin snapshot:', e); } }, 8000);

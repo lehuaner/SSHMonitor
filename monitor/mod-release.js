@@ -283,6 +283,14 @@ function step(t, msg) { t.steps.push({ at: Date.now(), msg }); t.updatedAt = Dat
     const meta = readJson(join(releaseDir, 'meta.json'), null);
     if (!meta) { t.state = 'failed'; t.error = `release 未 staging: ${tag}`; return; }
     if (!t.modules || !t.modules.length) t.modules = Array.isArray(meta.affectedModules) ? meta.affectedModules : [];
+    // 旧 meta（本次改造前 staging）或未扩展的档案 → 按 staging 档案里的变更文件补一次消费方扩展
+    if (t.modules.length && typeof meta.expanded !== 'boolean') {
+      let changed = [];
+      try { changed = JSON.parse(readFileSync(join(releaseDir, 'changed-files.json'), 'utf8')); } catch {}
+      const exp = expandAffected(t.modules, changed);
+      if (exp.length !== t.modules.length) step(t, `消费方扩展: ${t.modules.join(',')} → ${exp.join(',')}`);
+      t.modules = exp;
+    }
     if (!t.modules.length) { t.state = 'failed'; t.error = 'affected 为空且未显式指定 modules'; step(t, t.error); return; }
     const results = {};
     const done = [];
@@ -457,6 +465,24 @@ function modulesOwning(repoPath) {
   }
   return out;
 }
+/**
+ * 共享库消费方扩展：变更文件除拥有方模块外，还须重启 manifest.consumers 声明的消费模块。
+ * 否则像“只发 checkin 的 lib 修复”永远不重启 gateway，长驻进程继续用旧代码（2026-09-21 误报邮件根因）。
+ * 排序按 manifest.applyOrder（先 gateway 后 checkin，与 shared two-phase 约定一致）。
+ */
+function expandAffected(mods, changedFiles) {
+  const set = new Set(mods || []);
+  for (const f of changedFiles || []) {
+    for (const c of ((MANIFEST.consumers || {})[f] || [])) {
+      if (c !== '$comment' && MANIFEST.modules[c] && MANIFEST.modules[c].service) set.add(c);
+    }
+  }
+  const order = Array.isArray(MANIFEST.applyOrder) && MANIFEST.applyOrder.length ? MANIFEST.applyOrder : Object.keys(MANIFEST.modules);
+  return [...set].sort((a, b) => {
+    const ia = order.indexOf(a), ib = order.indexOf(b);
+    return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+  });
+}
 async function resolveTagSha(repo, tag, cfg) {
   try {
     const cache = readJson(UPSTREAM_CACHE_FILE, null);
@@ -529,16 +555,18 @@ async function stageFromGithub(tag, t) {
   }
   st('node --check 门禁通过');
 
-  // affected：与已部署 sha 比对（compare API）交集 manifest 模块；拿不到基线 → 全量
+  // affected：与已部署 sha 比对（compare API）交集 manifest 模块，再按 consumers 扩展消费方；拿不到基线 → 全量
   let affected = [];
+  let changedFiles = [];
   const deployed = readJson(VERSION_FILE, { modules: {} });
   const baseSha = deployed.lastApply && deployed.lastApply.sha;
   try {
     if (baseSha && baseSha !== sha) {
       const cmp = await ghFetch(`/repos/${cfg.repo}/compare/${baseSha}...${sha}`, cfg);
       const mods = new Set();
-      for (const f of (cmp.files || [])) for (const m of modulesOwning(f.filename)) if (MANIFEST.modules[m] && MANIFEST.modules[m].service) mods.add(m);
-      affected = [...mods];
+      changedFiles = (cmp.files || []).map((f) => f.filename);
+      for (const fn of changedFiles) for (const m of modulesOwning(fn)) if (MANIFEST.modules[m] && MANIFEST.modules[m].service) mods.add(m);
+      affected = expandAffected(mods, changedFiles);   // 共享 lib → 所有消费模块一并重启
     } else if (!baseSha) {
       affected = Object.keys(MANIFEST.modules).filter((m) => MANIFEST.modules[m].service);
       st('无部署基线 → 保守按全部模块');
@@ -548,7 +576,8 @@ async function stageFromGithub(tag, t) {
   } catch (e) { st(`compare 失败（affected 交显式指定）: ${e.message}`); }
   st(`affected: ${affected.join(', ') || '(空)'}`);
 
-  const meta = { tag, sha, stagedAt: Date.now(), affectedModules: affected, fileCount: wrote, source: 'github' };
+  const meta = { tag, sha, stagedAt: Date.now(), affectedModules: affected, fileCount: wrote, source: 'github', expanded: true };
+  try { writeFileSync(join(releaseDir, 'changed-files.json'), JSON.stringify(changedFiles || [])); } catch {}
   writeFileSync(join(releaseDir, 'meta.json'), JSON.stringify(meta));
   return meta;
 }

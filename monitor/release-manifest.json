@@ -1,5 +1,5 @@
 {
-  "$comment": "模块发布清单（tag 发布流水线）：每个模块 = 一组部署文件（仓库相对路径 → 手机绝对路径）。面板 apply 时，mod-release 按本清单从 GitHub Contents API 自拉文件（compare 得出受影响模块）、node --check 门禁后复制到运行目录并重启对应 runit 服务。",
+  "$comment": "模块发布清单（tag 发布流水线）：每个模块 = 一组部署文件（仓库相对路径 → 手机绝对路径）。面板 apply 时，mod-release 按本清单从 GitHub Contents API 自拉文件（compare 得出受影响模块，再按 consumers 扩展为「所有消费该变更文件的模块」）、node --check 门禁后复制到运行目录并按 applyOrder 重启对应 runit 服务。",
   "version": 1,
   "modules": {
     "checkin": {
@@ -69,5 +69,25 @@
   "shared": {
     "$comment": "gateway 与 checkin 共同依赖的文件：出现在 diff 时按依赖顺序 two-phase（先 gateway 后 checkin，各自重启）",
     "files": ["monitor/lib/utils.js", "monitor/lib/module.js", "monitor/package.json"]
+  },
+  "applyOrder": ["gateway", "checkin", "release"],
+  "consumers": {
+    "$comment": "共享库消费方声明：文件变更时，除拥有方模块外，这些消费模块也必须重启（加载新代码），否则长驻进程用旧模块缓存→修复不生效（2026-09-21 workbuddy 误报根因：checkin 模块部署的 lib 修复，gateway 进程未重启且自己也在跑旧 watcher）。checkin 拥有的 lib/providers/*、lib/checkin/*、lib/tasks/*、lib/checkin-*.js 均被 server.js import，故消费方都是 gateway。",
+    "monitor/lib/providers/index.js": ["gateway"],
+    "monitor/lib/providers/common.js": ["gateway"],
+    "monitor/lib/providers/trae.js": ["gateway"],
+    "monitor/lib/providers/workbuddy.js": ["gateway"],
+    "monitor/lib/providers/codearts.js": ["gateway"],
+    "monitor/lib/providers/autoclaw.js": ["gateway"],
+    "monitor/lib/providers/officeace.js": ["gateway"],
+    "monitor/lib/tasks/index.js": ["gateway"],
+    "monitor/lib/checkin/checkin.js": ["gateway"],
+    "monitor/lib/checkin/scheduler.js": ["gateway"],
+    "monitor/lib/checkin/credit-expiry.js": ["gateway"],
+    "monitor/lib/checkin/autoclaw.js": ["gateway"],
+    "monitor/lib/checkin/codearts.js": ["gateway"],
+    "monitor/lib/checkin/officeace.js": ["gateway"],
+    "monitor/lib/checkin-log.js": ["gateway"],
+    "monitor/lib/checkin-stats.js": ["gateway"]
   }
 }

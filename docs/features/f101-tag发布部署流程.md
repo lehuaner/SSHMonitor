@@ -74,10 +74,10 @@ apply 时手机侧 `mod-release.stageFromGithub(tag)` 自动完成（也可 `POS
 | 步骤 | 动作 | 失败行为 |
 |---|---|---|
 | 解析 | `tag → commit sha`（优先上游缓存，回退 `/repos/{repo}/commits/{tag}`） | 解析失败即中止 |
-| 变更计算 | GitHub `compare/<已部署sha>...<sha>` ∩ release-manifest → affectedModules | 无基线 → 全量；无差异 → 需显式 modules |
+| 变更计算 | GitHub `compare/<已部署sha>...<sha>` ∩ release-manifest → affectedModules，再按 `consumers` 扩展为「所有消费该变更文件的模块」（v1.0.11） | 无基线 → 全量；无差异 → 需显式 modules |
 | 下载 | 逐个 manifest 文件走 Contents API（base64）写到 `~/releases/<tag>/files/`（跳过 CF_PAGES；缺失 404 跳过） | 非 404 错误即中止 |
 | 门禁 | 对下载的 `.js` 跑 `node --check` | 语法错误即中止（不触碰运行中代码） |
-| 记录 | `meta.json`（tag/sha/stagedAt/affectedModules/fileCount/`source:github`） | — |
+| 记录 | `meta.json`（tag/sha/stagedAt/affectedModules/fileCount/`source:github`/`expanded`）+ `changed-files.json`（变更文件清单，供 apply 侧消费方兜底扩展） | — |
 
 凭据复用上游检测已配的只读 Contents PAT（`release_config.json.token`）。staging 只写 `~/releases/`，线上不受影响。
 
@@ -110,6 +110,8 @@ apply 时手机侧 `mod-release.stageFromGithub(tag)` 自动完成（也可 `POS
 | provisioning `update-modules.ps1` | ✅ 是（PC→设备） | 仅**新机首次**建 runit 服务 + 传基线时用；日常发布不经过它 |
 
 **方案A 机制**：复用上游检测已配的**只读 Contents PAT**（`release_config.json.token`）；`tag→sha` 解析后逐文件下载；affected 由 GitHub `compare(<已部署sha>...<tagsha>)` 交集 manifest 模块得出，无基线保守全量、无差异则需显式 `modules`；私有仓库缺 token 时明确报错、不静默回退。
+
+> **重启范围＝消费方闭包（v1.0.11）**：共享 lib（如 `lib/providers/*`、`lib/tasks/*`）由 checkin 模块部署，但 gateway 的 server.js 也 import 同一份文件；若只重启 affected 拥有方，长驻的 gateway 进程继续用模块缓存里的旧代码，修复在它那里是死代码（2026-09-21 WorkBuddy 误报邮件真实根因）。现在由 `release-manifest.json` 的 `consumers` 声明「文件 → 额外必须重启的消费模块」，`mod-release.expandAffected()` 在 staging 时把 affected 扩展为消费方闭包，并按 `applyOrder`（先 gateway 后 checkin 再 release）排序重启；staged 档案同步落盘 `changed-files.json` 供旧 meta 兼容兜底。
 
 > **引导（本次已这样处理）**：新代码需先上机才能自拉。v1.0.9 的 `mod-release.js` 由**设备端一次性脚本从 GitHub Contents API 自拉**并 `sv restart mon-release` 完成引导（非 PC scp）；随后 `POST /api/release/stage v1.0.9` 实测自拉 30 个设备文件、`source:github`、门禁通过、`affected:[release]`，记账已对齐。此后版本 apply 会自动走同一路径。
 
@@ -180,6 +182,8 @@ apply 时手机侧 `mod-release.stageFromGithub(tag)` 自动完成（也可 `POS
 
 | tag | 日期 | 主要内容 | 受影响模块 | 结果 |
 |---|---|---|---|---|
+| v1.0.11 | 2026-09-21 | 凭证到期 watcher 只留 mod-checkin（server.js 删除重复注册）；发布流程消费方扩展：manifest `consumers`/`applyOrder` + `expandAffected()`，共享 lib 变更一并重启消费模块 | gateway, checkin, release | 见下条实测 |
+| v1.0.10 | 2026-09-20 | OfficeAce 死 RT 回退重登 + 设备验证流程；首次走方案A（设备自拉 staging + apply） | checkin | apply [checkin] 成功（needStage 自拉，stage:done 11s）；后因 gateway 未重启 + 旧 watcher 残留，9-21 仍发 WorkBuddy 误报邮件 → 由 v1.0.11 根治 |
 | v1.0.9 | 2026-09-19 | 方案A：mod-release 设备端自 GitHub 自拉 staging（apply 自动 / 新增 `/stage`）；release.html 支持未 staging 直接拉取并应用 | release (+frontend CI) | 本次发布仍需旧流程 bootstrap；之后版本走设备自拉 |
 | v1.0.8 | 2026-09-19 | WorkBuddy 凭证到期通知修复（probeSession 有 Cookie 返回 null） | checkin | apply [checkin] 成功；实测落盘 cookieExpiresAt 已不再误报 |
 | v1.0.7 | 2026-09-19 | apply 空 affected / 未知模块 400 防护；release-watch 区分两种空 diff + `-SyncUpstreamToken` | release | apply [release] 成功；token 同步后实测 latest=v1.0.7 / behind=0 / checkError=null |
