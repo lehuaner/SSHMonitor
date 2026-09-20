@@ -30,7 +30,8 @@
  *   · 幂等 = 当日重复 claim 返回 `200 {"bonus_skus":[]}`
  */
 import crypto from 'node:crypto';
-import { HttpClient, buildFp, parseHwidConfig, CodeArtsClient } from './codearts.js';
+import { HttpClient, buildFp, parseHwidConfig, CodeArtsClient,
+  parseAuthCodeSentList, NEED_VERIFY_CODES, isRiskCaptcha, VERIFY_TYPE_PHONE } from './codearts.js';
 
 // ==========================================================================
 // 常量
@@ -289,6 +290,11 @@ export class OfficeAceClient {
     this.http = new HttpClient({ timeout: opts.timeout || 25000 });
     this.base = {};
     this._fp = null;
+    // 设备验证流程上下文（requestVerifyCode → submitVerifyCode 之间由 Provider 缓存同一实例复用）
+    this.authDevices = [];
+    this._lastAccountInfo = {};
+    this._verifier = '';
+    this._casService = '';
     if (this.hwidCasSid) this.http.restoreCookies({ hwid_cas_sid: this.hwidCasSid });
     if (opts.cookies) this.http.restoreCookies(opts.cookies);
   }
@@ -350,8 +356,21 @@ export class OfficeAceClient {
       if (!this.dpop) {
         throw credentialError('refresh_token 缺少配套的 DPoP 私钥（dpopJwk），无法续期；请用「账号密码登录」重新签发一副完整凭证');
       }
-      await this.refresh();
-      return { via: 'refresh' };
+      try {
+        await this.refresh();
+        return { via: 'refresh' };
+      } catch (err) {
+        // ★refresh_token 单次有效：一旦被消耗/过期（STS5.1806 the refresh token has been used）
+        //   本地这份 RT 就是死的，反复 refresh 永远失败。若配了账号密码，回退纯协议登录重签一副
+        //   （复用 hwid_cas_sid 受信令牌，通常免设备验证）；配不了才把原错误抛出。
+        if (err && err.kind === 'invalid' && this.account && this.password) {
+          this._log(`refresh 失败（${err.message}），回退账号密码重登`);
+          this.refreshToken = '';                       // 清掉死 RT，避免 login 内误用
+          await this.login();
+          return { via: 'relogin' };
+        }
+        throw err;
+      }
     }
     if (this.account && this.password) {
       await this.login();
@@ -382,6 +401,42 @@ export class OfficeAceClient {
   async login() {
     if (!this.account || !this.password) throw credentialError('未配置华为账号或密码');
 
+    // ①② 登录前置链（state+PKCE 引导 → 华为 ID baseInfo/dev/loginIds → unionLoginByPwd）
+    const loginRes = await this._loginSteps();
+
+    if (Number(loginRes.isSuccess) !== 1) {
+      // ★ 触发设备/短信验证：自动签到路径下抛出 needVerify（前端「设备验证」按钮据此介入）
+      if (loginRes._needVerify) {
+        const e = new Error('需要新设备验证（短信/邮箱验证码）：请在任务上点「设备验证」完成一次，或补充有效的 hwid_cas_sid');
+        e.kind = 'invalid';
+        e.needVerify = true;
+        e.authDevices = this.authDevices;
+        e.detail = loginRes.detail;
+        throw e;
+      }
+      if (loginRes._riskCaptcha) {
+        const e = new Error('触发图片验证码风控（10000706），协议层无法继续，判定失败');
+        e.kind = 'invalid';
+        e.riskCaptcha = true;
+        throw e;
+      }
+      throw loginRes._err || new Error(`密码登录失败：${loginRes.errorDesc || loginRes.errorCode || '未知'}`);
+    }
+
+    const fin = await this._finishLoginAfterTrust(loginRes);
+    this._log(`登录换票成功，凭证到期 ${new Date(this.creds.expMs).toISOString()}`);
+    return fin;
+  }
+
+  /**
+   * 登录前置链：① OAuth state+PKCE 引导 → ② 华为 ID（getSDKBaseInfo/dev/getLoginIdsByPwd/unionLoginByPwd）。
+   * 把 PKCE 的 verifier 与 casService 存到实例（this._verifier/_casService），供后续
+   * _finishLoginAfterTrust / submitVerifyCode 复用——设备验证两段式必须在同一次 PKCE 上下文内完成。
+   *
+   * @param {object} [extra] 设备验证二次提交参数（透传给 _stepUnionLogin）
+   * @returns {Promise<object>} unionLoginByPwd 原始响应；失败时附带 _needVerify/_riskCaptcha/_err 标记
+   */
+  async _loginSteps(extra = {}) {
     // ① OAuth 引导：state + PKCE
     const st = await this.http.postRawJson(`${AGENTARTS}/v1/claw/auth/state`, {},
       { headers: { 'Content-Type': 'application/json' } });
@@ -394,6 +449,8 @@ export class OfficeAceClient {
       + `&code_challenge=${challenge}&code_challenge_method=SHA-256&state=${state}`
       + `&scope=openid&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code`;
     const casService = `${AUTHUI}/casLogin?service=${encodeURIComponent(authorize)}`;
+    this._verifier = verifier;
+    this._casService = casService;
     this._log('OAuth state 就绪');
 
     // ② 华为云登录链（与 codearts.js 步骤 ①~⑦ 逐一对应）
@@ -405,47 +462,29 @@ export class OfficeAceClient {
     await this._stepDev();
     const ids = await this._stepLoginIds();
     const accountInfo = (ids.accountInfoList || [])[0] || {};
-    const loginRes = await this._stepUnionLogin(casService, accountInfo);
+    this._lastAccountInfo = accountInfo;
+    const loginRes = await this._stepUnionLogin(casService, accountInfo, extra);
+    if (loginRes && loginRes.localStorageID) this.localStorageId = loginRes.localStorageID;
+    return loginRes;
+  }
 
-    if (Number(loginRes.isSuccess) !== 1) {
-      const code = String(loginRes.errorCode || '');
-      if (code === '10002080' || code === '10002081') {
-        const e = new Error('需要新设备验证（短信/邮箱验证码）：请补充 hwid_cas_sid 设备信任令牌，或在 OfficeAce 客户端登录一次本机');
-        e.kind = 'invalid';
-        e.needVerify = true;
-        e.detail = loginRes.errorDesc;
-        throw e;
-      }
-      if (code === '10000706') {
-        const e = new Error('触发图片验证码风控（10000706），协议层无法继续，判定失败');
-        e.kind = 'invalid';
-        e.riskCaptcha = true;
-        throw e;
-      }
-      const e = new Error(`密码登录失败：${loginRes.errorDesc || loginRes.errorCode || '未知'}`);
-      e.kind = code === '10000400' ? 'invalid' : 'transient';
-      throw e;
-    }
-    if (loginRes.localStorageID) this.localStorageId = loginRes.localStorageID;
-    if (loginRes.needPopTrust) await this._stepTrustBrowser(accountInfo);
+  /**
+   * 设备已受信（或验证码校验通过）之后的收尾：信任浏览器 → OAuth 落地取 code → STS 换 AKSK+RT
+   * → 平台面订阅注册。login() 与 submitVerifyCode() 共用。
+   */
+  async _finishLoginAfterTrust(loginRes) {
+    if (loginRes.needPopTrust) await this._stepTrustBrowser(this._lastAccountInfo);
     this._log('华为 ID 登录成功，进入 OAuth 落地链');
-
-    // ③ OAuth 落地：oauth-login1 authorize(HTML) → getLoginWay → remoteLogin → loginCallback
-    //    → ajax/login 拿 code URL → casLogin 种 SSOTGC → 逐跳到 redirect_uri 取 code
     const oauthCode = await this._finishOauth(loginRes.callbackURL);
     this._log(`拿到 OAuth code：${String(oauthCode).slice(0, 8)}…`);
-
-    // ④ 授权码 + PKCE verifier → STS 换 AKSK + refresh_token
     const j = await this._tokens({
       grant_type: 'authorization_code',
       code: oauthCode,
-      code_verifier: verifier,
+      code_verifier: this._verifier,
       redirect_uri: REDIRECT_URI,
     });
     this._applyTokens(j);
-    this._log(`登录换票成功，凭证到期 ${new Date(this.creds.expMs).toISOString()}`);
-
-    // ⑤ ★平台面注册：身份校验 + 客户端订阅（不跑则网关侧 UNSUBSCRIBED，claim 拿不到积分）
+    // ★平台面注册：身份校验 + 客户端订阅（不跑则网关侧 UNSUBSCRIBED，claim 拿不到积分）
     try {
       await this.permissionValidate();
       await this.clientSubscription();
@@ -453,11 +492,124 @@ export class OfficeAceClient {
     } catch (err) {
       this._log(`订阅注册失败（不阻断登录）：${err.message}`);
     }
-
     return {
       ok: true, refreshToken: this.refreshToken, expMs: this.creds.expMs,
       jkt: this.dpop ? this.dpop.thumbprint() : null,
     };
+  }
+
+  // ------------------------------------------------------------------
+  // 设备验证接口（★仿 CodeArts：hwid_cas_sid 失效/换设备时人工填一次验证码）
+  //   与自动登录同端点、同 PKCE 上下文：requestVerifyCode 触发下发 → submitVerifyCode 带
+  //   opType=1 重放通过 → 复用同一 client（Provider 侧缓存）继续换票落地。
+  // ------------------------------------------------------------------
+
+  /**
+   * 「获取验证码」：走一遍登录前置链。
+   *   · 设备已受信 → 顺手完成整条登录（签发 RT）并返回 alreadyTrusted
+   *   · 需验证 → 解析 authCodeSentList、必要时补发短信，返回可选设备列表
+   * @returns {Promise<{ok:boolean, alreadyTrusted?:boolean, authDevices?:Array, error?:string, riskCaptcha?:boolean}>}
+   */
+  async requestVerifyCode() {
+    if (!this.account || !this.password) return { ok: false, error: '未配置华为账号或密码' };
+    const loginRes = await this._loginSteps();
+
+    if (Number(loginRes.isSuccess) === 1) {
+      await this._finishLoginAfterTrust(loginRes);
+      return { ok: true, alreadyTrusted: true, authDevices: [], refreshToken: this.refreshToken };
+    }
+    if (loginRes._riskCaptcha) {
+      return { ok: false, riskCaptcha: true, error: '触发图片验证码风控（10000706），判定失败', detail: loginRes.detail };
+    }
+    if (!loginRes._needVerify) {
+      return { ok: false, error: loginRes._err ? loginRes._err.message : '登录失败', detail: loginRes };
+    }
+    if (!this.authDevices.length) this.authDevices = parseAuthCodeSentList(loginRes.detail);
+    if (!this.authDevices.length) return { ok: false, error: '上游未返回可用的验证设备', detail: loginRes };
+    // 手机号项 sent=0 不会自动下发，必须补发（设备项 sent=1 已自动发，天然空操作）
+    if (!this.authDevices.some((d) => d.sent === 1)) {
+      const sms = await this._ensureSmsSent();
+      if (!sms.ok) return { ok: false, error: sms.error, detail: sms.detail, authDevices: this.authDevices };
+    }
+    return {
+      ok: true,
+      authDevices: this.authDevices,
+      phoneOnly: this.authDevices.every((d) => Number(d.accountType) === VERIFY_TYPE_PHONE),
+    };
+  }
+
+  /**
+   * 「提交验证码」：同端点带 opType=1 重放 → 信任本机 → 复用 PKCE 上下文换票落地。
+   * @param {string} code 用户收到的验证码
+   * @param {number} [deviceIndex] 多设备时选择的序号
+   */
+  async submitVerifyCode(code, deviceIndex = 0) {
+    if (!this._casService || !this.base.pageToken) {
+      return { ok: false, error: '验证会话已失效（缺少 pageToken），请重新点击「获取验证码」' };
+    }
+    if (!this.authDevices.some((d) => d.sent === 1)) {
+      const sms = await this._ensureSmsSent();
+      if (!sms.ok) return { ok: false, error: sms.error, detail: sms.detail };
+    }
+    const picked = this.authDevices[deviceIndex];
+    const device = (picked && picked.sent === 1)
+      ? picked
+      : (this.authDevices.find((d) => d.sent === 1) || picked);
+    if (!device) return { ok: false, error: '没有可用的验证设备，请先调用 requestVerifyCode()' };
+
+    const loginRes = await this._stepUnionLogin(this._casService, this._lastAccountInfo || {}, {
+      twoStepVerifyCode: String(code),
+      verifyUserAccount: String(device.name || ''),
+      verifyAccountType: device.accountType == null ? -1 : device.accountType,
+    });
+    if (loginRes && loginRes.localStorageID) this.localStorageId = loginRes.localStorageID;
+    if (Number(loginRes.isSuccess) !== 1) {
+      return {
+        ok: false,
+        error: `验证码校验失败：${loginRes.errorDesc || loginRes.errorCode || '未知'}`,
+        errorCode: loginRes.errorCode,
+        detail: loginRes,
+      };
+    }
+    try {
+      const fin = await this._finishLoginAfterTrust(loginRes);
+      return { ok: true, message: '设备验证通过，凭证已签发', refreshToken: fin.refreshToken };
+    } catch (err) {
+      // 验证码本身通过，只是换票/落地失败 → 区分开，允许再点一次「获取验证码」
+      return { ok: false, landingFailed: true, error: err.message };
+    }
+  }
+
+  /**
+   * ⑧ 手机号验证支线：显式请求下发短信（与 codearts.js 同端点 login/getSMSCodeV3）。
+   *   设备项（sent=1）在 10002080 时已自动下发；手机号项（sent=0）必须调本方法才真发。
+   */
+  async _stepGetSmsCodeV3(item = {}) {
+    const data = {
+      ...this.base,
+      userAccount: OfficeAceClient.normalizeAccount(this.account),
+      accountType: String(item.accountType ?? VERIFY_TYPE_PHONE),
+      mobilePhone: String(item.name || ''),
+      operType: '8',
+      smsReqType: '6',
+      localStorageID: this.localStorageId,
+    };
+    if (this.hwidCasSid) data.hwid_cas_sid = this.hwidCasSid;
+    return this.http.postJson(
+      `${AJAX_NEW}/login/getSMSCodeV3?reflushCode=${Math.random().toFixed(15)}&cVersion=${this.http.cversion}`, data);
+  }
+
+  /** 幂等确保「手机号验证项」的短信真的发出（成功即置 sent=1，可重入） */
+  async _ensureSmsSent() {
+    const phone = this.authDevices
+      .find((d) => Number(d.accountType) === VERIFY_TYPE_PHONE && d.sent !== 1);
+    if (!phone) return { ok: true, skipped: true };
+    const sms = await this._stepGetSmsCodeV3(phone);
+    if (Number(sms.isSuccess) === 1) {
+      phone.sent = 1;
+      return { ok: true };
+    }
+    return { ok: false, error: `短信下发失败：${sms.errorDesc || sms.errorCode || '未知'}`, detail: sms };
   }
 
   async _stepSdkBaseInfo(authorize) {
@@ -500,7 +652,19 @@ export class OfficeAceClient {
       `${AJAX_NEW}/login/getLoginIdsByPwd?reflushCode=${Math.random().toFixed(15)}&cVersion=${this.http.cversion}`, data);
   }
 
-  async _stepUnionLogin(casService, accountInfo = {}) {
+  /**
+   * ⑦ 密码登录（可携带设备验证参数）。
+   *   · 携带受信 hwid_cas_sid → isSuccess=1（跳过设备验证）
+   *   · 未受信 → isSuccess=0 + errorCode=10002080，errorDesc 内嵌 authCodeSentList
+   *     （此时若为设备项验证码已自动下发）；二次提交带 extra 即 opType=1 + twoStepVerifyCode 通过。
+   * 失败时不抛错，而是在返回对象上附 _needVerify/_riskCaptcha/_err 标记，交上层分流。
+   *
+   * @param {string} casService 本次登录包裹的 AgentArts authorize（casLogin?service=…）
+   * @param {object} accountInfo getLoginIdsByPwd 的 accountInfoList[0]
+   * @param {object} [extra] 设备验证二次提交：{twoStepVerifyCode, verifyUserAccount, verifyAccountType}
+   */
+  async _stepUnionLogin(casService, accountInfo = {}, extra = {}) {
+    const verifying = extra.twoStepVerifyCode !== undefined && extra.twoStepVerifyCode !== '';
     const data = {
       ...this.base,
       userAccount: OfficeAceClient.normalizeAccount(this.account),
@@ -508,16 +672,34 @@ export class OfficeAceClient {
       service: casService,
       bsAcctService: casService.replace('/casLogin?', '/casLoginAPP?'),
       hwmeta: '', localLogin: 'false', quickAuth: 'false', isThirdBind: '0',
-      opType: '0', scope: HW_SCOPE, access_type: 'offline',
+      opType: verifying ? '1' : '0', scope: HW_SCOPE, access_type: 'offline',
       // ★必须是裸匿名账号（不能拼 anonymousEncryption），否则 10000000 loginFlowContext is empty
       anonymousLoginID: accountInfo.anonymousAccount || '',
       registerCountry: REGION_CODE, serial: String(accountInfo.serial ?? 0),
       localStorageID: this.localStorageId,
     };
+    if (verifying) {
+      data.verifyUserAccount = String(extra.verifyUserAccount || '');
+      data.verifyAccountType = String(extra.verifyAccountType ?? -1);
+      data.twoStepVerifyCode = String(extra.twoStepVerifyCode);
+    }
     if (this.hwidCasSid) data.hwid_cas_sid = this.hwidCasSid;
     const res = await this.http.postJson(
       `${AJAX_NEW}/login/unionLoginByPwd?reflushCode=${Math.random().toFixed(15)}&cVersion=${this.http.cversion}`, data);
     if (res && res.localStorageID) this.localStorageId = res.localStorageID;
+    if (Number(res && res.isSuccess) !== 1) {
+      const code = String((res && res.errorCode) || '');
+      if (isRiskCaptcha(res)) { res._riskCaptcha = true; res.detail = res; }
+      else if (NEED_VERIFY_CODES.includes(code) || code === '10002081') {
+        this.authDevices = parseAuthCodeSentList(res.errorDesc);
+        res._needVerify = true;
+        res.detail = res.errorDesc;
+      } else {
+        const e = new Error(`密码登录失败：${(res && (res.errorDesc || res.errorCode)) || '未知'}`);
+        e.kind = code === '10000400' ? 'invalid' : 'transient';
+        res._err = e;
+      }
+    }
     return res;
   }
 
@@ -897,6 +1079,9 @@ export class OfficeAceClient {
         await this.login();
         return { ok: true, isLogin: true, expiresAt: this.refreshTokenExpMs() || this.creds.expMs };
       } catch (err) {
+        // 设备未受信（needVerify）：凭证本身有效，只是需人工点一次「设备验证」——
+        // 与 CodeArts 一致，不应判为凭证失效而误发「已失效」邮件。
+        if (err && err.needVerify) return { ok: true, isLogin: true, expiresAt: null };
         if (err && err.kind === 'invalid') {
           return { ok: false, isLogin: false, expiresAt: null, error: err.message };
         }
