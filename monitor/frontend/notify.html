@@ -104,7 +104,7 @@ textarea:focus,input:focus{border-color:#38bdf8}
 @media(max-width:600px){.form-row{grid-template-columns:1fr;gap:4px}}
 </style>
 <div class=app>
-<div class=nav><a href=/>&#9660; 监控</a><a href=/sb/ui/ target=_blank>&#9881; Sing-box</a><a href=/subscription>&#128230; 订阅</a><a href=/notify>&#128276; 通知</a><a href=/files>&#128193; 文件</a><a href=/android>&#128241; Android</a><a href=/checkin>&#9989; 签到</a></div>
+<div class=nav></div>
 <div class=header><h1>&#128276; 邮件通知</h1></div>
 <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
 <button class="btn btn-primary" id=saveBtn onclick=saveConfig()>&#128190; 保存全部配置</button>
@@ -383,7 +383,7 @@ function clearPass(){const f=$('smtp_pass');f.value='';f.readOnly=false;f.style.
 function renderProcs(candidates,selected){
   const el=$('procList');
   const sel=new Set(selected||[]);
-  if(!candidates||!candidates.length){el.innerHTML='<div class=empty>暂无标记的进程。请先在<a href=/ style=color:#38bdf8>监控页面</a><a href=/release>&#128640; 发布</a>用星标(&#9733;)标记重要进程。</div>';$('procCount').textContent='0 个';return}
+  if(!candidates||!candidates.length){el.innerHTML='<div class=empty>暂无标记的进程。请先在<a href=/ style=color:#38bdf8>监控页面</a>用星标(&#9733;)标记重要进程。</div>';$('procCount').textContent='0 个';return}
   $('procCount').textContent=candidates.length+' 个 (已选 '+sel.size+')';
   el.innerHTML=candidates.map(p=>{
     const checked=sel.has(p.cmd)?'checked':'';
