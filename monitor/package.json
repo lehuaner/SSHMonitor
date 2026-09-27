@@ -1,5 +1,8 @@
 {
   "name": "honor10-monitor",
   "type": "module",
-  "private": true
+  "private": true,
+  "dependencies": {
+    "@noble/hashes": "^1.8.0"
+  }
 }
