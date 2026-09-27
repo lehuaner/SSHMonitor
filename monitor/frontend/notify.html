@@ -349,7 +349,7 @@ function renderForm(c){
   $('retryCount').value=pc.retry_count||2;
   $('retryDelay').value=pc.retry_delay||3000;
   $('checkInterval').value=pc.check_interval||10;
-"  renderCandidates(pc.candidate_nodes||[]);
+  renderCandidates(pc.candidate_nodes||[]);
   currentExcluded=pc.excluded_subscriptions||[];
   loadExcludedSubs();
   renderRegionCands();
@@ -361,7 +361,7 @@ function renderForm(c){
   const rf=pc.refresh_on_all_failed||{};
   failAutoRefresh.checked=!!rf.enabled;
   failRefreshOpts.style.display=rf.enabled?'block':'none';
-  failRefreshAfter.value=rf.after_failures||3;"
+  failRefreshAfter.value=rf.after_failures||3;
   // 设备状况通知
   const da=c.device_alerts||{};
   $('deviceAlertsEnabled').checked=!!da.enabled;
