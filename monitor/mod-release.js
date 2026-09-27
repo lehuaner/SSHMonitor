@@ -22,10 +22,6 @@ import { join, dirname, normalize, resolve } from 'node:path';
 import { createHash } from 'node:crypto';
 import { createModuleServer, readBody } from './lib/module.js';
 import { readPageDeployConfig, publishPages, waitPagesDeploy, rollbackPages } from './lib/pages-deploy.js';
-import { installPublicDns } from './lib/dnsfix.js';
-
-// Termux 守护进程 DNS 兼底：runit 子进程系统解析常 ENOTFOUND，安装公共 DNS（需在任何 fetch 前）
-installPublicDns();
 
 const HOME = process.env.MONITOR_HOME || '/data/data/com.termux/files/home';
 const MONITOR_DIR = join(HOME, 'monitor');
@@ -507,7 +503,9 @@ async function fetchWithRetry(url, { timeoutMs = 30000, ...rest } = {}, tries = 
     }
   }
   const c = last && last.cause;
-  throw new Error(`fetch failed: ${last && last.message}${c ? ` [cause=${c.code || c.message || c.errno || c.syscall || JSON.stringify(c).slice(0, 120)}]` : ''}`);
+  const host = (c && (c.hostname || c.address)) || (url && String(url).replace(/^https?:\/\//, '').split('/')[0]);
+  console.error(`[fetchWithRetry] 失败 host=${host} syscall=${c && c.syscall} code=${c && c.code} url=${url}`);
+  throw new Error(`fetch failed host=${host} code=${c && c.code}: ${last && last.message}${c ? ` [cause=${c.code || c.message || c.errno || c.syscall || JSON.stringify(c).slice(0, 120)}]` : ''}`);
 }
 
 /** 归一化并校验路径必须落在 base 内（防路径穿越） */
@@ -717,11 +715,12 @@ function frontendRepoPaths() {
 }
 
 /** 下载 GitHub 端点为二进制 Buffer（Release 资产：json / octet-stream 跟随重定向） */
-async function ghFetchBuffer(pathname, cfg, accept) {
+async function ghFetchBuffer(assetUrlOrPath, cfg, accept) {
   const headers = { 'user-agent': 'honor10-monitor', authorization: `Bearer ${cfg.token}` };
   headers.accept = accept || 'application/vnd.github+json';
-  const r = await fetchWithRetry(`https://api.github.com${pathname}`, { headers, timeoutMs: 90000, redirect: 'follow' }, 4);
-  if (!r.ok) throw new Error(`${pathname.split('?')[0]} → HTTP ${r.status}`);
+  const url = /^https?:\/\//i.test(assetUrlOrPath) ? assetUrlOrPath : `https://api.github.com${assetUrlOrPath}`;
+  const r = await fetchWithRetry(url, { headers, timeoutMs: 90000, redirect: 'follow' }, 4);
+  if (!r.ok) throw new Error(`${url.split('?')[0]} → HTTP ${r.status}`);
   return Buffer.from(await r.arrayBuffer());
 }
 
