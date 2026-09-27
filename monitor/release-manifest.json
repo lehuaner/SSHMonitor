@@ -29,10 +29,9 @@
     "gateway": {
       "service": "server",
       "disruptive": true,
-      "$comment": "API 网关（3081）。含其 import 的 mod-release.js（workflow-release 处理器）；pages-deploy/dnsfix/setup-deploy 因 mod-release→pages-deploy→dnsfix import 链需随包存在。",
+      "$comment": "API 网关（3081）。pages-deploy/dnsfix/setup-deploy 因 mod-release→pages-deploy→dnsfix import 链需随包存在。",
       "files": {
         "monitor/server.js": "~/monitor/server.js",
-        "monitor/checkin-workflow.js": "~/monitor/checkin-workflow.js",
         "monitor/mod-release.js": "~/monitor/mod-release.js",
         "monitor/release-manifest.json": "~/monitor/release-manifest.json",
         "monitor/lib/pages-deploy.js": "~/monitor/lib/pages-deploy.js",
@@ -71,10 +70,9 @@
     "checkin": {
       "service": "mon-checkin",
       "disruptive": false,
-      "$comment": "签到与额度（3083）。含 server 侧共享运行码；pages-deploy/dnsfix/setup-deploy 因 mod-release import 链需随包存在。",
+      "$comment": "签到与额度（3083）。pages-deploy/dnsfix/setup-deploy 因 mod-release import 链需随包存在。",
       "files": {
         "monitor/mod-checkin.js": "~/monitor/mod-checkin.js",
-        "monitor/checkin-workflow.js": "~/monitor/checkin-workflow.js",
         "monitor/mod-release.js": "~/monitor/mod-release.js",
         "monitor/release-manifest.json": "~/monitor/release-manifest.json",
         "monitor/lib/module.js": "~/monitor/lib/module.js",
