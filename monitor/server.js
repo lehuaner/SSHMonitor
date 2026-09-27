@@ -22,6 +22,32 @@ import { recordSnapshot, updateUsageStats, getUsageStats, getUsageStatsWithEstim
 // ★每日日报：取代旧的「按账号、按到期批次逐封发」的积分过期提醒。调度仅在本（gateway）进程启动一次。
 import { startDailyReportScheduler, previewDailyReport, sendDailyReport } from './lib/daily-report.js';
 
+// ====== 节点测速（并发受限）======
+// sing-box 的 /group/{name}/delay 会一次性「全并行」测所有节点，在移动端(Termux/ARM)
+// 会瞬间打满 CPU，导致 Hysteria2/TUIC 等重负载节点假 Timeout、延迟虚高（实测并发8时
+// 香港节点从 ~180ms 飙到 2000ms+）。改为「逐节点测速 + 并发上限 2」：实测连通判定与
+// 串行及 PC 端 Clash Verge 一致（Hysteria2 13/13），速度较串行约翻倍，又不触发假超时。
+const NODE_TEST_CONCURRENCY = 2;
+const NODE_TEST_URL = 'https://www.google.com/generate_204';
+const NODE_TEST_TIMEOUT = 5000;
+/** 以固定并发 worker 池逐节点测延迟，返回 { [节点名]: 延迟ms(失败为0) } */
+async function testNodesDelay(names) {
+  const delays = {};
+  let idx = 0;
+  async function worker() {
+    while (idx < names.length) {
+      const name = names[idx++];
+      const u = `http://127.0.0.1:9090/proxies/${encodeURIComponent(name)}/delay?url=${NODE_TEST_URL}&timeout=${NODE_TEST_TIMEOUT}`;
+      const r = await fetchJson(u);
+      delays[name] = (r && typeof r.delay === 'number') ? r.delay : 0;
+    }
+  }
+  const pool = [];
+  for (let i = 0; i < Math.min(NODE_TEST_CONCURRENCY, names.length); i++) pool.push(worker());
+  await Promise.all(pool);
+  return delays;
+}
+
 // ====== Init ======
 initRecorder();
 // ★显式启动告警巡检调度器（notify.js 已去除 import 副作用；只有 gateway 进程跑巡检，checkin 模块只用 sendMail）
@@ -363,12 +389,18 @@ const server = createServer(async (q, r) => {
         send(200, JSON.stringify({ ok: true, nodes: nodeStatusCache.data, cached: true, cacheTime: new Date(nodeStatusCache.time).toISOString() }));
         return;
       }
-      const groupName = encodeURIComponent('节点选择');
-      const [delays, sbProxies, sbCon] = await Promise.all([
-        fetchJson(`http://127.0.0.1:9090/group/${groupName}/delay?url=https://www.google.com/generate_204&timeout=5000`),
+      // ★先拿 proxies/connections，再枚举待测节点并以并发 2 逐节点测速（见 testNodesDelay 注释）
+      const [sbProxies, sbCon] = await Promise.all([
         fetchJson('http://127.0.0.1:9090/proxies'),
         fetchJson('http://127.0.0.1:9090/connections'),
       ]);
+      const _groupTypes = ['Selector', 'URLTest', 'Fallback', 'LoadBalance'];
+      const nodeNames = (sbProxies && sbProxies.proxies)
+        ? Object.entries(sbProxies.proxies)
+            .filter(([n, info]) => !_groupTypes.includes(info.type) && n !== 'GLOBAL' && n !== 'direct')
+            .map(([n]) => n)
+        : [];
+      const delays = await testNodesDelay(nodeNames);
       const trafficByNode = {};
       if (sbCon && sbCon.connections) {
         for (const c of sbCon.connections) {
