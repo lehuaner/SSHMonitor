@@ -354,6 +354,20 @@ server.js → /api/checkin/* 路由
 - 手机侧零依赖，不跑 `npm install`；`lib/checkin/` 签到核心在本项目直接维护。
 - 前端 `/_worker.js` 已通过 `/api` 前缀通用代理 `/api/checkin/*`，无需单独配置。
 
+### 7.8 每日日报（2026-09-27：取代按账号逐封的积分过期提醒）
+
+**背景（为什么频繁）**：旧 `credit-expiry.js` 按「账号 × 到期批次」各发一封、`maxReminders` 默认 3，且积分过期调度器经 `startAllTasks` 在 **gateway 与 mod-checkin 两个进程各跑一份**，同一事件成倍发信。
+
+**改造**：
+- 移除账号表单里的 `creditExpiry*` 字段（`common.js` 删 `creditExpirySchema`，5 个 provider 去掉 `...creditExpirySchema()`）；`tasks/index.js` 去掉 `startCreditExpiryScheduler` 调用、`checkCreditExpiryNow`、`creditExpiryState`。
+- 新增 `lib/daily-report.js`：每天固定时刻（默认 **23:30**，时区 `mail_config.daily_report.timezone`，默认 Asia/Shanghai）**只发一封**日报，六块：①积分过期(分/总，复用 `fetchCreditExpiryBatches`) ②代理连通(在线时长/连通率，读 `proxy_check.log`+`node_switch.log`) ③签到(成功/应签) ④设备健康(`metrics()`) ⑤积分消耗与预估可用天数(`getUsageStatsWithEstimates`) ⑥当日告警汇总。每块独立 try/catch，单块失败不拖垮整封。
+- 新增 `lib/alert-events.js`：在 `notify.js sendMail` 总漏斗里按 `[告警]/[提醒]` 前缀落当日事件到 `~/.monitor_data/alert_events.json`（供第⑥块）。
+- **调度只在 gateway 进程启动**：`server.js` `startDailyReportScheduler()`（mod-checkin 不启），从根上消除双进程重复发信。
+- **高危即时件仍单独发**：凭证失效、代理所有候选节点失效等仍即时 `[告警]` 邮件；积分到期/凭证到期预警不再单独发，并入日报。`cookieExpiry` 到期预警逻辑（`checkCookieExpiryOnce`）本次未改动。
+- **统一入口**：`notify.html` 新增「每日日报」卡片（开关 + 时刻 + 展望天数 + 预览/立即发送）。配置存 `mail_config.json` 的 `daily_report`；`/api/notify` 保存白名单已加 `daily_report`。
+- 新增路由：`POST /api/daily-report/preview`（只读预览）、`POST /api/daily-report/send`（立即发一封）。
+- 发布：`lib/daily-report.js`、`lib/alert-events.js` 已加入 `release-manifest.json` 的 **gateway** 模块文件清单（仅 gateway 进程 import）。
+
 ---
 
 ## 八、相关文件索引

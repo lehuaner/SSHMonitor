@@ -38,6 +38,8 @@
         "monitor/lib/files.js": "~/monitor/lib/files.js",
         "monitor/lib/logger.js": "~/monitor/lib/logger.js",
         "monitor/lib/notify.js": "~/monitor/lib/notify.js",
+        "monitor/lib/daily-report.js": "~/monitor/lib/daily-report.js",
+        "monitor/lib/alert-events.js": "~/monitor/lib/alert-events.js",
         "monitor/lib/subscription.js": "~/monitor/lib/subscription.js",
         "monitor/package.json": "~/monitor/package.json"
       }

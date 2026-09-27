@@ -18,7 +18,7 @@
  */
 import { AutoClawClient, decodeJwtClaims, DAILY_SIGNIN_TASK_ID, describeWallet } from '../checkin/autoclaw.js';
 // 三个平台共用的表单常量与「积分过期提醒」配置片段
-import { TIMEZONES, TIMES, THRESHOLDS, EXPIRY_DAYS, creditExpirySchema } from './common.js';
+import { TIMEZONES, TIMES, THRESHOLDS, EXPIRY_DAYS } from './common.js';
 
 // access_token 剩余有效期低于该值时用 refresh_token 换新
 const TOKEN_MIN_REMAINING_MS = 6 * 60 * 60 * 1000;
@@ -99,7 +99,6 @@ export default {
     { key: 'cookieExpiryNotifyDays', label: '凭证到期前何时通知', type: 'select', default: 3,
       options: EXPIRY_DAYS.map(([v, l]) => ({ value: v, label: l })) },
     { key: 'notifyOnSuccess', label: '成功也发通知', type: 'toggle', default: false },
-    ...creditExpirySchema(),
   ],
 
   /**

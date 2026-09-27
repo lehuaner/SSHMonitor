@@ -98,7 +98,7 @@ const exchangeCooldown = new Map(); // taskId -> untilMs
 const EXCHANGE_COOLDOWN_MS = 60 * 1000;
 
 // 三个平台共用的表单常量与「积分过期提醒」配置片段
-import { TIMEZONES, TIMES, THRESHOLDS, EXPIRY_DAYS, creditExpirySchema } from './common.js';
+import { TIMEZONES, TIMES, THRESHOLDS, EXPIRY_DAYS } from './common.js';
 
 /** 鉴权形态：显式声明优先；否则按「有 cookie 走 web，否则走 bearer」推断（保持旧任务行为不变） */
 function authMode(task) {
@@ -574,7 +574,6 @@ export default {
     { key: 'cookieExpiryNotifyDays', label: '凭证到期前何时通知', type: 'select', default: 1,
       options: EXPIRY_DAYS.map(([v, l]) => ({ value: v, label: l })) },
     { key: 'notifyOnSuccess', label: '成功也发通知', type: 'toggle', default: false },
-    ...creditExpirySchema(),
   ],
 
   /**

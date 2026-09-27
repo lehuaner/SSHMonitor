@@ -1,6 +1,7 @@
 import { writeFileSync } from 'node:fs';
 import { run, loadJSON, saveJSON, fetchJson, HOME, DATA_DIR, procKeyword } from './utils.js';
 import { writeLog, readLogTail } from './logger.js';
+import { recordAlertEvent } from './alert-events.js';
 
 // ====== Paths ======
 const MAIL_FILE = DATA_DIR + '/mail_config.json';
@@ -38,6 +39,15 @@ const defaultConfig = {
     cpu_usage_high: 90,     // CPU 使用率高于此值告警（持续）
     mem_usage_high: 90,     // 内存使用率高于此值告警
     cooldown: 30,           // 同一告警冷却时间（分钟）
+  },
+  // ★每日日报：取代旧的「按账号、按到期批次逐封发」的积分过期提醒。
+  //   每天固定时刻只发一封，汇总积分过期 / 代理连通 / 签到 / 设备健康 / 消耗预估 / 当日告警。
+  //   调度只跑在 gateway 进程（见 lib/daily-report.js）。
+  daily_report: {
+    enabled: true,
+    time: '23:30',            // 每天发送时刻（设备时区）
+    timezone: 'Asia/Shanghai',
+    lookahead_days: 30,       // 积分过期展望窗口（天）
   },
 };
 
@@ -80,6 +90,18 @@ if (!mailConfig.device_alerts) {
   if (da.cooldown === undefined) da.cooldown = def.cooldown;
 }
 
+// 每日日报配置向后兼容：旧 mail_config.json 缺该块时补默认
+if (!mailConfig.daily_report) {
+  mailConfig.daily_report = { ...defaultConfig.daily_report };
+} else {
+  const dr = mailConfig.daily_report;
+  const def = defaultConfig.daily_report;
+  if (dr.enabled === undefined) dr.enabled = def.enabled;
+  if (!dr.time) dr.time = def.time;
+  if (!dr.timezone) dr.timezone = def.timezone;
+  if (dr.lookahead_days === undefined) dr.lookahead_days = def.lookahead_days;
+}
+
 // 设备告警冷却记录: { key: timestamp }
 const deviceAlertCooldown = {};
 
@@ -101,6 +123,8 @@ export async function sendMail(subject, body) {
   // 否则正文中的 %（如电池/磁盘/CPU 告警的 "90%"）会被 printf 当作格式符解析，导致发送失败
   const cmd = `printf '%s' '${mail.replace(/'/g, "'\\''")}' | curl -s --url 'smtps://${c.smtp_host}:${c.smtp_port}' --ssl-reqd --login-options 'AUTH=LOGIN' --mail-from '${c.smtp_user}' --mail-rcpt '${c.to}' --user '${c.smtp_user}:${c.smtp_pass}' -T - --max-time 15 2>&1`;
   const result = await run(cmd);
+  // ★统一漏斗：[告警]/[提醒] 前缀的邮件计入当日告警事件，供每日日报「当日告警汇总」段消费。
+  recordAlertEvent(subject);
   return !result || (!result.includes('error') && !result.includes('Failed') && !result.includes('curl:'));
 }
 

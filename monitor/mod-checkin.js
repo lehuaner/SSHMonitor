@@ -19,9 +19,8 @@ import officeaceProvider from './lib/providers/officeace.js';
 import {
   addTask, updateTask, deleteTask, runTaskNow, runAllNow, testCredential, getCredits,
   loadTasks, saveTasks, startAllTasks, stopAllTasks, startCookieExpiryWatcher,
-  checkStatusForTask, autoCheckToday, getTotalCreditsForTask, checkCreditExpiryNow,
+  checkStatusForTask, autoCheckToday, getTotalCreditsForTask,
 } from './lib/tasks/index.js';
-import { fetchCreditExpiryBatches } from './lib/checkin/credit-expiry.js';
 import { getLogs } from './lib/checkin-log.js';
 import { recordSnapshot, updateUsageStats, getUsageStatsWithEstimates, getTaskUsageDetail, startDailySnapshot, removeTaskStats } from './lib/checkin-stats.js';
 import { createModuleServer, readBody } from './lib/module.js';
@@ -262,40 +261,8 @@ async function router(url, q, r, send) {
     return true;
   }
 
-  // GET /api/checkin/credit-expiry?id=
-  if (p === '/api/checkin/credit-expiry' && q.method === 'GET') {
-    const id = url.searchParams.get('id') || '';
-    const tasks = loadTasks();
-    const task = tasks.find((t) => t.id === id);
-    if (!task) { send(404, JSON.stringify({ ok: false, error: '账号不存在' })); return true; }
-    try {
-      const res = await fetchCreditExpiryBatches(task);
-      saveTasks(tasks);
-      send(200, JSON.stringify({
-        ok: true,
-        data: {
-          batches: res.batches.map((b) => ({
-            date: b.key, expireAt: b.expireAtMs, amount: b.amount,
-            packs: b.packs.map((x) => ({ name: x.name, remain: x.remain })),
-          })),
-          source: res.source,
-          state: task.creditExpiryState || {},
-        },
-      }));
-    } catch (e) {
-      send(200, JSON.stringify({ ok: false, error: e.message, kind: e.kind }));
-    }
-    return true;
-  }
-
-  if (p === '/api/checkin/credit-expiry/check' && q.method === 'POST') {
-    try {
-      send(200, JSON.stringify(await checkCreditExpiryNow(url.searchParams.get('id') || '')));
-    } catch (e) {
-      send(200, JSON.stringify({ ok: false, error: e.message }));
-    }
-    return true;
-  }
+  // ★积分过期不再提供「逐账号预览 / 立即检查」端点：已统一改为 gateway 单进程的「每日日报」
+  //   （见 lib/daily-report.js）。fetchCreditExpiryBatches 仍作为日报取数内部使用。
 
   // ---- 设备验证码（CodeArts） ----
   if (p === '/api/checkin/verify-code/request' && q.method === 'POST') {

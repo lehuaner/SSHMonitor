@@ -21,7 +21,7 @@
  *   · 幂等：当日重复 claim 返回 `200 {"bonus_skus":[]}`；已签判定看 `bonus_skus` 里当日 daily 批次
  */
 import { OfficeAceClient, POINTS_ATTR } from '../checkin/officeace.js';
-import { TIMEZONES, TIMES, THRESHOLDS, EXPIRY_DAYS, creditExpirySchema } from './common.js';
+import { TIMEZONES, TIMES, THRESHOLDS, EXPIRY_DAYS } from './common.js';
 
 // 验证会话缓存：requestVerifyCode 与 submitVerifyCode 之间必须复用同一个客户端
 // （PKCE verifier / pageToken / authDevices 都在客户端内存里，换实例就失效）
@@ -171,7 +171,6 @@ export default {
     { key: 'cookieExpiryNotifyDays', label: '凭证到期前何时通知', type: 'select', default: 3,
       options: EXPIRY_DAYS.map(([v, l]) => ({ value: v, label: l })) },
     { key: 'notifyOnSuccess', label: '成功也发通知', type: 'toggle', default: false },
-    ...creditExpirySchema(),
   ],
 
   /** 执行一次签到（签到前自动续期/重登，并回写轮换后的凭证） */
