@@ -17,6 +17,8 @@
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, sep, extname } from 'node:path';
 import { blake3 } from '@noble/hashes/blake3';
+import { installPublicDns } from './dnsfix.js';
+installPublicDns(); // 独立调用时也保证公共 DNS（幂等）
 
 const CF_API = 'https://api.cloudflare.com/client/v4';
 const SPECIAL = new Set(['_worker.js', '_headers', '_redirects', '_routes.json', 'functions-filepath-routing-config.json']);
@@ -59,10 +61,17 @@ function walk(dir, base, out) {
   return out;
 }
 
-async function cfFetch(path, cfg, { token, method = 'GET', body, headers = {}, raw = false } = {}) {
+async function cfFetch(path, cfg, { token, method = 'GET', body, headers = {}, raw = false, tries = 4 } = {}) {
   const h = { authorization: `Bearer ${token || cfg.cf_api_token}`, ...headers };
-  const r = await fetch(`${CF_API}${path}`, { method, headers: h, body, signal: AbortSignal.timeout(90000) });
-  const text = await r.text();
+  let r, text, last;
+  for (let i = 0; i < tries; i++) {
+    try {
+      r = await fetch(`${CF_API}${path}`, { method, headers: h, body, signal: AbortSignal.timeout(90000) });
+      break;
+    } catch (e) { last = e; if (i < tries - 1) await new Promise((res) => setTimeout(res, 800 * (2 ** i) + Math.floor(Math.random() * 400))); }
+  }
+  if (!r) throw new Error(`CF ${method} ${path.split('?')[0]} 网络失败：${last && last.message}`);
+  text = await r.text();
   let j = null; try { j = JSON.parse(text); } catch { /* 非 JSON */ }
   if (!r.ok || (j && j.success === false)) {
     const err = j && j.errors && j.errors.length ? JSON.stringify(j.errors).slice(0, 300) : `HTTP ${r.status}`;

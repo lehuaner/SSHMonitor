@@ -1,12 +1,86 @@
 {
   "$comment": "模块发布清单（tag 发布流水线）：每个模块 = 一组部署文件（仓库相对路径 → 手机绝对路径）。tag 触发 .github/workflows/release.yml 按本清单把核心文件打包为 GitHub Release 产物（honor10-backend/frontend.tar.gz + build.json 逐文件 sha256）。设备端 mod-release 的 stageFromRelease 从该 Release 下载产物、逐文件 sha256 校验后解包（不再逐文件拉 Contents、无回退），node --check 门禁后复制进运行目录并按 applyOrder 重启 runit 服务。前端（CF_PAGES）由设备 apply 后置钩子按 frontend_deploy.json.mode 决定：本机复制到 ~/monitor/frontend，或设备端纯 REST 直传 Cloudflare Pages（lib/pages-deploy.js）。",
   "version": 1,
+  "applyOrder": ["gateway", "checkin", "release"],
+  "shared": {
+    "$comment": "gateway 与 checkin 共同依赖的文件：出现在 diff 时按依赖顺序 two-phase（先 gateway 后 checkin，各自重启）",
+    "files": ["monitor/lib/utils.js", "monitor/lib/module.js", "monitor/package.json"]
+  },
+  "consumers": {
+    "$comment": "共享库消费方声明：文件变更时，除拥有方模块外，这些消费模块也必须重启（加载新代码），否则长驻进程用旧模块缓存→修复不生效。checkin 拥有的 lib/providers/*、lib/checkin/*、lib/tasks/*、lib/checkin-*.js 均被 server.js import，故消费方都是 gateway。",
+    "monitor/lib/providers/index.js": ["gateway"],
+    "monitor/lib/providers/common.js": ["gateway"],
+    "monitor/lib/providers/trae.js": ["gateway"],
+    "monitor/lib/providers/workbuddy.js": ["gateway"],
+    "monitor/lib/providers/codearts.js": ["gateway"],
+    "monitor/lib/providers/autoclaw.js": ["gateway"],
+    "monitor/lib/providers/officeace.js": ["gateway"],
+    "monitor/lib/tasks/index.js": ["gateway"],
+    "monitor/lib/checkin/checkin.js": ["gateway"],
+    "monitor/lib/checkin/scheduler.js": ["gateway"],
+    "monitor/lib/checkin/credit-expiry.js": ["gateway"],
+    "monitor/lib/checkin/autoclaw.js": ["gateway"],
+    "monitor/lib/checkin/codearts.js": ["gateway"],
+    "monitor/lib/checkin/officeace.js": ["gateway"],
+    "monitor/lib/checkin-log.js": ["gateway"],
+    "monitor/lib/checkin-stats.js": ["gateway"]
+  },
   "modules": {
+    "gateway": {
+      "service": "server",
+      "disruptive": true,
+      "$comment": "API 网关（3081）。含其 import 的 mod-release.js（workflow-release 处理器）；pages-deploy/dnsfix/setup-deploy 因 mod-release→pages-deploy→dnsfix import 链需随包存在。",
+      "files": {
+        "monitor/server.js": "~/monitor/server.js",
+        "monitor/checkin-workflow.js": "~/monitor/checkin-workflow.js",
+        "monitor/mod-release.js": "~/monitor/mod-release.js",
+        "monitor/release-manifest.json": "~/monitor/release-manifest.json",
+        "monitor/lib/pages-deploy.js": "~/monitor/lib/pages-deploy.js",
+        "monitor/lib/dnsfix.js": "~/monitor/lib/dnsfix.js",
+        "monitor/setup-deploy.js": "~/monitor/setup-deploy.js",
+        "monitor/lib/utils.js": "~/monitor/lib/utils.js",
+        "monitor/lib/module.js": "~/monitor/lib/module.js",
+        "monitor/lib/metrics.js": "~/monitor/lib/metrics.js",
+        "monitor/lib/recorder.js": "~/monitor/lib/recorder.js",
+        "monitor/lib/actions.js": "~/monitor/lib/actions.js",
+        "monitor/lib/files.js": "~/monitor/lib/files.js",
+        "monitor/lib/logger.js": "~/monitor/lib/logger.js",
+        "monitor/lib/notify.js": "~/monitor/lib/notify.js",
+        "monitor/lib/daily-report.js": "~/monitor/lib/daily-report.js",
+        "monitor/lib/alert-events.js": "~/monitor/lib/alert-events.js",
+        "monitor/lib/subscription.js": "~/monitor/lib/subscription.js",
+        "monitor/lib/checkin-log.js": "~/monitor/lib/checkin-log.js",
+        "monitor/lib/checkin-stats.js": "~/monitor/lib/checkin-stats.js",
+        "monitor/lib/checkin/checkin.js": "~/monitor/lib/checkin/checkin.js",
+        "monitor/lib/checkin/scheduler.js": "~/monitor/lib/checkin/scheduler.js",
+        "monitor/lib/checkin/credit-expiry.js": "~/monitor/lib/checkin/credit-expiry.js",
+        "monitor/lib/checkin/autoclaw.js": "~/monitor/lib/checkin/autoclaw.js",
+        "monitor/lib/checkin/codearts.js": "~/monitor/lib/checkin/codearts.js",
+        "monitor/lib/checkin/officeace.js": "~/monitor/lib/checkin/officeace.js",
+        "monitor/lib/providers/index.js": "~/monitor/lib/providers/index.js",
+        "monitor/lib/providers/common.js": "~/monitor/lib/providers/common.js",
+        "monitor/lib/providers/trae.js": "~/monitor/lib/providers/trae.js",
+        "monitor/lib/providers/workbuddy.js": "~/monitor/lib/providers/workbuddy.js",
+        "monitor/lib/providers/codearts.js": "~/monitor/lib/providers/codearts.js",
+        "monitor/lib/providers/autoclaw.js": "~/monitor/lib/providers/autoclaw.js",
+        "monitor/lib/providers/officeace.js": "~/monitor/lib/providers/officeace.js",
+        "monitor/lib/tasks/index.js": "~/monitor/lib/tasks/index.js",
+        "monitor/package.json": "~/monitor/package.json"
+      }
+    },
     "checkin": {
       "service": "mon-checkin",
+      "disruptive": false,
+      "$comment": "签到与额度（3083）。含 server 侧共享运行码；pages-deploy/dnsfix/setup-deploy 因 mod-release import 链需随包存在。",
       "files": {
         "monitor/mod-checkin.js": "~/monitor/mod-checkin.js",
+        "monitor/checkin-workflow.js": "~/monitor/checkin-workflow.js",
+        "monitor/mod-release.js": "~/monitor/mod-release.js",
+        "monitor/release-manifest.json": "~/monitor/release-manifest.json",
         "monitor/lib/module.js": "~/monitor/lib/module.js",
+        "monitor/lib/pages-deploy.js": "~/monitor/lib/pages-deploy.js",
+        "monitor/lib/dnsfix.js": "~/monitor/lib/dnsfix.js",
+        "monitor/setup-deploy.js": "~/monitor/setup-deploy.js",
         "monitor/lib/checkin/autoclaw.js": "~/monitor/lib/checkin/autoclaw.js",
         "monitor/lib/checkin/codearts.js": "~/monitor/lib/checkin/codearts.js",
         "monitor/lib/checkin/officeace.js": "~/monitor/lib/checkin/officeace.js",
@@ -25,32 +99,16 @@
         "monitor/lib/tasks/index.js": "~/monitor/lib/tasks/index.js"
       }
     },
-    "gateway": {
-      "service": "server",
-      "disruptive": true,
-      "files": {
-        "monitor/server.js": "~/monitor/server.js",
-        "monitor/lib/utils.js": "~/monitor/lib/utils.js",
-        "monitor/lib/module.js": "~/monitor/lib/module.js",
-        "monitor/lib/metrics.js": "~/monitor/lib/metrics.js",
-        "monitor/lib/recorder.js": "~/monitor/lib/recorder.js",
-        "monitor/lib/actions.js": "~/monitor/lib/actions.js",
-        "monitor/lib/files.js": "~/monitor/lib/files.js",
-        "monitor/lib/logger.js": "~/monitor/lib/logger.js",
-        "monitor/lib/notify.js": "~/monitor/lib/notify.js",
-        "monitor/lib/daily-report.js": "~/monitor/lib/daily-report.js",
-        "monitor/lib/alert-events.js": "~/monitor/lib/alert-events.js",
-        "monitor/lib/subscription.js": "~/monitor/lib/subscription.js",
-        "monitor/package.json": "~/monitor/package.json"
-      }
-    },
     "release": {
       "service": "mon-release",
+      "disruptive": false,
+      "$comment": "发布更新（3084）。含 apply 后置 Pages 钩子依赖的 lib/pages-deploy.js（+ 其依赖 lib/dnsfix.js）与首次配置 CLI setup-deploy.js；pages-deploy 亦被 gateway/checkin import（CF_PAGES 跳过），故三模块都携带。",
       "files": {
         "monitor/mod-release.js": "~/monitor/mod-release.js",
         "monitor/release-manifest.json": "~/monitor/release-manifest.json",
         "monitor/lib/module.js": "~/monitor/lib/module.js",
         "monitor/lib/pages-deploy.js": "~/monitor/lib/pages-deploy.js",
+        "monitor/lib/dnsfix.js": "~/monitor/lib/dnsfix.js",
         "monitor/setup-deploy.js": "~/monitor/setup-deploy.js"
       }
     },
@@ -70,29 +128,5 @@
         "monitor/frontend/_worker.js": "CF_PAGES"
       }
     }
-  },
-  "shared": {
-    "$comment": "gateway 与 checkin 共同依赖的文件：出现在 diff 时按依赖顺序 two-phase（先 gateway 后 checkin，各自重启）",
-    "files": ["monitor/lib/utils.js", "monitor/lib/module.js", "monitor/package.json"]
-  },
-  "applyOrder": ["gateway", "checkin", "release"],
-  "consumers": {
-    "$comment": "共享库消费方声明：文件变更时，除拥有方模块外，这些消费模块也必须重启（加载新代码），否则长驻进程用旧模块缓存→修复不生效（2026-09-21 workbuddy 误报根因：checkin 模块部署的 lib 修复，gateway 进程未重启且自己也在跑旧 watcher）。checkin 拥有的 lib/providers/*、lib/checkin/*、lib/tasks/*、lib/checkin-*.js 均被 server.js import，故消费方都是 gateway。",
-    "monitor/lib/providers/index.js": ["gateway"],
-    "monitor/lib/providers/common.js": ["gateway"],
-    "monitor/lib/providers/trae.js": ["gateway"],
-    "monitor/lib/providers/workbuddy.js": ["gateway"],
-    "monitor/lib/providers/codearts.js": ["gateway"],
-    "monitor/lib/providers/autoclaw.js": ["gateway"],
-    "monitor/lib/providers/officeace.js": ["gateway"],
-    "monitor/lib/tasks/index.js": ["gateway"],
-    "monitor/lib/checkin/checkin.js": ["gateway"],
-    "monitor/lib/checkin/scheduler.js": ["gateway"],
-    "monitor/lib/checkin/credit-expiry.js": ["gateway"],
-    "monitor/lib/checkin/autoclaw.js": ["gateway"],
-    "monitor/lib/checkin/codearts.js": ["gateway"],
-    "monitor/lib/checkin/officeace.js": ["gateway"],
-    "monitor/lib/checkin-log.js": ["gateway"],
-    "monitor/lib/checkin-stats.js": ["gateway"]
   }
 }
