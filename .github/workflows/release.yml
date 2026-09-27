@@ -1,0 +1,62 @@
+name: Build Release Artifact
+
+# 设备端自拉发布：GitHub 只负责「存储 release」。
+# 本 workflow 在打 tag（v*）时触发：门禁 → 按 release-manifest.json 收集核心代码
+#   打包成部署产物 → 建 GitHub Release 挂资产。
+# **不部署 Cloudflare Pages**（Pages 发布改由设备端 apply 后置钩子走 CF REST 直传）。
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+# 只操作仓库内容（建 release + 下载自身代码），最小权限
+permissions:
+  contents: write
+
+concurrency:
+  group: build-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Package & publish release artifact
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (full history + tags)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # 门禁 + 打包：逻辑在 tools/build-release.cjs（可本地跑），解析 manifest → 收集
+      #   backend(~/monitor/* 运行文件) 与 frontend(CF_PAGES) → node --check 全部 .js →
+      #   各自 tar（tar 内保持 monitor/... 路径）→ 逐文件 sha256 写 honor10-build.json
+      - name: Gate, package & build manifest
+        run: node tools/build-release.cjs
+
+      - name: Create / update GitHub Release with artifacts
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          TAG="${GITHUB_REF_NAME}"
+          # 已存在则先删（可重复触发），再重建
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release delete-asset "$TAG" honor10-backend.tar.gz --yes 2>/dev/null || true
+            gh release delete-asset "$TAG" honor10-frontend.tar.gz --yes 2>/dev/null || true
+            gh release delete-asset "$TAG" honor10-build.json --yes 2>/dev/null || true
+            gh release delete-asset "$TAG" honor10-manifest.json --yes 2>/dev/null || true
+            gh release upload "$TAG" honor10-backend.tar.gz honor10-frontend.tar.gz honor10-build.json honor10-manifest.json --clobber
+          else
+            gh release create "$TAG" \
+              honor10-backend.tar.gz honor10-frontend.tar.gz honor10-build.json honor10-manifest.json \
+              --title "$TAG" --generate-notes --latest
+          fi
+          echo "Release $TAG 资产："
+          gh release view "$TAG"

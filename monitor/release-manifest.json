@@ -1,5 +1,5 @@
 {
-  "$comment": "模块发布清单（tag 发布流水线）：每个模块 = 一组部署文件（仓库相对路径 → 手机绝对路径）。面板 apply 时，mod-release 按本清单从 GitHub Contents API 自拉文件（compare 得出受影响模块，再按 consumers 扩展为「所有消费该变更文件的模块」）、node --check 门禁后复制到运行目录并按 applyOrder 重启对应 runit 服务。",
+  "$comment": "模块发布清单（tag 发布流水线）：每个模块 = 一组部署文件（仓库相对路径 → 手机绝对路径）。tag 触发 .github/workflows/release.yml 按本清单把核心文件打包为 GitHub Release 产物（honor10-backend/frontend.tar.gz + build.json 逐文件 sha256）。设备端 mod-release 的 stageFromRelease 从该 Release 下载产物、逐文件 sha256 校验后解包（不再逐文件拉 Contents、无回退），node --check 门禁后复制进运行目录并按 applyOrder 重启 runit 服务。前端（CF_PAGES）由设备 apply 后置钩子按 frontend_deploy.json.mode 决定：本机复制到 ~/monitor/frontend，或设备端纯 REST 直传 Cloudflare Pages（lib/pages-deploy.js）。",
   "version": 1,
   "modules": {
     "checkin": {
@@ -49,12 +49,14 @@
       "files": {
         "monitor/mod-release.js": "~/monitor/mod-release.js",
         "monitor/release-manifest.json": "~/monitor/release-manifest.json",
-        "monitor/lib/module.js": "~/monitor/lib/module.js"
+        "monitor/lib/module.js": "~/monitor/lib/module.js",
+        "monitor/lib/pages-deploy.js": "~/monitor/lib/pages-deploy.js",
+        "monitor/setup-deploy.js": "~/monitor/setup-deploy.js"
       }
     },
     "frontend": {
       "service": null,
-      "$comment": "前端（CF Pages）走 GitHub Actions 自动发布（.github/workflows/deploy-frontend.yml），tag 流程不涉及前端",
+      "$comment": "前端（CF_PAGES）不再由 GitHub Actions 部署；设备 apply 成功后按 frontend_deploy.json.mode 处理：pages→lib/pages-deploy.js 设备端直传 Cloudflare Pages；local→复制到 ~/monitor/frontend 供 :3080 服务。首次运行用 `node setup-deploy.js` 选择。",
       "files": {
         "monitor/frontend/checkin.html": "CF_PAGES",
         "monitor/frontend/release.html": "CF_PAGES",

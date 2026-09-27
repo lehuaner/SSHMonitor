@@ -19,13 +19,18 @@
  */
 import { existsSync, readFileSync, writeFileSync, mkdirSync, cpSync, rmSync, readdirSync } from 'node:fs';
 import { join, dirname, normalize, resolve } from 'node:path';
+import { createHash } from 'node:crypto';
 import { createModuleServer, readBody } from './lib/module.js';
+import { readPageDeployConfig, publishPages, waitPagesDeploy, rollbackPages } from './lib/pages-deploy.js';
 
 const HOME = process.env.MONITOR_HOME || '/data/data/com.termux/files/home';
 const MONITOR_DIR = join(HOME, 'monitor');
 const RELEASES_DIR = join(HOME, 'releases');
 const VERSION_FILE = join(HOME, '.monitor_data', 'deployed-version.json');
 const AUDIT_LOG = join(HOME, '.monitor_data', 'release_audit.jsonl');
+// Pages 发布状态：lastGood（可用于回滚/版本比对）+ 最近一次尝试的失败过程落库
+const PAGES_STATE_FILE = join(HOME, '.monitor_data', 'pages_deploy_state.json');
+const PAGES_FAIL_FILE = join(HOME, '.monitor_data', 'pages_deploy_last.json');
 const SVDIR = '/data/data/com.termux/files/usr/var/service';
 const VERSION = process.env.MONITOR_MODULE_VERSION || 'dev';
 // ★数据快照：应用(apply)前整份备份 ~/.monitor_data 到 ~/.monitor_data_bak/<tag>_<时间>，保留最近 N 份
@@ -297,6 +302,62 @@ function step(t, msg) { t.steps.push({ at: Date.now(), msg }); t.updatedAt = Dat
     return { dir: `.monitor_data_bak/${safeTag}_${stamp}`, files };
   }
 
+  /** apply 成功后的前端部署后置钩子：本机模式→复制前端到 ~/monitor/frontend；Pages 模式→设备端直传发布（失败回滚+告警+落库）。绝不阻断后端部署。 */
+  async function deployFrontend(t, tag, meta, releaseDir) {
+    const cfg = readPageDeployConfig(HOME);
+    const srcDir = join(releaseDir, 'files', 'monitor', 'frontend');
+    if (cfg.mode === 'local') {
+      if (!meta.frontendChanged) { if (t) step(t, '本次无前端改动，跳过本机前端更新'); return; }
+      if (!existsSync(srcDir)) { if (t) step(t, '本机模式：release 无前端文件，跳过'); return; }
+      const dst = join(HOME, 'monitor', 'frontend');
+      mkdirSync(dst, { recursive: true });
+      let n = 0; for (const f of readdirSync(srcDir)) { try { cpSync(join(srcDir, f), join(dst, f)); n++; } catch { /* ignore */ } }
+      audit('frontend:local', { tag, files: n });
+      if (t) step(t, `前端已复制到本机 ${dst}（${n} 文件）`);
+      return;
+    }
+    if (cfg.mode !== 'pages') { if (t) step(t, `前端部署模式未知(${cfg.mode})，跳过`); return; }
+    if (!meta.frontendChanged) { if (t) step(t, '本次无前端改动，跳过 Pages 发布'); return; }
+    if (!existsSync(srcDir)) { await recordPagesFail(tag, null, `前端目录缺失 ${srcDir}`, readJson(PAGES_STATE_FILE, {}).lastGood); return; }
+    const prevGood = readJson(PAGES_STATE_FILE, {}).lastGood || null;
+    if (t) step(t, '开始发布 Pages（设备端直传）…');
+    let res;
+    try {
+      res = await publishPages({ config: cfg, frontendDir: srcDir, commitHash: meta.sha || '', commitMessage: tag, log: (m) => { if (t) step(t, 'Pages: ' + m); } });
+    } catch (e) { await recordPagesFail(tag, null, 'publish 抛错: ' + e.message, prevGood); return; }
+    const w = await waitPagesDeploy(cfg, res.deploymentId);
+    if (w.state === 'ready') {
+      const st = readJson(PAGES_STATE_FILE, {});
+      st.lastGood = { tag, deploymentId: res.deploymentId, url: res.url, at: Date.now() };
+      st.lastAttempt = { tag, ok: true, at: Date.now() };
+      try { writeFileSync(PAGES_STATE_FILE, JSON.stringify(st, null, 2)); } catch { /* ignore */ }
+      audit('pages:ok', { tag, deploymentId: res.deploymentId, url: res.url });
+      if (t) step(t, `Pages 发布成功 ✓ ${res.url}`);
+    } else {
+      await recordPagesFail(tag, res.deploymentId, `deployment ${w.state}${w.detail ? ': ' + w.detail : ''}`, prevGood);
+    }
+  }
+
+  /** Pages 发布失败统一处理：回滚上一 good deployment、落库失败过程、邮件告警、审计。 */
+  async function recordPagesFail(tag, deploymentId, reason, prevGood) {
+    let rolledBackTo = null;
+    try {
+      if (prevGood && prevGood.deploymentId) {
+        await rollbackPages(readPageDeployConfig(HOME), prevGood.deploymentId);
+        rolledBackTo = prevGood.tag || prevGood.deploymentId;
+      }
+    } catch (e) { reason += '；回滚也失败: ' + e.message; }
+    const rec = { tag, at: new Date().toISOString(), ok: false, reason: String(reason), deploymentId: deploymentId || null, rolledBackTo };
+    try { writeFileSync(PAGES_FAIL_FILE, JSON.stringify(rec, null, 2)); } catch { /* ignore */ }
+    audit('pages:fail', { tag, reason: String(reason).slice(0, 300), rolledBackTo });
+    try {
+      const { sendMail } = await import('./lib/notify.js');
+      if (typeof sendMail === 'function') {
+        await sendMail(`[告警] Pages 发布失败 ${tag}`, `原因：${reason}\ndeploymentId：${deploymentId || '-'}\n已回滚到：${rolledBackTo || '无（保留现网）'}\n后端部署已完成，仅前端 Pages 未更新，请检查。`);
+      }
+    } catch { /* 告警失败不致命 */ }
+  }
+
   /** 后台执行 apply。t.needStage=true 时先按方案A从 GitHub 自拉 staging（不触碰运行中代码，失败直接终止） */
   async function runApply(t) {
     console.log(`[release-task] runApply start ` + t.id);
@@ -304,7 +365,7 @@ function step(t, msg) { t.steps.push({ at: Date.now(), msg }); t.updatedAt = Dat
     const releaseDir = join(RELEASES_DIR, tag);
     if (t.needStage) {
       try {
-        await stageFromGithub(tag, t);
+        await stageFromRelease(tag, t);
         audit('stage:done', { tag, source: 'apply-auto' });
       } catch (e) {
         t.state = 'failed'; t.error = `GitHub staging 失败: ${e.message}`;
@@ -374,6 +435,8 @@ function step(t, msg) { t.steps.push({ at: Date.now(), msg }); t.updatedAt = Dat
     t.results = results;
     step(t, `全部完成：${done.join(', ')}`);
     audit('apply:done', { tag, modules: done });
+    // 后置：前端部署（本机复制 / Pages 直传）——失败不回滚后端、不阻断任务，仅告警+落库
+    try { await deployFrontend(t, tag, meta, releaseDir); } catch (e) { step(t, `前端部署钩子异常（不影响后端）：${e && e.message}`); audit('frontend:hook_error', { tag, error: e && e.message }); }
   }
 
   /** 后台执行 rollback（原同步逻辑迁移） */
@@ -620,6 +683,102 @@ async function stageFromGithub(tag, t) {
   return meta;
 }
 
+// ====== 设备端从 GitHub Release 产物拉取 staging（唯一来源，无逐文件回退） ======
+const ASSET_BACKEND = 'honor10-backend.tar.gz';
+const ASSET_FRONTEND = 'honor10-frontend.tar.gz';
+const ASSET_BUILD = 'honor10-build.json';
+
+/** 前端（CF_PAGES）仓库相对路径集合，用于判定本次是否含前端改动 */
+function frontendRepoPaths() {
+  const s = new Set();
+  for (const mod of Object.values(MANIFEST.modules)) {
+    for (const [repoPath, remote] of Object.entries(mod.files || {})) if (remote === 'CF_PAGES') s.add(repoPath);
+  }
+  return [...s];
+}
+
+/** 下载 GitHub 端点为二进制 Buffer（Release 资产：json / octet-stream 跟随重定向） */
+async function ghFetchBuffer(pathname, cfg, accept) {
+  const headers = { 'user-agent': 'honor10-monitor', authorization: `Bearer ${cfg.token}` };
+  headers.accept = accept || 'application/vnd.github+json';
+  const r = await fetch(`https://api.github.com${pathname}`, { headers, signal: AbortSignal.timeout(90000), redirect: 'follow' });
+  if (!r.ok) throw new Error(`${pathname.split('?')[0]} → HTTP ${r.status}`);
+  return Buffer.from(await r.arrayBuffer());
+}
+
+/**
+ * 从 tag 对应的 GitHub Release 下载产物（honor10-build.json + backend/frontend tar.gz），
+ * 解包到 ~/releases/<tag>/files/（tar 内 monitor/... → files/monitor/...），逐文件 sha256 校验，
+ * 用 compare(base...commit) 得受影响模块并按 consumers 扩展。失败只抛错，不触碰运行代码。
+ * 无任何逐文件回退：Release/资产缺失即失败（release.yml 尚未产出时属预期，稍后重试）。
+ */
+async function stageFromRelease(tag, t) {
+  const cfg = readUpstreamConfig();
+  if (!cfg.repo) throw new Error('未配置上游仓库（release_config.json.repo）');
+  if (!cfg.token) throw new Error('未配置 GitHub token（私有仓库 Release 资产需 Contents: Read-only）');
+  const st = t ? (m) => step(t, m) : () => {};
+
+  let rel;
+  try { rel = await ghFetch(`/repos/${cfg.repo}/releases/tags/${encodeURIComponent(tag)}`, cfg); }
+  catch (e) { throw new Error(`拉取 Release ${tag} 失败：${e.message}（可能 release.yml 产物尚未生成，稍后重试）`); }
+  const byName = {}; for (const a of (rel.assets || [])) byName[a.name] = a;
+  for (const need of [ASSET_BUILD, ASSET_BACKEND]) if (!byName[need]) throw new Error(`Release ${tag} 缺少必需资产 ${need}`);
+
+  const build = JSON.parse((await ghFetchBuffer(byName[ASSET_BUILD].url, cfg)).toString('utf8'));
+  const sha = String(build.commit || '');
+  if (!sha) throw new Error('build.json 无 commit');
+  st(`Release ${tag} → commit ${sha.slice(0, 7)}，backend ${build.backend?.files?.length || 0}、frontend ${build.frontend?.files?.length || 0} 文件`);
+
+  const releaseDir = join(RELEASES_DIR, tag);
+  const filesDir = join(releaseDir, 'files');
+  if (existsSync(filesDir)) rmSync(filesDir, { recursive: true, force: true });
+  mkdirSync(filesDir, { recursive: true });
+  const tmp = join(RELEASES_DIR, `.dl_${tag}_${Date.now()}`);
+  mkdirSync(tmp, { recursive: true });
+  try {
+    const btar = join(tmp, ASSET_BACKEND);
+    writeFileSync(btar, await ghFetchBuffer(byName[ASSET_BACKEND].url, cfg, 'application/octet-stream'));
+    const exB = await run(`tar xzf '${btar}' -C '${filesDir}' 2>&1`);
+    if (exB && /error|cannot|No such/i.test(exB)) throw new Error(`解包 backend 失败：${exB.trim().slice(0, 200)}`);
+    if (byName[ASSET_FRONTEND]) {
+      const ftar = join(tmp, ASSET_FRONTEND);
+      writeFileSync(ftar, await ghFetchBuffer(byName[ASSET_FRONTEND].url, cfg, 'application/octet-stream'));
+      const exF = await run(`tar xzf '${ftar}' -C '${filesDir}' 2>&1`);
+      if (exF && /error|cannot|No such/i.test(exF)) throw new Error(`解包 frontend 失败：${exF.trim().slice(0, 200)}`);
+    }
+    // 逐文件 sha256 校验（完整性）
+    const verify = (list) => { const bad = []; for (const f of (list || [])) { const abs = safeJoin(releaseDir, join('files', f.path)); if (!existsSync(abs)) { bad.push(f.path + '(缺失)'); continue; } const h = createHash('sha256').update(readFileSync(abs)).digest('hex'); if (h !== f.sha256) bad.push(f.path + '(sha不符)'); } return bad; };
+    const bad = [...verify(build.backend.files), ...verify(build.frontend && build.frontend.files)];
+    if (bad.length) throw new Error(`产物完整性校验失败：${bad.slice(0, 5).join(', ')}${bad.length > 5 ? ` …共 ${bad.length}` : ''}`);
+    st(`sha256 校验通过`);
+  } finally { try { rmSync(tmp, { recursive: true, force: true }); } catch { /* ignore */ } }
+
+  // affected：与已部署 commit 比对（compare API，纯元数据）→ 模块 + 消费方扩展
+  let affected = []; let changedFiles = [];
+  const deployed = readJson(VERSION_FILE, { modules: {} });
+  const baseSha = deployed.lastApply && deployed.lastApply.sha;
+  try {
+    if (baseSha && baseSha !== sha) {
+      const cmp = await ghFetch(`/repos/${cfg.repo}/compare/${baseSha}...${sha}`, cfg);
+      changedFiles = (cmp.files || []).map((f) => f.filename);
+      const mods = new Set(); for (const fn of changedFiles) for (const m of modulesOwning(fn)) if (MANIFEST.modules[m] && MANIFEST.modules[m].service) mods.add(m);
+      affected = expandAffected(mods, changedFiles);
+    } else if (!baseSha) {
+      affected = Object.keys(MANIFEST.modules).filter((m) => MANIFEST.modules[m].service);
+      st('无部署基线 → 保守按全部模块');
+    } else { st('与当前部署同 commit → affected 空'); }
+  } catch (e) { st(`compare 失败（affected 交显式指定）: ${e.message}`); }
+
+  const fePaths = frontendRepoPaths();
+  const frontendChanged = changedFiles.length ? changedFiles.some((f) => fePaths.includes(f)) : ((build.frontend && build.frontend.files) || []).length > 0;
+  st(`affected: ${affected.join(', ') || '(空)'}；前端变更: ${frontendChanged ? '有' : '无'}`);
+
+  const meta = { tag, sha, stagedAt: Date.now(), affectedModules: affected, fileCount: (build.backend.files || []).length, source: 'release-asset', expanded: true, frontendChanged };
+  try { writeFileSync(join(releaseDir, 'changed-files.json'), JSON.stringify(changedFiles || [])); } catch { /* ignore */ }
+  writeFileSync(join(releaseDir, 'meta.json'), JSON.stringify(meta));
+  return meta;
+}
+
 async function router(url, q, r, send) {
   const p = url.pathname;
   if (!p.startsWith('/api/release')) return false;
@@ -651,6 +810,20 @@ async function router(url, q, r, send) {
     const cache = await checkUpstream();          // 失败不抛，错因在 cache.error
     const v = upstreamView();
     send(200, JSON.stringify({ ok: !v.checkError, ...v, detail: cache && cache.tags ? `${cache.tags.length} tags` : '' }));
+    return true;
+  }
+
+  // ---- 前后端版本一致性（后端已部署 vs Pages 已发布） ----
+  if (p === '/api/release/version-status' && q.method === 'GET') {
+    const deployed = readJson(VERSION_FILE, { modules: {} });
+    const st = readJson(PAGES_STATE_FILE, {});
+    const fail = readJson(PAGES_FAIL_FILE, null);
+    const cfg = readPageDeployConfig(HOME);
+    const backend = (deployed.lastApply && deployed.lastApply.tag) || null;
+    const pages = (st.lastGood && st.lastGood.tag) || null;
+    const mismatch = cfg.mode === 'pages' && !!backend && !!pages && backend !== pages;
+    send(200, JSON.stringify({ ok: true, mode: cfg.mode, backend, pages, mismatch,
+      pagesUrl: (st.lastGood && st.lastGood.url) || null, lastFail: fail && !fail.ok ? fail : null }));
     return true;
   }
 
@@ -708,7 +881,7 @@ async function router(url, q, r, send) {
     const t = newTask('stage', tag, []);
     audit('stage:start', { tag, taskId: t.id });
     (async () => {
-      try { const meta = await stageFromGithub(tag, t); t.state = 'done'; t.results = { meta }; step(t, `staged ${tag} → ${meta.fileCount} 文件`); audit('stage:done', { tag, sha: meta.sha }); }
+      try { const meta = await stageFromRelease(tag, t); t.state = 'done'; t.results = { meta }; step(t, `staged ${tag} → ${meta.fileCount} 文件`); audit('stage:done', { tag, sha: meta.sha }); }
       catch (e) { t.state = 'failed'; t.error = e.message; step(t, e.message); audit('stage:fail', { tag, error: e.message }); }
     })();
     send(202, JSON.stringify({ ok: true, taskId: t.id, statusUrl: `/api/release/tasks?id=${t.id}`, tag }));
