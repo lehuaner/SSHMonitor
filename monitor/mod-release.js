@@ -28,6 +28,10 @@ const VERSION_FILE = join(HOME, '.monitor_data', 'deployed-version.json');
 const AUDIT_LOG = join(HOME, '.monitor_data', 'release_audit.jsonl');
 const SVDIR = '/data/data/com.termux/files/usr/var/service';
 const VERSION = process.env.MONITOR_MODULE_VERSION || 'dev';
+// ★数据快照：应用(apply)前整份备份 ~/.monitor_data 到 ~/.monitor_data_bak/<tag>_<时间>，保留最近 N 份
+const MONITOR_DATA_DIR = join(HOME, '.monitor_data');
+const DATA_BAK_ROOT = join(HOME, '.monitor_data_bak');
+const DATA_BAK_KEEP = 10;
 
 import { run } from './lib/utils.js';
 
@@ -265,6 +269,34 @@ function step(t, msg) { t.steps.push({ at: Date.now(), msg }); t.updatedAt = Dat
     return { copied: copied.length, files: copied, healthy: true };
   }
 
+  /** 解析「最新版本」：优先上游缓存 latest，无则现拉一次。供 apply tag=latest/空 使用 */
+  async function resolveLatestTag() {
+    const c = readJson(UPSTREAM_CACHE_FILE, null);
+    if (c && c.latest) return c.latest;
+    try { const out = await checkUpstream(); return (out && out.latest) || null; } catch { return null; }
+  }
+
+  /** 整份快照 ~/.monitor_data 下所有文件到 ~/.monitor_data_bak/<tag>_<时间>；裁剪保留最近 DATA_BAK_KEEP 份 */
+  function backupMonitorData(tag) {
+    if (!existsSync(MONITOR_DATA_DIR)) return { skipped: '数据目录不存在' };
+    const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+    const safeTag = String(tag || 'pre').replace(/[^\w.\-]/g, '_');
+    const dir = join(DATA_BAK_ROOT, `${safeTag}_${stamp}`);
+    mkdirSync(dir, { recursive: true });
+    let files = 0;
+    for (const ent of readdirSync(MONITOR_DATA_DIR, { withFileTypes: true })) {
+      if (!ent.isFile()) continue;                       // 只备份文件（均为 json/jsonl/txt 配置），跳过子目录
+      const from = join(MONITOR_DATA_DIR, ent.name);
+      try { cpSync(from, join(dir, ent.name)); files++; } catch { /* 单文件复制失败不致命 */ }
+    }
+    // 裁剪：按目录名（含时间戳，字典序=时间序）保留最近 N 份
+    try {
+      const all = readdirSync(DATA_BAK_ROOT, { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name).sort();
+      for (const old of all.slice(0, Math.max(0, all.length - DATA_BAK_KEEP))) { try { rmSync(join(DATA_BAK_ROOT, old), { recursive: true, force: true }); } catch {} }
+    } catch {}
+    return { dir: `.monitor_data_bak/${safeTag}_${stamp}`, files };
+  }
+
   /** 后台执行 apply。t.needStage=true 时先按方案A从 GitHub 自拉 staging（不触碰运行中代码，失败直接终止） */
   async function runApply(t) {
     console.log(`[release-task] runApply start ` + t.id);
@@ -294,6 +326,12 @@ function step(t, msg) { t.steps.push({ at: Date.now(), msg }); t.updatedAt = Dat
     if (!t.modules.length) { t.state = 'failed'; t.error = 'affected 为空且未显式指定 modules'; step(t, t.error); return; }
     const results = {};
     const done = [];
+    // ★应用前整份备份 ~/.monitor_data（含 checkin_tasks.json 等），误清空/回退时可一键还原；备份失败不阻断应用
+    try {
+      const bk = backupMonitorData(tag);
+      if (bk && !bk.skipped) { step(t, `已备份数据 ${bk.files} 个文件 → ${bk.dir}`); audit('apply:backup', { tag, dir: bk.dir, files: bk.files }); }
+      else if (bk && bk.skipped) step(t, `跳过数据备份：${bk.skipped}`);
+    } catch (e) { step(t, `数据备份失败（不影响应用）：${e && e.message}`); }
     try {
       for (const m of t.modules) {
         const r = await applyModule(t, releaseDir, m);
@@ -680,7 +718,9 @@ async function router(url, q, r, send) {
   // ---- 应用一个 release（202 异步）。未 staging 时按方案A自动从 GitHub 拉取后再应用 ----
   if (p === '/api/release/apply' && q.method === 'POST') {
     const input = JSON.parse((await readBody(q)) || '{}');
-    const tag = String(input.tag || '').trim();
+    let tag = String(input.tag || '').trim();
+    if (!tag || tag === 'latest') tag = (await resolveLatestTag()) || '';   // ★一键更新：tag 为 latest/空 → 解析上游最新 tag
+    if (!tag) { send(400, JSON.stringify({ ok: false, error: '无法确定最新版本（上游检测无结果，请先「立即检测」或显式指定 tag）' })); return true; }
     if (!/^[\w.\-]+$/.test(tag)) { send(400, JSON.stringify({ ok: false, error: 'tag 格式不合法' })); return true; }
     const releaseDir = join(RELEASES_DIR, tag);
     const meta = readJson(join(releaseDir, 'meta.json'), null);

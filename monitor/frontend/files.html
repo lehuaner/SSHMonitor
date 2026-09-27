@@ -54,7 +54,7 @@ tr.protd td:first-child{color:#f59e0b}
 @media(max-width:600px){.modal-box{width:95%}}
 </style>
 <div class=app>
-<div class=nav><a href=/><span>&#9660; 监控</span></a><a href=/sb/ui/ target=_blank><span>&#9881; Sing-box</span></a><a href=/subscription><span>&#128230; 订阅</span></a><a href=/notify><span>&#128276; 通知</span></a><a href=/files class=active><span>&#128193; 文件</span></a><a href=/android><span>&#128241; Android</span></a><a href=/checkin><span>&#9989; 签到</span></a></div>
+<div class=nav></div>
 <div class=header><h1>&#128193; 文件管理</h1><div style=font-size:.75rem;color:#64748b>路径: /<span id=pathDisplay></span></div></div>
 <div class=breadcrumb id=breadcrumb>加载中...</div>
 <div class=toolbar>
@@ -121,7 +121,7 @@ function renderTable(path,items,parent){
     const cls=getRowClass(i)+(isFile?' file-row':'');
     html+='<tr class="'+cls+'"'+(isFile?' onclick=editFile("'+enc(rp)+'") title="点击编辑 '+esc(i.name)+'"':'')+'>';
     html+='<td><span class=icon>'+(i.isDir?'&#128193;':'&#128196;')+'</span>';
-    html+='<a class=name href="'+(i.isDir?'files?path='+enc(rp):'#')+'"'+(isFile?' onclick="event.stopPropagation();editFile(\''+enc(rp)+'\');return false"':'')+'>'+esc(i.name)+'</a><a href=/release>&#128640; 发布</a>';
+    html+='<a class=name href="'+(i.isDir?'files?path='+enc(rp):'#')+'"'+(isFile?' onclick="event.stopPropagation();editFile(\''+enc(rp)+'\');return false"':'')+'>'+esc(i.name)+'</a>';
     if(isFile)html+='<span class=edit-indicator>&#9998; 编辑</span>';
     if(i.protected)html+='<span class=protd-badge title="系统关键文件">&#9888;</span>';
     if(n)html+='<span class=note-badge title="'+esc(n)+'">&#128221; '+esc(n)+'</span>';

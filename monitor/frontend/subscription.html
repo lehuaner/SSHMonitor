@@ -79,7 +79,7 @@ textarea{min-height:60px;resize:vertical;word-break:break-all}
 @media(max-width:600px){.form-row{grid-template-columns:1fr;gap:4px}}
 </style>
 <div class=app>
-<div class=nav><a href=/>&#9660; 监控</a><a href=/sb/ui/ target=_blank>&#9881; Sing-box</a><a href=/subscription class=active>&#128230; 订阅</a><a href=/notify>&#128276; 通知</a><a href=/files>&#128193; 文件</a><a href=/android>&#128241; Android</a><a href=/checkin>&#9989; 签到</a></div>
+<div class=nav></div>
 <div class=header><h1>&#128230; 订阅管理</h1></div>
 <div class=card>
 <div class=card-h><label>添加订阅</label></div>
@@ -148,7 +148,7 @@ function fmtUsage(u){
   // 更新间隔（小时）
   if(u.update_interval)h+='<div class=usage-item><span>更新间隔</span><b>'+u.update_interval+' 小时</b></div>';
   // 官网链接
-  if(u.website)h+='<div class=usage-item><span>官网</span><b><a href="'+esc(u.website)+'" target=_blank style="color:#38bdf8;text-decoration:none">打开 &#8599;</a><a href=/release>&#128640; 发布</a></b></div>';
+  if(u.website)h+='<div class=usage-item><span>官网</span><b><a href="'+esc(u.website)+'" target=_blank style="color:#38bdf8;text-decoration:none">打开 &#8599;</a></b></div>';
   h+='</div>';return h;
 }
 // 渲染订阅列表

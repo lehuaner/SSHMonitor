@@ -58,7 +58,7 @@ input:focus{outline:none;border-color:#38bdf8}
 @keyframes bl{50%{opacity:.25}}
 </style>
 <script src=config.js></script>
-<div class=nav><a href=/>&#9660; 监控</a><a href=/sb/ui/ target=_blank>&#9881; Sing-box</a><a href=/subscription>&#128225; 订阅</a><a href=/notify>&#128231; 通知</a><a href=/files>&#128193; 文件</a><a href=/android>&#129539; Android</a><a href=/checkin>&#9989; 签到</a><a href=/release class=active>&#128640; 发布</a></div>
+<div class=nav></div>
 <div class=header><h1>&#128640; 版本发布</h1></div>
 
 <div class=panel>
@@ -76,6 +76,7 @@ input:focus{outline:none;border-color:#38bdf8}
   <div class=row id=upSummary><span class=empty><span class=spin></span> 检测中…</span></div>
   <div id=upList style=margin-top:8px></div>
   <div class=row style=margin-top:12px>
+    <button class="btn btn-primary" id=btnUpdLatest onclick=updateLatest()>&#128640; 一键更新到最新</button>
     <button class=btn id=btnUpCheck onclick=checkUp()>&#8635; 立即检测</button>
     <button class=btn onclick=toggleCfg()>&#9881; 检测设置</button>
     <span class=mono id=upAt></span>
@@ -112,6 +113,17 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 function fmtT(ts){return ts?new Date(ts).toLocaleString('zh-CN',{hour12:false}):'—'}
 function show(res,ok){const el=$('#result');el.className='result '+(ok?'ok':'err');el.textContent=typeof res==='string'?res:JSON.stringify(res,null,2)}
 async function api(u,opt){try{const r=await fetch(u,opt);return await r.json()}catch(e){return{ok:false,error:e.message}}}
+// ====== 分页（上游版本列表 / release 列表共用） ======
+const PAGE_SIZE=8; let UP_PAGE=0, REL_PAGE=0, REL=[], RELMODS={};
+function pageSlice(arr,size,page){const s=page*size;return arr.slice(s,s+size);}
+function pagerHtml(total,size,page,fn){
+  if(total<=size) return '';
+  const pages=Math.ceil(total/size);
+  return `<div class=row style=margin-top:8px;justify-content:center;gap:8px>`
+    +`<button class=btn ${page<=0?'disabled':''} onclick="${fn}(${page-1})">&laquo; 上一页</button>`
+    +`<span class=mono>第 ${page+1} / ${pages} 页（共 ${total}）</span>`
+    +`<button class=btn ${page>=pages-1?'disabled':''} onclick="${fn}(${page+1})">下一页 &raquo;</button></div>`;
+}
 
 async function loadData(){
   const r=await api('/api/release/status');
@@ -124,12 +136,18 @@ async function loadData(){
   const la=r.deployed.lastApply;
   $('#updAt').textContent=la?('上次操作: '+la.tag+' @ '+fmtT(la.at)):'';
   $('#btnRollback').disabled=!r.releases.length;
-  // 待应用 releases
+  // 待应用 releases（分页渲染）
+  REL=r.releases||[]; RELMODS=r.deployed.modules||{};
+  renderReleases();
+}
+function renderReleases(){
   const box=$('#releases');
-  if(!r.releases.length){box.innerHTML='<div class=empty>暂无本地 release。上游新 tag 可在下方直接「拉取并应用」（手机端自 GitHub 自拉），PC 侧 release-watch.ps1 预 staging 已可选。</div>';return}
-  box.innerHTML=r.releases.map(x=>{
-    const appliedMods=mods.filter(([m,v])=>v.tag===x.tag);
-    const isApplied=appliedMods.length===Object.keys(r.deployed.modules||{}).length&&appliedMods.length>0;
+  if(!REL.length){box.innerHTML='<div class=empty>暂无本地 release。上游新 tag 可在上方直接「一键更新到最新 / 拉取并应用」（手机端自 GitHub 自拉）。</div>';return}
+  if(REL_PAGE*PAGE_SIZE>=REL.length) REL_PAGE=0;
+  const modKeys=Object.keys(RELMODS||{});
+  const items=pageSlice(REL,PAGE_SIZE,REL_PAGE).map(x=>{
+    const applied=modKeys.filter(m=>RELMODS[m]&&RELMODS[m].tag===x.tag);
+    const isApplied=applied.length===modKeys.length&&applied.length>0;
     return `<div class=rel>
       <div class=h><b>${esc(x.tag)}</b>
         <span class="tag ${isApplied?'ok':'warn'}">${isApplied?'已部署':'待应用'}</span>
@@ -139,11 +157,12 @@ async function loadData(){
       <div class=meta>sha ${esc((x.sha||'').slice(0,7))} · staged ${fmtT(x.stagedAt)}</div>
       <div class=acts>
         <button class="btn btn-primary" onclick=doApply('${esc(x.tag)}')>&#9654; 应用此版本</button>
-        <span class=mono style=align-self:center>POST /api/release/apply</span>
       </div>
     </div>`;
   }).join('');
+  box.innerHTML=items+pagerHtml(REL.length,PAGE_SIZE,REL_PAGE,'goRel');
 }
+function goRel(n){REL_PAGE=Math.max(0,n);renderReleases();}
 
 // 202 异步任务：发起后轮询 /api/release/tasks?id= 直到 done/failed
 // 轮询容忍 gateway 重启窗口的 502/网络错误（重试至总超时 120s）
@@ -227,7 +246,8 @@ function renderUp(){
   if(r.checkError) err=`<div class="tag err" style=margin-top:6px>检测失败：${esc(r.checkError)}</div>`;
   S.innerHTML=chips.join('')+(r.tokenSet?'':'<span class=tag style=margin-left:6px>无 token（仅公开仓库可检）</span>')+err;
   if(!r.items.length){L.innerHTML='<div class=empty>无 tag 数据</div>';return}
-  L.innerHTML=r.items.map(x=>{
+  if(UP_PAGE*PAGE_SIZE>=r.items.length) UP_PAGE=0;
+  const rows=pageSlice(r.items,PAGE_SIZE,UP_PAGE).map(x=>{
     const [cls,txt,hint]=STATE[x.state]||STATE.old;
     let btn='';
     if(x.state==='new-staged') btn=`<button class="btn btn-primary" style=padding:4px 10px onclick="doApply('${esc(x.tag)}')">&#9654; 应用</button>`;
@@ -239,6 +259,19 @@ function renderUp(){
       <span class=mono>${esc((x.sha||'').slice(0,7))}</span>${btn}
     </div>`;
   }).join('');
+  L.innerHTML=rows+pagerHtml(r.items.length,PAGE_SIZE,UP_PAGE,'goUp');
+}
+function goUp(n){UP_PAGE=Math.max(0,n);renderUp();}
+
+// 一键更新到上游最新版本（后端 apply 前先整份备份 ~/.monitor_data）
+async function updateLatest(){
+  const latest=UP&&UP.latest;
+  if(!latest){show('尚不知最新版本，请先点「立即检测」', false);return}
+  if(!confirm(`一键更新到最新 ${latest}？\n· 应用前会先整份备份 ~/.monitor_data（含签到账号等配置）\n· 手机本地无档案则从 GitHub 自拉\n· 复制→重启→健康验证，失败自动回滚`))return;
+  pollAbort=false;
+  const r=await api('/api/release/apply',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({tag:latest})});
+  if(!r.ok){show(r,false);return}
+  try{const t=await pollTask(r.taskId);show(t,t.state==='done');loadData();await checkUp();}catch(e){show({ok:false,error:e.message},false);loadData();}
 }
 async function checkUp(){
   const b=$('#btnUpCheck'); b.disabled=true; b.innerHTML='<span class=spin></span> 检测中…';

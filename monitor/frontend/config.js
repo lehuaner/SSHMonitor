@@ -19,3 +19,18 @@ window.API_BASE = '';
     return origFetch.call(this, url, opts);
   };
 })();
+
+// ====== 全站统一导航注入：加载 nav.js（单一数据源，消除各页硬编码导航漂移） ======
+// config.js 已在所有 *.html 引入，故在此单点挂载；nav.js 按当前路径渲染并高亮 .nav。
+(function () {
+  function inject() {
+    if (document.querySelector('script[data-navjs]')) return;
+    var s = document.createElement('script');
+    s.src = '/nav.js';
+    s.async = false;
+    s.setAttribute('data-navjs', '1');
+    (document.head || document.body).appendChild(s);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', inject);
+  else inject();
+})();
