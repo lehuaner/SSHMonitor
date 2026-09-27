@@ -17,8 +17,6 @@
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { join, relative, sep, extname } from 'node:path';
 import { blake3 } from '@noble/hashes/blake3';
-import { installPublicDns } from './dnsfix.js';
-installPublicDns(); // 独立调用时也保证公共 DNS（幂等）
 
 const CF_API = 'https://api.cloudflare.com/client/v4';
 const SPECIAL = new Set(['_worker.js', '_headers', '_redirects', '_routes.json', 'functions-filepath-routing-config.json']);
