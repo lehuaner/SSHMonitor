@@ -743,7 +743,7 @@ async function stageFromRelease(tag, t) {
   const byName = {}; for (const a of (rel.assets || [])) byName[a.name] = a;
   for (const need of [ASSET_BUILD, ASSET_BACKEND]) if (!byName[need]) throw new Error(`Release ${tag} 缺少必需资产 ${need}`);
 
-  const build = JSON.parse((await ghFetchBuffer(byName[ASSET_BUILD].url, cfg)).toString('utf8'));
+  const build = JSON.parse((await ghFetchBuffer(byName[ASSET_BUILD].url, cfg, 'application/octet-stream')).toString('utf8'));
   const sha = String(build.commit || '');
   if (!sha) throw new Error('build.json 无 commit');
   st(`Release ${tag} → commit ${sha.slice(0, 7)}，backend ${build.backend?.files?.length || 0}、frontend ${build.frontend?.files?.length || 0} 文件`);
