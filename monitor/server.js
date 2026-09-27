@@ -16,11 +16,11 @@ import workbuddyProvider from './lib/providers/workbuddy.js';
 import codeartsProvider from './lib/providers/codearts.js';
 import autoclawProvider from './lib/providers/autoclaw.js';
 import officeaceProvider from './lib/providers/officeace.js';
-import { addTask, updateTask, deleteTask, runTaskNow, runAllNow, testCredential, getCredits, loadTasks, saveTasks, startAllTasks, checkStatusForTask, autoCheckToday, getTotalCreditsForTask, checkCreditExpiryNow } from './lib/tasks/index.js';
-// 积分过期提醒：批次预览（只读）+ 手动立即检查
-import { fetchCreditExpiryBatches } from './lib/checkin/credit-expiry.js';
+import { addTask, updateTask, deleteTask, runTaskNow, runAllNow, testCredential, getCredits, loadTasks, saveTasks, startAllTasks, checkStatusForTask, autoCheckToday, getTotalCreditsForTask } from './lib/tasks/index.js';
 import { getLogs } from './lib/checkin-log.js';
 import { recordSnapshot, updateUsageStats, getUsageStats, getUsageStatsWithEstimates, getTaskUsageDetail, startDailySnapshot, removeTaskStats } from './lib/checkin-stats.js';
+// ★每日日报：取代旧的「按账号、按到期批次逐封发」的积分过期提醒。调度仅在本（gateway）进程启动一次。
+import { startDailyReportScheduler, previewDailyReport, sendDailyReport } from './lib/daily-report.js';
 
 // ====== Init ======
 initRecorder();
@@ -40,6 +40,10 @@ setTimeout(() => { try { startAllTasks(); } catch (e) { console.error('start che
 // 签到积分每日零点快照：启动时先记录一次当前快照，之后每天零点记录
 setTimeout(() => { try { recordSnapshot(); } catch (e) { console.error('initial checkin snapshot:', e); } }, 8000);
 setTimeout(() => { try { startDailySnapshot(); } catch (e) { console.error('start checkin stats:', e); } }, 8000);
+
+// ★每日日报调度：只在 gateway 进程启动（依赖代理连通/设备指标 + 签到/积分，一站取全）。
+//   与 mod-checkin 无关（那边不启此调度），从根上避免旧「双进程各跑一份 → 成倍发信」。
+setTimeout(() => { try { startDailyReportScheduler(); } catch (e) { console.error('start daily report:', e); } }, 9000);
 
 // 全局未捕获异常处理
 process.on('uncaughtException', e => {
@@ -595,7 +599,7 @@ const server = createServer(async (q, r) => {
         let body = ''; await new Promise(res => { q.on('data', d => body += d); q.on('end', res); });
         const data = JSON.parse(body);
         const newCfg = { ...mailConfig };
-        for (const k of ['enabled', 'smtp_host', 'smtp_port', 'smtp_user', 'to', 'monitored_procs', 'proxy_check', 'device_alerts']) {
+        for (const k of ['enabled', 'smtp_host', 'smtp_port', 'smtp_user', 'to', 'monitored_procs', 'proxy_check', 'device_alerts', 'daily_report']) {
           if (data[k] !== undefined) newCfg[k] = data[k];
         }
         if (data.smtp_pass && data.smtp_pass !== '***') newCfg.smtp_pass = data.smtp_pass;
@@ -606,6 +610,26 @@ const server = createServer(async (q, r) => {
         send(200, JSON.stringify({ ok: true, msg: '配置已保存' }));
         return;
       }
+    }
+
+    // ====== 每日日报 API（统一入口：预览 / 立即发送） ======
+    if (q.url === '/api/daily-report/preview' && q.method === 'POST') {
+      try {
+        const r = await previewDailyReport();
+        send(200, JSON.stringify({ ok: true, subject: r.subject, body: r.body }));
+      } catch (e) {
+        send(200, JSON.stringify({ ok: false, error: e && e.message }));
+      }
+      return;
+    }
+    if (q.url === '/api/daily-report/send' && q.method === 'POST') {
+      try {
+        const r = await sendDailyReport();
+        send(200, JSON.stringify({ ok: r.ok, subject: r.subject, msg: r.ok ? '日报已发送' : '发送失败，请检查 SMTP 配置' }));
+      } catch (e) {
+        send(200, JSON.stringify({ ok: false, error: e && e.message }));
+      }
+      return;
     }
 
     // ====== Proxy Check API（供外部服务调用） ======

@@ -41,27 +41,11 @@ export const THRESHOLDS = [1, 2, 3, 5, 10].map((v) => [String(v), String(v) + ' 
 // Cookie/会话到期提前通知天数（下拉候选）
 export const EXPIRY_DAYS = [1, 2, 3, 5, 7, 14].map((v) => [String(v), String(v) + ' 天前']);
 
-// 积分到期提醒默认配置（credit-expiry.js readSettings 兜底用）
+// 积分到期提醒默认配置（credit-expiry.js readSettings 兜底用；
+// ★自 2026-09-27 起「按账号积分到期提醒」已由「每日日报」取代，本常量仅供旧数据兼容/内部计算兜底，
+//   不再暴露到任何账号表单。）
 export const CREDIT_EXPIRY_DEFAULTS = {
   creditExpiryNotifyTime: '09:00',   // 默认每天 09:00 检查
-  creditExpiryNotifyDays: 3,         // 默认提前 3 天通知（与 creditExpirySchema default 一致）
+  creditExpiryNotifyDays: 3,         // 默认提前 3 天通知
   creditExpiryMaxReminders: 3,       // 默认每个批次最多提醒 3 次
 };
-
-/**
- * CodeArts 权益（积分/赠送包）到期提醒的 schema 段。
- * 目前仅前端表单消费（server.js 未见读取方），键名沿用 cookieExpiryNotify 惯例。
- * @returns {Array<object>} configSchema 条目
- */
-export function creditExpirySchema() {
-  return [
-    {
-      key: 'creditExpiryNotify', label: '积分到期提醒', type: 'toggle', default: true,
-      hint: '权益包/积分临近到期时发邮件提醒。',
-    },
-    {
-      key: 'creditExpiryNotifyDays', label: '积分到期前何时通知', type: 'select', default: 3,
-      options: EXPIRY_DAYS.map(([v, l]) => ({ value: v, label: l })),
-    },
-  ];
-}

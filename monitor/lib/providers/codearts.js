@@ -19,7 +19,7 @@
 import { CodeArtsClient } from '../checkin/codearts.js';
 
 // 三个平台共用的表单常量与「积分过期提醒」配置片段
-import { TIMEZONES, TIMES, THRESHOLDS, EXPIRY_DAYS, creditExpirySchema } from './common.js';
+import { TIMEZONES, TIMES, THRESHOLDS, EXPIRY_DAYS } from './common.js';
 
 // 验证会话缓存：requestVerifyCode 与 submitVerifyCode 之间必须复用同一个客户端
 // （fp / pageToken / 登录流程上下文都在客户端内存里，换实例就失效）
@@ -134,7 +134,6 @@ export default {
     { key: 'cookieExpiryNotifyDays', label: '会话失效前何时通知', type: 'select', default: 1,
       options: EXPIRY_DAYS.map(([v, l]) => ({ value: v, label: l })) },
     { key: 'notifyOnSuccess', label: '成功也发通知', type: 'toggle', default: false },
-    ...creditExpirySchema(),
   ],
 
   /** 执行一次签到：探活 → has-claimed → claim → 用前后余额差算当日所得 */

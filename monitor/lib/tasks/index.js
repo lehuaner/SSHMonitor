@@ -9,8 +9,6 @@ import { loadJSON, saveJSON, DATA_DIR } from '../utils.js';
 import { sendMail } from '../notify.js';
 import { getProvider } from '../providers/index.js';
 import { startScheduler, nextTriggerMs } from '../checkin/scheduler.js';
-// ★积分过期提醒：调度器由本模块起停（它自己不反向 import 本文件，避免循环依赖）
-import { startCreditExpiryScheduler, runCreditExpiryCheck } from '../checkin/credit-expiry.js';
 import { appendLog } from '../checkin-log.js';
 
 const TASKS_FILE = DATA_DIR + '/checkin_tasks.json';
@@ -19,9 +17,9 @@ const TASKS_FILE = DATA_DIR + '/checkin_tasks.json';
 // 避免连续重试刷新窗口；手动「立即签到」仍可强制尝试。
 const THROTTLE_BACKOFF_MS = 20 * 60 * 1000;
 
-// taskId -> { checkin: handle, expiry: handle|null }
-// ★一个任务两套调度：签到（config.time）与积分过期提醒（config.creditExpiryNotifyTime），
-//   两者时间可不同，故各自独立排期；expiry 未启用时为 null。
+// taskId -> { checkin: handle }
+// ★一个任务一套调度：签到（config.time）。
+//   旧的「按账号积分到期提醒」调度已移除，改为 gateway 单进程的「每日日报」（lib/daily-report.js）。
 const timers = new Map();
 
 export function loadTasks() {
@@ -134,7 +132,7 @@ export async function executeTaskCheckin(task) {
   }
 }
 
-/** 启动单个任务的定时调度（签到 + 积分过期提醒两套） */
+/** 启动单个任务的定时调度（签到） */
 export function startTask(task) {
   stopTask(task.id);
   if (!task.enabled || task.credentialInvalid) return;
@@ -148,14 +146,7 @@ export function startTask(task) {
       saveTasks(getTasks().map((t) => (t.id === task.id ? task : t)));
     },
   });
-  // 积分过期提醒：未按账号时区到点触发；未启用时 startCreditExpiryScheduler 返回 null
-  let expiry = null;
-  try {
-    expiry = startCreditExpiryScheduler(task, { persist: persistTask });
-  } catch (e) {
-    console.error('start credit expiry scheduler:', e && e.message);
-  }
-  timers.set(task.id, { checkin, expiry });
+  timers.set(task.id, { checkin });
 }
 
 export function stopTask(taskId) {
@@ -166,18 +157,6 @@ export function stopTask(taskId) {
     }
     timers.delete(taskId);
   }
-}
-
-/**
- * 手动跑一次某账号的积分过期检查（供 API 调试/立即检查用），忽略「当天时刻未到」限制。
- * @returns {Promise<object>}
- */
-export async function checkCreditExpiryNow(id) {
-  const task = getTasks().find((t) => t.id === id);
-  if (!task) return { ok: false, error: '任务不存在' };
-  const res = await runCreditExpiryCheck(task, { persist: persistTask, ignoreTime: true });
-  persistTask(task);
-  return { ok: true, ...res };
 }
 
 /** 启动全部启用任务 */
@@ -217,8 +196,6 @@ export function addTask(input) {
     cookieExpiresAt: null,
     cookieProbedAt: 0,
     notifiedCookieExpiry: null,
-    // 积分过期提醒的已发记录：{ [到期自然日 'YYYY-MM-DD']: { count, lastDay, lastSentAt, amount } }
-    creditExpiryState: {},
   };
   tasks.push(task);
   saveTasks(tasks);
@@ -254,12 +231,6 @@ export function updateTask(id, patch) {
     delete task.config.token;
     task.tokenExpiredAt = null;
     task.credentialInvalid = false;
-  }
-  // 改了「提前几天 / 最多几次」→ 清空已发记录，让新设置从零开始计数。
-  // （否则旧批次的 count 已达上限，用户调大次数也不会立刻补发。）
-  if (patch.config
-    && (patch.config.creditExpiryNotifyDays !== undefined || patch.config.creditExpiryMaxReminders !== undefined)) {
-    task.creditExpiryState = {};
   }
   saveTasks(tasks);
   resyncTask(task);

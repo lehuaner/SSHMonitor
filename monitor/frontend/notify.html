@@ -234,6 +234,26 @@ textarea:focus,input:focus{border-color:#38bdf8}
 <div class=note style=margin-top:8px>每 10 分钟检测一次设备状态，低于阈值时发送告警邮件（同一告警冷却时间内不重复发送）。设为 0 可禁用对应项目。</div>
 </div>
 </div>
+<div class="card collapsible" id=dailyReportCard>
+<div class=card-h>
+<div class=card-h-left onclick=toggleCard('dailyReportCard')><label>每日日报</label><span class=card-toggle>&#9654;</span></div>
+<div class=card-h-right>
+<label class=toggle><input type=checkbox id=drEnabled><span class=slider></span></label>
+</div>
+</div>
+<div class=card-body>
+<div class=note style=margin-bottom:8px>取代旧的「按账号、逐条积分到期提醒」：每天固定时刻<strong>只发一封</strong>，汇总当天设备运行状况 — ①积分过期(分/总) ②代理连通(在线时长) ③签到(分/总) ④设备健康 ⑤积分消耗与预估可用天数 ⑥当日告警汇总。<span style=color:#64748b>凭证失效 / 代理全节点失效等高危事件仍会单独即时告警。</span></div>
+<div style=display:grid;grid-template-columns:1fr 1fr;gap:8px>
+<div><label style=font-size:.7rem;color:#94a3b8>发送时刻 (HH:mm，设备时区)</label><input id=drTime type=time value="23:30" style=width:100%></div>
+<div><label style=font-size:.7rem;color:#94a3b8>积分过期展望 (天)</label><input id=drLookahead type=number value=30 min=1 max=365 style=width:100%></div>
+</div>
+<div style=display:flex;gap:6px;flex-wrap:wrap;margin-top:12px>
+<button class="btn" id=drPreviewBtn onclick=previewDailyReport()>&#128065; 预览日报</button>
+<button class="btn btn-warn" id=drSendBtn onclick=sendDailyReportNow()>&#9993; 立即发送一封</button>
+</div>
+<pre id=drPreview style="display:none;margin-top:10px;background:#0b1120;border:1px solid #1e293b;border-radius:6px;padding:10px;font-size:.72rem;color:#cbd5e1;white-space:pre-wrap;word-break:break-all;max-height:420px;overflow:auto"></pre>
+</div>
+</div>
 </div>
 <div id=toast class=toast></div>
 <script>
@@ -352,6 +372,11 @@ function renderForm(c){
   $('cpuUsageHigh').value=da.cpu_usage_high??90;
   $('memUsageHigh').value=da.mem_usage_high??90;
   $('alertCooldown').value=da.cooldown??30;
+  // 每日日报
+  const dr=c.daily_report||{};
+  $('drEnabled').checked=dr.enabled!==false;
+  $('drTime').value=dr.time||'23:30';
+  $('drLookahead').value=dr.lookahead_days??30;
 }
 function editPass(){const f=$('smtp_pass');f.readOnly=false;f.value='';f.style.opacity='1';f.focus();$('passEditBtn').style.display='none';$('passClearBtn').style.display='inline-flex';}
 function clearPass(){const f=$('smtp_pass');f.value='';f.readOnly=false;f.style.opacity='1';$('passEditBtn').style.display='none';$('passClearBtn').style.display='none';}
@@ -469,6 +494,12 @@ function collectConfig(){
       cpu_usage_high:parseInt($('cpuUsageHigh').value)||0,
       mem_usage_high:parseInt($('memUsageHigh').value)||0,
       cooldown:parseInt($('alertCooldown').value)||30,
+    },
+    daily_report:{
+      enabled:$('drEnabled').checked,
+      time:$('drTime').value||'23:30',
+      timezone:(currentConfig.daily_report&&currentConfig.daily_report.timezone)||'Asia/Shanghai',
+      lookahead_days:parseInt($('drLookahead').value)||30,
     }
   };
 }
@@ -506,6 +537,29 @@ async function sendTest(){
   }catch(e){show('网络错误: '+e.message);setStatus('网络错误: '+e.message,'err')}
   $('testBtn').disabled=false;
   $('testBtn').innerHTML=oldHtml;
+}
+async function previewDailyReport(){
+  const box=$('drPreview');const btn=$('drPreviewBtn');
+  btn.disabled=true;const old=btn.innerHTML;btn.innerHTML='<span class=loading></span> 生成中';
+  box.style.display='block';box.textContent='正在汇总当日数据（含逐账号拉取积分/权益，可能十余秒）...';
+  try{
+    const r=await fetch('/api/daily-report/preview',{method:'POST'});
+    const d=await r.json();
+    if(d.ok){box.textContent=d.body;setStatus('日报预览已生成','ok');}
+    else{box.textContent='生成失败: '+(d.error||'未知错误');setStatus(d.error||'生成失败','err');}
+  }catch(e){box.textContent='网络错误: '+e.message;setStatus('网络错误: '+e.message,'err')}
+  btn.disabled=false;btn.innerHTML=old;
+}
+async function sendDailyReportNow(){
+  if(!confirm('确定立即发送一封日报邮件？（需已保存 SMTP 配置）'))return;
+  const btn=$('drSendBtn');btn.disabled=true;const old=btn.innerHTML;btn.innerHTML='<span class=loading></span> 发送中';
+  try{
+    const r=await fetch('/api/daily-report/send',{method:'POST'});
+    const d=await r.json();
+    if(d.ok){show(d.msg||'日报已发送');setStatus(d.subject||'日报已发送','ok');}
+    else{show(d.error||d.msg||'发送失败');setStatus(d.error||d.msg||'发送失败','err');}
+  }catch(e){show('网络错误: '+e.message);setStatus('网络错误: '+e.message,'err')}
+  btn.disabled=false;btn.innerHTML=old;
 }
 async function testDeviceAlerts(){
   const cfg=collectConfig();
