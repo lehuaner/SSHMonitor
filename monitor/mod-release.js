@@ -22,6 +22,10 @@ import { join, dirname, normalize, resolve } from 'node:path';
 import { createHash } from 'node:crypto';
 import { createModuleServer, readBody } from './lib/module.js';
 import { readPageDeployConfig, publishPages, waitPagesDeploy, rollbackPages } from './lib/pages-deploy.js';
+import { installPublicDns } from './lib/dnsfix.js';
+
+// Termux 守护进程 DNS 兼底：runit 子进程系统解析常 ENOTFOUND，安装公共 DNS（需在任何 fetch 前）
+installPublicDns();
 
 const HOME = process.env.MONITOR_HOME || '/data/data/com.termux/files/home';
 const MONITOR_DIR = join(HOME, 'monitor');
@@ -117,7 +121,7 @@ async function ghFetch(pathname, cfg) {
     'x-github-api-version': '2022-11-28',
   };
   if (cfg.token) headers.authorization = `Bearer ${cfg.token}`;
-  const r = await fetch(`https://api.github.com${pathname}`, { headers, signal: AbortSignal.timeout(20000) });
+  const r = await fetchWithRetry(`https://api.github.com${pathname}`, { headers, timeoutMs: 20000 });
   const text = await r.text();
   let data = null;
   try { data = JSON.parse(text); } catch { /* 非 JSON（如代理劫持页） */ }
@@ -491,6 +495,21 @@ function readJson(path, def) {
   try { return JSON.parse(readFileSync(path, 'utf8')); } catch { return def; }
 }
 
+/** 带指数退避的 fetch 重试：设备上行链路偶发掉连（fetch failed / 超时），重试可稳。 */
+async function fetchWithRetry(url, { timeoutMs = 30000, ...rest } = {}, tries = 4) {
+  let last;
+  for (let i = 0; i < tries; i++) {
+    try {
+      return await fetch(url, { ...rest, signal: AbortSignal.timeout(timeoutMs) });
+    } catch (e) {
+      last = e;
+      if (i < tries - 1) await new Promise((r) => setTimeout(r, 800 * (2 ** i) + Math.floor(Math.random() * 400)));
+    }
+  }
+  const c = last && last.cause;
+  throw new Error(`fetch failed: ${last && last.message}${c ? ` [cause=${c.code || c.message || c.errno || c.syscall || JSON.stringify(c).slice(0, 120)}]` : ''}`);
+}
+
 /** 归一化并校验路径必须落在 base 内（防路径穿越） */
 function safeJoin(base, rel) {
   const p = resolve(base, rel);
@@ -701,7 +720,7 @@ function frontendRepoPaths() {
 async function ghFetchBuffer(pathname, cfg, accept) {
   const headers = { 'user-agent': 'honor10-monitor', authorization: `Bearer ${cfg.token}` };
   headers.accept = accept || 'application/vnd.github+json';
-  const r = await fetch(`https://api.github.com${pathname}`, { headers, signal: AbortSignal.timeout(90000), redirect: 'follow' });
+  const r = await fetchWithRetry(`https://api.github.com${pathname}`, { headers, timeoutMs: 90000, redirect: 'follow' }, 4);
   if (!r.ok) throw new Error(`${pathname.split('?')[0]} → HTTP ${r.status}`);
   return Buffer.from(await r.arrayBuffer());
 }
