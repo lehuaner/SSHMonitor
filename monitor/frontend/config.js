@@ -1,3 +1,29 @@
+/* ====== SPA 生命周期：按「代(gen)」登记 setTimeout/setInterval 与事件监听，切页时清理上一页 ======
+ * 必须在任何页面脚本之前安装（config.js 位于每个页面顶部，天然先执行）。 */
+window.__spaLifecycle = (function () {
+  var gen = 1, active = true;
+  var timers = [], listeners = [];
+  var rawST = window.setTimeout, rawCT = window.clearTimeout;
+  var rawSI = window.setInterval, rawCI = window.clearInterval;
+  var ET = (typeof EventTarget !== 'undefined' && EventTarget.prototype) ? EventTarget.prototype : (window.Node && window.Node.prototype);
+  var rawAEL = ET && ET.addEventListener, rawREL = ET && ET.removeEventListener;
+  window.setTimeout = function () { var id = rawST.apply(window, arguments); if (active) timers.push({ gen: gen, id: id, kind: 't' }); return id; };
+  window.setInterval = function () { var id = rawSI.apply(window, arguments); if (active) timers.push({ gen: gen, id: id, kind: 'i' }); return id; };
+  if (rawAEL) {
+    ET.addEventListener = function (type, fn, opts) { if (active && fn) listeners.push({ gen: gen, t: this, type: type, fn: fn, opts: opts }); return rawAEL.call(this, type, fn, opts); };
+    ET.removeEventListener = function (type, fn, opts) { if (fn) { for (var i = listeners.length - 1; i >= 0; i--) { var L = listeners[i]; if (L.t === this && L.type === type && L.fn === fn) { listeners.splice(i, 1); break; } } } return rawREL.call(this, type, fn, opts); };
+  }
+  function clearGen(g) {
+    for (var i = timers.length - 1; i >= 0; i--) { var T = timers[i]; if (T.gen === g) { try { (T.kind === 'i' ? rawCI : rawCT).call(window, T.id); } catch (e) {} timers.splice(i, 1); } }
+    for (var j = listeners.length - 1; j >= 0; j--) { var L = listeners[j]; if (L.gen === g) { try { rawREL.call(L.t, L.type, L.fn, L.opts); } catch (e) {} listeners.splice(j, 1); } }
+  }
+  return {
+    beginGeneration: function () { gen++; },
+    endGeneration: function () { clearGen(gen); },
+    raw: function (fn) { var p = active; active = false; try { return fn(); } finally { active = p; } }
+  };
+})();
+
 // ====== API Base URL ======
 // 本地开发: 留空（同源）
 // Cloudflare Pages: 替换为你的后端地址
@@ -20,15 +46,15 @@ window.API_BASE = '';
   };
 })();
 
-// ====== 全站统一导航注入：加载 nav.js（单一数据源，消除各页硬编码导航漂移） ======
-// config.js 已在所有 *.html 引入，故在此单点挂载；nav.js 按当前路径渲染并高亮 .nav。
+// ====== 全站统一导航 + 局部刷新路由：加载 router.js（内含导航渲染 + 抓取换内容 + 按代清理） ======
+// config.js 已在所有 *.html 顶部引入，故在此单点挂载。router.js 内部会渲染/高亮 .nav 并拦截同源的导航。
 (function () {
   function inject() {
-    if (document.querySelector('script[data-navjs]')) return;
+    if (document.querySelector('script[data-routerjs]')) return;
     var s = document.createElement('script');
-    s.src = '/nav.js';
+    s.src = '/router.js';
     s.async = false;
-    s.setAttribute('data-navjs', '1');
+    s.setAttribute('data-routerjs', '1');
     (document.head || document.body).appendChild(s);
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', inject);

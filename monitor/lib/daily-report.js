@@ -86,6 +86,34 @@ function beijingDayKey(ts, tz) {
   return tzDayKey(ts, tz || DEFAULT_TZ);
 }
 
+/** 指定时区的 HH:mm（区间展示用） */
+function fmtClock(ts, tz = DEFAULT_TZ) {
+  try {
+    return new Intl.DateTimeFormat('zh-CN', {
+      timeZone: tz, hour: '2-digit', minute: '2-digit', hour12: false,
+    }).format(new Date(ts));
+  } catch {
+    return '';
+  }
+}
+
+/**
+ * 把按时序排列的 [{t, ok}] 状态采样聚合成连续区间。
+ * 相邻同状态合并；每段结束时刻取下一段开始时刻，最后一段结束到 now。
+ * @returns {{ok:boolean,startT:number,endT:number,count:number}[]}
+ */
+function buildStateIntervals(samples, now) {
+  const runs = [];
+  for (const s of samples) {
+    const last = runs[runs.length - 1];
+    if (last && last.ok === s.ok) { last.endT = s.t; last.count++; }
+    else runs.push({ ok: s.ok, startT: s.t, endT: s.t, count: 1 });
+  }
+  for (let i = 0; i < runs.length - 1; i++) runs[i].endT = runs[i + 1].startT;
+  if (runs.length) runs[runs.length - 1].endT = now;
+  return runs;
+}
+
 // ==================================================================
 // 各数据块（每块返回若干文本行；异常由调用方 try/catch 兜底）
 // ==================================================================
@@ -187,6 +215,28 @@ async function sectionProxy(cfg, now) {
   }
   if (pc.candidate_nodes) lines.push(`候选节点：${pc.candidate_nodes.length} 个`);
   if (switches > 0) lines.push(`今日故障切换（含全失效）事件：${switches} 次`);
+  // 连通区间：按每周期 __done__ 的整体连通态（ok=allOk，与告警口径一致）聚合
+  const doneSamples = [];
+  for (const line of raw) {
+    let e; try { e = JSON.parse(line); } catch { continue; }
+    if (!e || e.node !== '__done__' || typeof e.ok !== 'boolean' || !e.timestamp) continue;
+    const t = Date.parse(e.timestamp);
+    if (Number.isNaN(t)) continue;
+    if (beijingDayKey(t, cfg.timezone) !== todayKey) continue;
+    doneSamples.push({ t, ok: e.ok });
+  }
+  doneSamples.sort((a, b) => a.t - b.t);
+  if (doneSamples.length) {
+    const runs = buildStateIntervals(doneSamples, now);
+    const downMs = runs.filter((r) => !r.ok).reduce((s, r) => s + Math.max(0, r.endT - r.startT), 0);
+    lines.push('连通时间区间（每轮检测整体连通态）：');
+    const show = runs.slice(-14); // 只展示最近 14 段，避免刷屏
+    if (runs.length > show.length) lines.push(`  （今日共 ${runs.length} 段，以下仅列最近 ${show.length} 段）`);
+    for (const r of show) {
+      lines.push(`  ${r.ok ? '✓ 连通' : '✗ 异常'} ${fmtClock(r.startT, cfg.timezone)}–${fmtClock(r.endT, cfg.timezone)}（${fmtDuration(r.endT - r.startT)}）`);
+    }
+    if (downMs > 0) lines.push(`今日累计异常时长：${fmtDuration(downMs)}`);
+  }
   return lines;
 }
 

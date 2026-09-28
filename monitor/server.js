@@ -59,13 +59,11 @@ registerProvider(workbuddyProvider);
 registerProvider(codeartsProvider);
 registerProvider(autoclawProvider);
 registerProvider(officeaceProvider);
-setTimeout(() => { try { startAllTasks(); } catch (e) { console.error('start checkin tasks:', e); } }, 5000);
-// ★凭证到期巡检只在 mod-checkin 进程跑（本进程曾重复注册，双 watcher 各自全量写
-//   checkin_tasks.json 互相覆盖，且 gateway 长驻不重启时用旧 lib 误报「凭证已失效」邮件 2026-09-21）
-
-// 签到积分每日零点快照：启动时先记录一次当前快照，之后每天零点记录
-setTimeout(() => { try { recordSnapshot(); } catch (e) { console.error('initial checkin snapshot:', e); } }, 8000);
-setTimeout(() => { try { startDailySnapshot(); } catch (e) { console.error('start checkin stats:', e); } }, 8000);
+// ★签到定时调度 / 每日零点快照 / 凭证到期巡检 均只在 mod-checkin 进程启动。
+//   过去本进程（gateway）也调用 startAllTasks()+recordSnapshot()+startDailySnapshot()，
+//   导致同一签到任务被两进程并发执行（CodeArts 天天“先失败再恢复”、重复告警、双写
+//   checkin_tasks.json）。gateway 仅保留反代与手动触发（手动 run-now 按需执行、不定时）。
+//   如需在 gateway 直接手动签到，走 /api/checkin/run-now 代理到 :3083，不在此启动调度器。
 
 // ★每日日报调度：只在 gateway 进程启动（依赖代理连通/设备指标 + 签到/积分，一站取全）。
 //   与 mod-checkin 无关（那边不启此调度），从根上避免旧「双进程各跑一份 → 成倍发信」。

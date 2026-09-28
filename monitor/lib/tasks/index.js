@@ -17,6 +17,13 @@ const TASKS_FILE = DATA_DIR + '/checkin_tasks.json';
 // 避免连续重试刷新窗口；手动「立即签到」仍可强制尝试。
 const THROTTLE_BACKOFF_MS = 20 * 60 * 1000;
 
+// transient（非凭证、非限流）失败的短时退避重试：先重试几次，
+// 只有重试仍失败才升级为“今日签到失败”告警（消除瞬时抖动导致的“先失败再恢复”）。
+const MAX_TRANSIENT_RETRY = 2;
+const TRANSIENT_RETRY_DELAY_MS = 5 * 60 * 1000;
+// taskId -> retry setTimeout handle（防叠加）
+const retryTimers = new Map();
+
 // taskId -> { checkin: handle }
 // ★一个任务一套调度：签到（config.time）。
 //   旧的「按账号积分到期提醒」调度已移除，改为 gateway 单进程的「每日日报」（lib/daily-report.js）。
@@ -62,6 +69,20 @@ function isPastTodayTime(timeStr, timezone) {
   }
 }
 
+/** transient 失败后安排一次性重试（同任务只保留最新一个定时器） */
+function scheduleTransientRetry(task) {
+  if (retryTimers.has(task.id)) clearTimeout(retryTimers.get(task.id));
+  const to = setTimeout(async () => {
+    retryTimers.delete(task.id);
+    try {
+      await executeTaskCheckin(task);
+      saveTasks(getTasks().map((t) => (t.id === task.id ? task : t)));
+    } catch { /* 重试内部已自行处理失败 */ }
+  }, TRANSIENT_RETRY_DELAY_MS);
+  if (to.unref) to.unref();
+  retryTimers.set(task.id, to);
+}
+
 /** 执行一次签到 + 日志 + 通知（供定时与手动共用） */
 export async function executeTaskCheckin(task) {
   const provider = getProvider(task.providerId);
@@ -72,12 +93,15 @@ export async function executeTaskCheckin(task) {
 
   try {
     const res = await provider.checkin(task);
-    const wasFailing = task.failCount > 0 || task.credentialInvalid;
+    // 仅当此前确实告过警（凭证无效/连续阈值/今日失败）才发“恢复”，
+    // 避免被抑制的瞬时重试失败触发多余的 [恢复] 邮件。
+    const wasFailing = !!task.notifiedInvalid || !!task.notifiedThreshold || task.notifiedTodayFail === todayStr();
     task.failCount = 0;
     task.credentialInvalid = false;
     task.notifiedInvalid = false;
     task.notifiedThreshold = false;
     task.notifiedTodayFail = null;
+    task.transientRetries = 0;
     task.lastResult = 'success';
     task.lastError = null;
     task.credits = res.credits;
@@ -110,6 +134,7 @@ export async function executeTaskCheckin(task) {
 
     if (invalid) {
       task.credentialInvalid = true;
+      task.transientRetries = 0;
       appendLog({ taskId: task.id, providerId: task.providerId, status: 'invalid', error: err.message });
       if (!task.notifiedInvalid) {
         task.notifiedInvalid = true;
@@ -117,13 +142,24 @@ export async function executeTaskCheckin(task) {
       }
     } else {
       appendLog({ taskId: task.id, providerId: task.providerId, status: 'fail', error: err.message });
+      // transient / 未知失败：先退避重试，未耗尽重试预算前不发“今日签到失败”
+      const retries = task.transientRetries || 0;
+      if (retries < MAX_TRANSIENT_RETRY) {
+        task.transientRetries = retries + 1;
+        saveTasks(getTasks().map((t) => (t.id === task.id ? task : t)));
+        scheduleTransientRetry(task);
+        return { ok: false, error: err.message, kind: err.kind || 'transient', retrying: true, attempt: task.transientRetries };
+      }
+      // 重试仍失败 → 走原有“今日签到失败 / 连续阈值”告警
       const threshold = Number(task.config.failThreshold) || 3;
       const today = todayStr();
       if (isPastTodayTime(task.config.time, task.config.timezone) && task.notifiedTodayFail !== today) {
         task.notifiedTodayFail = today;
-        await sendMail(`[告警] ${task.name} 今日签到失败`, `账号 ${task.name} 今日签到失败，今天可能无法再补签。\n原因: ${err.message}`);
+        task.transientRetries = 0;
+        await sendMail(`[告警] ${task.name} 今日签到失败`, `账号 ${task.name} 今日签到失败（已重试 ${MAX_TRANSIENT_RETRY} 次仍未成功），今天可能无法再补签。\n原因: ${err.message}`);
       } else if (task.failCount >= threshold && !task.notifiedThreshold) {
         task.notifiedThreshold = true;
+        task.transientRetries = 0;
         await sendMail(`[告警] ${task.name} 签到失败（连续 ${task.failCount} 次）`, `账号 ${task.name} 连续 ${task.failCount} 次签到失败。\n原因: ${err.message}`);
       }
     }
@@ -408,6 +444,8 @@ async function checkCookieExpiryOnce() {
   for (const task of getTasks()) {
     if (!task.enabled || !task.config) continue;
     if (task.config.cookieExpiryNotify === false) continue;
+    // 已判凭证失效：签到已暂停，不再探测、不再每日重发「凭证已失效」邮件（改由日报③展示）
+    if (task.credentialInvalid) continue;
     const provider = getProvider(task.providerId);
     if (!provider || typeof provider.probeSession !== 'function') continue;
     // 该 provider 有哪些「可探活凭证」配置键（见 providerCredKeys）
@@ -423,15 +461,18 @@ async function checkCookieExpiryOnce() {
           //   避免之前误判写入的 cookieExpiresAt 残留 → 每天重复发"凭证已失效"邮件
           task.cookieExpiresAt = r.expiresAt || null;
         } else {
-          // 凭证无效：视为立即到期（当天就会走通知分支）
+          // 凭证已确认失效：视为立即到期（当天走一封通知）并暂停后续签到，不再每日重试
           task.cookieExpiresAt = Date.now();
+          task.credentialInvalid = true;
+          task.failCount = task.failCount || 0;
         }
         task.cookieProbedAt = Date.now();
         persistTask(task);
       } catch (err) {
         if (err.kind === 'invalid') {
-          // 凭证已被服务端拒绝：视为已到期（当天就会走通知分支）
+          // 凭证已被服务端拒绝：视为已到期并暂停签到（当天走一封通知）
           task.cookieExpiresAt = Date.now();
+          task.credentialInvalid = true;
           task.cookieProbedAt = Date.now();
           persistTask(task);
         }
