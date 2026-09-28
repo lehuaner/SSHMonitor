@@ -5,8 +5,8 @@
 ```
 Honor 10/
 ├── update-modules.ps1      # 新机首次 provisioning（建 runit 服务 + 基线上传，仅初始化）
-                            # 后端发布：见 docs/features/f101 —— 设备 apply 时自 GitHub 拉取；前端走 .github/workflows/deploy-frontend.yml
-├── cloudflaretoken         # Cloudflare API Token 凭证（仅运维如清缓存用；前端 CI 令牌存 GitHub Secrets）
+│                           # 发布：tag 触发 .github/workflows/release.yml 打包 GitHub Release 产物（GitHub 只发版、不部署）；设备端 apply 自拉产物部署；前端由设备端 apply 后置钩子纯 REST 直传 Cloudflare Pages（monitor/lib/pages-deploy.js）。详见 docs/features/f101-tag发布部署流程.md
+├── cloudflaretoken         # （历史遗留）运维令牌；前端 Pages 发布令牌已改存设备 ~/.monitor_data/frontend_deploy.json，不再放本地/GitHub Secrets
 ├── monitor/
 │   ├── server.js           # 后端主服务（Node.js HTTP 服务，端口 3081）
 │   ├── package.json
@@ -87,35 +87,36 @@ type $env:USERPROFILE\.ssh\id_ed25519.pub | ssh -p 8022 u0_a145@192.168.0.107 "m
 ssh -p 8022 u0_a145@192.168.0.107 "echo OK"
 ```
 
-### 4. Cloudflare API Token
+### 4. Cloudflare 令牌（Pages 发布，设备端持有）
 
-前端发布所需的 Cloudflare 令牌为最小权限 `Cloudflare Pages:Edit`，由 GitHub 仓库 Secrets 保管（`CLOUDFLARE_API_TOKEN`），不再放本地/脚本。CDN 清除缓存等运维操作（下方）另需具备 `Zone: Purge Cache` 权限的令牌。
+前端发布**不再走 GitHub Actions / GitHub Secrets**。设备端 `mod-release` 通过 `lib/pages-deploy.js` 用 **纯 REST 直传 Cloudflare Pages**。所需令牌为最小权限 **`Cloudflare Pages:Edit`**（连 Account ID、项目名、production branch 一起配），存于设备 `~/.monitor_data/frontend_deploy.json`（权限 600，含 token 明文，属运行时凭据，不外泄/不入库）。首次配置：设备端 `cd ~/monitor && node setup-deploy.js` 交互式选择「本机 / Cloudflare Pages」并写入。CDN 清缓存等运维（下方）另需具备 `Zone: Purge Cache` 权限的令牌。
 
-## 部署方式（已去 PC↔SSH）
+## 部署架构（v1.0.15+：GitHub 只发版、设备自拉自部署、前端设备直传 Pages）
 
-- **后端（手机 monitor）**：`git commit → git tag → git push` 后，在手机「发布」面板点「应用 / 拉取并应用」（`POST /api/release/apply {tag}`）。手机若本地无该版本档案，会**自动按 manifest 从 GitHub 拉取**文件、`node --check` 门禁后复制重启（方案A）。详见 `docs/features/f101-tag发布部署流程.md`。
-- **前端（Cloudflare Pages）**：改 `monitor/frontend/**` 合 `main` → GitHub Actions 自动发（`.github/workflows/deploy-frontend.yml`）。
-- **新机首次初始化**：`.\update-modules.ps1`（创建 runit 服务 + 上传基线，仅此一次）。
+GitHub Actions 仅负责**打包发布产物**，不做任何部署；部署全部由手机设备端 `mod-release` 完成：
 
-## 部署流程详解
+- **发布（PC/Windows）**：改代码 → `git commit` → `git tag -a vX.Y.Z` → `git push origin main --tags`。
+  推 tag 触发 `.github/workflows/release.yml`：`tools/build-release.cjs` 按 `release-manifest.json` 做 `node --check` 门禁 + 文件存在性校验，打包 `honor10-backend.tar.gz` / `honor10-frontend.tar.gz` / `honor10-build.json`（逐文件 sha256）/ `honor10-manifest.json`，`gh release create` 挂到该 tag 的 GitHub Release。
+- **应用（设备，一键）**：面板「发布」页「拉取并应用」或 `POST /api/release/apply {tag}`。`mod-release.stageFromRelease(tag)` 从该 Release **下载产物 → 逐文件 sha256 校验 → 解包到 `~/releases/<tag>/files/`**（不再逐文件走 Contents API、无回退），`node --check` 门禁后按 manifest 复制到 `~/monitor/`、按 `applyOrder` `sv restart` 服务并 `/healthz` 验证、写 `deployed-version.json` 记账。详见 `docs/features/f101-tag发布部署流程.md`。
+- **前端（设备直传 Cloudflare Pages）**：apply 成功后，若本次含前端改动（`meta.frontendChanged`），`deployFrontend` 钩子按 `frontend_deploy.json.mode` 处理——`pages` → `lib/pages-deploy.js` 纯 REST 直传 CF（blake3 哈希 + upload-token + check-missing/assets/upload + 建 deployment + 轮询就绪）；`local` → 复制到 `~/monitor/frontend`。**发布失败** → 回滚到上一 good deployment + 落库 `~/.monitor_data/pages_deploy_last.json` + 邮件告警。前后端版本不一致由前端顶部版本条（`config.js` 读 `/api/release/version-status`）提示。
+- **新机首次初始化**：`.\update-modules.ps1`（建 runit 服务 + 上传基线，仅此一次）+ `node setup-deploy.js`（选前端部署位置）+ `npm i @noble/hashes`（blake3 依赖；产物只含源码，不含 node_modules）。
 
-### 前端部署（Cloudflare Pages）
+## 部署流程详解（一次发版）
 
-已迁移到 GitHub Actions，本地不再手发：
+1. 本地改代码，`node --check` 通过；若新增/移动发布文件，**同步登记 `monitor/release-manifest.json`**（manifest 是发布/回滚唯一依据；引用到仓库不存在的文件会让 CI 存在性校验失败）。
+2. `git add <相关文件>` → `git commit` → `git tag -a vX.Y.Z -m "..."` → `git push origin main --tags`。
+3. 等 `.github/workflows/release.yml` 成功（约 30–60s）：`GET /repos/{repo}/releases/tags/vX.Y.Z` 能看到 4 个资产即就绪。
+4. 设备 apply：`POST /api/release/apply {tag}`（或面板按钮）。含 `release` 模块变更时，mod-release 会自重启中断该内存任务 → 见下方「关键坑」拆模块/手工补记账。
+5. 验证：`GET /api/release/version-status` → `backend==<tag>`；若含前端，`pages==<tag>`、`mismatch:false`；三进程 `sv status server mon-checkin mon-release` 均 `run`；生产域 `https://honor10-monitor.pages.dev` 返回 200。
 
-1. 推送到 `main` 且改动命中 `monitor/frontend/**` → workflow 自动触发
-2. CI 内 `npx wrangler pages deploy`（凭据取自仓库 Secrets `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID`）
-3. 发布到 `honor10-monitor` 的 production，可经 `https://honor10.lehuan.vip` 访问
+## 关键坑（v1.0.15–v1.0.20 实战）
 
-### 后端部署（Termux Node.js）
-
-由 `mod-release` 在设备上执行（无 PC scp）：
-
-1. 解析 tag → commit sha，读 `release-manifest.json` 的设备侧文件清单
-2. 逐个文件从 GitHub Contents API 下载到 `~/releases/<tag>/files/`
-3. 对每个 `.js` 跑 `node --check` 门禁（失败即中止，不触碰运行中代码）
-4. 按 manifest 复制到 `~/monitor/` 运行位置 → `sv restart` 对应 runit 服务 → `/healthz` 验证
-5. 写 `deployed-version.json` 记账 + 审计；失败自动回滚本次复制
+- **设备自拉必是「完整资产 URL + Accept: application/octet-stream」**：GitHub Release 资产的 `.url` 已是 `https://api.github.com/...`，`ghFetchBuffer` 不能再见它拼一次 `https://api.github.com` base（否则主机变 `api.github.comhttps` → `fetch failed ENOTFOUND`）；且下载资产必须带 `Accept: application/octet-stream`（默认 json 只会拿到**元数据 JSON**、`build.commit` 为空）。v1.0.20 已修。
+- **不要给守护进程注入 `globalThis.fetch = undici`**：Termux 上 runit 守护进程**联网/DNS 本来正常**（会话 40/40、runit 子进程 5/5、自举 upstream 检查成功皆可证）。此前“守护进程没网/需 dnsfix”实为 URL bug + `globalThis.fetch` 覆盖在长驻进程破坏 fetch 造成的假 ENOTFOUND。排查 Node `fetch failed ENOTFOUND` 先打印**实际 URL/hostname**，别直奔 DNS/网络。
+- **manifest 只能引用真实存在的文件**；改 manifest 后**先 `sv restart mon-release` 再 apply**（进程启动时一次性读入清单，否则新增文件静默漏部署）。
+- **apply 含 release 模块会自重启丢任务**：拆 `modules:["gateway","checkin"]` 再单独 `["release"]`；或会话内部署后手工补 `deployed-version.json` 记账（审计行用 `ts` 不用 `at`）。
+- **后端版本 bump 但无前端改动**时 `version-status` 会显 `mismatch:true`（仅标签差）：按 v1.0.20 做法会话重发一次 Pages 对齐标签即消除，或等下一个含前端的版本。
+- 私有仓库：设备自拉/上游检测用 `~/.monitor_data/release_config.json.upstream.token`（fine-grained PAT `Contents: Read-only`）。
 
 ## 自动重启机制
 

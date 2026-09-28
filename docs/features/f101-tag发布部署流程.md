@@ -10,6 +10,12 @@ created: 2026-09-19
 
 > Status: implemented (v1.0.5，上游版本检测已上线；202 异步 apply；manifest 变更需重启 mon-release 已确认) · Owner: Honor
 
+> **⚠️ 架构演进（v1.0.15+，必读）**：本文档以下部分章节描述的是 **v1.0.9 旧模型**，已被取代：
+> 1. **staging 不再走 Contents API 逐文件**（`stageFromGithub`）——现为 **`stageFromRelease`**：`release.yml` 把核心文件打包成 GitHub Release 产物（`honor10-backend/frontend.tar.gz` + `honor10-build.json` 逐文件 sha256），设备端从 Release 下载产物校验后解包。**GitHub 只发版、不部署**。
+> 2. **前端不再走 GitHub Actions / wrangler**（`deploy-frontend.yml` 已删）——现为**设备端 `apply` 后置钩子 `deployFrontend` 纯 REST 直传 Cloudflare Pages**（`monitor/lib/pages-deploy.js`，blake3），按 `frontend_deploy.json.mode` 在 pages/local 间切换。
+>
+> **当前权威部署流程以 `DEPLOYMENT.md`（“部署架构/流程详解/关键坑”）为准。** 本文保留作历史演进参考（v1.0.9–v1.0.11 的机制、踩坑与发布记录仍有效）。
+
 ## Why
 
 monitor 部署在手机 Termux，此前用 scp 手工拷文件 + 全量重启：任何小改动都要重启整个服务，签到/监控互相牵连，也没有版本记录和回滚手段。P1 已拆出 gateway + mod-checkin + mod-release 三进程；本文固化 P2 的标准发布流程，作为日常发版与故障恢复的唯一参考。
@@ -24,7 +30,7 @@ monitor 部署在手机 Termux，此前用 scp 手工拷文件 + 全量重启：
          → 失败时：面板点「回滚上一版本」（或 POST /api/release/rollback）
 ```
 
-前端（CF Pages）已改由 **GitHub Actions** 自动发布（`.github/workflows/deploy-frontend.yml`：改 `monitor/frontend/**` 合 `main` 即触发，也可手动 dispatch）；`deploy.ps1` 已不再负责前端。
+前端（CF Pages）旧由 **GitHub Actions** 自动发布（`deploy-frontend.yml`）；**已于 v1.0.15 删除**，现由设备端 `apply` 后置钩子 `deployFrontend` 直传 Pages（见 DEPLOYMENT.md）。
 
 ## 阶段零：上游版本检测（v1.0.5 起，手机端自主）
 
@@ -67,7 +73,7 @@ monitor 部署在手机 Termux，此前用 scp 手工拷文件 + 全量重启：
 保守按全部模块。否则像“只发 release 模块”的 v1.0.5（gateway/checkin 记账仍是 v1.0.4）会被永远
 报成“可应用 + 落后 1 个”，红点长亮不灭。比 `base`（各模块最低 tag）更老的一律归为旧版本。
 
-## 阶段一：staging（v1.0.9 起：设备端自 GitHub 拉取，无 PC↔SSH）
+## 阶段一：staging（旧 v1.0.9 模型：Contents API 逐文件；**已被 v1.0.15 的 `stageFromRelease` 产物拉取取代**）
 
 apply 时手机侧 `mod-release.stageFromGithub(tag)` 自动完成（也可 `POST /api/release/stage {tag}` 只拉不装）：
 
@@ -182,6 +188,8 @@ apply 时手机侧 `mod-release.stageFromGithub(tag)` 自动完成（也可 `POS
 
 | tag | 日期 | 主要内容 | 受影响模块 | 结果 |
 |---|---|---|---|---|
+| v1.0.20 | 2026-09-27 | **修“守护进程 ENOTFOUND”真因**：`ghFetchBuffer` 遇完整资产 URL 不再拼 base + 下载带 `Accept: application/octet-stream`；移除 `lib/dnsfix.js` 的 `globalThis.fetch=undici` 覆盖（长驻进程下反而破坏 fetch），改回内置 fetch。证实守护进程网络/DNS 一直正常（非“没网”） | gateway, checkin, release | daemon `stage v1.0.20` 自拉产物成功、`apply` gateway+checkin 重启健康、Pages 可发；`version-status` backend==pages==v1.0.20、mismatch:false |
+| v1.0.15–v1.0.19 | 2026-09-27 | **发布架构重构**：Actions 改为只打包 GitHub Release 产物（`release.yml`+`tools/build-release.cjs`），设备端 `stageFromRelease` 产物拉取（无回退）取代 Contents API 逐文件；前端从 GitHub Actions/`deploy-frontend.yml`+wrangler **迁到设备端 `deployFrontend` 钩子纯 REST 直传 Pages**（`lib/pages-deploy.js`，blake3）；首次运行 CLI `setup-deploy.js` 选本机/Pages；前后端版本不一致前端顶条提示。v1.0.18 因本设备会话上下文部署（当时未定位到 URL bug） | gateway, checkin, release, frontend | v1.0.18 会话部署落地；v1.0.19 含 octet-stream 修复；Pages 生产域 200 |
 | v1.0.11 | 2026-09-21 | 凭证到期 watcher 只留 mod-checkin（server.js 删除重复注册）；发布流程消费方扩展：manifest `consumers`/`applyOrder` + `expandAffected()`，共享 lib 变更一并重启消费模块 | gateway, checkin, release | 见下条实测 |
 | v1.0.10 | 2026-09-20 | OfficeAce 死 RT 回退重登 + 设备验证流程；首次走方案A（设备自拉 staging + apply） | checkin | apply [checkin] 成功（needStage 自拉，stage:done 11s）；后因 gateway 未重启 + 旧 watcher 残留，9-21 仍发 WorkBuddy 误报邮件 → 由 v1.0.11 根治 |
 | v1.0.9 | 2026-09-19 | 方案A：mod-release 设备端自 GitHub 自拉 staging（apply 自动 / 新增 `/stage`）；release.html 支持未 staging 直接拉取并应用 | release (+frontend CI) | 本次发布仍需旧流程 bootstrap；之后版本走设备自拉 |

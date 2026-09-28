@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>monitor 模块化（方案 B）· 实施纪要与发布流程</title>
+<style>
+  :root {
+    --bg:#fafafa; --ink:#16191c; --ink2:#4c545c; --ink3:#8a929a;
+    --line:#d9dde1; --line-soft:#e8ebee; --accent:#1f6f66; --accent-ink:#14524b;
+    --mono:"Cascadia Code",Consolas,"SFMono-Regular",monospace;
+    --sans:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); font-family:var(--sans); font-size:15.5px; line-height:1.62; }
+  .page { max-width:1060px; margin:0 auto; padding:52px 40px 88px; }
+  header.masthead { border-bottom:2px solid var(--ink); padding-bottom:26px; margin-bottom:38px; }
+  .kicker { font-family:var(--mono); font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent-ink); margin-bottom:12px; }
+  h1 { font-size:36px; line-height:1.18; font-weight:600; letter-spacing:-.02em; }
+  .lede { margin-top:14px; max-width:46em; color:var(--ink2); font-size:16.5px; }
+  .meta-row { display:flex; flex-wrap:wrap; gap:8px 26px; margin-top:20px; font-family:var(--mono); font-size:12px; color:var(--ink3); }
+  .meta-row b { color:var(--ink2); font-weight:500; }
+  section { margin-top:52px; }
+  .sec-head { display:flex; align-items:baseline; gap:14px; border-bottom:1px solid var(--line); padding-bottom:10px; margin-bottom:20px; }
+  .sec-no { font-family:var(--mono); font-size:12px; color:var(--accent-ink); letter-spacing:.08em; }
+  h2 { font-size:20px; font-weight:600; }
+  h3 { font-size:15px; font-weight:600; margin:24px 0 8px; }
+  p { max-width:70ch; color:var(--ink2); margin-bottom:11px; }
+  p strong, li strong { color:var(--ink); }
+  table { width:100%; border-collapse:collapse; margin:12px 0 20px; font-size:13.8px; }
+  th { text-align:left; font-weight:600; border-top:2px solid var(--ink); border-bottom:1px solid var(--ink); padding:8px 12px 8px 0; }
+  td { border-bottom:1px solid var(--line-soft); padding:8px 12px 8px 0; vertical-align:top; color:var(--ink2); }
+  td:first-child, th:first-child { padding-left:0; }
+  .mono { font-family:var(--mono); font-size:12.5px; }
+  .ok { color:var(--accent-ink); font-family:var(--mono); font-size:12.3px; }
+  .flow { font-family:var(--mono); font-size:12.8px; line-height:2.02; border:1px solid var(--line); padding:16px 20px; margin:12px 0 20px; background:#f6f8f8; white-space:pre; overflow-x:auto; color:var(--ink2); }
+  .flow b { color:var(--accent-ink); }
+  .note { border-left:2px solid var(--accent); padding-left:14px; margin:12px 0; }
+  .stats { display:flex; flex-wrap:wrap; border-top:2px solid var(--ink); border-bottom:1px solid var(--line); margin:16px 0 24px; }
+  .stat { flex:1 1 150px; padding:14px 18px 14px 0; }
+  .stat + .stat { border-left:1px solid var(--line-soft); padding-left:18px; }
+  .stat .v { font-size:23px; font-weight:600; letter-spacing:-.01em; }
+  .stat .k { font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink3); margin-top:2px; }
+  footer.colophon { margin-top:64px; border-top:1px solid var(--line); padding-top:16px; font-family:var(--mono); font-size:11.5px; color:var(--ink3); }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header class="masthead">
+  <div class="kicker">Phase 1 Implementation Notes</div>
+  <h1>monitor 模块化 · 实施纪要</h1>
+  <p class="lede">方案 B（gateway + 模块子进程）P1 阶段已落地：签到业务拆为独立进程，可单独重启/更新而不影响其它功能；发布流程采用 B 模式（tag 自动 staging + 人工应用）。本文以实施后的真实状态为准。</p>
+  <div class="meta-row">
+    <span><b>实施日期</b> 2026-09-19</span>
+    <span><b>部署目标</b> Honor 10 / Termux (runit)</span>
+    <span><b>验证账号</b> 8 个（trae 3 · workbuddy 2 · codearts 2 · autoclaw 1）</span>
+  </div>
+</header>
+
+<section>
+  <div class="sec-head"><span class="sec-no">00</span><h2>上线状态</h2></div>
+  <div class="stats">
+    <div class="stat"><div class="v">2</div><div class="k">进程（gateway + checkin）</div></div>
+    <div class="stat"><div class="v">3081/3083</div><div class="k">端口（对内仅回环）</div></div>
+    <div class="stat"><div class="v">0.8s</div><div class="k">/api 响应（原 46s）</div></div>
+    <div class="stat"><div class="v">&lt;4s</div><div class="k">模块单独重启窗口</div></div>
+  </div>
+  <p>手机端实测：<span class="mono ok">gateway pid 13237 · mod-checkin pid 11355</span>，healthz 聚合两进程状态；杀掉 checkin 模块时网关返回 502 + 明确错误，core 接口（/api、文件、Android 等）完全不受影响，模块重启后自动恢复。首个受益功能：<strong>按 provider 筛选账号</strong>（后端 <span class="mono">?provider=</span> 参数 + 前端「全部平台」下拉带账号数角标）。</p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-no">01</span><h2>架构与文件</h2></div>
+  <div class="flow"><b>Cloudflare Pages（前端）</b>
+        │ Worker 代理 /api → t.honor10.lehuan.vip（cloudflared）
+        ▼
+<b>gateway  server.js :3081</b>（runit service "server"）
+   ├─ /api/checkin/*  ──反代──▶ <b>mod-checkin.js :3083</b>（runit service "mon-checkin"）
+   ├─ /healthz 聚合两进程健康          │ 签到调度器 / 凭证监控 / 积分过期 / 快照
+   ├─ /api(监控) /api/stream /history  │ provider 注册中心 + 短信登录
+   ├─ /action /api/file* /api/android  ▼
+   ├─ /api/notify /subscription …    ~/.monitor_data/*.json（共享数据层）
+   └─ /sb /sb-api → sing-box 反代</div>
+  <table>
+    <thead><tr><th>文件</th><th>职责与关键点</th></tr></thead>
+    <tbody>
+      <tr><td class="mono">monitor/mod-checkin.js</td><td>checkin 模块入口：全量 /api/checkin/* 路由 + 调度器启动 + stopHooks（SIGTERM → 停调度器 → 排空在途 → exit）</td></tr>
+      <tr><td class="mono">monitor/lib/module.js</td><td>模块基础设施：createModuleServer（只绑 127.0.0.1、/healthz、/admin/shutdown 带 token、优雅停机）+ readBody</td></tr>
+      <tr><td class="mono">monitor/server.js</td><td>gateway：/api/checkin/* 反代（proxyToCheckin，模块不可用时 502+明确错误）、/healthz 聚合、其余路由原样</td></tr>
+      <tr><td class="mono">monitor/lib/notify.js</td><td>★去 import 副作用：巡检调度器改 startNotifyScheduler() 显式启动（仅 gateway 跑巡检，checkin 进程只用 sendMail，防双份告警）</td></tr>
+      <tr><td class="mono">monitor/lib/metrics.js</td><td>du -sh 1 小时缓存（修存量问题：全盘扫 8.6GB 导致 /api 46s）</td></tr>
+      <tr><td class="mono">update-modules.ps1</td><td>模块部署脚本：sha256 增量上传 + 备份 + runit 服务 + 重启 + 健康验证（-VerifyOnly 只查健康）</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-no">02</span><h2>发布流程（tag，B 模式）</h2></div>
+  <p>选定 <strong>B 模式（两段式）</strong>：tag 推送自动完成「拉取 → staging → 冒烟预检」，但<strong>不自动重启线上</strong>——应用时机由你在面板点一下（或跑一条命令）。发布语义：</p>
+  <div class="flow"><b>git tag v1.4.1 && git push --tags</b>
+  │
+  ▼ release-watcher（gateway 内，每 5 分钟 ls-remote / GitHub webhook 即时路径）
+  ① 变更计算   git diff --name-only &lt;deployed_sha&gt;..v1.4.1 + 模块 manifest → 受影响模块
+  ② staging    tag 完整树 → ~/releases/v1.4.1/（线上不受影响）
+  ③ 冒烟预检   node --check 全量 + 模块 /healthz 探活
+  ④ 等待应用   面板提示「v1.4.1 就绪：checkin +2 文件 · 应用？」← ★人工卡点
+  ⑤ 应用       原子切换 current 软链 + 仅受影响模块 sv restart + healthz + 冒烟
+  ⑥ 记账       deployed-version.json（每模块 tag/sha/时间）+ 审计 JSONL + 邮件 changelog
+  失败 ⟶ 自动回滚上一 release 目录 + restart + 告警邮件（秒级，无需重新上传）</div>
+  <p><strong>回滚</strong> = 切回上一 release 目录 + restart，常驻手机端最近 5 个 release。<strong>tag 规范</strong>：单一 <span class="mono">v&lt;major.minor.patch&gt;</span> annotated tag，受影响模块由 diff 自动推导。gateway 自身更新标记为 disruptive（全站瞬断 ~2s），面板会提示进维护窗口。</p>
+  <p class="note"><strong>P2 待实施</strong>：release-watcher 常驻 + releases/ 目录布局 + 面板「应用/回滚」按钮。当前 P1 阶段的发布 = <span class="mono">update-modules.ps1</span>（工作副本部署），tag 流程接入后无缝替换。</p>
+</section>
+
+<section>
+  <div class="sec-head"><span class="sec-no">03</span><h2>运维手册</h2></div>
+  <table>
+    <thead><tr><th>操作</th><th>命令</th></tr></thead>
+    <tbody>
+      <tr><td>只重启签到模块</td><td class="mono">ssh … 'SVDIR=/data/data/com.termux/files/usr/var/service sv restart mon-checkin'</td></tr>
+      <tr><td>重启 gateway</td><td class="mono">sv restart server</td></tr>
+      <tr><td>健康总览</td><td class="mono">curl http://127.0.0.1:3081/healthz</td></tr>
+      <tr><td>模块化部署</td><td class="mono">powershell .\update-modules.ps1</td></tr>
+      <tr><td>回滚本次改动</td><td class="mono">恢复 ~/monitor_backup_mod_20260919_100915 下文件 + sv restart server</td></tr>
+      <tr><td>新增模块（未来）</td><td>建 <span class="mono">mod-&lt;name&gt;.js</span>（用 createModuleServer）+ runit 服务 + gateway 加反代三行</td></tr>
+    </tbody>
+  </table>
+  <h3>踩坑记录（部署过程实测）</h3>
+  <p>① notify.js 的巡检调度器原在 import 时启动，拆进程后会双份发告警邮件——已改为显式启动；② metrics 里 <span class="mono">du -sh</span> 全盘扫描 50s 是 /api 慢的存量元凶，已加 1h 缓存（连带修复，/api 46s→0.8s）；③ 冒烟清理进程必须按 CommandLine 匹配，不能全杀 node；④ PowerShell 5.1 跑 UTF-8 无 BOM 脚本会中文乱码解析失败，脚本需带 BOM；⑤ scp 的端口参数是 <span class="mono">-P</span>（大写），ssh 是 <span class="mono">-p</span>。</p>
+</section>
+
+<footer class="colophon">
+  Honor · SSHMonitor modularization P1 · 2026-09-19 · gateway+checkin 双进程上线，tag 发布 B 模式待 P2 接入
+</footer>
+
+</div>
+</body>
+</html>

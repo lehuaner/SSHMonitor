@@ -142,3 +142,28 @@ monitor/_probe*.mjs
 
 # JiuwenSwarm runtime file operation logs
 .agent_history/
+
+# --------------------------------------------------------------------------
+# 8. 项目清理（2026-09-27）：抓包样本与 coding-editor / agent 记忆产物一律不入库
+# --------------------------------------------------------------------------
+# 整个抓包样本目录（421MB / 上万文件，可由 Fiddler 重新导出）
+examples/
+# WorkBuddy 会话记忆
+.workbuddy/
+# coding editor / agent 运行时与记忆
+.opencode/
+.office-claw/
+coding_memory/
+memory/
+prompt_attachment/
+# Agent 人格/工作区文件（非监控项目代码）
+/AGENTS.md
+/SOUL.md
+/IDENTITY.md
+/USER.md
+/HEARTBEAT.md
+/TOOLS.md
+/BACKLOG.md
+# 一次性部署调试脚本（本地清理，不再入库）
+monitor/_session_deploy.mjs
+monitor/_dnsdiag*.mjs
