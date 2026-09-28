@@ -389,7 +389,7 @@ function renderAvg(d){
   }
   document.getElementById('avgGrid').innerHTML='<div class="traffic-row"><div class="traffic-item"><div class="num">'+fmtBytes(data.proxyDownload)+'</div><div class="lbl">代理下载</div></div><div class="traffic-item"><div class="num">'+fmtBytes(data.proxyUpload)+'</div><div class="lbl">代理上传</div></div><div class="traffic-item"><div class="num">'+fmtBytes(data.proxyTotal)+'</div><div class="lbl">代理总计</div></div></div><div class="traffic-row"><div class="traffic-item"><div class="num">'+fmtBytes(data.download)+'</div><div class="lbl">总计下载</div></div><div class="traffic-item"><div class="num">'+fmtBytes(data.upload)+'</div><div class="lbl">总计上传</div></div><div class="traffic-item"><div class="num">'+fmtBytes(data.total)+'</div><div class="lbl">总计流量</div></div></div><div class="avg-unit" style="grid-column:1/-1">单位: '+unit+'</div>';
 }
-var trafChartInstance=null;let chartDirtyHash='';
+var trafChartInstance=null;var chartDirtyHash='';
 // 6条曲线的可见性状态（默认全显示）
 var datasetVisible={proxyDownload:true,proxyUpload:true,proxyTotal:false,totalDownload:true,totalUpload:true,totalAll:false};
 // 6条曲线配置
