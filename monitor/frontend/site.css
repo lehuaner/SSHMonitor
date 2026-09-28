@@ -4,12 +4,13 @@
  * 载入顺序约定：config.js → site.css(link) → 页面 <style>（页内可覆盖 site.css）。
  */
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif}
+html{overflow-y:scroll}
 body{background:#0b1120;color:#e2e8f0;display:flex;align-items:center;justify-content:center}
 .app{width:100%;max-width:1200px;padding:20px}
 
 /* —— 顶部导航（严格统一） —— */
 .nav{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:20px;background:#131c31;border-radius:10px;padding:4px;border:1px solid #1e293b}
-.nav a{padding:8px 20px;border-radius:6px;text-decoration:none;color:#94a3b8;font-size:.85rem;transition:.2s;white-space:nowrap}
+.nav a{padding:8px 20px;border-radius:6px;text-decoration:none;color:#94a3b8;font-size:.85rem;transition:.2s;white-space:nowrap;line-height:1.5}
 .nav a:hover,.nav a.active{background:#2563eb;color:#fff}
 
 /* —— 页头 —— */

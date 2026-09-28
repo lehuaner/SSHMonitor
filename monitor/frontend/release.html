@@ -112,7 +112,7 @@ function fmtT(ts){return ts?new Date(ts).toLocaleString('zh-CN',{hour12:false}):
 function show(res,ok){const el=$('#result');el.className='result '+(ok?'ok':'err');el.textContent=typeof res==='string'?res:JSON.stringify(res,null,2)}
 async function api(u,opt){try{const r=await fetch(u,opt);return await r.json()}catch(e){return{ok:false,error:e.message}}}
 // ====== 分页（上游版本列表 / release 列表共用） ======
-var PAGE_SIZE=8; let UP_PAGE=0, REL_PAGE=0, REL=[], RELMODS={};
+var PAGE_SIZE=8; var UP_PAGE=0, REL_PAGE=0, REL=[], RELMODS={};
 function pageSlice(arr,size,page){const s=page*size;return arr.slice(s,s+size);}
 function pagerHtml(total,size,page,fn){
   if(total<=size) return '';
