@@ -393,8 +393,18 @@ function step(t, msg) { t.steps.push({ at: Date.now(), msg }); t.updatedAt = Dat
       if (bk && !bk.skipped) { step(t, `已备份数据 ${bk.files} 个文件 → ${bk.dir}`); audit('apply:backup', { tag, dir: bk.dir, files: bk.files }); }
       else if (bk && bk.skipped) step(t, `跳过数据备份：${bk.skipped}`);
     } catch (e) { step(t, `数据备份失败（不影响应用）：${e && e.message}`); }
+    // ★自重启规避：当前进程所属模块(release)只做「复制」，其服务重启延后到记账+Pages 之后，
+    //   否则 applyModule 里的 sv restart mon-release 会杀掉正在执行的内存任务，导致记账/Pages 丢失。
+    const SELF_MODULE = 'release';
     try {
       for (const m of t.modules) {
+        if (m === SELF_MODULE) {
+          const copied = applyFiles(releaseDir, m);
+          results[m] = { copied: copied.length, files: copied, deferredRestart: true };
+          step(t, `${m}: 复制 ${copied.length} 文件（mon-release 重启延后到流程末尾）`);
+          done.push(m);
+          continue;
+        }
         const r = await applyModule(t, releaseDir, m);
         results[m] = r;
         if (!r.skipped) done.push(m);
@@ -413,8 +423,11 @@ function step(t, msg) { t.steps.push({ at: Date.now(), msg }); t.updatedAt = Dat
           for (const m of done) {
             if (MANIFEST.modules[m] && MANIFEST.modules[m].service) {
               await applyFiles(prevDir, m);
-              await restartService(MANIFEST.modules[m].service, healthByService[MANIFEST.modules[m].service] || 3081);
-              step(t, `回滚 ${m} → ${prevTag} ✓`);
+              // 自模块(mon-release)只还原文件、不在此重启（重启会杀掉本任务；错误路径无需回滚自身）
+              if (m !== SELF_MODULE) {
+                await restartService(MANIFEST.modules[m].service, healthByService[MANIFEST.modules[m].service] || 3081);
+              }
+              step(t, `回滚 ${m} → ${prevTag} ✓${m === SELF_MODULE ? '（mon-release 重启略过）' : ''}`);
             }
           }
         } else {
@@ -437,6 +450,13 @@ function step(t, msg) { t.steps.push({ at: Date.now(), msg }); t.updatedAt = Dat
     audit('apply:done', { tag, modules: done });
     // 后置：前端部署（本机复制 / Pages 直传）——失败不回滚后端、不阻断任务，仅告警+落库
     try { await deployFrontend(t, tag, meta, releaseDir); } catch (e) { step(t, `前端部署钩子异常（不影响后端）：${e && e.message}`); audit('frontend:hook_error', { tag, error: e && e.message }); }
+    // ★最后一步：延后的自模块重启（放在记账+Pages 之后）。此后本内存任务会被 mon-release 重启替换，
+    //   但所有关键落盘/发布均已完成 → 等价于「一键」且不再丢记账/Pages。不轮询自身健康（自身正在重启）。
+    if (done.includes(SELF_MODULE)) {
+      step(t, '末尾重启 mon-release（应用新 manifest/代码），此后任务被替换属正常');
+      audit('apply:self_restart', { tag, note: 'mon-release 延后重启，记账/Pages 已完成' });
+      run(`SVDIR=${SVDIR} sv restart ${MANIFEST.modules[SELF_MODULE].service}`).catch(() => {});
+    }
   }
 
   /** 后台执行 rollback（原同步逻辑迁移） */
