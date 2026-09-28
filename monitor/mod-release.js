@@ -384,7 +384,11 @@ function step(t, msg) { t.steps.push({ at: Date.now(), msg }); t.updatedAt = Dat
       if (exp.length !== t.modules.length) step(t, `消费方扩展: ${t.modules.join(',')} → ${exp.join(',')}`);
       t.modules = exp;
     }
-    if (!t.modules.length) { t.state = 'failed'; t.error = 'affected 为空且未显式指定 modules'; step(t, t.error); return; }
+    if (!t.modules.length) {
+      // 仅当后端无影响模块「且」前端也无变更时才判失败；纯前端发版(affected 空但 frontendChanged)必须放行到后置 deployFrontend 发 Pages
+      if (meta.frontendChanged) { step(t, 'affected 为空，但检测到前端变更 → 继续走 Pages 发布'); }
+      else { t.state = 'failed'; t.error = 'affected 为空且未显式指定 modules'; step(t, t.error); return; }
+    }
     const results = {};
     const done = [];
     // ★应用前整份备份 ~/.monitor_data（含 checkin_tasks.json 等），误清空/回退时可一键还原；备份失败不阻断应用
