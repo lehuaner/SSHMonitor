@@ -107,13 +107,13 @@ input:focus{outline:none;border-color:#38bdf8}
 <div class="result" id=result></div>
 
 <script>
-const $=s=>document.querySelector(s);
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+var $=s=>document.querySelector(s);
+var esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function fmtT(ts){return ts?new Date(ts).toLocaleString('zh-CN',{hour12:false}):'—'}
 function show(res,ok){const el=$('#result');el.className='result '+(ok?'ok':'err');el.textContent=typeof res==='string'?res:JSON.stringify(res,null,2)}
 async function api(u,opt){try{const r=await fetch(u,opt);return await r.json()}catch(e){return{ok:false,error:e.message}}}
 // ====== 分页（上游版本列表 / release 列表共用） ======
-const PAGE_SIZE=8; let UP_PAGE=0, REL_PAGE=0, REL=[], RELMODS={};
+var PAGE_SIZE=8; let UP_PAGE=0, REL_PAGE=0, REL=[], RELMODS={};
 function pageSlice(arr,size,page){const s=page*size;return arr.slice(s,s+size);}
 function pagerHtml(total,size,page,fn){
   if(total<=size) return '';
@@ -165,7 +165,7 @@ function goRel(n){REL_PAGE=Math.max(0,n);renderReleases();}
 
 // 202 异步任务：发起后轮询 /api/release/tasks?id= 直到 done/failed
 // 轮询容忍 gateway 重启窗口的 502/网络错误（重试至总超时 120s）
-let pollAbort = false;
+var pollAbort = false;
 async function pollTask(taskId, totalMs = 120000){
   const t0 = Date.now();
   let lastSteps = 0;
@@ -219,8 +219,8 @@ async function loadAudit(){
 }
 
 // ====== 上游版本检测（手机端自己拉 GitHub，Windows 侧只负责发布） ======
-let UP=null;
-const STATE={
+var UP=null;
+var STATE={
   'new-staged':['ok','可应用','文件已在手机上，直接点应用'],
   'new-unstaged':['warn','可拉取并应用','手机按 manifest 从 GitHub 自拉后应用（无需 PC staging）'],
   deployed:['ok','当前'],

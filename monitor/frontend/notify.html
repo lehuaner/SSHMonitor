@@ -253,17 +253,17 @@ textarea:focus,input:focus{border-color:#38bdf8}
 </div>
 <div id=toast class=toast></div>
 <script>
-const $=id=>document.getElementById(id);
-const show=(msg,sec=3)=>{const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),sec*1000)};
+var $=id=>document.getElementById(id);
+var show=(msg,sec=3)=>{const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),sec*1000)};
 function setStatus(msg,kind){const s=$('status');s.textContent=msg||'';s.className='status'+(kind?' '+kind:'')}
 function esc(s){if(!s)return '';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
 function fmtTime(t){if(!t)return '-';try{return new Date(t).toLocaleString('zh-CN')}catch{return t}}
-let currentConfig={enabled:false,smtp_host:'smtp.qq.com',smtp_port:'465',smtp_user:'',smtp_pass:'',to:'',monitored_procs:[]};
-let currentUrls=['https://www.google.com'];
-let currentCandidates=[];
-let currentExcluded=[];   // 排除订阅名列表（F102）
-let currentRegionCands=[]; // 地区候选列表（region:kw）
-let logsVisible=false;
+var currentConfig={enabled:false,smtp_host:'smtp.qq.com',smtp_port:'465',smtp_user:'',smtp_pass:'',to:'',monitored_procs:[]};
+var currentUrls=['https://www.google.com'];
+var currentCandidates=[];
+var currentExcluded=[];   // 排除订阅名列表（F102）
+var currentRegionCands=[]; // 地区候选列表（region:kw）
+var logsVisible=false;
 // ====== 地区候选 + 排除订阅 UI（F102）======
 async function loadRegionOptions(){
   // 从 Clash API 拉当前节点名，提取地区关键词（订阅前缀后的首段）
@@ -575,7 +575,7 @@ async function testDeviceAlerts(){
     else{show(d.error||'发送失败');setStatus(d.error||'发送失败','err')}
   }catch(e){show('网络错误: '+e.message);setStatus('网络错误: '+e.message,'err')}
 }
-let proxyCheckPolling=null;
+var proxyCheckPolling=null;
 async function runProxyCheck(){
   const btn=document.querySelector('.btn-warn');
   btn.disabled=true;
@@ -663,8 +663,8 @@ function toggleLogSection(){
   $('logToggle').innerHTML=logsVisible?'&#9660; 收起':'&#9654; 展开';
   if(logsVisible)loadLogs();
 }
-let expandedNodes=new Set();
-let nodeWeightsCache=[];
+var expandedNodes=new Set();
+var nodeWeightsCache=[];
 async function loadNodeWeights(){
   try{
     const r=await fetch('/api/proxy-check/weights');

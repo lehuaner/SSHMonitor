@@ -169,8 +169,8 @@ input:focus,select:focus{border-color:#38bdf8}
 </div>
 <div class=toast id=toast></div>
 <script>
-const $=s=>document.querySelector(s);
-let providers=[], tasks=[], stats=null, editingId=null;
+var $=s=>document.querySelector(s);
+var providers=[], tasks=[], stats=null, editingId=null;
 
 function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
 function status(msg,type){const s=$('#status');s.textContent=msg;s.className='status'+(type?' '+type:'');}
@@ -302,7 +302,7 @@ function fmtEst(v){if(v==null||v==='')return '—';if(v==='充足')return '充�
 function avgConsumption(id){if(!stats)return null;const a=(stats.accounts||[]).find(x=>x.id===id);return a?a.avgDailyConsumption:null;}
 
 // ====== 每日消耗统计 ======
-let chartUnit='credit'; // 'credit' | 'token'
+var chartUnit='credit'; // 'credit' | 'token'
 function isToken(){return chartUnit==='token';}
 function unitSuffix(){return isToken()?'Tok':'分';}
 function fmtVal(v){return v==null||isNaN(v)?'—': (isToken()?Math.round(v).toLocaleString():Number(v).toFixed(2));}
@@ -322,7 +322,7 @@ function accNetMonth(a){return isToken()?a.netMonthlyAvgTokens:a.netMonthlyAvgCo
 function mNetDaily(m){return isToken()?m.netDailyTokens:m.netDailyConsumption;}
 function mNetMonth(m){return isToken()?m.netMonthlyTokens:m.netMonthlyConsumption;}
 // ====== 平台（provider）切换 ======
-let chartsProvider='';   // '' = 全部平台
+var chartsProvider='';   // '' = 全部平台
 function scopedAccounts(){return ((stats&&stats.accounts)||[]).filter(a=>!chartsProvider||a.providerId===chartsProvider);}
 function viewTotal(){
   if(!stats)return null;
@@ -828,7 +828,7 @@ async function togglePackages(id,btn){
   }
 }
 // ====== 消耗图表（每日柱状图 + 每日日历热力图，支持按 平台/账号/模型 筛选） ======
-let barChart=null;
+var barChart=null;
 // 取当前账号/当前平台总 的每日序列，统一为 {date,total,models}
 function chartSeries(accountId){
   if(!accountId){
@@ -902,7 +902,7 @@ function monthVal(mm,model){
   if(!v)return 0;
   return isToken()?(v.tokens||0):(v.consumption||0);
 }
-let monthChart=null;
+var monthChart=null;
 function renderMonthBar(labels,data){
   const box=$('#chartMonthly');
   if(!monthChart){

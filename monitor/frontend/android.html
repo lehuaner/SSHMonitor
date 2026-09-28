@@ -129,10 +129,10 @@
 </div>
 </div>
 <script>
-const $=id=>document.getElementById(id);
-const show=(msg,sec=3)=>{const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),sec*1000)};
-let allProcs=[],allApps=[],currentTab='processes';
-let adbConnected=false;
+var $=id=>document.getElementById(id);
+var show=(msg,sec=3)=>{const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),sec*1000)};
+var allProcs=[],allApps=[],currentTab='processes';
+var adbConnected=false;
 
 function userClass(u){
   if(u==='root')return 'user-root';
@@ -306,7 +306,7 @@ function switchTab(t){
 }
 function $$(s){return document.querySelectorAll(s)}
 
-let modalResolve=null;
+var modalResolve=null;
 function confirm2(title,msg){
   $('modalTitle').textContent=title;
   $('modalMsg').textContent=msg;

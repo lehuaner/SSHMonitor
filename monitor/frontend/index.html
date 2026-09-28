@@ -218,21 +218,21 @@ tr:hover td{background:rgba(56,189,248,.03)}
 <div id=toast class=toast></div>
 <script src=https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js></script>
 <script>
-const $=id=>document.getElementById(id);
-const show=(msg,sec=3)=>{const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),sec*1000)};
+var $=id=>document.getElementById(id);
+var show=(msg,sec=3)=>{const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),sec*1000)};
 async function act(a){try{const r=await fetch('/action?cmd='+a);const d=await r.json();show(d.msg)}catch(e){show('操作失败')}}
 async function killP(pid){if(!confirm('终止进程 '+pid+' ？'))return;try{const r=await fetch('/action?cmd=kill&pid='+pid);const d=await r.json();show(d.msg)}catch(e){show('操作失败')}}
 function fmtBytes(b){if(!b||b==0)return'0B';if(b<1024)return b+'B';if(b<1048576)return(b/1024).toFixed(1)+'KB';if(b<1073741824)return(b/1048576).toFixed(1)+'MB';return(b/1073741824).toFixed(2)+'GB'}
 function fmtSpeed(b){if(!b||b==0)return'0';if(b<1024)return b.toFixed(1);if(b<1048576)return(b/1024).toFixed(1);return(b/1048576).toFixed(1)}
 function fmtBytesSec(b){return fmtSpeed(b)+(b<1024?'B/s':b<1048576?'KB/s':'MB/s')}
-let lastData=null;
-let currentTraffic='10m';
-let currentMode='time';
-let currentDayPeriod='day';
-let connFilter='all';
-let markedSet=new Set();
-let nodeStatusMap={};
-let nodeStatusTimer=null;
+var lastData=null;
+var currentTraffic='10m';
+var currentMode='time';
+var currentDayPeriod='day';
+var connFilter='all';
+var markedSet=new Set();
+var nodeStatusMap={};
+var nodeStatusTimer=null;
 async function loadNodeStatus(){
   try{const r=await fetch('/api/node-status');const d=await r.json();if(d.ok&&d.nodes){nodeStatusMap={};for(const n of d.nodes)nodeStatusMap[n.tag]=n}if(lastData)renderNodeStatus(lastData)}catch{}
   if(nodeStatusTimer)clearTimeout(nodeStatusTimer);nodeStatusTimer=setTimeout(loadNodeStatus,3600000);
@@ -296,7 +296,7 @@ document.getElementById('procBody').addEventListener('click',e=>{
   else if(act2==='svc'){act(btn.dataset.svc||'');}
   else if(act2==='kill'){const pid=parseInt(btn.dataset.pid);if(pid)killP(pid);}
 });
-let pendingAnimate=false;
+var pendingAnimate=false;
 function switchMode(mode){currentMode=mode;chartDirtyHash='';document.querySelectorAll('[data-mode]').forEach(t=>t.classList.toggle('active',t.dataset.mode===mode));document.getElementById('trafTabs').style.display=mode==='time'?'':'none';document.getElementById('dayTabs').style.display=mode==='day'?'':'none';document.getElementById('trafChart').style.display=mode==='time'?'':'none';document.getElementById('trafChartBar').style.display=mode==='day'?'':'none';if(lastData){pendingAnimate=true;renderTraffic(lastData);}}
 document.getElementById('trafTabs').addEventListener('click',e=>{const tab=e.target.closest('.tab');if(!tab)return;if(tab.classList.contains('active'))return;document.querySelectorAll('#trafTabs .tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');currentTraffic=tab.dataset.m;chartDirtyHash='';if(lastData){pendingAnimate=true;renderTraffic(lastData);}});
 document.getElementById('dayTabs').addEventListener('click',e=>{const tab=e.target.closest('.tab');if(!tab)return;if(tab.classList.contains('active'))return;document.querySelectorAll('#dayTabs .tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');currentDayPeriod=tab.dataset.d;chartDirtyHash='';if(lastData){pendingAnimate=true;renderTraffic(lastData);}});
@@ -332,7 +332,7 @@ function renderTrafficDay(d){
   updateDayChart(d,period);
 }
 // 平均流量折叠状态
-let avgVisible=false;
+var avgVisible=false;
 function toggleAvg(){
   avgVisible=!avgVisible;
   document.getElementById('avgGrid').style.display=avgVisible?'':'none';
@@ -389,11 +389,11 @@ function renderAvg(d){
   }
   document.getElementById('avgGrid').innerHTML='<div class="traffic-row"><div class="traffic-item"><div class="num">'+fmtBytes(data.proxyDownload)+'</div><div class="lbl">代理下载</div></div><div class="traffic-item"><div class="num">'+fmtBytes(data.proxyUpload)+'</div><div class="lbl">代理上传</div></div><div class="traffic-item"><div class="num">'+fmtBytes(data.proxyTotal)+'</div><div class="lbl">代理总计</div></div></div><div class="traffic-row"><div class="traffic-item"><div class="num">'+fmtBytes(data.download)+'</div><div class="lbl">总计下载</div></div><div class="traffic-item"><div class="num">'+fmtBytes(data.upload)+'</div><div class="lbl">总计上传</div></div><div class="traffic-item"><div class="num">'+fmtBytes(data.total)+'</div><div class="lbl">总计流量</div></div></div><div class="avg-unit" style="grid-column:1/-1">单位: '+unit+'</div>';
 }
-let trafChartInstance=null;let chartDirtyHash='';
+var trafChartInstance=null;let chartDirtyHash='';
 // 6条曲线的可见性状态（默认全显示）
-let datasetVisible={proxyDownload:true,proxyUpload:true,proxyTotal:false,totalDownload:true,totalUpload:true,totalAll:false};
+var datasetVisible={proxyDownload:true,proxyUpload:true,proxyTotal:false,totalDownload:true,totalUpload:true,totalAll:false};
 // 6条曲线配置
-const TRAFFIC_DATASETS=[
+var TRAFFIC_DATASETS=[
   {key:'proxyDownload',label:'代理下载',color:'#38bdf8',bg:'rgba(56,189,248,0.08)'},
   {key:'proxyUpload',label:'代理上传',color:'#f59e0b',bg:'rgba(245,158,11,0.08)'},
   {key:'proxyTotal',label:'代理总计',color:'#a78bfa',bg:'rgba(167,139,250,0.08)'},
@@ -500,7 +500,7 @@ function updateChartForPeriod(d){
   if(pendingAnimate){trafChartInstance.reset();trafChartInstance.update();pendingAnimate=false}
   else{trafChartInstance.update('none');}
 }
-let dayChartInstance=null;
+var dayChartInstance=null;
 function updateDayChart(d,period){const data=d.trafficDay[period]||[];if(!data.length)return;const labels=data.map(v=>{if(period==='year')return v.label.slice(0,4);if(period==='month')return v.label.slice(5,7)+'月';if(period==='week')return v.label.slice(5,10);return v.label.slice(5,10)});const values=data.map(v=>v.value);const max=Math.max(...values,1);document.getElementById('trafYmax').textContent=fmtBytes(max);document.getElementById('trafYmid').textContent=fmtBytes(Math.round(max/2));const ctx=document.getElementById('trafChartBar').getContext('2d');if(!dayChartInstance){dayChartInstance=new Chart(ctx,{type:'bar',data:{labels,datasets:[{data:values,backgroundColor:'rgba(56,189,248,0.5)',borderColor:'#38bdf8',borderWidth:1,borderRadius:3}]},options:{responsive:true,maintainAspectRatio:false,animation:{duration:800,easing:'easeOutQuart',delay:(ctx)=>{if(ctx.type==='data'&&ctx.mode==='default')return ctx.index*30;return 0}},plugins:{legend:{display:false},tooltip:{enabled:true,backgroundColor:'#1e293b',titleColor:'#94a3b8',bodyColor:'#e2e8f0',borderColor:'#334155',borderWidth:1,padding:8,cornerRadius:6,callbacks:{label(i){return'流量: '+fmtBytes(i.raw||0)}}}},scales:{x:{display:true,grid:{display:false},ticks:{color:'#475569',font:{size:8},maxRotation:0,autoSkip:false}},y:{display:false,grid:{display:false},beginAtZero:true}}}});pendingAnimate=false}else{dayChartInstance.data.labels=labels;dayChartInstance.data.datasets[0].data=values;if(pendingAnimate){dayChartInstance.reset();dayChartInstance.update();pendingAnimate=false}else{dayChartInstance.update('none')}}}
 function renderConns(d){const conns=d.sb.connectionsDetail||[];const filtered=connFilter==='all'?conns:connFilter==='proxy'?conns.filter(c=>c.rule!=='direct'):conns.filter(c=>c.rule==='direct');document.getElementById('connCount').textContent=filtered.length+' / '+conns.length;if(!conns.length){document.getElementById('connBody').innerHTML='<tr><td colspan=7 style=color:#64748b;text-align:center;padding:12px>暂无活跃连接</td></tr>';return}if(!filtered.length){document.getElementById('connBody').innerHTML='<tr><td colspan=7 style=color:#64748b;text-align:center;padding:12px>无匹配的连接</td></tr>';return}document.getElementById('connBody').innerHTML=filtered.map(c=>'<tr class=conn-row onclick=this.nextElementSibling.classList.toggle("show")><td>'+esc(c.host)+'</td><td>'+c.network+'/'+c.type+'</td><td>'+c.rule+'</td><td class=right>'+fmtBytes(c.dl)+'</td><td class=right>'+fmtBytes(c.ul)+'</td><td class=right>'+fmtBytesSec(c.dlSpeed)+'</td><td class=right>'+fmtBytesSec(c.ulSpeed)+'</td></tr><tr class=conn-detail><td colspan=7>规则详情: '+esc(c.rulePayload||'-')+' | 链路: '+esc(c.chains)+'</td></tr>').join('')}
 function renderProxies(proxies){const el=document.getElementById('sbProxyList');const section=document.getElementById('sbProxySection');const entries=Object.entries(proxies||{});if(!entries.length){section.style.display='none';return}section.style.display='block';el.innerHTML=entries.map(([name,p])=>{const now=p.now||'';const tp=p.type||'';if(!now&&tp!=='Selector'&&tp!=='URLTest'&&tp!=='Fallback')return'';return'<div style="padding:4px 8px;background:#0b1120;border-radius:4px;font-size:.65rem;border:1px solid #1e293b;min-width:80px"><div style="color:#94a3b8;font-size:.55rem">'+esc(name)+'</div><div style="color:#38bdf8;font-weight:500;font-size:.75rem">'+esc(now||'--')+'</div>'+(tp?'<div style="color:#64748b;font-size:.55rem;margin-top:1px">'+esc(tp)+'</div>':'')+'</div>'}).filter(Boolean).join('')}

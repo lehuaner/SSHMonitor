@@ -65,13 +65,13 @@ tr.protd td:first-child{color:#f59e0b}
 <div id=modal class=modal><div class=modal-box><h3 id=modalTitle>操作</h3><div id=modalBody></div><div class=modal-ft><button class="btn btn-sm" onclick=closeModal()>取消</button><button class="btn btn-primary" id=modalConfirm onclick=modalOk()>确定</button></div></div></div>
 <div id=toast class=toast></div>
 <script>
-const $=id=>document.getElementById(id);
-const show=(m,s=3)=>{const t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),s*1000)};
-const enc=s=>s?encodeURIComponent(s):'';
-const de=s=>{try{return decodeURIComponent(s)}catch{return s}};
-let currentPath='';
-let allNotes={};
-let modalCb=null;
+var $=id=>document.getElementById(id);
+var show=(m,s=3)=>{const t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),s*1000)};
+var enc=s=>s?encodeURIComponent(s):'';
+var de=s=>{try{return decodeURIComponent(s)}catch{return s}};
+var currentPath='';
+var allNotes={};
+var modalCb=null;
 
 function esc(s){if(!s)return '';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
 function fmtSize(s){if(s<1024)return s+'B';if(s<1048576)return(s/1024).toFixed(1)+'KB';return(s/1048576).toFixed(1)+'MB'}

@@ -106,8 +106,8 @@ textarea{min-height:60px;resize:vertical;word-break:break-all}
 </div>
 <div id=toast class=toast></div>
 <script>
-const $=id=>document.getElementById(id);
-const show=(msg,sec=3)=>{const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),sec*1000)};
+var $=id=>document.getElementById(id);
+var show=(msg,sec=3)=>{const t=$('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),sec*1000)};
 function setStatus(msg,kind){const s=$('status');s.textContent=msg||'';s.className='status'+(kind?' '+kind:'')}
 function esc(s){if(!s)return '';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
 function fmtTime(t){if(!t)return '-';try{return new Date(t).toLocaleString('zh-CN')}catch{return t}}
@@ -242,7 +242,7 @@ async function refreshSub(id){
   if(btn){btn.disabled=false;btn.innerHTML='&#128259; 刷新'}
 }
 // 加载节点状态（延迟/连通性/流量）— 页面加载时调用一次，之后每小时刷新
-let nodeRefreshTimer=null;
+var nodeRefreshTimer=null;
 async function loadNodes(force){
   try{
     const url=force?'/api/node-status?force=1':'/api/node-status';
@@ -292,7 +292,7 @@ async function deleteSub(id){
   }catch(e){show('网络错误: '+e.message);setStatus('网络错误: '+e.message,'err')}
 }
 // 加载 DNS 配置
-let dnsCurrentMode=null;
+var dnsCurrentMode=null;
 async function loadDns(){
   const optsEl=$('dnsOptions');
   const modeEl=$('dnsMode');
