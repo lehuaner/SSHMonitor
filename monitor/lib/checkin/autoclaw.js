@@ -33,7 +33,7 @@
  *   - complete 在已签后返回 {already_completed:true, reward_points:0, success:false}（幂等，不报错）
  *   - 正常签到奖励 200 积分/天，钱包批次 7 天后过期（cycle_key 含日期，expires_at=effective_at+7d）
  */
-import { randomUUID } from 'node:crypto';
+import { randomUUID, createHash } from 'node:crypto';
 
 export const AUTOCLAW_BASE = 'https://autoglm-api.zhipuai.cn';
 
@@ -44,9 +44,15 @@ export const AUTOCLAW_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKi
 // 渲染层 DAILY_SIGNIN_TASK_ID 常量（app.asar 原值）
 export const DAILY_SIGNIN_TASK_ID = 'daily_signin';
 
-// 本机 AutoClaw 客户端设备指纹（%APPDATA%\AutoClaw\identity\device.json 的 deviceId，
-// 与 2026-09-18 登录抓包 device_id 一致）。多账号共用同一设备指纹无冲突（token 按 user 区分）。
-export const DEFAULT_DEVICE_ID = '47ca87c861fdaade01292bea57dde5f7cb1457360f3acc31967afa3048e4709d';
+// AutoClaw 客户端设备指纹（%APPDATA%\AutoClaw\identity\device.json 的 deviceId，登录时与凭证绑定）。
+// 公开仓库不内置真实指纹：优先级 = 账号 config.deviceId > ~/.monitor_data/device_identity.json
+// 的 autoclawDeviceId > 按账号派生。注意：换指纹等于换设备，已有 refresh_token 可能失效需重登。
+export const DEFAULT_DEVICE_ID = '';
+
+// 由 seed 稳定派生 64 位 hex 设备指纹（sha256 直接可得）
+export function deviceFingerprint(seed) {
+  return createHash('sha256').update('autoclaw|' + String(seed || 'default')).digest('hex');
+}
 
 /** 构造 authorization 头：token 自带 "Bearer " 前缀则原样，否则补上（与客户端 tokenPrefix 一致） */
 export function bearerToken(token) {

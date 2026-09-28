@@ -13,13 +13,16 @@ import { TIMEZONES, TIMES, THRESHOLDS, EXPIRY_DAYS } from './common.js';
 // JWT 剩余有效期低于该值时用 Cookie 换新 token
 const TOKEN_MIN_REMAINING_MS = 60 * 60 * 1000;
 
-// 每个账号使用独立且稳定的设备标识（上游按设备对当日签到做约束，
-// 共享同一设备会导致后签到账号报「操作太过频繁」）。以 taskId 为种子派生，
-// 若账号配置了 deviceId（config.deviceId）则优先使用该值，否则回落默认真实设备标识。
+// 设备标识解析（优先级）：账号配置（config.deviceId / config.vscodeSessionId / config.marketUserId）
+// > ~/.monitor_data/device_identity.json（部署级）> 按 taskId 稳定派生。
+// 上游按设备对当日签到做约束，多账号共享同一设备可能报「操作太过频繁」，
+// 此时为每个账号配置独立 deviceId（或从自己的 IDE 抓包填一套真实标识）。
 function deviceFor(task) {
   const dev = deriveDevice(task.id + '|trae');
-  const cfgDeviceId = task.config && task.config.deviceId;
-  if (cfgDeviceId) dev.deviceId = cfgDeviceId;
+  const cfg = task.config || {};
+  if (cfg.deviceId) dev.deviceId = cfg.deviceId;
+  if (cfg.vscodeSessionId) dev.vscodeSessionId = cfg.vscodeSessionId;
+  if (cfg.marketUserId) dev.marketUserId = cfg.marketUserId;
   return dev;
 }
 
@@ -95,8 +98,15 @@ export default {
       ] },
     { key: 'appVersion', label: 'App 版本 (app-version)', type: 'text', default: '0.1.51', required: true,
       hint: '请求头 app-version。服务端会随 IDE 版本更新的风控策略变化，若签到报「操作太过频繁」可尝试改为最新抓包中的版本号。' },
-    { key: 'deviceId', label: '设备 ID (x-device-id)', type: 'text', default: '3798161405005257', required: true,
-      hint: '请求头 x-device-id（独立参数，不在 Cookie 中）。默认值为真实抓包中的设备标识；若多个账号共享导致签到报「操作太过频繁」，可为每个账号配置独立的设备 ID。' },
+    { key: 'deviceId', label: '设备 ID (x-device-id)', type: 'text', required: false,
+      placeholder: '留空则按账号自动派生',
+      hint: '请求头 x-device-id（独立参数，不在 Cookie 中）。留空时系统按账号 ID 稳定派生一套；若上游风控拒绝派生值（报「操作太过频繁」），可从自己 IDE 的抓包中复制真实 x-device-id 填入，也可为每个账号配置独立值。部署级公共标识可写 ~/.monitor_data/device_identity.json。' },
+    { key: 'vscodeSessionId', label: 'vscode-sessionId（可选）', type: 'text', required: false,
+      placeholder: '留空则自动派生',
+      hint: '请求头 vscode-sessionid，一般无需填写；需整套复用真实抓包设备标识时才填。' },
+    { key: 'marketUserId', label: 'x-market-user-id（可选）', type: 'text', required: false,
+      placeholder: '留空则自动派生',
+      hint: '请求头 x-market-user-id，一般无需填写；需整套复用真实抓包设备标识时才填。' },
     { key: 'time', label: '签到时间', type: 'select', default: '09:00', required: true,
       options: TIMES.map(([v, l]) => ({ value: v, label: l })) },
     { key: 'timezone', label: '时区(IANA)', type: 'select', default: 'Asia/Shanghai', required: true,

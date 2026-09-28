@@ -109,10 +109,10 @@ export default {
     tokenNote: null,
   },
   // 「新增账号 → 名称」输入框的占位提示（各平台命名习惯不同）
-  namePlaceholder: '例：CodeArts 码道 · 17327137416',
+  namePlaceholder: '例：CodeArts 码道 · 138xxxx0000',
   configSchema: [
     { key: 'account', label: '华为账号（手机号）', type: 'text', required: true,
-      placeholder: '如 17327137416',
+      placeholder: '如 138xxxx0000',
       hint: '用于会话失效时自动重新登录（自动补 0086 前缀）。仅本地保存。' },
     { key: 'password', label: '密码', type: 'password', required: true,
       hint: '仅本地保存，用于自动重登。' },

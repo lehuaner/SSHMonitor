@@ -12,7 +12,8 @@ param([switch]$VerifyOnly)
 
 $ErrorActionPreference = 'Stop'
 $ROOT = $PSScriptRoot
-$SSH_TARGET = 'u0_a145@192.168.0.107'
+# Termux SSH 目标：用户名形如 u0_aXXX（在手机上执行 whoami 查看），IP 为局域网地址（若configured=ip -4 addr show wlan0）
+$SSH_TARGET = if ($env:MONITOR_SSH_TARGET) { $env:MONITOR_SSH_TARGET } else { 'u0_aXXX@192.168.0.xxx' }
 $SSH_ARGS = @('-p', '8022')
 $SVDIR = '/data/data/com.termux/files/usr/var/service'
 

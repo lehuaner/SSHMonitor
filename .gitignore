@@ -27,6 +27,8 @@ officeace_session.json
 .openclaw/
 # 临时探测脚本（一次性验证用，验证完即删）
 **/_probe_*.py
+# 本地运维脚本：订阅 URL 含令牌，已从历史抹除，永不入库
+subscriber.sh
 # 探测过程的中间产物（含短信验证码 / 原始响应，可能含凭证）
 examples/_code.txt
 examples/_*_debug.json
@@ -167,3 +169,7 @@ prompt_attachment/
 # 一次性部署调试脚本（本地清理，不再入库）
 monitor/_session_deploy.mjs
 monitor/_dnsdiag*.mjs
+
+# 本地备份与历史改写工作区（隐私改写产物，绝不可入库）
+_backup/
+_filter2/

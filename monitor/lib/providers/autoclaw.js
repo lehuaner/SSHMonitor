@@ -5,7 +5,7 @@
  * checkStatus / getTotalCredits / getPackages / probeSession），差异只在协议：
  *
  * ★凭证形态（与 Trae/WorkBuddy 的 Cookie 形态不同）：
- *   - 用户粘贴 refresh_token（30 天有效，登录客户端后从抓包/日志获取，或用本目录 examples/autoclaw_probe.mjs 登录换取）
+ *   - 用户粘贴 refresh_token（30 天有效，登录客户端后从抓包/日志获取，或用本项目的「验证码登录」流程换取）
  *   - provider 每次签到前自动用 refresh_token 换新 access_token（24h），并写回 task.config.token /
  *     task.tokenExpiredAt / task.config.refreshTokenExpiresAt（调用方 persistTask 持久化）
  *   - refresh_token 实测不轮换：30 天窗口固定，到期前邮件提醒（probeSession 按 refresh JWT exp 探测）
@@ -16,12 +16,27 @@
  *   - complete: 已签后返回 {already_completed:true, reward_points:0}（幂等）
  *   - 正常奖励 200 积分/天，签到积分批次 7 天后过期
  */
-import { AutoClawClient, decodeJwtClaims, DAILY_SIGNIN_TASK_ID, describeWallet } from '../checkin/autoclaw.js';
+import { AutoClawClient, decodeJwtClaims, DAILY_SIGNIN_TASK_ID, describeWallet, deviceFingerprint } from '../checkin/autoclaw.js';
 // 三个平台共用的表单常量与「积分过期提醒」配置片段
 import { TIMEZONES, TIMES, THRESHOLDS, EXPIRY_DAYS } from './common.js';
+import { loadJSON, DATA_DIR } from '../utils.js';
 
 // access_token 剩余有效期低于该值时用 refresh_token 换新
 const TOKEN_MIN_REMAINING_MS = 6 * 60 * 60 * 1000;
+
+// 设备指纹解析：账号 config.deviceId > ~/.monitor_data/device_identity.json 的 autoclawDeviceId
+// > 按账号稳定派生。注意：凭证与签发时的 device_id 绑定，换指纹需重新验证码登录。
+let acIdentity;
+function deviceIdFor(task) {
+  const cfg = (task && task.config) || {};
+  if (cfg.deviceId) return cfg.deviceId;
+  if (acIdentity === undefined) {
+    try { acIdentity = loadJSON(DATA_DIR + '/device_identity.json', {}) || {}; }
+    catch { acIdentity = {}; }
+  }
+  if (acIdentity.autoclawDeviceId) return acIdentity.autoclawDeviceId;
+  return deviceFingerprint((task && task.id) || 'autoclaw');
+}
 
 /** 归一化错误（直接复用客户端库的分类逻辑；这里兜底处理网络层裸错误） */
 function classify(err) {
@@ -50,7 +65,7 @@ async function resolveToken(task) {
     return token; // 只剩 token 的旧任务：用到过期为止，由 probeSession 提醒
   }
 
-  const client = new AutoClawClient({ refreshToken, deviceId: task.config.deviceId });
+  const client = new AutoClawClient({ refreshToken, deviceId: deviceIdFor(task) });
   const r = await client.refreshAccessToken();
   task.config.token = r.accessToken;
   task.config.refreshTokenExpiresAt = r.refreshExpMs;
@@ -63,7 +78,7 @@ async function buildClient(task) {
   return new AutoClawClient({
     accessToken,
     refreshToken: task.config.refreshToken,
-    deviceId: task.config.deviceId,
+    deviceId: deviceIdFor(task),
   });
 }
 
@@ -87,7 +102,7 @@ export default {
     },
     {
       key: 'deviceId', label: '设备 ID（可选）', type: 'text', required: false,
-      hint: '默认使用本机 AutoClaw 客户端的设备指纹（与凭证签发设备一致即可）。仅多设备场景需要区分时才配置。',
+      hint: '设备指纹解析顺序：此处填写 > ~/.monitor_data/device_identity.json 的 autoclawDeviceId > 按账号自动派生。凭证与签发时的 device_id 绑定，换指纹后需重新验证码登录；一般留空即可。',
     },
     { key: 'time', label: '签到时间', type: 'select', default: '09:00', required: true,
       options: TIMES.map(([v, l]) => ({ value: v, label: l })) },
@@ -114,7 +129,7 @@ export default {
     try {
       const client = new AutoClawClient({
         refreshToken: task.config && task.config.refreshToken,
-        deviceId: task.config && task.config.deviceId,
+        deviceId: deviceIdFor(task),
       });
       const r = await client.sendCode(phone);
       if (!r.result) throw new Error('上游未确认发送成功');
@@ -134,7 +149,7 @@ export default {
     try {
       const client = new AutoClawClient({
         refreshToken: task.config && task.config.refreshToken,
-        deviceId: task.config && task.config.deviceId,
+        deviceId: deviceIdFor(task),
       });
       const r = await client.loginWithSmsCode(phone, code);
       if (!r.refreshToken) throw new Error('登录成功但未返回 refresh_token');
@@ -292,7 +307,7 @@ export default {
     if (refreshToken && !refreshExpMs) {
       // refresh_token 存在但解析不出 exp：可能格式不对，做一次网络校验兜底
       try {
-        const client = new AutoClawClient({ refreshToken, deviceId: task.config.deviceId });
+        const client = new AutoClawClient({ refreshToken, deviceId: deviceIdFor(task) });
         await client.refreshAccessToken();
         return { ok: true, isLogin: true, expiresAt: null };
       } catch (err) {

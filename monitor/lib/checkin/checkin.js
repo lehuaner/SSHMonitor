@@ -9,7 +9,8 @@
  *   缺失时服务端返回 code 9004「The submitted order parameters are incorrect」。
  *   status 仅查询、不校验这些头；claim（0 元下单）则会被上游风控校验设备标识——
  *   自造的假设备标识时返回 code 9004「The submitted order parameters are incorrect」，
- *   或报「操作太过频繁」。必须使用真实 IDE 抓包里的固定设备标识（REAL_DEVICE）才能通过。
+ *   或报「操作太过频繁」。部分上游风控会校验设备标识，若派生值被拒，可将一套
+ *   真实 IDE 抓包的设备标识写入 ~/.monitor_data/device_identity.json 或账号配置（见 deriveDevice）。
  *   - POST /cloudide/api/v3/common/GetUserToken   （用网页 Cookie 换取新的 8 小时 JWT）
  *   - POST /cloudide/api/v3/trae/CheckLogin       （查询网页会话状态与到期时间）
  *   两者均无请求鉴权头，完全靠 Cookie（核心为 X-Cloudide-Session 与 sessionid 族）。
@@ -20,25 +21,59 @@ import { randomUUID, randomBytes, createHash } from 'node:crypto';
 const BROWSER_UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0';
 
-// 真实 IDE 成功签到抓包里使用的固定设备身份（2026-08-15 与 2026-08-18 两处抓包同值）。
-// 实测：程序自造的假设备标识会被上游风控识别、claim 报「操作太过频繁」；
-// 使用这一套真实设备标识 + app-version 0.1.51 时 claim 返回 code 0（同一设备当日多次 claim 均通过）。
-const REAL_DEVICE = {
-  vscodeSessionId: '0ec2815d877a858e8e735d7c63cfd406d5f7456e417eecf3a3003f0983560b51',
-  marketUserId: '27d676f6-393e-4bc7-833c-2dc7a0da0dc2',
-  deviceId: '3798161405005257',
-};
+// 设备标识三级来源（公开仓库不内置任何真实抓包值）：
+//   1) 账号配置覆盖：provider 层以 task.config.deviceId 优先注入（trae 表单「设备 ID」）；
+//   2) 部署级真实标识：~/.monitor_data/device_identity.json
+//      { "vscodeSessionId": "...", "marketUserId": "...", "deviceId": "..." }（可选，需自行抓包）；
+//   3) 兜底：按 seed 稳定派生（每账号一套、重启不变）。
+// 历史实测：同一部署固定一套标识 + app-version 0.1.51 时 claim 可通过；若派生值
+// 被上游风控拒绝（报「操作太过频繁」/code 9004），按 2) 提供真实抓包值即可。
+import { loadJSON, DATA_DIR } from '../utils.js';
 
-const DEVICE = { ...REAL_DEVICE };
+const IDENTITY_FILE = DATA_DIR + '/device_identity.json';
+let identityCache;
+function fileIdentity() {
+  if (identityCache === undefined) {
+    try {
+      const j = loadJSON(IDENTITY_FILE, {});
+      identityCache = (j && (j.deviceId || j.vscodeSessionId || j.marketUserId)) ? j : null;
+    } catch { identityCache = null; }
+  }
+  return identityCache;
+}
+
+// 由 seed 稳定派生十六进制串（同一账号始终得到同一套标识）
+function hexFrom(seed, len) {
+  let out = '';
+  let i = 0;
+  while (out.length < len) out += createHash('sha256').update(seed + '#' + i++).digest('hex');
+  return out.slice(0, len);
+}
 
 /**
- * 返回已知可用的固定设备标识。
- * 之前按 seed 捏造独立设备标识会导致 claim 报「操作太过频繁」；
- * 已验证多个账号复用这一套真实设备标识均可正常签到，故这里一律返回固定值。
- * @param {string} _seed 保留参数，仅用于兼容旧调用
+ * 返回该任务应使用的设备标识。
+ * 优先 ~/.monitor_data/device_identity.json 的部署级真实标识；无则按 seed 派生。
+ * @param {string} seed 通常为 taskId + '|trae'，保证每账号独立且稳定
  */
-export function deriveDevice(_seed) {
-  return { ...REAL_DEVICE };
+export function deriveDevice(seed) {
+  const file = fileIdentity();
+  if (file) {
+    return {
+      vscodeSessionId: file.vscodeSessionId || hexFrom(String(seed) + '|sid', 64),
+      marketUserId: file.marketUserId || hexFrom(String(seed) + '|uid', 8) + '-' +
+        hexFrom(String(seed) + '|uid', 12).slice(0, 4) + '-' +
+        hexFrom(String(seed) + '|uid', 12).slice(4, 8) + '-' +
+        hexFrom(String(seed) + '|uid', 12).slice(8, 12) + '-' + hexFrom(String(seed) + '|uid', 24),
+      deviceId: file.deviceId || hexFrom(String(seed), 16).replace(/[a-f]/g, (c) => String(c.charCodeAt(0) % 10)).replace(/^0/, '7'),
+    };
+  }
+  const s = String(seed || 'default');
+  const uuid = hexFrom(s + '|u', 32);
+  return {
+    vscodeSessionId: hexFrom(s + '|s', 64),
+    marketUserId: uuid.slice(0, 8) + '-' + uuid.slice(8, 12) + '-4' + uuid.slice(13, 16) + '-' + uuid.slice(16, 20) + '-' + uuid.slice(20, 32),
+    deviceId: hexFrom(s, 16).replace(/[a-f]/g, (c) => String(c.charCodeAt(0) % 10)).replace(/^0/, '7'),
+  };
 }
 
 export class CheckinClient {
@@ -54,7 +89,7 @@ export class CheckinClient {
     this.token = token;
     this.cookie = cookie;
     this.fetch = fetchImpl;
-    this.device = device || { ...DEVICE };
+    this.device = device || deriveDevice('default');
     this.appVersion = appVersion;
     // 网页端 origin/referer：国内 api.trae.cn → www.trae.cn，国际 api.trae.com → www.trae.com
     this.webOrigin = /\.cn($|\/)/.test(this.baseUrl) || this.baseUrl.includes('trae.cn')

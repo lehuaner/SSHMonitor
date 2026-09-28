@@ -142,7 +142,7 @@ export default {
   namePlaceholder: '例：OfficeAce · 华为云主账号',
   configSchema: [
     { key: 'account', label: '华为账号（手机号/邮箱）', type: 'text', required: true,
-      placeholder: '如 17327137416',
+      placeholder: '如 138xxxx0000',
       hint: '★只需填这一项 + 密码，首次签到时自动完成纯协议登录并签发 30 天凭证，无需从客户端粘贴任何东西（自动补 0086 前缀）。仅本地保存。' },
     { key: 'password', label: '密码', type: 'password', required: true,
       hint: '仅本地保存，用于凭证过期时自动重新登录。' },

@@ -6,7 +6,7 @@
 Honor 10/
 ├── update-modules.ps1      # 新机首次 provisioning（建 runit 服务 + 基线上传，仅初始化）
 │                           # 发布：tag 触发 .github/workflows/release.yml 打包 GitHub Release 产物（GitHub 只发版、不部署）；设备端 apply 自拉产物部署；前端由设备端 apply 后置钩子纯 REST 直传 Cloudflare Pages（monitor/lib/pages-deploy.js）。详见 docs/features/f101-tag发布部署流程.md
-├── cloudflaretoken         # （历史遗留）运维令牌；前端 Pages 发布令牌已改存设备 ~/.monitor_data/frontend_deploy.json，不再放本地/GitHub Secrets
+├── cloudflaretoken         # （本地遗留、不入库）运维令牌；前端 Pages 发布令牌已改存设备 ~/.monitor_data/frontend_deploy.json
 ├── monitor/
 │   ├── server.js           # 后端主服务（Node.js HTTP 服务，端口 3081）
 │   ├── package.json
@@ -27,7 +27,7 @@ Honor 10/
 │       ├── notify.js       # 邮件通知 + 设备告警 + 代理检测
 │       ├── recorder.js     # 流量记录
 │       └── subscription.js # 订阅解析（vmess/vless/hysteria2/trojan/ss）
-└── subscriber.sh           # 订阅更新脚本（已禁用，由 monitor API 替代）
+└── subscriber.sh           # （本地运维、已从 Git 历史移除且不入库）订阅更新脚本，含令牌；运行态由 monitor API 替代
 ```
 
 ## 架构概览
@@ -81,10 +81,10 @@ cloudflared tunnel route dns honor-server t.honor10.lehuan.vip
 ssh-keygen -t ed25519 -C "deploy"
 
 # 把公钥添加到 Termux
-type $env:USERPROFILE\.ssh\id_ed25519.pub | ssh -p 8022 u0_a145@192.168.0.107 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+type $env:USERPROFILE\.ssh\id_ed25519.pub | ssh -p 8022 u0_aXXX@<PHONE_IP> "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
 
 # 测试免密登录
-ssh -p 8022 u0_a145@192.168.0.107 "echo OK"
+ssh -p 8022 u0_aXXX@<PHONE_IP> "echo OK"
 ```
 
 ### 4. Cloudflare 令牌（Pages 发布，设备端持有）
@@ -142,19 +142,19 @@ GitHub Actions 仅负责**打包发布产物**，不做任何部署；部署全�
 ### 手动重启 monitor
 
 ```bash
-ssh -p 8022 u0_a145@192.168.0.107 "~/restart-monitor.sh"
+ssh -p 8022 u0_aXXX@<PHONE_IP> "~/restart-monitor.sh"
 ```
 
 ### 查看 monitor 日志
 
 ```bash
-ssh -p 8022 u0_a145@192.168.0.107 "tail -50 ~/logs/monitor/monitor.log"
+ssh -p 8022 u0_aXXX@<PHONE_IP> "tail -50 ~/logs/monitor/monitor.log"
 ```
 
 ### 检查服务状态
 
 ```bash
-ssh -p 8022 u0_a145@192.168.0.107 "pgrep -fa 'node server.js|sing-box run|cloudflared tunnel run|while sleep 30'"
+ssh -p 8022 u0_aXXX@<PHONE_IP> "pgrep -fa 'node server.js|sing-box run|cloudflared tunnel run|while sleep 30'"
 ```
 
 ### 清除 CDN 缓存
@@ -162,7 +162,7 @@ ssh -p 8022 u0_a145@192.168.0.107 "pgrep -fa 'node server.js|sing-box run|cloudf
 ```powershell
 # 需具备 Zone: Purge Cache 权限的令牌（Pages 令牌无此权限）；勿写回明文，用环境变量提供
 $token = $env:CLOUDFLARE_PURGE_TOKEN
-$zone = "392b994235b3ffb2fdb55f39661c59e1"
+$zone = "<YOUR_ZONE_ID>"   # Cloudflare 控制台 → 域名 → Overview → Zone ID
 Invoke-RestMethod -Method POST -Uri "https://api.cloudflare.com/client/v4/zones/$zone/purge_cache" `
   -Headers @{ Authorization = "Bearer $token"; "Content-Type" = "application/json" } `
   -Body '{"purge_everything":true}'
@@ -182,16 +182,16 @@ Invoke-RestMethod -Method POST -Uri "https://api.cloudflare.com/client/v4/zones/
 
 ### 后端 API 返回 502
 
-1. 检查 cloudflared 隧道状态：`ssh -p 8022 u0_a145@192.168.0.107 "pgrep -fa cloudflared"`
-2. 检查 monitor 进程：`ssh -p 8022 u0_a145@192.168.0.107 "pgrep -fa 'node server.js'"`
-3. 查看 monitor 日志：`ssh -p 8022 u0_a145@192.168.0.107 "tail -50 ~/logs/monitor/monitor.log"`
-4. 手动重启：`ssh -p 8022 u0_a145@192.168.0.107 "~/restart-monitor.sh"`
+1. 检查 cloudflared 隧道状态：`ssh -p 8022 u0_aXXX@<PHONE_IP> "pgrep -fa cloudflared"`
+2. 检查 monitor 进程：`ssh -p 8022 u0_aXXX@<PHONE_IP> "pgrep -fa 'node server.js'"`
+3. 查看 monitor 日志：`ssh -p 8022 u0_aXXX@<PHONE_IP> "tail -50 ~/logs/monitor/monitor.log"`
+4. 手动重启：`ssh -p 8022 u0_aXXX@<PHONE_IP> "~/restart-monitor.sh"`
 
 ### SSH 连接失败
 
 1. 确认手机和电脑在同一 WiFi
-2. 确认 Termux SSH 服务在运行：`ssh -p 8022 u0_a145@192.168.0.107 "echo OK"`
-3. 检查密钥是否已添加：`ssh -p 8022 u0_a145@192.168.0.107 "cat ~/.ssh/authorized_keys"`
+2. 确认 Termux SSH 服务在运行：`ssh -p 8022 u0_aXXX@<PHONE_IP> "echo OK"`
+3. 检查密钥是否已添加：`ssh -p 8022 u0_aXXX@<PHONE_IP> "cat ~/.ssh/authorized_keys"`
 
 ### 手机重启后服务（SSH/sing-box/cloudflared/monitor）全部未启动
 
@@ -222,10 +222,10 @@ Invoke-RestMethod -Method POST -Uri "https://api.cloudflare.com/client/v4/zones/
 
 ```bash
 # 检查
-ssh -p 8022 u0_a145@192.168.0.107 "pgrep -f 'while sleep 30'"
+ssh -p 8022 u0_aXXX@<PHONE_IP> "pgrep -f 'while sleep 30'"
 
 # 手动启动
-ssh -p 8022 u0_a145@192.168.0.107 "~/start-all.sh"
+ssh -p 8022 u0_aXXX@<PHONE_IP> "~/start-all.sh"
 ```
 
 ## 数据目录
@@ -242,8 +242,8 @@ ssh -p 8022 u0_a145@192.168.0.107 "~/start-all.sh"
 
 ```bash
 # 找到最新备份
-ssh -p 8022 u0_a145@192.168.0.107 "ls -dt ~/monitor_backup_* | head -1"
+ssh -p 8022 u0_aXXX@<PHONE_IP> "ls -dt ~/monitor_backup_* | head -1"
 
 # 回滚
-ssh -p 8022 u0_a145@192.168.0.107 "cp -r ~/monitor_backup_YYYYMMDD_HHMMss/* ~/monitor/ && ~/restart-monitor.sh"
+ssh -p 8022 u0_aXXX@<PHONE_IP> "cp -r ~/monitor_backup_YYYYMMDD_HHMMss/* ~/monitor/ && ~/restart-monitor.sh"
 ```
