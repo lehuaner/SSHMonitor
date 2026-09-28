@@ -122,6 +122,7 @@
         "monitor/frontend/files.html": "CF_PAGES",
         "monitor/frontend/android.html": "CF_PAGES",
         "monitor/frontend/config.js": "CF_PAGES",
+        "monitor/frontend/site.css": "CF_PAGES",
         "monitor/frontend/nav.js": "CF_PAGES",
         "monitor/frontend/router.js": "CF_PAGES",
         "monitor/frontend/_worker.js": "CF_PAGES"

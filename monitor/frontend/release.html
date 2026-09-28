@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang=zh-CN><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>发布 - Honor10</title>
+<link rel=stylesheet href="site.css">
 <style>
 :root{--bg:#0b1120;--card:#131c31;--line:#1e293b;--txt:#e2e8f0;--muted:#64748b;--blue:#2563eb;--green:#34d399;--amber:#f59e0b;--red:#ef4444}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--txt);font:14px/1.6 system-ui,-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;padding:20px;max-width:1200px;margin:0 auto}
-.nav{display:flex;gap:4px;margin-bottom:20px;background:#131c31;border-radius:10px;padding:4px;border:1px solid #1e293b}
-.nav a{padding:8px 20px;border-radius:6px;text-decoration:none;color:#94a3b8;font-size:.85rem;transition:.2s}
-.nav a:hover,.nav a.active{background:#2563eb;color:#fff}
+/* 布局/导航/常用组件见 site.css（.app/.nav/.header/.btn 等）；以下为发布页专有样式 */
+body{font:14px/1.6 system-ui,-apple-system,'Segoe UI','Microsoft YaHei',sans-serif}
 .header{margin-bottom:16px}.header h1{font-size:1.25rem}
 .panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}
 .panel h2{font-size:.95rem;margin-bottom:10px;color:#cbd5e1}
@@ -58,6 +56,7 @@ input:focus{outline:none;border-color:#38bdf8}
 @keyframes bl{50%{opacity:.25}}
 </style>
 <script src=config.js></script>
+<div class=app>
 <div class=nav></div>
 <div class=header><h1>&#128640; 版本发布</h1></div>
 
@@ -312,3 +311,4 @@ loadData();loadAudit();loadUpstream();
 setInterval(loadAudit,30000);
 setInterval(loadUpstream,60000);
 </script>
+</div>

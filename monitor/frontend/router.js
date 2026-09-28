@@ -1,15 +1,14 @@
-/* ====== 全站局部刷新路由（抓取换内容，不清浏览器、不整页 reload） ======
- * 由 config.js 注入加载（与 nav.js 同一挂载点；nav.js 仍作为无 router 时的降级）。
- * 目标：点击顶部标签只替换 <head> 样式 + <body> 内容并重跑目标页脚本，导航/主题保持；
- *      sing-box 等 _blank / 外域 / # 锚点维持原生跳转。
- * 防泄漏：各页 body 末尾脚本会起常驻 setTimeout/轮询与 window/document 监听，
- *      由 config.js 安装的 __spaLifecycle 按「代(gen)」登记，切换页面时清理上一页的定时器与监听。
- * 兜底：fetch/解析/替换任一环节异常 → 直接 location.href 整页跳转，功能绝不因 SPA 破坏。
+/* ====== 全站局部刷新路由（抓取换内容，不整页 reload；导航/主题保持） ======
+ * 由 config.js 注入加载。点击顶部标签：fetch 目标页 → 只替换 <head> 样式 + <body> 内容 →
+ * 按文档顺序「串行」重放脚本：外链(chart.js 等)已加载则跳过、未加载则 await onload 后再放下一个，
+ * 内联逻辑在其依赖的外链就绪后执行 → 修复“切页数据不加载(外链异步抢跑)”问题。
+ * sing-box / 外域 / _blank / # 维持原生跳转；任一环节异常 → location.href 整页兜底。
+ * 定时器/监听泄漏由 config.js 安装的 __spaLifecycle 按「代(gen)」在切页时清理。
  */
 (function () {
   'use strict';
   var LIFE = window.__spaLifecycle;
-  if (!LIFE) return; // 生命周期补丁未安装（异常环境）→ 不启用 SPA，维持原生整页跳转
+  if (!LIFE) return; // 未安装生命周期补丁 → 不启用 SPA，维持原生整页跳转
 
   var NAV = [
     { href: '/', label: '监控', icon: '▼' },
@@ -22,20 +21,18 @@
     { href: '/release', label: '发布', icon: '🚀' }
   ];
 
-  function currentPath() {
-    var p = (location.pathname || '/').replace(/\/+$/, '');
-    return p || '/';
-  }
-  function isActive(href) {
-    var p = currentPath();
-    if (href === '/') return p === '/';
-    return p === href || p.indexOf(href + '/') === 0;
-  }
+  // 常驻脚本：切换内容时永不重复加载
+  function isResident(src) { return /(?:config|nav|router|site)\.js|site\.css/.test(src || ''); }
+  // 已加载的外部脚本 src（绝对化），避免每次切页重复拉取 CDN（chart.js）
+  var loadedSrcs = new Set();
+  function absSrc(u) { try { return new URL(u, location.href).href; } catch (e) { return String(u); } }
+
+  function currentPath() { var p = (location.pathname || '/').replace(/\/+$/, ''); return p || '/'; }
+  function isActive(href) { var p = currentPath(); if (href === '/') return p === '/'; return p === href || p.indexOf(href + '/') === 0; }
   function renderNav() {
     var nav = document.querySelector('.nav');
     if (!nav) {
-      nav = document.createElement('div');
-      nav.className = 'nav';
+      nav = document.createElement('div'); nav.className = 'nav';
       var app = document.querySelector('.app') || document.body;
       app.insertBefore(nav, app.firstChild);
     }
@@ -46,46 +43,59 @@
     }).join('');
   }
 
-  // 常驻脚本：切换内容时不重复加载（避免 fetch 拦截器/生命周期被二次包裹）
-  function isResident(src) { return /(?:config|nav|router)\.js/.test(src || ''); }
+  // 串行加载一个外链脚本，等待其 onload/onerror 后再返回（保证后续内联依赖就绪）
+  function loadExternal(src, type) {
+    return new Promise(function (resolve) {
+      var s = document.createElement('script');
+      if (type) s.type = type;
+      s.src = src;
+      var done = false; var finish = function () { if (done) return; done = true; resolve(); };
+      s.addEventListener('load', finish); s.addEventListener('error', finish);
+      document.body.appendChild(s);
+      setTimeout(finish, 8000); // 兜底：外链超时也不卡死流程
+    });
+  }
 
-  function swapBody(doc) {
-    // 1) 清理上一页（当前 gen）登记的定时器/监听
+  async function swapBody(doc) {
+    // 1) 清理上一页定时/监听，进入新一代
     LIFE.endGeneration();
-    // 2) 进入新的一代，供目标页脚本登记
     LIFE.beginGeneration();
-    // 3) 样式：移除本站 spa 注入的旧样式，注入目标页 <style>（head 或 body 内）
+    // 2) 样式：移除上次注入的 spa 样式，注入目标页 <style>（追加到 head 末尾，就近覆盖）
     document.querySelectorAll('style[data-spa]').forEach(function (n) { n.parentNode && n.parentNode.removeChild(n); });
-    var styles = doc.querySelectorAll('style');
-    for (var i = 0; i < styles.length; i++) {
-      var c = styles[i].cloneNode(true);
-      c.setAttribute('data-spa', '1');
-      document.head.appendChild(c);
-    }
-    // 4) 摘出目标页所有脚本（含 head/body），其余内容整体搬入当前文档
+    doc.querySelectorAll('style').forEach(function (st) {
+      var c = st.cloneNode(true); c.setAttribute('data-spa', '1'); document.head.appendChild(c);
+    });
+    // 3) 摘出目标页所有脚本（文档顺序），其余内容整体搬入当前 body
     var scripts = Array.prototype.slice.call(doc.querySelectorAll('script'));
     scripts.forEach(function (s) { s.parentNode && s.parentNode.removeChild(s); });
-    // 5) 清空并替换当前 body 内容
     while (document.body.firstChild) document.body.removeChild(document.body.firstChild);
     Array.prototype.slice.call(doc.body.childNodes).forEach(function (n) {
       document.body.appendChild(document.importNode(n, true));
     });
-    // 6) 重跑目标页脚本：常驻脚本跳过；其余重建为新的 <script> 元素（内联即时执行、外链加载执行）
-    scripts.forEach(function (s) {
+    // 4) 按文档顺序串行重放脚本：外链 await、内联立即执行；已加载外链与常驻脚本跳过
+    renderNav();
+    for (var i = 0; i < scripts.length; i++) {
+      var s = scripts[i];
       var src = s.getAttribute('src');
-      if (isResident(src)) return;
-      var n = document.createElement('script');
-      if (src) n.src = src; else n.textContent = s.textContent;
-      if (s.type) n.type = s.type;
-      document.body.appendChild(n);
-    });
+      if (src) {
+        if (isResident(src)) continue;
+        var key = absSrc(src);
+        if (loadedSrcs.has(key)) continue;
+        await loadExternal(src, s.type);
+        loadedSrcs.add(key);
+      } else {
+        var n = document.createElement('script');
+        if (s.type) n.type = s.type;
+        n.textContent = s.textContent;
+        document.body.appendChild(n); // 内联脚本即时执行（其依赖的外链已在其之前加载）
+      }
+    }
   }
 
   var busy = false;
   async function navigate(href, push) {
     if (busy) return;
-    var url;
-    try { url = new URL(href, location.href); } catch (e) { return; }
+    var url; try { url = new URL(href, location.href); } catch (e) { return; }
     if (url.origin !== location.origin) { location.href = url.href; return; }
     busy = true;
     try {
@@ -94,16 +104,13 @@
       var html = await res.text();
       var doc = new DOMParser().parseFromString(html, 'text/html');
       if (!doc || !doc.body) throw new Error('bad doc');
-      swapBody(doc);
+      await swapBody(doc);
       if (push !== false) history.pushState({ spa: 1 }, '', url.href);
       if (doc.title) document.title = doc.title;
       renderNav();
       window.scrollTo(0, 0);
     } catch (e) {
-      // 任一环节失败 → 原生整页跳转兜底
-      busy = false;
-      location.href = url.href;
-      return;
+      busy = false; location.href = url.href; return; // 任一异常 → 原生整页兜底
     }
     busy = false;
   }
@@ -118,7 +125,7 @@
     return href;
   }
 
-  // 用「免登记」方式绑定路由自身的常驻监听，避免被 gen 清理掉
+  // 路由自身常驻监听：免登记（不被 gen 清理）
   LIFE.raw(function () {
     document.addEventListener('click', function (ev) {
       if (ev.defaultPrevented || ev.button !== 0 || ev.metaKey || ev.ctrlKey || ev.shiftKey || ev.altKey) return;
@@ -128,13 +135,16 @@
       ev.preventDefault();
       navigate(href, true);
     }, false);
-
-    window.addEventListener('popstate', function () {
-      navigate(location.pathname + location.search, false);
-    }, false);
+    window.addEventListener('popstate', function () { navigate(location.pathname + location.search, false); }, false);
   });
 
-  function init() { renderNav(); }
+  function init() {
+    // 种子：当前文档已存在的外部脚本视为已加载，避免首屏后切页重复拉取
+    document.querySelectorAll('script[src]').forEach(function (s) {
+      var src = s.getAttribute('src'); if (src && !isResident(src)) loadedSrcs.add(absSrc(src));
+    });
+    renderNav();
+  }
   if (document.readyState === 'loading') LIFE.raw(function () { document.addEventListener('DOMContentLoaded', init, false); });
   else init();
 })();
