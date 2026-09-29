@@ -125,6 +125,12 @@
         "monitor/frontend/site.css": "CF_PAGES",
         "monitor/frontend/nav.js": "CF_PAGES",
         "monitor/frontend/router.js": "CF_PAGES",
+        "monitor/frontend/icons.js": "CF_PAGES",
+        "monitor/frontend/ico/trae.png": "CF_PAGES",
+        "monitor/frontend/ico/workbuddy.svg": "CF_PAGES",
+        "monitor/frontend/ico/codearts.svg": "CF_PAGES",
+        "monitor/frontend/ico/officeace.png": "CF_PAGES",
+        "monitor/frontend/ico/autoclaw.png": "CF_PAGES",
         "monitor/frontend/_worker.js": "CF_PAGES"
       }
     }

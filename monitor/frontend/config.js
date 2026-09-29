@@ -46,6 +46,20 @@ window.API_BASE = '';
   };
 })();
 
+// ====== 全站 SVG 图标系统：先于 router.js 注入 icons.js（提供 ic()/defs，常驻不重加载） ======
+(function () {
+  function inject() {
+    if (document.querySelector('script[data-icons]')) return;
+    var s = document.createElement('script');
+    s.src = '/icons.js';
+    s.async = false;
+    s.setAttribute('data-icons', '1');
+    (document.head || document.body).appendChild(s);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', inject);
+  else inject();
+})();
+
 // ====== 全站统一导航 + 局部刷新路由：加载 router.js（内含导航渲染 + 抓取换内容 + 按代清理） ======
 // config.js 已在所有 *.html 顶部引入，故在此单点挂载。router.js 内部会渲染/高亮 .nav 并拦截同源的导航。
 (function () {

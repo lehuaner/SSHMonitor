@@ -57,13 +57,13 @@ input:focus{outline:none;border-color:#38bdf8}
 <script src=config.js></script>
 <div class=app>
 <div class=nav></div>
-<div class=header><h1>&#128640; 版本发布</h1></div>
+<div class=header><h1><svg class="ic"><use href="#h10i-rocket"></use></svg> 版本发布</h1></div>
 
 <div class=panel>
   <h2>当前部署</h2>
   <div id=deployed class=mods><span class=empty><span class=spin></span> 加载中…</span></div>
   <div class=row style=margin-top:12px>
-    <button class=btn onclick=loadData()>&#8635; 刷新</button>
+    <button class=btn onclick=loadData()><svg class="ic"><use href="#h10i-refresh"></use></svg> 刷新</button>
     <button class="btn btn-danger" onclick=doRollback() id=btnRollback>&#9100; 回滚上一版本</button>
     <span class=mono id=updAt></span>
   </div>
@@ -74,9 +74,9 @@ input:focus{outline:none;border-color:#38bdf8}
   <div class=row id=upSummary><span class=empty><span class=spin></span> 检测中…</span></div>
   <div id=upList style=margin-top:8px></div>
   <div class=row style=margin-top:12px>
-    <button class="btn btn-primary" id=btnUpdLatest onclick=updateLatest()>&#128640; 一键更新到最新</button>
-    <button class=btn id=btnUpCheck onclick=checkUp()>&#8635; 立即检测</button>
-    <button class=btn onclick=toggleCfg()>&#9881; 检测设置</button>
+    <button class="btn btn-primary" id=btnUpdLatest onclick=updateLatest()><svg class="ic"><use href="#h10i-rocket"></use></svg> 一键更新到最新</button>
+    <button class=btn id=btnUpCheck onclick=checkUp()><svg class="ic"><use href="#h10i-refresh"></use></svg> 立即检测</button>
+    <button class=btn onclick=toggleCfg()><svg class="ic"><use href="#h10i-settings"></use></svg> 检测设置</button>
     <span class=mono id=upAt></span>
   </div>
   <div class=cfg id=upCfg>
@@ -86,7 +86,7 @@ input:focus{outline:none;border-color:#38bdf8}
     <label class=wide>tag 匹配规则<input id=cfgPattern style=width:200px></label>
     <label class=chk><input id=cfgEnabled type=checkbox> 启用自动检测</label>
     <div class=row style=margin-top:6px;width:100%>
-      <button class="btn btn-primary" onclick=saveCfg()>&#128190; 保存并检测</button>
+      <button class="btn btn-primary" onclick=saveCfg()><svg class="ic"><use href="#h10i-save"></use></svg> 保存并检测</button>
       <button class=btn onclick=clearToken()>清除 Token</button>
       <span class=mono id=cfgHint></span>
     </div>
@@ -154,7 +154,7 @@ function renderReleases(){
       </div>
       <div class=meta>sha ${esc((x.sha||'').slice(0,7))} · staged ${fmtT(x.stagedAt)}</div>
       <div class=acts>
-        <button class="btn btn-primary" onclick=doApply('${esc(x.tag)}')>&#9654; 应用此版本</button>
+        <button class="btn btn-primary" onclick=doApply('${esc(x.tag)}')><svg class="ic"><use href="#h10i-play"></use></svg> 应用此版本</button>
       </div>
     </div>`;
   }).join('');
@@ -248,7 +248,7 @@ function renderUp(){
   const rows=pageSlice(r.items,PAGE_SIZE,UP_PAGE).map(x=>{
     const [cls,txt,hint]=STATE[x.state]||STATE.old;
     let btn='';
-    if(x.state==='new-staged') btn=`<button class="btn btn-primary" style=padding:4px 10px onclick="doApply('${esc(x.tag)}')">&#9654; 应用</button>`;
+    if(x.state==='new-staged') btn=`<button class="btn btn-primary" style=padding:4px 10px onclick="doApply('${esc(x.tag)}')"><svg class="ic"><use href="#h10i-play"></use></svg> 应用</button>`;
     else if(x.state==='new-unstaged') btn=`<button class="btn btn-primary" style=padding:4px 10px onclick="doApply('${esc(x.tag)}')">&#8681; 拉取并应用</button>`;
     return `<div class="up ${x.newer?'':'old'}">
       <b>${esc(x.tag)}</b><span class="tag ${cls}">${txt}</span>
@@ -274,7 +274,7 @@ async function updateLatest(){
 async function checkUp(){
   const b=$('#btnUpCheck'); b.disabled=true; b.innerHTML='<span class=spin></span> 检测中…';
   const r=await api('/api/release/upstream/check',{method:'POST'});
-  b.disabled=false; b.innerHTML='&#8635; 立即检测';
+  b.disabled=false; b.innerHTML='<svg class="ic"><use href="#h10i-refresh"></use></svg> 立即检测';
   if(!r.ok&&r.error){show(r,false);return}
   if(r.items){UP=r;renderUp();}
   show(`检测完成：${(r.items||[]).length} 个 tag，上游最新 ${r.latest||'—'}，落后 ${r.behindCount||0}`, !r.checkError);

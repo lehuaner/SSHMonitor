@@ -140,7 +140,7 @@ tr:hover td{background:rgba(56,189,248,.03)}
 <span class=tab data-d=year>年</span>
 </div>
 <div class=traffic-grid id=trafGrid></div>
-<div class=avg-toggle id=avgToggle onclick=toggleAvg()><span id=avgToggleText>&#9654; 平均流量</span></div>
+<div class=avg-toggle id=avgToggle onclick=toggleAvg()><span id=avgToggleText><svg class="ic"><use href="#h10i-play"></use></svg> 平均流量</span></div>
 <div class=avg-grid id=avgGrid style=display:none></div>
 <div class=chart-box>
   <div class=chart-y><span id=trafYmax></span><span id=trafYmid></span><span>0</span></div>
@@ -178,7 +178,7 @@ tr:hover td{background:rgba(56,189,248,.03)}
 <button class="btn btn-primary" onclick=act("restart-tunnel")>重启隧道</button>
 <button class="btn btn-primary" onclick=act("restart-proxy")>重启转发</button>
 <button class="btn btn-rst" onclick=act("restart-watchdog") id=watchdogBtn style=display:none>重启 Watchdog</button>
-<button class="btn" onclick=openServiceRules()>⚙ 服务规则</button>
+<button class="btn" onclick=openServiceRules()><svg class="ic"><use href="#h10i-settings"></use></svg> 服务规则</button>
 </div>
 </div>
 
@@ -336,7 +336,7 @@ var avgVisible=false;
 function toggleAvg(){
   avgVisible=!avgVisible;
   document.getElementById('avgGrid').style.display=avgVisible?'':'none';
-  document.getElementById('avgToggleText').innerHTML=(avgVisible?'&#9660;':'&#9654;')+' 平均流量';
+  document.getElementById('avgToggleText').innerHTML=(avgVisible?'&#9660;':'<svg class="ic"><use href="#h10i-play"></use></svg>')+' 平均流量';
   if(lastData)renderAvg(lastData);
 }
 // 根据分时分钟数计算平均单位

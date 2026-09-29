@@ -36,6 +36,26 @@ input:focus,select:focus{border-color:#38bdf8}
 .task-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .task-name{font-size:.9rem;font-weight:600;color:#e2e8f0;flex:1;min-width:120px}
 .tag{font-size:.65rem;padding:2px 8px;border-radius:4px;background:#1e293b;color:#94a3b8;white-space:nowrap}
+.tag:has(.prov-ico){padding:3px 6px;display:inline-flex;align-items:center}
+.prov-ico{width:15px;height:15px;display:block;border-radius:3px}
+/* —— 定长对齐：徽章/数值/详情项统一宽度，多卡片之间不跳动 —— */
+.task-name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tag-st{min-width:5.4em;text-align:center}
+.tag-today{min-width:6.2em;text-align:center}
+.tag-en{min-width:4.6em;text-align:center}
+.tag-total b{display:inline-block;min-width:5.4em;text-align:right;font-variant-numeric:tabular-nums}
+.task-meta{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:2px 12px}
+.task-meta>span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.task-meta b,.task-meta .num{font-variant-numeric:tabular-nums}
+.task-actions .btn-sm{min-width:7em;justify-content:center}
+/* Cookie 到期定长：天数栏/日期栏各自定宽 + 等宽数字，跨卡片完全对齐 */
+.ck-left{display:inline-block;min-width:4.6em;font-variant-numeric:tabular-nums}
+.ck-date{display:inline-block;min-width:7.4em;font-variant-numeric:tabular-nums}
+/* 编辑弹窗内的「平台功能」区（设备验证/验证码登录/权益包） */
+.modal-caps{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:12px}
+.modal-caps:empty{display:none}
+.modal-caps>label{width:100%;font-size:.7rem;color:#64748b}
+.modal-caps .btn-sm{min-width:7em;justify-content:center}
 .tag.ok{background:rgba(34,197,94,.15);color:#22c55e}
 .tag.err{background:rgba(239,68,68,.15);color:#ef4444}
 .tag.warn{background:rgba(217,119,6,.15);color:#f59e0b}
@@ -103,12 +123,12 @@ input:focus,select:focus{border-color:#38bdf8}
 </style>
 <div class=app>
 <div class=nav></div>
-<div class=header><h1>✅ 自动签到</h1></div>
+<div class=header><h1><svg class="ic"><use href="#h10i-circle-check"></use></svg> 自动签到</h1></div>
 <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
-<button class="btn btn-primary" onclick=openModal()>＋ 新增账号</button>
-<button class="btn btn-rst" onclick=runAll()>▶ 全部签到</button>
-<button class="btn" onclick=manualRefresh()>↻ 刷新</button>
-<button class="btn btn-primary" id=chartsBtn onclick=openCharts() style="display:none">📈 图表</button>
+<button class="btn btn-primary" onclick=openModal()><svg class="ic"><use href="#h10i-plus"></use></svg> 新增账号</button>
+<button class="btn btn-rst" onclick=runAll()><svg class="ic"><use href="#h10i-play"></use></svg> 全部签到</button>
+<button class="btn" onclick=manualRefresh()><svg class="ic"><use href="#h10i-refresh"></use></svg> 刷新</button>
+<button class="btn btn-primary" id=chartsBtn onclick=openCharts() style="display:none"><svg class="ic"><use href="#h10i-trending-up"></use></svg> 图表</button>
 <select id=providerFilter onchange=loadData() style="max-width:170px" title="按平台筛选账号列表">
 <option value="">全部平台</option>
 </select>
@@ -120,7 +140,7 @@ input:focus,select:focus{border-color:#38bdf8}
 <!-- 图表浮层 -->
 <div class=overlay id=chartsOverlay onclick="if(event.target===this)closeCharts()">
 <div class=modal style=max-width:920px>
-<div class=modal-h><label id=chartsTitle>📈 消耗统计</label><span class=modal-close onclick=closeCharts()>✕</span></div>
+<div class=modal-h><label id=chartsTitle><svg class="ic"><use href="#h10i-trending-up"></use></svg> 消耗统计</label><span class=modal-close onclick=closeCharts()>✕</span></div>
 <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px">
   <label style="font-size:.75rem;color:#94a3b8">平台</label>
   <div id=chartsProv style="display:flex;gap:4px;flex-wrap:wrap"></div>
@@ -131,17 +151,17 @@ input:focus,select:focus{border-color:#38bdf8}
   <label style="font-size:.75rem;color:#94a3b8">模型</label>
   <select id=chartsModel onchange="renderCharts();renderStats()" style="width:auto;padding:4px 8px;font-size:.75rem"></select>
   <button class="btn btn-sm" id=chartsUnitBtn onclick=toggleUnit() title="切换 积分 / Token">积分</button>
-  <button class="btn btn-sm btn-primary" onclick=manualRefresh()>↻ 刷新</button>
+  <button class="btn btn-sm btn-primary" onclick=manualRefresh()><svg class="ic"><use href="#h10i-refresh"></use></svg> 刷新</button>
 </div>
 <div id=dataNote style="display:none;font-size:.72rem;line-height:1.5;padding:6px 10px;border-radius:6px;margin-bottom:8px"></div>
 <div class=card style="border:1px solid #1e293b;margin-bottom:10px">
-  <div class=card-h><label id=statsTitle>📊 积分消耗统计</label>
+  <div class=card-h><label id=statsTitle><svg class="ic"><use href="#h10i-bar-chart"></use></svg> 积分消耗统计</label>
     <div style="display:flex;gap:8px;align-items:center">
       <select id=statsFilter onchange=renderStats() style="width:auto;padding:4px 8px;font-size:.75rem">
         <option value=total>总消耗</option>
         <option value=model>按模型分类</option>
       </select>
-      <button class="btn btn-sm" onclick=refreshStats()>↻ 更新</button>
+      <button class="btn btn-sm" onclick=refreshStats()><svg class="ic"><use href="#h10i-refresh"></use></svg> 更新</button>
     </div>
   </div>
   <div id=statsTotal style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:8px"></div>
@@ -161,6 +181,7 @@ input:focus,select:focus{border-color:#38bdf8}
 <div class=form-row><label>名称</label><input id=f_name placeholder="例：账号名称"></div>
 <div id=f_fields></div>
 <div class=field-toggle><label>启用计划</label><label class=toggle><input type=checkbox id=f_enabled checked><span class=slider></span></label></div>
+<div id=modalCaps class=modal-caps></div>
 <div style="display:flex;gap:8px;margin-top:14px">
 <button class="btn btn-primary" style=flex:1 onclick=saveTask()>保存</button>
 <button class="btn" onclick=closeModal()>取消</button>
@@ -172,7 +193,7 @@ input:focus,select:focus{border-color:#38bdf8}
 var $=s=>document.querySelector(s);
 var providers=[], tasks=[], stats=null, editingId=null;
 
-function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
+function toast(msg){const t=$('#toast');t.innerHTML=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
 function status(msg,type){const s=$('#status');s.textContent=msg;s.className='status'+(type?' '+type:'');}
 
 async function api(url,opts){
@@ -188,9 +209,9 @@ function cookieLeftTxt(ts){
   const d=Math.ceil((ts-Date.now())/86400000);
   const dt=new Date(ts),p=n=>String(n).padStart(2,'0');
   const s=`${dt.getFullYear()}-${p(dt.getMonth()+1)}-${p(dt.getDate())}`;
-  if(d<=0)return `<b style="color:#ef4444">已到期 (${s})</b>`;
+  if(d<=0)return `<b class=ck-left style="color:#ef4444">已到期</b><b class=ck-date>(${s})</b>`;
   const c=d<=3?'#f59e0b':'#34d399';
-  return `<b style="color:${c}">${d} 天后到期 (${s})</b>`;
+  return `<b class="ck-left" style="color:${c}">剩 ${d>99?'99+':p(d)} 天</b><b class=ck-date>(${s})</b>`;
 }
 function fmtDate(date){const [,m,d]=date.split('-');return `${m}/${d}`;}
 
@@ -236,13 +257,17 @@ function manualRefresh(){
   loadData();
 }
 function provName(id){const p=providers.find(x=>x.id===id);return p?p.name:id;}
+// 平台标志：真实 favicon（frontend/ico/，由 dev/download-icons.mjs 从各官网抓取）；无图标时回退平台名文字
+var PROV_ICO={trae:'/ico/trae.png',workbuddy:'/ico/workbuddy.svg',codearts:'/ico/codearts.svg',officeace:'/ico/officeace.png',autoclaw:'/ico/autoclaw.png'};
+function provIco(id){const src=PROV_ICO[id];const name=esc(provName(id));return src?`<img class=prov-ico src="${src}" alt="${name}" title="${name}">`:name;}
 function provCaps(id){const p=providers.find(x=>x.id===id);return (p&&p.capabilities)||[];}
 // 图表按钮：显示当前账号所属 provider 名，点击打开图表浮层
 function updateChartsBtn(){
   const btn=$('#chartsBtn');
-  const names=[...new Set(tasks.map(t=>provName(t.providerId)).filter(Boolean))];
-  btn.style.display=names.length?'':'none';
-  btn.textContent='📈 '+(names.join(' / ')||'图表');
+  const ids=[...new Set(tasks.map(t=>t.providerId).filter(Boolean))];
+  btn.style.display=ids.length?'':'none';
+  // 面板只显平台真实图标（悬浮 title 显平台名），不再罗列长短不一的平台名
+  btn.innerHTML='<svg class="ic"><use href="#h10i-trending-up"></use></svg> '+(ids.map(id=>provIco(id)).join(' ')||'图表');
 }
 function openCharts(){
   $('#chartsOverlay').classList.add('show');
@@ -263,46 +288,33 @@ function render(){
     const todayCheck=t.todayCheckedIn===true?'今日已签':(t.todayCheckedIn===false?'今日未签':'今日未检测');
     const todayCls=t.todayCheckedIn===true?'ok':(t.todayCheckedIn===false?'warn':'');
     const reward=t.lastResult==='success'?'':'';
-    // 设备验证按钮：仅对声明了 verifyCode 能力的 provider 显示
-    // （单独成串再插入，避免在外层模板字符串里嵌套反引号）
-    const verifyBtn=provCaps(t.providerId).includes('verifyCode')
-      ?`<button class="btn btn-sm" onclick=verifyCode('${t.id}')>📱 设备验证</button>`:'';
-    // 验证码登录按钮：仅对声明了 smsLogin 能力的 provider 显示（如 AutoClaw：无凭证登录 / 换新 30 天凭证）
-    const smsBtn=provCaps(t.providerId).includes('smsLogin')
-      ?`<button class="btn btn-sm" onclick=smsLogin('${t.id}')>验证码登录</button>`:'';
-    // 权益包按钮：仅对声明了 packages 能力（有真实权益包端点）的 provider 显示
-    const pkgBtn=provCaps(t.providerId).includes('packages')
-      ?`<button class="btn btn-sm" onclick=togglePackages('${t.id}',this)>💎 权益包</button>`:'';
     card.innerHTML=
       `<div class=task-h>
-        <span class=task-name>${esc(t.name)}</span>
-        <span class=tag>${esc(provName(t.providerId))}</span>
-        <span class="tag ${st}">${stTxt}</span>
-        <span class="tag ${todayCls}">${todayCheck}</span>
-        <span class="tag ${t.enabled?'ok':''}">${t.enabled?'已启用':'已停用'}</span>
-        <span class=tag>总积分 <b style=color:#34d399 data-total="${t.id}">${fmtCredits(t.totalCredits)}</b></span>
+        <span class=task-name title="${esc(t.name)}">${esc(t.name)}</span>
+        <span class=tag title="${esc(provName(t.providerId))}">${provIco(t.providerId)}</span>
+        <span class="tag tag-st ${st}">${stTxt}</span>
+        <span class="tag tag-today ${todayCls}">${todayCheck}</span>
+        <span class="tag tag-en ${t.enabled?'ok':''}">${t.enabled?'已启用':'已停用'}</span>
+        <span class="tag tag-total">总积分 <b style=color:#34d399 data-total="${t.id}">${fmtCredits(t.totalCredits)}</b></span>
       </div>
       <div class=task-meta>
-        <span>签到时间 <b>${esc(t.config.time)}</b> (${esc(t.config.timezone)})</span>
+        <span title="签到时间">签到时间 <b>${esc(t.config.time)}</b> (${esc(t.config.timezone)})</span>
         <span>失败阈值 <b>${esc(t.config.failThreshold)}</b></span>
         <span>连续失败 <b>${t.failCount||0}</b> 次</span>
         <span>平均每日消耗 <b style=color:#f59e0b>${fmtDelta(avgConsumption(t.id))}</b></span>
-        ${t.hasCookie&&t.cookieExpiresAt?`<span>Cookie ${cookieLeftTxt(t.cookieExpiresAt)}</span>`:''}
+        <span>Cookie ${t.hasCookie&&t.cookieExpiresAt?cookieLeftTxt(t.cookieExpiresAt):'<b>—</b>'}</span>
         <span>最近 <b>${fmtTime(t.lastRun)}</b></span>
-        ${t.lastError?`<span style=color:#ef4444>${esc(t.lastError)}</span>`:''}
+        ${t.lastError?`<span style=color:#ef4444 title="${esc(t.lastError)}">${esc(t.lastError)}</span>`:''}
       </div>
       <div class=task-actions>
-        <button class="btn btn-sm btn-primary" onclick=runOne('${t.id}')>▶ 立即签到</button>
+        <button class="btn btn-sm btn-primary" onclick=runOne('${t.id}')><svg class="ic"><use href="#h10i-play"></use></svg> 立即签到</button>
         <button class="btn btn-sm" onclick=checkToday('${t.id}')>☑ 检测签到</button>
         <button class="btn btn-sm" onclick=testCred('${t.id}')>d 测试凭证</button>
-        ${verifyBtn}
-        ${smsBtn}
         <button class="btn btn-sm" onclick=getTotalCredits('${t.id}')>◈ 查总积分</button>
-        ${pkgBtn}
-        <button class="btn btn-sm" onclick=toggleLog('${t.id}',this)>📅 近30天</button>
+        <button class="btn btn-sm" onclick=toggleLog('${t.id}',this)><svg class="ic"><use href="#h10i-calendar"></use></svg> 近30天</button>
         <button class="btn btn-sm" onclick=toggleUsage('${t.id}',this)>◈ 积分消耗明细</button>
         <button class="btn btn-sm" onclick=openModal('${t.id}')>✎ 编辑</button>
-        <button class="btn btn-sm btn-danger" onclick=delTask('${t.id}')>🗑 删除</button>
+        <button class="btn btn-sm btn-danger" onclick=delTask('${t.id}')><svg class="ic"><use href="#h10i-trash"></use></svg> 删除</button>
         <label class="toggle" style=margin-left:auto><input type=checkbox ${t.enabled?'checked':''} onclick=toggleEnable('${t.id}',this.checked)><span class=slider></span></label>
       </div>
       <div class=log-block id=log_${t.id}></div>
@@ -359,7 +371,7 @@ function srcShort(a){
 function srcBadge(a){
   if(!a.sourceLabel)return '';
   const tip=esc(a.sourceLabel)+(a.note?'\n'+esc(a.note):'');
-  return `<span class=tag style="font-size:.62rem" title="${tip}">${a.source==='remote'?'🛰':'📄'} ${esc(srcShort(a))}</span>`;
+  return `<span class=tag style="font-size:.62rem" title="${tip}">${a.source==='remote'?'<svg class="ic"><use href="#h10i-satellite"></use></svg>':'<svg class="ic"><use href="#h10i-file"></use></svg>'} ${esc(srcShort(a))}</span>`;
 }
 function renderProvSwitch(){
   const box=$('#chartsProv');if(!box)return;
@@ -369,7 +381,7 @@ function renderProvSwitch(){
   let html=`<button class="btn btn-sm ${!cur?'btn-primary':''}" onclick="setChartsProv('')">全部平台</button>`;
   html+=ids.map(id=>`<button class="btn btn-sm ${cur===id?'btn-primary':''}" onclick="setChartsProv('${esc(id)}')">${esc(provName(id))}</button>`).join('');
   box.innerHTML=html;
-  $('#chartsTitle').textContent='📈 '+viewLabel()+' 消耗统计';
+  $('#chartsTitle').innerHTML='<svg class="ic"><use href="#h10i-trending-up"></use></svg> '+esc(viewLabel())+' 消耗统计';
 }
 function setChartsProv(id){
   chartsProvider=id;
@@ -402,7 +414,7 @@ function renderDataNote(accs){
     const notes=[...new Set(miss.map(x=>x.note).filter(Boolean))].map(esc).join('；');
     items.push({
       warn:isToken(),
-      html:`${isToken()?'🚫':'ℹ️'} <b>${names}</b> 平台不提供 token 原始数据${notes?'：'+notes:'。'}`
+      html:`${isToken()?'<svg class="ic"><use href="#h10i-ban"></use></svg>':'<svg class="ic"><use href="#h10i-info"></use></svg>'} <b>${names}</b> 平台不提供 token 原始数据${notes?'：'+notes:'。'}`
         +(isToken()?' Token 视图下该平台显示为 <b>—</b>（未采集到原始数据，不等于消耗为 0）；积分数据完整可用。':''),
     });
   }
@@ -416,7 +428,7 @@ function renderDataNote(accs){
     if(d.cacheHitTokens!=null)parts.push(`缓存命中 ${Math.round(d.cacheHitTokens).toLocaleString()}`);
     if(d.requests!=null)parts.push(`请求 ${d.requests}`);
     if(d.activeDays!=null)parts.push(`活跃 ${d.activeDays} 天`);
-    if(parts.length)items.push({warn:false,html:`🛰 <b>${esc(s.name)}</b> 近 ${r.days||'?'} 天区间汇总 <span style="color:#64748b">（${esc(r.start||'')} ~ ${esc(r.end||'')} · ${esc(d.source||'远端接口')}）</span>：${parts.join(' · ')}`});
+    if(parts.length)items.push({warn:false,html:`<svg class="ic"><use href="#h10i-satellite"></use></svg> <b>${esc(s.name)}</b> 近 ${r.days||'?'} 天区间汇总 <span style="color:#64748b">（${esc(r.start||'')} ~ ${esc(r.end||'')} · ${esc(d.source||'远端接口')}）</span>：${parts.join(' · ')}`});
   }
   if(!items.length){box.style.display='none';box.innerHTML='';return;}
   box.style.display='';
@@ -429,10 +441,10 @@ function renderStats(){
   const accs=scopedAccounts();
   const total=viewTotal();
   const allT=(stats&&stats.total)||null;
-  const ttl=$('#statsTitle');if(ttl)ttl.textContent='📊 '+(isToken()?'Token':'积分')+'消耗统计';
+  const ttl=$('#statsTitle');if(ttl)ttl.innerHTML='<svg class="ic"><use href="#h10i-bar-chart"></use></svg> '+(isToken()?'Token':'积分')+'消耗统计';
   renderDataNote(accs);
   if(!total||!accs.length){
-    $('#statsTotal').innerHTML=`<div style=color:#64748b;font-size:.78rem>${esc(viewLabel())}：暂无消耗数据，点击「↻ 更新」拉取已过去日期的实际消耗并落库。</div>`;
+    $('#statsTotal').innerHTML=`<div style=color:#64748b;font-size:.78rem>${esc(viewLabel())}：暂无消耗数据，点击「<svg class="ic"><use href="#h10i-refresh"></use></svg> 更新」拉取已过去日期的实际消耗并落库。</div>`;
     $('#statsBreakdown').innerHTML='';
     return;
   }
@@ -487,12 +499,12 @@ function renderStats(){
   $('#statsBreakdown').innerHTML=scope+rows;
 }
 async function refreshStats(){
-  toast('⏳ 更新统计中…');
+  toast('<svg class="ic"><use href="#h10i-hourglass"></use></svg> 更新统计中…');
   const r=await api('/api/checkin/stats?force=1');
-  if(!r.ok){toast('❌ 更新失败: '+(r.error||'未知错误'));return;}
+  if(!r.ok){toast('<svg class="ic"><use href="#h10i-circle-x"></use></svg> 更新失败: '+(r.error||'未知错误'));return;}
   if(r.accounts)stats=r;
   renderStats();
-  toast('✅ 统计已更新');
+  toast('<svg class="ic"><use href="#h10i-circle-check"></use></svg> 统计已更新');
 }
 
 // ====== 账号 CRUD ======
@@ -505,7 +517,21 @@ function openModal(id){
   $('#f_name').value=t?t.name:'';
   $('#f_enabled').checked=t?(t.enabled!==false):true;
   renderFields(t);
+  renderCapsButtons(t);
   $('#overlay').classList.add('show');
+}
+// 平台功能按钮（设备验证/验证码登录/权益包）：从卡片按钮行移入编辑弹窗，
+// 避免不同 provider capabilities 差异导致卡片按钮数/宽度不一致；
+// 点击时先关弹窗再执行（结果面板在卡片展开区，弹窗不遮挡）
+function renderCapsButtons(t){
+  const box=$('#modalCaps');if(!box)return;
+  if(!t){box.innerHTML='';return;}
+  const caps=provCaps(t.providerId);const id=t.id;
+  const btns=[];
+  if(caps.includes('verifyCode'))btns.push(`<button class="btn btn-sm" onclick="closeModal();verifyCode('${id}')">${ic('smartphone')} 设备验证</button>`);
+  if(caps.includes('smsLogin'))btns.push(`<button class="btn btn-sm" onclick="closeModal();smsLogin('${id}')">验证码登录</button>`);
+  if(caps.includes('packages'))btns.push(`<button class="btn btn-sm" onclick="closeModal();togglePackages('${id}')">${ic('gem')} 权益包</button>`);
+  box.innerHTML=btns.length?'<label>平台功能</label>'+btns.join(''):'';
 }
 // 「名称」占位提示随 Provider 变化（provider 未声明 namePlaceholder 时用通用兜底）
 function syncNamePlaceholder(){
@@ -633,26 +659,26 @@ async function toggleEnable(id,on){
 }
 
 // ====== 操作 ======
-async function runOne(id){toast('⏳ 签到中…');const r=await api('/api/checkin/run?id='+id,{method:'POST'});toast(r.ok?(r.alreadyCheckedIn?'ℹ️ 今日已签到过':'✅ 签到成功'):'❌ 签到失败: '+(r.error||'未知错误'));loadData();}
-async function runAll(){toast('⏳ 全部签到中…');const r=await api('/api/checkin/run-all',{method:'POST'});const ok=r.results?r.results.filter(x=>x.ok).length:0;toast(ok?`✅ 完成：成功 ${ok}/${r.results?r.results.length:0}`:'❌ 全部签到失败');loadData();}
-async function testCred(id){toast('⏳ 测试凭证中…');const r=await api('/api/checkin/test?id='+id,{method:'POST'});if(r.ok){toast(`✅ 凭证有效，可用积分 ${r.total??'?'}`);refreshTotal(id);}else{toast('❌ 凭证无效: '+(r.error||'未知错误'));}loadData();}
+async function runOne(id){toast('<svg class="ic"><use href="#h10i-hourglass"></use></svg> 签到中…');const r=await api('/api/checkin/run?id='+id,{method:'POST'});toast(r.ok?(r.alreadyCheckedIn?'<svg class="ic"><use href="#h10i-info"></use></svg> 今日已签到过':'<svg class="ic"><use href="#h10i-circle-check"></use></svg> 签到成功'):'<svg class="ic"><use href="#h10i-circle-x"></use></svg> 签到失败: '+(r.error||'未知错误'));loadData();}
+async function runAll(){toast('<svg class="ic"><use href="#h10i-hourglass"></use></svg> 全部签到中…');const r=await api('/api/checkin/run-all',{method:'POST'});const ok=r.results?r.results.filter(x=>x.ok).length:0;toast(ok?`<svg class="ic"><use href="#h10i-circle-check"></use></svg> 完成：成功 ${ok}/${r.results?r.results.length:0}`:'<svg class="ic"><use href="#h10i-circle-x"></use></svg> 全部签到失败');loadData();}
+async function testCred(id){toast('<svg class="ic"><use href="#h10i-hourglass"></use></svg> 测试凭证中…');const r=await api('/api/checkin/test?id='+id,{method:'POST'});if(r.ok){toast(`<svg class="ic"><use href="#h10i-circle-check"></use></svg> 凭证有效，可用积分 ${r.total??'?'}`);refreshTotal(id);}else{toast('<svg class="ic"><use href="#h10i-circle-x"></use></svg> 凭证无效: '+(r.error||'未知错误'));}loadData();}
 async function refreshTotal(id){const r=await api('/api/checkin/credits/total?id='+id);if(r.ok){const el=document.querySelector(`[data-total="${id}"]`);if(el)el.textContent=fmtCredits(r.total);}}
-async function getTotalCredits(id){toast('⏳ 查询总积分中…');const r=await api('/api/checkin/credits/total?id='+id);toast(r.ok?`✅ 总积分: ${fmtCredits(r.total)}`:'❌ 查总积分失败: '+(r.error||'未知错误'));loadData();}
-async function checkToday(id){toast('⏳ 检测中…');const r=await api('/api/checkin/status?id='+id);if(!r.ok){toast('❌ 检测失败: '+(r.error||'未知错误'));loadData();return;}toast(r.checked_in?`✅ 今日已签到，积分 ${r.credits??'未知'}`:`今日未签到，积分 ${r.credits??'未知'}`);loadData();}
+async function getTotalCredits(id){toast('<svg class="ic"><use href="#h10i-hourglass"></use></svg> 查询总积分中…');const r=await api('/api/checkin/credits/total?id='+id);toast(r.ok?`<svg class="ic"><use href="#h10i-circle-check"></use></svg> 总积分: ${fmtCredits(r.total)}`:'<svg class="ic"><use href="#h10i-circle-x"></use></svg> 查总积分失败: '+(r.error||'未知错误'));loadData();}
+async function checkToday(id){toast('<svg class="ic"><use href="#h10i-hourglass"></use></svg> 检测中…');const r=await api('/api/checkin/status?id='+id);if(!r.ok){toast('<svg class="ic"><use href="#h10i-circle-x"></use></svg> 检测失败: '+(r.error||'未知错误'));loadData();return;}toast(r.checked_in?`<svg class="ic"><use href="#h10i-circle-check"></use></svg> 今日已签到，积分 ${r.credits??'未知'}`:`今日未签到，积分 ${r.credits??'未知'}`);loadData();}
 
 // 设备验证码：先尝试登录（设备已受信则免验证），需要时下发验证码并让用户输入
 // 仅对声明了 verifyCode 能力的 provider 显示（如 CodeArts 的新设备二次验证）
 async function verifyCode(id){
-  toast('⏳ 正在登录并尝试下发验证码…');
+  toast('<svg class="ic"><use href="#h10i-hourglass"></use></svg> 正在登录并尝试下发验证码…');
   const r=await api('/api/checkin/verify-code/request?id='+id,{method:'POST'});
-  if(!r.ok){toast('❌ '+(r.error||'获取验证码失败'));loadData();return;}
-  if(r.alreadyTrusted){toast('✅ '+(r.message||'设备已受信，无需验证码'));loadData();return;}
+  if(!r.ok){toast('<svg class="ic"><use href="#h10i-circle-x"></use></svg> '+(r.error||'获取验证码失败'));loadData();return;}
+  if(r.alreadyTrusted){toast('<svg class="ic"><use href="#h10i-circle-check"></use></svg> '+(r.message||'设备已受信，无需验证码'));loadData();return;}
   const devs=(r.authDevices||[]).map(d=>d.name).filter(Boolean).join('、');
   const code=prompt(`验证码已下发至：${devs||'已绑定设备'}\n请输入收到的 6 位数字验证码：`);
   if(!code)return;
-  toast('⏳ 校验中…');
+  toast('<svg class="ic"><use href="#h10i-hourglass"></use></svg> 校验中…');
   const s=await api('/api/checkin/verify-code/submit?id='+id,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code.trim()})});
-  toast(s.ok?('✅ '+(s.message||'设备验证通过')):('❌ '+(s.error||'验证失败')));
+  toast(s.ok?('<svg class="ic"><use href="#h10i-circle-check"></use></svg> '+(s.message||'设备验证通过')):('<svg class="ic"><use href="#h10i-circle-x"></use></svg> '+(s.error||'验证失败')));
   loadData();
 }
 
@@ -690,7 +716,7 @@ async function autoCheck(){
 async function toggleLog(id,btn){
   const block=$('#log_'+id);
   const show=!block.classList.contains('show');
-  btn.textContent=show?'📅 收起日志':'📅 近30天';
+  btn.textContent=show?'<svg class="ic"><use href="#h10i-calendar"></use></svg> 收起日志':'<svg class="ic"><use href="#h10i-calendar"></use></svg> 近30天';
   block.classList.toggle('show',show);
   if(show&&!block.dataset.loaded){
     block.dataset.loaded='1';
@@ -739,7 +765,7 @@ function renderDailyDetail(r,block,stVal,enVal){
   const src=(r.sourceLabel||'')+(r.note?' · '+r.note:'');
   const noteHtml=r.note?'<br><span style="color:#f59e0b">'+esc(r.note)+'</span>':'';
   const head='<div style="font-size:.7rem;color:#64748b;margin-bottom:4px">'
-    +(r.source==='remote'?'🛰 真实远端端点':'📄 本地记录')+' · '+esc(r.sourceLabel||'—')+noteHtml+'</div>';
+    +(r.source==='remote'?'<svg class="ic"><use href="#h10i-satellite"></use></svg> 真实远端端点':'<svg class="ic"><use href="#h10i-file"></use></svg> 本地记录')+' · '+esc(r.sourceLabel||'—')+noteHtml+'</div>';
   if(!days.length){bodyEl.innerHTML=head+'<div class=usage-empty>该时段暂无消耗记录</div>';return;}
   const cred=days.reduce((s,d)=>s+(d.consumption||0),0);
   const tok=days.reduce((s,d)=>s+(d.tokens||0),0);
@@ -822,7 +848,7 @@ function pkgBar(p){
 async function togglePackages(id,btn){
   const block=document.querySelector('#pkg_'+id);
   const show=!block.classList.contains('show');
-  btn.textContent=show?'💎 收起权益包':'💎 权益包';
+  if(btn)btn.textContent=show?'<svg class="ic"><use href="#h10i-gem"></use></svg> 收起权益包':'<svg class="ic"><use href="#h10i-gem"></use></svg> 权益包';
   block.classList.toggle('show',show);
   if(show&&!block.dataset.loaded){
     block.dataset.loaded='1';
@@ -1001,7 +1027,7 @@ function renderCharts(){
   // ★Token 视图 + 视图内平台不提供 token 原始数据 → 明确说明「图为什么是空的」
   const miss=noTokenProviders(accs);
   const missTxt=(isToken()&&miss.length)
-    ? '⚠️ '+miss.map(x=>x.name).join('、')+' 的用量接口不返回 token 明细'
+        ? ic('triangle-alert')+' '+miss.map(x=>x.name).join('、')+' 的用量接口不返回 token 明细'
       +([...new Set(miss.map(x=>x.note).filter(Boolean))].length?'（'+[...new Set(miss.map(x=>x.note).filter(Boolean))].join('；')+'）':'')
       +'，故上图该平台的 Token 柱状图恒为 0 —— 这是「上游没有原始数据」，不是「消耗为 0」。切回「积分」可看该平台的真实消耗。'
     : '';

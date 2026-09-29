@@ -173,3 +173,7 @@ monitor/_dnsdiag*.mjs
 # 本地备份与历史改写工作区（隐私改写产物，绝不可入库）
 _backup/
 _filter2/
+
+# 前端 dev mock 数据（从手机端抓取的真实业务快照，已脱敏但仍不入库；重生成：手机运行 monitor/dev/get-mock.phone.mjs 后拉回 dev/mock/）
+monitor/dev/mock/
+monitor/dev/mock_out.tar.gz

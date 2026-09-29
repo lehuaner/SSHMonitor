@@ -11,18 +11,18 @@
   if (!LIFE) return; // 未安装生命周期补丁 → 不启用 SPA，维持原生整页跳转
 
   var NAV = [
-    { href: '/', label: '监控', icon: '▼' },
-    { href: '/sb/ui/', label: 'Sing-box', icon: '⚙', blank: true },
-    { href: '/subscription', label: '订阅', icon: '📦' },
-    { href: '/notify', label: '通知', icon: '🔔' },
-    { href: '/files', label: '文件', icon: '📁' },
-    { href: '/android', label: 'Android', icon: '📱' },
-    { href: '/checkin', label: '签到', icon: '✅' },
-    { href: '/release', label: '发布', icon: '🚀' }
+    { href: '/', label: '监控', icon: 'activity' },
+    { href: '/sb/ui/', label: 'Sing-box', icon: 'settings', blank: true },
+    { href: '/subscription', label: '订阅', icon: 'package' },
+    { href: '/notify', label: '通知', icon: 'bell' },
+    { href: '/files', label: '文件', icon: 'folder' },
+    { href: '/android', label: 'Android', icon: 'smartphone' },
+    { href: '/checkin', label: '签到', icon: 'circle-check' },
+    { href: '/release', label: '发布', icon: 'rocket' }
   ];
 
   // 常驻脚本：切换内容时永不重复加载
-  function isResident(src) { return /(?:config|nav|router|site)\.js|site\.css/.test(src || ''); }
+  function isResident(src) { return /(?:config|nav|icons|router|site)\.js|site\.css/.test(src || ''); }
   // 已加载的外部脚本 src（绝对化），避免每次切页重复拉取 CDN（chart.js）
   var loadedSrcs = new Set();
   function absSrc(u) { try { return new URL(u, location.href).href; } catch (e) { return String(u); } }
@@ -39,7 +39,8 @@
     nav.innerHTML = NAV.map(function (it) {
       var cls = isActive(it.href) ? ' class=active' : '';
       var tgt = it.blank ? ' target=_blank' : '';
-      return '<a href="' + it.href + '"' + tgt + cls + '>' + it.icon + ' ' + it.label + '</a>';
+      var ico = window.ic ? ic(it.icon, 'ic-nav') : '';
+      return '<a href="' + it.href + '"' + tgt + cls + '>' + ico + ' ' + it.label + '</a>';
     }).join('');
   }
 

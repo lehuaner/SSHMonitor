@@ -8,14 +8,14 @@
 (function () {
   'use strict';
   var NAV = [
-    { href: '/', label: '监控', icon: '▼' },
-    { href: '/sb/ui/', label: 'Sing-box', icon: '⚙', blank: true },
-    { href: '/subscription', label: '订阅', icon: '📦' },
-    { href: '/notify', label: '通知', icon: '🔔' },
-    { href: '/files', label: '文件', icon: '📁' },
-    { href: '/android', label: 'Android', icon: '📱' },
-    { href: '/checkin', label: '签到', icon: '✅' },
-    { href: '/release', label: '发布', icon: '🚀' }
+    { href: '/', label: '监控', icon: 'activity' },
+    { href: '/sb/ui/', label: 'Sing-box', icon: 'settings', blank: true },
+    { href: '/subscription', label: '订阅', icon: 'package' },
+    { href: '/notify', label: '通知', icon: 'bell' },
+    { href: '/files', label: '文件', icon: 'folder' },
+    { href: '/android', label: 'Android', icon: 'smartphone' },
+    { href: '/checkin', label: '签到', icon: 'circle-check' },
+    { href: '/release', label: '发布', icon: 'rocket' }
   ];
   function currentPath() {
     var p = (location.pathname || '/').replace(/\/+$/, '');
@@ -30,7 +30,8 @@
     var html = NAV.map(function (it) {
       var cls = isActive(it.href) ? ' class=active' : '';
       var tgt = it.blank ? ' target=_blank' : '';
-      return '<a href="' + it.href + '"' + tgt + cls + '>' + it.icon + ' ' + it.label + '</a>';
+      var ico = window.ic ? ic(it.icon, 'ic-nav') : '';
+      return '<a href="' + it.href + '"' + tgt + cls + '>' + ico + ' ' + it.label + '</a>';
     }).join('');
     var nav = document.querySelector('.nav');
     if (!nav) {

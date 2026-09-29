@@ -76,13 +76,13 @@ textarea{min-height:60px;resize:vertical;word-break:break-all}
 </style>
 <div class=app>
 <div class=nav></div>
-<div class=header><h1>&#128230; 订阅管理</h1></div>
+<div class=header><h1><svg class="ic"><use href="#h10i-package"></use></svg> 订阅管理</h1></div>
 <div class=card>
 <div class=card-h><label>添加订阅</label></div>
 <div class=form-row><label>名称</label><input id=subName placeholder="例如: sub1"></div>
 <div class=form-row><label>订阅链接</label><input id=subUrl placeholder="输入 Hysteria2 订阅链接..."></div>
 <div style=display:flex;gap:6px;flex-wrap:wrap>
-<button class="btn btn-primary" id=addBtn onclick=addSub()>&#10010; 添加</button>
+<button class="btn btn-primary" id=addBtn onclick=addSub()><svg class="ic"><use href="#h10i-plus"></use></svg> 添加</button>
 </div>
 <div class=note>提示: 添加后会自动解析所有订阅并合并节点，每个节点 tag 会加上订阅名前缀（如 sub1_香港_01）以避免冲突。</div>
 <div class=status id=status></div>
@@ -91,7 +91,7 @@ textarea{min-height:60px;resize:vertical;word-break:break-all}
 <div class=card-h><label>DNS 解析模式</label><span style=font-size:.7rem;color:#64748b id=dnsMode>加载中...</span></div>
 <div class=note>提示: 若发现节点解析失败或时好时坏，可在此切换 DNS 模式。切换后自动写入配置并重启 sing-box。</div>
 <div class=dns-options id=dnsOptions>加载中...</div>
-<button class="btn btn-primary dns-apply" id=dnsApplyBtn onclick=applyDns()>&#9989; 应用 DNS 模式</button>
+<button class="btn btn-primary dns-apply" id=dnsApplyBtn onclick=applyDns()><svg class="ic"><use href="#h10i-circle-check"></use></svg> 应用 DNS 模式</button>
 <div class=dns-status id=dnsStatus></div>
 </div>
 <div class=card>
@@ -154,16 +154,16 @@ function renderSubs(subs){
   if(!subs||!subs.length){el.innerHTML='<div class=empty>暂无订阅，请在上方添加</div>';return}
   el.innerHTML=subs.map(s=>{
     // 显示 profileTitle（如有）作为副标题
-    const titleHtml=s.profileTitle?'<div class=meta style="color:#38bdf8;margin-bottom:4px">&#128279; '+esc(s.profileTitle)+'</div>':'';
+    const titleHtml=s.profileTitle?'<div class=meta style="color:#38bdf8;margin-bottom:4px"><svg class="ic"><use href="#h10i-link"></use></svg> '+esc(s.profileTitle)+'</div>':'';
     return '<div class=sub-item>'+
-      '<div class=name>&#128230; '+esc(s.name)+' <span class=badge>'+s.nodeCount+' 节点</span></div>'+
+      '<div class=name><svg class="ic"><use href="#h10i-package"></use></svg> '+esc(s.name)+' <span class=badge>'+s.nodeCount+' 节点</span></div>'+
       titleHtml+
       '<div class=url>'+esc(s.url)+'</div>'+
       fmtUsage(s.usage)+
-      '<div class=meta><span>&#128337; 更新: '+fmtTime(s.lastUpdate)+'</span></div>'+
+      '<div class=meta><span><svg class="ic"><use href="#h10i-clock"></use></svg> 更新: '+fmtTime(s.lastUpdate)+'</span></div>'+
       '<div class=actions>'+
-        '<button class="btn btn-rst" id=refresh-'+s.id+' onclick=refreshSub("'+esc(s.id)+'")>&#128259; 刷新</button>'+
-        '<button class="btn btn-del" onclick=deleteSub("'+esc(s.id)+'")>&#128465; 删除</button>'+
+        '<button class="btn btn-rst" id=refresh-'+s.id+' onclick=refreshSub("'+esc(s.id)+'")><svg class="ic"><use href="#h10i-refresh"></use></svg> 刷新</button>'+
+        '<button class="btn btn-del" onclick=deleteSub("'+esc(s.id)+'")><svg class="ic"><use href="#h10i-trash"></use></svg> 删除</button>'+
       '</div>'+
     '</div>';
   }).join('');
@@ -179,8 +179,8 @@ function renderNodes(nodes,cached,cacheTime){
   if(bar){
     let bh='<span class=badge-ok>&#10003; 连通 '+okCount+'</span>';
     if(failCount>0)bh+='<span class=badge-fail>&#10007; 不通 '+failCount+'</span>';
-    bh+='<span>&#128337; '+(cacheTime?fmtTime(cacheTime):'--')+(cached?' (缓存)':'')+'</span>';
-    bh+='<button class="btn" style="padding:2px 10px;font-size:.7rem" onclick=loadNodes(true)>&#128259; 刷新</button>';
+    bh+='<span><svg class="ic"><use href="#h10i-clock"></use></svg> '+(cacheTime?fmtTime(cacheTime):'--')+(cached?' (缓存)':'')+'</span>';
+    bh+='<button class="btn" style="padding:2px 10px;font-size:.7rem" onclick=loadNodes(true)><svg class="ic"><use href="#h10i-refresh"></use></svg> 刷新</button>';
     bar.innerHTML=bh;
   }
   if(!nodes.length){el.innerHTML='<div class=empty>暂无节点，请先添加订阅</div>';return}
@@ -188,7 +188,7 @@ function renderNodes(nodes,cached,cacheTime){
   for(const n of nodes){if(n.subName){if(!groups[n.subName])groups[n.subName]=[];groups[n.subName].push(n)}else{noGroup.push(n)}}
   let h='';
   for(const[name,ns]of Object.entries(groups)){
-    h+='<div class=sub-group><div class=sub-group-header>&#128230; '+esc(name)+' <span class=badge>'+ns.length+' 节点</span></div>';
+    h+='<div class=sub-group><div class=sub-group-header><svg class="ic"><use href="#h10i-package"></use></svg> '+esc(name)+' <span class=badge>'+ns.length+' 节点</span></div>';
     h+=ns.map(n=>renderNodeItem(n,name)).join('');
     h+='</div>';
   }
@@ -239,7 +239,7 @@ async function refreshSub(id){
       setStatus(d.error||'刷新失败','err');
     }
   }catch(e){show('网络错误: '+e.message);setStatus('网络错误: '+e.message,'err')}
-  if(btn){btn.disabled=false;btn.innerHTML='&#128259; 刷新'}
+  if(btn){btn.disabled=false;btn.innerHTML='<svg class="ic"><use href="#h10i-refresh"></use></svg> 刷新'}
 }
 // 加载节点状态（延迟/连通性/流量）— 页面加载时调用一次，之后每小时刷新
 var nodeRefreshTimer=null;

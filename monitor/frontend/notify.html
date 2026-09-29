@@ -101,15 +101,15 @@ textarea:focus,input:focus{border-color:#38bdf8}
 </style>
 <div class=app>
 <div class=nav></div>
-<div class=header><h1>&#128276; 邮件通知</h1></div>
+<div class=header><h1><svg class="ic"><use href="#h10i-bell"></use></svg> 邮件通知</h1></div>
 <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
-<button class="btn btn-primary" id=saveBtn onclick=saveConfig()>&#128190; 保存全部配置</button>
-<button class="btn" id=refreshBtn onclick=loadData()>&#128259; 刷新数据</button>
+<button class="btn btn-primary" id=saveBtn onclick=saveConfig()><svg class="ic"><use href="#h10i-save"></use></svg> 保存全部配置</button>
+<button class="btn" id=refreshBtn onclick=loadData()><svg class="ic"><use href="#h10i-refresh"></use></svg> 刷新数据</button>
 <span class=status id=status style="margin:0;flex:1;min-width:120px"></span>
 </div>
 <div class="card collapsible" id=mailCard>
 <div class=card-h>
-<div class=card-h-left onclick=toggleCard('mailCard')><label>邮件配置</label><span class=card-toggle>&#9654;</span></div>
+<div class=card-h-left onclick=toggleCard('mailCard')><label>邮件配置</label><span class=card-toggle><svg class="ic"><use href="#h10i-play"></use></svg></span></div>
 <span style=font-size:.7rem;color:#64748b>QQ邮箱 SMTP</span>
 </div>
 <div class=card-body>
@@ -120,13 +120,13 @@ textarea:focus,input:focus{border-color:#38bdf8}
 <div class=form-row><label>收件邮箱</label><input id=to placeholder="recipient@qq.com"></div>
 <div class=note>提示: 所有通知功能共用此 SMTP 配置。每 10 分钟检测一次，掉线/恢复/异常时发送邮件。</div>
 <div style=display:flex;gap:6px;flex-wrap:wrap;margin-top:12px>
-<button class="btn btn-rst" id=testBtn onclick=sendTest()>&#9993; 发送测试邮件</button>
+<button class="btn btn-rst" id=testBtn onclick=sendTest()><svg class="ic"><use href="#h10i-mail"></use></svg> 发送测试邮件</button>
 </div>
 </div>
 </div>
 <div class="card collapsible" id=procCard>
 <div class=card-h>
-<div class=card-h-left onclick=toggleCard('procCard')><label>进程掉线告警</label><span class=card-toggle>&#9654;</span></div>
+<div class=card-h-left onclick=toggleCard('procCard')><label>进程掉线告警</label><span class=card-toggle><svg class="ic"><use href="#h10i-play"></use></svg></span></div>
 <div class=card-h-right>
 <span style=font-size:.7rem;color:#64748b id=procCount>加载中...</span>
 <label class=toggle><input type=checkbox id=enabled><span class=slider></span></label>
@@ -139,7 +139,7 @@ textarea:focus,input:focus{border-color:#38bdf8}
 </div>
 <div class="card collapsible" id=proxyCard>
 <div class=card-h>
-<div class=card-h-left onclick=toggleCard('proxyCard')><label>代理连通性检测</label><span class=card-toggle>&#9654;</span></div>
+<div class=card-h-left onclick=toggleCard('proxyCard')><label>代理连通性检测</label><span class=card-toggle><svg class="ic"><use href="#h10i-play"></use></svg></span></div>
 <div class=card-h-right>
 <label class=toggle><input type=checkbox id=proxyCheckEnabled><span class=slider></span></label>
 </div>
@@ -161,8 +161,8 @@ textarea:focus,input:focus{border-color:#38bdf8}
 <div id=candidateNodes style=display:flex;flex-wrap:wrap;gap:4px;margin-top:4px></div>
 <div id=availableNodesList style=margin-top:6px;max-height:160px;overflow-y:auto;display:flex;flex-wrap:wrap;gap:4px;background:#0b1120;border-radius:6px;padding:6px;border:1px solid #1e293b></div>
 <div style=display:flex;gap:4px;margin-top:4px>
-<button class="btn btn-sm" onclick=loadAllNodes()>&#128260; 加载订阅节点</button>
-<button class="btn btn-sm" onclick=addRegionCandidate()>&#127757; 添加地区候选</button>
+<button class="btn btn-sm" onclick=loadAllNodes()><svg class="ic"><use href="#h10i-refresh"></use></svg> 加载订阅节点</button>
+<button class="btn btn-sm" onclick=addRegionCandidate()><svg class="ic"><use href="#h10i-globe"></use></svg> 添加地区候选</button>
 </div>
 <div style="margin-top:12px;border-top:1px solid #1e293b;padding-top:10px">
 <label style=font-size:.7rem;color:#94a3b8>地区候选（推荐）<span style=color:#475569;font-weight:normal> — 按名称关键词实时匹配，上游改名不影响；与具名候选可混用</span></label>
@@ -189,14 +189,14 @@ textarea:focus,input:focus{border-color:#38bdf8}
 </div>
 </div>
 <div style=display:flex;gap:6px;flex-wrap:wrap;margin-top:12px>
-<button class="btn btn-warn" onclick=runProxyCheck()>&#9654; 立即检测</button>
-<button class="btn" onclick=loadProxyStatus()>&#128202; 查看状态</button>
+<button class="btn btn-warn" onclick=runProxyCheck()><svg class="ic"><use href="#h10i-play"></use></svg> 立即检测</button>
+<button class="btn" onclick=loadProxyStatus()><svg class="ic"><use href="#h10i-bar-chart"></use></svg> 查看状态</button>
 </div>
 <div id=proxyStatus class=status></div>
 <div id=logSection style="margin-top:12px;border-top:1px solid #1e293b;padding-top:10px">
 <div style="display:flex;justify-content:space-between;align-items:center;cursor:pointer;user-select:none;padding:4px 0" onclick=toggleLogSection()>
 <label style="font-size:.7rem;color:#94a3b8;letter-spacing:.5px;text-transform:uppercase;font-weight:500">检测日志</label>
-<span style=font-size:.7rem;color:#64748b id=logToggle>&#9654; 展开</span>
+<span style=font-size:.7rem;color:#64748b id=logToggle><svg class="ic"><use href="#h10i-play"></use></svg> 展开</span>
 </div>
 <div id=logArea style="display:none;margin-top:8px">
 <div id=logBody></div>
@@ -207,7 +207,7 @@ textarea:focus,input:focus{border-color:#38bdf8}
 </div>
 <div class="card collapsible" id=deviceCard>
 <div class=card-h>
-<div class=card-h-left onclick=toggleCard('deviceCard')><label>设备状况监控</label><span class=card-toggle>&#9654;</span></div>
+<div class=card-h-left onclick=toggleCard('deviceCard')><label>设备状况监控</label><span class=card-toggle><svg class="ic"><use href="#h10i-play"></use></svg></span></div>
 <div class=card-h-right>
 <label class=toggle><input type=checkbox id=deviceAlertsEnabled><span class=slider></span></label>
 </div>
@@ -232,7 +232,7 @@ textarea:focus,input:focus{border-color:#38bdf8}
 </div>
 <div class="card collapsible" id=dailyReportCard>
 <div class=card-h>
-<div class=card-h-left onclick=toggleCard('dailyReportCard')><label>每日日报</label><span class=card-toggle>&#9654;</span></div>
+<div class=card-h-left onclick=toggleCard('dailyReportCard')><label>每日日报</label><span class=card-toggle><svg class="ic"><use href="#h10i-play"></use></svg></span></div>
 <div class=card-h-right>
 <label class=toggle><input type=checkbox id=drEnabled><span class=slider></span></label>
 </div>
@@ -244,8 +244,8 @@ textarea:focus,input:focus{border-color:#38bdf8}
 <div><label style=font-size:.7rem;color:#94a3b8>积分过期展望 (天)</label><input id=drLookahead type=number value=30 min=1 max=365 style=width:100%></div>
 </div>
 <div style=display:flex;gap:6px;flex-wrap:wrap;margin-top:12px>
-<button class="btn" id=drPreviewBtn onclick=previewDailyReport()>&#128065; 预览日报</button>
-<button class="btn btn-warn" id=drSendBtn onclick=sendDailyReportNow()>&#9993; 立即发送一封</button>
+<button class="btn" id=drPreviewBtn onclick=previewDailyReport()><svg class="ic"><use href="#h10i-eye"></use></svg> 预览日报</button>
+<button class="btn btn-warn" id=drSendBtn onclick=sendDailyReportNow()><svg class="ic"><use href="#h10i-mail"></use></svg> 立即发送一封</button>
 </div>
 <pre id=drPreview style="display:none;margin-top:10px;background:#0b1120;border:1px solid #1e293b;border-radius:6px;padding:10px;font-size:.72rem;color:#cbd5e1;white-space:pre-wrap;word-break:break-all;max-height:420px;overflow:auto"></pre>
 </div>
@@ -660,7 +660,7 @@ function toggleCard(id){
 function toggleLogSection(){
   logsVisible=!logsVisible;
   $('logArea').style.display=logsVisible?'block':'none';
-  $('logToggle').innerHTML=logsVisible?'&#9660; 收起':'&#9654; 展开';
+  $('logToggle').innerHTML=logsVisible?'&#9660; 收起':'<svg class="ic"><use href="#h10i-play"></use></svg> 展开';
   if(logsVisible)loadLogs();
 }
 var expandedNodes=new Set();
@@ -737,8 +737,8 @@ function renderLogs(logs){
     if(weightText)html+='<span class=node-weight>'+weightText+'</span>';
     if(delayText)html+='<span class=node-delay>'+delayText+'</span>';
     html+='<span class=node-success-rate>'+successRate+' ('+totalCount+'次)</span>';
-    html+='<span class=node-del title="删除该节点的检测日志" onclick="event.stopPropagation();deleteNodeLogs(\''+esc(nodeName).replace(/'/g,"\\'")+'\')">&#128465;</span>';
-    html+='<span class=node-toggle>&#9654;</span>';
+    html+='<span class=node-del title="删除该节点的检测日志" onclick="event.stopPropagation();deleteNodeLogs(\''+esc(nodeName).replace(/'/g,"\\'")+'\')"><svg class="ic"><use href="#h10i-trash"></use></svg></span>';
+    html+='<span class=node-toggle><svg class="ic"><use href="#h10i-play"></use></svg></span>';
     html+='</div>';
     html+='<div class=node-card-body>';
     // 总计统计区域

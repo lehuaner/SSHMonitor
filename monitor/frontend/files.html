@@ -51,7 +51,7 @@ tr.protd td:first-child{color:#f59e0b}
 </style>
 <div class=app>
 <div class=nav></div>
-<div class=header><h1>&#128193; 文件管理</h1><div style=font-size:.75rem;color:#64748b>路径: /<span id=pathDisplay></span></div></div>
+<div class=header><h1><svg class="ic"><use href="#h10i-folder"></use></svg> 文件管理</h1><div style=font-size:.75rem;color:#64748b>路径: /<span id=pathDisplay></span></div></div>
 <div class=breadcrumb id=breadcrumb>加载中...</div>
 <div class=toolbar>
 <button class="btn btn-primary" onclick=newFile()>新建文件</button>
@@ -108,7 +108,7 @@ function renderBreadcrumbs(path){
 function renderTable(path,items,parent){
   let html='';
   if(parent!==null&&parent!==undefined&&parent!==''){
-    html+='<tr class=dir><td colspan=4><a class=name href=files?path='+enc(parent)+'>&#128281; ..</a></td></tr>';
+    html+='<tr class=dir><td colspan=4><a class=name href=files?path='+enc(parent)+'><svg class="ic"><use href="#h10i-arrow-left"></use></svg> ..</a></td></tr>';
   }
   for(const i of items){
     const rp=path?path+'/'+i.name:i.name;
@@ -116,14 +116,14 @@ function renderTable(path,items,parent){
     const isFile=!i.isDir;
     const cls=getRowClass(i)+(isFile?' file-row':'');
     html+='<tr class="'+cls+'"'+(isFile?' onclick=editFile("'+enc(rp)+'") title="点击编辑 '+esc(i.name)+'"':'')+'>';
-    html+='<td><span class=icon>'+(i.isDir?'&#128193;':'&#128196;')+'</span>';
+    html+='<td><span class=icon>'+(i.isDir?'<svg class="ic"><use href="#h10i-folder"></use></svg>':'<svg class="ic"><use href="#h10i-file"></use></svg>')+'</span>';
     html+='<a class=name href="'+(i.isDir?'files?path='+enc(rp):'#')+'"'+(isFile?' onclick="event.stopPropagation();editFile(\''+enc(rp)+'\');return false"':'')+'>'+esc(i.name)+'</a>';
     if(isFile)html+='<span class=edit-indicator>&#9998; 编辑</span>';
     if(i.protected)html+='<span class=protd-badge title="系统关键文件">&#9888;</span>';
-    if(n)html+='<span class=note-badge title="'+esc(n)+'">&#128221; '+esc(n)+'</span>';
+    if(n)html+='<span class=note-badge title="'+esc(n)+'"><svg class="ic"><use href="#h10i-pencil"></use></svg> '+esc(n)+'</span>';
     html+='</td><td class=size>'+(i.isDir?'-':fmtSize(i.size))+'</td><td class=time>'+fmtTime(i.mtime)+'</td>';
     html+='<td><div class=actions>';
-    html+='<button class="btn btn-note btn-sm" onclick=event.stopPropagation();editNote("'+enc(rp)+'") title=备注>&#128221;</button>';
+    html+='<button class="btn btn-note btn-sm" onclick=event.stopPropagation();editNote("'+enc(rp)+'") title=备注><svg class="ic"><use href="#h10i-pencil"></use></svg></button>';
     if(isFile){
       html+='<button class="btn btn-edit btn-sm" onclick=event.stopPropagation();editFile("'+enc(rp)+'")>编辑</button>';
     }else{

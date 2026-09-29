@@ -64,13 +64,13 @@
 <div class=app>
 <div class=nav></div>
 <div class=header>
-<h1>&#128241; Android 进程管理</h1>
+<h1><svg class="ic"><use href="#h10i-smartphone"></use></svg> Android 进程管理</h1>
 <div class=adb-status><span class=adb-dot id=adbDot></span><span id=adbText>检测中...</span></div>
 </div>
 
 <div class=tabs>
-<span class="tab active" data-tab=processes onclick=switchTab('processes')>&#9881; 进程列表</span>
-<span class=tab data-tab=apps onclick=switchTab('apps')>&#128230; 应用管理</span>
+<span class="tab active" data-tab=processes onclick=switchTab('processes')><svg class="ic"><use href="#h10i-settings"></use></svg> 进程列表</span>
+<span class=tab data-tab=apps onclick=switchTab('apps')><svg class="ic"><use href="#h10i-package"></use></svg> 应用管理</span>
 </div>
 
 <div id=summaryBox class=summary style=display:none></div>
@@ -81,7 +81,7 @@
 <label>运行中进程</label>
 <div style=display:flex;gap:6px;align-items:center;flex-wrap:wrap>
 <input class=search id=procSearch placeholder="搜索进程名/PID/用户..." style=width:240px oninput=renderProcs()>
-<button class="btn btn-sm" onclick=loadProcs()>&#128259; 刷新</button>
+<button class="btn btn-sm" onclick=loadProcs()><svg class="ic"><use href="#h10i-refresh"></use></svg> 刷新</button>
 <label style=font-size:.72rem;color:#64748b;display:flex;align-items:center;gap:4px><input type=checkbox id=hideIdle onclick=renderProcs()> 隐藏空闲(0%)</label>
 </div>
 </div>
@@ -100,7 +100,7 @@
 <label>第三方应用</label>
 <div style=display:flex;gap:6px;align-items:center;flex-wrap:wrap>
 <input class=search id=appSearch placeholder="搜索包名..." style=width:240px oninput=renderApps()>
-<button class="btn btn-sm" onclick=loadApps()>&#128259; 刷新</button>
+<button class="btn btn-sm" onclick=loadApps()><svg class="ic"><use href="#h10i-refresh"></use></svg> 刷新</button>
 <label style=font-size:.72rem;color:#64748b;display:flex;align-items:center;gap:4px><input type=checkbox id=onlyRunning onclick=renderApps()> 仅显示运行中</label>
 </div>
 </div>
