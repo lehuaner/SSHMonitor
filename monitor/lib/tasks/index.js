@@ -389,32 +389,55 @@ export async function getTotalCreditsForTask(id) {
   }
 }
 
-/** 对所有启用账号执行"今日首次检测"：当天已检/已签则跳过，否则检测一次 */
-export async function autoCheckToday() {
+/** 对所有启用账号执行"今日首次检测"：当天已检/已签则跳过，否则检测一次。
+ *  ★并发版：旧版逐账号串行 await，每个远端探活 5~8s 超时，N 账号就是 N 倍耗时。
+ *  现在小并发(3)执行；同时在途请求共享一次检测（单飞），结果顺序与账号顺序一致。 */
+const AUTO_CHECK_CONCURRENCY = 3;
+let autoCheckInflight = null;
+
+export function autoCheckToday() {
+  if (autoCheckInflight) return autoCheckInflight;
+  autoCheckInflight = runAutoCheck().finally(() => { autoCheckInflight = null; });
+  return autoCheckInflight;
+}
+
+async function runAutoCheck() {
   const tasks = getTasks();
   const today = todayStr();
-  const results = [];
-  for (const task of tasks) {
+  const results = new Array(tasks.length);
+  const pendingIdx = [];
+  tasks.forEach((task, i) => {
     if (!task.enabled || task.credentialInvalid) {
-      results.push({ id: task.id, name: task.name, skipped: true, reason: 'disabled_or_invalid' });
-      continue;
+      results[i] = { id: task.id, name: task.name, skipped: true, reason: 'disabled_or_invalid' };
+      return;
     }
     // 当天已检测过或已签到，跳过
-    if (task.lastStatusCheck) {
-      const checkDate = todayStr(task.lastStatusCheck);
-      if (checkDate === today) {
-        results.push({ id: task.id, name: task.name, skipped: true, reason: 'already_checked_today' });
-        continue;
-      }
+    if (task.lastStatusCheck && todayStr(task.lastStatusCheck) === today) {
+      results[i] = { id: task.id, name: task.name, skipped: true, reason: 'already_checked_today' };
+      return;
     }
     if (task.todayCheckedIn === true) {
-      results.push({ id: task.id, name: task.name, skipped: true, reason: 'already_signed_in' });
-      continue;
+      results[i] = { id: task.id, name: task.name, skipped: true, reason: 'already_signed_in' };
+      return;
     }
-    const res = await checkStatusForTask(task.id);
-    results.push({ id: task.id, name: task.name, ...res });
+    pendingIdx.push(i);
+  });
+  let cursor = 0;
+  async function worker() {
+    while (cursor < pendingIdx.length) {
+      const i = pendingIdx[cursor++];
+      const task = tasks[i];
+      try {
+        const res = await checkStatusForTask(task.id);
+        results[i] = { id: task.id, name: task.name, ...res };
+      } catch (e) {
+        // 单账号异常不拖垮整批（原本未捕获时整个 auto-check 会 500）
+        results[i] = { id: task.id, name: task.name, ok: false, error: e.message || String(e) };
+      }
+    }
   }
-  return results;
+  await Promise.all(Array.from({ length: Math.min(AUTO_CHECK_CONCURRENCY, pendingIdx.length) }, () => worker()));
+  return results.filter(Boolean);
 }
 
 // ====== Cookie 到期监控 ======

@@ -9,6 +9,7 @@
  *   → 等待在途请求（最多 drainTimeoutMs）→ process.exit(0)。runit 检测退出后自动拉起新实例。
  */
 import { createServer } from 'node:http';
+import { gzipSync } from 'node:zlib';
 
 const START_MS = Date.now();
 
@@ -38,8 +39,16 @@ export function createModuleServer({ name, version = 'dev', port, shutdownToken 
     const url = new URL(req.url, 'http://127.0.0.1');
     const send = (status, data, ct) => {
       if (res.headersSent) return;
-      const buf = Buffer.from(data || '', 'utf-8');
-      res.writeHead(status, { 'Content-Type': ct || 'application/json', 'Content-Length': buf.length });
+      let buf = Buffer.from(data || '', 'utf-8');
+      const headers = { 'Content-Type': ct || 'application/json', 'Content-Length': buf.length };
+      // 与 gateway 同策略：>2KB 且客户端支持 gzip 则压缩（签到 stats 响应可达 100KB+）
+      if (buf.length > 2048 && /gzip/.test(String(req.headers['accept-encoding'] || ''))) {
+        buf = gzipSync(buf, { level: 6 });
+        headers['Content-Encoding'] = 'gzip';
+        headers['Content-Length'] = buf.length;
+        headers['Vary'] = 'Accept-Encoding';
+      }
+      res.writeHead(status, headers);
       res.end(buf);
     };
     try {

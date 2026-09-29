@@ -1,10 +1,11 @@
 import { createServer, request as httpReq } from 'node:http';
 import { readFileSync, existsSync, statSync, writeFileSync } from 'node:fs';
+import { gzipSync } from 'node:zlib';
 import { join } from 'node:path';
 
 import { run, fetchJson, saveJSON, SB_DISABLED, SB_HOST, SB_PORT, SB_SECRET, HOME, DATA_DIR, findService, getCustomServiceRules, saveCustomServiceRules, SERVICE_CMDS } from './lib/utils.js';
 import { initRecorder, history, hourlyBuckets, requestCount, apiBytes, addApiBytes } from './lib/recorder.js';
-import { metrics } from './lib/metrics.js';
+import { metrics, getMetricsSnapshot } from './lib/metrics.js';
 import { doAction } from './lib/actions.js';
 import { listDir, readFileContent, writeFileContent, renameItem, deleteItem, makeDir, loadNotes, saveNotes, parseUpload } from './lib/files.js';
 import { subscriptions, nodeStatusCache, parseSubscription, generateSbConfig, regenerateConfig, getDnsConfig, applyDnsConfig } from './lib/subscription.js';
@@ -124,9 +125,18 @@ const server = createServer(async (q, r) => {
 
   const send = (status, data, ct) => {
     if (r.headersSent) return;
-    const buf = Buffer.from(data || '', 'utf-8');
+    let buf = Buffer.from(data || '', 'utf-8');
+    const type = ct || 'application/json';
+    const headers = { 'Content-Type': type, 'Content-Length': buf.length };
+    // ★大于 2KB 且客户端支持 gzip → 压缩（/api 约 200KB 压到 ~15KB，隧道带宽是体感最大瓶颈）
+    if (buf.length > 2048 && /gzip/.test(String(q.headers['accept-encoding'] || ''))) {
+      buf = gzipSync(buf, { level: 6 });
+      headers['Content-Encoding'] = 'gzip';
+      headers['Content-Length'] = buf.length;
+      headers['Vary'] = 'Accept-Encoding';
+    }
     addApiBytes(buf.length);
-    r.writeHead(status, { 'Content-Type': ct || 'application/json', 'Content-Length': buf.length });
+    r.writeHead(status, headers);
     r.end(buf);
   };
 
@@ -172,9 +182,9 @@ const server = createServer(async (q, r) => {
 
     // ====== Metrics API ======
     if (q.url === '/api') {
-      const m = await metrics();
-      m.procs.list.forEach(p => { const svc = findService(p.cmd); if (svc) p.svc = svc.action; });
-      send(200, JSON.stringify(m));
+      // SWR 快照：TTL 内直接回缓存（含预序列化 JSON），过期回旧值 + 后台重算
+      const snap = await getMetricsSnapshot();
+      send(200, snap.json);
       return;
     }
 
@@ -187,9 +197,8 @@ const server = createServer(async (q, r) => {
       });
       const tick = async () => {
         try {
-          const m = await metrics();
-          m.procs.list.forEach(p => { const svc = findService(p.cmd); if (svc) p.svc = svc.action; });
-          r.write(`data: ${JSON.stringify(m)}\n\n`);
+          const snap = await getMetricsSnapshot();
+          r.write(`data: ${snap.json}\n\n`);
         } catch (e) {
           r.write(`data: ${JSON.stringify({ error: e.message })}\n\n`);
         }

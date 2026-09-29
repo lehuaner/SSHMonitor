@@ -546,6 +546,8 @@ loadMarked().then(()=>{
   // 使用轮询替代 SSE（Cloudflare Pages Functions 不支持 text/event-stream 流式代理）
   let pollTimer=null;
   async function poll(){
+    // 页面隐藏时不发请求（省电/省流量），回前台由 visibilitychange 立即恢复
+    if(document.hidden){pollTimer=setTimeout(poll,10000);return}
     try{
       const r=await fetch('/api');
       const d=await r.json();
@@ -554,6 +556,9 @@ loadMarked().then(()=>{
     if(pollTimer)clearTimeout(pollTimer);
     pollTimer=setTimeout(poll,3000);
   }
+  document.addEventListener('visibilitychange',()=>{
+    if(!document.hidden){if(pollTimer)clearTimeout(pollTimer);poll()}
+  });
   poll();
 });
 loadNodeStatus();

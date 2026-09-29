@@ -1,22 +1,43 @@
 import { run, fetchJson, fetchSb, findService, procKeyword, fmtDurationStr, SB_DISABLED } from './utils.js';
 import { history, trafficLog, hourlyBuckets, dailyBuckets, traffic5s, trafficMinute, requestCount, apiBytes, getTrafficInPeriod, sampleTraffic5s, sampleTrafficMinute, sampleDailyBuckets } from './recorder.js';
 
-// du 缓存（1 小时；du 全量扫盘 ~50s，目录大小变化慢，缓存安全）
+// ====== 采集结果缓存（SWR：stale-while-revalidate）======
+// 前端每 3s 轮询 /api；旧版每个请求都现场 spawn 十几个子进程重算一遍（~500ms）。
+// 现在：TTL 内直接复用快照；过期先回旧快照、后台单飞重算，无人访问时零开销。
+export const METRICS_TTL_MS = 3000;
+let snapshot = null;    // { data, json, at }
+let building = null;    // 单飞锁：进行中的重算 Promise
+
+// ====== 慢数据 TTL 缓存 ======
+// du：Termux 全目录扫 8.6GB 要 ~50s（2026-09-19 实测）→ 缓存 1 小时 + 到期后台刷新，
+//     任何情况下都不会阻塞采集流程。
 const duCache = { value: null, at: 0 };
 const DU_CACHE_TTL_MS = 60 * 60 * 1000;
+function refreshDu() {
+  if (duCache.value !== null && Date.now() - duCache.at < DU_CACHE_TTL_MS) return;
+  run('du -sh /data/data/com.termux/files 2>/dev/null')
+    .then(v => { if (v) { duCache.value = v; duCache.at = Date.now(); } })
+    .catch(() => {});
+}
+
+// battery / wifi：termux-api 经应用桥接，单次可达秒级；变化慢，缓存 60s。
+const batteryCache = { value: null, at: 0 };
+const wifiCache = { value: null, at: 0 };
+const DEVICE_TTL_MS = 60 * 1000;
 
 export async function metrics() {
-  // ★du -sh Termux 全目录扫 8.6GB 要 ~50s（2026-09-19 实测），是 /api 慢的元凶。
-  //   目录大小变化慢 → 缓存 1 小时，期间直接复用；冷启动后首个请求仍会等一次 du。
-  let cachedSize = (duCache.value !== null && Date.now() - duCache.at < DU_CACHE_TTL_MS) ? duCache.value : null;
-  const [mem, diskRaw, diskDataRaw, termuxSizeRaw, up, ps, psAge, netRaw, nprocRaw, sbVer, sbCon, sbProxies, watchdogRaw, batteryRaw, wifiRaw] = await Promise.all([
+  // du 到期则后台刷，本次仍用旧值（~50s 的全量扫盘永不阻塞响应）
+  refreshDu();
+  const needDevice = !batteryCache.value || Date.now() - batteryCache.at > DEVICE_TTL_MS;
+  const needWifi = !wifiCache.value || Date.now() - wifiCache.at > DEVICE_TTL_MS;
+  // 进程表：一次 ps 同时取 CPU/内存/RSS/运行时长（旧版 ps aux + ps -eo etime 扫两遍）
+  const [mem, diskRaw, diskDataRaw, termuxSizeRaw, up, psMerged, netRaw, nprocRaw, sbVer, sbCon, sbProxies, watchdogRaw, batteryRaw, wifiRaw] = await Promise.all([
     run('cat /proc/meminfo'),
     run("df -h | awk '$NF == \"/\"'"),
     run("df -h | awk '$NF == \"/data\"'"),
-    cachedSize !== null ? Promise.resolve(cachedSize) : run('du -sh /data/data/com.termux/files 2>/dev/null').then(v => { duCache.value = v; duCache.at = Date.now(); return v; }),
+    Promise.resolve(duCache.value),
     run('uptime'),
-    run('ps aux'),
-    run('ps -eo pid,etime=,args= 2>/dev/null'),
+    run('ps -eo user,pid,%cpu,%mem,rss,etime,args 2>/dev/null'),
     run('cat /proc/net/dev 2>/dev/null'),
     run('nproc 2>/dev/null'),
     ...(SB_DISABLED
@@ -27,9 +48,18 @@ export async function metrics() {
           fetchSb('/proxies'),
         ]),
     run('pgrep -af watchdog.sh 2>/dev/null'),
-    run('termux-battery-status 2>/dev/null'),
-    run('termux-wifi-connectioninfo 2>/dev/null'),
+    needDevice ? run('termux-battery-status 2>/dev/null').then(v => { if (v && v.trim()) { batteryCache.value = v; batteryCache.at = Date.now(); } return v; }) : Promise.resolve(batteryCache.value),
+    needWifi ? run('termux-wifi-connectioninfo 2>/dev/null').then(v => { if (v && v.trim()) { wifiCache.value = v; wifiCache.at = Date.now(); } return v; }) : Promise.resolve(wifiCache.value),
   ]);
+  // 兼容兜底：ps -eo 不可用时回退旧写法（列序 USER PID %CPU %MEM VSZ RSS TTY STAT START TIME COMMAND + 单独 etime 查询）
+  let psFallback = false, psAgeRaw = '';
+  if (!psMerged || !/PID/.test(psMerged.split('\n', 1)[0])) {
+    psFallback = true;
+    [psMerged, psAgeRaw] = await Promise.all([
+      run('ps aux'),
+      run('ps -eo pid,etime=,args= 2>/dev/null'),
+    ]);
+  }
 
   const m = {};
   mem.replace(/(\w+):\s+(\d+)/g, (_, k, v) => { m[k] = +v; return ''; });
@@ -41,8 +71,8 @@ export async function metrics() {
   const swT = m.SwapTotal ? Math.round(m.SwapTotal / 1024) : 0;
   const swU = swT - (m.SwapFree ? Math.round(m.SwapFree / 1024) : 0);
 
-  // 从 ps aux 累加 Termux 进程 CPU（/proc/stat 在 Android 上被限制）
-  const psLines = ps.trim().split('\n');
+  // 从 ps 累加 Termux 进程 CPU（/proc/stat 在 Android 上被限制）；两种格式 %CPU 都在第 3 列
+  const psLines = psMerged.trim().split('\n');
   // nproc 返回 Android 暴露给 Termux 的核心数（Honor 10 实际 4 核，非 8 核）
   const cores = parseInt((nprocRaw || '').trim()) || 4;
   let cpuSum = 0;
@@ -56,26 +86,27 @@ export async function metrics() {
 
   const u = up.match(/up\s+(.+?),\s+load average:\s+(.+)/);
 
-  // 解析进程运行时间 etime，格式化为简洁的 "2d 16h" / "16h 3m" / "3m" / "45s"
+  // 进程运行时间 etime：合并模式下直接取自同一行；兜底模式解析单独的 pid,etime 表
   const ageMap = {};
-  if (psAge) {
-    psAge.split('\n').forEach(line => {
+  if (psFallback && psAgeRaw) {
+    psAgeRaw.split('\n').forEach(line => {
       const m = line.trim().match(/^(\d+)\s+([\d:-]+)\s+(.*)/);
       if (m) ageMap[m[1]] = fmtDurationStr(m[2]);
     });
   }
 
-  const lines = ps.trim().split('\n');
+  const lines = psLines;
   const list = lines.slice(1).filter(Boolean).map(l => {
     const p = l.trim().split(/\s+/);
-    const fullCmd = p.slice(10).join(' ');
+    // 列序：合并 user,pid,%cpu,%mem,rss,etime,args / 兜底 ps aux（RSS 第 6 列、etime 查表、args 从第 11 列起）
+    const fullCmd = psFallback ? p.slice(10).join(' ') : p.slice(6).join(' ');
     return {
       pid: p[1], user: p[0], cpu: p[2], memPct: p[3],
-      rssMb: Math.round((parseInt(p[5]) || 0) / 1024),
+      rssMb: Math.round((parseInt(psFallback ? p[5] : p[4]) || 0) / 1024),
       cmd: fullCmd.slice(0, 80),
       kw: procKeyword(fullCmd),
       svc: findService(fullCmd)?.action || '',
-      age: ageMap[p[1]] || '--',
+      age: psFallback ? (ageMap[p[1]] || '--') : (fmtDurationStr(p[5]) || '--'),
     };
   });
   const topMem = [...list].sort((a, b) => b.rssMb - a.rssMb).slice(0, 10);
@@ -144,7 +175,7 @@ disk.userPct = userPct;
       ulSpeed: c.uploadSpeed || 0,
       chains: c.chains?.join(', ') || '--',
     })),
-    proxies: sbProxies?.proxies || {},
+    proxies: trimProxies(sbProxies?.proxies),
   };
 
   const now = Date.now();
@@ -215,4 +246,34 @@ disk.userPct = userPct;
     watchdog: { running: !!watchdogRaw && watchdogRaw.trim().length > 0 },
     device,
   };
+}
+
+// 只保留前端代理卡片渲染需要的字段（now/type/alt），剔除 history/udp/all 等冗余大字段
+function trimProxies(proxies) {
+  const out = {};
+  for (const [name, p] of Object.entries(proxies || {})) {
+    const e = { type: p.type, now: p.now };
+    if (Array.isArray(p.alt) && p.alt.length) e.alt = p.alt.slice(0, 12);
+    out[name] = e;
+  }
+  return out;
+}
+
+// ====== SWR 快照入口（/api 与 /api/stream 统一走这里）======
+export async function getMetricsSnapshot() {
+  const now = Date.now();
+  if (snapshot && now - snapshot.at < METRICS_TTL_MS) return snapshot;
+  if (!snapshot) {
+    // 冷启动：没有旧数据可回退，同步采一次
+    const data = await metrics();
+    snapshot = { data, json: JSON.stringify(data), at: Date.now() };
+    return snapshot;
+  }
+  // 过期：立即回旧快照，后台单飞重算（重算失败保留旧值，下次请求再触发）
+  if (!building) {
+    building = metrics().then(data => {
+      snapshot = { data, json: JSON.stringify(data), at: Date.now() };
+    }).catch(() => {}).finally(() => { building = null; });
+  }
+  return snapshot;
 }

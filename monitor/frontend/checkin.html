@@ -107,7 +107,7 @@ input:focus,select:focus{border-color:#38bdf8}
 <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
 <button class="btn btn-primary" onclick=openModal()>＋ 新增账号</button>
 <button class="btn btn-rst" onclick=runAll()>▶ 全部签到</button>
-<button class="btn" onclick=loadData()>↻ 刷新</button>
+<button class="btn" onclick=manualRefresh()>↻ 刷新</button>
 <button class="btn btn-primary" id=chartsBtn onclick=openCharts() style="display:none">📈 图表</button>
 <select id=providerFilter onchange=loadData() style="max-width:170px" title="按平台筛选账号列表">
 <option value="">全部平台</option>
@@ -131,7 +131,7 @@ input:focus,select:focus{border-color:#38bdf8}
   <label style="font-size:.75rem;color:#94a3b8">模型</label>
   <select id=chartsModel onchange="renderCharts();renderStats()" style="width:auto;padding:4px 8px;font-size:.75rem"></select>
   <button class="btn btn-sm" id=chartsUnitBtn onclick=toggleUnit() title="切换 积分 / Token">积分</button>
-  <button class="btn btn-sm btn-primary" onclick=loadData()>↻ 刷新</button>
+  <button class="btn btn-sm btn-primary" onclick=manualRefresh()>↻ 刷新</button>
 </div>
 <div id=dataNote style="display:none;font-size:.72rem;line-height:1.5;padding:6px 10px;border-radius:6px;margin-bottom:8px"></div>
 <div class=card style="border:1px solid #1e293b;margin-bottom:10px">
@@ -207,12 +207,33 @@ async function loadData(){
   }
   tasks=t.tasks||[];
   if(s.accounts)stats=s;
+  else if(s.pending||s.refreshing)schedulePollStats();
   render();
   renderStats();
   updateChartsBtn();
   const filteredNote=pf&&t.total!==undefined?`（筛选 ${t.filtered}/${t.total}）`:'';
   status(`已加载 ${tasks.length} 个账号${filteredNote}`,'ok');
   autoCheck();
+}
+// ====== stats 快照后台构建轮询 ======
+// 后端 GET /stats 已改为只读快照（pending=首次构建中，refreshing=后台重算中）；
+// 命中时延迟 10s 重取，最多 3 次，取到完整快照后增量刷新面板。
+var statsPollTimer=null;
+function schedulePollStats(left){
+  left=(left===undefined)?3:left;
+  if(left<=0||statsPollTimer)return;
+  statsPollTimer=setTimeout(async function(){
+    statsPollTimer=null;
+    const s=await api('/api/checkin/stats');
+    if(s.accounts){stats=s;renderStats();updateChartsBtn();}
+    if(s.pending||s.refreshing)schedulePollStats(left-1);
+  },10000);
+}
+// 手动刷新：触发后台重算（不阻塞）+ 立即用现有快照渲染，稍后轮询取最新
+function manualRefresh(){
+  api('/api/checkin/stats/refresh',{method:'POST'});
+  schedulePollStats(4);
+  loadData();
 }
 function provName(id){const p=providers.find(x=>x.id===id);return p?p.name:id;}
 function provCaps(id){const p=providers.find(x=>x.id===id);return (p&&p.capabilities)||[];}

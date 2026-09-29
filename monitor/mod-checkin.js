@@ -40,6 +40,34 @@ startTimers.push(setTimeout(() => { try { startCookieExpiryWatcher(); } catch (e
 startTimers.push(setTimeout(() => { try { recordSnapshot(); } catch (e) { console.error('initial checkin snapshot:', e); } }, 7000));
 startTimers.push(setTimeout(() => { try { startDailySnapshot(); } catch (e) { console.error('start checkin stats:', e); } }, 7000));
 
+// ====== stats 快照（SWR）======
+// 旧版 GET /api/checkin/stats 同步 await updateUsageStats()+getUsageStatsWithEstimates()，
+// 两者逐账号串行拉上游（实测 6.7s），签到页因此卡死。现在：
+//   • GET 只读内存快照立即返回；过期时先回旧快照、后台单飞重算。
+//   • 启动 10s 后预构首次快照；此后每 30 分钟后台刷新一次（无人访问也有最新数据）。
+//   • 手动「↻ 刷新」走 POST /api/checkin/stats/refresh 触发后台重算，不阻塞等待。
+const STATS_TTL_MS = 10 * 60 * 1000;          // 快照有效期：超过则请求触发后台重算
+const STATS_REFRESH_INTERVAL_MS = 30 * 60 * 1000; // 定时后台刷新
+let statsCache = null;                        // { data, at }
+let statsBuilding = null;                     // 单飞锁
+function startStatsBuild() {
+  if (statsBuilding) return false;            // 已有在途构建，不重复发起
+  statsBuilding = (async () => {
+    const t0 = Date.now();
+    try {
+      await updateUsageStats();
+      const data = await getUsageStatsWithEstimates();
+      statsCache = { data, at: Date.now() };
+      console.log(`[checkin] stats 快照重建完成，耗时 ${Date.now() - t0}ms`);
+    } catch (e) {
+      console.error('[checkin] stats 快照构建失败(保留旧值):', e.message);
+    } finally { statsBuilding = null; }
+  })();
+  return true;
+}
+startTimers.push(setTimeout(() => { startStatsBuild(); }, 10000));
+const statsRefreshTimer = setInterval(() => { startStatsBuild(); }, STATS_REFRESH_INTERVAL_MS);
+
 // ====== 路由 ======
 /**
  * 列表接口的凭证脱敏键集。
@@ -163,6 +191,26 @@ async function router(url, q, r, send) {
     return true;
   }
 
+  // GET /api/checkin/stats - 只读快照立即返回（重活全部后台化，见文件头 SWR 说明）
+  if (p === '/api/checkin/stats' && q.method === 'GET') {
+    const stale = !statsCache || Date.now() - statsCache.at > STATS_TTL_MS;
+    if (stale) startStatsBuild();
+    if (statsCache) {
+      send(200, JSON.stringify({ ok: true, statsAt: statsCache.at, refreshing: !!statsBuilding, ...statsCache.data }));
+    } else {
+      // 冷启动首次快照未就绪：前端按 pending 延迟重试
+      send(200, JSON.stringify({ ok: true, pending: true }));
+    }
+    return true;
+  }
+
+  // POST /api/checkin/stats/refresh - 手动触发后台重算（不阻塞，完成后前端轮询取回新快照）
+  if (p === '/api/checkin/stats/refresh' && q.method === 'POST') {
+    const started = startStatsBuild();
+    send(200, JSON.stringify({ ok: true, started, ...(statsCache ? { statsAt: statsCache.at } : {}) }));
+    return true;
+  }
+
   // GET /api/checkin/logs - 30 天日志（本地 + provider 平台侧历史合并）
   if (p === '/api/checkin/logs' && q.method === 'GET') {
     const days = parseInt(url.searchParams.get('days') || '30', 10);
@@ -209,11 +257,7 @@ async function router(url, q, r, send) {
     return true;
   }
 
-  if (p === '/api/checkin/stats' && q.method === 'GET') {
-    await updateUsageStats();
-    send(200, JSON.stringify({ ok: true, ...(await getUsageStatsWithEstimates()) }));
-    return true;
-  }
+  // ★用量统计已改为上方「SWR 快照 + 后台定时重建」，GET 不再同步拉上游
 
   // POST /api/checkin/usage?id=
   if (p === '/api/checkin/usage' && q.method === 'POST') {
@@ -402,6 +446,7 @@ await createModuleServer({
   router,
   stopHooks: [
     () => { try { stopAllTasks(); } catch {} },   // 停签到/凭证/积分过期调度器
+    () => { clearInterval(statsRefreshTimer); },   // 停 stats 定时重建
     () => startTimers.forEach(clearTimeout),       // 停启动延迟器
   ],
 });
