@@ -110,6 +110,13 @@ function baseTag(deployed) {
   return tags.sort(cmpTag)[0];
 }
 
+/** 已部署基线：以全局最后应用 tag(lastApply) 为准，与 /api/release/version-status 对齐；
+ *  无 lastApply(旧账档案) 时回退到模块最小值。避免纯前端版本因不推进后端模块而被永久判“落后/待应用”。 */
+function effectiveBase(deployed) {
+  const la = deployed && deployed.lastApply && deployed.lastApply.tag;
+  return la || baseTag(deployed);
+}
+
 async function ghFetch(pathname, cfg) {
   const headers = {
     'user-agent': 'honor10-monitor',
@@ -175,7 +182,7 @@ async function doCheckUpstream() {
     }
   }
   const deployed = readJson(VERSION_FILE, { modules: {} });
-  out.base = baseTag(deployed);
+  out.base = effectiveBase(deployed);
   out.behind = out.tags.filter((t) => cmpTag(t.tag, out.base) > 0).map((t) => t.tag);
   mkdirSync(join(HOME, '.monitor_data'), { recursive: true });
   writeFileSync(UPSTREAM_CACHE_FILE, JSON.stringify(out, null, 2));
@@ -191,16 +198,11 @@ function upstreamView() {
   const deployed = readJson(VERSION_FILE, { modules: {} });
   const modTags = (deployed && deployed.modules) || {};
   const stagedMap = new Map(listReleases().map((x) => [x.tag, x]));
-  const base = baseTag(deployed);
-  // 是否已应用：看该 release **真正影响的模块**（只统计有部署记录的模块，
-  // frontend/CF_PAGES 不参与）。否则像“只发 release 模块”的版本会永远被当成可应用。
-  const isApplied = (tag, stagedMeta) => {
-    const names = stagedMeta && Array.isArray(stagedMeta.affectedModules) && stagedMeta.affectedModules.length
-      ? stagedMeta.affectedModules.filter((m) => modTags[m] && modTags[m].tag)
-      : Object.keys(modTags).filter((m) => modTags[m] && modTags[m].tag);   // 未 staging 的 tag 不知道影响面 → 保守按全部
-    if (!names.length) return Object.keys(modTags).length > 0 && Object.values(modTags).every((m) => cmpTag(m.tag, tag) >= 0);
-    return names.every((m) => cmpTag(modTags[m].tag, tag) >= 0);
-  };
+  const base = effectiveBase(deployed);
+  // 是否已应用：以全局最后应用 tag(lastApply，见 effectiveBase) 为准——按 tag 顺序，
+  // ≤ 已部署基线即视为已应用；纯前端 / 仅个别模块变更的版本也能正确判定，
+  // 与 version-status.backend 口径一致，消除永久“落后/待应用”假象。
+  const isApplied = (tag) => !!base && cmpTag(base, tag) >= 0;
   const items = ((cache && cache.tags) || []).map((t) => {
     const st = stagedMap.get(t.tag);
     const applied = isApplied(t.tag, st);
