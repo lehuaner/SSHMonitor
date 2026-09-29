@@ -319,7 +319,18 @@ function step(t, msg) { t.steps.push({ at: Date.now(), msg }); t.updatedAt = Dat
       return;
     }
     if (cfg.mode !== 'pages') { if (t) step(t, `前端部署模式未知(${cfg.mode})，跳过`); return; }
-    if (!meta.frontendChanged) { if (t) step(t, '本次无前端改动，跳过 Pages 发布'); return; }
+    if (!meta.frontendChanged) {
+      // 纯后端发版：Pages 内容与上一 good 部署一致，把 lastGood.tag 对齐到当前 tag，
+      // 消除 version-status 因「backend 推进而 Pages 无内容可发」被永久判 mismatch（假「异步更新中」）。
+      try {
+        const st = readJson(PAGES_STATE_FILE, {});
+        const prev = st.lastGood || {};
+        st.lastGood = { tag, deploymentId: prev.deploymentId || null, url: prev.url || null, at: Date.now(), aligned: 'no-frontend-change' };
+        writeFileSync(PAGES_STATE_FILE, JSON.stringify(st, null, 2));
+      } catch { /* 落账失败不致命 */ }
+      if (t) step(t, '本次无前端改动，Pages 记账对齐至当前 tag（无需重新发布）');
+      return;
+    }
     if (!existsSync(srcDir)) { await recordPagesFail(tag, null, `前端目录缺失 ${srcDir}`, readJson(PAGES_STATE_FILE, {}).lastGood); return; }
     const prevGood = readJson(PAGES_STATE_FILE, {}).lastGood || null;
     if (t) step(t, '开始发布 Pages（设备端直传）…');
