@@ -165,34 +165,76 @@ async function sectionCreditExpiry(cfg, now) {
   return lines;
 }
 
-/** ② 代理连通（在线时长 / 连通率） */
+/** ② 代理连通（在线时长 / 连通率 / 按检测网站分别） */
 async function sectionProxy(cfg, now) {
   const lines = [];
   const pc = (mailConfig && mailConfig.proxy_check) || {};
   const todayKey = beijingDayKey(now, cfg.timezone);
-  // 今日连通性检测：proxy_check.log 里带 boolean ok 的行
-  const raw = readLogTail(HOME + '/logs/monitor/proxy_check.log', 3000);
-  let total = 0, okCount = 0, lastOk = null, lastTs = null;
+  const okCodes = new Set([200, 204, 301, 302, 307, 308, 401, 403]);
+  const raw = readLogTail(HOME + '/logs/monitor/proxy_check.log', 5000);
+
+  // 单次遍历：按轮(__start__..__done__)聚合 anyOk，同时统计节点级、网站级
+  let nodeTotal = 0, nodeOk = 0;
+  const siteStat = {};          // url -> { total, ok }
+  const rounds = [];            // { t, anyOk }  —— anyOk=该轮是否有任一候选节点可用
+  let cur = null;
+  let lastOk = null, lastTs = null;
+  const flushRound = (t) => { if (cur && cur.hasNode) rounds.push({ t, ok: cur.anyOk }); cur = null; };
+
   for (const line of raw) {
     let e; try { e = JSON.parse(line); } catch { continue; }
-    if (!e || typeof e.ok !== 'boolean' || !e.timestamp) continue;
-    if (e.node === '__start__' || e.node === '__done__' || e.node === '__error__') continue;
-    if (beijingDayKey(Date.parse(e.timestamp), cfg.timezone) !== todayKey) continue;
-    total++; if (e.ok) okCount++;
+    if (!e || !e.timestamp) continue;
+    const t = Date.parse(e.timestamp);
+    if (Number.isNaN(t)) continue;
+    if (beijingDayKey(t, cfg.timezone) !== todayKey) continue;
+    if (e.node === '__start__') { flushRound(t); cur = { anyOk: false, hasNode: false }; continue; }
+    if (e.node === '__done__') { flushRound(t); continue; }
+    if (e.node === '__error__' || e.node === '__refresh__' || e.node === '__refresh_error__') continue;
+    if (typeof e.ok !== 'boolean') continue;
+    if (!cur) cur = { anyOk: false, hasNode: false };
+    cur.hasNode = true;
+    if (e.ok) cur.anyOk = true;
+    nodeTotal++; if (e.ok) nodeOk++;
     lastOk = e.ok; lastTs = e.timestamp;
+    for (const u of (e.urls || [])) {
+      if (!u || !u.url) continue;
+      const s = siteStat[u.url] || (siteStat[u.url] = { total: 0, ok: 0 });
+      s.total++; if (okCodes.has(u.status)) s.ok++;
+    }
   }
-  // 在线时长估算：连通率 × 今日已过监测时长
-  if (total > 0) {
-    const rate = okCount / total;
-    const todayStart = Date.parse(`${todayKey}T00:00:00+08:00`);
-    const elapsed = Math.max(0, now - (Number.isNaN(todayStart) ? now : todayStart));
-    const onlineMs = Math.round(rate * elapsed);
-    lines.push(`今日检测 ${total} 次，连通率 ${Math.round(rate * 100)}%（通过 ${okCount} 次）`);
-    lines.push(`估算在线时长：${fmtDuration(onlineMs)}（按连通率折算）`);
-    lines.push(`最近一次检测：${fmtBeijing(Date.parse(lastTs), cfg.timezone)} ${lastOk ? '✓ 正常' : '✗ 异常'}`);
-  } else {
+  flushRound(now);
+
+  if (nodeTotal === 0) {
     lines.push('今日无连通性检测记录（代理检测未启用或尚无数据）');
+    return lines;
   }
+
+  rounds.sort((a, b) => a.t - b.t);
+  const roundTotal = rounds.length;
+  const roundOk = rounds.filter(r => r.ok).length;
+  const availRate = roundTotal ? roundOk / roundTotal : 0;
+  const nodeRate = nodeOk / nodeTotal;
+
+  // 在线/异常时长统一按“每轮任一候选节点可用(anyOk)”的连通区间累计（二者互补，与区间口径一致）
+  const runs = roundTotal ? buildStateIntervals(rounds, now) : [];
+  let onlineMs = 0, downMs = 0;
+  for (const r of runs) { const d = Math.max(0, r.endT - r.startT); if (r.ok) onlineMs += d; else downMs += d; }
+
+  lines.push(`今日检测 ${roundTotal} 轮 / ${nodeTotal} 次节点探测；代理可用率 ${Math.round(availRate * 100)}%（${roundOk}/${roundTotal} 轮有可用节点）`);
+  lines.push(`节点级连通率 ${Math.round(nodeRate * 100)}%（通过 ${nodeOk}/${nodeTotal} 次；单节点任一网站可达即算通）`);
+  lines.push(`在线时长：${fmtDuration(onlineMs)}（连通区间累计）　异常时长：${fmtDuration(downMs)}（该轮所有候选节点均失败）`);
+  lines.push(`最近一次检测：${fmtBeijing(Date.parse(lastTs), cfg.timezone)} ${lastOk ? '✓ 正常' : '✗ 异常'}`);
+
+  // 需求：按检测网站分别统计连通率
+  const siteKeys = Object.keys(siteStat);
+  if (siteKeys.length) {
+    lines.push('各检测网站连通率（在所有节点探测中该网站可达占比）：');
+    for (const url of siteKeys) {
+      const s = siteStat[url];
+      lines.push(`  · ${url}：${Math.round((s.ok / s.total) * 100)}%（${s.ok}/${s.total}）`);
+    }
+  }
+
   // 当前节点
   try {
     const proxies = await fetchJson('http://127.0.0.1:9090/proxies');
@@ -203,7 +245,7 @@ async function sectionProxy(cfg, now) {
       }
     }
     if (node) lines.push(`当前节点：${node}`);
-  } catch { /* sing-box 不可达则省略 */ }
+  } catch { /* 内核不可达则省略 */ }
   // 今日节点切换 / 候选全失效事件（node_switch.log）
   const sw = readLogTail(HOME + '/logs/monitor/node_switch.log', 2000);
   let switches = 0;
@@ -215,27 +257,14 @@ async function sectionProxy(cfg, now) {
   }
   if (pc.candidate_nodes) lines.push(`候选节点：${pc.candidate_nodes.length} 个`);
   if (switches > 0) lines.push(`今日故障切换（含全失效）事件：${switches} 次`);
-  // 连通区间：按每周期 __done__ 的整体连通态（ok=allOk，与告警口径一致）聚合
-  const doneSamples = [];
-  for (const line of raw) {
-    let e; try { e = JSON.parse(line); } catch { continue; }
-    if (!e || e.node !== '__done__' || typeof e.ok !== 'boolean' || !e.timestamp) continue;
-    const t = Date.parse(e.timestamp);
-    if (Number.isNaN(t)) continue;
-    if (beijingDayKey(t, cfg.timezone) !== todayKey) continue;
-    doneSamples.push({ t, ok: e.ok });
-  }
-  doneSamples.sort((a, b) => a.t - b.t);
-  if (doneSamples.length) {
-    const runs = buildStateIntervals(doneSamples, now);
-    const downMs = runs.filter((r) => !r.ok).reduce((s, r) => s + Math.max(0, r.endT - r.startT), 0);
-    lines.push('连通时间区间（每轮检测整体连通态）：');
+  // 连通区间：按每轮 anyOk 整体态聚合展示
+  if (runs.length) {
+    lines.push('连通时间区间（每轮“是否有可用节点”整体态）：');
     const show = runs.slice(-14); // 只展示最近 14 段，避免刷屏
     if (runs.length > show.length) lines.push(`  （今日共 ${runs.length} 段，以下仅列最近 ${show.length} 段）`);
     for (const r of show) {
       lines.push(`  ${r.ok ? '✓ 连通' : '✗ 异常'} ${fmtClock(r.startT, cfg.timezone)}–${fmtClock(r.endT, cfg.timezone)}（${fmtDuration(r.endT - r.startT)}）`);
     }
-    if (downMs > 0) lines.push(`今日累计异常时长：${fmtDuration(downMs)}`);
   }
   return lines;
 }
