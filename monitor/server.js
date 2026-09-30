@@ -3,7 +3,7 @@ import { readFileSync, existsSync, statSync, writeFileSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
 import { join } from 'node:path';
 
-import { run, fetchJson, fetchSb, saveJSON, SB_DISABLED, SB_HOST, SB_PORT, SB_SECRET, HOME, DATA_DIR, findService, getCustomServiceRules, saveCustomServiceRules, SERVICE_CMDS } from './lib/utils.js';
+import { run, fetchJson, fetchSb, pickProxyNode, saveJSON, SB_DISABLED, SB_HOST, SB_PORT, SB_SECRET, HOME, DATA_DIR, findService, getCustomServiceRules, saveCustomServiceRules, SERVICE_CMDS } from './lib/utils.js';
 import { initRecorder, history, hourlyBuckets, requestCount, apiBytes, addApiBytes } from './lib/recorder.js';
 import { metrics, getMetricsSnapshot } from './lib/metrics.js';
 import { doAction } from './lib/actions.js';
@@ -700,11 +700,7 @@ const server = createServer(async (q, r) => {
       let currentNode = '';
       try {
         const proxies = await fetchJson('http://127.0.0.1:9090/proxies');
-        if (proxies && proxies.proxies) {
-          for (const [name, p] of Object.entries(proxies.proxies)) {
-            if (p.now && p.type === 'Selector') { currentNode = p.now; break; }
-          }
-        }
+        currentNode = pickProxyNode(proxies);
       } catch {}
       send(200, JSON.stringify({
         ok: lastCheck?.ok ?? false,

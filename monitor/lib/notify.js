@@ -1,5 +1,5 @@
 import { writeFileSync } from 'node:fs';
-import { run, loadJSON, saveJSON, fetchJson, HOME, DATA_DIR, procKeyword } from './utils.js';
+import { run, loadJSON, saveJSON, fetchJson, pickProxyNode, HOME, DATA_DIR, procKeyword } from './utils.js';
 import { writeLog, readLogTail } from './logger.js';
 import { recordAlertEvent } from './alert-events.js';
 
@@ -297,14 +297,8 @@ export async function checkDeviceAlerts() {
  */
 async function getCurrentNode() {
   const proxies = await fetchJson('http://127.0.0.1:9090/proxies');
-  if (proxies && proxies.proxies) {
-    for (const [, p] of Object.entries(proxies.proxies)) {
-      if (p.now && p.type === 'Selector') {
-        return p.now;
-      }
-    }
-  }
-  return '';
+  // 用 pickProxyNode 取「节点选择」组，排除 mihomo 的 GLOBAL 伪组（其 now=DIRECT 会被误判为当前节点）
+  return pickProxyNode(proxies);
 }
 
 /**

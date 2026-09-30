@@ -24,7 +24,7 @@
  *   凭证失效 / 所有候选节点失效 等仍由各自逻辑即时 sendMail（[告警] 前缀），
  *   并被 alert-events 记入第⑥块，日报里再做当日汇总。
  */
-import { loadJSON, saveJSON, DATA_DIR, HOME, fetchJson } from './utils.js';
+import { loadJSON, saveJSON, DATA_DIR, HOME, fetchJson, pickProxyNode } from './utils.js';
 import { mailConfig, sendMail } from './notify.js';
 import { getTasks } from './tasks/index.js';
 import { getProvider } from './providers/index.js';
@@ -165,7 +165,7 @@ async function sectionCreditExpiry(cfg, now) {
   return lines;
 }
 
-/** ② 代理连通（在线时长 / 连通率 / 按检测网站分别） */
+/** ② 代理连通（在线时长 / 连通率 / 按检测网站分别 / 按实际承载节点） */
 async function sectionProxy(cfg, now) {
   const lines = [];
   const pc = (mailConfig && mailConfig.proxy_check) || {};
@@ -173,13 +173,13 @@ async function sectionProxy(cfg, now) {
   const okCodes = new Set([200, 204, 301, 302, 307, 308, 401, 403]);
   const raw = readLogTail(HOME + '/logs/monitor/proxy_check.log', 5000);
 
-  // 单次遍历：按轮(__start__..__done__)聚合 anyOk，同时统计节点级、网站级
+  // 单次遍历：按轮(__start__..__done__)聚合，保留每轮各节点连通结果 nodeOkMap，同时统计节点级、网站级
   let nodeTotal = 0, nodeOk = 0;
-  const siteStat = {};          // url -> { total, ok }
-  const rounds = [];            // { t, anyOk }  —— anyOk=该轮是否有任一候选节点可用
+  const siteStat = {};   // url -> { total, ok }
+  const rounds = [];     // { t, anyOk, nodeOkMap }  —— anyOk=该轮是否有任一候选节点可用
   let cur = null;
   let lastOk = null, lastTs = null;
-  const flushRound = (t) => { if (cur && cur.hasNode) rounds.push({ t, ok: cur.anyOk }); cur = null; };
+  const flushRound = (t) => { if (cur && cur.hasNode) rounds.push({ t, anyOk: cur.anyOk, nodeOkMap: cur.nodeOkMap }); cur = null; };
 
   for (const line of raw) {
     let e; try { e = JSON.parse(line); } catch { continue; }
@@ -187,12 +187,13 @@ async function sectionProxy(cfg, now) {
     const t = Date.parse(e.timestamp);
     if (Number.isNaN(t)) continue;
     if (beijingDayKey(t, cfg.timezone) !== todayKey) continue;
-    if (e.node === '__start__') { flushRound(t); cur = { anyOk: false, hasNode: false }; continue; }
+    if (e.node === '__start__') { flushRound(t); cur = { anyOk: false, hasNode: false, nodeOkMap: {} }; continue; }
     if (e.node === '__done__') { flushRound(t); continue; }
     if (e.node === '__error__' || e.node === '__refresh__' || e.node === '__refresh_error__') continue;
     if (typeof e.ok !== 'boolean') continue;
-    if (!cur) cur = { anyOk: false, hasNode: false };
+    if (!cur) cur = { anyOk: false, hasNode: false, nodeOkMap: {} };
     cur.hasNode = true;
+    cur.nodeOkMap[e.node] = e.ok;
     if (e.ok) cur.anyOk = true;
     nodeTotal++; if (e.ok) nodeOk++;
     lastOk = e.ok; lastTs = e.timestamp;
@@ -208,24 +209,64 @@ async function sectionProxy(cfg, now) {
     lines.push('今日无连通性检测记录（代理检测未启用或尚无数据）');
     return lines;
   }
-
   rounds.sort((a, b) => a.t - b.t);
+
+  // 读 node_switch 今日记录，为每轮关联「检测结束时实际停靠的承载节点」
+  const swRaw = readLogTail(HOME + '/logs/monitor/node_switch.log', 3000);
+  const sw = [];
+  for (const line of swRaw) {
+    let e; try { e = JSON.parse(line); } catch { continue; }
+    if (!e || !e.timestamp) continue;
+    const t = Date.parse(e.timestamp);
+    if (Number.isNaN(t)) continue;
+    if (beijingDayKey(t, cfg.timezone) !== todayKey) continue;
+    sw.push({ t, current_node: e.current_node, decision: e.decision, new_node: e.new_node });
+  }
+  sw.sort((a, b) => a.t - b.t);
+
+  // 每轮停靠节点 = 检测结束后「节点选择」实际选中的节点：A_keep_current→current_node，其余→new_node(无则 current_node)
+  // 与 round 配对：取 t >= 本轮 done 时刻且最近的一条 switch（switch 紧随该轮之后写入）
+  const docked = rounds.map(r => {
+    let best = null;
+    for (const s of sw) { if (s.t >= r.t - 1000 && (!best || s.t < best.t)) best = s; }
+    let node = '';
+    if (best) node = (best.decision === 'A_keep_current') ? best.current_node : (best.new_node || best.current_node);
+    if (!node) node = '(未知)';
+    const ok = r.nodeOkMap[node] === true;   // 停靠节点本轮明确通过才算该轮在线
+    return { t: r.t, ok, node };
+  });
+
   const roundTotal = rounds.length;
-  const roundOk = rounds.filter(r => r.ok).length;
-  const availRate = roundTotal ? roundOk / roundTotal : 0;
+  const anyOkRounds = rounds.filter(r => r.anyOk).length;
+  const availRate = roundTotal ? anyOkRounds / roundTotal : 0;   // 候选池可用率（保留对照）
+  const dockedOkRounds = docked.filter(d => d.ok).length;
   const nodeRate = nodeOk / nodeTotal;
 
-  // 在线/异常时长统一按“每轮任一候选节点可用(anyOk)”的连通区间累计（二者互补，与区间口径一致）
-  const runs = roundTotal ? buildStateIntervals(rounds, now) : [];
-  let onlineMs = 0, downMs = 0;
-  for (const r of runs) { const d = Math.max(0, r.endT - r.startT); if (r.ok) onlineMs += d; else downMs += d; }
+  // 连通区间：按 (停靠节点是否连通, 节点名) 分段——节点变化即断段，体现“不同时段不同节点”
+  const runs = [];
+  for (const s of docked) {
+    const key = s.ok ? 'N:' + s.node : 'DOWN';
+    const last = runs[runs.length - 1];
+    if (last && last.key === key) { last.endT = s.t; last.count++; }
+    else runs.push({ key, ok: s.ok, node: s.ok ? s.node : '', startT: s.t, endT: s.t, count: 1 });
+  }
+  for (let i = 0; i < runs.length - 1; i++) runs[i].endT = runs[i + 1].startT;
+  if (runs.length) runs[runs.length - 1].endT = now;
 
-  lines.push(`今日检测 ${roundTotal} 轮 / ${nodeTotal} 次节点探测；代理可用率 ${Math.round(availRate * 100)}%（${roundOk}/${roundTotal} 轮有可用节点）`);
+  let onlineMs = 0, downMs = 0;
+  const nodeCarry = {};   // node -> 承载(连通)时长 ms
+  for (const r of runs) {
+    const d = Math.max(0, r.endT - r.startT);
+    if (r.ok) { onlineMs += d; nodeCarry[r.node] = (nodeCarry[r.node] || 0) + d; } else downMs += d;
+  }
+
+  lines.push(`今日检测 ${roundTotal} 轮 / ${nodeTotal} 次节点探测`);
+  lines.push(`在线时长：${fmtDuration(onlineMs)}（按每轮实际停靠节点连通累计）　异常时长：${fmtDuration(downMs)}（该轮停靠节点不可用/全候选失效）`);
+  lines.push(`实际停靠可用率 ${Math.round(dockedOkRounds / roundTotal * 100)}%（${dockedOkRounds}/${roundTotal} 轮停靠节点连通）　候选池可用率 ${Math.round(availRate * 100)}%（${anyOkRounds}/${roundTotal} 轮有可用节点，保留对照）`);
   lines.push(`节点级连通率 ${Math.round(nodeRate * 100)}%（通过 ${nodeOk}/${nodeTotal} 次；单节点任一网站可达即算通）`);
-  lines.push(`在线时长：${fmtDuration(onlineMs)}（连通区间累计）　异常时长：${fmtDuration(downMs)}（该轮所有候选节点均失败）`);
   lines.push(`最近一次检测：${fmtBeijing(Date.parse(lastTs), cfg.timezone)} ${lastOk ? '✓ 正常' : '✗ 异常'}`);
 
-  // 需求：按检测网站分别统计连通率
+  // 按检测网站分别统计连通率
   const siteKeys = Object.keys(siteStat);
   if (siteKeys.length) {
     lines.push('各检测网站连通率（在所有节点探测中该网站可达占比）：');
@@ -235,35 +276,35 @@ async function sectionProxy(cfg, now) {
     }
   }
 
-  // 当前节点
+  // 各节点承载（连通）时长
+  const carryKeys = Object.keys(nodeCarry).sort((a, b) => nodeCarry[b] - nodeCarry[a]);
+  if (carryKeys.length) {
+    lines.push('今日各节点承载（连通）时长：');
+    for (const n of carryKeys.slice(0, 8)) lines.push(`  · ${n}：${fmtDuration(nodeCarry[n])}`);
+    if (carryKeys.length > 8) lines.push(`  · …… 另有 ${carryKeys.length - 8} 个节点`);
+  }
+
+  // 当前节点（修 GLOBAL：用 pickProxyNode 取「节点选择」组）
   try {
     const proxies = await fetchJson('http://127.0.0.1:9090/proxies');
-    let node = '';
-    if (proxies && proxies.proxies) {
-      for (const [, p] of Object.entries(proxies.proxies)) {
-        if (p && p.type === 'Selector' && p.now) { node = p.now; break; }
-      }
-    }
+    const node = pickProxyNode(proxies);
     if (node) lines.push(`当前节点：${node}`);
   } catch { /* 内核不可达则省略 */ }
-  // 今日节点切换 / 候选全失效事件（node_switch.log）
-  const sw = readLogTail(HOME + '/logs/monitor/node_switch.log', 2000);
+
+  // 今日节点切换 / 候选全失效事件
   let switches = 0;
-  for (const line of sw) {
-    let e; try { e = JSON.parse(line); } catch { continue; }
-    if (!e || !e.timestamp) continue;
-    if (beijingDayKey(Date.parse(e.timestamp), cfg.timezone) !== todayKey) continue;
-    if (e.new_node && e.decision && String(e.decision).startsWith('C_') === false) switches++;
-  }
+  for (const s of sw) { if (s.new_node && s.decision && String(s.decision).startsWith('C_') === false) switches++; }
   if (pc.candidate_nodes) lines.push(`候选节点：${pc.candidate_nodes.length} 个`);
   if (switches > 0) lines.push(`今日故障切换（含全失效）事件：${switches} 次`);
-  // 连通区间：按每轮 anyOk 整体态聚合展示
+
+  // 连通区间展示（带实际承载节点）
   if (runs.length) {
-    lines.push('连通时间区间（每轮“是否有可用节点”整体态）：');
-    const show = runs.slice(-14); // 只展示最近 14 段，避免刷屏
+    lines.push('连通时间区间（每轮实际停靠节点，节点变化即分段）：');
+    const show = runs.slice(-14);
     if (runs.length > show.length) lines.push(`  （今日共 ${runs.length} 段，以下仅列最近 ${show.length} 段）`);
     for (const r of show) {
-      lines.push(`  ${r.ok ? '✓ 连通' : '✗ 异常'} ${fmtClock(r.startT, cfg.timezone)}–${fmtClock(r.endT, cfg.timezone)}（${fmtDuration(r.endT - r.startT)}）`);
+      const tag = r.ok ? `✓连通[${r.node}]` : '✗异常';
+      lines.push(`  ${tag} ${fmtClock(r.startT, cfg.timezone)}–${fmtClock(r.endT, cfg.timezone)}（${fmtDuration(r.endT - r.startT)}）`);
     }
   }
   return lines;

@@ -100,6 +100,22 @@ export function fetchSb(path, timeoutMs = 5000) {
   });
 }
 
+// ====== 代理组工具 ======
+// 从 Clash API 的 /proxies 结果中取「当前实际承载代理节点」。
+// 关键：mihomo(Clash) 会额外暴露名为 GLOBAL 的伪 Selector 组（其 now 常为 DIRECT），
+// 若简单取「第一个 Selector」会误取 GLOBAL→DIRECT。故优先取「节点选择」组，并排除 GLOBAL。
+export const PROXY_GROUP = '节点选择';
+export function pickProxyNode(proxies) {
+  const px = proxies && proxies.proxies;
+  if (!px) return '';
+  if (px[PROXY_GROUP] && px[PROXY_GROUP].now) return px[PROXY_GROUP].now;
+  for (const [name, p] of Object.entries(px)) {
+    if (name === 'GLOBAL' || name === 'direct' || name === PROXY_GROUP) continue;
+    if (p && p.now && p.type === 'Selector') return p.now;
+  }
+  return '';
+}
+
 // ====== JSON I/O ======
 export function loadJSON(path, def) {
   try { return JSON.parse(readFileSync(path, 'utf-8')); } catch { return def; }

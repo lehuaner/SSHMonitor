@@ -1,4 +1,4 @@
-import { run, HOME, getCustomServiceRules } from './utils.js';
+import { run, HOME, getCustomServiceRules, pickProxyNode } from './utils.js';
 import { readFileSync, readdirSync } from 'node:fs';
 
 // sing-box 重启后，selector 会重置为 sb-config.json 的 default 节点（通常是列表第一个，如"美国1"）
@@ -48,10 +48,7 @@ export async function doAction(action, pid) {
       let savedNode = '';
       try {
         const out = await run(`curl -s --max-time 2 http://127.0.0.1:9090/proxies 2>/dev/null`);
-        const d = JSON.parse(out);
-        for (const [, p] of Object.entries(d.proxies || {})) {
-          if (p.now && p.type === 'Selector') { savedNode = p.now; break; }
-        }
+        savedNode = pickProxyNode(JSON.parse(out));
       } catch {}
       // 优先 runit 重启（单一守护源）；无 runit 时回退 pidof 杀旧 + setsid（Termux pgrep -x 失效）
       await run(`sv restart /data/data/com.termux/files/usr/var/service/mihomo 2>/dev/null || (kill $(pidof mihomo) 2>/dev/null; sleep 1; mkdir -p ${HOME}/mihomo; setsid mihomo -d ${HOME}/mihomo -f ${HOME}/mihomo/config.yaml >/dev/null 2>&1 & disown)`);
