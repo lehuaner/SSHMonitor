@@ -89,7 +89,7 @@ textarea{min-height:60px;resize:vertical;word-break:break-all}
 </div>
 <div class="card dns-card">
 <div class=card-h><label>DNS 解析模式</label><span style=font-size:.7rem;color:#64748b id=dnsMode>加载中...</span></div>
-<div class=note>提示: 若发现节点解析失败或时好时坏，可在此切换 DNS 模式。切换后自动写入配置并重启 sing-box。</div>
+<div class=note>提示: 若发现节点解析失败或时好时坏，可在此切换 DNS 模式。切换后自动写入配置并重启内核(mihomo)。</div>
 <div class=dns-options id=dnsOptions>加载中...</div>
 <button class="btn btn-primary dns-apply" id=dnsApplyBtn onclick=applyDns()><svg class="ic"><use href="#h10i-circle-check"></use></svg> 应用 DNS 模式</button>
 <div class=dns-status id=dnsStatus></div>
@@ -334,7 +334,7 @@ async function applyDns(){
   btn.disabled=true;
   const oldHtml=btn.innerHTML;
   btn.innerHTML='<span class=loading></span> 应用中';
-  $('dnsStatus').textContent='正在应用并重启 sing-box...';
+  $('dnsStatus').textContent='正在应用并重启内核(mihomo)...';
   $('dnsStatus').className='dns-status';
   try{
     const r=await fetch('/api/dns-config',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mode})});

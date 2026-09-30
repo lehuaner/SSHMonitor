@@ -44,7 +44,7 @@ export async function doAction(action, pid) {
       await run(`kill ${parseInt(pid)} 2>/dev/null`);
       return { ok: true, msg: `进程 ${pid} 已终止` };
     case 'restart-singbox': {
-      // 重启前先保存当前 selector 节点（sing-box 重启后会重置为 default，通常是列表第一个如"美国1"）
+      // 重启前先保存当前 selector 节点（内核重启后 select 组会重置为列表第一个，如"美国 01"）
       let savedNode = '';
       try {
         const out = await run(`curl -s --max-time 2 http://127.0.0.1:9090/proxies 2>/dev/null`);
@@ -53,11 +53,11 @@ export async function doAction(action, pid) {
           if (p.now && p.type === 'Selector') { savedNode = p.now; break; }
         }
       } catch {}
-      // setsid 让进程脱离当前会话，避免 SSH 断开被杀
-      await run(`kill $(pgrep -x sing-box) 2>/dev/null; sleep 1; ENABLE_DEPRECATED_LEGACY_DNS_SERVERS=true ENABLE_DEPRECATED_MISSING_DOMAIN_RESOLVER=true setsid sing-box run -c ${HOME}/sb-config.json >/dev/null 2>&1 & disown`);
+      // 优先 runit 重启（单一守护源）；无 runit 时回退 pidof 杀旧 + setsid（Termux pgrep -x 失效）
+      await run(`sv restart /data/data/com.termux/files/usr/var/service/mihomo 2>/dev/null || (kill $(pidof mihomo) 2>/dev/null; sleep 1; mkdir -p ${HOME}/mihomo; setsid mihomo -d ${HOME}/mihomo -f ${HOME}/mihomo/config.yaml >/dev/null 2>&1 & disown)`);
       // 重启后恢复原节点（异步，不阻塞响应）
       restoreSelectorAfterStart(savedNode);
-      return { ok: true, msg: savedNode ? `Sing-box 已重启，已恢复节点: ${savedNode}` : 'Sing-box 已重启' };
+      return { ok: true, msg: savedNode ? `内核(mihomo) 已重启，已恢复节点: ${savedNode}` : '内核(mihomo) 已重启' };
     }
     case 'restart-tunnel':
       await run('pkill -f "cloudflared tunnel run" 2>/dev/null; sleep 2; setsid cloudflared tunnel run honor-server >/dev/null 2>&1 & disown');

@@ -12,7 +12,7 @@
 
   var NAV = [
     { href: '/', label: '监控', icon: 'activity' },
-    { href: '/sb/ui/', label: 'Sing-box', icon: 'settings', blank: true },
+    { href: '/sb/ui/', label: '内核面板', icon: 'settings', blank: true },
     { href: '/subscription', label: '订阅', icon: 'package' },
     { href: '/notify', label: '通知', icon: 'bell' },
     { href: '/files', label: '文件', icon: 'folder' },

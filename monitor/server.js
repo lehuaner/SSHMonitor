@@ -3,12 +3,12 @@ import { readFileSync, existsSync, statSync, writeFileSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
 import { join } from 'node:path';
 
-import { run, fetchJson, saveJSON, SB_DISABLED, SB_HOST, SB_PORT, SB_SECRET, HOME, DATA_DIR, findService, getCustomServiceRules, saveCustomServiceRules, SERVICE_CMDS } from './lib/utils.js';
+import { run, fetchJson, fetchSb, saveJSON, SB_DISABLED, SB_HOST, SB_PORT, SB_SECRET, HOME, DATA_DIR, findService, getCustomServiceRules, saveCustomServiceRules, SERVICE_CMDS } from './lib/utils.js';
 import { initRecorder, history, hourlyBuckets, requestCount, apiBytes, addApiBytes } from './lib/recorder.js';
 import { metrics, getMetricsSnapshot } from './lib/metrics.js';
 import { doAction } from './lib/actions.js';
 import { listDir, readFileContent, writeFileContent, renameItem, deleteItem, makeDir, loadNotes, saveNotes, parseUpload } from './lib/files.js';
-import { subscriptions, nodeStatusCache, parseSubscription, generateSbConfig, regenerateConfig, getDnsConfig, applyDnsConfig } from './lib/subscription.js';
+import { subscriptions, nodeStatusCache, parseSubscription, generateMihomoConfig, regenerateConfig, getDnsConfig, applyDnsConfig, MIHOMO_CONFIG } from './lib/subscription.js';
 import { mailConfig, markedProcs, resetProcStatus, sendMail, checkProcs, checkProxy, runProxyCheck, switchNode, getNodeWeights, checkDeviceAlerts, markNodeLogsDeleted, getDeletedTimestamps, startNotifyScheduler } from './lib/notify.js';
 import { readLogTail, writeLog } from './lib/logger.js';
 import { registerProvider, getProviderSchemas, getProvider } from './lib/providers/index.js';
@@ -23,14 +23,14 @@ import { recordSnapshot, updateUsageStats, getUsageStats, getUsageStatsWithEstim
 // ★每日日报：取代旧的「按账号、按到期批次逐封发」的积分过期提醒。调度仅在本（gateway）进程启动一次。
 import { startDailyReportScheduler, previewDailyReport, sendDailyReport } from './lib/daily-report.js';
 
-// ====== 节点测速（并发受限）======
-// sing-box 的 /group/{name}/delay 会一次性「全并行」测所有节点，在移动端(Termux/ARM)
-// 会瞬间打满 CPU，导致 Hysteria2/TUIC 等重负载节点假 Timeout、延迟虚高（实测并发8时
-// 香港节点从 ~180ms 飙到 2000ms+）。改为「逐节点测速 + 并发上限 2」：实测连通判定与
-// 串行及 PC 端 Clash Verge 一致（Hysteria2 13/13），速度较串行约翻倍，又不触发假超时。
-const NODE_TEST_CONCURRENCY = 2;
+// ====== 节点测速（串行）======
+// 内核(mihomo)的 /proxies/{name}/delay 每次都是冷启动连接；在移动端(Termux/ARM)
+// 并发测多个 Hysteria2(QUIC)/Reality 节点会争抢上行、放大握手延迟，造成假 Timeout
+// （实测并发2时香港 Hysteria2 从 ~400ms 飙到 5000ms 超时，串行则 400ms 连通）。
+// 故采用「串行 + 8s 超时」，连通判定与 PC 端 Clash Verge 对齐。
+const NODE_TEST_CONCURRENCY = 1;
 const NODE_TEST_URL = 'https://www.google.com/generate_204';
-const NODE_TEST_TIMEOUT = 5000;
+const NODE_TEST_TIMEOUT = 8000;
 /** 以固定并发 worker 池逐节点测延迟，返回 { [节点名]: 延迟ms(失败为0) } */
 async function testNodesDelay(names) {
   const delays = {};
@@ -38,8 +38,8 @@ async function testNodesDelay(names) {
   async function worker() {
     while (idx < names.length) {
       const name = names[idx++];
-      const u = `http://127.0.0.1:9090/proxies/${encodeURIComponent(name)}/delay?url=${NODE_TEST_URL}&timeout=${NODE_TEST_TIMEOUT}`;
-      const r = await fetchJson(u);
+      const path = `/proxies/${encodeURIComponent(name)}/delay?url=${encodeURIComponent(NODE_TEST_URL)}&timeout=${NODE_TEST_TIMEOUT}`;
+      const r = await fetchSb(path, NODE_TEST_TIMEOUT + 3000);
       delays[name] = (r && typeof r.delay === 'number') ? r.delay : 0;
     }
   }
@@ -355,12 +355,12 @@ const server = createServer(async (q, r) => {
         let { url: subUrl } = JSON.parse(body);
         if (!subUrl) { send(400, JSON.stringify({ ok: false, error: '缺少订阅链接' })); return; }
         writeFileSync(SUB_FILE, subUrl, 'utf-8');
-        const { nodes } = await parseSubscription(subUrl);
-        if (!nodes || nodes.length === 0) { send(400, JSON.stringify({ ok: false, error: '未找到可用节点' })); return; }
-        const config = generateSbConfig(nodes);
-        writeFileSync(HOME + '/sb-config.json', config, 'utf-8');
-        await run(`kill $(pgrep -x sing-box) 2>/dev/null; sleep 1; ENABLE_DEPRECATED_LEGACY_DNS_SERVERS=true ENABLE_DEPRECATED_MISSING_DOMAIN_RESOLVER=true setsid sing-box run -c ${HOME}/sb-config.json &>/dev/null & disown`);
-        send(200, JSON.stringify({ ok: true, msg: `成功加载 ${nodes.length} 个节点`, nodes: nodes.map(n => ({ tag: n.tag, server: n.server })) }));
+        const { proxies } = await parseSubscription(subUrl);
+        if (!proxies || proxies.length === 0) { send(400, JSON.stringify({ ok: false, error: '未找到可用节点' })); return; }
+        const config = generateMihomoConfig(proxies);
+        writeFileSync(MIHOMO_CONFIG, config, 'utf-8');
+        await run(`sv restart /data/data/com.termux/files/usr/var/service/mihomo 2>/dev/null || (kill $(pidof mihomo) 2>/dev/null; sleep 1; mkdir -p ${HOME}/mihomo; setsid mihomo -d ${HOME}/mihomo -f ${HOME}/mihomo/config.yaml &>/dev/null & disown)`);
+        send(200, JSON.stringify({ ok: true, msg: `成功加载 ${proxies.length} 个节点`, nodes: proxies.map(p => ({ tag: p.name, server: p.server })) }));
         return;
       }
     }
@@ -379,7 +379,7 @@ const server = createServer(async (q, r) => {
         if (!mode) { send(400, JSON.stringify({ ok: false, error: '缺少 mode 参数' })); return; }
         try {
           const appliedMode = await applyDnsConfig(mode);
-          send(200, JSON.stringify({ ok: true, mode: appliedMode, msg: 'DNS 模式已应用，sing-box 已重启' }));
+          send(200, JSON.stringify({ ok: true, mode: appliedMode, msg: 'DNS 模式已应用，内核已重启' }));
         } catch (e) {
           send(400, JSON.stringify({ ok: false, error: e.message }));
         }

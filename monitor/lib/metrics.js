@@ -161,8 +161,8 @@ disk.userPct = userPct;
     connections: sbCon?.connections?.length ?? 0,
     dl: Math.round((sbCon?.downloadTotal ?? 0) / 1024 / 1024 * 10) / 10,
     ul: Math.round((sbCon?.uploadTotal ?? 0) / 1024 / 1024 * 10) / 10,
-    downloadSpeed: sbCon?.downloadSpeed ?? 0,
-    uploadSpeed: sbCon?.uploadSpeed ?? 0,
+    downloadSpeed: (sbCon?.connections || []).reduce((a, c) => a + (c.downloadSpeed || 0), 0),
+    uploadSpeed: (sbCon?.connections || []).reduce((a, c) => a + (c.uploadSpeed || 0), 0),
     connectionsDetail: (sbCon?.connections || []).slice(0, 20).map(c => ({
       host: c.metadata?.host || c.metadata?.destinationIP || '--',
       network: c.metadata?.network || '--',

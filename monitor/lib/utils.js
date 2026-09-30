@@ -15,13 +15,13 @@ export const SB_DISABLED = process.env.SB_DISABLED;
 // ====== Services ======
 export const PROTECTED_FILES = [
   'monitor/server.js', 'proxy-bridge/server.js', 'proxy-bridge/package.json',
-  'sb-config.json', 'subscriber.sh', 'subscriber-loop.sh', 'start-all.sh',
+  'mihomo/config.yaml', 'subscriber.sh', 'subscriber-loop.sh', 'start-all.sh',
   '.cloudflared/config.yml', '.cloudflared/cert.pem',
 ];
 
 // 内置服务规则（不可删除）
 export const SERVICE_CMDS = [
-  { match: 'sing-box run', label: '重启', action: 'restart-singbox' },
+  { match: 'mihomo', label: '重启', action: 'restart-singbox' },
   { match: 'cloudflared tunnel run', label: '重启', action: 'restart-tunnel' },
   { match: 'proxy-bridge', label: '重启', action: 'restart-proxy' },
   { match: 'monitor/server.js', label: '重启', action: 'restart-monitor' },

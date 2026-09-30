@@ -1,55 +1,73 @@
 import { readFileSync, writeFileSync, unlinkSync } from 'node:fs';
 import { execSync } from 'node:child_process';
-import { run, loadJSON, saveJSON, fetchSb, DATA_DIR, HOME, SB_HOST, SB_PORT, SB_SECRET } from './utils.js';
+import { createRequire } from 'node:module';
+import { run, loadJSON, saveJSON, DATA_DIR, HOME, SB_HOST, SB_PORT, SB_SECRET } from './utils.js';
+
+// js-yaml 为 CommonJS 模块，ESM 下用 createRequire 加载（load/dump 齐全）
+const require = createRequire(import.meta.url);
+const yaml = require('js-yaml');
 
 // ====== Subscriptions State ======
 const SUBSCRIPTIONS_FILE = DATA_DIR + '/subscriptions.json';
 export let subscriptions = loadJSON(SUBSCRIPTIONS_FILE, []);
 
+// ====== Mihomo (内核) 路径与常量 ======
+// 已从 sing-box 迁移到 mihomo（Clash Meta）内核。
+// - 配置为 Clash YAML：~/mihomo/config.yaml
+// - mihomo 原生提供 Clash API，端口沿用 SB_HOST:SB_PORT(9090)，mixed 代理端口 7897
+export const MIHOMO_DIR = HOME + '/mihomo';
+export const MIHOMO_CONFIG = MIHOMO_DIR + '/config.yaml';
+export const MIHOMO_BIN = 'mihomo';
+export const MIXED_PORT = 7897;
+// Termux runit 服务目录（monitor 重启内核优先走 sv，与守护单一对齐）
+export const RUNIT_SVC = '/data/data/com.termux/files/usr/var/service';
+
+// 生成 mihomo 重启命令：优先让 runit 重启（单一守护源，避免与手动实例冲突）；
+// 无 runit （如本地开发）时回退 pidof 杀旧 + setsid 直起。（Termux 上 pgrep -x 失效，一律用 pidof）
+export function mihomoRunCmd() {
+  return `mkdir -p ${MIHOMO_DIR}; sv restart ${RUNIT_SVC}/mihomo 2>/dev/null || (kill $(pidof mihomo) 2>/dev/null; sleep 1; setsid ${MIHOMO_BIN} -d ${MIHOMO_DIR} -f ${MIHOMO_CONFIG} >/dev/null 2>&1 & disown)`;
+}
+
 // ====== DNS Config ======
-// DNS 模式持久化：用户可在订阅页面切换，避免"时好时坏"问题反复出现
+// DNS 模式持久化：用户可在订阅页面切换，避免"时好时坏"问题反复出现。
+// mihomo DNS 模型：default-nameserver 必须是纯 IP（引导解析 DoH 域名本身，规避"鸡生蛋"），
+// proxy-server-nameserver 解析节点域名，nameserver 业务解析。
 const DNS_CONFIG_FILE = DATA_DIR + '/dns_config.json';
 
-// DNS 模式预设：
-//  - ip      IP 直连 DoH（免域名引导解析，最稳定，推荐）
-//  - domain  域名 DoH（dns.alidns.com，需要先解析域名本身，可能时好时坏）
-// 两种模式都保留 local 的 detour:direct（防止 DNS 查询打回 sing-box 形成 loopback）
-// 以及新订阅专线节点域名（.byteprivatelink.com / .smartprivatelink.com）的 DNS rules
+// mihomo DNS 模型：实测发现用 DoH(223.5.5.5) 解析节点域名会导致 Reality/WS 节点连不上
+// （DoH 对 nekohub.xyz 返回的 IP 与系统解析不一致/失败），而系统解析全部正常。
+// 故默认 system 模式关闭 mihomo 内置 DNS 走系统；doh 模式仅加密业务域名，节点域名仍用 system。
 const DNS_PRESETS = {
-  ip: {
-    name: 'IP 直连 DoH',
-    desc: 'https://223.5.5.5/dns-query（免域名引导解析，最稳定）',
+  system: {
+    name: '系统 DNS',
+    desc: '使用系统/运营商 DNS 解析（实测对 Reality/WS/Hysteria2 节点最稳定，推荐）',
     dns: {
-      servers: [
-        { tag: 'dns', address: 'https://223.5.5.5/dns-query', detour: 'direct' },
-        { tag: 'local', address: '223.5.5.5', detour: 'direct' },
-      ],
-      rules: [
-        { domain_suffix: ['.nekohub.xyz', '.google.com', '.openai.com', 'chatgpt.com', '.byteprivatelink.com', '.smartprivatelink.com'], server: 'dns' },
-      ],
-      final: 'local',
+      enable: false,
     },
   },
-  domain: {
-    name: '域名 DoH',
-    desc: 'https://dns.alidns.com/dns-query（阿里云公共 DNS，需先引导解析域名）',
+  doh: {
+    name: 'DoH 加密解析',
+    desc: '223.5.5.5 DoH 解析业务域名；节点域名仍走系统解析以保证连通',
     dns: {
-      servers: [
-        { tag: 'dns', address: 'https://dns.alidns.com/dns-query', detour: 'direct' },
-        { tag: 'local', address: '223.5.5.5', detour: 'direct' },
-      ],
-      rules: [
-        { domain_suffix: ['.nekohub.xyz', '.google.com', '.openai.com', 'chatgpt.com', '.byteprivatelink.com', '.smartprivatelink.com'], server: 'dns' },
-      ],
-      final: 'local',
+      enable: true,
+      ipv6: false,
+      'default-nameserver': ['223.5.5.5', '8.8.8.8'],
+      'proxy-server-nameserver': ['system'],
+      nameserver: ['https://223.5.5.5/dns-query'],
     },
   },
 };
 
+function currentDns() {
+  const saved = loadJSON(DNS_CONFIG_FILE, null);
+  const mode = (saved && saved.mode && DNS_PRESETS[saved.mode]) ? saved.mode : 'system';
+  return DNS_PRESETS[mode].dns;
+}
+
 // 获取当前 DNS 配置（含模式列表与当前生效配置），未配置时默认 'ip'
 export function getDnsConfig() {
   const saved = loadJSON(DNS_CONFIG_FILE, null);
-  const mode = (saved && saved.mode && DNS_PRESETS[saved.mode]) ? saved.mode : 'ip';
+  const mode = (saved && saved.mode && DNS_PRESETS[saved.mode]) ? saved.mode : 'system';
   return {
     mode,
     current: DNS_PRESETS[mode].dns,
@@ -57,32 +75,37 @@ export function getDnsConfig() {
   };
 }
 
-// 应用 DNS 模式：持久化 → 写入 sb-config.json 的 dns 段 → 重启 sing-box
+// 应用 DNS 模式：持久化 → 改写 mihomo config.yaml 的 dns 段 → 重启 mihomo
 export async function applyDnsConfig(mode) {
   if (!DNS_PRESETS[mode]) throw new Error('未知 DNS 模式: ' + mode);
   saveJSON(DNS_CONFIG_FILE, { mode });
-  let config;
-  try { config = JSON.parse(readFileSync(HOME + '/sb-config.json', 'utf-8')); } catch { throw new Error('无法读取 sb-config.json'); }
-  config.dns = DNS_PRESETS[mode].dns;
-  writeFileSync(HOME + '/sb-config.json', JSON.stringify(config, null, 2), 'utf-8');
-  await run(`kill $(pgrep -x sing-box) 2>/dev/null; sleep 1; ENABLE_DEPRECATED_LEGACY_DNS_SERVERS=true ENABLE_DEPRECATED_MISSING_DOMAIN_RESOLVER=true setsid sing-box run -c ${HOME}/sb-config.json &>/dev/null & disown`);
+  let cfg;
+  try { cfg = yaml.load(readFileSync(MIHOMO_CONFIG, 'utf-8')); } catch { throw new Error('无法读取 mihomo 配置: ' + MIHOMO_CONFIG); }
+  cfg.dns = DNS_PRESETS[mode].dns;
+  writeFileSync(MIHOMO_CONFIG, yaml.dump(cfg, { lineWidth: -1, noRefs: true }), 'utf-8');
+  await run(mihomoRunCmd());
   return mode;
 }
+
 export let nodeStatusCache = { data: null, time: 0 };
-// 节点内存缓存：按 sub.id 存储已解析的节点数组，避免 regenerateConfig 时重复下载所有订阅
+// 节点内存缓存：按 sub.id 存储已解析的 proxies 数组，避免 regenerateConfig 时重复下载所有订阅
 const subNodesCache = {};
 
+// 信息/广告节点关键词（订阅里指向官网/流量说明的伪节点，过滤掉不展示）
+const AD_KEYWORDS = ['剩余流量', '到期', '重置', '失联', '套餐', '续费', '客服', '官网', '返利', '邀请', '教程', '软件', '下载新', '更新于', '请去', '请立即'];
+
 // ====== Subscription Parser ======
+// 用 clash UA 拉取机场原生 Clash YAML，解析出 proxies 数组；同时从 HTTP header 解析用量信息。
 export async function parseSubscription(url) {
   const safeUrl = url.replace(/'/g, "'\\''");
   const hdrFile = DATA_DIR + '/_sub_hdr_tmp';
 
-  const sbRaw = await run(`curl -sL --max-time 15 -H 'User-Agent: sing-box' -D '${hdrFile}' '${safeUrl}'`);
+  const raw = await run(`curl -sL --max-time 20 -H 'User-Agent: clash-verge/v2.0.0' -D '${hdrFile}' '${safeUrl}'`);
 
   let usage = null;
   let profileTitle = null;
   let updateInterval = null;
-  let profileWebPageUrl = null;
+  let website = null;
   try {
     const hdrContent = readFileSync(hdrFile, 'utf-8');
     unlinkSync(hdrFile);
@@ -99,58 +122,35 @@ export async function parseSubscription(url) {
     const pt = hdrContent.match(/profile-title:\s*base64:(.+)/i);
     if (pt) { try { profileTitle = Buffer.from(pt[1].trim(), 'base64').toString('utf-8'); } catch {} }
     const wp = hdrContent.match(/profile-web-page-url:\s*(\S+)/i);
-    if (wp) profileWebPageUrl = wp[1].trim();
+    if (wp) website = wp[1].trim();
   } catch {}
-  if (profileWebPageUrl) usage = usage || {}, usage.website = profileWebPageUrl;
+  if (website) usage = usage || {}, usage.website = website;
 
-  let nodes = [];
-  const infoTags = [];
-
-  if (sbRaw && sbRaw.trim()) {
-    try {
-      const data = JSON.parse(sbRaw.trim());
-      const outs = Array.isArray(data) ? data : (data.outbounds || []);
-      if (outs.length > 0) {
-        const groupTypes = ['selector', 'urltest', 'direct', 'block', 'dns', 'compatibility', 'fallback', 'loadbalance'];
-        const adKeywords = ['剩余流量', '到期', '重置', '失联', '套餐', '续费', '客服', '官网', '返利', '邀请', '教程', '软件', '下载新', '更新于', '请去', '请立即'];
-        nodes = outs.filter(o => {
-          if (!o.tag || !o.type) return false;
-          if (groupTypes.includes(o.type)) return false;
-          const srv = o.server || '';
-          if (!srv || srv === '127.0.0.1' || srv === '0.0.0.0' || srv === 'localhost') { infoTags.push(o.tag); return false; }
-          if (srv.includes(':')) return false;
-          if (adKeywords.some(kw => o.tag.includes(kw))) { infoTags.push(o.tag); return false; }
-          return true;
-        });
-      }
-    } catch {}
+  // 解析 YAML（可能整体 base64 编码）
+  let doc = null;
+  const text = (raw || '').trim();
+  try {
+    doc = yaml.load(text);
+  } catch {
+    try { doc = yaml.load(Buffer.from(text, 'base64').toString('utf-8')); } catch {}
   }
 
-  if (nodes.length === 0) {
-    const raw = sbRaw || await run(`curl -sL --max-time 15 '${safeUrl}'`);
-    if (raw && raw.trim()) {
-      let decoded;
-      try {
-        const buf = Buffer.from(raw.trim(), 'base64').toString();
-        decoded = buf.includes('://') ? buf : raw;
-      } catch { decoded = raw; }
-      for (const line of decoded.split(/\r?\n/).filter(Boolean)) {
-        const node = parseV2RayLink(line.trim());
-        if (node) nodes.push(node);
-      }
-    }
-  }
-
-  const infoFromNodes = parseInfoTags(infoTags);
-  if (infoFromNodes) {
-    if (!usage) usage = {};
-    for (const [k, v] of Object.entries(infoFromNodes)) {
-      if (usage[k] === undefined) usage[k] = v;
+  let proxies = [];
+  if (doc && Array.isArray(doc.proxies)) {
+    proxies = doc.proxies.filter(p => p && p.name && p.type && p.server &&
+      !AD_KEYWORDS.some(kw => String(p.name).includes(kw)) &&
+      p.server !== '127.0.0.1' && p.server !== 'localhost' && p.server !== '0.0.0.0');
+    // 从被过滤掉的信息节点名称里提取流量/到期等信息（部分机场把用量写成伪节点）
+    const infoNames = doc.proxies.map(p => p && p.name).filter(Boolean);
+    const infoFromNodes = parseInfoTags(infoNames);
+    if (infoFromNodes) {
+      usage = usage || {};
+      for (const [k, v] of Object.entries(infoFromNodes)) if (usage[k] === undefined) usage[k] = v;
     }
   }
   if (updateInterval) usage = usage || {}, usage.update_interval = updateInterval;
 
-  return { nodes, usage, profileTitle };
+  return { proxies, usage, profileTitle };
 }
 
 // ====== Info Tags Parser ======
@@ -178,271 +178,91 @@ function parseInfoTags(tags) {
   return Object.keys(info).length > 0 ? info : null;
 }
 
-// ====== Link Parsers ======
-function parseV2RayLink(line) {
-  try {
-    if (line.startsWith('vmess://')) return parseVmessLink(line);
-    if (line.startsWith('vless://')) return parseURLLink(line, 'vless', 'uuid');
-    if (line.startsWith('trojan://')) return parseURLLink(line, 'trojan', 'password');
-    if (line.startsWith('hysteria2://') || line.startsWith('hy2://')) return parseHysteria2Link(line);
-    if (line.startsWith('ss://')) return parseSSLink(line);
-  } catch {}
-  return null;
-}
-
-function parseVmessLink(line) {
-  const json = JSON.parse(Buffer.from(line.slice('vmess://'.length), 'base64').toString());
-  const ob = {
-    type: 'vmess', tag: (json.ps || json.add + ':' + json.port).replace(/\s+/g, '_').replace(/[｜|]/g, ''),
-    server: json.add, server_port: parseInt(json.port),
-    uuid: json.id, alter_id: parseInt(json.aid) || 0, security: json.scy || 'auto',
-  };
-  const net = json.net || 'tcp';
-  if (net !== 'tcp') {
-    ob.transport = { type: net };
-    if (net === 'ws') {
-      if (json.path) ob.transport.path = json.path;
-      if (json.host) ob.transport.headers = { Host: json.host };
-    } else if (net === 'grpc') {
-      if (json.path) ob.transport.service_name = json.path;
-    } else if (net === 'http' || net === 'h2') {
-      if (json.host) ob.transport.host = [json.host];
-      if (json.path) ob.transport.path = json.path;
-    }
-  }
-  if (json.tls === 'tls') {
-    ob.tls = { enabled: true };
-    if (json.sni) ob.tls.server_name = json.sni;
-    if (json.verify_cert === false) ob.tls.insecure = true;
-  }
-  return ob;
-}
-
-function parseURLLink(line, type, credField) {
-  const hashIdx = line.indexOf('#');
-  let name = hashIdx !== -1 ? decodeURIComponent(line.slice(hashIdx + 1)) : '';
-  const withoutHash = hashIdx !== -1 ? line.slice(0, hashIdx) : line;
-  const rest = withoutHash.slice(type.length + 3);
-  const atIdx = rest.indexOf('@');
-  if (atIdx === -1) return null;
-  const cred = rest.slice(0, atIdx);
-  const serverPart = rest.slice(atIdx + 1);
-  const qIdx = serverPart.indexOf('?');
-  let hostPort = (qIdx !== -1 ? serverPart.slice(0, qIdx) : serverPart).replace(/\/+$/, '');
-  const lastColon = hostPort.lastIndexOf(':');
-  if (lastColon === -1) return null;
-  const server = hostPort.slice(0, lastColon);
-  const port = parseInt(hostPort.slice(lastColon + 1));
-  if (!server || !port || server.includes(':')) return null;
-  const ob = { type, tag: (name || server + ':' + port).replace(/\s+/g, '_').replace(/[｜|]/g, ''), server, server_port: port };
-  ob[credField] = cred;
-  if (qIdx !== -1) {
-    const params = new URLSearchParams(serverPart.slice(qIdx + 1));
-    const security = params.get('security');
-    if (security === 'tls' || security === 'reality') {
-      ob.tls = { enabled: true };
-      const sni = params.get('sni');
-      if (sni) ob.tls.server_name = sni;
-      const fp = params.get('fp');
-      if (fp) ob.tls.utls = { enabled: true, fingerprint: fp };
-      if (params.get('allowInsecure') === '1') ob.tls.insecure = true;
-      if (security === 'reality') {
-        ob.tls.reality = { enabled: true };
-        const pbk = params.get('pbk');
-        if (pbk) ob.tls.reality.public_key = pbk;
-        const sid = params.get('sid');
-        if (sid) ob.tls.reality.short_id = sid;
-      }
-    }
-    const netType = params.get('type') || 'tcp';
-    if (netType !== 'tcp') {
-      ob.transport = { type: netType };
-      if (netType === 'ws') {
-        const path = params.get('path');
-        if (path) ob.transport.path = decodeURIComponent(path);
-        const host = params.get('host');
-        if (host) ob.transport.headers = { Host: host };
-      } else if (netType === 'grpc') {
-        const sn = params.get('serviceName');
-        if (sn) ob.transport.service_name = sn;
-      } else if (netType === 'http' || netType === 'h2') {
-        const host = params.get('host');
-        if (host) ob.transport.host = [host];
-        const path = params.get('path');
-        if (path) ob.transport.path = path;
-      }
-    }
-    if (type === 'vless') {
-      const flow = params.get('flow');
-      if (flow) ob.flow = flow;
-    }
-  }
-  return ob;
-}
-
-function parseHysteria2Link(line) {
-  const prefix = line.startsWith('hy2://') ? 'hy2://' : 'hysteria2://';
-  const hashIdx = line.indexOf('#');
-  let name = hashIdx !== -1 ? decodeURIComponent(line.slice(hashIdx + 1)) : '';
-  const withoutHash = hashIdx !== -1 ? line.slice(0, hashIdx) : line;
-  const rest = withoutHash.slice(prefix.length);
-  const atIdx = rest.indexOf('@');
-  if (atIdx === -1) return null;
-  const password = rest.slice(0, atIdx);
-  const serverPart = rest.slice(atIdx + 1);
-  const qIdx = serverPart.indexOf('?');
-  let hostPort = (qIdx !== -1 ? serverPart.slice(0, qIdx) : serverPart).replace(/\/+$/, '');
-  const lastColon = hostPort.lastIndexOf(':');
-  if (lastColon === -1) return null;
-  const server = hostPort.slice(0, lastColon);
-  const port = parseInt(hostPort.slice(lastColon + 1));
-  if (!server || !port || server.includes(':')) return null;
-  const ob = {
-    type: 'hysteria2', tag: (name || server + ':' + port).replace(/\s+/g, '_').replace(/[｜|]/g, ''),
-    server, server_port: port, password,
-    tls: { enabled: true, server_name: 'www.bing.com', insecure: true },
-  };
-  if (qIdx !== -1) {
-    const params = new URLSearchParams(serverPart.slice(qIdx + 1));
-    const sni = params.get('sni');
-    if (sni) ob.tls.server_name = sni;
-    if (params.get('insecure') === '1') ob.tls.insecure = true;
-  }
-  return ob;
-}
-
-function parseSSLink(line) {
-  const hashIdx = line.indexOf('#');
-  let name = hashIdx !== -1 ? decodeURIComponent(line.slice(hashIdx + 1)) : '';
-  const withoutHash = hashIdx !== -1 ? line.slice(0, hashIdx) : line;
-  const rest = withoutHash.slice('ss://'.length);
-  const atIdx = rest.lastIndexOf('@');
-  if (atIdx !== -1) {
-    const b64 = rest.slice(0, atIdx);
-    const hostPort = rest.slice(atIdx + 1).replace(/\/+$/, '');
-    const lastColon = hostPort.lastIndexOf(':');
-    if (lastColon === -1) return null;
-    const server = hostPort.slice(0, lastColon);
-    const port = parseInt(hostPort.slice(lastColon + 1));
-    if (!server || !port || server.includes(':')) return null;
-    const decoded = Buffer.from(b64, 'base64').toString();
-    const colonIdx = decoded.indexOf(':');
-    if (colonIdx === -1) return null;
-    return {
-      type: 'shadowsocks', tag: (name || server + ':' + port).replace(/\s+/g, '_').replace(/[｜|]/g, ''),
-      server, server_port: port, method: decoded.slice(0, colonIdx), password: decoded.slice(colonIdx + 1),
-    };
-  }
-  try {
-    const decoded = Buffer.from(rest, 'base64').toString();
-    const atIdx2 = decoded.lastIndexOf('@');
-    if (atIdx2 === -1) return null;
-    const methodPass = decoded.slice(0, atIdx2);
-    const hostPort = decoded.slice(atIdx2 + 1);
-    const lastColon = hostPort.lastIndexOf(':');
-    if (lastColon === -1) return null;
-    const server = hostPort.slice(0, lastColon);
-    const port = parseInt(hostPort.slice(lastColon + 1));
-    if (!server || !port || server.includes(':')) return null;
-    const colonIdx = methodPass.indexOf(':');
-    if (colonIdx === -1) return null;
-    return {
-      type: 'shadowsocks', tag: (name || server + ':' + port).replace(/\s+/g, '_').replace(/[｜|]/g, ''),
-      server, server_port: port, method: methodPass.slice(0, colonIdx), password: methodPass.slice(colonIdx + 1),
-    };
-  } catch { return null; }
-}
-
-// ====== Config Generation ======
-export function generateSbConfig(allNodes) {
+// ====== Config Generation (mihomo Clash YAML) ======
+// allProxies: 已带订阅名前缀的 Clash proxy 对象数组（每个含 name/type/server/port/...）
+export function generateMihomoConfig(allProxies) {
   let existing = {};
-  try { existing = JSON.parse(readFileSync(HOME + '/sb-config.json', 'utf-8')); } catch {}
-  const outbounds = allNodes.map(n => ({ ...n }));
-  const tags = allNodes.map(n => n.tag);
-  // default 节点选择策略（避免订阅刷新/sing-box 重启后 selector 重置为列表第一个，如"美国1"）：
-  //   1. 优先保留当前正在用的节点（从 Clash API 读取 selector.now）
-  //   2. 其次保留旧配置的 default
-  //   3. 都不在新节点列表中时，才用 tags[0]
-  // 注意：节点 tag 带订阅名前缀（如 "nekohub_日本 04"），订阅刷新后前缀不变但可能旧节点已不存在
-  //       所以匹配时先精确匹配，再按后缀模糊匹配（处理前缀变化的情况）
-  let defaultNode = tags[0];
-  const findInTags = (name) => {
+  try { existing = yaml.load(readFileSync(MIHOMO_CONFIG, 'utf-8')) || {}; } catch {}
+  const names = allProxies.map(p => p.name);
+
+  // 默认选中节点策略（避免订阅刷新/内核重启后 select 组回到列表第一个，如"美国 01"）：
+  //   1. 优先保留当前正在用的节点（从 Clash API 读取 节点选择.now）
+  //   2. 其次保留旧配置组的第一个（上次默认）
+  //   3. 都不在新列表时，用 names[0]
+  // mihomo 的 select 组重启后默认选 proxies 数组第一个，故把目标节点置于首位。
+  let defNode = names[0];
+  const findInNames = (name) => {
     if (!name) return null;
-    if (tags.includes(name)) return name;
-    // 模糊匹配：name 可能是去掉前缀的旧 tag，或带旧前缀的 tag
-    // 例如 name="日本 04"，tags 含 "nekohub_日本 04" → 匹配
-    // 例如 name="oldsub_日本 04"，tags 含 "nekohub_日本 04" → 按后缀匹配
-    for (const t of tags) {
+    if (names.includes(name)) return name;
+    for (const t of names) {
       const baseT = t.includes('_') ? t.slice(t.indexOf('_') + 1) : t;
       const baseN = name.includes('_') ? name.slice(name.indexOf('_') + 1) : name;
       if (baseT === baseN) return t;
     }
     return null;
   };
-  // 尝试从 Clash API 读取当前 selector 实际选中的节点（最准确）
   try {
-    const out = execSync(
-      `curl -s --max-time 2 http://127.0.0.1:9090/proxies/%E8%8A%82%E7%82%B9%E9%80%89%E6%8B%A9 2>/dev/null`
-    ).toString();
-    const cur = JSON.parse(out)?.now;
-    const matched = findInTags(cur);
-    if (matched) defaultNode = matched;
+    const out = execSync(`curl -s --max-time 2 http://${SB_HOST}:${SB_PORT}/proxies 2>/dev/null`).toString();
+    const cur = JSON.parse(out)?.proxies?.['节点选择']?.now;
+    const matched = findInNames(cur);
+    if (matched) defNode = matched;
   } catch {}
-  // 回退：旧配置的 default
-  if (defaultNode === tags[0]) {
+  if (defNode === names[0]) {
     try {
-      const oldSel = existing.outbounds?.find(o => o.type === 'selector' && o.tag === '节点选择');
-      const matched = findInTags(oldSel?.default);
-      if (matched) defaultNode = matched;
+      const oldGroup = (existing['proxy-groups'] || []).find(g => g.name === '节点选择');
+      const matched = findInNames(oldGroup?.proxies?.[0]);
+      if (matched) defNode = matched;
     } catch {}
   }
-  outbounds.push({ type: 'selector', tag: '节点选择', outbounds: tags, default: defaultNode });
-  outbounds.push({ type: 'direct', tag: 'direct' });
-  // DNS：优先使用页面上已保存的 DNS 模式；未配置过则保留现有配置
-  const dnsSaved = loadJSON(DNS_CONFIG_FILE, null);
-  const dnsConfig = (dnsSaved && dnsSaved.mode && DNS_PRESETS[dnsSaved.mode]) ? DNS_PRESETS[dnsSaved.mode].dns
-    : (existing.dns || { servers: [{ tag: 'local', address: 'local' }], rules: [{ outbound: 'any', server: 'local' }] });
+  const groupProxies = defNode ? [defNode, ...names.filter(n => n !== defNode)] : names;
+
   const config = {
-    log: existing.log || { level: 'warn' },
-    experimental: existing.experimental || {
-      clash_api: {
-        external_controller: SB_HOST + ':' + SB_PORT,
-        secret: SB_SECRET,
-        external_ui: HOME + '/sb-ui',
-      },
-    },
-    dns: dnsConfig,
-    inbounds: existing.inbounds || [{ type: 'mixed', tag: 'mixed-in', listen: '0.0.0.0', listen_port: 7890 }],
-    outbounds,
-    route: {
-      rules: (existing.route && existing.route.rules) || [{ ip_is_private: true, outbound: 'direct' }],
-      final: '节点选择',
-    },
+    'mixed-port': MIXED_PORT,
+    'allow-lan': true,
+    'bind-address': '*',
+    mode: 'rule',
+    'log-level': 'warning',
+    ipv6: false,
+    'unified-delay': true,
+    'external-controller': `${SB_HOST}:${SB_PORT}`,
+    secret: SB_SECRET || '',
+    dns: currentDns(),
+    proxies: allProxies,
+    'proxy-groups': [
+      { name: '节点选择', type: 'select', proxies: [...groupProxies, 'DIRECT'] },
+    ],
+    // 不使用 GEOIP/GEOSITE（避免下载 GeoDB）；仅私有网段直连，其余全部走「节点选择」
+    rules: [
+      'IP-CIDR,127.0.0.0/8,DIRECT,no-resolve',
+      'IP-CIDR,10.0.0.0/8,DIRECT,no-resolve',
+      'IP-CIDR,172.16.0.0/12,DIRECT,no-resolve',
+      'IP-CIDR,192.168.0.0/16,DIRECT,no-resolve',
+      'IP-CIDR6,::1/128,DIRECT,no-resolve',
+      'MATCH,节点选择',
+    ],
   };
-  return JSON.stringify(config, null, 2);
+  return yaml.dump(config, { lineWidth: -1, noRefs: true });
 }
 
-// 重新生成 sing-box 配置
+// 重新生成 mihomo 配置
 // refreshSubId: 指定要刷新的订阅 id（只重新下载该订阅）；其他订阅使用内存缓存的节点
-// 若缓存不存在或 refreshSubId 为 null，则按需下载对应订阅
 export async function regenerateConfig(refreshSubId = null) {
-  const allNodes = [];
+  const allProxies = [];
   for (const sub of subscriptions) {
-    let nodes;
-    // 只在指定 refreshSubId 时重新下载该订阅；其他订阅优先用缓存
+    let proxies;
     if (sub.id === refreshSubId || !subNodesCache[sub.id]) {
-      const { nodes: parsedNodes, usage, profileTitle } = await parseSubscription(sub.url);
-      nodes = parsedNodes;
-      subNodesCache[sub.id] = parsedNodes; // 更新缓存
-      sub.nodeCount = parsedNodes.length;
+      const { proxies: parsed, usage, profileTitle } = await parseSubscription(sub.url);
+      proxies = parsed;
+      subNodesCache[sub.id] = parsed;
+      sub.nodeCount = parsed.length;
       sub.lastUpdate = new Date().toISOString();
       sub.usage = usage;
       if (profileTitle) sub.profileTitle = profileTitle;
     } else {
-      nodes = subNodesCache[sub.id];
+      proxies = subNodesCache[sub.id];
     }
-    for (const n of nodes) {
-      allNodes.push({ ...n, tag: sub.name + '_' + n.tag });
+    for (const p of proxies) {
+      allProxies.push({ ...p, name: sub.name + '_' + p.name });
     }
   }
   // 清理已删除订阅的缓存
@@ -450,11 +270,10 @@ export async function regenerateConfig(refreshSubId = null) {
     if (!subscriptions.find(s => s.id === cachedId)) delete subNodesCache[cachedId];
   }
   saveJSON(SUBSCRIPTIONS_FILE, subscriptions);
-  if (allNodes.length > 0) {
-    // generateSbConfig 会把 default 设为当前 selector 选中的节点，重启后 sing-box 会自动用该节点
-    const config = generateSbConfig(allNodes);
-    writeFileSync(HOME + '/sb-config.json', config, 'utf-8');
-    await run(`kill $(pgrep -x sing-box) 2>/dev/null; sleep 1; ENABLE_DEPRECATED_LEGACY_DNS_SERVERS=true ENABLE_DEPRECATED_MISSING_DOMAIN_RESOLVER=true setsid sing-box run -c ${HOME}/sb-config.json &>/dev/null & disown`);
+  if (allProxies.length > 0) {
+    const config = generateMihomoConfig(allProxies);
+    writeFileSync(MIHOMO_CONFIG, config, 'utf-8');
+    await run(mihomoRunCmd());
   }
-  return allNodes.length;
+  return allProxies.length;
 }
