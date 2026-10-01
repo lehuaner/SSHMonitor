@@ -22,7 +22,7 @@ import {
   checkStatusForTask, autoCheckToday, getTotalCreditsForTask,
 } from './lib/tasks/index.js';
 // 方案一凭证导入（脚本直连）：已存在则更新、不存在则新增
-import { upsertTraeTask } from './lib/tasks/trae-import.js';
+import { upsertTraeTask, listTraeTargets } from './lib/tasks/trae-import.js';
 import { getLogs } from './lib/checkin-log.js';
 import { recordSnapshot, updateUsageStats, getUsageStatsWithEstimates, getTaskUsageDetail, startDailySnapshot, removeTaskStats } from './lib/checkin-stats.js';
 import { createModuleServer, readBody } from './lib/module.js';
@@ -150,9 +150,16 @@ async function router(url, q, r, send) {
     return true;
   }
 
+  // GET /api/checkin/trae-targets - 可导入的 Trae 账号清单（脚本用它让用户选「更新哪个/新建」）
+  if (p === '/api/checkin/trae-targets' && q.method === 'GET') {
+    send(200, JSON.stringify({ ok: true, tasks: listTraeTargets() }),
+      'application/json; charset=utf-8');
+    return true;
+  }
+
   // POST /api/checkin/trae-import - 方案一（refreshToken）凭证导入
   //   调用方：tools/trae-export.ps1 生成的 trae-export.bat（地址由面板在下载时注入）。
-  //   语义：按 userId 判重 —— 命中则更新该账号凭证，未命中则新增任务。
+  //   语义：taskId 显式指定则更新它；否则按 userId 自动匹配，匹配不到才新增。
   //   Content-Type 显式带 charset：Windows PowerShell 5.1 的 Invoke-RestMethod 在
   //   响应头没有 charset 时按 ISO-8859-1 解码，中文名称会变乱码。
   if (p === '/api/checkin/trae-import' && q.method === 'POST') {

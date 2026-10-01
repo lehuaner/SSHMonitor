@@ -371,6 +371,11 @@ server.js → /api/checkin/* 路由
 - 任务存储：`~/.monitor_data/checkin_tasks.json`（多账号，含 `failCount`/`credentialInvalid`/`credits`/`totalCredits`/`cookieExpiresAt`/`tokenExpiredAt`）。
 - 日志存储：`~/.monitor_data/checkin_logs.json`（按 `(taskId,date)` 去重，滚动保留 30 天）。
 - API：`GET/POST/PUT/DELETE /api/checkin/tasks`、`POST /api/checkin/run?id=`、`POST /api/checkin/run-all`、`POST /api/checkin/test?id=`（通过获取**总积分**确认凭证有效并刷新 `totalCredits`）、`GET /api/checkin/credits?id=`、`GET /api/checkin/credits/total?id=`（查询账户各权益包总可用积分）、`GET /api/checkin/status?id=`、`GET /api/checkin/auto-check`、`GET /api/checkin/logs`、`GET /api/checkin/providers`。
+- **方案一凭证导入专用**（供 `trae-export.bat` 调用，地址由面板在下载时注入，因此前端可跨域名/本地部署）：
+  - `GET /api/checkin/trae-targets` —— 已有 Trae 账号清单（id/名称/方案/deviceId），脚本据此让用户选「更新哪个 / 新建」
+  - `POST /api/checkin/trae-import` —— `{importString, taskId?, name?}`；`taskId` 指定则更新它，否则按 `userId` 自动匹配，再匹配不到才新建。
+    ★更新路径**只替换凭证**（refreshToken / refreshMeta / deviceId），名称、时间、时区、开关、Cookie 一律不动。
+  - 响应头显式带 `charset=utf-8`：PowerShell 5.1 的 `Invoke-RestMethod` 在无 charset 时按 ISO-8859-1 解码，中文会乱码。
 
 ### 7.6 通知规则
 

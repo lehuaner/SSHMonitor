@@ -43,6 +43,9 @@ if ($RawArgs -match '--no-push') { $WantPush = $false }
 elseif ($RawArgs -match '--push') { $WantPush = $true }
 $NameArg = $null
 if ($RawArgs -match '--name[=\s]+"?([^"]+)"?') { $NameArg = $Matches[1].Trim() }
+# --task=<id>：非交互场景直接指定"更新哪一个"（交互场景下由脚本列出账号让你选）
+$TaskArg = $null
+if ($RawArgs -match '--task[=\s]+"?([^"\s]+)"?') { $TaskArg = $Matches[1].Trim() }
 
 # 能不能交互：被重定向（管道 / CI）时不要在 Read-Host 上卡死
 $CanAsk = -not [Console]::IsInputRedirected
@@ -188,10 +191,20 @@ function New-ImportString([string]$refreshToken, [string]$deviceId, [string]$mac
   return 'TRAE1.' + $b64
 }
 
-# 把导入串写回服务端（新增 or 更新由服务端按 userId 自动判定）
-function Invoke-Push([string]$apiBase, [string]$importString, [string]$name, [string]$time, [string]$timezone) {
+# 取服务端已有的 Trae 账号清单（供用户选「更新哪个 / 新建」）
+function Get-TraeTargets([string]$apiBase) {
+  try {
+    $r = Invoke-RestMethod -Uri ($apiBase.TrimEnd('/') + '/api/checkin/trae-targets') -Method Get -TimeoutSec 20
+    if ($r -and $r.tasks) { return @($r.tasks) }
+  } catch {}
+  return @()
+}
+
+# 把导入串写回服务端（新增 or 更新由 taskId / userId 决定）
+function Invoke-Push([string]$apiBase, [string]$importString, [string]$name, [string]$taskId, [string]$time, [string]$timezone) {
   $url = $apiBase.TrimEnd('/') + '/api/checkin/trae-import'
   $payload = @{ importString = $importString }
+  if ($taskId) { $payload.taskId = $taskId }
   if ($name) { $payload.name = $name }
   if ($time) { $payload.time = $time }
   if ($timezone) { $payload.timezone = $timezone }
@@ -347,23 +360,61 @@ if ($results.Count -eq 0) {
 
   if ($doPush) {
     Write-Host ''
+    $targets = Get-TraeTargets $ApiBase
     foreach ($rec in $results) {
       $suggest = 'Trae'
       if ($rec.username) { $suggest = 'Trae · ' + $rec.username }
       elseif ($rec.mobile) { $suggest = 'Trae · ' + $rec.mobile }
       elseif ($rec.userId) { $suggest = 'Trae · ' + $rec.userId.Substring([Math]::Max(0, $rec.userId.Length - 4)) }
 
-      $name = $suggest
-      if ($NameArg -and $results.Count -eq 1) { $name = $NameArg }
-      else { $name = Ask-Text ('  写入「{0}」，账号名称（仅新增时生效）' -f $suggest) $suggest }
+      # ── 选目标：服务端已有账号时让用户明确选「更新哪一个 / 新建」──
+      # 不能只靠服务端自动匹配：老账号是方案二(Cookie)建起来的，没有 refreshMeta.userId，
+      # 自动匹配必然落空、凭空多出一个重复账号。
+      $taskId = $null
+      $matchedIdx = 0
+      if ($TaskArg) {
+        # 非交互：直接指定目标（不校验存在性，交给服务端报错，信息更准）
+        $taskId = $TaskArg
+      } elseif ($targets.Count -gt 0) {
+        for ($i = 0; $i -lt $targets.Count; $i++) {
+          $t = $targets[$i]
+          if ($t.userId -and $rec.userId -and ([string]$t.userId -eq [string]$rec.userId)) { $matchedIdx = $i + 1 }
+        }
+        Write-Host ''
+        Write-Host ('  服务端已有 {0} 个 Trae 账号：' -f $targets.Count) -ForegroundColor Cyan
+        for ($i = 0; $i -lt $targets.Count; $i++) {
+          $t = $targets[$i]
+          $modeTxt = '方案一'
+          if ($t.mode -eq 'cookie') { $modeTxt = '方案二 Cookie' }
+          $mark = ''
+          if (($i + 1) -eq $matchedIdx) { $mark = '   ← 按 userId 自动识别为同一账号' }
+          Write-Host ('    [{0}] {1}   {2}{3}' -f ($i + 1), $t.name, $modeTxt, $mark)
+        }
+        Write-Host '    [0] 新建一个账号'
+        $sel = Ask-Text '  本次凭证写到哪一个' ([string]$matchedIdx)
+        $n = -1
+        if ([int]::TryParse($sel, [ref]$n) -and $n -ge 1 -and $n -le $targets.Count) {
+          $taskId = $targets[$n - 1].id
+        }
+      } elseif ($CanAsk) {
+        Write-Host ''
+        Write-Host '  服务端还没有 Trae 账号，将新建一个。' -ForegroundColor DarkGray
+      }
 
-      $p = Invoke-Push $ApiBase $rec.importString $name $null $null
+      # 名称只在「新建」时才有意义；更新时服务端会保留原名
+      $name = $null
+      if (-not $taskId) {
+        if ($NameArg -and $results.Count -eq 1) { $name = $NameArg }
+        else { $name = Ask-Text '  新建账号名称' $suggest }
+      }
+
+      $p = Invoke-Push $ApiBase $rec.importString $name $taskId $null $null
       if ($p.ok) {
         if ($p.created) {
           Write-Host ('  ✓ 已新增账号：{0}' -f $p.name) -ForegroundColor Green
         } else {
-          Write-Host ('  ✓ 已更新凭证：{0}' -f $p.name) -ForegroundColor Green
-          Write-Host '    （只替换了凭证，账号名称 / 签到时间 / 通知设置等其它配置保持原样）' -ForegroundColor DarkGray
+          Write-Host ('  ✓ 已更新凭证：{0}（id {1}）' -f $p.name, $taskId) -ForegroundColor Green
+          Write-Host '    只替换了凭证；账号名称 / 签到时间 / 时区 / 开关 / 方案二 Cookie 全部保持原样。' -ForegroundColor DarkGray
         }
       } else {
         Write-Host ('  ✗ 写入失败：{0}' -f $p.msg) -ForegroundColor Red

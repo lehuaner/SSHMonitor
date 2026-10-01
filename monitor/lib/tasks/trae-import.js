@@ -26,10 +26,33 @@ function schemaDefaults(providerId) {
 }
 
 /**
+ * 列出可作为「方案一凭证导入目标」的 Trae 账号（供脚本交互选择用）。
+ *
+ * ★为什么不只靠自动匹配：老账号是方案二（Cookie）建起来的，**没有 refreshMeta.userId**，
+ *   而 userId 只能从新导入串里得到 —— 自动匹配必然落空，结果会凭空多出一个重复账号。
+ *   所以让用户明确选「更新哪一个 / 新建」，比猜错安全。
+ * 返回里的 deviceId 是机器标识（非凭证），用于帮用户认出是哪台设备上的账号。
+ */
+export function listTraeTargets() {
+  return loadTasks()
+    .filter((t) => t.providerId === 'trae')
+    .map((t) => ({
+      id: t.id,
+      name: t.name,
+      enabled: t.enabled !== false,
+      mode: (t.config && t.config.refreshToken) ? 'refreshToken' : 'cookie',
+      userId: (t.config && t.config.refreshMeta && t.config.refreshMeta.userId) || '',
+      deviceId: (t.config && t.config.deviceId) || '',
+    }));
+}
+
+/**
  * 依据导入串新增或更新一个 Trae 账号。
- * @param {{importString:string, name?:string, time?:string, timezone?:string}} input
- * @returns {{created:boolean, task:object}}
- * @throws {Error} 导入串无效 / 来源客户端不受支持
+ * @param {{importString:string, taskId?:string, name?:string, time?:string, timezone?:string}} input
+ *        taskId 显式指定"更新哪一个"；不传则自动匹配（userId 相同，或导入串一字不差），
+ *        再匹配不到才新建。
+ * @returns {{created:boolean, task:object, nameKept:boolean}}
+ * @throws {Error} 导入串无效 / 来源客户端不受支持 / 指定的账号不存在
  */
 export function upsertTraeTask(input = {}) {
   const importString = String(input.importString || '').trim();
@@ -49,14 +72,22 @@ export function upsertTraeTask(input = {}) {
   }
 
   const tasks = loadTasks();
-  const existing = tasks.find((t) => {
-    if (t.providerId !== 'trae' || !t.config) return false;
-    // ① 首选：userId 相同（稳定）
-    if (cred.userId && t.config.refreshMeta
-        && String(t.config.refreshMeta.userId) === String(cred.userId)) return true;
-    // ② 兜底：导入串一字不差（同一份串重复提交，或旧任务还没跑过 resolveToken）
-    return t.config.refreshToken === importString;
-  }) || null;
+  let existing = null;
+
+  if (input.taskId) {
+    // ① 用户显式指定 → 严格按它来，不做任何猜测
+    existing = tasks.find((t) => t.id === input.taskId) || null;
+    if (!existing) throw new Error('指定的账号不存在（可能已被删除），请重新选择');
+    if (existing.providerId !== 'trae') throw new Error('指定的账号不是 Trae 账号');
+  } else {
+    // ② 自动匹配：优先 userId（稳定），其次导入串一字不差
+    existing = tasks.find((t) => {
+      if (t.providerId !== 'trae' || !t.config) return false;
+      if (cred.userId && t.config.refreshMeta
+          && String(t.config.refreshMeta.userId) === String(cred.userId)) return true;
+      return t.config.refreshToken === importString;
+    }) || null;
+  }
 
   // ★ 只有这两样算「凭证」：refreshToken 本身，以及它与之一体的设备绑定。
   //   x-device-id 必须与 refreshToken 绑定的设备一致，claim 才不会被判 9074，
