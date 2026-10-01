@@ -21,6 +21,8 @@ import {
   loadTasks, saveTasks, startAllTasks, stopAllTasks, startCookieExpiryWatcher,
   checkStatusForTask, autoCheckToday, getTotalCreditsForTask,
 } from './lib/tasks/index.js';
+// 方案一凭证导入（脚本直连）：已存在则更新、不存在则新增
+import { upsertTraeTask } from './lib/tasks/trae-import.js';
 import { getLogs } from './lib/checkin-log.js';
 import { recordSnapshot, updateUsageStats, getUsageStatsWithEstimates, getTaskUsageDetail, startDailySnapshot, removeTaskStats } from './lib/checkin-stats.js';
 import { createModuleServer, readBody } from './lib/module.js';
@@ -145,6 +147,25 @@ async function router(url, q, r, send) {
     const task = updateTask(id, patch);
     if (!task) { send(404, JSON.stringify({ ok: false, error: '任务不存在' })); return true; }
     send(200, JSON.stringify({ ok: true, task }));
+    return true;
+  }
+
+  // POST /api/checkin/trae-import - 方案一（refreshToken）凭证导入
+  //   调用方：tools/trae-export.ps1 生成的 trae-export.bat（地址由面板在下载时注入）。
+  //   语义：按 userId 判重 —— 命中则更新该账号凭证，未命中则新增任务。
+  //   Content-Type 显式带 charset：Windows PowerShell 5.1 的 Invoke-RestMethod 在
+  //   响应头没有 charset 时按 ISO-8859-1 解码，中文名称会变乱码。
+  if (p === '/api/checkin/trae-import' && q.method === 'POST') {
+    try {
+      const input = JSON.parse((await readBody(q)) || '{}');
+      const res = upsertTraeTask(input);
+      send(200, JSON.stringify({
+        ok: true, created: res.created, id: res.task.id, name: res.task.name,
+        nameKept: !!res.nameKept,
+      }), 'application/json; charset=utf-8');
+    } catch (e) {
+      send(400, JSON.stringify({ ok: false, error: e.message }), 'application/json; charset=utf-8');
+    }
     return true;
   }
 

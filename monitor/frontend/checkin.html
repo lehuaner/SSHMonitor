@@ -564,6 +564,16 @@ function renderFields(task){
 function fieldHtml(f,task){
   // 取值：编辑时用已存值，否则用 schema 默认值（新增时也要回填默认）
   const cur=task?(task.config[f.key]??f.default):(f.default);
+  // 纯展示型字段：不参与取值/提交（无 data-k，collectFields 会自然跳过）
+  if(f.type==='download'){
+    const href=f.href||'#';
+    return `<div class=form-row><label>${esc(f.label)}</label>
+        <div style="grid-column:2">
+          <button class="btn btn-primary" type=button onclick="downloadScript('${esc(href)}',this)">${esc(f.text||'下载')}</button>
+          <a href="${esc(href)}" download style="margin-left:10px;font-size:.72rem;color:#64748b">直接下载</a>
+          ${f.hint?`<div class=field-hint>${esc(f.hint)}</div>`:''}
+        </div></div>`;
+  }
   if(f.type==='toggle'){
     const tv=cur===undefined?false:cur;
     return `<div class=field-toggle><label>${esc(f.label)}</label><label class=toggle><input type=checkbox data-k="${f.key}" ${tv?'checked':''}><span class=slider></span></label></div>`;
@@ -587,6 +597,29 @@ function fieldHtml(f,task){
   else if(!isPwd){ val=(cur===undefined?'':cur); }
   const hintTxt=f.hint?`<div class=field-hint>${esc(f.hint)}</div>`:'';
   return `<div class=form-row><label>${esc(f.label)}${f.required?' *':''}</label><input type="${f.type||'text'}" data-k="${f.key}" value="${esc(val)}" placeholder="${esc(ph)}">${hintTxt}</div>`;
+}
+// 下载「凭证提取脚本」，并在下载那一刻把本面板地址注入脚本。
+// 脚本外壳里有一行 `set "TRAE_API_BASE=__API_BASE__"`，这里替换成 location.origin，
+// 于是脚本能直接写回本服务端 —— 全链路不硬编码任何域名（换域名/本地部署都自动正确）。
+async function downloadScript(path,btn){
+  const old=btn?btn.textContent:'';
+  try{
+    if(btn){btn.disabled=true;btn.textContent='准备中…';}
+    const r=await fetch(path,{cache:'no-store'});
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    let txt=await r.text();
+    txt=txt.split('__API_BASE__').join(location.origin);
+    const name=path.split('/').pop()||'script.bat';
+    const url=URL.createObjectURL(new Blob([txt],{type:'application/octet-stream'}));
+    const a=document.createElement('a');
+    a.href=url;a.download=name;document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),5000);
+    toast('已下载，脚本已带上本面板地址');
+  }catch(e){
+    toast('下载失败：'+e.message);
+  }finally{
+    if(btn){btn.disabled=false;btn.textContent=old;}
+  }
 }
 // select 切换为"自定义…"时显示输入框
 function onSelectChange(sel){

@@ -268,6 +268,15 @@ export function updateTask(id, patch) {
     task.tokenExpiredAt = null;
     task.credentialInvalid = false;
   }
+  // ★方案一凭证（refreshToken）换新后同理：必须清掉缓存 JWT。
+  //   否则 resolveToken 第一步「现成 token 没临期就直接用」会命中旧 token，
+  //   新导入的凭证要等旧 token 过期才生效 —— 表现为「导入后测试凭证仍报旧错误」。
+  if (patch.config && patch.config.refreshToken !== undefined) {
+    delete task.config.token;
+    task.tokenExpiredAt = null;
+    task.credentialInvalid = false;
+    task.failCount = 0;
+  }
   saveTasks(tasks);
   resyncTask(task);
   return task;

@@ -17,6 +17,7 @@
     "monitor/lib/providers/officeace.js": ["gateway"],
     "monitor/lib/tasks/index.js": ["gateway"],
     "monitor/lib/checkin/checkin.js": ["gateway"],
+    "monitor/lib/checkin/trae-credential.js": ["gateway"],
     "monitor/lib/checkin/scheduler.js": ["gateway"],
     "monitor/lib/checkin/credit-expiry.js": ["gateway"],
     "monitor/lib/checkin/autoclaw.js": ["gateway"],
@@ -51,6 +52,7 @@
         "monitor/lib/checkin-log.js": "~/monitor/lib/checkin-log.js",
         "monitor/lib/checkin-stats.js": "~/monitor/lib/checkin-stats.js",
         "monitor/lib/checkin/checkin.js": "~/monitor/lib/checkin/checkin.js",
+        "monitor/lib/checkin/trae-credential.js": "~/monitor/lib/checkin/trae-credential.js",
         "monitor/lib/checkin/scheduler.js": "~/monitor/lib/checkin/scheduler.js",
         "monitor/lib/checkin/credit-expiry.js": "~/monitor/lib/checkin/credit-expiry.js",
         "monitor/lib/checkin/autoclaw.js": "~/monitor/lib/checkin/autoclaw.js",
@@ -83,6 +85,7 @@
         "monitor/lib/checkin/codearts.js": "~/monitor/lib/checkin/codearts.js",
         "monitor/lib/checkin/officeace.js": "~/monitor/lib/checkin/officeace.js",
         "monitor/lib/checkin/checkin.js": "~/monitor/lib/checkin/checkin.js",
+        "monitor/lib/checkin/trae-credential.js": "~/monitor/lib/checkin/trae-credential.js",
         "monitor/lib/checkin/scheduler.js": "~/monitor/lib/checkin/scheduler.js",
         "monitor/lib/checkin/credit-expiry.js": "~/monitor/lib/checkin/credit-expiry.js",
         "monitor/lib/checkin-log.js": "~/monitor/lib/checkin-log.js",
@@ -94,7 +97,8 @@
         "monitor/lib/providers/codearts.js": "~/monitor/lib/providers/codearts.js",
         "monitor/lib/providers/autoclaw.js": "~/monitor/lib/providers/autoclaw.js",
         "monitor/lib/providers/officeace.js": "~/monitor/lib/providers/officeace.js",
-        "monitor/lib/tasks/index.js": "~/monitor/lib/tasks/index.js"
+        "monitor/lib/tasks/index.js": "~/monitor/lib/tasks/index.js",
+        "monitor/lib/tasks/trae-import.js": "~/monitor/lib/tasks/trae-import.js"
       }
     },
     "release": {
@@ -115,6 +119,7 @@
       "$comment": "前端（CF_PAGES）不再由 GitHub Actions 部署；设备 apply 成功后按 frontend_deploy.json.mode 处理：pages→lib/pages-deploy.js 设备端直传 Cloudflare Pages；local→复制到 ~/monitor/frontend 供 :3080 服务。首次运行用 `node setup-deploy.js` 选择。",
       "files": {
         "monitor/frontend/checkin.html": "CF_PAGES",
+        "monitor/frontend/trae-export.bat": "CF_PAGES",
         "monitor/frontend/release.html": "CF_PAGES",
         "monitor/frontend/index.html": "CF_PAGES",
         "monitor/frontend/notify.html": "CF_PAGES",

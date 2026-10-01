@@ -292,8 +292,10 @@ kill $(pgrep -f 'node server.js') && cd ~/monitor && nohup node server.js > ~/lo
 server.js → /api/checkin/* 路由
   lib/tasks/index.js     任务调度中心（遍历启用任务 → 派发 + Cookie 到期监控）
   lib/providers/index.js Provider 注册中心
-    lib/providers/trae.js  Trae provider（Cookie→JWT 自动刷新 + schema 驱动前端表单）
-      lib/checkin/checkin.js  签到核心客户端（本地维护，含 GetUserToken / CheckLogin）
+    lib/providers/trae.js  Trae provider（方案一 refreshToken 静默续期 + 方案二 Cookie 回落）
+      lib/checkin/checkin.js          签到核心客户端（GetUserToken / CheckLogin / exchangeToken）
+      lib/checkin/trae-credential.js  导入串解析（provider 与 HTTP 路由共用）
+      lib/tasks/trae-import.js        方案一凭证导入 upsert（POST /api/checkin/trae-import）
       lib/checkin/scheduler.js 定时调度器
   lib/checkin-log.js     30 天滚动日志（~/.monitor_data/checkin_logs.json）
   lib/notify.js          sendMail（复用）
@@ -316,16 +318,46 @@ server.js → /api/checkin/* 路由
 
 新增/编辑时默认值取自 `f.default`（新建账号也会回填）。
 
-> **Trae 凭证说明**：用户配置的是**网页端 Cookie**（`password` 类型输入框粘贴整段 cookie 原值）。签到所需的 Cloud-IDE-JWT 由系统自动用 Cookie 调 `GetUserToken` 换取（每 8 小时过期，使用前不足 1 小时自动刷新并落盘）。Cookie 有效期约 14~60 天，到期前按用户配置提前 X 天邮件提醒。
+> **Trae 凭证说明（2026-10-01 起为「双方案」）**
+>
+> **方案一（首选）refreshToken 服务端静默续期**
+> 用户在 Windows 上从面板下载 `trae-export.bat`（源 `tools/trae-export.ps1`，由
+> `tools/build-trae-export.mjs` 打包成纯 ASCII 外壳 + base64 载荷）双击运行：
+> 只读本机 Trae 客户端 `%APPDATA%\Trae CN\User\globalStorage\storage.json`，
+> 解密 `iCubeAuthInfo://icube.cloudide`（tc 信封）→ 实测一次续期 → 产出「导入串」，
+> 并可直接写回面板（`POST /api/checkin/trae-import`，按 userId 自动「新增 or 更新」）。
+> 服务端用 `POST /cloudide/api/v3/trae/oauth/ExchangeToken`（ClientID `ono9krqynydwx5`）
+> 续期，**不需要 DeviceProof**；refreshToken 滚动轮换 ⇒ 每次成功必须回写
+> `task.config.refreshToken`。refreshToken 本身约 180 天有效。
+>
+> ⚠️ **只有 Trae CN 客户端的授权能用方案一**。`TRAE SOLO CN` 签发的凭证续期会被上游
+> 强制要求设备签名（`20405 Device proof required` / `20403 Token device not match`），
+> 或换 ClientID 时被拒（`10101 refresh token is not matched to the client`）。
+> 同一账号只要在 Trae CN 里登录过一次就永久满足条件（换出客户端也不影响）。
+>
+> **方案二（兜底）网页 Cookie → GetUserToken**
+> `Cloud-IDE-JWT` 由系统自动用 Cookie 调 `GetUserToken` 换取（8 小时过期，使用前不足
+> 1 小时自动刷新并落盘）。Cookie 有效期约 14~60 天，到期前按用户配置提前 X 天邮件提醒。
+>
+> **优先级与回落**：`resolveToken()` 三条腿 —— ① 现成 token 没临期就直接用（**不主动续期**，
+> 避免无谓推进轮换链）→ ② refreshToken 续期 → ③ Cookie 换 JWT。
+> 方案一失败时**自动降级**到方案二，并记一条 `[提醒]` 事件（**不发即时邮件**，进每日日报第⑥块），
+> 同一小时内不重复记。
 
 ### 7.4 凭证刷新与 Cookie 到期监控
 
 **刷新链路**（trae.js `resolveToken()`）：
-1. 有 Cookie 时，每次签到/查询前检查本地 token 的 `exp`；
-2. 剩余 > 1 小时 → 直接用现有 token；≤ 1 小时或无 token → 调 `POST /cloudide/api/v3/common/GetUserToken`（Cookie 鉴权，空请求体，无 authorization 头）换取新 token；
-3. 新 token 和 `tokenExpiredAt` 写回 `task.config.token`，由 `saveTasks()` 持久化。
+1. `config.token` 存在且剩余 > 1 小时 → 直接用（**不主动续期**；
+   方案一每次续期都会推进 refreshToken 轮换链，而客户端手里那份只宽限一代，续太勤会把客户端顶下线）；
+2. 否则 `config.refreshToken`（导入串或裸 token）→ `CheckinClient.exchangeToken()`：
+   `POST /cloudide/api/v3/trae/oauth/ExchangeToken`，体
+   `{ClientID:"ono9krqynydwx5", ClientSecret:"-", RefreshToken}`（UserID 可省），
+   头不带 `authorization`、`x-cloudide-token` 为空串、无 DeviceInfo/DeviceProof；
+   成功后**回写 `config.refreshToken`（轮换后的新值）与 `task.tokenExpiredAt`**；
+3. 方案一失败 → 记 `[提醒]` 事件（进日报，不发信）→ 若配了 Cookie 则自动降级走 `GetUserToken`；
+4. 都没有 → 报「未配置凭证」，按凭证无效处理。
 
-**Cookie 到期监控**（tasks/index.js `startCookieExpiryWatcher()`）：
+**Cookie 到期监控**（tasks/index.js `startCookieExpiryWatcher()`）：仅对**配了 Cookie** 的账号生效。
 - 启动后 30 秒首次巡检，之后每 1 小时检查一次；
 - 调 `POST /cloudide/api/v3/trae/CheckLogin`（Cookie 鉴权）探测会话存活状态与精确到期时间，结合 `sid_guard` 静态解析（取较早者）；
 - 探测结果缓存 24 小时避免频繁请求；
@@ -342,7 +374,12 @@ server.js → /api/checkin/* 路由
 
 ### 7.6 通知规则
 
-- 凭证无效（HTTP 401/403 或 cookie/token/未授权/会话失效等）→ 立即通知 + `credentialInvalid=true` 暂停该任务轮询。
+- 凭证无效（HTTP 401/403，或 `20101 refresh token is invalid` / `10101 not matched to the client` /
+  `20403`/`20405` 设备签名类错误 / `code=1001 not able to authenticate` 等）→ 立即通知 +
+  `credentialInvalid=true` 暂停该任务轮询。
+- **方案一降级到方案二 → 不发即时邮件**，只记一条 `[提醒]` 事件进**每日日报第⑥块**
+  （「Trae 方案一凭证失效，已降级用 Cookie：<账号>」）。理由：Cookie 兜住一次会让可修的信号被吃掉，
+  但单独发信又太吵——放日报里既不丢信号也不打扰。同一小时内不重复记。
 - Cookie 到期预警 → 提前 X 天发邮件（`cookieExpiryNotifyDays` 可配，1~14 天，默认 1 天；`cookieExpiryNotify` 开关控制；当天去重）。
 - Cookie 会话已失效 → 告警邮件，提醒重新抓取 Cookie。
 - 当天签到窗口已过且失败 → 立即通知（不受阈值限制）。
@@ -380,7 +417,12 @@ server.js → /api/checkin/* 路由
 | `monitor/lib/actions.js` | `switchProxy()` — 实际执行 sing-box API 切换 |
 | `monitor/server.js` | HTTP 路由（/api/proxy-check/*、/api/checkin/*） |
 | `monitor/lib/providers/index.js` | Provider 注册中心 |
-| `monitor/lib/providers/trae.js` | Trae provider（Cookie→JWT 自动刷新、schema 驱动前端表单、签到/积分/凭证检测/Cookie 到期探测） |
+| `monitor/lib/providers/trae.js` | Trae provider（**方案一 refreshToken 静默续期 + 方案二 Cookie 回落**、schema 驱动前端表单、含「下载提取脚本」入口） |
+| `monitor/lib/checkin/trae-credential.js` | 导入串（`TRAE1.<base64url>`）解析/构造 —— provider 与 HTTP 路由共用 |
+| `monitor/lib/tasks/trae-import.js` | 方案一凭证导入 upsert（按 userId 判定「新增 or 更新」，默认值取自 provider schema） |
+| `monitor/frontend/trae-export.bat` | ★生成的产物（纯 ASCII 外壳 + base64 载荷），面板下载的就是它 |
+| `tools/trae-export.ps1` | 提取脚本**源文件**（可读、含中文），改它之后必须重新生成 .bat |
+| `tools/build-trae-export.mjs` | 生成器：`node tools/build-trae-export.mjs`；带「产物必须纯 ASCII」门禁 |
 | `monitor/lib/tasks/index.js` | 签到任务调度中心（CRUD、定时执行、通知触发、Cookie 到期监控） |
 | `monitor/lib/checkin-log.js` | 30 天滚动签到日志 |
 | `monitor/lib/checkin/checkin.js` | 签到核心客户端（CheckinClient + GetUserToken + CheckLogin + JWT/Cookie 工具函数） |

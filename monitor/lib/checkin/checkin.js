@@ -21,6 +21,17 @@ import { randomUUID, randomBytes, createHash } from 'node:crypto';
 const BROWSER_UA =
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0';
 
+/**
+ * 方案一（refreshToken 静默续期）使用的 ClientID。
+ *
+ * 这是「Trae CN（IDE）客户端」的授权主体。**refreshToken 与 ClientID 强绑定**（实测）：
+ *   - `ono9krqynydwx5`（Trae CN 客户端签发）→ 续期【不需要】DeviceProof ✅
+ *   - `en1oxy7wnw8j9n`（TRAE SOLO CN 签发）→ 续期【强制】DeviceProof（20405/20403）❌
+ * 拿 SOLO 那份配这个 ClientID 会被拒：`10101 refresh token is not matched to the client`。
+ * ⇒ 方案一只接受**来自 Trae CN 客户端**的凭证（见 tools/trae-export.ps1）。
+ */
+export const CLIENT_ID = 'ono9krqynydwx5';
+
 // 设备标识三级来源（公开仓库不内置任何真实抓包值）：
 //   1) 账号配置覆盖：provider 层以 task.config.deviceId 优先注入（trae 表单「设备 ID」）；
 //   2) 部署级真实标识：~/.monitor_data/device_identity.json
@@ -165,6 +176,76 @@ export class CheckinClient {
       throw new Error(`GetUserToken 未返回 Token（Cookie 凭证可能无效）: ${msg}`);
     }
     return r;
+  }
+
+  /**
+   * 方案一（refreshToken 腿）专用请求头。
+   * 与 `_headers()` 的区别（都是实测结论）：
+   *   - **不带 `authorization`**：续期端点不需要，且此时往往还没有可用 token
+   *   - `x-cloudide-token` **必须存在且为空串**
+   *   - 不需要 `DeviceInfo` / `DeviceProof`（对 ClientID ono9krqynydwx5 而言）
+   */
+  _refreshHeaders(extra = {}) {
+    return {
+      'x-cloudide-token': '',
+      'content-type': 'application/json',
+      'accept': '*/*',
+      'user-agent':
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) TRAESOLOCN/1.107.1 Chrome/142.0.7444.235 Electron/39.2.7 Safari/537.36',
+      'x-lgw-req-sdk-type': '3',
+      'package-type': 'stable_cn',
+      'x-lscbd-aid': '787976',
+      'x-lscbd-platform': 'windows',
+      'app-version': this.appVersion,
+      'x-request-id': randomUUID(),
+      ...extra,
+    };
+  }
+
+  /**
+   * 方案一：用 refreshToken 静默换新 accessToken。
+   *
+   * 实测要点（2026-10-01，两个账号 + 三种请求形态交叉验证）：
+   *   - 端点 `/cloudide/api/v3/trae/oauth/ExchangeToken`，ClientID 固定 {@link CLIENT_ID}；
+   *   - 请求体最小只需 `{ClientID, ClientSecret, RefreshToken}`，**UserID 可省**；
+   *   - `ClientSecret` 传什么都行（客户端传空串、公开实现传 "-"，服务端都不校验）；
+   *   - **refreshToken 是滚动轮换的**：返回的 `RefreshToken` 与传入值不同，
+   *     调用方【必须】把它落盘，否则下一次续期会 20101；
+   *   - 传入"紧邻当前 head 的上一代"仍可用（返回当前 head，不推进）；
+   *     传入更早的世代则 `20101 refresh token is invalid`。
+   *
+   * @param {string} refreshToken 现有刷新令牌
+   * @param {object} [opts]
+   * @param {string} [opts.userId] 可选，服务端不校验
+   * @returns {Promise<{Token:string, RefreshToken:string, TokenExpireAt:number, RefreshExpireAt:number}>}
+   */
+  async exchangeToken(refreshToken, opts = {}) {
+    if (!refreshToken) throw new Error('未配置 refreshToken，无法续期');
+    const body = { ClientID: CLIENT_ID, ClientSecret: '-', RefreshToken: refreshToken };
+    if (opts.userId) body.UserID = opts.userId;
+
+    const res = await this.fetch(`${this.baseUrl}/cloudide/api/v3/trae/oauth/ExchangeToken`, {
+      method: 'POST',
+      headers: this._refreshHeaders(),
+      body: JSON.stringify(body),
+    });
+
+    let data = {};
+    try { data = await res.json(); } catch { /* 上游偶发返回空体 */ }
+
+    // 成功信封：(A) { ResponseMetadata, Result:{Token,...} }
+    const r = data && data.Result;
+    if (res.ok && r && r.Token) return r;
+
+    // 失败信封：错误码可能在 ResponseMetadata.Error 或顶层 code/message
+    const err = (data && data.ResponseMetadata && data.ResponseMetadata.Error) || null;
+    if (err) {
+      throw new Error(`续期失败: code=${err.Code} "${err.Message}" ${JSON.stringify(err.Data || {})}`);
+    }
+    if (data && data.code !== undefined && data.code !== 0) {
+      throw new Error(`续期失败: code=${data.code} "${data.message || ''}"`);
+    }
+    throw new Error(`续期失败: HTTP ${res.status} ${JSON.stringify(data).slice(0, 200)}`);
   }
 
   /**

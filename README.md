@@ -52,11 +52,32 @@ docs/                    流程与决策文档
 tools/build-release.cjs  产物打包（node --check 门禁 + sha256）
 ```
 
+```
+tools/build-release.cjs      产物打包（node --check 门禁 + sha256）
+tools/trae-export.ps1        Trae「方案一」凭证提取脚本（源文件，Windows）
+tools/build-trae-export.mjs  把它打包成面板可下载的 monitor/frontend/trae-export.bat
+```
+
+## Trae 签到：两种凭证方案
+
+| | 方案一（首选） | 方案二（兜底） |
+|---|---|---|
+| 凭证 | `refreshToken`（「导入串」`TRAE1.…`） | 浏览器整段 Cookie |
+| 获取 | 面板「新增账号」里下载 `.bat`，在装有 **Trae CN** 客户端的 Windows 上双击运行 | F12 复制 `api.trae.cn` 请求的 `cookie:` 整段值 |
+| 续期 | 服务端 `ExchangeToken` 静默续期（**不需要设备签名**） | `GetUserToken` 换 8h JWT |
+| 人工干预 | 约 180 天一次 | 约 14~15 天一次（`X-Cloudide-Session` 只有 14 天） |
+
+方案一失败会**自动回落**到方案二，并记一条 `[提醒]` 事件进**每日日报**（不发即时邮件）。
+提取脚本只**只读**客户端文件；它读得到的 `.bat` 里不含任何硬编码地址——面板在下载那一刻
+把自己的 origin 注进去，因此换域名 / 本地部署都自动正确。
+`TRAE SOLO CN` 签发的凭证**不能**用于方案一（上游要求设备签名）。
+
 ## 安全与隐私
 
 - 所有平台凭证仅存于设备本地 `~/.monitor_data/`（任务配置、`frontend_deploy.json` 等，权限 600），**不进入本仓库**
 - 面板与 API 应置于 Cloudflare Access（OTP）或等价认证之后，后端自身不做鉴权
-- 设备标识（`x-device-id` 等）不内置真实抓包值：按账号稳定派生，可用账号表单或 `~/.monitor_data/device_identity.json` 覆盖，详见 `monitor/lib/checkin/checkin.js` 头注释
+- 设备标识（`x-device-id` 等）不内置真实抓包值：优先级为**账号表单 > `~/.monitor_data/device_identity.json`（部署级真实值）> 按账号稳定派生**（派生只是没配任何东西时的兜底），详见 `monitor/lib/checkin/checkin.js` 头注释
+- 方案一的导入串自带客户端真实 aha 设备 ID，导入时自动落到该账号的 `deviceId`；签到 `claim` 会校验它，用错会返回 `9074`（伪装成"操作太过频繁"）
 - 本仓库历史已做过隐私清理（抓包样本、agent 记忆、订阅令牌脚本一律不入库）
 
 ## 免责声明
