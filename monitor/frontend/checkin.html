@@ -126,6 +126,7 @@ input:focus,select:focus{border-color:#38bdf8}
 <div class=header><h1><svg class="ic"><use href="#h10i-circle-check"></use></svg> 自动签到</h1></div>
 <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
 <button class="btn btn-primary" onclick=openModal()><svg class="ic"><use href="#h10i-plus"></use></svg> 新增账号</button>
+<button class="btn" onclick=openImport() title="粘贴提取脚本产出的 TRAE1.… 导入串"><svg class="ic"><use href="#h10i-upload"></use></svg> 导入凭证</button>
 <button class="btn btn-rst" onclick=runAll()><svg class="ic"><use href="#h10i-play"></use></svg> 全部签到</button>
 <button class="btn" onclick=manualRefresh()><svg class="ic"><use href="#h10i-refresh"></use></svg> 刷新</button>
 <button class="btn btn-primary" id=chartsBtn onclick=openCharts() style="display:none"><svg class="ic"><use href="#h10i-trending-up"></use></svg> 图表</button>
@@ -189,6 +190,28 @@ input:focus,select:focus{border-color:#38bdf8}
 </div>
 </div>
 <div class=toast id=toast></div>
+
+<!-- 导入凭证浮层（方案一 refreshToken） -->
+<div class=overlay id=importOverlay onclick="if(event.target===this)closeImport()">
+<div class=modal style=max-width:640px>
+<div class=modal-h><label><svg class="ic"><use href="#h10i-upload"></use></svg> 导入凭证（方案一）</label><span class=modal-close onclick=closeImport()>✕</span></div>
+<div class=field-hint style="margin:0 0 10px">
+  粘贴提取脚本产出的「导入串」（以 <code>TRAE1.</code> 开头）。脚本跑完会自动复制到剪贴板，直接 Ctrl+V 即可。
+  <br>凭证必须来自 <b>Trae CN</b> 客户端；TRAE SOLO CN 签发的会被上游拒绝。
+</div>
+<div class=form-row><label>导入串</label>
+  <textarea id=impText rows=3 placeholder="TRAE1.…" oninput=onImportInput()
+    style="width:100%;box-sizing:border-box;font-family:ui-monospace,Consolas,monospace;font-size:.7rem;line-height:1.5;padding:7px 9px;border-radius:7px;border:1px solid #334155;background:#0f172a;color:#e2e8f0;resize:vertical"></textarea>
+</div>
+<div id=impInfo></div>
+<div class=form-row><label>写入到</label><select id=impTarget onchange=onImportInput(true)></select></div>
+<div id=impHint class=field-hint></div>
+<div style="display:flex;gap:8px;margin-top:14px">
+<button class="btn btn-primary" style=flex:1 onclick=doImport()>导入</button>
+<button class="btn" onclick=closeImport()>取消</button>
+</div>
+</div>
+</div>
 <script>
 var $=s=>document.querySelector(s);
 var providers=[], tasks=[], stats=null, editingId=null;
@@ -632,6 +655,95 @@ function onSelectChange(sel){
   }
 }
 function closeModal(){$('#overlay').classList.remove('show');editingId=null;}
+
+// ============ 导入凭证（方案一 refreshToken） ============
+// 为什么走面板而不是让脚本直接 POST：面板在 Cloudflare Access 之后，
+// 浏览器带着 Access 会话能过，PowerShell 脚本没有会话（CF_Authorization 是 HttpOnly，
+// 页面 JS 也读不到）。所以由脚本产出+复制导入串，浏览器这边提交。
+var impTasks=[];
+
+function openImport(prefill){
+  $('#importOverlay').classList.add('show');
+  if(prefill) $('#impText').value=prefill;
+  onImportInput();
+  setTimeout(()=>$('#impText').focus(),50);
+}
+function closeImport(){$('#importOverlay').classList.remove('show');}
+
+// 解析导入串（前端只做结构解析用于预览，真正的校验在服务端）
+function parseImport(s){
+  s=String(s||'').trim();
+  if(s.indexOf('TRAE1.')!==0) return null;
+  try{
+    let b=s.slice(6).replace(/-/g,'+').replace(/_/g,'/');
+    while(b.length%4) b+='=';
+    const bin=atob(b);
+    const bytes=new Uint8Array(bin.length);
+    for(let i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+    const j=JSON.parse(new TextDecoder().decode(bytes));
+    return (j&&j.rt)?j:null;
+  }catch(e){ return null; }
+}
+
+async function onImportInput(keepTarget){
+  const raw=$('#impText').value.trim();
+  const info=$('#impInfo'), sel=$('#impTarget'), hint=$('#impHint');
+  if(!raw){ info.innerHTML=''; sel.innerHTML=''; hint.textContent=''; return; }
+  const j=parseImport(raw);
+  if(!j){
+    info.innerHTML='<div class=field-hint style="color:#f87171">不是合法的导入串：应以 <code>TRAE1.</code> 开头且能被解码（可能是复制时被截断）。</div>';
+    sel.innerHTML=''; hint.textContent=''; return;
+  }
+  const solo=/solo/i.test(String(j.brand||''));
+  info.innerHTML='<div class=field-hint>来源客户端：<b>'+esc(j.brand||'未知')+'</b>　账号：<b>'+esc(j.uid||'未知')+'</b>　设备：'+esc(j.did||'—')+'　导出：'+esc(j.at||'—')
+    +(solo?'<br><span style="color:#f87171">⚠ 这是 TRAE SOLO CN 签发的凭证，方案一不支持（上游要求设备签名）。请在 Trae CN 客户端登录该账号后重新导出。</span>':'')
+    +'</div>';
+
+  if(keepTarget && sel.options.length){ updateImportHint(j); return; }
+  const r=await api('/api/checkin/trae-targets');
+  impTasks=(r&&r.tasks)||[];
+  let html='<option value="">新建一个账号</option>';
+  for(const t of impTasks){
+    const same=j.uid&&t.userId&&String(t.userId)===String(j.uid);
+    html+='<option value="'+esc(t.id)+'"'+(same?' selected':'')+'>'+esc(t.name)+'　'+(t.mode==='cookie'?'方案二 Cookie':'方案一')+(same?'　← 同一账号':'')+'</option>';
+  }
+  sel.innerHTML=html;
+  updateImportHint(j);
+}
+function updateImportHint(j){
+  const id=$('#impTarget').value;
+  const hint=$('#impHint');
+  if(id){
+    const t=impTasks.find(x=>x.id===id);
+    hint.innerHTML='将<b>只替换</b>「'+esc(t?t.name:id)+'」的凭证；名称 / 签到时间 / 时区 / 开关 / 方案二 Cookie 全部保留。';
+  }else{
+    hint.innerHTML='将<b>新建</b>一个 Trae 账号（名称与签到时间取默认值，之后可在编辑里改）。';
+  }
+}
+async function doImport(){
+  const raw=$('#impText').value.trim(), taskId=$('#impTarget').value;
+  if(!raw){ toast('请先粘贴导入串'); return; }
+  if(!parseImport(raw)){ toast('导入串格式不对'); return; }
+  const body={importString:raw};
+  if(taskId) body.taskId=taskId;
+  const r=await api('/api/checkin/trae-import',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  if(r&&r.ok){
+    toast(r.created?'已新增账号：'+esc(r.name):'已更新凭证：'+esc(r.name));
+    closeImport(); $('#impText').value=''; loadData();
+  }else{
+    toast('导入失败：'+esc((r&&r.error)||'未知错误'));
+  }
+}
+// 允许脚本用 #trae=<导入串> 把浏览器叫起来并预填（hash 不发给服务器）
+(function(){
+  const m=/[#&]trae=([^&]+)/.exec(location.hash||'');
+  if(!m) return;
+  try{
+    const v=decodeURIComponent(m[1]);
+    openImport(v);
+    history.replaceState(null,'',location.pathname+location.search);
+  }catch(e){}
+})();
 function collectFields(){
   const p=providers.find(x=>x.id===$('#f_provider').value);
   const cfg={};

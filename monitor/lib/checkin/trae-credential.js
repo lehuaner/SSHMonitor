@@ -47,6 +47,12 @@ export function parseCredential(raw) {
         host: o.host ? String(o.host) : '',
         brand: o.brand ? String(o.brand) : '',
         at: o.at ? String(o.at) : '',
+        // ★随导入串一起带过来的 access token（脚本实测续期时刚换到的）。
+        //   带上它，服务端首次使用就不必立刻再调 ExchangeToken ——
+        //   而每次续期都会【推进 refreshToken 轮换链】，客户端手里那份只宽限一代。
+        //   少推一代，就少一次把客户端顶下线的机会。
+        token: o.tk ? String(o.tk) : '',
+        tokenExpireAt: Number(o.texp) || 0,
         isImportString: true,
       };
     } catch {
@@ -81,6 +87,9 @@ export function buildImportString(o) {
     brand: o.brand || '',
     at: o.at || new Date().toISOString().slice(0, 19),
   };
+  // 可选：把当前 access token 一并带上（见 parseCredential 里的说明）
+  if (o.token) blob.tk = o.token;
+  if (o.tokenExpireAt) blob.texp = Number(o.tokenExpireAt);
   const b64 = Buffer.from(JSON.stringify(blob), 'utf8').toString('base64')
     .replace(/=+$/, '').replace(/\+/g, '-').replace(/\//g, '_');
   return IMPORT_PREFIX + b64;

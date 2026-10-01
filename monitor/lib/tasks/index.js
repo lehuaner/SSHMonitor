@@ -232,6 +232,7 @@ export function addTask(input) {
     cookieExpiresAt: null,
     cookieProbedAt: 0,
     notifiedCookieExpiry: null,
+    ...(input.tokenExpiredAt ? { tokenExpiredAt: input.tokenExpiredAt } : {}),
   };
   tasks.push(task);
   saveTasks(tasks);
@@ -271,12 +272,15 @@ export function updateTask(id, patch) {
   // ★方案一凭证（refreshToken）换新后同理：必须清掉缓存 JWT。
   //   否则 resolveToken 第一步「现成 token 没临期就直接用」会命中旧 token，
   //   新导入的凭证要等旧 token 过期才生效 —— 表现为「导入后测试凭证仍报旧错误」。
-  if (patch.config && patch.config.refreshToken !== undefined) {
+  //   ★例外：若本次 patch 自己就带了新 token（导入串常带脚本刚换到的 access token），
+  //     那就用新的、别清 —— 这样首次使用无需立刻续期，少推进一代 refreshToken 轮换链。
+  if (patch.config && patch.config.refreshToken !== undefined && patch.config.token === undefined) {
     delete task.config.token;
     task.tokenExpiredAt = null;
     task.credentialInvalid = false;
     task.failCount = 0;
   }
+  if (patch.tokenExpiredAt !== undefined) task.tokenExpiredAt = patch.tokenExpiredAt;
   saveTasks(tasks);
   resyncTask(task);
   return task;

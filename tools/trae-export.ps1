@@ -50,19 +50,6 @@ if ($RawArgs -match '--task[=\s]+"?([^"\s]+)"?') { $TaskArg = $Matches[1].Trim()
 # 能不能交互：被重定向（管道 / CI）时不要在 Read-Host 上卡死
 $CanAsk = -not [Console]::IsInputRedirected
 
-function Ask-YesNo([string]$question, [bool]$defaultYes) {
-  if (-not $CanAsk) { return $defaultYes }
-  $suffix = if ($defaultYes) { '[Y/n]' } else { '[y/N]' }
-  while ($true) {
-    $a = Read-Host ("{0} {1}" -f $question, $suffix)
-    if ([string]::IsNullOrWhiteSpace($a)) { return $defaultYes }
-    $a = $a.Trim().ToLower()
-    if ($a -eq 'y' -or $a -eq 'yes') { return $true }
-    if ($a -eq 'n' -or $a -eq 'no') { return $false }
-    Write-Host '  请输入 y 或 n。' -ForegroundColor DarkGray
-  }
-}
-
 function Ask-Text([string]$question, [string]$default) {
   if (-not $CanAsk) { return $default }
   $a = Read-Host ("{0} [{1}]" -f $question, $default)
@@ -174,7 +161,8 @@ function Invoke-Exchange([string]$baseHost, [string]$refreshToken, [string]$user
 }
 
 function New-ImportString([string]$refreshToken, [string]$deviceId, [string]$machineId, `
-                          [string]$userId, [string]$hostName, [string]$brand) {
+                          [string]$userId, [string]$hostName, [string]$brand, `
+                          [string]$token, [long]$tokenExpireAt) {
   $blob = [ordered]@{
     v     = 1
     rt    = $refreshToken
@@ -185,6 +173,10 @@ function New-ImportString([string]$refreshToken, [string]$deviceId, [string]$mac
     brand = $brand
     at    = (Get-Date).ToString('s')
   }
+  # ★把刚换到的 access token 一并带上：服务端首次使用就不必立刻再续期，
+  #   而每次续期都会推进 refreshToken 轮换链（客户端手里那份只宽限一代）。
+  if ($token) { $blob.tk = $token }
+  if ($tokenExpireAt -gt 0) { $blob.texp = $tokenExpireAt }
   $json = $blob | ConvertTo-Json -Compress
   $b64  = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($json))
   $b64  = $b64.TrimEnd('=').Replace('+', '-').Replace('/', '_')
@@ -214,10 +206,31 @@ function Invoke-Push([string]$apiBase, [string]$importString, [string]$name, [st
     return @{ ok = $true; created = [bool]$r.created; name = [string]$r.name; nameKept = [bool]$r.nameKept }
   } catch {
     $msg = $_.Exception.Message
-    if ($_.ErrorDetails -and $_.ErrorDetails.Message) {
+    $raw = $null
+    if ($_.ErrorDetails -and $_.ErrorDetails.Message) { $raw = [string]$_.ErrorDetails.Message }
+    if (-not $raw) {
       try {
-        $j = $_.ErrorDetails.Message | ConvertFrom-Json
+        $resp = $_.Exception.Response
+        if (-not $resp -and $_.Exception.InnerException) { $resp = $_.Exception.InnerException.Response }
+        if ($resp) {
+          $stream = $resp.GetResponseStream()
+          if ($stream) { $raw = (New-Object IO.StreamReader($stream)).ReadToEnd() }
+        }
+      } catch {}
+    }
+    if ($raw) {
+      # 被 Cloudflare Access 拦住时返回的是登录页 HTML，而不是我们的 JSON。
+      # 这不是"脚本坏了"，而是"脚本没有浏览器会话" —— 必须给出可操作的指引。
+      if ($raw -match '(?i)<!DOCTYPE|<html|cloudflareaccess|Sign in ') {
+        return @{ ok = $false; accessDenied = $true; msg = '被 Cloudflare Access 拦截（脚本没有浏览器登录态）' }
+      }
+      try {
+        $j = $raw | ConvertFrom-Json
         if ($j.error) { $msg = [string]$j.error }
+        elseif ($j.ResponseMetadata -and $j.ResponseMetadata.Error) {
+          $e = $j.ResponseMetadata.Error
+          $msg = ('code={0} "{1}"' -f $e.Code, $e.Message)
+        }
       } catch {}
     }
     return @{ ok = $false; msg = $msg }
@@ -312,7 +325,7 @@ foreach ($rec in $records) {
     }
     Write-Host ('   ✓ 续期成功（新 access 有效 {0} 天）' -f $expDays) -ForegroundColor Green
 
-    $import = New-ImportString $rec.refreshToken $rec.deviceId $rec.machineId $rec.userId $rec.host $rec.brand
+    $import = New-ImportString $rec.refreshToken $rec.deviceId $rec.machineId $rec.userId $rec.host $rec.brand $res.token $res.expireAt
     $rec | Add-Member -NotePropertyName importString -NotePropertyValue $import -Force
     $results += $rec
 
@@ -340,22 +353,16 @@ if ($results.Count -eq 0) {
   Write-Host ('✓ 共 {0} 个可用账号。' -f $results.Count) -ForegroundColor Green
 
   # ── 写回服务端 ────────────────────────────────────────────────
-  # 地址是面板在下载那一刻注入的（location.origin）；直接下原始文件时保持占位符 ⇒ 自动跳过。
+  # 默认【不写回】：面板几乎总在 Cloudflare Access 之后，浏览器带着 Access 会话能过，
+  # 而 PowerShell 脚本没有会话（CF_Authorization 是 HttpOnly，页面 JS 也读不到）
+  # ⇒ 脚本直连会被拦在登录页。所以导入统一走面板的「导入凭证」（由浏览器提交）。
+  # 若你的部署没有 Access（例如纯内网/本机），可加 --push 让脚本直接写回。
   $canPush = $ApiBase -match '^https?://'
-  $doPush = $false
-  if ($canPush) {
-    if ($null -ne $WantPush) {
-      $doPush = $WantPush
-    } else {
-      Write-Host ''
-      Write-Host ('检测到服务端地址：{0}' -f $ApiBase) -ForegroundColor Cyan
-      Write-Host '可以直接写入服务端：已存在的账号会更新，新账号会新增。'
-      $doPush = Ask-YesNo '要写回服务端吗？' $true
-    }
-  } else {
+  $doPush = ($WantPush -eq $true)
+  if ($doPush -and -not $canPush) {
     Write-Host ''
-    Write-Host '（本脚本未携带服务端地址 —— 请从签到面板下载，即可自动写回；当前只输出导入串。）' -ForegroundColor DarkYellow
-    if ($WantPush -eq $true) { Write-Host '  已指定 --push，但没有服务端地址，已忽略。' -ForegroundColor DarkYellow }
+    Write-Host '（已指定 --push，但脚本未携带服务端地址 —— 请从签到面板下载。已跳过写回。）' -ForegroundColor DarkYellow
+    $doPush = $false
   }
 
   if ($doPush) {
@@ -417,8 +424,14 @@ if ($results.Count -eq 0) {
           Write-Host '    只替换了凭证；账号名称 / 签到时间 / 时区 / 开关 / 方案二 Cookie 全部保持原样。' -ForegroundColor DarkGray
         }
       } else {
-        Write-Host ('  ✗ 写入失败：{0}' -f $p.msg) -ForegroundColor Red
-        Write-Host '    → 可回到签到面板手动粘贴该导入串。' -ForegroundColor DarkYellow
+        if ($p.accessDenied) {
+          Write-Host '  ⚠ 自动写回失败：面板在 Cloudflare Access 之后，脚本没有浏览器登录态。' -ForegroundColor Yellow
+          Write-Host '    这不影响凭证提取 —— 上面的导入串已经复制到剪贴板，' -ForegroundColor Yellow
+          Write-Host '    打开签到面板 → Trae 账号 →「导入凭证」→ 粘贴即可（浏览器里是已登录的）。' -ForegroundColor Yellow
+        } else {
+          Write-Host ('  ✗ 写入失败：{0}' -f $p.msg) -ForegroundColor Red
+          Write-Host '    → 可回到签到面板手动粘贴该导入串。' -ForegroundColor DarkYellow
+        }
       }
     }
     Write-Host ''
@@ -428,7 +441,13 @@ if ($results.Count -eq 0) {
       try { Set-Clipboard -Value $results[0].importString; Write-Host '导入串已复制到剪贴板。' -ForegroundColor Green } catch {}
     }
     Write-Host ''
-    Write-Host '下一步：签到面板 → 新增账号 → Provider 选 Trae → 粘贴到「导入串」→ 保存。' -ForegroundColor Cyan
+    Write-Host '下一步（导入由浏览器完成，这样才过得了 Cloudflare Access）：' -ForegroundColor Cyan
+    Write-Host '  1) 打开签到面板 → 点工具栏「导入凭证」'
+    Write-Host '  2) 在「导入串」框里 Ctrl+V（脚本已复制好）'
+    Write-Host '  3) 选「写入到」哪个账号（会自动认出同一账号），点「导入」'
+    Write-Host ''
+    Write-Host '为什么脚本不自己写回：面板在 Cloudflare Access 之后，脚本没有浏览器登录态，' -ForegroundColor DarkGray
+    Write-Host '直连会被拦在登录页。若你的部署没有 Access（纯内网/本机），可用 --push 直连。' -ForegroundColor DarkGray
   }
   Write-Host ''
 }

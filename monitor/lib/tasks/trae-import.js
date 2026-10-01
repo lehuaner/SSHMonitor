@@ -105,11 +105,20 @@ export function upsertTraeTask(input = {}) {
   };
   if (cred.deviceId) credentialPatch.deviceId = cred.deviceId;
 
+  // 导入串若自带 access token（脚本实测续期时刚换到的），一并落库。
+  // ★这样服务端首次使用就不必立刻再调 ExchangeToken —— 每次续期都会推进
+  //   refreshToken 轮换链，而客户端手里那份只宽限一代，少推一代就少一次把它顶下线。
+  let tokenExpiredAt = null;
+  if (cred.token) {
+    credentialPatch.token = cred.token;
+    tokenExpiredAt = cred.tokenExpireAt || null;
+  }
+
   // ── 已有账号：只更新凭证，其余一律不碰 ──
   // name / time / timezone / enabled / 其它配置项全部保持原样。
   // （脚本每次都会问名称，但那是给「新增」用的；对已存在的账号改名字属于越界修改。）
   if (existing) {
-    const task = updateTask(existing.id, { config: credentialPatch });
+    const task = updateTask(existing.id, { config: credentialPatch, tokenExpiredAt });
     return { created: false, task, nameKept: true };
   }
 
@@ -124,6 +133,7 @@ export function upsertTraeTask(input = {}) {
     providerId: 'trae',
     name: input.name || fallbackName,
     enabled: true,
+    tokenExpiredAt,
     config: {
       ...defaults,
       ...credentialPatch,
