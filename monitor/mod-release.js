@@ -266,7 +266,8 @@ function step(t, msg) { t.steps.push({ at: Date.now(), msg }); t.updatedAt = Dat
 
   /** 复制某模块文件并重启其服务 → 健康验证。返回 {copied, healthy}，失败抛错 */
   async function applyModule(t, releaseDir, moduleName) {
-    const mod = MANIFEST.modules[moduleName];
+    // 用 release 自带的 manifest 解析模块（见 manifestFor 的说明）
+    const mod = manifestFor(releaseDir).modules[moduleName];
     if (!mod || !mod.service) { return { skipped: true, reason: 'no service (frontend? 走 GitHub Actions CI)' }; }
     const copied = applyFiles(releaseDir, moduleName);
     step(t, `${moduleName}: 复制 ${copied.length} 文件 → 重启 ${mod.service}`);
@@ -584,15 +585,40 @@ async function restartService(service, healthPort, timeoutMs = 15000) {
 }
 
 /**
+ * 取「本次 release 自带的 manifest」，没有则回落到进程启动时加载的那份。
+ *
+ * ★为什么必须这样（2026-10-01 v1.0.38 真实事故）：
+ *   本文件的 MANIFEST 是在**进程启动时**读 `~/monitor/release-manifest.json` 固化的。
+ *   若某个 release **新增了文件**（例如 lib/checkin/trae-credential.js），
+ *   那份新声明只存在于【该 release 自带的 manifest】里，运行中的旧 MANIFEST 根本没有它
+ *   ⇒ applyFiles() 遍历旧清单 → 新文件永远拷不过去 → 模块启动即
+ *   `ERR_MODULE_NOT_FOUND` → 健康检查失败 → apply:fail + 网关崩溃重启循环。
+ *   （末尾虽然会重启 mon-release 使新 manifest 生效，但那是**本次 apply 之后**的事，
+ *     所以要等第二次 apply 才补得上 —— 首次上线新文件必炸。）
+ *
+ * 修法：apply 时优先用 release 目录里的 manifest（它描述的就是这份代码的布局）。
+ */
+function manifestFor(releaseDir) {
+  try {
+    const p = join(releaseDir, 'files', 'monitor', 'release-manifest.json');
+    if (existsSync(p)) {
+      const m = JSON.parse(readFileSync(p, 'utf8'));
+      if (m && m.modules) return m;
+    }
+  } catch { /* 解析失败就回落到内存里那份，行为与修复前一致 */ }
+  return MANIFEST;
+}
+
+/**
  * 把 release 目录里受影响模块的文件复制到运行位置。
  * @returns {string[]} 实际复制的目标路径
  */
 function applyFiles(releaseDir, moduleName) {
-  const mod = MANIFEST.modules[moduleName];
+  const mod = manifestFor(releaseDir).modules[moduleName];
   if (!mod || !mod.files) return [];
   const copied = [];
   for (const [repoPath, remotePath] of Object.entries(mod.files)) {
-    if (remotePath === 'CF_PAGES') continue; // 前端由 GitHub Actions CI 发布
+    if (remotePath === 'CF_PAGES') continue; // 前端由设备端 apply 后置钩子发布
     const src = safeJoin(releaseDir, join('files', repoPath));
     if (!existsSync(src)) continue; // release 里没有该文件（未变更且未全量）→ 跳过
     const dst = safeJoin(HOME, remotePath.replace(/^~\//, ''));

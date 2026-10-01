@@ -10,9 +10,18 @@ created: 2026-09-19
 
 > Status: implemented (v1.0.5，上游版本检测已上线；202 异步 apply；manifest 变更需重启 mon-release 已确认) · Owner: Honor
 
-> **⚠️ 架构演进（v1.0.15+，必读）**：本文档以下部分章节描述的是 **v1.0.9 旧模型**，已被取代：
-> 1. **staging 不再走 Contents API 逐文件**（`stageFromGithub`）——现为 **`stageFromRelease`**：`release.yml` 把核心文件打包成 GitHub Release 产物（`honor10-backend/frontend.tar.gz` + `honor10-build.json` 逐文件 sha256），设备端从 Release 下载产物校验后解包。**GitHub 只发版、不部署**。
+> **⚠️ 架构演进（v1.0.15+，必读）**：本文档以下部分章节描述的是 **v1.0.9 旧模型**，已被取代：> 1. **staging 不再走 Contents API 逐文件**（`stageFromGithub`）——现为 **`stageFromRelease`**：`release.yml` 把核心文件打包成 GitHub Release 产物（`honor10-backend/frontend.tar.gz` + `honor10-build.json` 逐文件 sha256），设备端从 Release 下载产物校验后解包。**GitHub 只发版、不部署**。
 > 2. **前端不再走 GitHub Actions / wrangler**（`deploy-frontend.yml` 已删）——现为**设备端 `apply` 后置钩子 `deployFrontend` 纯 REST 直传 Cloudflare Pages**（`monitor/lib/pages-deploy.js`，blake3），按 `frontend_deploy.json.mode` 在 pages/local 间切换。
+>
+> **⚠️ 已知坑（2026-10-01 真实事故，v1.0.40 已修）：新增文件的 release 首次 apply 必失败。**
+> `mod-release.js` 的 `MANIFEST` 是**进程启动时**读一次固化的；若某个 tag **新增了文件**
+> （新文件只声明在该 release 自带的 manifest 里），运行中的旧清单没有它 ⇒ `applyFiles()`
+> 拷不到 ⇒ 模块 import 立刻 `ERR_MODULE_NOT_FOUND` ⇒ 健康检查失败、`apply:fail`，
+> 网关进入崩溃重启循环（v1.0.38 实测：`trae-credential.js` / `trae-import.js` 没被拷进去）。
+> 症状：`~/monitor/release-manifest.json` 里**有**这个文件，但 `~/monitor/...` 下**没有**。
+> 修复：`manifestFor(releaseDir)` 优先读 `~/releases/<tag>/files/monitor/release-manifest.json`。
+> 修好之前，给「新增了文件」的 release 兜底办法是**手动 scp 缺的文件**或**再 apply 一次**
+> （末尾会重启 mon-release 让新 manifest 生效，第二次才带上新文件）。
 >
 > **当前权威部署流程以 `DEPLOYMENT.md`（“部署架构/流程详解/关键坑”）为准。** 本文保留作历史演进参考（v1.0.9–v1.0.11 的机制、踩坑与发布记录仍有效）。
 
