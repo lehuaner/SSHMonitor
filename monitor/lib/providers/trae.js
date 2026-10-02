@@ -118,6 +118,8 @@ async function resolveToken(task) {
       const nc = decodeJwtClaims(r.Token);
       task.tokenExpiredAt =
         (nc && nc.exp ? nc.exp * 1000 : null) || r.TokenExpireAt || null;
+      // refreshToken 自身到期（约 180 天）—— 账号卡片按它显示"方案一凭证"还剩多久
+      if (r.RefreshExpireAt) task.refreshTokenExpiredAt = Number(r.RefreshExpireAt);
       return r.Token;
     } catch (err) {
       // 自动回落：只记档（进日报），不发即时邮件；同一小时内不重复记。

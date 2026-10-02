@@ -53,6 +53,9 @@ export function parseCredential(raw) {
         //   少推一代，就少一次把客户端顶下线的机会。
         token: o.tk ? String(o.tk) : '',
         tokenExpireAt: Number(o.texp) || 0,
+        // refreshToken 自身的到期（约 180 天）。用于账号卡片显示"方案一凭证"还剩多久，
+        // 以及到期前提醒重新登录客户端。
+        refreshTokenExpireAt: Number(o.rexp) || 0,
         isImportString: true,
       };
     } catch {
@@ -90,6 +93,7 @@ export function buildImportString(o) {
   // 可选：把当前 access token 一并带上（见 parseCredential 里的说明）
   if (o.token) blob.tk = o.token;
   if (o.tokenExpireAt) blob.texp = Number(o.tokenExpireAt);
+  if (o.refreshTokenExpireAt) blob.rexp = Number(o.refreshTokenExpireAt);
   const b64 = Buffer.from(JSON.stringify(blob), 'utf8').toString('base64')
     .replace(/=+$/, '').replace(/\+/g, '-').replace(/\//g, '_');
   return IMPORT_PREFIX + b64;

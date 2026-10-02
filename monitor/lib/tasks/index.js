@@ -233,6 +233,7 @@ export function addTask(input) {
     cookieProbedAt: 0,
     notifiedCookieExpiry: null,
     ...(input.tokenExpiredAt ? { tokenExpiredAt: input.tokenExpiredAt } : {}),
+    ...(input.refreshTokenExpiredAt ? { refreshTokenExpiredAt: input.refreshTokenExpiredAt } : {}),
   };
   tasks.push(task);
   saveTasks(tasks);
@@ -281,6 +282,7 @@ export function updateTask(id, patch) {
     task.failCount = 0;
   }
   if (patch.tokenExpiredAt !== undefined) task.tokenExpiredAt = patch.tokenExpiredAt;
+  if (patch.refreshTokenExpiredAt !== undefined) task.refreshTokenExpiredAt = patch.refreshTokenExpiredAt;
   saveTasks(tasks);
   resyncTask(task);
   return task;
@@ -482,6 +484,11 @@ async function checkCookieExpiryOnce() {
     if (task.config.cookieExpiryNotify === false) continue;
     // 已判凭证失效：签到已暂停，不再探测、不再每日重发「凭证已失效」邮件（改由日报③展示）
     if (task.credentialInvalid) continue;
+    // ★方案一（refreshToken）账号：cookie 只是【兜底】，主凭证是 refreshToken。
+    //   它的有效期由账号卡片上的「方案一凭证」展示；再拿 cookie 到期来报「已到期」纯属误导
+    //   （导入前的旧 cookieExpiresAt 会一直挂在那里）。
+    //   只有当方案一那条腿已经失败（真的降级回 cookie）时，才恢复对 cookie 的巡检。
+    if (task.config.refreshToken && !task.config.refreshTokenFailedAt) continue;
     const provider = getProvider(task.providerId);
     if (!provider || typeof provider.probeSession !== 'function') continue;
     // 该 provider 有哪些「可探活凭证」配置键（见 providerCredKeys）

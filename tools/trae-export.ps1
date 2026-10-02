@@ -126,7 +126,8 @@ function Invoke-Exchange([string]$baseHost, [string]$refreshToken, [string]$user
     $r = Invoke-RestMethod -Uri $url -Method Post -Headers $headers -Body $bodyBytes `
                            -ContentType 'application/json' -TimeoutSec 30
     if ($r.Result -and $r.Result.Token) {
-      return @{ ok = $true; token = $r.Result.Token; refreshToken = $r.Result.RefreshToken; expireAt = $r.Result.TokenExpireAt }
+      return @{ ok = $true; token = $r.Result.Token; refreshToken = $r.Result.RefreshToken; `
+                expireAt = $r.Result.TokenExpireAt; refreshExpireAt = $r.Result.RefreshExpireAt }
     }
     return @{ ok = $false; msg = '响应里没有 Token' }
   } catch {
@@ -162,7 +163,7 @@ function Invoke-Exchange([string]$baseHost, [string]$refreshToken, [string]$user
 
 function New-ImportString([string]$refreshToken, [string]$deviceId, [string]$machineId, `
                           [string]$userId, [string]$hostName, [string]$brand, `
-                          [string]$token, [long]$tokenExpireAt) {
+                          [string]$token, [long]$tokenExpireAt, [long]$refreshTokenExpireAt) {
   $blob = [ordered]@{
     v     = 1
     rt    = $refreshToken
@@ -177,6 +178,8 @@ function New-ImportString([string]$refreshToken, [string]$deviceId, [string]$mac
   #   而每次续期都会推进 refreshToken 轮换链（客户端手里那份只宽限一代）。
   if ($token) { $blob.tk = $token }
   if ($tokenExpireAt -gt 0) { $blob.texp = $tokenExpireAt }
+  # refreshToken 自身到期（约 180 天）：面板卡片按它显示"方案一凭证"还剩多久
+  if ($refreshTokenExpireAt -gt 0) { $blob.rexp = $refreshTokenExpireAt }
   $json = $blob | ConvertTo-Json -Compress
   $b64  = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($json))
   $b64  = $b64.TrimEnd('=').Replace('+', '-').Replace('/', '_')
@@ -325,7 +328,7 @@ foreach ($rec in $records) {
     }
     Write-Host ('   ✓ 续期成功（新 access 有效 {0} 天）' -f $expDays) -ForegroundColor Green
 
-    $import = New-ImportString $rec.refreshToken $rec.deviceId $rec.machineId $rec.userId $rec.host $rec.brand $res.token $res.expireAt
+    $import = New-ImportString $rec.refreshToken $rec.deviceId $rec.machineId $rec.userId $rec.host $rec.brand $res.token $res.expireAt $res.refreshExpireAt
     $rec | Add-Member -NotePropertyName importString -NotePropertyValue $import -Force
     $results += $rec
 

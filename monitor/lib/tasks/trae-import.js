@@ -113,12 +113,14 @@ export function upsertTraeTask(input = {}) {
     credentialPatch.token = cred.token;
     tokenExpiredAt = cred.tokenExpireAt || null;
   }
+  // refreshToken 自身到期（约 180 天）—— 账号卡片按它显示"方案一凭证"还剩多久
+  const refreshTokenExpiredAt = cred.refreshTokenExpireAt || null;
 
   // ── 已有账号：只更新凭证，其余一律不碰 ──
   // name / time / timezone / enabled / 其它配置项全部保持原样。
   // （脚本每次都会问名称，但那是给「新增」用的；对已存在的账号改名字属于越界修改。）
   if (existing) {
-    const task = updateTask(existing.id, { config: credentialPatch, tokenExpiredAt });
+    const task = updateTask(existing.id, { config: credentialPatch, tokenExpiredAt, refreshTokenExpiredAt });
     return { created: false, task, nameKept: true };
   }
 
@@ -134,6 +136,7 @@ export function upsertTraeTask(input = {}) {
     name: input.name || fallbackName,
     enabled: true,
     tokenExpiredAt,
+    refreshTokenExpiredAt,
     config: {
       ...defaults,
       ...credentialPatch,

@@ -237,6 +237,23 @@ function cookieLeftTxt(ts){
   return `<b class="ck-left" style="color:${c}">剩 ${d>99?'99+':p(d)} 天</b><b class=ck-date>(${s})</b>`;
 }
 function fmtDate(date){const [,m,d]=date.split('-');return `${m}/${d}`;}
+// 凭证状态展示：按账号实际在用的凭证模式显示，避免"方案一账号却在报 Cookie 已到期"。
+//   方案一（refreshToken）→ 显示 refreshToken 到期（约 180 天）
+//   方案二（Cookie）      → 显示 Cookie 到期
+function credLeftHtml(t){
+  if(t.hasRefreshToken){
+    const title='方案一：服务端用 refreshToken 静默续期，access token 临期会自动换新；'
+      +'refreshToken 约 180 天，到期需在 Trae CN 客户端重新登录一次';
+    return t.refreshTokenExpiredAt
+      ? `<span title="${esc(title)}">方案一凭证 ${cookieLeftTxt(t.refreshTokenExpiredAt)}</span>`
+      : `<span title="${esc(title)}（有效期在首次续期后可知）">方案一凭证 <b>—</b></span>`;
+  }
+  if(t.hasCookie&&t.cookieExpiresAt){
+    return `<span title="方案二：网页 Cookie，约 14~60 天，到期需重新抓取">Cookie ${cookieLeftTxt(t.cookieExpiresAt)}</span>`;
+  }
+  if(t.hasCookie) return '<span title="方案二：网页 Cookie（到期时间未探测）">Cookie <b>—</b></span>';
+  return '<span>凭证 <b>—</b></span>';
+}
 
 async function loadData(){
   status('加载中…','');$('#status').innerHTML='<span class=loading></span> 加载中…';
@@ -325,7 +342,7 @@ function render(){
         <span>失败阈值 <b>${esc(t.config.failThreshold)}</b></span>
         <span>连续失败 <b>${t.failCount||0}</b> 次</span>
         <span>平均每日消耗 <b style=color:#f59e0b>${fmtDelta(avgConsumption(t.id))}</b></span>
-        <span>Cookie ${t.hasCookie&&t.cookieExpiresAt?cookieLeftTxt(t.cookieExpiresAt):'<b>—</b>'}</span>
+        ${credLeftHtml(t)}
         <span>最近 <b>${fmtTime(t.lastRun)}</b></span>
         ${t.lastError?`<span style=color:#ef4444 title="${esc(t.lastError)}">${esc(t.lastError)}</span>`:''}
       </div>

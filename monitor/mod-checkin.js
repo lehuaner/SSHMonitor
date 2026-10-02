@@ -96,7 +96,8 @@ function maskTaskCredentials(t) {
       && !(typeof v === 'object' && !Array.isArray(v) && !Object.keys(v).length);
     config[k] = filled ? '***' : '';
   }
-  return { ...t, config, hasToken: !!t.config.token, hasCookie: !!t.config.cookie };
+  return { ...t, config, hasToken: !!t.config.token, hasCookie: !!t.config.cookie,
+    hasRefreshToken: !!t.config.refreshToken };
 }
 
 async function router(url, q, r, send) {
