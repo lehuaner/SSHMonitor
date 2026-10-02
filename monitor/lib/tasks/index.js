@@ -536,13 +536,19 @@ async function checkCookieExpiryOnce() {
       }
     }
 
-    // ★维护链终点（与卡片同一函数算出）；老任务还没算过时回落到旧探活槽，不丢提醒
-    const maintExp = getMaintenanceExpiry(task) || task.cookieExpiresAt;
-    if (!maintExp) continue;               // 无固定维护日且探活没给值 → 不提
-    if (maintExp !== task.maintenanceExpiresAt) {
-      task.maintenanceExpiresAt = maintExp;   // 落盘，供日报直接读
+    // ★落盘的值只取「维护链终点」（与卡片/日报同一个函数），**不拿 cookieExpiresAt 凑数**：
+    //   OfficeAce / CodeArts 这类「有账号密码自动重登」的档根本不该有维护日，
+    //   回落探活槽会把旧值（如 RT 到期）长期挂回卡片上。
+    const ladderExp = getMaintenanceExpiry(task);
+    if (ladderExp !== (task.maintenanceExpiresAt || null)) {
+      task.maintenanceExpiresAt = ladderExp || null;   // 落盘，供日报直接读
       persistTask(task);
     }
+    // 提醒基准：阶梯有值用阶梯；provider 没声明阶梯的老任务回落到探活槽；
+    // 命中了阶梯但该类无到期值（fields:[]）= 确实没有维护日 → 不发临期提醒。
+    const hasLadder = !!(getProvider(task.providerId) || {}).credDisplay;
+    const maintExp = ladderExp || (hasLadder ? null : task.cookieExpiresAt);
+    if (!maintExp) continue;
     const daysLeft = Math.ceil((maintExp - Date.now()) / 86400000);
     const threshold = Number(task.config.cookieExpiryNotifyDays) || 1;
     if (daysLeft > threshold || task.notifiedCookieExpiry === today) continue;
