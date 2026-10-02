@@ -137,17 +137,22 @@ export default {
   id: 'officeace',
   name: 'OfficeAce',
   capabilities: ['checkin', 'credits', 'credentialTest', 'status', 'totalCredits', 'sessionProbe', 'packages', 'verifyCode'],
-  // 会话到期巡检看的长期凭证 = refresh_token（DPoP 私钥与它绑定，一起声明避免被当空配置）
-  sessionCredentialKeys: ['refreshToken', 'dpopJwk'],
-  // ★卡片凭证行（维护链终点口径）：OfficeAce 的 AKSK（约 2h）是每次签到前必重签的派生腿，
-  //   绝不能上卡片（一上就常驻「已到期」）；RT 到期后还有「华为账号+密码」自动纯协议重登重签，
-  //   链条不断 —— 所以显示的 RT 到期日是**人工下界**（只有自动重登被设备验证挡住才真需要动手）。
-  //   到期值：优先本地解 RT JWT 写入 config.refreshTokenExpiresAt；
-  //   探活（probeSession）把同一个值写进 cookieExpiresAt（字段名叫 cookie，实为 RT 到期）。
+  // 会话到期巡检看的长期凭证 = refresh_token（DPoP 私钥与它绑定）+ 账号密码（自动重登腿）
+  sessionCredentialKeys: ['refreshToken', 'dpopJwk', 'account', 'password'],
+  // ★卡片凭证行（维护链终点口径）：与 CodeArts 完全一致 —— 配了「华为账号+密码」就是
+  //   可自动续期链（RT 到期/失效时 ensureCredentials() 走纯协议登录重签一整副），
+  //   而「密码什么时候会被拒」不可预知 ⇒ **没有需要人工的日子**，显「—」。
+  //   AKSK（约 2h）是每次签到前必重签的派生腿，永不上卡片（一上就常驻「已到期」）。
+  //   只有没配密码的账号（靠手粘 RT）才真有一个硬维护日，按 RT 到期提醒。
   credDisplay: {
     ladder: [
-      { label: 'Refresh Token', fields: ['refreshTokenExpiredAt', 'config.refreshTokenExpiresAt', 'cookieExpiresAt'], if: 'hasRefreshToken',
-        title: 'OfficeAce 维护链终点（人工下界）：refresh_token 30 天且单次有效（每续一次即轮换并回写，所以剩余天数会复位）；到期时若配了华为账号密码会自动重登重签（链条不断、无需人工），只有自动重登被新设备验证挡住才要点「设备验证」。AKSK（2h）是每次签到前重签的派生腿，不是终点' },
+      { label: '凭证', fields: [], if: 'account && password',
+        title: 'OfficeAce 无固定维护日：填了华为账号+密码，refresh_token 到期时会走纯协议登录自动重签（链条不断）；只有自动重登被新设备验证挡住才点「设备验证」，密码被拒才会走「凭证已失效」告警。AKSK（2h）与 RT（30 天）都是自动续的派生腿，不是维护日' },
+      { label: 'Refresh Token', fields: ['refreshTokenExpiredAt', 'config.refreshTokenExpiresAt', 'cookieExpiresAt'], if: 'hasRefreshToken && noPassword',
+        also: { label: 'Access Token（2h，自动重签）', fields: ['tokenExpiredAt'] },
+        title: '此账号没配华为账号密码，无法自动重登 → refresh_token（30 天、单次有效、每续一次即轮换回写）就是真正的维护链终点；补上账号密码就能自动续命' },
+      { label: 'AKSK', fields: ['config.credentialsExpMs'],
+        title: '只有本地 AKSK、既无 RT 也无密码 → 过期后必须重新提供凭证' },
     ],
   },
   namePlaceholder: '例：OfficeAce · 华为云主账号',

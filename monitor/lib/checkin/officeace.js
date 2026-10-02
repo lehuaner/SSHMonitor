@@ -1061,23 +1061,25 @@ export class OfficeAceClient {
 
   /**
    * 会话/凭证探活（供到期监控）。
-   * ★不主动 refresh：refresh_token 单次有效，探活不能消耗它。改为本地解 RT 的 JWT exp（30 天）；
-   *   真正的失效由每日签到流程撞上 `STS5.1806` 时报 invalid。
+   * ★不主动 refresh：refresh_token 单次有效，探活不能消耗它。改为本地解 RT 的 JWT exp（30 天）。
+   * ★★RT 已过期 ≠ 凭证失效：只要配了账号密码，ensureCredentials() 会走「纯协议重登」
+   *   重签一副新的（RT 死了反而不消耗，登录链只用 hwid_cas_sid + 账号密码），
+   *   所以这里不能直接返回 isLogin:false —— 否则巡检会把账号锁成 credentialInvalid、
+   *   发一封假的「凭证已失效」，并把本可自动恢复的签到永久暂停（与 CodeArts 的口径不一致）。
+   *   真正需要人工的只有「密码被拒 / 需要新设备验证」两种，前者报 invalid、后者视为有效（靠面板按钮）。
    * @returns {Promise<{ok:boolean, isLogin:boolean, expiresAt:number|null}>}
    */
   async probeSession() {
     const rtExp = this.refreshTokenExpMs();
-    if (this.refreshToken) {
-      if (rtExp && rtExp <= Date.now()) {
-        return { ok: false, isLogin: false, expiresAt: rtExp, error: 'refresh_token 已过期' };
-      }
+    if (this.refreshToken && !(rtExp && rtExp <= Date.now())) {
+      // RT 仍有效 → 纯本地判定，不发任何网络请求（也不会烧掉单次有效的 RT）
       return { ok: true, isLogin: true, expiresAt: rtExp || this.creds.expMs || null };
     }
-    if (this._credsFresh()) return { ok: true, isLogin: true, expiresAt: this.creds.expMs };
     if (this.account && this.password) {
+      // RT 过期/没有 RT → 与签到同构：自动纯协议重登重签（通常免设备验证）
       try {
         await this.login();
-        return { ok: true, isLogin: true, expiresAt: this.refreshTokenExpMs() || this.creds.expMs };
+        return { ok: true, isLogin: true, expiresAt: this.refreshTokenExpMs() || null };
       } catch (err) {
         // 设备未受信（needVerify）：凭证本身有效，只是需人工点一次「设备验证」——
         // 与 CodeArts 一致，不应判为凭证失效而误发「已失效」邮件。
@@ -1088,6 +1090,8 @@ export class OfficeAceClient {
         throw err;
       }
     }
+    if (rtExp) return { ok: false, isLogin: false, expiresAt: rtExp, error: 'refresh_token 已过期（未配账号密码，无法自动重登）' };
+    if (this._credsFresh()) return { ok: true, isLogin: true, expiresAt: this.creds.expMs };
     return { ok: false, isLogin: false, expiresAt: null, error: '未配置凭证' };
   }
 }

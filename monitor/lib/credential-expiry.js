@@ -11,10 +11,10 @@
  *   { label, fields:[字段路径…], if:'条件表达式', also:{label,fields}, title, probe:布尔 }
  *   probe=false 表示该档的到期值不来自探活（如 Trae 方案一看 refreshToken 自己写的值），
  *   巡检因此【跳过 probeSession 的网络探测】，但仍照常算维护日、发提醒。
- *   条件语法：hasCookie / hasToken / hasRefreshToken / noCookie / noRefreshToken /
- *             authMode=web（config 字段等值）/ 裸 config 键（有值即为真），可用 ' && ' 组合。
+ *   条件语法：hasCookie / hasToken / hasRefreshToken / noCookie / noRefreshToken / noXxx（config 取反）/
+ *             authMode=web（config 字段等值）/ 裸 config 键（有值即为真；没这个键算 false），可用 ' && ' 组合。
  *   字段路径：refreshTokenExpiredAt / tokenExpiredAt / cookieExpiresAt（任务顶层）
- *             config.refreshTokenExpiresAt / config.tokenExpiresAt
+ *             config.refreshTokenExpiresAt / config.tokenExpiresAt / config.credentialsExpMs
  *   ★入参必须是【未脱敏的原始 task】（config 里的凭证值本模块不读，但布尔判定需要原值）。
  */
 import { getProvider } from './providers/index.js';
@@ -27,10 +27,13 @@ function oneCond(raw, t, cfg) {
   if (c === 'hasRefreshToken') return !!t.hasRefreshToken || truthy(cfg.refreshToken);
   if (c === 'noCookie') return !(t.hasCookie || truthy(cfg.cookie));
   if (c === 'noRefreshToken') return !(t.hasRefreshToken || truthy(cfg.refreshToken));
+  if (/^no[A-Z]/.test(c)) return !truthy(cfg[c.slice(2, 3).toLowerCase() + c.slice(3)]);
   const eq = /^(\w+)=([\w-]+)$/.exec(c);
-  if (eq) return String(cfg[eq[1]]) === eq[2];
+  // 等值与裸键都是「看 config」：没这个键 = 没配 → false
+  // （不能回退 true：否则没配密码的账号会被归到「无固定维护日」，提醒被默默关掉）
+  if (eq) return c in cfg ? String(cfg[eq[1]]) === eq[2] : false;
   if (c in cfg) return truthy(cfg[c]);
-  return true;
+  return false;
 }
 
 function truthy(v) {
@@ -47,6 +50,7 @@ function fieldOf(path, t) {
     case 'tokenExpiredAt': return t.tokenExpiredAt;
     case 'config.refreshTokenExpiresAt': return t.config && t.config.refreshTokenExpiresAt;
     case 'config.tokenExpiresAt': return t.config && t.config.tokenExpiresAt;
+    case 'config.credentialsExpMs': return t.config && t.config.credentialsExpMs;
     default: return null;
   }
 }

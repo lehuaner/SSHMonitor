@@ -261,17 +261,21 @@ function credLeftHtml(t){
     if(c==='hasRefreshToken')return !!t.hasRefreshToken;
     if(c==='noCookie')return !t.hasCookie;
     if(c==='noRefreshToken')return !t.hasRefreshToken;
+    if(/^no[A-Z]/.test(c))return !truthy(cfg[c.slice(2,3).toLowerCase()+c.slice(3)]);
     const m=/^(\w+)=([\w-]+)$/.exec(c);
-    if(m)return String(cfg[m[1]])===m[2];
+    // 等值与裸键都是「看 config」：没这个键就是没配 → false
+    // （旧版回退 true 会让没配密码的 OfficeAce 并到「无固定维护日」那档，默默关掉提醒）
+    if(m)return c in cfg && String(cfg[m[1]])===m[2];
     if(c in cfg)return truthy(cfg[c]);
-    return true;
+    return false;
   };
   const ok=c=>!c||String(c).split('&&').every(one);
   const field=v=>v==='cookieExpiresAt'?t.cookieExpiresAt
     :v==='refreshTokenExpiredAt'?t.refreshTokenExpiredAt
     :v==='tokenExpiredAt'?t.tokenExpiredAt
     :v==='config.refreshTokenExpiresAt'?cfg.refreshTokenExpiresAt
-    :v==='config.tokenExpiresAt'?cfg.tokenExpiresAt:null;
+    :v==='config.tokenExpiresAt'?cfg.tokenExpiresAt
+    :v==='config.credentialsExpMs'?cfg.credentialsExpMs:null;
   const pick=fs=>{for(const f of (fs||[])){const v=Number(field(f));if(v)return v;}return null;};
   const steps=ladder&&ladder.length?ladder:[
     // 通用默认：不提及「方案」，只按 refreshToken / Cookie / Token 三条腿
