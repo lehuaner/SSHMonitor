@@ -165,6 +165,20 @@ export default {
     tokens: true,
     tokenNote: null,
   },
+  // ★卡片凭证行：只有 Trae 有「方案一 / 方案二」两套凭证形态，这套叫法专属本平台，
+  //   其它 provider 不得沿用（按各自 credDisplay 声明渲染）。
+  //   终点口径：方案一 = refreshToken 到期（probe:false —— 该值由 ExchangeToken 续期自己写，
+  //   到期提醒直接盯它，不再跑 CheckLogin 探活）；兜底 Cookie 状态附在 tooltip；
+  //   方案二 = Cookie 探活到期；access JWT（~7~14 天）是派生腿，只进 tooltip。
+  credDisplay: {
+    ladder: [
+      { label: '方案一凭证', fields: ['refreshTokenExpiredAt', 'config.refreshTokenExpiresAt'], if: 'hasRefreshToken', probe: false,
+        also: { label: '兜底 Cookie', fields: ['cookieExpiresAt'] },
+        title: '方案一：服务端用 refreshToken 静默续期，access token 临期会自动换新（不是终点）；refreshToken 约 180 天，到期需在 Trae CN 客户端重新登录一次并重新导出' },
+      { label: 'Cookie', fields: ['cookieExpiresAt'], if: 'hasCookie',
+        title: '方案二：网页 Cookie → GetUserToken，约 14~60 天，到期需重新抓取' },
+    ],
+  },
   // 「新增账号 → 名称」输入框的占位提示（各平台命名习惯不同）
   namePlaceholder: '例：Trae 主账号',
   configSchema: [

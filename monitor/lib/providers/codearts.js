@@ -108,6 +108,15 @@ export default {
     tokens: true,
     tokenNote: null,
   },
+  // ★卡片凭证行（维护链终点口径）：CodeArts 没有可预知的终点 —— 业务 cookie 为会话态、
+  //   hwid_cas_sid 为约 10 年的设备信任令牌，失效时用账号密码自动重登，
+  //   probeSession 恒返 expiresAt:null，所以永远显示「—」（真失效走探活告警）。
+  credDisplay: {
+    ladder: [
+      { label: '凭证', fields: ['cookieExpiresAt'],
+        title: 'CodeArts 无固定维护日：会话为会话态、无名义到期，失效时用华为账号密码自动重登；只有需要新设备验证时才点「设备验证」' },
+    ],
+  },
   // 「新增账号 → 名称」输入框的占位提示（各平台命名习惯不同）
   namePlaceholder: '例：CodeArts 码道 · 138xxxx0000',
   configSchema: [

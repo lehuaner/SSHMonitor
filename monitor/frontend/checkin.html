@@ -237,21 +237,62 @@ function cookieLeftTxt(ts){
   return `<b class="ck-left" style="color:${c}">剩 ${d>99?'99+':p(d)} 天</b><b class=ck-date>(${s})</b>`;
 }
 function fmtDate(date){const [,m,d]=date.split('-');return `${m}/${d}`;}
-// 凭证状态展示：按账号实际在用的凭证模式显示，避免"方案一账号却在报 Cookie 已到期"。
-//   方案一（refreshToken）→ 显示 refreshToken 到期（约 180 天）
-//   方案二（Cookie）      → 显示 Cookie 到期
+// 凭证到期展示：阶梯完全由 provider 的 credDisplay 声明（schema 驱动）。
+// ★ 口径 = 「维护链终点」：到了显示的那个日子自动续期链彻底断掉、再也签不了。
+//   所以只有两类值能上卡片：
+//     1) 有确定到期日的人工腿（Trae refreshToken / AutoClaw refresh_token / WorkBuddy web 模式 Cookie）；
+//     2) 人工腿没有确定到期日时（WorkBuddy 的 Cookie 只能靠探活、OfficeAce 靠账号密码重登），
+//        取「最后一次自动续期成功后的派生凭证到期」（换票成功即 +60 天，会滚动）。
+//   反之：短命且每次签到都会重签的派生腿（如 OfficeAce 的 2h AKSK）不能上卡片，那只会常驻「已到期」。
+// ★ 以前这里把 Trae 的「方案一 / 方案二」硬编码成全局逻辑，凡是带 refreshToken 的平台
+//   （AutoClaw / OfficeAce）都会被叫成「方案一凭证」、Tooltip 里写着 Trae 的 180 天与
+//   Trae CN 客户端。现按各 provider 自己的凭证口径渲染，无声明则走通用默认。
 function credLeftHtml(t){
-  if(t.hasRefreshToken){
-    const title='方案一：服务端用 refreshToken 静默续期，access token 临期会自动换新；'
-      +'refreshToken 约 180 天，到期需在 Trae CN 客户端重新登录一次';
-    return t.refreshTokenExpiredAt
-      ? `<span title="${esc(title)}">方案一凭证 ${cookieLeftTxt(t.refreshTokenExpiredAt)}</span>`
-      : `<span title="${esc(title)}（有效期在首次续期后可知）">方案一凭证 <b>—</b></span>`;
+  const p=providers.find(x=>x.id===t.providerId);
+  const ladder=(p&&p.credDisplay&&p.credDisplay.ladder)||null;
+  const cfg=t.config||{};
+  const truthy=v=>v!==undefined&&v!==null&&v!==''&&(!Array.isArray(v)||v.length>0);
+  // 条件求值：单个或 'A && B'；hasCookie / hasToken / hasRefreshToken / noCookie / noRefreshToken
+  // / authMode=web（config 字段等值）/ 裸字段名（按 config 有值判定）
+  const one=c=>{
+    c=String(c).trim();
+    if(c==='hasCookie')return !!t.hasCookie;
+    if(c==='hasToken')return !!t.hasToken;
+    if(c==='hasRefreshToken')return !!t.hasRefreshToken;
+    if(c==='noCookie')return !t.hasCookie;
+    if(c==='noRefreshToken')return !t.hasRefreshToken;
+    const m=/^(\w+)=([\w-]+)$/.exec(c);
+    if(m)return String(cfg[m[1]])===m[2];
+    if(c in cfg)return truthy(cfg[c]);
+    return true;
+  };
+  const ok=c=>!c||String(c).split('&&').every(one);
+  const field=v=>v==='cookieExpiresAt'?t.cookieExpiresAt
+    :v==='refreshTokenExpiredAt'?t.refreshTokenExpiredAt
+    :v==='tokenExpiredAt'?t.tokenExpiredAt
+    :v==='config.refreshTokenExpiresAt'?cfg.refreshTokenExpiresAt
+    :v==='config.tokenExpiresAt'?cfg.tokenExpiresAt:null;
+  const pick=fs=>{for(const f of (fs||[])){const v=Number(field(f));if(v)return v;}return null;};
+  const steps=ladder&&ladder.length?ladder:[
+    // 通用默认：不提及「方案」，只按 refreshToken / Cookie / Token 三条腿
+    {label:'凭证',fields:['refreshTokenExpiredAt','config.refreshTokenExpiresAt'],if:'hasRefreshToken'},
+    {label:'Cookie',fields:['cookieExpiresAt'],if:'hasCookie'},
+    {label:'Token',fields:['tokenExpiredAt','config.tokenExpiresAt'],if:'hasToken'},
+  ];
+  for(const s of steps){
+    if(!ok(s.if))continue;
+    // 后端巡检会把同一个维护链终点落到 task.maintenanceExpiresAt（lib/credential-expiry.js），
+    // 阶梯取不到时兜它的值，保证卡片与邮件/日报不会两个口径。
+    const exp=pick(s.fields)||t.maintenanceExpiresAt||null;
+    let ti=s.title||(s.label+' 到期时间未探测（以探活结果为准）');
+    // 附加腿（如 Trae 方案一旁边的兜底 Cookie）：不进正文，只追到 tooltip 尾部，
+    // 避免「主腿还长、兜底已废」这种只在真要降级时才致命的状态被隐掉。
+    if(s.also){
+      const a=Number(pick(s.also.fields)||0);
+      if(a)ti+='；'+s.also.label+(a>Date.now()?' 到 '+cookieLeftTxt(a).replace(/<[^>]+>/g,''):' 已到期');
+    }
+    return `<span title="${esc(ti)}">${esc(s.label)} ${exp?cookieLeftTxt(exp):'<b>—</b>'}</span>`;
   }
-  if(t.hasCookie&&t.cookieExpiresAt){
-    return `<span title="方案二：网页 Cookie，约 14~60 天，到期需重新抓取">Cookie ${cookieLeftTxt(t.cookieExpiresAt)}</span>`;
-  }
-  if(t.hasCookie) return '<span title="方案二：网页 Cookie（到期时间未探测）">Cookie <b>—</b></span>';
   return '<span>凭证 <b>—</b></span>';
 }
 

@@ -11,13 +11,14 @@
  *   只有 gateway 能一站取全。故本模块的调度器**只在 server.js 启动一次**，mod-checkin
  *   不启动它 —— 从根上消除旧「双进程各跑一份 scheduler → 同一事件成倍发信」的问题。
  *
- * ── 六大块 ──
+ * ── 七大块 ──
  *   ① 积分过期（过期额 / 总余额）   —— 复用 credit-expiry.fetchCreditExpiryBatches
  *   ② 代理连通（在线时长 / 连通率）  —— 读 proxy_check.log + node_switch.log
  *   ③ 签到情况（成功数 / 应签数）    —— 读 checkin-log + tasks
- *   ④ 设备健康（开机/内存/磁盘/电池/CPU）—— metrics()
- *   ⑤ 积分消耗与预估可用天数         —— checkin-stats.getUsageStatsWithEstimates()
- *   ⑥ 当日告警事件汇总               —— alert-events.getTodayAlerts()
+ *   ④ 凭证维护日历（该维护人的日子）  —— credential-expiry.getMaintenanceExpiry（★与面板卡片同一口径）
+ *   ⑤ 设备健康（开机/内存/磁盘/电池/CPU）—— metrics()
+ *   ⑥ 积分消耗与预估可用天数         —— checkin-stats.getUsageStatsWithEstimates()
+ *   ⑦ 当日告警事件汇总               —— alert-events.getTodayAlerts()
  *   每块独立 try/catch：某块取数失败只在该段显示错误占位，绝不拖垮整封日报。
  *
  * ── 高危即时件仍单独发 ──
@@ -29,6 +30,7 @@ import { mailConfig, sendMail } from './notify.js';
 import { getTasks } from './tasks/index.js';
 import { getProvider } from './providers/index.js';
 import { fetchCreditExpiryBatches, tzDayKey, diffDays } from './checkin/credit-expiry.js';
+import { getMaintenanceExpiry } from './credential-expiry.js';
 import { getLogs } from './checkin-log.js';
 import { getUsageStatsWithEstimates } from './checkin-stats.js';
 import { metrics } from './metrics.js';
@@ -342,7 +344,36 @@ function sectionCheckin(cfg, now) {
   return lines;
 }
 
-/** ④ 设备健康 */
+/**
+ * ④ 凭证维护日历（每个启用账号「到那天就再也签不了」的日子）。
+ * ★与面板卡片、到期提醒邮件走同一个 credential-expiry 求值器，不另算一套。
+ * 日报里全部列出（不止临期的），让“哪天该动手”一眼可见。
+ */
+function sectionCredMaintenance(cfg, now) {
+  const lines = [];
+  const enabled = getTasks().filter((t) => t.enabled);
+  if (!enabled.length) { lines.push('✓ 无启用账号'); return lines; }
+  const dated = [];
+  const undated = [];
+  for (const t of enabled) {
+    const plat = (getProvider(t.providerId) || {}).name || t.providerId;
+    const expMs = getMaintenanceExpiry(t) || t.maintenanceExpiresAt || null;
+    if (!expMs) { undated.push(t.credentialInvalid ? `${t.name}（${plat}，已判失效）` : `${t.name}（${plat}）`); continue; }
+    dated.push({ name: t.name, plat, expMs, days: Math.ceil((expMs - now) / 86400000) });
+  }
+  dated.sort((a, b) => a.expMs - b.expMs);
+  const fmtBeijingDay = (ts) => new Intl.DateTimeFormat('zh-CN', {
+    timeZone: cfg.timezone || DEFAULT_TZ, year: 'numeric', month: '2-digit', day: '2-digit',
+  }).format(new Date(ts));
+  for (const d of dated) {
+    const tag = d.days <= 0 ? '已到维护日' : `剩 ${d.days} 天`;
+    lines.push(`· ${d.name}（${d.plat}）：${fmtBeijingDay(d.expMs)}（${tag}）`);
+  }
+  if (undated.length) lines.push(`· 无需人工维护 / 无可预知到期日：${undated.join('、')}`);
+  return lines;
+}
+
+/** ⑤ 设备健康 */
 async function sectionDevice() {
   const m = await metrics();
   const lines = [];
@@ -358,7 +389,7 @@ async function sectionDevice() {
   return lines;
 }
 
-/** ⑤ 积分消耗与预估可用天数 */
+/** ⑥ 积分消耗与预估可用天数 */
 async function sectionUsage() {
   const s = await getUsageStatsWithEstimates();
   const lines = [];
@@ -379,7 +410,7 @@ async function sectionUsage() {
   return lines;
 }
 
-/** ⑥ 当日告警事件汇总 */
+/** ⑦ 当日告警事件汇总 */
 function sectionAlerts(cfg, now) {
   const lines = [];
   const todayKey = beijingDayKey(now, cfg.timezone);
@@ -420,9 +451,10 @@ export async function buildDailyReport(opts = {}) {
     { title: '① 积分过期', fn: () => sectionCreditExpiry(cfg, now) },
     { title: '② 代理连通', fn: () => sectionProxy(cfg, now) },
     { title: '③ 签到情况', fn: () => sectionCheckin(cfg, now) },
-    { title: '④ 设备健康', fn: () => sectionDevice() },
-    { title: '⑤ 积分消耗与预估', fn: () => sectionUsage() },
-    { title: '⑥ 当日告警汇总', fn: () => sectionAlerts(cfg, now) },
+    { title: '④ 凭证维护日历', fn: () => sectionCredMaintenance(cfg, now) },
+    { title: '⑤ 设备健康', fn: () => sectionDevice() },
+    { title: '⑥ 积分消耗与预估', fn: () => sectionUsage() },
+    { title: '⑦ 当日告警汇总', fn: () => sectionAlerts(cfg, now) },
   ];
 
   const out = [];
@@ -439,7 +471,7 @@ export async function buildDailyReport(opts = {}) {
     }
   }
   out.push('');
-  out.push('—— 本邮件为每日自动运行日报；凭证失效 / 代理全节点失效等高危事件仍会单独即时告警。');
+  out.push('—— 本邮件为每日自动运行日报；第④块的日子 = 自动续期链断掉、再也签不了的那一天（与签到面板卡片同一口径）；凭证失效 / 代理全节点失效等高危事件仍会单独即时告警。');
   const body = out.join('\n');
   const subject = `[日报] Honor10 设备运行状况 ${dayKey}`;
   return { subject, body, dayKey };

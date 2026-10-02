@@ -24,7 +24,9 @@
     "monitor/lib/checkin/codearts.js": ["gateway"],
     "monitor/lib/checkin/officeace.js": ["gateway"],
     "monitor/lib/checkin-log.js": ["gateway"],
-    "monitor/lib/checkin-stats.js": ["gateway"]
+    "monitor/lib/checkin-stats.js": ["gateway"],
+    "monitor/lib/credential-expiry.js": ["gateway"],
+    "monitor/lib/alert-events.js": ["gateway"]
   },
   "modules": {
     "gateway": {
@@ -48,6 +50,7 @@
         "monitor/lib/notify.js": "~/monitor/lib/notify.js",
         "monitor/lib/daily-report.js": "~/monitor/lib/daily-report.js",
         "monitor/lib/alert-events.js": "~/monitor/lib/alert-events.js",
+        "monitor/lib/credential-expiry.js": "~/monitor/lib/credential-expiry.js",
         "monitor/lib/subscription.js": "~/monitor/lib/subscription.js",
         "monitor/lib/checkin-log.js": "~/monitor/lib/checkin-log.js",
         "monitor/lib/checkin-stats.js": "~/monitor/lib/checkin-stats.js",
@@ -98,7 +101,9 @@
         "monitor/lib/providers/autoclaw.js": "~/monitor/lib/providers/autoclaw.js",
         "monitor/lib/providers/officeace.js": "~/monitor/lib/providers/officeace.js",
         "monitor/lib/tasks/index.js": "~/monitor/lib/tasks/index.js",
-        "monitor/lib/tasks/trae-import.js": "~/monitor/lib/tasks/trae-import.js"
+        "monitor/lib/tasks/trae-import.js": "~/monitor/lib/tasks/trae-import.js",
+        "monitor/lib/credential-expiry.js": "~/monitor/lib/credential-expiry.js",
+        "monitor/lib/alert-events.js": "~/monitor/lib/alert-events.js"
       }
     },
     "release": {

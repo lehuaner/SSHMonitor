@@ -88,6 +88,19 @@ export default {
   capabilities: ['checkin', 'credits', 'credentialTest', 'status', 'totalCredits', 'sessionProbe', 'packages', 'smsLogin'],
   // 「可探活凭证」= refresh_token（30 天长期凭证）；token 是派生的 24h 短凭证
   sessionCredentialKeys: ['refreshToken'],
+  // ★卡片凭证行：AutoClaw 只有一套长期凭证 = refresh_token（30 天、实测不轮换）。
+  //   它的到期值落在 config.refreshTokenExpiresAt（登录/续期时写），
+  //   探活又把同一个值写进 cookieExpiresAt（字段名叫 cookie，实为 RT 到期）。
+  credDisplay: {
+    ladder: [
+      { label: 'Refresh Token', fields: ['refreshTokenExpiredAt', 'config.refreshTokenExpiresAt', 'cookieExpiresAt'], if: 'hasRefreshToken',
+        title: 'AutoClaw 维护链终点：refresh_token 30 天（实测不轮换，没人能替它续），到期后 access 将在 24h 内跟着死 → 再也签不了；点「验证码登录」一键重签。access_token（24h）是派生腿，每次签到自动换新、不构成终点' },
+      { label: 'Access Token', fields: ['tokenExpiredAt'], if: 'hasToken && noRefreshToken',
+        title: '24h 短凭证：此账号没配 refresh_token，没人能替它续，过期即再也签不了' },
+      { label: 'Cookie', fields: ['cookieExpiresAt'], if: 'hasCookie',
+        title: 'Cookie 到期（探活结果）' },
+    ],
+  },
   namePlaceholder: '例：AutoClaw 主账号',
   configSchema: [
     {

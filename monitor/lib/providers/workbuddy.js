@@ -536,6 +536,19 @@ export default {
     tokens: false,
     tokenNote: 'WorkBuddy 用量接口（get-user-request-usage）只返回「积分 / 请求条数 / 模型 / 时间」，不返回 token 输入输出明细，故该平台 Token 视图无原始数据。积分数据完整可用。',
   },
+  // ★卡片凭证行（维护链终点口径）：WorkBuddy 的人工腿是 Cookie，但它**没有确定到期日**
+  //   （session 里的时间戳不可信、任意退登即时吊销，probeSession 有 Cookie 时恒返 expiresAt:null）。
+  //   所以终点取「最后一次换票成功后的 Bearer 到期」——临期前 6h 会自动用 Cookie 再换一次（+60 天），
+  //   每次成功都把这个日子往后推；真到那天且换票失败（Cookie 已废）才是再也签不了。
+  //   ★只有 web（Cookie 直连、没有 Bearer 可续）才回到 Cookie 那条腿。
+  credDisplay: {
+    ladder: [
+      { label: 'Cookie', fields: ['cookieExpiresAt'], if: 'authMode=web',
+        title: 'web 模式：Cookie 直连，没有可续期的派生凭证 —— 服务端一拒 Cookie 就签不了' },
+      { label: 'Bearer', fields: ['tokenExpiredAt', 'config.tokenExpiresAt'],
+        title: '最后一次用 Cookie 换票成功后的 Bearer 到期（Keycloak JWT，+60 天）；临期前 6h 会自动再换一次并把这天往后推。真正要人工的是 Cookie（约 7 天、无确定到期日，被吊销时走邮件告警）' },
+    ],
+  },
   // 「新增账号 → 名称」输入框的占位提示（各平台命名习惯不同）
   namePlaceholder: '例：WorkBuddy 成长签到 · 乐幻',
   configSchema: [

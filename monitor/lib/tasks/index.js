@@ -8,6 +8,7 @@ import { randomUUID } from 'node:crypto';
 import { loadJSON, saveJSON, DATA_DIR } from '../utils.js';
 import { sendMail } from '../notify.js';
 import { getProvider } from '../providers/index.js';
+import { getMaintenanceExpiry, needsSessionProbe } from '../credential-expiry.js';
 import { startScheduler, nextTriggerMs } from '../checkin/scheduler.js';
 import { appendLog } from '../checkin-log.js';
 
@@ -455,9 +456,12 @@ async function runAutoCheck() {
   return results.filter(Boolean);
 }
 
-// ====== Cookie 到期监控 ======
-// 每小时巡检一次启用且有 Cookie 的任务：会话有效期缓存超过 24h（或无缓存）时
-// 通过 provider.probeSession 重新探测；剩余天数达到用户配置的提前量时邮件提醒（每天最多一封）。
+// ====== 凭证维护日监控（旧名「Cookie 到期监控」）======
+// 每小时巡检一次启用任务：会话有效期缓存超过 24h（或无缓存）时重探；
+// ★提醒基准 = 「维护链终点」（lib/credential-expiry.js，与面板卡片同一口径），
+//   不再是 cookieExpiresAt 这个探活槽 —— 否则 Trae 方案一（应看 RT）、
+//   WorkBuddy（应看最后一次换票后的 Bearer）都会提醒错对象。
+//   终点未知/无固定维护日 → 不提（避开旧版那类假告警），到日由探活失败走「凭证已失效」。
 
 const COOKIE_CHECK_INTERVAL_MS = 60 * 60 * 1000; // 巡检间隔：1 小时
 const COOKIE_PROBE_TTL_MS = 24 * 60 * 60 * 1000; // 探测结果有效期：24 小时
@@ -482,13 +486,12 @@ async function checkCookieExpiryOnce() {
   for (const task of getTasks()) {
     if (!task.enabled || !task.config) continue;
     if (task.config.cookieExpiryNotify === false) continue;
-    // 已判凭证失效：签到已暂停，不再探测、不再每日重发「凭证已失效」邮件（改由日报③展示）
+    // 已判凭证失效：签到已暂停，不再探测、不再每日重发「凭证已失效」邮件
+    //   （失效账号由日报③「凭证无效（暂停签到）」与日报⑦告警汇总承担）
     if (task.credentialInvalid) continue;
-    // ★方案一（refreshToken）账号：cookie 只是【兜底】，主凭证是 refreshToken。
-    //   它的有效期由账号卡片上的「方案一凭证」展示；再拿 cookie 到期来报「已到期」纯属误导
-    //   （导入前的旧 cookieExpiresAt 会一直挂在那里）。
-    //   只有当方案一那条腿已经失败（真的降级回 cookie）时，才恢复对 cookie 的巡检。
-    if (task.config.refreshToken && !task.config.refreshTokenFailedAt) continue;
+    // ★方案一（refreshToken）不再整段跳过：以前因为拿 cookieExpiresAt 当基准而直接跳过，
+    //   导致 180 天的 refreshToken 到期前一封提醒都没有。现在按维护链终点算：
+    //   终点已知 → 提前 N 天提醒；终点未知（还未首次续期）→ 自然不提。
     const provider = getProvider(task.providerId);
     if (!provider || typeof provider.probeSession !== 'function') continue;
     // 该 provider 有哪些「可探活凭证」配置键（见 providerCredKeys）
@@ -496,6 +499,16 @@ async function checkCookieExpiryOnce() {
 
     // 探测会话有效性（CodeArts 业务 cookie 为会话态、hwid_cas_sid 为长期令牌，
     //   probeSession 恒返回 expiresAt:null —— 只能靠 isLogin 判定有效与否）
+    // ★命中档声明了 probe:false（如 Trae 方案一，到期值由续期自己写）→ 不跑探活，
+    //   既避开旧版「拿兜底 Cookie 误报失效」，也少一次无网络意义的会话探测。
+    if (!needsSessionProbe(task)) {
+      const maintExp0 = getMaintenanceExpiry(task);
+      if (maintExp0 !== task.maintenanceExpiresAt) {
+        task.maintenanceExpiresAt = maintExp0 || null;
+        persistTask(task);
+      }
+      continue;
+    }
     if (!task.cookieExpiresAt || Date.now() - (task.cookieProbedAt || 0) > COOKIE_PROBE_TTL_MS) {
       try {
         const r = await provider.probeSession(task);
@@ -523,27 +536,33 @@ async function checkCookieExpiryOnce() {
       }
     }
 
-    if (!task.cookieExpiresAt) continue;
-    const daysLeft = Math.ceil((task.cookieExpiresAt - Date.now()) / 86400000);
+    // ★维护链终点（与卡片同一函数算出）；老任务还没算过时回落到旧探活槽，不丢提醒
+    const maintExp = getMaintenanceExpiry(task) || task.cookieExpiresAt;
+    if (!maintExp) continue;               // 无固定维护日且探活没给值 → 不提
+    if (maintExp !== task.maintenanceExpiresAt) {
+      task.maintenanceExpiresAt = maintExp;   // 落盘，供日报直接读
+      persistTask(task);
+    }
+    const daysLeft = Math.ceil((maintExp - Date.now()) / 86400000);
     const threshold = Number(task.config.cookieExpiryNotifyDays) || 1;
     if (daysLeft > threshold || task.notifiedCookieExpiry === today) continue;
 
     task.notifiedCookieExpiry = today;
     persistTask(task);
-    const expStr = fmtBeijing(task.cookieExpiresAt);
+    const expStr = fmtBeijing(maintExp);
     const platName = (getProvider(task.providerId) || {}).name || '账号';
     if (daysLeft <= 0) {
       await sendMail(
         `[告警] ${task.name} 凭证已失效`,
-        `账号 ${task.name} 的 ${platName} 凭证已失效（探测时间 ${expStr}），自动签到将无法进行。\n` +
+        `账号 ${task.name} 的 ${platName} 凭证维护日已到（${expStr}），自动签到将无法进行。\n` +
         `请重新登录后导出新的凭证，并在签到页编辑该账号更新。`
       );
     } else {
       await sendMail(
         `[提醒] ${task.name} 凭证将于 ${daysLeft} 天后到期`,
-        `账号 ${task.name} 的 ${platName} 凭证预计到期时间：${expStr}，剩余约 ${daysLeft} 天。\n` +
-        `请在此期间重新登录后导出新的凭证并更新账号配置，` +
-        `否则到期后签到将失败。\n\n如不想收到此提醒，可在账号编辑页关闭「凭证到期提前邮件通知」。`
+        `账号 ${task.name} 的 ${platName} 需维护日期：${expStr}，剩余约 ${daysLeft} 天。\n` +
+        `这是自动续期链能撑到的最后一天（面板卡片显的就是同一个日子），到期后签到将失败。\n` +
+        `请在此日期前重新导出/换发凭证并更新账号配置。\n\n如不想收到此提醒，可在账号编辑页关闭「凭证到期提前邮件通知」。`
       );
     }
   }

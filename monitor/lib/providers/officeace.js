@@ -139,6 +139,17 @@ export default {
   capabilities: ['checkin', 'credits', 'credentialTest', 'status', 'totalCredits', 'sessionProbe', 'packages', 'verifyCode'],
   // 会话到期巡检看的长期凭证 = refresh_token（DPoP 私钥与它绑定，一起声明避免被当空配置）
   sessionCredentialKeys: ['refreshToken', 'dpopJwk'],
+  // ★卡片凭证行（维护链终点口径）：OfficeAce 的 AKSK（约 2h）是每次签到前必重签的派生腿，
+  //   绝不能上卡片（一上就常驻「已到期」）；RT 到期后还有「华为账号+密码」自动纯协议重登重签，
+  //   链条不断 —— 所以显示的 RT 到期日是**人工下界**（只有自动重登被设备验证挡住才真需要动手）。
+  //   到期值：优先本地解 RT JWT 写入 config.refreshTokenExpiresAt；
+  //   探活（probeSession）把同一个值写进 cookieExpiresAt（字段名叫 cookie，实为 RT 到期）。
+  credDisplay: {
+    ladder: [
+      { label: 'Refresh Token', fields: ['refreshTokenExpiredAt', 'config.refreshTokenExpiresAt', 'cookieExpiresAt'], if: 'hasRefreshToken',
+        title: 'OfficeAce 维护链终点（人工下界）：refresh_token 30 天且单次有效（每续一次即轮换并回写，所以剩余天数会复位）；到期时若配了华为账号密码会自动重登重签（链条不断、无需人工），只有自动重登被新设备验证挡住才要点「设备验证」。AKSK（2h）是每次签到前重签的派生腿，不是终点' },
+    ],
+  },
   namePlaceholder: '例：OfficeAce · 华为云主账号',
   configSchema: [
     { key: 'account', label: '华为账号（手机号/邮箱）', type: 'text', required: true,
