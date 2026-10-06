@@ -741,7 +741,7 @@ const server = createServer(async (q, r) => {
       return;
     }
     if (q.url === '/api/proxy-check/weights' && q.method === 'GET') {
-      const weights = getNodeWeights();
+      const weights = await getNodeWeights();
       send(200, JSON.stringify({ ok: true, weights }));
       return;
     }

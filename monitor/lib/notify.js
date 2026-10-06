@@ -383,9 +383,11 @@ function getNodeStats24h(nodeName) {
  * Weight = (isCandidate ? 0.5 : 0) + (connectivityRate * 0.3) + (latencyScore * 0.2)
  * connectivityRate = successCount / totalChecks (基于 24 小时滚动窗口)
  * latencyScore = max(0, 1 - avgLatency / 2000)
+ * @param {string[]} effectiveCandidates 必须是「展开后的实际节点名列表」（见 expandCandidateNodes），
+ *   不能直接传原始 candidate_nodes 配置（region:xxx 形态跟真实节点名永远不相等，会让 isCandidate 恒为 false）。
  */
-export function calculateNodeWeight(nodeName, candidates, stats24h) {
-  const isCandidate = candidates.includes(nodeName) ? 0.5 : 0;
+export function calculateNodeWeight(nodeName, effectiveCandidates, stats24h) {
+  const isCandidate = (effectiveCandidates || []).includes(nodeName) ? 0.5 : 0;
   const stats = stats24h[nodeName] || { successCount: 0, totalChecks: 0, avgLatency: 0 };
   const connectivityRate = stats.totalChecks > 0 ? stats.successCount / stats.totalChecks : 0;
   const latencyScore = Math.max(0, 1 - (stats.avgLatency || 0) / 2000);
@@ -393,18 +395,63 @@ export function calculateNodeWeight(nodeName, candidates, stats24h) {
 }
 
 /**
- * 获取所有候选节点的权重列表（供前端排序展示）
+ * 展开候选节点（F102）：candidate_nodes 支持 "region:<关键词>" 形态（如 region:日本）。
+ * 运行时把所有地区条目展开为当前 Clash API 节点列表里的实际节点（按名称包含关键词匹配），
+ * 并排除 excludedSubscriptions 里命中的订阅前缀（tag 形如 "<订阅名>_<节点名>"）。
+ * 好处：上游节点名变化（区02→区05、后缀变化）不影响候选有效性；地区作为稳定锚点。
+ * ★runProxyCheck / getNodeWeights 必须共用这个函数拿到「有效候选列表」，
+ *   不能再各自拿原始 cfg.candidate_nodes 去比对真实节点名（那是两套数据，永远对不上）。
  */
-export function getNodeWeights() {
+export function expandCandidateNodes(rawCandidates, allNodeNames, excludedSubscriptions) {
+  const excluded = (excludedSubscriptions || []).map(s => String(s).trim()).filter(Boolean);
+  const isExcluded = (tag) => excluded.some(name => tag === name || tag.startsWith(name + '_'));
+  const out = [];
+  const seen = new Set();
+  for (const c of (rawCandidates || [])) {
+    const entry = String(c || '').trim();
+    if (!entry) continue;
+    if (entry.startsWith('region:')) {
+      const kw = entry.slice(7).trim();
+      if (!kw) continue;
+      for (const n of (allNodeNames || [])) {
+        if (n.includes(kw) && !isExcluded(n) && !seen.has(n)) { seen.add(n); out.push(n); }
+      }
+    } else if (!isExcluded(entry) && !seen.has(entry)) {
+      seen.add(entry); out.push(entry);   // 具名候选也做排除过滤（防手工选到被排除订阅的节点）
+    }
+  }
+  return out;
+}
+
+/**
+ * 取当前全部节点名（Clash/mihomo API），失败退化为空数组（只剩具名候选）
+ */
+async function getAllNodeNames() {
+  try {
+    const px = await fetchJson('http://127.0.0.1:9090/proxies');
+    const sel = px && px.proxies && Object.values(px.proxies).find(p => p.type === 'Selector' && p.all);
+    return sel ? sel.all : [];
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * 获取所有候选节点的权重列表（供前端排序展示）
+ * ★必须先展开 region: 候选再算权重，否则权重 key 是 "region:日本" 这类原始配置串，
+ *   跟 proxy_check.log 里的真实节点名对不上，前端的 weightMap.get(nodeName) 永远取不到值。
+ */
+export async function getNodeWeights() {
   const cfg = mailConfig.proxy_check || {};
-  const candidates = cfg.candidate_nodes || [];
+  const allNodeNames = await getAllNodeNames();
+  const effectiveCandidates = expandCandidateNodes(cfg.candidate_nodes, allNodeNames, cfg.excluded_subscriptions);
   const stats24h = {};
-  for (const node of candidates) {
+  for (const node of effectiveCandidates) {
     stats24h[node] = getNodeStats24h(node);
   }
-  return candidates.map(node => ({
+  return effectiveCandidates.map(node => ({
     node,
-    weight: calculateNodeWeight(node, candidates, stats24h),
+    weight: calculateNodeWeight(node, effectiveCandidates, stats24h),
     stats: stats24h[node],
   })).sort((a, b) => b.weight - a.weight);
 }
@@ -471,39 +518,9 @@ export async function runProxyCheck(force = false) {
     return { ok: false, error: '无法获取当前节点（sing-box 可能未运行）', current_node: '', all_ok: false, switched: false, details: [], timestamp: new Date().toISOString() };
   }
 
-  // ★展开地区候选（F102）：candidate_nodes 支持 "region:<关键词>" 形态（如 region:日本）。
-  //   运行时把所有地区条目展开为当前 Clash API 节点列表里的实际节点（按名称包含关键词匹配），
-  //   并排除 excludedSubscriptions 里命中的订阅前缀（tag 形如 "<订阅名>_<节点名>"）。
-  //   好处：上游节点名变化（区02→区05、后缀变化）不影响候选有效性；地区作为稳定锚点。
-  const expandCandidates = (cands, allNodes) => {
-    const excluded = (cfg.excluded_subscriptions || []).map(s => String(s).trim()).filter(Boolean);
-    const isExcluded = (tag) => excluded.some(name => tag === name || tag.startsWith(name + '_'));
-    const out = [];
-    const seen = new Set();
-    for (const c of cands) {
-      const entry = String(c || '').trim();
-      if (!entry) continue;
-      if (entry.startsWith('region:')) {
-        const kw = entry.slice(7).trim();
-        if (!kw) continue;
-        for (const n of allNodes) {
-          if (n.includes(kw) && !isExcluded(n) && !seen.has(n)) { seen.add(n); out.push(n); }
-        }
-      } else if (!isExcluded(entry) && !seen.has(entry)) {
-        seen.add(entry); out.push(entry);   // 具名候选也做排除过滤（防手工选到被排除订阅的节点）
-      }
-    }
-    return out;
-  };
-
-  // 取当前全部节点名（Clash API）；失败则退化为纯具名候选
-  let allNodeNames = [];
-  try {
-    const px = await fetchJson('http://127.0.0.1:9090/proxies');
-    const sel = px && px.proxies && Object.values(px.proxies).find(p => p.type === 'Selector' && p.all);
-    allNodeNames = sel ? sel.all : [];
-  } catch {}
-  const nodesToTest = expandCandidates(candidates, allNodeNames);
+  // ★展开地区候选（F102）：见 expandCandidateNodes（与 getNodeWeights 共用同一套展开逻辑）
+  const allNodeNames = await getAllNodeNames();
+  const nodesToTest = expandCandidateNodes(candidates, allNodeNames, cfg.excluded_subscriptions);
   if (nodesToTest.length === 0) {
     return { ok: false, error: '候选节点展开后为空（检查 region 关键词/排除订阅配置）', current_node: currentNode, all_ok: false, switched: false, details: [], timestamp: new Date().toISOString() };
   }
@@ -583,7 +600,7 @@ export async function runProxyCheck(force = false) {
   //   B. 当前节点在候选列表但失败 → 切到最佳候选节点
   //   C. 当前节点不在候选列表（如外部手动切换的美国1）→ 切到最佳候选节点
   //      （候选列表是用户明确要用的节点，非候选节点应被纠正）
-  const currentInCandidates = candidates.includes(currentNode);
+  const currentInCandidates = nodesToTest.includes(currentNode);
   let currentOk = true;
   let currentDetail = null;
   if (currentInCandidates) {
@@ -622,7 +639,7 @@ export async function runProxyCheck(force = false) {
       let bestWeight = -1;
       const allWeights = {};
       for (const node of passingNodes) {
-        const w = calculateNodeWeight(node, candidates, stats24h);
+        const w = calculateNodeWeight(node, nodesToTest, stats24h);
         allWeights[node] = w;
         if (w > bestWeight) {
           bestWeight = w;
