@@ -659,16 +659,15 @@ export async function runProxyCheck(force = false) {
       switchLogEntry.best_weight = bestWeight;
       switchLogEntry.all_weights = allWeights;
 
-      // 仅在原节点失败时发切换通知邮件（非候选节点切回候选不发邮件，避免噪音）
-      if (currentInCandidates && !currentOk) {
-        await sendMail(
-          `[通知] 代理节点已自动切换`,
-          `原节点: ${currentNode}\n新节点: ${bestNode}\n权重评分: ${bestWeight.toFixed(3)}\n原因: 当前节点连通性检测失败`
-        );
-      } else if (!currentInCandidates) {
-        // 非候选节点切回候选节点：记录日志但不发邮件（用户知道的预期行为）
+      // ★B/C 切换均不再实时发邮件：统一归入日报统计（见 lib/daily-report.js 的「今日故障切换」计数
+      //   +「连通时间区间」按实际停靠节点分段，已经能体现节点变化）。这里只落审计字段，
+      //   供面板/日志排查时知道"为什么这次没发信"，不是因为出错、是因为设计如此。
+      if (!currentInCandidates) {
         switchLogEntry.mail_skipped = true;
         switchLogEntry.mail_skip_reason = '非候选→候选切换，按设计不发送邮件';
+      } else {
+        switchLogEntry.mail_skipped = true;
+        switchLogEntry.mail_skip_reason = 'B类切换改为仅进日报，不发实时邮件';
       }
     } else {
       // 所有候选节点都失败，切回原节点保持现状
