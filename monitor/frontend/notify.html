@@ -98,6 +98,15 @@ textarea:focus,input:focus{border-color:#38bdf8}
 .card-h-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .card-h-right .toggle{margin:0}
 @media(max-width:600px){.form-row{grid-template-columns:1fr;gap:4px}}
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.metric-item{background:#0b1120;border:1px solid #1e293b;border-radius:6px;padding:8px 10px}
+.metric-item>label{display:block;font-size:.72rem;color:#94a3b8;margin-bottom:6px}
+.metric-fields{display:flex;gap:8px;align-items:flex-end}
+.metric-fields .mf{flex:1;min-width:0}
+.metric-fields .mf>label{display:block;font-size:.6rem;color:#64748b;margin-bottom:2px;letter-spacing:.3px}
+.metric-fields .mf input{width:100%}
+.metric-fields .mf.freq{flex:0 0 auto;width:96px}
+@media(max-width:600px){.metric-grid{grid-template-columns:1fr}}
 </style>
 <div class=app>
 <div class=nav></div>
@@ -161,7 +170,7 @@ textarea:focus,input:focus{border-color:#38bdf8}
 <div id=candidateNodes style=display:flex;flex-wrap:wrap;gap:4px;margin-top:4px></div>
 <div id=availableNodesList style=margin-top:6px;max-height:160px;overflow-y:auto;display:flex;flex-wrap:wrap;gap:4px;background:#0b1120;border-radius:6px;padding:6px;border:1px solid #1e293b></div>
 <div style=display:flex;gap:4px;margin-top:4px>
-<button class="btn btn-sm" onclick=loadAllNodes()><svg class="ic"><use href="#h10i-refresh"></use></svg> 加载订阅节点</button>
+<button class="btn btn-sm" id=loadAllNodesBtn onclick=loadAllNodes()><svg class="ic"><use href="#h10i-refresh"></use></svg> 加载订阅节点</button>
 <button class="btn btn-sm" onclick=addRegionCandidate()><svg class="ic"><use href="#h10i-globe"></use></svg> 添加地区候选</button>
 </div>
 <div style="margin-top:12px;border-top:1px solid #1e293b;padding-top:10px">
@@ -190,7 +199,7 @@ textarea:focus,input:focus{border-color:#38bdf8}
 </div>
 <div style=display:flex;gap:6px;flex-wrap:wrap;margin-top:12px>
 <button class="btn btn-warn" onclick=runProxyCheck()><svg class="ic"><use href="#h10i-play"></use></svg> 立即检测</button>
-<button class="btn" onclick=loadProxyStatus()><svg class="ic"><use href="#h10i-bar-chart"></use></svg> 查看状态</button>
+<button class="btn" id=loadProxyStatusBtn onclick=loadProxyStatus()><svg class="ic"><use href="#h10i-bar-chart"></use></svg> 查看状态</button>
 </div>
 <div id=proxyStatus class=status></div>
 <div id=logSection style="margin-top:12px;border-top:1px solid #1e293b;padding-top:10px">
@@ -213,21 +222,57 @@ textarea:focus,input:focus{border-color:#38bdf8}
 </div>
 </div>
 <div class=card-body>
-<div style=display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px>
-<div><label style=font-size:.7rem;color:#94a3b8>电池电量低于 (%)</label><input id=batteryLow type=number value=20 style=width:100%></div>
-<div><label style=font-size:.7rem;color:#94a3b8>电池温度高于 (°C)</label><input id=batteryTempHigh type=number value=45 style=width:100%></div>
-<div><label style=font-size:.7rem;color:#94a3b8>WiFi 信号弱于 (dBm)</label><input id=wifiRssiWeak type=number value=-75 style=width:100%></div>
-<div><label style=font-size:.7rem;color:#94a3b8>磁盘使用高于 (%)</label><input id=diskUsageHigh type=number value=90 style=width:100%></div>
-<div><label style=font-size:.7rem;color:#94a3b8>CPU 使用高于 (%)</label><input id=cpuUsageHigh type=number value=90 style=width:100%></div>
-<div><label style=font-size:.7rem;color:#94a3b8>内存使用高于 (%)</label><input id=memUsageHigh type=number value=90 style=width:100%></div>
+<div class=metric-grid style="margin-top:8px">
+  <div class=metric-item>
+    <label>电池电量低于 (%)</label>
+    <div class=metric-fields>
+      <div class=mf><label>阈值</label><input id=batteryLow type=number value=20></div>
+      <div class="mf freq"><label>采集(分)</label><input id=batteryLowInterval type=number value=5 min=1></div>
+    </div>
+  </div>
+  <div class=metric-item>
+    <label>电池温度高于 (°C)</label>
+    <div class=metric-fields>
+      <div class=mf><label>阈值</label><input id=batteryTempHigh type=number value=45></div>
+      <div class="mf freq"><label>采集(分)</label><input id=batteryTempHighInterval type=number value=10 min=1></div>
+    </div>
+  </div>
+  <div class=metric-item>
+    <label>WiFi 信号弱于 (dBm)</label>
+    <div class=metric-fields>
+      <div class=mf><label>阈值</label><input id=wifiRssiWeak type=number value=-75></div>
+      <div class="mf freq"><label>采集(分)</label><input id=wifiRssiWeakInterval type=number value=10 min=1></div>
+    </div>
+  </div>
+  <div class=metric-item>
+    <label>磁盘使用高于 (%)</label>
+    <div class=metric-fields>
+      <div class=mf><label>阈值</label><input id=diskUsageHigh type=number value=90></div>
+      <div class="mf freq"><label>采集(分)</label><input id=diskUsageHighInterval type=number value=10 min=1></div>
+    </div>
+  </div>
+  <div class=metric-item>
+    <label>CPU 使用高于 (%)</label>
+    <div class=metric-fields>
+      <div class=mf><label>阈值</label><input id=cpuUsageHigh type=number value=90></div>
+      <div class="mf freq"><label>采集(分)</label><input id=cpuUsageHighInterval type=number value=10 min=1></div>
+    </div>
+  </div>
+  <div class=metric-item>
+    <label>内存使用高于 (%)</label>
+    <div class=metric-fields>
+      <div class=mf><label>阈值</label><input id=memUsageHigh type=number value=90></div>
+      <div class="mf freq"><label>采集(分)</label><input id=memUsageHighInterval type=number value=10 min=1></div>
+    </div>
+  </div>
 </div>
-<div style=display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px>
-<div><label style=font-size:.7rem;color:#94a3b8>告警冷却 (分钟)</label><input id=alertCooldown type=number value=30 style=width:100%></div>
-<div style=display:flex;align-items:flex-end;gap:4px>
-<button class="btn btn-warn btn-sm" onclick=testDeviceAlerts()>&#9888; 测试告警</button>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px">
+<div><label style="font-size:.7rem;color:#94a3b8">告警冷却 (分钟)</label><input id=alertCooldown type=number value=30 style="width:100%"></div>
+<div style="display:flex;align-items:center;justify-content:flex-end">
+<button class="btn btn-warn btn-sm" id=testDeviceBtn onclick=testDeviceAlerts()>&#9888; 测试告警</button>
 </div>
 </div>
-<div class=note style=margin-top:8px>每 10 分钟检测一次设备状态，低于阈值时发送告警邮件（同一告警冷却时间内不重复发送）。设为 0 可禁用对应项目。</div>
+<div class=note style="margin-top:12px">每个指标按各自「采集(分)」频率采样并落库（可单独设置，默认电池 5 分钟、其余 10 分钟）；低于阈值时发送告警邮件（同一告警冷却时间内不重复发送）。设为 0 可禁用对应项目。</div>
 </div>
 </div>
 <div class="card collapsible" id=dailyReportCard>
@@ -258,6 +303,13 @@ var show=(msg,sec=3)=>{const t=$('toast');t.textContent=msg;t.classList.add('sho
 function setStatus(msg,kind){const s=$('status');s.textContent=msg||'';s.className='status'+(kind?' '+kind:'')}
 function esc(s){if(!s)return '';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
 function fmtTime(t){if(!t)return '-';try{return new Date(t).toLocaleString('zh-CN')}catch{return t}}
+// 通用按钮忙碌态：请求期间禁用按钮并显示"处理中"，防止重复点击且给出明确反馈
+async function btnBusy(btn, busyLabel, fn){
+  if(!btn)return fn();
+  const old=btn.innerHTML, wasDisabled=btn.disabled;
+  btn.disabled=true;btn.innerHTML='<span class=loading></span> '+(busyLabel||'处理中');
+  try{return await fn();}finally{btn.disabled=wasDisabled;btn.innerHTML=old;}
+}
 var currentConfig={enabled:false,smtp_host:'smtp.qq.com',smtp_port:'465',smtp_user:'',smtp_pass:'',to:'',monitored_procs:[]};
 var currentUrls=['https://www.google.com'];
 var currentCandidates=[];
@@ -368,6 +420,12 @@ function renderForm(c){
   $('cpuUsageHigh').value=da.cpu_usage_high??90;
   $('memUsageHigh').value=da.mem_usage_high??90;
   $('alertCooldown').value=da.cooldown??30;
+  $('batteryLowInterval').value=da.battery_low_interval??5;
+  $('batteryTempHighInterval').value=da.battery_temp_high_interval??10;
+  $('wifiRssiWeakInterval').value=da.wifi_rssi_weak_interval??10;
+  $('diskUsageHighInterval').value=da.disk_usage_high_interval??10;
+  $('cpuUsageHighInterval').value=da.cpu_usage_high_interval??10;
+  $('memUsageHighInterval').value=da.mem_usage_high_interval??10;
   // 每日日报
   const dr=c.daily_report||{};
   $('drEnabled').checked=dr.enabled!==false;
@@ -433,18 +491,18 @@ function removeCandidate(i){
   currentCandidates.splice(i,1);
   renderCandidates();
 }
-function loadAllNodes(){
-  const el=$('availableNodesList');
-  el.innerHTML='<span style=color:#64748b;font-size:.75rem>加载中...</span>';
-  fetch('/api/node-status').then(r=>r.json()).then(d=>{
+async function loadAllNodes(){
+  const btn=$('loadAllNodesBtn');
+  await btnBusy(btn,'加载中', async ()=>{
+    const el=$('availableNodesList');
+    el.innerHTML='<span style=color:#64748b;font-size:.75rem>加载中...</span>';
+    const d=await fetch('/api/node-status').then(r=>r.json());
     if(d.ok&&d.nodes){
       window._allNodes=d.nodes.map(n=>n.tag).filter(Boolean);
       renderAvailableNodes();
     }else{
       el.innerHTML='<span style=color:#ef4444;font-size:.75rem>加载失败</span>';
     }
-  }).catch(()=>{
-    el.innerHTML='<span style=color:#ef4444;font-size:.75rem>网络错误</span>';
   });
 }
 function renderAvailableNodes(){
@@ -490,6 +548,12 @@ function collectConfig(){
       cpu_usage_high:parseInt($('cpuUsageHigh').value)||0,
       mem_usage_high:parseInt($('memUsageHigh').value)||0,
       cooldown:parseInt($('alertCooldown').value)||30,
+      battery_low_interval:Math.max(1,parseInt($('batteryLowInterval').value)||5),
+      battery_temp_high_interval:Math.max(1,parseInt($('batteryTempHighInterval').value)||10),
+      wifi_rssi_weak_interval:Math.max(1,parseInt($('wifiRssiWeakInterval').value)||10),
+      disk_usage_high_interval:Math.max(1,parseInt($('diskUsageHighInterval').value)||10),
+      cpu_usage_high_interval:Math.max(1,parseInt($('cpuUsageHighInterval').value)||10),
+      mem_usage_high_interval:Math.max(1,parseInt($('memUsageHighInterval').value)||10),
     },
     daily_report:{
       enabled:$('drEnabled').checked,
@@ -558,22 +622,24 @@ async function sendDailyReportNow(){
   btn.disabled=false;btn.innerHTML=old;
 }
 async function testDeviceAlerts(){
-  const cfg=collectConfig();
-  if(!cfg.smtp_user||!cfg.smtp_pass||!cfg.to){show('请先填写 SMTP 配置并保存');return}
-  // 先保存当前配置，确保后端使用最新阈值
-  setStatus('保存当前阈值并触发测试告警...');
-  try{
-    const sr=await fetch('/api/notify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(cfg)});
-    const sd=await sr.json();
-    if(!sd.ok){show(sd.error||'保存失败，无法测试');setStatus(sd.error||'保存失败','err');return}
-  }catch(e){show('保存配置网络错误: '+e.message);setStatus('网络错误: '+e.message,'err');return}
-  // 触发测试告警
-  try{
-    const r=await fetch('/api/notify/test-device',{method:'POST'});
-    const d=await r.json();
-    if(d.ok){show(d.msg||'测试告警已发送');setStatus('测试告警已发送，请查收邮件','ok')}
-    else{show(d.error||'发送失败');setStatus(d.error||'发送失败','err')}
-  }catch(e){show('网络错误: '+e.message);setStatus('网络错误: '+e.message,'err')}
+  await btnBusy($('testDeviceBtn'),'测试中', async ()=>{
+    const cfg=collectConfig();
+    if(!cfg.smtp_user||!cfg.smtp_pass||!cfg.to){show('请先填写 SMTP 配置并保存');return}
+    // 先保存当前配置，确保后端使用最新阈值
+    setStatus('保存当前阈值并触发测试告警...');
+    try{
+      const sr=await fetch('/api/notify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(cfg)});
+      const sd=await sr.json();
+      if(!sd.ok){show(sd.error||'保存失败，无法测试');setStatus(sd.error||'保存失败','err');return}
+    }catch(e){show('保存配置网络错误: '+e.message);setStatus('网络错误: '+e.message,'err');return}
+    // 触发测试告警
+    try{
+      const r=await fetch('/api/notify/test-device',{method:'POST'});
+      const d=await r.json();
+      if(d.ok){show(d.msg||'测试告警已发送');setStatus('测试告警已发送，请查收邮件','ok')}
+      else{show(d.error||'发送失败');setStatus(d.error||'发送失败','err')}
+    }catch(e){show('网络错误: '+e.message);setStatus('网络错误: '+e.message,'err')}
+  });
 }
 var proxyCheckPolling=null;
 async function runProxyCheck(){
@@ -634,23 +700,26 @@ async function runProxyCheck(){
   }catch(e){s.textContent='网络错误: '+e.message;s.className='status err';btn.disabled=false;btn.innerHTML=old;}
 }
 async function loadProxyStatus(){
-  const s=$('proxyStatus');
-  s.textContent='加载中...';
-  s.className='status';
-  try{
-    const r=await fetch('/api/proxy-check/status');
-    const d=await r.json();
-    if(d.ok!==false){
-      let info='状态: '+(d.last_check?'上次检测: '+fmtTime(d.last_check):'未检测');
-      if(d.current_node)info+=', 当前节点: '+esc(d.current_node);
-      info+=', 候选: '+(d.candidate_nodes||[]).length+' 个';
-      s.textContent=info;
-      s.className='status ok';
-    }else{
-      s.textContent=d.error||'获取状态失败';
-      s.className='status err';
-    }
-  }catch(e){s.textContent='网络错误: '+e.message;s.className='status err'}
+  const btn=$('loadProxyStatusBtn');
+  await btnBusy(btn,'加载中', async ()=>{
+    const s=$('proxyStatus');
+    s.textContent='加载中...';
+    s.className='status';
+    try{
+      const r=await fetch('/api/proxy-check/status');
+      const d=await r.json();
+      if(d.ok!==false){
+        let info='状态: '+(d.last_check?'上次检测: '+fmtTime(d.last_check):'未检测');
+        if(d.current_node)info+=', 当前节点: '+esc(d.current_node);
+        info+=', 候选: '+(d.candidate_nodes||[]).length+' 个';
+        s.textContent=info;
+        s.className='status ok';
+      }else{
+        s.textContent=d.error||'获取状态失败';
+        s.className='status err';
+      }
+    }catch(e){s.textContent='网络错误: '+e.message;s.className='status err'}
+  });
 }
 function toggleCard(id){
   const el=$(id);

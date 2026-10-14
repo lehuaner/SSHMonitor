@@ -651,6 +651,22 @@ const server = createServer(async (q, r) => {
       }
     }
 
+    // ====== 设备采样历史（落库数据只读接口） ======
+    if (q.url === '/api/device-status' && q.method === 'GET') {
+      try {
+        const f = DATA_DIR + '/device_samples.jsonl';
+        if (!existsSync(f)) { send(200, JSON.stringify({ ok: true, latest: {}, recent: [] })); return; }
+        const lines = readFileSync(f, 'utf8').trim().split('\n').filter(Boolean).slice(-800);
+        const samples = lines.map(l => { try { return JSON.parse(l); } catch { return null; } }).filter(Boolean);
+        const latest = {};
+        for (const s of samples) latest[s.key] = { ts: s.ts, value: s.value };
+        send(200, JSON.stringify({ ok: true, latest, recent: samples }));
+      } catch (e) {
+        send(500, JSON.stringify({ ok: false, error: e && e.message }));
+      }
+      return;
+    }
+
     // ====== 每日日报 API（统一入口：预览 / 立即发送） ======
     if (q.url === '/api/daily-report/preview' && q.method === 'POST') {
       try {

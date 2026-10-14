@@ -16,6 +16,12 @@ export default {
       const headers = new Headers(request.headers);
       headers.delete('Host');
       headers.delete('content-length');
+      // t 域名已纳入 Cloudflare Access：Pages Function 内部回源必须带服务令牌才能过门禁。
+      // 密钥来自 Pages 环境变量（CF_ACCESS_CLIENT_ID / CF_ACCESS_CLIENT_SECRET），绝不写死进源码/仓库。
+      if (env.CF_ACCESS_CLIENT_ID && env.CF_ACCESS_CLIENT_SECRET) {
+        headers.set('CF-Access-Client-Id', env.CF_ACCESS_CLIENT_ID);
+        headers.set('CF-Access-Client-Secret', env.CF_ACCESS_CLIENT_SECRET);
+      }
       let body;
       if (request.method !== 'GET' && request.method !== 'HEAD') {
         body = await request.text();

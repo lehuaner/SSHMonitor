@@ -1,4 +1,4 @@
-import { writeFileSync } from 'node:fs';
+import { writeFileSync, readFileSync, appendFileSync, statSync } from 'node:fs';
 import { run, loadJSON, saveJSON, fetchJson, pickProxyNode, HOME, DATA_DIR, procKeyword } from './utils.js';
 import { writeLog, readLogTail } from './logger.js';
 import { recordAlertEvent } from './alert-events.js';
@@ -39,6 +39,13 @@ const defaultConfig = {
     cpu_usage_high: 90,     // CPU 使用率高于此值告警（持续）
     mem_usage_high: 90,     // 内存使用率高于此值告警
     cooldown: 30,           // 同一告警冷却时间（分钟）
+    // ★每条指标独立的采集频率（分钟），非统一设置。电池默认更密(5min)以捕捉"越冲越少"，其余10min。
+    battery_low_interval: 5,
+    battery_temp_high_interval: 10,
+    wifi_rssi_weak_interval: 10,
+    disk_usage_high_interval: 10,
+    cpu_usage_high_interval: 10,
+    mem_usage_high_interval: 10,
   },
   // ★每日日报：取代旧的「按账号、按到期批次逐封发」的积分过期提醒。
   //   每天固定时刻只发一封，汇总积分过期 / 代理连通 / 签到 / 设备健康 / 消耗预估 / 当日告警。
@@ -88,6 +95,12 @@ if (!mailConfig.device_alerts) {
   if (da.cpu_usage_high === undefined) da.cpu_usage_high = def.cpu_usage_high;
   if (da.mem_usage_high === undefined) da.mem_usage_high = def.mem_usage_high;
   if (da.cooldown === undefined) da.cooldown = def.cooldown;
+  if (da.battery_low_interval === undefined) da.battery_low_interval = def.battery_low_interval;
+  if (da.battery_temp_high_interval === undefined) da.battery_temp_high_interval = def.battery_temp_high_interval;
+  if (da.wifi_rssi_weak_interval === undefined) da.wifi_rssi_weak_interval = def.wifi_rssi_weak_interval;
+  if (da.disk_usage_high_interval === undefined) da.disk_usage_high_interval = def.disk_usage_high_interval;
+  if (da.cpu_usage_high_interval === undefined) da.cpu_usage_high_interval = def.cpu_usage_high_interval;
+  if (da.mem_usage_high_interval === undefined) da.mem_usage_high_interval = def.mem_usage_high_interval;
 }
 
 // 每日日报配置向后兼容：旧 mail_config.json 缺该块时补默认
@@ -174,11 +187,44 @@ async function sendDeviceAlert(key, subject, body) {
   if (sent) deviceAlertCooldown[key] = now;
 }
 
+// 设备采样落库：每条采样追加一行 JSONL {ts,key,value}
+const DEVICE_SAMPLE_FILE = DATA_DIR + '/device_samples.jsonl';
+const DEVICE_SAMPLE_MAX = 5000;   // 轻量轮转上限（行），避免手机端无限增长
+const lastDeviceSample = {};       // cfgKey -> 上次采样时间戳(ms)
+
+// 追加一条设备采样并做轻量轮转
+function storeDeviceSample(key, value) {
+  try {
+    appendFileSync(DEVICE_SAMPLE_FILE, JSON.stringify({ ts: new Date().toISOString(), key, value }) + '\n');
+    try {
+      const st = statSync(DEVICE_SAMPLE_FILE);
+      if (st.size > 2 * 1024 * 1024) {
+        const lines = readFileSync(DEVICE_SAMPLE_FILE, 'utf8').split('\n');
+        const kept = lines.slice(-DEVICE_SAMPLE_MAX);
+        writeFileSync(DEVICE_SAMPLE_FILE, kept.join('\n') + (kept.length ? '\n' : ''));
+      }
+    } catch {}
+  } catch {}
+}
+
 export async function checkDeviceAlerts() {
   const cfg = mailConfig.device_alerts;
   if (!mailConfig.enabled || !cfg || !cfg.enabled) return;
-
-  // 采集设备数据
+  const now = Date.now();
+  // ★每条指标按各自采集频率独立判断是否到采样点（非统一间隔）
+  const isDue = (cfgKey, intervalKey, def) => {
+    const interval = Math.max(1, Number(cfg[intervalKey]) || def) * 60000;
+    return (now - (lastDeviceSample[cfgKey] || 0)) >= interval;
+  };
+  const due = new Set();
+  if (isDue('battery_low', 'battery_low_interval', 5)) due.add('battery_low');
+  if (isDue('battery_temp_high', 'battery_temp_high_interval', 10)) due.add('battery_temp_high');
+  if (isDue('wifi_rssi_weak', 'wifi_rssi_weak_interval', 10)) due.add('wifi_rssi_weak');
+  if (isDue('disk_usage_high', 'disk_usage_high_interval', 10)) due.add('disk_usage_high');
+  if (isDue('cpu_usage_high', 'cpu_usage_high_interval', 10)) due.add('cpu_usage_high');
+  if (isDue('mem_usage_high', 'mem_usage_high_interval', 10)) due.add('mem_usage_high');
+  if (due.size === 0) return; // 本次无指标到采样点，轻量跳过
+  // 采集设备数据（一次采集，供所有到点的指标复用）
   const [memInfo, diskRaw, batteryRaw, wifiRaw, psAux] = await Promise.all([
     run('cat /proc/meminfo'),
     // 只取 /data 分区（Android 根分区 / 是只读系统分区，100% 是正常的，不需要监控）
@@ -187,107 +233,144 @@ export async function checkDeviceAlerts() {
     run('termux-wifi-connectioninfo 2>/dev/null'),
     run('ps aux'),
   ]);
-
   const alerts = [];
-
-  // 1. 电池电量
-  if (cfg.battery_low > 0) {
-    try {
-      const batt = JSON.parse(batteryRaw);
-      const pct = batt.percentage ?? batt.level ?? 0;
-      const status = (batt.status || '').toUpperCase();
-      const plugged = (batt.plugged || '').toUpperCase();
-      // 充电中：不发送电量告警（温度告警仍单独处理）
-      const charging = status === 'CHARGING' || status === 'FULL' || (plugged !== 'UNPLUGGED' && plugged !== '');
-      if (charging) {
-        // 充电中重置记录，电量回升后重新开始计数
-        lastBatteryAlertPct = null;
-      } else if (pct <= cfg.battery_low) {
-        // 电量低于阈值：每下降 1% 发送一次
-        if (lastBatteryAlertPct === null || pct < lastBatteryAlertPct) {
-          lastBatteryAlertPct = pct;
-          alerts.push({ key: 'battery_low', subject: `[告警] 电池电量低: ${pct}%`, body: `电池电量: ${pct}%\n阈值: ${cfg.battery_low}%\n状态: ${batt.status}\n温度: ${batt.temperature}°C\n\n请及时充电！` });
+  // 1. 电池电量（落库 battery_pct）
+  if (due.has('battery_low')) {
+    lastDeviceSample['battery_low'] = now;
+    if (cfg.battery_low > 0) {
+      try {
+        const batt = JSON.parse(batteryRaw);
+        const pct = batt.percentage ?? batt.level ?? 0;
+        storeDeviceSample('battery_pct', pct);
+        const status = (batt.status || '').toUpperCase();
+        const plugged = (batt.plugged || '').toUpperCase();
+        // 充电中：不发送电量告警（温度告警仍单独处理）
+        const charging = status === 'CHARGING' || status === 'FULL' || (plugged !== 'UNPLUGGED' && plugged !== '');
+        if (charging) {
+          // 充电中重置记录，电量回升后重新开始计数
+          lastBatteryAlertPct = null;
+        } else if (pct <= cfg.battery_low) {
+          // 电量低于阈值：每下降 1% 发送一次
+          if (lastBatteryAlertPct === null || pct < lastBatteryAlertPct) {
+            lastBatteryAlertPct = pct;
+            alerts.push({ key: 'battery_low', subject: `[告警] 电池电量低: ${pct}%`, body: `电池电量: ${pct}%\n阈值: ${cfg.battery_low}%\n状态: ${batt.status}\n温度: ${batt.temperature}°C\n\n请及时充电！` });
+          }
+        } else {
+          // 电量高于阈值：重置记录
+          lastBatteryAlertPct = null;
         }
-      } else {
-        // 电量高于阈值：重置记录
-        lastBatteryAlertPct = null;
-      }
-    } catch {}
+      } catch {}
+    }
   }
-
-  // 2. 电池温度
-  if (cfg.battery_temp_high > 0) {
-    try {
-      const batt = JSON.parse(batteryRaw);
-      const temp = parseFloat(batt.temperature) || 0;
-      if (temp >= cfg.battery_temp_high) {
-        alerts.push({ key: 'battery_temp', subject: `[告警] 电池温度过高: ${temp}°C`, body: `电池温度: ${temp}°C\n阈值: ${cfg.battery_temp_high}°C\n电量: ${batt.percentage}%\n\n请检查设备散热！` });
-      }
-    } catch {}
+  // 2. 电池温度（落库 battery_temp）
+  if (due.has('battery_temp_high')) {
+    lastDeviceSample['battery_temp_high'] = now;
+    if (cfg.battery_temp_high > 0) {
+      try {
+        const batt = JSON.parse(batteryRaw);
+        const temp = parseFloat(batt.temperature) || 0;
+        storeDeviceSample('battery_temp', temp);
+        if (temp >= cfg.battery_temp_high) {
+          alerts.push({ key: 'battery_temp', subject: `[告警] 电池温度过高: ${temp}°C`, body: `电池温度: ${temp}°C\n阈值: ${cfg.battery_temp_high}°C\n电量: ${batt.percentage}%\n\n请检查设备散热！` });
+        }
+      } catch {}
+    }
   }
-
-  // 3. WiFi 信号
-  if (cfg.wifi_rssi_weak < 0) {
-    try {
-      const wifi = JSON.parse(wifiRaw);
-      const rssi = wifi.rssi ?? 0;
-      if (rssi !== 0 && rssi <= cfg.wifi_rssi_weak) {
-        alerts.push({ key: 'wifi_weak', subject: `[告警] WiFi 信号弱: ${rssi}dBm`, body: `WiFi 信号: ${rssi}dBm\n阈值: ${cfg.wifi_rssi_weak}dBm\nIP: ${wifi.ip || '--'}\n速率: ${wifi.link_speed_mbps || 0}Mbps\n\n请检查网络连接！` });
-      }
-    } catch {}
+  // 3. WiFi 信号（落库 wifi_rssi）
+  if (due.has('wifi_rssi_weak')) {
+    lastDeviceSample['wifi_rssi_weak'] = now;
+    if (cfg.wifi_rssi_weak < 0) {
+      try {
+        const wifi = JSON.parse(wifiRaw);
+        const rssi = wifi.rssi ?? 0;
+        storeDeviceSample('wifi_rssi', rssi);
+        if (rssi !== 0 && rssi <= cfg.wifi_rssi_weak) {
+          alerts.push({ key: 'wifi_weak', subject: `[告警] WiFi 信号弱: ${rssi}dBm`, body: `WiFi 信号: ${rssi}dBm\n阈值: ${cfg.wifi_rssi_weak}dBm\nIP: ${wifi.ip || '--'}\n速率: ${wifi.link_speed_mbps || 0}Mbps\n\n请检查网络连接！` });
+        }
+      } catch {}
+    }
   }
-
-  // 4. 磁盘使用率 - 逐行解析，找到百分比列（以 % 结尾），避免列索引错位
-  if (cfg.disk_usage_high > 0) {
-    const lines = diskRaw.trim().split('\n');
-    for (const line of lines) {
-      const cols = line.trim().split(/\s+/);
-      // 找到百分比列（以 % 结尾的列）
-      const pctIdx = cols.findIndex(c => c.endsWith('%'));
-      if (pctIdx >= 0) {
-        const pct = parseInt(cols[pctIdx]) || 0;
-        const mount = cols[cols.length - 1];
-        if (pct >= cfg.disk_usage_high) {
-          alerts.push({ key: 'disk_high', subject: `[告警] 磁盘空间不足: ${pct}%`, body: `挂载点: ${mount}\n磁盘使用: ${pct}%\n阈值: ${cfg.disk_usage_high}%\n\n请清理磁盘空间！` });
+  // 4. 磁盘使用率 - 逐行解析，找到百分比列（以 % 结尾），避免列索引错位（落库 disk_usage）
+  if (due.has('disk_usage_high')) {
+    lastDeviceSample['disk_usage_high'] = now;
+    if (cfg.disk_usage_high > 0) {
+      const lines = diskRaw.trim().split('\n');
+      for (const line of lines) {
+        const cols = line.trim().split(/\s+/);
+        // 找到百分比列（以 % 结尾的列）
+        const pctIdx = cols.findIndex(c => c.endsWith('%'));
+        if (pctIdx >= 0) {
+          const pct = parseInt(cols[pctIdx]) || 0;
+          const mount = cols[cols.length - 1];
+          storeDeviceSample('disk_usage', pct);
+          if (pct >= cfg.disk_usage_high) {
+            alerts.push({ key: 'disk_high', subject: `[告警] 磁盘空间不足: ${pct}%`, body: `挂载点: ${mount}\n磁盘使用: ${pct}%\n阈值: ${cfg.disk_usage_high}%\n\n请清理磁盘空间！` });
+          }
           break; // 只报告第一个超阈值的分区
         }
       }
     }
   }
-
-  // 5. CPU 使用率
-  if (cfg.cpu_usage_high > 0) {
-    const psLines = psAux.trim().split('\n');
-    let cpuSum = 0;
-    const cores = 8;
-    for (let i = 1; i < psLines.length; i++) {
-      const cols = psLines[i].trim().split(/\s+/);
-      const val = parseFloat(cols[2]);
-      if (!isNaN(val)) cpuSum += val;
-    }
-    const cpuUsage = Math.round(cpuSum / cores * 10) / 10;
-    if (cpuUsage >= cfg.cpu_usage_high) {
-      alerts.push({ key: 'cpu_high', subject: `[告警] CPU 使用率过高: ${cpuUsage}%`, body: `CPU 使用率: ${cpuUsage}%\n阈值: ${cfg.cpu_usage_high}%\n核心数: ${cores}\n\n请检查高负载进程！` });
-    }
-  }
-
-  // 6. 内存使用率
-  if (cfg.mem_usage_high > 0) {
-    const m = {};
-    memInfo.replace(/(\w+):\s+(\d+)/g, (_, k, v) => { m[k] = +v; return ''; });
-    const memT = m.MemTotal ? Math.round(m.MemTotal / 1024) : 0;
-    const memA = m.MemAvailable ? Math.round(m.MemAvailable / 1024) : 0;
-    const memU = memT - memA;
-    const memPct = memT ? Math.round(memU / memT * 100) : 0;
-    if (memPct >= cfg.mem_usage_high) {
-      alerts.push({ key: 'mem_high', subject: `[告警] 内存使用率过高: ${memPct}%`, body: `内存使用: ${memU}MB / ${memT}MB (${memPct}%)\n阈值: ${cfg.mem_usage_high}%\n可用: ${memA}MB\n\n请检查内存占用进程！` });
+  // 5. CPU 使用率（落库 cpu_usage）
+  if (due.has('cpu_usage_high')) {
+    lastDeviceSample['cpu_usage_high'] = now;
+    if (cfg.cpu_usage_high > 0) {
+      const psLines = psAux.trim().split('\n');
+      let cpuSum = 0;
+      const cores = 8;
+      for (let i = 1; i < psLines.length; i++) {
+        const cols = psLines[i].trim().split(/\s+/);
+        const val = parseFloat(cols[2]);
+        if (!isNaN(val)) cpuSum += val;
+      }
+      const cpuUsage = Math.round(cpuSum / cores * 10) / 10;
+      storeDeviceSample('cpu_usage', cpuUsage);
+      if (cpuUsage >= cfg.cpu_usage_high) {
+        alerts.push({ key: 'cpu_high', subject: `[告警] CPU 使用率过高: ${cpuUsage}%`, body: `CPU 使用率: ${cpuUsage}%\n阈值: ${cfg.cpu_usage_high}%\n核心数: ${cores}\n\n请检查高负载进程！` });
+      }
     }
   }
-
+  // 6. 内存使用率（落库 mem_usage）
+  if (due.has('mem_usage_high')) {
+    lastDeviceSample['mem_usage_high'] = now;
+    if (cfg.mem_usage_high > 0) {
+      const m = {};
+      memInfo.replace(/(\w+):\s+(\d+)/g, (_, k, v) => { m[k] = +v; return ''; });
+      const memT = m.MemTotal ? Math.round(m.MemTotal / 1024) : 0;
+      const memA = m.MemAvailable ? Math.round(m.MemAvailable / 1024) : 0;
+      const memU = memT - memA;
+      const memPct = memT ? Math.round(memU / memT * 100) : 0;
+      storeDeviceSample('mem_usage', memPct);
+      if (memPct >= cfg.mem_usage_high) {
+        alerts.push({ key: 'mem_high', subject: `[告警] 内存使用率过高: ${memPct}%`, body: `内存使用: ${memU}MB / ${memT}MB (${memPct}%)\n阈值: ${cfg.mem_usage_high}%\n可用: ${memA}MB\n\n请检查内存占用进程！` });
+      }
+    }
+  }
   // 发送所有告警
   for (const a of alerts) {
     await sendDeviceAlert(a.key, a.subject, a.body);
   }
+}
+
+// 设备采样调度器：每分钟 tick 一次，由各指标自身频率决定是否真正采样/落库。
+// ★与统一巡检(runScheduledCheck)解耦：统一巡检按代理检测间隔(默认10min)跑，太粗；
+//   电池需 5min 级采样以捕捉"越冲越少"，故独立 60s tick + 各指标独立间隔。
+let deviceSamplerStarted = false;
+export function startDeviceSampler() {
+  if (deviceSamplerStarted) return;
+  deviceSamplerStarted = true;
+  writeLog(SCHEDULER_LOG_PATH, `${new Date().toISOString()} 设备采样调度器启动 | 各指标独立频率`);
+  runDeviceSampler();
+}
+async function runDeviceSampler() {
+  try {
+    await checkDeviceAlerts();
+  } catch (err) {
+    try {
+      writeLog(SCHEDULER_LOG_PATH, `${new Date().toISOString()} 设备采样异常 | ${err.message}`);
+    } catch {}
+  }
+  setTimeout(runDeviceSampler, 60 * 1000);
 }
 
 // ====== Proxy Connectivity Check - Helpers ======
@@ -831,7 +914,6 @@ async function runScheduledCheck() {
   try {
     await checkProcs();
     await checkProxy();
-    await checkDeviceAlerts();
     await autoRefreshSubscriptions();
     nextInterval = (mailConfig.proxy_check?.check_interval || 10) * 60 * 1000;
   } catch (err) {
@@ -859,6 +941,7 @@ export function startNotifyScheduler() {
   schedulerStarted = true;
   writeLog(SCHEDULER_LOG_PATH, `${new Date().toISOString()} 调度器启动 | checkProcs + checkProxy + checkDeviceAlerts`);
   runScheduledCheck();
+  startDeviceSampler();   // ★设备采样独立 60s tick（各指标独立频率）
   // 延迟 30 秒后执行第一次进程检查
   setTimeout(checkProcs, 30000);
 }
