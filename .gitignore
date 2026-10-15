@@ -36,6 +36,10 @@ examples/_*_probe.json
 *.token
 *.pem
 *.key
+# Cloudflare Access 机器通道服务令牌（Client ID/Secret）；正常存设备 ~/.monitor_data/machine_access.json，本地副本也严禁入库
+**/machine_access.json
+# 外部心跳部署配置（含 gw_token Bearer 与 probeKey，由 _tmp_device/build_hb_config.mjs 生成，绝不入库）
+tools/hb.config.json
 
 # 通用环境变量
 .env

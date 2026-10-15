@@ -46,6 +46,7 @@ const defaultConfig = {
     disk_usage_high_interval: 10,
     cpu_usage_high_interval: 10,
     mem_usage_high_interval: 10,
+    battery_discharge_while_plugged: 50,   // 插电时净放电阈值(mA)：净电流低于此值(更负)视为"越充越少"(用电功率>充电功率)
   },
   // ★每日日报：取代旧的「按账号、按到期批次逐封发」的积分过期提醒。
   //   每天固定时刻只发一封，汇总积分过期 / 代理连通 / 签到 / 设备健康 / 消耗预估 / 当日告警。
@@ -101,6 +102,7 @@ if (!mailConfig.device_alerts) {
   if (da.disk_usage_high_interval === undefined) da.disk_usage_high_interval = def.disk_usage_high_interval;
   if (da.cpu_usage_high_interval === undefined) da.cpu_usage_high_interval = def.cpu_usage_high_interval;
   if (da.mem_usage_high_interval === undefined) da.mem_usage_high_interval = def.mem_usage_high_interval;
+  if (da.battery_discharge_while_plugged === undefined) da.battery_discharge_while_plugged = def.battery_discharge_while_plugged;
 }
 
 // 每日日报配置向后兼容：旧 mail_config.json 缺该块时补默认
@@ -175,6 +177,7 @@ export async function checkProcs() {
 // 电池电量告警：记录上次发送告警时的电量，用于实现"每下降 1% 发送一次"
 // 充电时跳过发送；电量回升到阈值以上后重置记录
 let lastBatteryAlertPct = null;
+let lastDischargeBad = false;   // ★越冲越少：上一采样是否已是"插电净放电"，用于去抖（连续2次才告警）
 
 // 带冷却的告警发送
 async function sendDeviceAlert(key, subject, body) {
@@ -234,18 +237,19 @@ export async function checkDeviceAlerts() {
     run('ps aux'),
   ]);
   const alerts = [];
-  // 1. 电池电量（落库 battery_pct）
+  // 1. 电池电量 / 净电流（落库 battery_pct / battery_current）
   if (due.has('battery_low')) {
     lastDeviceSample['battery_low'] = now;
-    if (cfg.battery_low > 0) {
-      try {
-        const batt = JSON.parse(batteryRaw);
-        const pct = batt.percentage ?? batt.level ?? 0;
-        storeDeviceSample('battery_pct', pct);
-        const status = (batt.status || '').toUpperCase();
-        const plugged = (batt.plugged || '').toUpperCase();
-        // 充电中：不发送电量告警（温度告警仍单独处理）
-        const charging = status === 'CHARGING' || status === 'FULL' || (plugged !== 'UNPLUGGED' && plugged !== '');
+    try {
+      const batt = JSON.parse(batteryRaw);
+      const pct = batt.percentage ?? batt.level ?? 0;
+      const status = (batt.status || '').toUpperCase();
+      const plugged = (batt.plugged || '').toUpperCase();
+      storeDeviceSample('battery_pct', pct);
+      const netuA = Number(batt.current) || 0;
+      storeDeviceSample('battery_current', netuA);   // 净电流(µA)：负=放电，正=充电；"越冲越少"时持续为负
+      const charging = status === 'CHARGING' || status === 'FULL' || (plugged !== 'UNPLUGGED' && plugged !== '');
+      if (cfg.battery_low > 0) {
         if (charging) {
           // 充电中重置记录，电量回升后重新开始计数
           lastBatteryAlertPct = null;
@@ -259,8 +263,18 @@ export async function checkDeviceAlerts() {
           // 电量高于阈值：重置记录
           lastBatteryAlertPct = null;
         }
-      } catch {}
-    }
+      }
+      // ★越冲越少检测：插电(电缆在) 但净电流持续为负（用电功率 > 充电功率）。
+      //   充电中(净电流为正)或浮充保持(≈0)不触发；需连续 2 次采样为负去抖，避免瞬时负载尖峰误报。
+      if (cfg.battery_discharge_while_plugged > 0) {
+        const pluggedNow = plugged !== 'UNPLUGGED' && plugged !== '';
+        const bad = pluggedNow && netuA < -Math.abs(cfg.battery_discharge_while_plugged) * 1000;
+        if (bad && lastDischargeBad) {
+          alerts.push({ key: 'battery_discharge', subject: `[告警] 插电仍净放电(越充越少): ${Math.round(netuA / 1000)}mA`, body: `设备插电但电池净放电，可能用电功率高于充电功率。\n净电流: ${Math.round(netuA / 1000)}mA（负=放电）\n电量: ${pct}%\n状态: ${batt.status} / ${batt.plugged}\n温度: ${batt.temperature}°C` });
+        }
+        lastDischargeBad = bad;
+      }
+    } catch {}
   }
   // 2. 电池温度（落库 battery_temp）
   if (due.has('battery_temp_high')) {

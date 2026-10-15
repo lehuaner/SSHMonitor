@@ -28,7 +28,10 @@ try { chcp.com 65001 > $null } catch {}
 $CLIENT_ID     = 'ono9krqynydwx5'
 $CLIENT_SECRET = '-'
 $EXCHANGE_PATH = '/cloudide/api/v3/trae/oauth/ExchangeToken'
-$BRANDS        = @('Trae CN', 'TRAE SOLO CN', 'Trae', 'TRAE SOLO')
+# ★ 2026-10-14 合并后新增 'TRAE'：TraeWork 与 TraeCode 已融合为全新「TRAE」，
+#   客户端 AppData 文件夹名即 `TRAE`（与旧 `Trae`/`Trae CN` 并存）。其实测续期日志仍用
+#   ClientID ono9krqynydwx5 + 同一条 ExchangeToken 端点，故方案一完全兼容，只需让本脚本认得它。
+$BRANDS        = @('TRAE', 'Trae CN', 'TRAE SOLO CN', 'Trae', 'TRAE SOLO')
 
 # 服务端地址：由签到面板在【下载那一刻】把它自己 origin 写进 .bat 外壳的
 # `set "TRAE_API_BASE=..."` 明文行（不放在 base64 载荷里，否则无法替换）。
@@ -301,7 +304,8 @@ foreach ($brand in $BRANDS) {
 
 if ($records.Count -eq 0) {
   Write-Host '没有找到任何已登录的 Trae 客户端。' -ForegroundColor Yellow
-  Write-Host '请先在 Trae CN 客户端里登录目标账号（必须用 Trae CN，不要用 TRAE SOLO CN），然后重跑本脚本。'
+  Write-Host '请先在 Trae 客户端里登录目标账号（TraeWork/TraeCode 已合并为全新「TRAE」；'
+  Write-Host '不要用 TRAE SOLO CN，它签发的凭证方案一不支持），然后重跑本脚本。'
   exit 1
 }
 
@@ -339,9 +343,9 @@ foreach ($rec in $records) {
     Write-Host ('   ✗ 不可用：{0}' -f $res.msg) -ForegroundColor Red
     if ($rec.brand -like 'TRAE SOLO*') {
       Write-Host '     → 这是 TRAE SOLO CN 签发的凭证，方案一不支持（它要求设备签名）。' -ForegroundColor DarkYellow
-      Write-Host '       请在 Trae CN 客户端里登录该账号后重跑本脚本。' -ForegroundColor DarkYellow
+      Write-Host '       请在 Trae/TRAE（非 SOLO）客户端里登录该账号后重跑本脚本。' -ForegroundColor DarkYellow
     } elseif ($res.msg -match '10101|not matched') {
-      Write-Host '     → 该凭证不属于 Trae CN 客户端，请在 Trae CN 里登录后重跑。' -ForegroundColor DarkYellow
+      Write-Host '     → 该凭证不属于 Trae/TRAE 客户端，请在 Trae/TRAE 里登录后重跑。' -ForegroundColor DarkYellow
     } elseif ($res.msg -match '20101') {
       Write-Host '     → 该凭证已失效，请在 Trae CN 客户端重新登录后重跑。' -ForegroundColor DarkYellow
     }

@@ -265,6 +265,12 @@ textarea:focus,input:focus{border-color:#38bdf8}
       <div class="mf freq"><label>采集(分)</label><input id=memUsageHighInterval type=number value=10 min=1></div>
     </div>
   </div>
+  <div class=metric-item>
+    <label>插电净放电阈值 (mA)</label>
+    <div class=metric-fields>
+      <div class=mf><label>阈值</label><input id=batteryDischargeWhilePlugged type=number value=50></div>
+    </div>
+  </div>
 </div>
 <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px">
 <div><label style="font-size:.7rem;color:#94a3b8">告警冷却 (分钟)</label><input id=alertCooldown type=number value=30 style="width:100%"></div>
@@ -272,7 +278,7 @@ textarea:focus,input:focus{border-color:#38bdf8}
 <button class="btn btn-warn btn-sm" id=testDeviceBtn onclick=testDeviceAlerts()>&#9888; 测试告警</button>
 </div>
 </div>
-<div class=note style="margin-top:12px">每个指标按各自「采集(分)」频率采样并落库（可单独设置，默认电池 5 分钟、其余 10 分钟）；低于阈值时发送告警邮件（同一告警冷却时间内不重复发送）。设为 0 可禁用对应项目。</div>
+<div class=note style="margin-top:12px">每个指标按各自「采集(分)」频率采样并落库（可单独设置，默认电池 5 分钟、其余 10 分钟）；低于阈值时发送告警邮件（同一告警冷却时间内不重复发送）。设为 0 可禁用对应项目。<br>「插电净放电阈值」随电池采集频率（5 分钟）采样，净电流低于该负值(mA)且连续 2 次则告警——用于捕捉"越充越少"（插电但用电功率高于充电功率）。</div>
 </div>
 </div>
 <div class="card collapsible" id=dailyReportCard>
@@ -421,6 +427,7 @@ function renderForm(c){
   $('memUsageHigh').value=da.mem_usage_high??90;
   $('alertCooldown').value=da.cooldown??30;
   $('batteryLowInterval').value=da.battery_low_interval??5;
+  $('batteryDischargeWhilePlugged').value=da.battery_discharge_while_plugged??50;
   $('batteryTempHighInterval').value=da.battery_temp_high_interval??10;
   $('wifiRssiWeakInterval').value=da.wifi_rssi_weak_interval??10;
   $('diskUsageHighInterval').value=da.disk_usage_high_interval??10;
@@ -549,6 +556,7 @@ function collectConfig(){
       mem_usage_high:parseInt($('memUsageHigh').value)||0,
       cooldown:parseInt($('alertCooldown').value)||30,
       battery_low_interval:Math.max(1,parseInt($('batteryLowInterval').value)||5),
+      battery_discharge_while_plugged:Math.max(0,parseInt($('batteryDischargeWhilePlugged').value)||50),
       battery_temp_high_interval:Math.max(1,parseInt($('batteryTempHighInterval').value)||10),
       wifi_rssi_weak_interval:Math.max(1,parseInt($('wifiRssiWeakInterval').value)||10),
       disk_usage_high_interval:Math.max(1,parseInt($('diskUsageHighInterval').value)||10),
