@@ -7,8 +7,10 @@
  * ★凭证形态（与 Trae/WorkBuddy 的 Cookie 形态不同）：
  *   - 用户粘贴 refresh_token（30 天有效，登录客户端后从抓包/日志获取，或用本项目的「验证码登录」流程换取）
  *   - provider 每次签到前自动用 refresh_token 换新 access_token（24h），并写回 task.config.token /
- *     task.tokenExpiredAt / task.config.refreshTokenExpiresAt（调用方 persistTask 持久化）
- *   - refresh_token 实测不轮换：30 天窗口固定，到期前邮件提醒（probeSession 按 refresh JWT exp 探测）
+ *     task.config.refreshToken / task.tokenExpiredAt / task.config.refreshTokenExpiresAt（调用方 persistTask 持久化）
+ *   - ★refresh_token **会轮换**（2026-10-19 修正基线）：agent-refresh 每次响应都带一枚新的 30 天 refresh_token，
+ *     必须回写，否则下一天续期时旧串已被服务端弃用（400000 用户未登录），而面板还按新串到期显示「还剩 29 天」——
+ *     典型的「显示还有很久、实际已死」。只要 30 天内有一次成功签到即无限续（原「实测不轮换」结论已过时）。
  *   - access_token 剩余 <6h 才刷新（JWT 本地即可判断，无需网络）
  *
  * 协议细节见 ../checkin/autoclaw.js 文件头；E2E 实测记录（2026-09-18）：
@@ -52,7 +54,7 @@ function classify(err) {
  * 解析当前应使用的 access_token，必要时用 refresh_token 刷新：
  * - 无 refresh_token：直接用 config.token（仅旧任务兼容，24h 后自然失效）
  * - 有 refresh_token：token 缺失/解析失败/剩余不足 6h 时刷新，
- *   并写回 task.config.token / task.tokenExpiredAt / task.config.refreshTokenExpiresAt
+ *   并写回 task.config.token / task.config.refreshToken / task.tokenExpiredAt / task.config.refreshTokenExpiresAt
  */
 async function resolveToken(task) {
   const { refreshToken, token } = task.config;
@@ -68,6 +70,8 @@ async function resolveToken(task) {
   const client = new AutoClawClient({ refreshToken, deviceId: deviceIdFor(task) });
   const r = await client.refreshAccessToken();
   task.config.token = r.accessToken;
+  // ★上游会轮换 refresh_token（见文件头 2026-10-19 修正）：必须回写新串，否则下一天续期用旧串必被拒
+  if (r.refreshToken) task.config.refreshToken = r.refreshToken;
   task.config.refreshTokenExpiresAt = r.refreshExpMs;
   task.tokenExpiredAt = r.accessExpMs;
   return r.accessToken;
@@ -88,13 +92,13 @@ export default {
   capabilities: ['checkin', 'credits', 'credentialTest', 'status', 'totalCredits', 'sessionProbe', 'packages', 'smsLogin'],
   // 「可探活凭证」= refresh_token（30 天长期凭证）；token 是派生的 24h 短凭证
   sessionCredentialKeys: ['refreshToken'],
-  // ★卡片凭证行：AutoClaw 只有一套长期凭证 = refresh_token（30 天、实测不轮换）。
+  // ★卡片凭证行：AutoClaw 只有一套长期凭证 = refresh_token（30 天窗口、每次续期轮换出新串）。
   //   它的到期值落在 config.refreshTokenExpiresAt（登录/续期时写），
   //   探活又把同一个值写进 cookieExpiresAt（字段名叫 cookie，实为 RT 到期）。
   credDisplay: {
     ladder: [
       { label: 'Refresh Token', fields: ['refreshTokenExpiredAt', 'config.refreshTokenExpiresAt', 'cookieExpiresAt'], if: 'hasRefreshToken',
-        title: 'AutoClaw 维护链终点：refresh_token 30 天（实测不轮换，没人能替它续），到期后 access 将在 24h 内跟着死 → 再也签不了；点「验证码登录」一键重签。access_token（24h）是派生腿，每次签到自动换新、不构成终点' },
+        title: 'AutoClaw 维护链终点：refresh_token 每个 30 天窗口（每次成功签到自动轮换出新的 +30 天串，只要 30 天内有成功签到即无限续）。连续 30 天没签到成功才会断，断了点「验证码登录」一键重签。access_token（24h）是派生腿，每次签到自动换新、不构成终点' },
       { label: 'Access Token', fields: ['tokenExpiredAt'], if: 'hasToken && noRefreshToken',
         title: '24h 短凭证：此账号没配 refresh_token，没人能替它续，过期即再也签不了' },
       { label: 'Cookie', fields: ['cookieExpiresAt'], if: 'hasCookie',
@@ -321,8 +325,14 @@ export default {
       // refresh_token 存在但解析不出 exp：可能格式不对，做一次网络校验兜底
       try {
         const client = new AutoClawClient({ refreshToken, deviceId: deviceIdFor(task) });
-        await client.refreshAccessToken();
-        return { ok: true, isLogin: true, expiresAt: null };
+        const r = await client.refreshAccessToken();
+        // ★该调用会触发上游轮换：新串必须回写（调用方 checkCookieExpiryOnce → persistTask），
+        //   否则把轮换后的新串丢在内存里 = 磁盘上旧串作废、账号被自己弄死
+        if (r.refreshToken) task.config.refreshToken = r.refreshToken;
+        if (r.accessToken) task.config.token = r.accessToken;
+        if (r.refreshExpMs) task.config.refreshTokenExpiresAt = r.refreshExpMs;
+        if (r.accessExpMs) task.tokenExpiredAt = r.accessExpMs;
+        return { ok: true, isLogin: true, expiresAt: r.refreshExpMs || null };
       } catch (err) {
         const e = classify(err);
         if (e.kind === 'invalid') {

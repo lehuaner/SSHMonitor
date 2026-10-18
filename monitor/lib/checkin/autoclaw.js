@@ -25,7 +25,9 @@
  * 鉴权：
  *   - authorization: Bearer <access_token>（服务端返回的 token 自带 "Bearer " 前缀，原样携带即可）
  *   - 业务请求头带 x-version / x-request-id（uuid）与客户端 UA（网关未实测强校验 UA，但保持一致最稳）
- *   - refresh_token 实测不轮换（30 天固定窗口，exp 由 JWT 声明），每日刷新 access_token 即可免维护
+ *   - ★refresh_token **会轮换**（2026-10-19 修正，原「实测不轮换」结论已过时）：
+ *     每次 agent-refresh 响应都含一枚新的 30 天 refresh_token（新 iat/exp），旧串随后被服务端弃用；
+ *     调用方必须把响应里的 refresh_token 回写持久化（provider.resolveToken / probeSession 已处理）
  *   - access_token JWT claims: user_id / device_id / jti=手机号 / exp(24h)
  *
  * 签到行为（2026-09-18 实测）：
@@ -199,9 +201,9 @@ export class AutoClawClient {
 
   /**
    * 用 refresh_token 换新 access_token。
-   * 实测（2026-09-18）：返回的 access_token / refresh_token 均自带 "Bearer " 前缀；
-   * refresh_token 不轮换（iat/exp 不变），但这里仍把响应里的 refresh_token 原样带回，
-   * 万一服务端未来开始轮换，调用方可持久化新值跟随。
+   * 实测（2026-09-18 / 修正 2026-10-19）：返回的 access_token / refresh_token 均自带 "Bearer " 前缀；
+   * ★refresh_token **会轮换**（每次响应带新 iat/exp 的 30 天串，旧串随后被服务端弃用），
+   * 调用方必须把返回的 refreshToken 回写持久化（provider.resolveToken / probeSession 已处理）。
    * @returns {Promise<{accessToken:string, refreshToken:string, accessExpMs:number|null, refreshExpMs:number|null, userId:string|null}>}
    */
   async refreshAccessToken() {
