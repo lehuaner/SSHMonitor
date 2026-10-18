@@ -8,9 +8,10 @@
  *   - 用户粘贴 refresh_token（30 天有效，登录客户端后从抓包/日志获取，或用本项目的「验证码登录」流程换取）
  *   - provider 每次签到前自动用 refresh_token 换新 access_token（24h），并写回 task.config.token /
  *     task.config.refreshToken / task.tokenExpiredAt / task.config.refreshTokenExpiresAt（调用方 persistTask 持久化）
- *   - ★refresh_token **会轮换**（2026-10-19 修正基线）：agent-refresh 每次响应都带一枚新的 30 天 refresh_token，
- *     必须回写，否则下一天续期时旧串已被服务端弃用（400000 用户未登录），而面板还按新串到期显示「还剩 29 天」——
- *     典型的「显示还有很久、实际已死」。只要 30 天内有一次成功签到即无限续（原「实测不轮换」结论已过时）。
+ *   - ★refresh_token「临期续期换发」（2026-10-19 实测修正）：agent-refresh 响应始终带 refresh_token 字段——
+ *     新鲜串原样回显；临近到期（实测 29 天龄）续期时**换发新串（+30 天）并弃用旧串**。调用方必须无条件回写：
+ *     漏写换发的新串 ⇒ 旧串到期后下一次续期 400000 用户未登录，而面板按被丢弃新串到期显示「还剩 29 天」——
+ *     典型的「显示还有很久、实际已死」（10-18/19 真实事故）。只要 30 天内有一次成功签到即无限续。
  *   - access_token 剩余 <6h 才刷新（JWT 本地即可判断，无需网络）
  *
  * 协议细节见 ../checkin/autoclaw.js 文件头；E2E 实测记录（2026-09-18）：
@@ -70,7 +71,7 @@ async function resolveToken(task) {
   const client = new AutoClawClient({ refreshToken, deviceId: deviceIdFor(task) });
   const r = await client.refreshAccessToken();
   task.config.token = r.accessToken;
-  // ★上游会轮换 refresh_token（见文件头 2026-10-19 修正）：必须回写新串，否则下一天续期用旧串必被拒
+  // ★无条件回写（见文件头）：新鲜时同串无害；临期续期换发的新串不回写 ⇒ 旧串到期后必被拒
   if (r.refreshToken) task.config.refreshToken = r.refreshToken;
   task.config.refreshTokenExpiresAt = r.refreshExpMs;
   task.tokenExpiredAt = r.accessExpMs;
@@ -326,8 +327,8 @@ export default {
       try {
         const client = new AutoClawClient({ refreshToken, deviceId: deviceIdFor(task) });
         const r = await client.refreshAccessToken();
-        // ★该调用会触发上游轮换：新串必须回写（调用方 checkCookieExpiryOnce → persistTask），
-        //   否则把轮换后的新串丢在内存里 = 磁盘上旧串作废、账号被自己弄死
+        // ★该调用可能触发临期续期换发：新串必须回写（调用方 checkCookieExpiryOnce → persistTask），
+        //   否则换发后的新串被丢 = 磁盘上旧串已作废、账号被自己弄死
         if (r.refreshToken) task.config.refreshToken = r.refreshToken;
         if (r.accessToken) task.config.token = r.accessToken;
         if (r.refreshExpMs) task.config.refreshTokenExpiresAt = r.refreshExpMs;
