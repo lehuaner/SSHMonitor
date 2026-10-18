@@ -146,6 +146,8 @@
         "monitor/frontend/ico/codearts.svg": "CF_PAGES",
         "monitor/frontend/ico/officeace.png": "CF_PAGES",
         "monitor/frontend/ico/autoclaw.png": "CF_PAGES",
+        "monitor/frontend/favicon.ico": "CF_PAGES",
+        "monitor/frontend/ico/favicon.png": "CF_PAGES",
         "monitor/frontend/_worker.js": "CF_PAGES"
       }
     }
