@@ -23,6 +23,8 @@ import {
 } from './lib/tasks/index.js';
 // 方案一凭证导入（脚本直连）：已存在则更新、不存在则新增
 import { upsertTraeTask, listTraeTargets } from './lib/tasks/trae-import.js';
+// WorkBuddy 桌面端凭证导入（脚本直连）：同 upsert 语义
+import { upsertWorkbuddyTask, listWorkbuddyTargets } from './lib/tasks/wb-import.js';
 import { getLogs } from './lib/checkin-log.js';
 import { recordSnapshot, updateUsageStats, getUsageStatsWithEstimates, getTaskUsageDetail, startDailySnapshot, removeTaskStats } from './lib/checkin-stats.js';
 import { createModuleServer, readBody } from './lib/module.js';
@@ -167,6 +169,31 @@ async function router(url, q, r, send) {
     try {
       const input = JSON.parse((await readBody(q)) || '{}');
       const res = upsertTraeTask(input);
+      send(200, JSON.stringify({
+        ok: true, created: res.created, id: res.task.id, name: res.task.name,
+        nameKept: !!res.nameKept,
+      }), 'application/json; charset=utf-8');
+    } catch (e) {
+      send(400, JSON.stringify({ ok: false, error: e.message }), 'application/json; charset=utf-8');
+    }
+    return true;
+  }
+
+  // GET /api/checkin/wb-targets - 可导入的 WorkBuddy 账号清单（脚本用它让用户选「更新哪个/新建」）
+  if (p === '/api/checkin/wb-targets' && q.method === 'GET') {
+    send(200, JSON.stringify({ ok: true, tasks: listWorkbuddyTargets() }),
+      'application/json; charset=utf-8');
+    return true;
+  }
+
+  // POST /api/checkin/wb-import - WorkBuddy 桌面端凭证（WB1.… 导入串）导入
+  //   调用方：tools/wb-export.ps1 生成的 wb-export.bat（地址由面板在下载时注入）。
+  //   语义：taskId 显式指定则更新它；否则按 uid 自动匹配，匹配不到才新增。
+  //   Content-Type 显式带 charset：同 trae-import（PS 5.1 无 charset 时中文变乱码）。
+  if (p === '/api/checkin/wb-import' && q.method === 'POST') {
+    try {
+      const input = JSON.parse((await readBody(q)) || '{}');
+      const res = upsertWorkbuddyTask(input);
       send(200, JSON.stringify({
         ok: true, created: res.created, id: res.task.id, name: res.task.name,
         nameKept: !!res.nameKept,

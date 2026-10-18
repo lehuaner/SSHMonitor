@@ -12,10 +12,11 @@
  *   GET  /activity/growth/heatmap                   打卡日历
  *   POST /activity/growth/redeem{tier,client_token} 领取 7d/14d/28d 档位奖励（与每日签到是两个动作）
  *
- * 鉴权三形态（同一后端，返回体逐字段一致）：
- *   auto   : ★Cookie 自动换取 Bearer（推荐）—— 只需填 Cookie，服务端自动换出 60 天 Bearer
- *   web    : Cookie  —— ★必须同时携带 session + session_2，缺一即 401
- *   bearer : Authorization: Bearer <Keycloak JWT>（实测约 60 天，手填）
+ * 鉴权形态（同一后端，返回体逐字段一致）：
+ *   auto    : ★自动（推荐）—— 有 refreshToken 走静默续期链；否则 Cookie 换票；都无则用手填 token
+ *   refresh : 仅用 refreshToken 静默续期（桌面端凭证，2026-10-18 实测确认，见下方 ★★）
+ *   web     : Cookie —— ★必须同时携带 session + session_2，缺一即 401
+ *   bearer  : Authorization: Bearer <Keycloak JWT>（实测约 60 天，手填）
  *
  * ★★cookie → Bearer 换票链路（2026-09-10 依据 workbuddy5 抓包 + 实测确认，用户无需再抓包）：
  *   ① POST https://copilot.tencent.com/v2/plugin/auth/state?platform=workbuddy   （完全无需鉴权）
@@ -28,12 +29,24 @@
  *        必须用登录浏览器那一个（与业务请求的 UA 校验是同一套网关策略）。
  *     c) 可重复换票（非一次性），但**有速率限制**：短时间连续换 8 次左右开始 401，
  *        等 45~60 秒即恢复 ⇒ 因此换出的 token 必须缓存，只在临期时才再换。
- *     d) refreshToken 暂不可用：标准 Keycloak 端点
+ *     d) refreshToken 续期：标准 Keycloak 端点不行
  *        POST https://copilot.tencent.com/auth/realms/copilot/protocol/openid-connect/token
  *        （grant_type=refresh_token / client_id=console）返回 401 unauthorized_client
  *        （client_id=account-console 则报 invalid_grant「Token client and authorized client don't match」），
- *        ⇒ 续期只能靠「Cookie 再换一次」，故 Cookie 才是需要人工维护的凭证。
+ *        但**桌面端插件端点可用**：POST /v2/plugin/auth/token/refresh（2026-10-18 实测，见 ★★）。
  *     e) 换出的 Bearer 在 www.workbuddy.cn 与 copilot.tencent.com 上均可直接使用（实测均 200）。
+ *
+ * ★★refreshToken 静默续期（2026-10-18 实测确认；「超长续期」主腿，优先于 Cookie 换票）：
+ *   端点：POST https://www.workbuddy.cn/v2/plugin/auth/token/refresh
+ *   头：X-Refresh-Token: <refreshToken>、X-Auth-Refresh-Source: plugin、X-User-Id: <sub>、
+ *       X-Product: SaaS、X-Request-ID: <uuid>、（可选）Authorization: Bearer <旧 access>
+ *   返回：data.accessToken（expiresIn 2419200 = 28 天）+ data.refreshToken（refreshExpiresIn 2592000 = 30 天）
+ *   实测要点：
+ *     a) 已被客户端消费过的 refreshToken 依然可反复换取新对（offline token 扇出，多持有者互不失效）
+ *        ⇒ 监控端与桌面端共用同一 token 链，不会互相顶下线。
+ *     b) refreshToken 滚动轮换 ⇒ 每次成功必须回写 config.refreshToken；access（28 天）短于 refresh（30 天）
+ *        ⇒ 只要 30 天内至少跑一次成功续期，即可无限续期（换的不仅是 token，是一条不会断的链）。
+ *     c) 403/401 → 刷新链断（invalid，需重新导入）；网络/5xx → transient（旧 access 未过期则先顶着用）。
  *
  * ★关键坑（务必保留，否则会把会话自己搞失效）：
  *   1) WorkBuddy 几乎所有 growth/billing 响应都会回 `set-cookie: session=; Max-Age=0` 主动清 session。
@@ -97,13 +110,31 @@ const TOKEN_MIN_REMAINING_MS = 6 * 60 * 60 * 1000;
 const exchangeCooldown = new Map(); // taskId -> untilMs
 const EXCHANGE_COOLDOWN_MS = 60 * 1000;
 
+// ============ refreshToken 静默续期（见文件头 ★★） ============
+const REFRESH = {
+  url: 'https://www.workbuddy.cn/v2/plugin/auth/token/refresh',
+  // 刷新端点用桌面端 UA（客户端原样值；实测 WorkBuddy/5.8.3 与 axios/1.16.1 均可）
+  ua: 'WorkBuddy/5.8.3 WorkBuddy/5.8.3 CLI/2.161.0',
+};
+// refreshToken 链的续期阈值：access 剩 2 天内才换新。
+// ★刷新无「推进轮换链就顶掉别处」的副作用（文件头 a），可按需刷新；
+//   取 48h 而非更小值，是给「刷新临时失败 → 后续每日任务重试」留余量
+//   （access 28 天、refresh 30 天：access 死后 refresh 还有约 2 天可救）。
+const REFRESH_MIN_REMAINING_MS = 48 * 60 * 60 * 1000;
+
+// 刷新失败后的冷却（模块级）：避免同一轮里每个请求都去撞刷新端点
+const refreshCooldown = new Map(); // taskId -> untilMs
+const REFRESH_COOLDOWN_MS = 60 * 1000;
+
 // 三个平台共用的表单常量与「积分过期提醒」配置片段
 import { TIMEZONES, TIMES, THRESHOLDS, EXPIRY_DAYS } from './common.js';
+// 导入串（WB1.…）的解析 —— 与 HTTP 路由/导入任务共用同一份实现，避免两处漂移
+import { parseCredential as parseWbImport, looksLikeImportString as looksLikeWbImport } from '../checkin/wb-credential.js';
 
 /** 鉴权形态：显式声明优先；否则按「有 cookie 走 web，否则走 bearer」推断（保持旧任务行为不变） */
 function authMode(task) {
   const c = task.config || {};
-  if (c.authMode === 'bearer' || c.authMode === 'web' || c.authMode === 'auto') return c.authMode;
+  if (c.authMode === 'refresh' || c.authMode === 'bearer' || c.authMode === 'web' || c.authMode === 'auto') return c.authMode;
   return c.cookie ? 'web' : 'bearer';
 }
 
@@ -122,6 +153,21 @@ function cookieOf(task) {
 }
 function tokenOf(task) {
   return String((task.config && task.config.token) || '').trim();
+}
+function refreshTokenOf(task) {
+  const raw = String((task.config && task.config.refreshToken) || '').trim();
+  if (!raw) return '';
+  // 面板「导入凭证」写入的就是裸 refreshToken；但用户也可能把整串 WB1.… 直接粘进
+  // 编辑表单的 refreshToken 字段 —— 这里统一剥壳，两种形态都认。
+  if (looksLikeWbImport(raw)) {
+    const cred = parseWbImport(raw);
+    if (!cred || !cred.refreshToken) {
+      // 以 WB1. 开头却解不出来 ⇒ 多半是复制被截断，直接按凭证问题报错
+      throw credError('导入串格式错误（WB1. 前缀但内容无法解析），请重新运行提取脚本导出');
+    }
+    return cred.refreshToken;
+  }
+  return raw;
 }
 
 /** 宽松 JSON 解析（上游失败时会回 HTML 错误页） */
@@ -198,29 +244,120 @@ async function exchangeTokenFromCookie(task) {
 }
 
 /**
+ * ★用 refreshToken 静默续期（桌面端同款；文件头 ★★）。
+ * 成功后写回 task.config.token / task.config.refreshToken（★滚动轮换，必回写）
+ * 与 task.tokenExpiredAt / task.refreshTokenExpiredAt（由调用方持久化）。
+ *
+ * @returns {Promise<string>} 新 accessToken
+ * @throws {Error} kind=invalid（刷新链断：401/403）或 transient（网络/5xx）
+ */
+async function refreshAccessToken(task) {
+  const cfg = (task && task.config) || {};
+  const refreshToken = refreshTokenOf(task);
+  if (!refreshToken) throw credError('未配置 refreshToken（桌面端凭证），无法自动续期');
+
+  // X-User-Id：优先账号配置，其次从新旧 JWT 的 sub 推（两个 token 的 sub 都是 uid）
+  const rc = jwtClaims(refreshToken);
+  const ac = jwtClaims(cfg.token);
+  const userId = cfg.userId || (ac && ac.sub) || (rc && rc.sub) || '';
+
+  const headers = {
+    accept: 'application/json, text/plain, */*',
+    'content-type': 'application/json',
+    'x-domain': 'copilot.tencent.com',
+    'x-refresh-token': refreshToken,
+    'x-auth-refresh-source': 'plugin',
+    'x-product': 'SaaS',
+    'x-request-id': randomUUID().replace(/-/g, ''),
+    'user-agent': REFRESH.ua,
+  };
+  if (userId) headers['x-user-id'] = String(userId);
+  // 旧 access 还没过期就捎上（与客户端行为一致）；已过期就不带，免得被当成无效会话
+  if (cfg.token && (jwtExp(cfg.token) || 0) > Date.now()) {
+    headers.authorization = `Bearer ${String(cfg.token).replace(/^Bearer\s+/i, '')}`;
+  }
+
+  const res = await httpJson(REFRESH.url, { method: 'POST', headers, body: '{}' },
+    Number(cfg.timeout) || 25000);
+  const json = safeJson(res.text);
+  const d = json && json.data;
+  if (!d || !d.accessToken || !d.refreshToken) {
+    const code = json ? (json.code !== undefined ? json.code : null) : null;
+    const msg = (json && (json.msg || json.message)) || `HTTP ${res.status}`;
+    const e = new Error(`refreshToken 续期失败：${msg}${code !== null ? `（code ${code}）` : ''}`);
+    e.kind = (res.status === 401 || res.status === 403 || code === 401) ? 'invalid' : 'transient';
+    e.code = code;
+    throw e;
+  }
+
+  cfg.token = d.accessToken;
+  cfg.refreshToken = d.refreshToken;   // ★滚动轮换：不回写下一次必然失败
+  const na = jwtClaims(d.accessToken);
+  const nr = jwtClaims(d.refreshToken);
+  const expSec = Number(d.expiresIn);
+  const rExpSec = Number(d.refreshExpiresIn);
+  task.tokenExpiredAt = (na && na.exp ? na.exp * 1000 : null)
+    || (expSec > 0 ? Date.now() + expSec * 1000 : null);
+  task.refreshTokenExpiredAt = (nr && nr.exp ? nr.exp * 1000 : null)
+    || (rExpSec > 0 ? Date.now() + rExpSec * 1000 : null);
+  return d.accessToken;
+}
+
+/**
  * 解析本次请求实际使用的凭证形态（Trae `resolveToken` 同构）。
  *
- *   auto   ：有 Cookie → 换 Bearer 后用 Bearer；换取失败则本轮回落到 Cookie 直连（不中断签到）
- *   web    ：始终 Cookie 直连
- *   bearer ：始终手填 token
+ *   refresh ：始终用 refreshToken 静默续期（临期自动换新）
+ *   auto    ：有 refreshToken → 优先走静默续期链；否则有 Cookie → 换 Bearer；
+ *             换取失败则本轮回落到 Cookie 直连（不中断签到）；都没有 → 用手填 token
+ *   web     ：始终 Cookie 直连
+ *   bearer  ：始终手填 token
  *
- * @returns {Promise<{mode:'web'|'bearer', cred:string, exchanged?:boolean, fallback?:Error}>}
+ * @returns {Promise<{mode:'web'|'bearer', cred:string, refreshed?:boolean, exchanged?:boolean, fallback?:Error}>}
  */
 async function resolveCredential(task) {
   const mode = authMode(task);
   const cookie = cookieOf(task);
   const token = tokenOf(task);
+  const refreshToken = refreshTokenOf(task);
 
   if (mode === 'web') {
     if (!cookie) throw credError('未配置 Cookie（需 session + session_2 成对）');
     return { mode: 'web', cred: cookie };
   }
+
+  // —— refresh / auto（带 refreshToken）：优先 refreshToken 静默续期链（文件头 ★★） ——
+  if (mode === 'refresh' || (mode === 'auto' && refreshToken)) {
+    if (!refreshToken) throw credError('未配置 refreshToken（桌面端凭证）');
+    const remaining = (task.tokenExpiredAt || jwtExp(token) || 0) - Date.now();
+    // ① 现成 token 还早（>2 天）→ 直接用，不无谓推进刷新链
+    if (token && remaining > REFRESH_MIN_REMAINING_MS) return { mode: 'bearer', cred: token };
+    // ② 冷却期内不重复撞刷新端点
+    const blockedUntil = refreshCooldown.get(task.id) || 0;
+    if (Date.now() < blockedUntil) {
+      if (token && jwtExp(token) > Date.now()) return { mode: 'bearer', cred: token };
+      const e = new Error('refreshToken 续期处于冷却期（上一次刚失败）');
+      e.kind = 'transient';
+      throw e;
+    }
+    try {
+      const fresh = await refreshAccessToken(task);
+      refreshCooldown.delete(task.id);
+      return { mode: 'bearer', cred: fresh, refreshed: true };
+    } catch (err) {
+      refreshCooldown.set(task.id, Date.now() + REFRESH_COOLDOWN_MS);
+      // 旧 token 未过期就先顶着用（等下一轮/下一日再续），否则按错误分类上抛
+      if (token && jwtExp(token) > Date.now()) return { mode: 'bearer', cred: token, fallback: err };
+      if (mode === 'refresh' || !cookie) throw err;
+      // auto 且仍有 Cookie → 继续回落到 Cookie 换票（下方 auto 逻辑）
+    }
+  }
+
   if (mode === 'bearer') {
     if (!token) throw credError('未配置 Bearer Token（桌面端凭证）');
     return { mode: 'bearer', cred: token };
   }
 
-  // ---- auto ----
+  // ---- auto：Cookie 换票（无 refreshToken，或 refresh 链失败后的兜底） ----
   if (!cookie) {
     if (!token) throw credError('未配置 Cookie（用于换取 Bearer）或 Bearer Token');
     return { mode: 'bearer', cred: token };   // 只填了 token 时按 bearer 用
@@ -334,17 +471,34 @@ async function request(task, method, path, body, opts = {}) {
     e.kind = 'transient';
     throw e;
   }
+  // ★Bearer 偶发 401（网关瞬时抖动；2026-10-18 实测：同一 token 12 小时后仍 200，
+  //   而当时的 401 把两个任务都误判成 credentialInvalid 停摆）：
+  //   有 refreshToken 就强制刷新一次再重试（只重试一次，防死循环）。
+  if (!opts._retried && (res.status === 401 || res.status === 403)
+      && rc.mode === 'bearer' && refreshTokenOf(task)) {
+    try {
+      await refreshAccessToken(task);
+    } catch (err) {
+      refreshCooldown.set(task.id, Date.now() + REFRESH_COOLDOWN_MS);
+      if (err.kind !== 'transient') throw err;   // 刷新链断 → 直接按 invalid 上抛
+    }
+    return request(task, method, path, body, { ...opts, _retried: true });
+  }
   return envelope(res);
 }
 
-/** 解析 JWT 的 exp（bearer 模式） */
-function jwtExp(token) {
+/** 解析 JWT payload（refreshToken 也取 sub 填 X-User-Id、exp 作到期兜底） */
+function jwtClaims(token) {
   try {
     const seg = String(token || '').replace(/^Bearer\s+/i, '').split('.')[1];
     if (!seg) return null;
-    const payload = JSON.parse(Buffer.from(seg.replace(/-/g, '+').replace(/_/g, '/'), 'base64').toString('utf8'));
-    return payload && payload.exp ? payload.exp * 1000 : null;
+    return JSON.parse(Buffer.from(seg.replace(/-/g, '+').replace(/_/g, '/'), 'base64').toString('utf8'));
   } catch { return null; }
+}
+/** 解析 JWT 的 exp（bearer 模式） */
+function jwtExp(token) {
+  const payload = jwtClaims(token);
+  return payload && payload.exp ? payload.exp * 1000 : null;
 }
 
 async function fetchStatus(task) {
@@ -528,7 +682,7 @@ export default {
   id: 'workbuddy',
   name: 'WorkBuddy 成长签到',
   capabilities: ['checkin', 'credits', 'credentialTest', 'status', 'totalCredits', 'sessionProbe', 'usage', 'packages'],
-  sessionCredentialKeys: ['cookie', 'token'],
+  sessionCredentialKeys: ['cookie', 'token', 'refreshToken'],
   // ★用量能力声明：面板「Token / 积分」单位切换与「无数据原因」提示都读这里。
   //   WorkBuddy 的用量接口（get-user-request-usage）只有积分与请求条数，没有 token 明细，
   //   所以 Token 视图下该平台必然为空 —— 必须把原因显式告知用户，而不是显示 0 或「—」。
@@ -536,30 +690,47 @@ export default {
     tokens: false,
     tokenNote: 'WorkBuddy 用量接口（get-user-request-usage）只返回「积分 / 请求条数 / 模型 / 时间」，不返回 token 输入输出明细，故该平台 Token 视图无原始数据。积分数据完整可用。',
   },
-  // ★卡片凭证行（维护链终点口径）：WorkBuddy 的人工腿是 Cookie，但它**没有确定到期日**
-  //   （session 里的时间戳不可信、任意退登即时吊销，probeSession 有 Cookie 时恒返 expiresAt:null）。
-  //   所以终点取「最后一次换票成功后的 Bearer 到期」——临期前 6h 会自动用 Cookie 再换一次（+60 天），
-  //   每次成功都把这个日子往后推；真到那天且换票失败（Cookie 已废）才是再也签不了。
-  //   ★只有 web（Cookie 直连、没有 Bearer 可续）才回到 Cookie 那条腿。
+  // ★卡片凭证行（维护链终点口径）：
+  //   ① 首选 refreshToken 链：refreshTokenExpiredAt 由每次续期自己滚动（+30 天），
+  //      正常运行时永不进入提醒；探活也跳过（probe:false）——失效信号走「刷新 401 → 任务 invalid 告警」。
+  //   ② 只有 Cookie 的旧账号：Cookie 没有确定到期日（session 时间戳不可信、退登即吊销），
+  //      终点取「最后一次换票成功后的 Bearer 到期」（临期前 6h 自动再换、每次成功往后推 60 天）。
+  //   ③ 纯 web（Cookie 直连、没有派生凭证可续）才回到 Cookie 那条腿。
   credDisplay: {
     ladder: [
+      { label: 'Refresh Token', fields: ['refreshTokenExpiredAt', 'config.refreshTokenExpiresAt'], if: 'hasRefreshToken', probe: false,
+        also: { label: '兜底 Cookie', fields: ['cookieExpiresAt'] },
+        title: 'refreshToken 静默续期链（桌面端同款）：access（28 天）临期前自动换新并滚动回写，只要 30 天内至少跑一次成功续期即可无限续期 —— 基本免维护。失效 = 刷新端点 401（届时任务转「凭证无效」发邮件，重新导入一份桌面端凭证即可）' },
       { label: 'Cookie', fields: ['cookieExpiresAt'], if: 'authMode=web',
         title: 'web 模式：Cookie 直连，没有可续期的派生凭证 —— 服务端一拒 Cookie 就签不了' },
-      { label: 'Bearer', fields: ['tokenExpiredAt', 'config.tokenExpiresAt'],
-        title: '最后一次用 Cookie 换票成功后的 Bearer 到期（Keycloak JWT，+60 天）；临期前 6h 会自动再换一次并把这天往后推。真正要人工的是 Cookie（约 7 天、无确定到期日，被吊销时走邮件告警）' },
+      { label: 'Bearer', fields: ['tokenExpiredAt', 'config.tokenExpiresAt'], if: 'noRefreshToken',
+        title: '最后一次用 Cookie 换票成功后的 Bearer 到期（Keycloak JWT，+60 天）；临期前 6h 会自动再换一次并把这天往后推。真正要人工的是 Cookie（约 7 天、无确定到期日，被吊销时走邮件告警）。★建议改用 refreshToken（桌面端凭证）走静默续期链，免人工维护' },
     ],
   },
   // 「新增账号 → 名称」输入框的占位提示（各平台命名习惯不同）
   namePlaceholder: '例：WorkBuddy 成长签到 · 乐幻',
   configSchema: [
+    // ── 桌面端凭证提取（首选）──────────────────────────────────────
+    // 纯展示字段：渲染一个下载按钮，不参与取值/提交（无 data-k，前端 collectFields 自动跳过）。
+    // 面板在下载时会把脚本里的 __API_BASE__ 替换成 location.origin —— 全程不硬编码任何地址。
+    { key: '__exportScript', label: '① 提取凭证', type: 'download',
+      href: '/wb-export.bat', text: '下载 Windows 提取脚本',
+      hint: '在装有 WorkBuddy 桌面端的 Windows 上双击运行：脚本会临时重启桌面端、只读本机会话文件 → 解出 refreshToken → 实测一次续期 → 输出「导入串」，并可直接写回本面板（新增 or 更新自动判断）。读的是桌面端登录态，不影响它本人使用；结束后桌面端自动恢复原状。' },
     { key: 'authMode', label: '鉴权方式', type: 'select', default: 'auto', required: true,
       options: [
-        { value: 'auto', label: '★Cookie 自动换取 Bearer（推荐，只需填 Cookie）' },
+        { value: 'auto', label: '★自动（推荐：有 refreshToken 走静默续期，否则 Cookie 换票）' },
+        { value: 'refresh', label: '仅 refreshToken 静默续期（桌面端凭证，基本免维护）' },
         { value: 'web', label: '仅网页 Cookie（session + session_2，直连）' },
-        { value: 'bearer', label: '桌面端 Bearer Token（手填，寿命约 60 天）' },
+        { value: 'bearer', label: '仅桌面端 Bearer Token（手填，寿命约 60 天）' },
       ],
-      hint: '★推荐 auto：只填 Cookie 即可，服务端会用 Cookie 自动换出约 60 天的 Bearer 并缓存复用，'
-        + '到期前自动再换一次 —— 无需抓包取 Token。三种方式同一后端、返回体逐字段一致。' },
+      hint: '★推荐 auto：填入 refreshToken 后自动走静默续期链（桌面端同款协议，28 天滚动，基本免维护）；'
+        + '没有 refreshToken 时退回 Cookie 换票。三种方式同一后端、返回体逐字段一致。' },
+    { key: 'refreshToken', label: '② Refresh Token（桌面端凭证，自动续期用）', type: 'password', required: false,
+      placeholder: '粘贴桌面端刷新令牌（eyJhbGciOi...）或 WB1.… 导入串',
+      hint: '来自 WorkBuddy 桌面端登录态：POST /v2/plugin/auth/token/refresh 请求头 X-Refresh-Token 的值'
+        + '（推荐直接下载上方「① 提取凭证」脚本，导出的 WB1.… 导入串可整串粘贴到这里或走面板「导入凭证」）。'
+        + '配置后 auto/refresh 模式会自动用它换新 access+refresh（28 天期滚动），'
+        + '与桌面端共用同一凭证链、互不顶下线；只要 30 天内至少跑一次即可无限续期。' },
     { key: 'cookie', label: 'Cookie（auto / web 方式填这里）', type: 'password', required: false,
       placeholder: 'session=xxx; session_2=yyy',
       hint: '登录 www.workbuddy.cn 后，F12 → 网络 → 任一 workbuddy.cn 请求 → 复制请求头 cookie 中的 '
@@ -567,7 +738,7 @@ export default {
         + '注意：任意一次退出登录都会即时吊销会话，Cookie 里的时间戳不可信。' },
     { key: 'token', label: 'Bearer Token（bearer 方式填这里；auto 方式留空即可）', type: 'password', required: false,
       placeholder: 'eyJhbGciOi...',
-      hint: 'auto 模式下由服务端自动写入（用 Cookie 换取），无需手工填。'
+      hint: 'auto 模式下由服务端自动写入（用 refreshToken 续期或 Cookie 换取），无需手工填。'
         + '若采用 bearer 模式，则填桌面端请求头 Authorization: Bearer 后的整段值（Keycloak JWT，实测约 60 天有效）。' },
     { key: 'baseUrl', label: '接口地址', type: 'select', default: 'https://www.workbuddy.cn', required: true,
       options: [

@@ -18,6 +18,7 @@
     "monitor/lib/tasks/index.js": ["gateway"],
     "monitor/lib/checkin/checkin.js": ["gateway"],
     "monitor/lib/checkin/trae-credential.js": ["gateway"],
+    "monitor/lib/checkin/wb-credential.js": ["gateway"],
     "monitor/lib/checkin/scheduler.js": ["gateway"],
     "monitor/lib/checkin/credit-expiry.js": ["gateway"],
     "monitor/lib/checkin/autoclaw.js": ["gateway"],
@@ -56,6 +57,7 @@
         "monitor/lib/checkin-stats.js": "~/monitor/lib/checkin-stats.js",
         "monitor/lib/checkin/checkin.js": "~/monitor/lib/checkin/checkin.js",
         "monitor/lib/checkin/trae-credential.js": "~/monitor/lib/checkin/trae-credential.js",
+        "monitor/lib/checkin/wb-credential.js": "~/monitor/lib/checkin/wb-credential.js",
         "monitor/lib/checkin/scheduler.js": "~/monitor/lib/checkin/scheduler.js",
         "monitor/lib/checkin/credit-expiry.js": "~/monitor/lib/checkin/credit-expiry.js",
         "monitor/lib/checkin/autoclaw.js": "~/monitor/lib/checkin/autoclaw.js",
@@ -89,6 +91,7 @@
         "monitor/lib/checkin/officeace.js": "~/monitor/lib/checkin/officeace.js",
         "monitor/lib/checkin/checkin.js": "~/monitor/lib/checkin/checkin.js",
         "monitor/lib/checkin/trae-credential.js": "~/monitor/lib/checkin/trae-credential.js",
+        "monitor/lib/checkin/wb-credential.js": "~/monitor/lib/checkin/wb-credential.js",
         "monitor/lib/checkin/scheduler.js": "~/monitor/lib/checkin/scheduler.js",
         "monitor/lib/checkin/credit-expiry.js": "~/monitor/lib/checkin/credit-expiry.js",
         "monitor/lib/checkin-log.js": "~/monitor/lib/checkin-log.js",
@@ -102,6 +105,7 @@
         "monitor/lib/providers/officeace.js": "~/monitor/lib/providers/officeace.js",
         "monitor/lib/tasks/index.js": "~/monitor/lib/tasks/index.js",
         "monitor/lib/tasks/trae-import.js": "~/monitor/lib/tasks/trae-import.js",
+        "monitor/lib/tasks/wb-import.js": "~/monitor/lib/tasks/wb-import.js",
         "monitor/lib/credential-expiry.js": "~/monitor/lib/credential-expiry.js",
         "monitor/lib/alert-events.js": "~/monitor/lib/alert-events.js"
       }
@@ -125,6 +129,7 @@
       "files": {
         "monitor/frontend/checkin.html": "CF_PAGES",
         "monitor/frontend/trae-export.bat": "CF_PAGES",
+        "monitor/frontend/wb-export.bat": "CF_PAGES",
         "monitor/frontend/release.html": "CF_PAGES",
         "monitor/frontend/index.html": "CF_PAGES",
         "monitor/frontend/notify.html": "CF_PAGES",
