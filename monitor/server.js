@@ -586,6 +586,14 @@ const server = createServer(async (q, r) => {
             lines.push(`[电池] 电量: ${pct}% (阈值 < ${cfg.battery_low ?? 20}%) ${lowHit ? '⚠ 告警' : '✓ 正常'} ${_charging ? '(充电中,不告警)' : ''}`);
             lines.push(`[电池] 温度: ${temp}°C (阈值 > ${cfg.battery_temp_high ?? 45}°C) ${temp >= (cfg.battery_temp_high ?? 45) ? '⚠ 告警' : '✓ 正常'}`);
             lines.push(`[电池] 状态: ${batt.status || 'UNKNOWN'} / ${batt.plugged || 'UNKNOWN'} / 健康: ${batt.health || 'UNKNOWN'}`);
+            const _netuA = Number(batt.current) || 0;
+            const _dth = Math.abs(cfg.battery_discharge_while_plugged ?? 50);
+            const _dcon = Math.max(1, cfg.battery_discharge_consecutive ?? 2);
+            if (_dth > 0) {
+              const _plugged = _pl !== 'UNPLUGGED' && _pl !== '';
+              const _dHit = _plugged && _netuA < -_dth * 1000;
+              lines.push(`[电池] 净电流: ${Math.round(_netuA / 1000)}mA (插电净放电阈值 -${_dth}mA / 连续 ${_dcon} 次告警) ${_dHit ? '⚠ 本次越限（累计连续次数达标才发告警）' : '✓ 本次正常'}`);
+            }
           } catch { lines.push('[电池] 数据获取失败（Termux:API 未安装或不可用）'); }
           // WiFi
           try {

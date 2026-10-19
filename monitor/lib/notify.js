@@ -47,6 +47,7 @@ const defaultConfig = {
     cpu_usage_high_interval: 10,
     mem_usage_high_interval: 10,
     battery_discharge_while_plugged: 50,   // 插电时净放电阈值(mA)：净电流低于此值(更负)视为"越充越少"(用电功率>充电功率)
+    battery_discharge_consecutive: 2,      // 插电净放电连续采样次数：连续 N 次越限才告警（随电池采集频率，默认 2 次）
   },
   // ★每日日报：取代旧的「按账号、按到期批次逐封发」的积分过期提醒。
   //   每天固定时刻只发一封，汇总积分过期 / 代理连通 / 签到 / 设备健康 / 消耗预估 / 当日告警。
@@ -103,6 +104,7 @@ if (!mailConfig.device_alerts) {
   if (da.cpu_usage_high_interval === undefined) da.cpu_usage_high_interval = def.cpu_usage_high_interval;
   if (da.mem_usage_high_interval === undefined) da.mem_usage_high_interval = def.mem_usage_high_interval;
   if (da.battery_discharge_while_plugged === undefined) da.battery_discharge_while_plugged = def.battery_discharge_while_plugged;
+  if (da.battery_discharge_consecutive === undefined) da.battery_discharge_consecutive = def.battery_discharge_consecutive;
 }
 
 // 每日日报配置向后兼容：旧 mail_config.json 缺该块时补默认
@@ -177,7 +179,7 @@ export async function checkProcs() {
 // 电池电量告警：记录上次发送告警时的电量，用于实现"每下降 1% 发送一次"
 // 充电时跳过发送；电量回升到阈值以上后重置记录
 let lastBatteryAlertPct = null;
-let lastDischargeBad = false;   // ★越冲越少：上一采样是否已是"插电净放电"，用于去抖（连续2次才告警）
+let dischargeBadStreak = 0;   // ★越冲越少：插电净放电连续采样计数，连续 N 次（battery_discharge_consecutive 可配）越限才告警
 
 // 带冷却的告警发送
 async function sendDeviceAlert(key, subject, body) {
@@ -265,14 +267,16 @@ export async function checkDeviceAlerts() {
         }
       }
       // ★越冲越少检测：插电(电缆在) 但净电流持续为负（用电功率 > 充电功率）。
-      //   充电中(净电流为正)或浮充保持(≈0)不触发；需连续 2 次采样为负去抖，避免瞬时负载尖峰误报。
+      //   充电中(净电流为正)或浮充保持(≈0)不触发；需连续 N 次采样越限才告警（N = battery_discharge_consecutive，默认 2），
+      //   避免瞬时负载尖峰、以及电池充到高位停充保电（PLUGGED 但 NOT_CHARGING，净放电本就正常）造成的误报。
       if (cfg.battery_discharge_while_plugged > 0) {
         const pluggedNow = plugged !== 'UNPLUGGED' && plugged !== '';
         const bad = pluggedNow && netuA < -Math.abs(cfg.battery_discharge_while_plugged) * 1000;
-        if (bad && lastDischargeBad) {
-          alerts.push({ key: 'battery_discharge', subject: `[告警] 插电仍净放电(越充越少): ${Math.round(netuA / 1000)}mA`, body: `设备插电但电池净放电，可能用电功率高于充电功率。\n净电流: ${Math.round(netuA / 1000)}mA（负=放电）\n电量: ${pct}%\n状态: ${batt.status} / ${batt.plugged}\n温度: ${batt.temperature}°C` });
+        const needConsecutive = Math.max(1, Number(cfg.battery_discharge_consecutive) || 2);
+        if (bad) dischargeBadStreak++; else dischargeBadStreak = 0;
+        if (bad && dischargeBadStreak >= needConsecutive) {
+          alerts.push({ key: 'battery_discharge', subject: `[告警] 插电仍净放电(越充越少): ${Math.round(netuA / 1000)}mA`, body: `设备插电但电池净放电，可能用电功率高于充电功率。\n净电流: ${Math.round(netuA / 1000)}mA（负=放电）\n连续越限: ${dischargeBadStreak} 次采样（阈值 ${needConsecutive} 次）\n电量: ${pct}%\n状态: ${batt.status} / ${batt.plugged}\n温度: ${batt.temperature}°C` });
         }
-        lastDischargeBad = bad;
       }
     } catch {}
   }
