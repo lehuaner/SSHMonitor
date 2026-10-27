@@ -16,6 +16,7 @@ import workbuddyProvider from './lib/providers/workbuddy.js';
 import codeartsProvider from './lib/providers/codearts.js';
 import autoclawProvider from './lib/providers/autoclaw.js';
 import officeaceProvider from './lib/providers/officeace.js';
+import qoderProvider from './lib/providers/qoder.js';
 import {
   addTask, updateTask, deleteTask, runTaskNow, runAllNow, testCredential, getCredits,
   loadTasks, saveTasks, startAllTasks, stopAllTasks, startCookieExpiryWatcher,
@@ -25,6 +26,7 @@ import {
 import { upsertTraeTask, listTraeTargets } from './lib/tasks/trae-import.js';
 // WorkBuddy 桌面端凭证导入（脚本直连）：同 upsert 语义
 import { upsertWorkbuddyTask, listWorkbuddyTargets } from './lib/tasks/wb-import.js';
+import { upsertQoderTask, listQoderTargets } from './lib/tasks/qoder-import.js';
 import { getLogs } from './lib/checkin-log.js';
 import { recordSnapshot, updateUsageStats, getUsageStatsWithEstimates, getTaskUsageDetail, startDailySnapshot, removeTaskStats } from './lib/checkin-stats.js';
 import { createModuleServer, readBody } from './lib/module.js';
@@ -36,6 +38,7 @@ registerProvider(workbuddyProvider);
 registerProvider(codeartsProvider);
 registerProvider(autoclawProvider);
 registerProvider(officeaceProvider);
+registerProvider(qoderProvider);
 
 // ====== 调度器启动（延迟错峰，与旧版行为一致） ======
 const startTimers = [];
@@ -194,6 +197,31 @@ async function router(url, q, r, send) {
     try {
       const input = JSON.parse((await readBody(q)) || '{}');
       const res = upsertWorkbuddyTask(input);
+      send(200, JSON.stringify({
+        ok: true, created: res.created, id: res.task.id, name: res.task.name,
+        nameKept: !!res.nameKept,
+      }), 'application/json; charset=utf-8');
+    } catch (e) {
+      send(400, JSON.stringify({ ok: false, error: e.message }), 'application/json; charset=utf-8');
+    }
+    return true;
+  }
+
+  // GET /api/checkin/qoder-targets - 可导入的 Qoder CN 账号清单
+  if (p === '/api/checkin/qoder-targets' && q.method === 'GET') {
+    send(200, JSON.stringify({ ok: true, tasks: listQoderTargets() }),
+      'application/json; charset=utf-8');
+    return true;
+  }
+
+  // POST /api/checkin/qoder-import - Qoder CN 凭证（QODER1.… 导入串）导入
+  //   调用方：tools/qoder-export.ps1（Windows 侧读已登录客户端 → 生成导入串 → 直接 POST）。
+  //   语义：taskId 显式指定则更新它；否则按 userId 自动匹配，匹配不到才新增。
+  //   Content-Type 显式带 charset：同 trae-import（PS 5.1 无 charset 时中文变乱码）。
+  if (p === '/api/checkin/qoder-import' && q.method === 'POST') {
+    try {
+      const input = JSON.parse((await readBody(q)) || '{}');
+      const res = upsertQoderTask(input);
       send(200, JSON.stringify({
         ok: true, created: res.created, id: res.task.id, name: res.task.name,
         nameKept: !!res.nameKept,

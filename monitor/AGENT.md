@@ -410,6 +410,24 @@ server.js → /api/checkin/* 路由
 - 新增路由：`POST /api/daily-report/preview`（只读预览）、`POST /api/daily-report/send`（立即发一封）。
 - 发布：`lib/daily-report.js`、`lib/alert-events.js` 已加入 `release-manifest.json` 的 **gateway** 模块文件清单（仅 gateway 进程 import）。
 
+### 7.9 Qoder CN（2026-10-27 接入）
+
+- **协议模型**：不是专用 `/checkin`，而是运营活动投放 —— `GET /sash/api/v1/me/campaigns` 里找
+  `actionType=CLAIM_BENEFIT` + `benefit.kind=CREDITS` 的行，`POST /sash/api/v1/me/campaigns/{id}/claim`（空 body）领取。
+  `claimStatus=CLAIMED` = 今日已签；**重复 claim 幂等**（`replayed=true`，不重复发积分）。每日 10:00（UTC+8）开窗。
+- **凭证**：Windows 上已登录的 Qoder CN 客户端 `auth.v1.dat`（Chromium OSCrypt：DPAPI 解 key + AES-256-GCM 解密 v10 信封）
+  → `token`（`dt-…` ≈30 天）/ `refreshToken`（`drt-…` ≈360 天）。导出脚本 `tools/qoder-export.ps1` 生成 `QODER1.…` 导入串，
+  面板下载的 `qoder-export.bat` 是它的纯 ASCII 打包（**需要 PowerShell 7**，AES-GCM 依赖 .NET 8）。
+- **续期**：`POST /api/v1/deviceToken/refresh {refresh_token}`，**access 与 refresh 同时轮换** ⇒ provider 必须无条件回写
+  `task.config.token / refreshToken / tokenExpiredAt / refreshTokenExpiresAt`（同 AutoClaw 的轮换教训）。
+- **设备风控身份**（`Cosy-Machine*`，来自客户端 `resources/umid/runtime-info.exe`）是**软校验**：
+  实测最小四件套（Authorization + Cosy-ClientType + UA + Content-Type）也能读活动列表并领取；缺失时自动降级。
+  注意该身份随时间轮换，不能当长期凭证，导入时只做快照。
+- **密码学踩坑**：写回 `auth.v1.dat` 必须按 **UTF-8 文件字节** 加密，不能经 PowerShell 控制台/stdin（GBK 会破坏中文昵称，
+  整份 JSON 变非法 → 客户端读不到登录态）。
+- **证据与复现**：`examples/qoder-cn-checkin-e2e/`（run-e2e.mjs 全流程 / selftest-module.mjs provider 契约自检），
+  协议重建见 `examples/_analysis_qoder.md`。
+
 ---
 
 ## 八、相关文件索引
@@ -423,6 +441,12 @@ server.js → /api/checkin/* 路由
 | `monitor/server.js` | HTTP 路由（/api/proxy-check/*、/api/checkin/*） |
 | `monitor/lib/providers/index.js` | Provider 注册中心 |
 | `monitor/lib/providers/trae.js` | Trae provider（**方案一 refreshToken 静默续期 + 方案二 Cookie 回落**、schema 驱动前端表单、含「下载提取脚本」入口） |
+| `monitor/lib/providers/qoder.js` | Qoder CN provider（每日 100 Credits 活动签到 + 30/360 天双 token 自动续期 + 可选 UMID 设备身份；导入串 `QODER1.…`） |
+| `monitor/lib/checkin/qoder.js` | Qoder CN 协议客户端（campaigns / claim / quota / refresh，错误三分类，10:00 开窗判定） |
+| `monitor/lib/checkin/qoder-credential.js` | `QODER1.…` 导入串解析/构造（provider 与 HTTP 路由共用） |
+| `monitor/lib/tasks/qoder-import.js` | Qoder CN 凭证导入 upsert（按 `userId` 判定新增/更新） |
+| `tools/qoder-export.ps1` | Windows 侧导出脚本：解 `auth.v1.dat`（DPAPI+OSCrypt）+ 取 UMID → `QODER1.…` |
+| `tools/build-qoder-export.mjs` | 把上面打包成 `monitor/frontend/qoder-export.bat`（纯 ASCII 外壳，`node tools/build-qoder-export.mjs`） |
 | `monitor/lib/checkin/trae-credential.js` | 导入串（`TRAE1.<base64url>`）解析/构造 —— provider 与 HTTP 路由共用 |
 | `monitor/lib/tasks/trae-import.js` | 方案一凭证导入 upsert（按 userId 判定「新增 or 更新」，默认值取自 provider schema） |
 | `monitor/frontend/trae-export.bat` | ★生成的产物（纯 ASCII 外壳 + base64 载荷），面板下载的就是它 |

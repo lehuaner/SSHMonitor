@@ -17,6 +17,7 @@ import workbuddyProvider from './lib/providers/workbuddy.js';
 import codeartsProvider from './lib/providers/codearts.js';
 import autoclawProvider from './lib/providers/autoclaw.js';
 import officeaceProvider from './lib/providers/officeace.js';
+import qoderProvider from './lib/providers/qoder.js';
 import { addTask, updateTask, deleteTask, runTaskNow, runAllNow, testCredential, getCredits, loadTasks, saveTasks, startAllTasks, checkStatusForTask, autoCheckToday, getTotalCreditsForTask } from './lib/tasks/index.js';
 import { getLogs } from './lib/checkin-log.js';
 import { recordSnapshot, updateUsageStats, getUsageStats, getUsageStatsWithEstimates, getTaskUsageDetail, startDailySnapshot, removeTaskStats } from './lib/checkin-stats.js';
@@ -60,6 +61,7 @@ registerProvider(workbuddyProvider);
 registerProvider(codeartsProvider);
 registerProvider(autoclawProvider);
 registerProvider(officeaceProvider);
+registerProvider(qoderProvider);
 // ★签到定时调度 / 每日零点快照 / 凭证到期巡检 均只在 mod-checkin 进程启动。
 //   过去本进程（gateway）也调用 startAllTasks()+recordSnapshot()+startDailySnapshot()，
 //   导致同一签到任务被两进程并发执行（CodeArts 天天“先失败再恢复”、重复告警、双写

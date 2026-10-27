@@ -2,7 +2,7 @@
 
 自托管的 **Android/Termux 设备监控 + 多平台自动签到** 一体化服务。
 
-在一台旧手机（本项目使用 Honor 10）上以 Termux + runit 运行 Node.js 后端，通过 Cloudflare Tunnel 安全暴露，前端静态托管于 Cloudflare Pages；提供系统监控、进程管理、文件管理、代理订阅管理，以及 Trae / CodeArts / WorkBuddy / AutoClaw / OfficeAce 等平台的**每日自动签到、凭证到期巡检、邮件/站内告警、每日日报**能力。
+在一台旧手机（本项目使用 Honor 10）上以 Termux + runit 运行 Node.js 后端，通过 Cloudflare Tunnel 安全暴露，前端静态托管于 Cloudflare Pages；提供系统监控、进程管理、文件管理、代理订阅管理，以及 Trae / CodeArts / WorkBuddy / AutoClaw / OfficeAce / Qoder CN 等平台的**每日自动签到、凭证到期巡检、邮件/站内告警、每日日报**能力。
 
 ```
 用户浏览器
@@ -19,7 +19,7 @@ Termux (Android) runit 守护
 
 ## 功能
 
-- **多平台自动签到**：Trae、华为 CloudIDE CodeArts、WorkBuddy、AutoClaw（智谱）、OfficeAce；支持验证码登录、设备二次验证流转、JWT/Cookie 自动刷新与落盘
+- **多平台自动签到**：Trae、华为 CloudIDE CodeArts、WorkBuddy、AutoClaw（智谱）、OfficeAce、Qoder CN；支持验证码登录、设备二次验证流转、JWT/Cookie 自动刷新与落盘、refreshToken 轮换回写
 - **凭证生命周期管理**：会话到期提前邮件提醒、失效自动重登、连续失败告警阈值
 - **每日日报**：按天汇总签到结果 / 积分 / 异常，取代逐账号刷屏通知
 - **设备监控**：CPU / 内存 / 流量记录、进程管理（runit 服务启停）、远程文件管理
@@ -71,6 +71,23 @@ tools/build-trae-export.mjs  把它打包成面板可下载的 monitor/frontend/
 提取脚本只**只读**客户端文件；它读得到的 `.bat` 里不含任何硬编码地址——面板在下载那一刻
 把自己的 origin 注进去，因此换域名 / 本地部署都自动正确。
 `TRAE SOLO CN` 签发的凭证**不能**用于方案一（上游要求设备签名）。
+
+## Qoder CN 签到（2026-10-27 接入）
+
+Qoder 的「每日签到」不是专用 `/checkin` 端点，而是**运营活动投放**模型：
+
+| 环节 | 端点 | 说明 |
+|---|---|---|
+| 状态 | `GET https://openapi.qoder.com.cn/sash/api/v1/me/campaigns` | 找 `actionType=CLAIM_BENEFIT` + `benefit.kind=CREDITS` 的行；`claimStatus=CLAIMED` 即今日已签 |
+| 领取 | `POST /sash/api/v1/me/campaigns/{campaignId}/claim` | 空 body；**幂等**，重复领取 `replayed=true` |
+| 积分 | `GET /api/v2/quota/usage` | `userQuota.remaining` + `addOnQuota.remaining` |
+| 续期 | `POST /api/v1/deviceToken/refresh` | 两个 token 都轮换，provider 自动回写 |
+
+凭证来自 Windows 上**已登录的 Qoder CN 客户端**：面板「新增账号」里下载 `qoder-export.bat`（需 PowerShell 7）
+双击运行，只读 `auth.v1.dat`（DPAPI + AES-GCM）与 UMID 组件 → 生成 `QODER1.…` 导入串并可直接写回面板。
+每日 10:00（UTC+8）开窗，默认 10:05 签到。全流程实测与端点证据见
+[examples/qoder-cn-checkin-e2e/README.md](examples/qoder-cn-checkin-e2e/README.md)、
+协议重建见 [examples/_analysis_qoder.md](examples/_analysis_qoder.md)。
 
 ## 安全与隐私
 
