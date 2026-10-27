@@ -128,7 +128,7 @@ input:focus,select:focus{border-color:#38bdf8}
 <div class=header><h1><svg class="ic"><use href="#h10i-circle-check"></use></svg> 自动签到</h1></div>
 <div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:12px">
 <button class="btn btn-primary" onclick=openModal()><svg class="ic"><use href="#h10i-plus"></use></svg> 新增账号</button>
-<button class="btn" onclick=openImport() title="粘贴提取脚本产出的导入串（Trae: TRAE1.… / WorkBuddy: WB1.…）"><svg class="ic"><use href="#h10i-upload"></use></svg> 导入凭证</button>
+<button class="btn" onclick=openImport() title="粘贴提取脚本产出的导入串（Trae: TRAE1.… / WorkBuddy: WB1.… / Qoder CN: QODER1.…）"><svg class="ic"><use href="#h10i-upload"></use></svg> 导入凭证</button>
 <button class="btn btn-rst" onclick=runAll()><svg class="ic"><use href="#h10i-play"></use></svg> 全部签到</button>
 <button class="btn" onclick=manualRefresh()><svg class="ic"><use href="#h10i-refresh"></use></svg> 刷新</button>
 <button class="btn btn-primary" id=chartsBtn onclick=openCharts() style="display:none"><svg class="ic"><use href="#h10i-trending-up"></use></svg> 图表</button>
@@ -193,16 +193,16 @@ input:focus,select:focus{border-color:#38bdf8}
 </div>
 <div class=toast id=toast></div>
 
-<!-- 导入凭证浮层（桌面端 refreshToken 导入串：Trae TRAE1.… / WorkBuddy WB1.…） -->
+<!-- 导入凭证浮层（桌面端 refreshToken 导入串：Trae TRAE1.… / WorkBuddy WB1.… / Qoder CN QODER1.…） -->
 <div class=overlay id=importOverlay onclick="if(event.target===this)closeImport()">
 <div class=modal style=max-width:640px>
 <div class=modal-h><label><svg class="ic"><use href="#h10i-upload"></use></svg> 导入凭证</label><span class=modal-close onclick=closeImport()>✕</span></div>
 <div class=field-hint style="margin:0 0 10px">
-  粘贴提取脚本产出的「导入串」：Trae 以 <code>TRAE1.</code> 开头，WorkBuddy 以 <code>WB1.</code> 开头（脚本跑完会自动复制到剪贴板，直接 Ctrl+V 即可）。
-  <br>Trae 凭证必须来自 <b>Trae CN</b> 客户端；WorkBuddy 凭证必须来自 <b>桌面端</b>（提取脚本可从账号编辑页下载）。
+  粘贴提取脚本产出的「导入串」：Trae 以 <code>TRAE1.</code> 开头，WorkBuddy 以 <code>WB1.</code> 开头，Qoder CN 以 <code>QODER1.</code> 开头（脚本跑完会自动提交或打印整串，直接粘贴即可）。
+  <br>三种凭证都必须来自对应的客户端：<b>Trae CN</b> / <b>WorkBuddy 桌面端</b> / <b>Qoder CN 客户端</b>（提取脚本可从账号编辑页下载）。
 </div>
 <div class=form-row><label>导入串</label>
-  <textarea id=impText rows=3 placeholder="TRAE1.… / WB1.…" oninput=onImportInput()
+  <textarea id=impText rows=3 placeholder="TRAE1.… / WB1.… / QODER1.…" oninput=onImportInput()
     style="width:100%;box-sizing:border-box;font-family:ui-monospace,Consolas,monospace;font-size:.7rem;line-height:1.5;padding:7px 9px;border-radius:7px;border:1px solid #334155;background:#0f172a;color:#e2e8f0;resize:vertical"></textarea>
 </div>
 <div id=impInfo></div>
@@ -736,12 +736,13 @@ function openImport(prefill){
 function closeImport(){$('#importOverlay').classList.remove('show');}
 
 // 解析导入串（前端只做结构解析用于预览，真正的校验在服务端）
-// 返回 {kind:'trae'|'wb', j:对象}；不是导入串/解不开返回 null
+// 返回 {kind:'trae'|'wb'|'qoder', j:对象}；不是导入串/解不开返回 null
 function parseImport(s){
   s=String(s||'').trim();
   let kind=null,len=0;
   if(s.indexOf('TRAE1.')===0){kind='trae';len=6;}
   else if(s.indexOf('WB1.')===0){kind='wb';len=4;}
+  else if(s.indexOf('QODER1.')===0){kind='qoder';len=7;}
   else return null;
   try{
     let b=s.slice(len).replace(/-/g,'+').replace(/_/g,'/');
@@ -760,7 +761,7 @@ async function onImportInput(keepTarget){
   if(!raw){ info.innerHTML=''; sel.innerHTML=''; hint.textContent=''; impKind=null; impTasks=[]; return; }
   const p=parseImport(raw);
   if(!p){
-    info.innerHTML='<div class=field-hint style="color:#f87171">不是合法的导入串：应以 <code>TRAE1.</code>（Trae）或 <code>WB1.</code>（WorkBuddy）开头且能被解码（可能是复制时被截断）。</div>';
+    info.innerHTML='<div class=field-hint style="color:#f87171">不是合法的导入串：应以 <code>TRAE1.</code>（Trae）/ <code>WB1.</code>（WorkBuddy）/ <code>QODER1.</code>（Qoder CN）开头且能被解码（可能是复制时被截断）。</div>';
     sel.innerHTML=''; hint.textContent=''; impKind=null; return;
   }
   impKind=p.kind;
@@ -770,19 +771,23 @@ async function onImportInput(keepTarget){
     info.innerHTML='<div class=field-hint>来源：<b>Trae</b>（'+esc(j.brand||'未知客户端')+'）　账号：<b>'+esc(j.uid||'未知')+'</b>　设备：'+esc(j.did||'—')+'　导出：'+esc(j.at||'—')
       +(solo?'<br><span style="color:#f87171">⚠ 这是 TRAE SOLO CN 签发的凭证，方案一不支持（上游要求设备签名）。请在 Trae CN 客户端登录该账号后重新导出。</span>':'')
       +'</div>';
+  }else if(impKind==='qoder'){
+    const dev=(j.mtok&&j.mcode)?('设备身份已带（'+(j.mos||'?')+'）'):'无设备身份（最小四件套，实测同样可签）';
+    info.innerHTML='<div class=field-hint>来源：<b>Qoder CN 客户端</b>　昵称：<b>'+esc(j.name||'未知')+'</b>　账号：<b>'+esc(j.uid||'未知')+'</b>　'+dev+'　导出：'+esc(j.at||'—')+'</div>';
   }else{
     info.innerHTML='<div class=field-hint>来源：<b>WorkBuddy 桌面端</b>　昵称：<b>'+esc(j.nick||'未知')+'</b>　手机：'+esc(j.phone||'—')+'　账号：<b>'+esc(j.uid||'未知')+'</b>　导出：'+esc(j.at||'—')+'</div>';
   }
 
   if(keepTarget && sel.options.length){ updateImportHint(j); return; }
-  const r=await api(impKind==='trae'?'/api/checkin/trae-targets':'/api/checkin/wb-targets');
+  const r=await api(impKind==='trae'?'/api/checkin/trae-targets':(impKind==='wb'?'/api/checkin/wb-targets':'/api/checkin/qoder-targets'));
   impTasks=(r&&r.tasks)||[];
   let html='<option value="">新建一个账号</option>';
   for(const t of impTasks){
     const same=j.uid&&t.userId&&String(t.userId)===String(j.uid);
     let modeTxt;
     if(impKind==='trae') modeTxt=(t.mode==='cookie'?'方案二 Cookie':'方案一');
-    else modeTxt=(t.mode==='refresh'?'桌面端凭证':(t.mode==='cookie'?'Cookie':'Bearer'));
+    else if(impKind==='wb') modeTxt=(t.mode==='refresh'?'桌面端凭证':(t.mode==='cookie'?'Cookie':'Bearer'));
+    else modeTxt=(t.hasRefreshToken?'refreshToken':'仅 access')+(t.hasDeviceIdentity?' +设备身份':'');
     html+='<option value="'+esc(t.id)+'"'+(same?' selected':'')+'>'+esc(t.name)+'　'+modeTxt+(same?'　← 同一账号':'')+'</option>';
   }
   sel.innerHTML=html;
@@ -795,14 +800,18 @@ function updateImportHint(j){
     const t=impTasks.find(x=>x.id===id);
     if(impKind==='trae'){
       hint.innerHTML='将<b>只替换</b>「'+esc(t?t.name:id)+'」的凭证；名称 / 签到时间 / 时区 / 开关 / 方案二 Cookie 全部保留。';
-    }else{
+    }else if(impKind==='wb'){
       hint.innerHTML='将<b>只替换</b>「'+esc(t?t.name:id)+'」的凭证（鉴权方式自动切到 auto，优先走 refreshToken 静默续期）；名称 / 签到时间 / 时区 / 开关 / Cookie 全部保留。';
+    }else{
+      hint.innerHTML='将<b>只替换</b>「'+esc(t?t.name:id)+'」的凭证（token / refreshToken / 设备身份一起换）；名称 / 签到时间 / 时区 / 开关全部保留。';
     }
   }else{
     if(impKind==='trae'){
       hint.innerHTML='将<b>新建</b>一个 Trae 账号（名称与签到时间取默认值，之后可在编辑里改）。';
-    }else{
+    }else if(impKind==='wb'){
       hint.innerHTML='将<b>新建</b>一个 WorkBuddy 账号（名称与签到时间取默认值，之后可在编辑里改）。';
+    }else{
+      hint.innerHTML='将<b>新建</b>一个 Qoder CN 账号（默认 10:05 签到，之后可在编辑里改）。';
     }
   }
 }
@@ -813,7 +822,7 @@ async function doImport(){
   if(!p){ toast('导入串格式不对'); return; }
   const body={importString:raw};
   if(taskId) body.taskId=taskId;
-  const r=await api(p.kind==='trae'?'/api/checkin/trae-import':'/api/checkin/wb-import',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const r=await api(p.kind==='trae'?'/api/checkin/trae-import':(p.kind==='wb'?'/api/checkin/wb-import':'/api/checkin/qoder-import'),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
   if(r&&r.ok){
     toast(r.created?'已新增账号：'+esc(r.name):'已更新凭证：'+esc(r.name));
     closeImport(); $('#impText').value=''; loadData();
@@ -821,9 +830,9 @@ async function doImport(){
     toast('导入失败：'+esc((r&&r.error)||'未知错误'));
   }
 }
-// 允许脚本用 #trae=<导入串> / #wb=<导入串> 把浏览器叫起来并预填（hash 不发给服务器）
+// 允许脚本用 #trae=<导入串> / #wb=<导入串> / #qoder=<导入串> 把浏览器叫起来并预填（hash 不发给服务器）
 (function(){
-  const m=/[#&](trae|wb)=([^&]+)/.exec(location.hash||'');
+  const m=/[#&](trae|wb|qoder)=([^&]+)/.exec(location.hash||'');
   if(!m) return;
   try{
     const v=decodeURIComponent(m[2]);
