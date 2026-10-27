@@ -427,6 +427,10 @@ server.js → /api/checkin/* 路由
   整份 JSON 变非法 → 客户端读不到登录态）。
 - **证据与复现**：`examples/qoder-cn-checkin-e2e/`（run-e2e.mjs 全流程 / selftest-module.mjs provider 契约自检），
   协议重建见 `examples/_analysis_qoder.md`。
+- **面板导入**：导入浮层前端 `parseImport()` 必须认 `QODER1.` 前缀，否则粘贴会被前端拦下、请求根本不到后端
+  （v1.0.53 只接了后端 → v1.0.55 补前端；报错文案「不是合法的导入串」很容易被当成「凭证不对」）。
+  另外 **面板只存在于 Cloudflare Pages**（设备端 `~/monitor/frontend` 不存在，网关 `/checkin.html` 回
+  「页面已迁移到 Cloudflare Pages」）⇒ 改前端必须走 apply 的 Pages 钩子，改完强刷。
 
 ---
 
