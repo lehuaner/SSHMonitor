@@ -258,7 +258,9 @@ export default {
     if (!c.token && !c.refreshToken) {
       return { ok: false, isLogin: false, expiresAt: null, error: '未配置凭证' };
     }
-    const refreshExp = Number(c.refreshTokenExpiresAt || 0) || null;
+    // 到期时间有两处落点：导入时写在 task 级（tokenExpiredAt / refreshTokenExpiredAt），
+    // 续期时同时写 task 级与 config 级 —— 两处都认，避免「面板空白 + 每小时多打一次网络探测」。
+    const refreshExp = Number(c.refreshTokenExpiresAt || task.refreshTokenExpiredAt || 0) || null;
     const tokenExp = Number(c.tokenExpiredAt || task.tokenExpiredAt || 0) || null;
     if (refreshExp && refreshExp <= Date.now()) {
       return { ok: false, isLogin: false, expiresAt: refreshExp, error: 'refresh_token 已过期，请重新导入' };
